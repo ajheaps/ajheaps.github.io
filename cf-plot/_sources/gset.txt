@@ -1,0 +1,4 @@
+gset
+****
+
+.. autofunction:: cfplot.gset

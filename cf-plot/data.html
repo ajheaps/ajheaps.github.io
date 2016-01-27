@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Passing data to cf-plot &mdash; cf-plot 1.9.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.9.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="cf-plot 1.9.3 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">cf-plot 1.9.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="passing-data-to-cf-plot">
+<h1>Passing data to cf-plot<a class="headerlink" href="#passing-data-to-cf-plot" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="using-cf-python-cf-compliant-data">
+<h2>Using cf-python - cf compliant data<a class="headerlink" href="#using-cf-python-cf-compliant-data" title="Permalink to this headline">¶</a></h2>
+<p>Data is generally passed to cf-plot via cf-python as a 2-dimensional field.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>f is now an list of 12 fields.</p>
+<div class="highlight-python"><div class="highlight"><pre>[&lt;CF Field: long_name:Potential vorticity(time(1), pressure(23), latitude(160), longitude(320)) K m**2 kg**-1 s**-1&gt;,
+&lt;CF Field: long_name:Ozone mass mixing ratio(time(1), pressure(23), latitude(160), longitude(320)) kg kg**-1&gt;,
+&lt;CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(320)) K&gt;,
+&lt;CF Field: atmosphere_relative_vorticity(time(1), pressure(23), latitude(160), longitude(320)) s**-1&gt;,
+&lt;CF Field: atmosphere_relative_vorticity(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-1&gt;,
+&lt;CF Field: divergence_of_wind(time(1), pressure(23), latitude(160), longitude(320)) s**-1&gt;,
+&lt;CF Field: divergence_of_wind(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-1&gt;,
+&lt;CF Field: eastward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1&gt;,
+&lt;CF Field: geopotential(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-2&gt;,
+&lt;CF Field: northward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1&gt;,
+&lt;CF Field: relative_humidity(time(1), pressure(23), latitude(160), longitude(320)) %&gt;,
+&lt;CF Field: specific_humidity(time(1), pressure(23), latitude(160), longitude(320)) kg kg**-1&gt;,
+&lt;CF Field: vertical_air_velocity_expressed_as_tendency_of_pressure(time(1), pressure(23), latitude(160), longitude(320)) Pa s**-1&gt;]
+</pre></div>
+</div>
+<p>To contour data a 2 dimensional field is needed. In the case below we select the 500mb temperature with the cf subspace method.</p>
+<div class="highlight-python"><div class="highlight"><pre>f[2].subspace(pressure=500)
+&lt;CF Field: air_temperature(time(1), pressure(1), latitude(160), longitude(320)) K&gt;
+cfp.con(f[2].subspace(pressure=500))
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/data_fig1.png"><img alt="_images/data_fig1.png" src="_images/data_fig1.png" style="width: 494.5px; height: 301.0px;" /></a>
+<p>To mean the field use the cf collapse function:</p>
+<div class="highlight-python"><div class="highlight"><pre>f[2].collapse( &#39;mean&#39;,&#39;longitude&#39;)
+&lt;CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(1)) K&gt;
+cfp.con(f[2].collapse( &#39;mean&#39;,&#39;longitude&#39;))
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/data_fig2.png"><img alt="_images/data_fig2.png" src="_images/data_fig2.png" style="width: 510.5px; height: 328.5px;" /></a>
+</div>
+<div class="section" id="using-cf-plot-with-non-cf-compliant-data">
+<h2>Using cf-plot with non-cf compliant data<a class="headerlink" href="#using-cf-plot-with-non-cf-compliant-data" title="Permalink to this headline">¶</a></h2>
+<p>Although newer model and reanalyis products are generally cf compliant there is a considerable amount of data being used that is of varying degrees of cf compliance.</p>
+<div class="section" id="example-1">
+<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
+<p>In this locally processed ERA40 reanalysis field there is a distinct lack of standard names.  Even the long names are somewhat terse - p for pressure for example.</p>
+<div class="highlight-python"><div class="highlight"><pre>f=cf.read(&#39;/opt/graphics/cfplot_data/ggap199006200600.nc&#39;)[9]
+&lt;CF Field: geopotential(long_name:t(1), long_name:p(37), long_name:latitude(256),
+long_name:longitude(512)) kg kg**-1&gt;
+</pre></div>
+</div>
+<p>We can still slice and plot the data by inspecting the dimensions of the field:</p>
+<div class="highlight-python"><div class="highlight"><pre>f.items()
+{&#39;dim2&#39;: &lt;CF DimensionCoordinate: long_name:latitude(256) degrees_north&gt;,
+&#39;dim3&#39;: &lt;CF DimensionCoordinate: long_name:longitude(512) degrees_east&gt;,
+&#39;dim0&#39;: &lt;CF DimensionCoordinate: long_name:t(1) days since 1990-06-20 06:00:00&gt;,
+&#39;dim1&#39;: &lt;CF DimensionCoordinate: long_name:p(37) mbar&gt;}
+</pre></div>
+</div>
+<p>We see that dim1 is the pressure coordinate and can select the 700mb level and contour that.</p>
+<div class="highlight-python"><div class="highlight"><pre>f.item(&#39;dim1&#39;).array
+array([ 1000.,   975.,   950.,   925.,   900.,   875.,   850.,   825.,
+      800.,   775.,   750.,   700.,   650.,   600.,   550.,   500.,
+      450.,   400.,   350.,   300.,   250.,   225.,   200.,   175.,
+      150.,   125.,   100.,    70.,    50.,    30.,    20.,    10.,
+        7.,     5.,     3.,     2.,     1.], dtype=float32)
+
+f.subspace(dim1=700)
+&lt;CF Field: geopotential(long_name:t(1), long_name:p(1), long_name:latitude(256), long_name:longitude(512)) kg kg**-1&gt;
+
+cfp.con(f.subspace(dim1=700))
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/data_fig3.png"><img alt="_images/data_fig3.png" src="_images/data_fig3.png" style="width: 494.5px; height: 302.0px;" /></a>
+</div>
+<div class="section" id="example-2">
+<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
+<p>In this dataset there are neither standard or long names.</p>
+<div class="highlight-python"><div class="highlight"><pre>f=cf.read(&#39;/opt/graphics/cfplot_data/gdata.nc&#39;)[0]
+&lt;CF Field: ncvar:temp(ncvar:p(22), ncvar:lat(73), ncvar:lon(145)) &gt;
+</pre></div>
+</div>
+<p>We can still slice and plot the data as below.</p>
+<div class="highlight-python"><div class="highlight"><pre>f.items()
+{&#39;dim2&#39;: &lt;CF DimensionCoordinate: ncvar:lon(145)&gt;,
+&#39;dim0&#39;: &lt;CF DimensionCoordinate: ncvar:p(22)&gt;,
+&#39;dim1&#39;: &lt;CF DimensionCoordinate: ncvar:lat(73)&gt;}
+
+f.item(&#39;dim0&#39;).array
+array([  1.00000000e+03,   7.00000000e+02,   5.00000000e+02,
+      3.20000000e+02,   2.15000000e+02,   1.50000000e+02,
+      1.00000000e+02,   7.00000000e+01,   5.00000000e+01,
+      3.20000000e+01,   2.00000000e+01,   1.50000000e+01,
+      1.00000000e+01,   7.00000000e+00,   5.00000000e+00,
+      3.20000005e+00,   2.00000000e+00,   1.50000000e+00,
+      1.00000000e+00,   6.99999988e-01,   5.00000000e-01,
+      3.00000012e-01], dtype=float32)
+</pre></div>
+</div>
+<p>So to plot the 1000mb temperature we would use:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">dim0</span><span class="o">=</span><span class="mi">1000</span><span class="p">))</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/data_fig4.png"><img alt="_images/data_fig4.png" src="_images/data_fig4.png" style="width: 494.5px; height: 299.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="passing-data-via-arrays">
+<h2>Passing data via arrays<a class="headerlink" href="#passing-data-via-arrays" title="Permalink to this headline">¶</a></h2>
+<p>cf-plot can also make contour and vector plots by passing data arrays.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
+<span class="kn">from</span> <span class="nn">netCDF4</span> <span class="kn">import</span> <span class="n">Dataset</span> <span class="k">as</span> <span class="n">ncfile</span>
+<span class="n">nc</span> <span class="o">=</span> <span class="n">ncfile</span><span class="p">(</span><span class="s">&#39;/opt/graphics/cfplot_data/tas_A1.nc&#39;</span><span class="p">)</span>
+<span class="n">lons</span><span class="o">=</span><span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s">&#39;lon&#39;</span><span class="p">][:]</span>
+<span class="n">lats</span><span class="o">=</span><span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s">&#39;lat&#39;</span><span class="p">][:]</span>
+<span class="n">temp</span><span class="o">=</span><span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s">&#39;tas&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,:,:]</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">temp</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">lons</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">lats</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/data_fig5.png"><img alt="_images/data_fig5.png" src="_images/data_fig5.png" style="width: 498.5px; height: 314.5px;" /></a>
+<p>The contouring routine doesn&#8217;t know that the data passed is a map plot. This can be explicitly set with the ptype flag to con.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">temp</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">lons</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">lats</span><span class="p">,</span> <span class="n">ptype</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/data_fig6.png"><img alt="_images/data_fig6.png" src="_images/data_fig6.png" style="width: 494.5px; height: 287.0px;" /></a>
+<p>Other types of plot are:</p>
+<div class="line-block">
+<div class="line">ptype=2  - latitude - pressure/height plot</div>
+<div class="line">ptype=3  - longitude - pressure/height plot</div>
+<div class="line">ptype=4  - longitude - time plot</div>
+<div class="line">ptype=5  - latitude - time plot</div>
+<div class="line">ptype=6  - rotated pole plot</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+
+<h3><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/#">Homepage</a><p></h3>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/gallery.html">Gallery</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/user_guide.html">User Guide</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/data.html">Data input</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/routines.html">Routines</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/internal_routines.html">Routines - internal</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/versions.html">Versions</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/issues.html">Issues</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/download.html">Download/Install</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/license.html">License</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/search.html">Search</a><p></h5>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">cf-plot 1.9.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

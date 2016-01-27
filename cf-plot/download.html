@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Download/Install &mdash; cf-plot 1.9.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.9.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="cf-plot 1.9.3 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">cf-plot 1.9.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="download-install">
+<h1>Download/Install<a class="headerlink" href="#download-install" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="is-cf-plot-already-installed">
+<h2>Is cf-plot already installed?<a class="headerlink" href="#is-cf-plot-already-installed" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="mailto:Jasmin&#37;&#52;&#48;CEDA">Jasmin<span>&#64;</span>CEDA</a> - cf-plot is available inside the Jasmin Analysis Platform - type python2.7 to start python.</p>
+<p>Archer Jasmin RDF - jasmin.rdf.ac.uk - This has the Jasmin Analysis Platform installed - type python2.7 to start python.</p>
+<div class="line-block">
+<div class="line">Archer - type</div>
+<div class="line"><strong>module swap PrgEnv-cray PrgEnv-intel</strong></div>
+<div class="line"><strong>module load anaconda cf</strong></div>
+<div class="line">and then python to use cf-plot.</div>
+</div>
+<p>Department of Meteorology, University of Reading - The latest version of cf-plot is installed on the Reading University Meteorology department servers.  Type <strong>setup canopy</strong> to set-up Python.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="to-install-cf-plot">
+<h2>To install cf-plot<a class="headerlink" href="#to-install-cf-plot" title="Permalink to this headline">¶</a></h2>
+<p>Use pip:
+Install cf-python and cf-plot</p>
+<div class="highlight-python"><div class="highlight"><pre>pip install cf-python
+pip install cfplot
+</pre></div>
+</div>
+<p>GitHub:</p>
+<div class="highlight-python"><div class="highlight"><pre>git clone git://github.com/ajheaps/cf-plot.git
+(if behind a firewall such as that at the Met Office you may need to use
+git clone https://github.com/ajheaps/cf-plot.git)
+
+cd cfplot
+python setup.py install
+</pre></div>
+</div>
+<p>You will need to download and install <a class="reference external" href="http://cfpython.bitbucket.org">cf-python</a> to use cf-plot.  This can also be done with</p>
+<p>Other cf-plot dependencies are: Numpy, Matplotlib, Netcdf4 and Basemap.</p>
+<p>Download the <a class="reference external" href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/data">sample netCDF datasets</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+
+<h3><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/#">Homepage</a><p></h3>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/gallery.html">Gallery</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/user_guide.html">User Guide</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/data.html">Data input</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/routines.html">Routines</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/internal_routines.html">Routines - internal</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/versions.html">Versions</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/issues.html">Issues</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/download.html">Download/Install</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/license.html">License</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/search.html">Search</a><p></h5>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">cf-plot 1.9.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Rotated pole plots &mdash; cf-plot 1.9.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.9.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="cf-plot 1.9.3 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">cf-plot 1.9.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="rotated-pole-plots">
+<h1>Rotated pole plots<a class="headerlink" href="#rotated-pole-plots" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="example-21-rotated-pole-plot">
+<h2>Example 21 - rotated pole plot<a class="headerlink" href="#example-21-rotated-pole-plot" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/fig21.png"><img alt="_images/fig21.png" src="_images/fig21.png" style="width: 487.24px; height: 336.96px;" /></a>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;/opt/graphics/cfplot_data/rgp.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="example-22-rotated-pole-plot-from-cf-uncompliant-data">
+<h2>Example 22 - rotated pole plot from CF uncompliant data<a class="headerlink" href="#example-22-rotated-pole-plot-from-cf-uncompliant-data" title="Permalink to this headline">¶</a></h2>
+<p>The previous example uses the CF attributes to extract the rotated pole coordinates.
+If these are not available then the following example shows how to make the
+plot using more basic cf-plot commands.</p>
+<a class="reference internal image-reference" href="_images/fig22.png"><img alt="_images/fig22.png" src="_images/fig22.png" style="width: 487.24px; height: 323.96px;" /></a>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;/opt/graphics/cfplot_data/rgp.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">data</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">array</span>
+<span class="n">xvec</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s">&#39;dim1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
+<span class="n">yvec</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s">&#39;dim0&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
+<span class="n">xpole</span><span class="o">=</span><span class="mi">160</span>
+<span class="n">ypole</span><span class="o">=</span><span class="mi">30</span>
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">()</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s">&#39;plasma&#39;</span><span class="p">)</span>
+<span class="n">xpts</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">xvec</span><span class="p">))</span>
+<span class="n">ypts</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">yvec</span><span class="p">))</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gset</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">xvec</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">yvec</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">levs</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">980</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span><span class="mi">1035</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">xpts</span><span class="p">,</span> <span class="n">ypts</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">rgaxes</span><span class="p">(</span><span class="n">xpole</span><span class="o">=</span><span class="n">xpole</span><span class="p">,</span> <span class="n">ypole</span><span class="o">=</span><span class="n">ypole</span><span class="p">,</span> <span class="n">xvec</span><span class="o">=</span><span class="n">xvec</span><span class="p">,</span> <span class="n">yvec</span><span class="o">=</span><span class="n">yvec</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="example-23-rotated-pole-data-on-a-cylindrical-projection-map">
+<h2>Example 23 - rotated pole data on a cylindrical projection map<a class="headerlink" href="#example-23-rotated-pole-data-on-a-cylindrical-projection-map" title="Permalink to this headline">¶</a></h2>
+<p>Here we extract the real longitude and latitude data locations from a rotated grid file
+and use these to make a cylindrical projection contour plot of the data. The ptype=1 flag is
+passed to the cf-plot con routine to indicate that the data is to be plotted on a map.</p>
+<a class="reference internal image-reference" href="_images/fig23.png"><img alt="_images/fig23.png" src="_images/fig23.png" style="width: 510.64px; height: 227.76px;" /></a>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span><span class="o">,</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;/opt/graphics/cfplot_data/xjpgaa_ca072_byteswapped.pp&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">z</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">model_level_number</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
+<span class="n">x</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s">&#39;longitude&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
+<span class="n">y</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s">&#39;latitude&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s">&#39;plasma&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">ptype</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+
+<h3><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/#">Homepage</a><p></h3>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/gallery.html">Gallery</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/user_guide.html">User Guide</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/data.html">Data input</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/routines.html">Routines</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/internal_routines.html">Routines - internal</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/versions.html">Versions</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/issues.html">Issues</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/download.html">Download/Install</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/license.html">License</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/search.html">Search</a><p></h5>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">cf-plot 1.9.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

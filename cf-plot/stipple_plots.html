@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Stipple plots &mdash; cf-plot 1.9.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.9.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="cf-plot 1.9.3 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">cf-plot 1.9.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="stipple-plots">
+<h1>Stipple plots<a class="headerlink" href="#stipple-plots" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="example-17-stipple-plot">
+<h2>Example 17 - stipple plot<a class="headerlink" href="#example-17-stipple-plot" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/fig17.png"><img alt="_images/fig17.png" src="_images/fig17.png" style="width: 435.16px; height: 264.88px;" /></a>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;/opt/graphics/cfplot_data/tas_A1.nc&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">()</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s">&#39;magma&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">stipple</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">g</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">220</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">260</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;#00ff00&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">stipple</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">g</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">330</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;#0000ff&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;s&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<p>Stipple plots are usually used to display significance.  The above is a test plot
+with a temperature field stippled between two different limits.  A contour field
+is displayed underneath to show that the stippling is in the correct regions.</p>
+</div>
+<div class="section" id="example-18-polar-stipple-plot">
+<h2>Example 18 - polar stipple plot<a class="headerlink" href="#example-18-polar-stipple-plot" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/fig18.png"><img alt="_images/fig18.png" src="_images/fig18.png" style="width: 384.56px; height: 328.68px;" /></a>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;/opt/graphics/cfplot_data/tas_A1.nc&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">()</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s">&#39;magma&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">proj</span><span class="o">=</span><span class="s">&#39;npstere&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">stipple</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">g</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">265</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">295</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;#00ff00&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+
+<h3><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/#">Homepage</a><p></h3>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/gallery.html">Gallery</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/user_guide.html">User Guide</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/data.html">Data input</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/routines.html">Routines</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/internal_routines.html">Routines - internal</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/versions.html">Versions</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/issues.html">Issues</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/download.html">Download/Install</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/license.html">License</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/search.html">Search</a><p></h5>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">cf-plot 1.9.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

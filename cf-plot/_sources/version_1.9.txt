@@ -1,0 +1,45 @@
+version 1.9 changes
+*******************
+
+Rolling update of features / bug fixes
+
+
+1. Vector polar plots
+=====================
+
+Vector polar plots introduced.  Use the pts option to vect when doing a stereographic polar vector plot to interpolate
+the grid to be uniformly spaced when viewed.
+
+ ::
+
+   Done
+
+
+2. Change documentation web page location
+=========================================
+
+| Was:
+| http://climate.ncas.ac.uk/~andy/cfplot_sphinx/_build/html/#
+| changed to:
+| http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/#
+
+ ::
+
+   Done
+
+
+3. Add orography / bathymetry colour scales
+===========================================
+
+ ::
+
+   Done
+
+
+4. Change cfplot to cf-plot
+===========================
+
+Package renamed to cf-plot to fit in with cf-python and cf-view.
+
+
+

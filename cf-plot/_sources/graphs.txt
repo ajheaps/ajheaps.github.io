@@ -1,0 +1,88 @@
+Graphs
+******
+
+Example 27 - graph plot
+-----------------------
+
+.. image::  images/fig27.png
+   :scale: 44% 
+
+::
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+   g=f.collapse('X: mean')
+   cfp.lineplot(g.subspace(pressure=100), marker='o', color='blue',\
+                title='Zonal mean zonal wind at 100mb')
+
+
+Other valid markers are:
+
+|    '.' 	point
+|    ',' 	pixel
+|    'o' 	circle
+|    'v' 	triangle_down
+|    '^' 	triangle_up
+|    '<' 	triangle_left
+|    '>' 	triangle_right
+|    '1' 	tri_down
+|    '2' 	tri_up
+|    '3' 	tri_left
+|    '4' 	tri_right
+|    '8' 	octagon
+|    's' 	square
+|    'p' 	pentagon
+|    '*' 	star
+|    'h' 	hexagon1
+|    'H' 	hexagon2
+|    '+' 	plus
+|    'x' 	x
+|    'D' 	diamond
+|    'd' 	thin_diamond 
+
+
+
+
+
+
+
+
+Example 28 - graph plot
+-----------------------
+
+.. image::  images/fig28.png
+   :scale: 44% 
+
+::
+
+    import cf, cfplot as cfp
+    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+    g=f.collapse('X: mean')
+
+    cfp.gopen()
+    cfp.gset(xmin=-90, xmax=90, ymin=-10, ymax=50)
+    cfp.lineplot(g.subspace(pressure=100), marker='o', color='blue',\
+                 title='Zonal mean zonal wind', label='100mb')
+    cfp.lineplot(g.subspace(pressure=200), marker='D', color='red',\
+                 label='200mb', legend_location='upper right')
+    cfp.gclose()
+
+
+In this example a plot with user specified axes is made.  To add a legend the final call to lineplot has the legend_location keyword set.  All previous calls to lineplot must have set the label attribute so that the line labels are ready for making the legend.
+
+Valid locations for the legend_location keyword are:
+
+|	'right'
+|	'center left'
+|	'upper right'
+|	'lower right'
+|	'best'
+|	'center'
+|	'lower left'
+|	'center right'
+|	'upper left'
+|	'upper center'
+|	'lower center'
+
+
+

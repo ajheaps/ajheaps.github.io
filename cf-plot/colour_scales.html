@@ -1,0 +1,982 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Colour scales &mdash; cf-plot 1.9.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.9.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="cf-plot 1.9.3 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">cf-plot 1.9.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="colour-scales">
+<h1>Colour scales<a class="headerlink" href="#colour-scales" title="Permalink to this headline">¶</a></h1>
+<p>There are two default colour scales in cf-plot:</p>
+<ol class="arabic simple">
+<li>A continuous scale (&#8216;viridis&#8217;) that goes from blue to green and then yellow and suits data that has no zero in it.  For example air temperature in Kelvin or geopotential height - see example 1 in the plot gallery.</li>
+<li>A diverging scale (&#8216;scale1&#8217;) that goes from blue to red and suits data with a zero in it.  For example temperature in Celsius or zonal wind - see example 4 in the plot gallery.  The colour scale is automatically adjusted so that blue hues are below zero and red hues above zero.</li>
+</ol>
+<p>When no calls have been made to <strong>cscale</strong> cf-plot selects one of theses scales based on whether there is a zero in the data passed for contouring.  If a call is made to <strong>cscale</strong> with just a colour scale name  <strong>cfp.cscale(&#8216;radar&#8217;)</strong>, for example, then this colour scale is used for all subsequent plots.  The colour scale is adjusted automatically to fit the number of contour levels in the plot.</p>
+<p>If a call to <strong>cscale</strong> specifies additional parameters to the colour scale, then the automatic colour adjustment is turned off giving the user fine tuning of colours as below.</p>
+<a class="reference internal image-reference" href="_images/cs1.png"><img alt="_images/cs1.png" src="_images/cs1.png" style="width: 627.9px; height: 32.5px;" /></a>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cfp</span><span class="o">.</span><span class="n">levs</span><span class="p">(</span><span class="nb">min</span><span class="o">=-</span><span class="mi">80</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="s">&#39;scale1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<p>To change the number of colours in a scale use the ncols parameters.</p>
+<a class="reference internal image-reference" href="_images/cs2.png"><img alt="_images/cs2.png" src="_images/cs2.png" style="width: 627.9px; height: 32.5px;" /></a>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s">&#39;scale1&#39;</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">levs</span><span class="p">(</span><span class="nb">min</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<p>To change the number of colours above and below the mid-point of the scale use the above and below parameters.  This is useful for fields where you have differing extents of data above and below the zero line.</p>
+<a class="reference internal image-reference" href="_images/cs3.png"><img alt="_images/cs3.png" src="_images/cs3.png" style="width: 627.9px; height: 32.5px;" /></a>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s">&#39;scale1&#39;</span><span class="p">,</span> <span class="n">below</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">above</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">levs</span><span class="p">(</span><span class="nb">min</span><span class="o">=-</span><span class="mi">30</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<p>For data where you need white to indicate that this data region is insignificant use the white=white parameter.  This can take single or multiple values of the index of the colour scale where white is required in the colour scale.</p>
+<a class="reference internal image-reference" href="_images/cs4.png"><img alt="_images/cs4.png" src="_images/cs4.png" style="width: 627.9px; height: 32.5px;" /></a>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s">&#39;scale1&#39;</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">white</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">levs</span><span class="p">(</span><span class="n">manual</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/cs4.png"><img alt="_images/cs4.png" src="_images/cs4.png" style="width: 502.32px; height: 26.0px;" /></a>
+<p>To reverse a colour scale use the <strong>reverse=1</strong> option to <strong>cscale</strong> and specify the number of colours required.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s">&#39;scale1&#39;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As a short example to show the flexibilty of the colour scale routines we will make a orography plot using the wiki-2.0.rgb orography/bathymetry colour scale. This has as many colours for bathymetry as for the oroggraphy but in this case we just need a blue ocean as we are really only interested in the orography.  So in this case we will define a set of levels using <em>levs</em> and then match the colour scale to them.  The wiki-2.0.rgb colour scale has as many colours for the ocean as for the land so we can use the above and below options</p>
+<a class="reference internal image-reference" href="_images/orog.png"><img alt="_images/orog.png" src="_images/orog.png" style="width: 487.24px; height: 341.12px;" /></a>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span><span class="o">,</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;/opt/graphics/cfplot_data/12km_orog.nc&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s">&#39;wiki-2.0.rgb&#39;</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">below</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">above</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">levs</span><span class="p">(</span><span class="n">manual</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">*</span><span class="mi">150</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="user-defined-colour-scales">
+<h2>User defined colour scales<a class="headerlink" href="#user-defined-colour-scales" title="Permalink to this headline">¶</a></h2>
+<p>Store these as rgb values in a file with one rgb value per line.  i.e.</p>
+<div class="highlight-python"><div class="highlight"><pre>255 0   0
+255 255 255
+0   0   255
+</pre></div>
+</div>
+<p>will give a red white blue colour scale.  If the file is saved as /home/swsheaps/rwb.txt it is read in using</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s">&#39;/home/swsheaps/rwb.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="predefined-colour-scales">
+<h2>Predefined colour scales<a class="headerlink" href="#predefined-colour-scales" title="Permalink to this headline">¶</a></h2>
+<p>A lot of the following colour maps were downloaded from the NCAR Command Language web site.  Users of the IDL guide colour maps can see these maps at the end of the colour scales.</p>
+</div>
+<div class="section" id="perceptually-uniform-colour-scales">
+<h2>Perceptually uniform colour scales<a class="headerlink" href="#perceptually-uniform-colour-scales" title="Permalink to this headline">¶</a></h2>
+<p>A selection of perceptually uniform colour scales for contouring data without a zero in. See <a class="reference external" href="http://www.climate-lab-book.ac.uk/2014/end-of-the-rainbow">The end of the rainbow</a> and <a class="reference external" href="http://bids.github.io/colormap">Matplotlib colour maps</a> for a good discussion on colour scales, colour blindness and uniform colour scales.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Scale</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>viridis</td>
+<td><img alt="_images/viridis.png" class="first last" src="_images/viridis.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>magma</td>
+<td><img alt="_images/magma.png" class="first last" src="_images/magma.png" />
+</td>
+</tr>
+<tr class="row-even"><td>inferno</td>
+<td><img alt="_images/inferno.png" class="first last" src="_images/inferno.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>plasma</td>
+<td><img alt="_images/plasma.png" class="first last" src="_images/plasma.png" />
+</td>
+</tr>
+<tr class="row-even"><td>parula</td>
+<td><img alt="_images/parula.png" class="first last" src="_images/parula.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>gray</td>
+<td><img alt="_images/gray.png" class="first last" src="_images/gray.png" />
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ncar-command-language-meteoswiss-colour-maps">
+<h2>NCAR Command Language - MeteoSwiss colour maps<a class="headerlink" href="#ncar-command-language-meteoswiss-colour-maps" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Scale</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>hotcold_18lev</td>
+<td><img alt="_images/hotcold_18lev.png" class="first last" src="_images/hotcold_18lev.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>hotcolr_19lev</td>
+<td><img alt="_images/hotcolr_19lev.png" class="first last" src="_images/hotcolr_19lev.png" />
+</td>
+</tr>
+<tr class="row-even"><td>mch_default</td>
+<td><img alt="_images/mch_default.png" class="first last" src="_images/mch_default.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>perc2_9lev</td>
+<td><img alt="_images/perc2_9lev.png" class="first last" src="_images/perc2_9lev.png" />
+</td>
+</tr>
+<tr class="row-even"><td>percent_11lev</td>
+<td><img alt="_images/percent_11lev.png" class="first last" src="_images/percent_11lev.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>precip2_15lev</td>
+<td><img alt="_images/precip2_15lev.png" class="first last" src="_images/precip2_15lev.png" />
+</td>
+</tr>
+<tr class="row-even"><td>precip2_17lev</td>
+<td><img alt="_images/precip2_17lev.png" class="first last" src="_images/precip2_17lev.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>precip3_16lev</td>
+<td><img alt="_images/precip3_16lev.png" class="first last" src="_images/precip3_16lev.png" />
+</td>
+</tr>
+<tr class="row-even"><td>precip4_11lev</td>
+<td><img alt="_images/precip4_11lev.png" class="first last" src="_images/precip4_11lev.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>precip4_diff_19lev</td>
+<td><img alt="_images/precip4_diff_19lev.png" class="first last" src="_images/precip4_diff_19lev.png" />
+</td>
+</tr>
+<tr class="row-even"><td>precip_11lev</td>
+<td><img alt="_images/precip_11lev.png" class="first last" src="_images/precip_11lev.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>precip_diff_12lev</td>
+<td><img alt="_images/precip_diff_12lev.png" class="first last" src="_images/precip_diff_12lev.png" />
+</td>
+</tr>
+<tr class="row-even"><td>precip_diff_1lev</td>
+<td><img alt="_images/precip_diff_1lev.png" class="first last" src="_images/precip_diff_1lev.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>rh_19lev</td>
+<td><img alt="_images/rh_19lev.png" class="first last" src="_images/rh_19lev.png" />
+</td>
+</tr>
+<tr class="row-even"><td>spread_15lev</td>
+<td><img alt="_images/spread_15lev.png" class="first last" src="_images/spread_15lev.png" />
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ncar-command-language-small-color-maps-50-colours">
+<h2>NCAR Command Language - small color maps (&lt;50 colours)<a class="headerlink" href="#ncar-command-language-small-color-maps-50-colours" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Scale</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>amwg</td>
+<td><img alt="_images/amwg.png" class="first last" src="_images/amwg.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>amwg_blueyellowred</td>
+<td><img alt="_images/amwg_blueyellowred.png" class="first last" src="_images/amwg_blueyellowred.png" />
+</td>
+</tr>
+<tr class="row-even"><td>BlueDarkRed18</td>
+<td><img alt="_images/BlueDarkRed18.png" class="first last" src="_images/BlueDarkRed18.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>BlueDarkOrange18</td>
+<td><img alt="_images/BlueDarkOrange18.png" class="first last" src="_images/BlueDarkOrange18.png" />
+</td>
+</tr>
+<tr class="row-even"><td>BlueGreen14</td>
+<td><img alt="_images/BlueGreen14.png" class="first last" src="_images/BlueGreen14.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>BrownBlue12</td>
+<td><img alt="_images/BrownBlue12.png" class="first last" src="_images/BrownBlue12.png" />
+</td>
+</tr>
+<tr class="row-even"><td>Cat12</td>
+<td><img alt="_images/Cat12.png" class="first last" src="_images/Cat12.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>cmp_flux</td>
+<td><img alt="_images/cmp_flux.png" class="first last" src="_images/cmp_flux.png" />
+</td>
+</tr>
+<tr class="row-even"><td>cosam12</td>
+<td><img alt="_images/cosam12.png" class="first last" src="_images/cosam12.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>cosam</td>
+<td><img alt="_images/cosam.png" class="first last" src="_images/cosam.png" />
+</td>
+</tr>
+<tr class="row-even"><td>GHRSST_anomaly</td>
+<td><img alt="_images/GHRSST_anomaly.png" class="first last" src="_images/GHRSST_anomaly.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>GreenMagenta16</td>
+<td><img alt="_images/GreenMagenta16.png" class="first last" src="_images/GreenMagenta16.png" />
+</td>
+</tr>
+<tr class="row-even"><td>hotcold_18lev</td>
+<td><img alt="_images/hotcold_18lev.png" class="first last" src="_images/hotcold_18lev.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>hotcolr_19lev</td>
+<td><img alt="_images/hotcolr_19lev.png" class="first last" src="_images/hotcolr_19lev.png" />
+</td>
+</tr>
+<tr class="row-even"><td>mch_default</td>
+<td><img alt="_images/mch_default.png" class="first last" src="_images/mch_default.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>nrl_sirkes</td>
+<td><img alt="_images/nrl_sirkes.png" class="first last" src="_images/nrl_sirkes.png" />
+</td>
+</tr>
+<tr class="row-even"><td>nrl_sirkes_nowhite</td>
+<td><img alt="_images/nrl_sirkes_nowhite.png" class="first last" src="_images/nrl_sirkes_nowhite.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>perc2_9lev</td>
+<td><img alt="_images/perc2_9lev.png" class="first last" src="_images/perc2_9lev.png" />
+</td>
+</tr>
+<tr class="row-even"><td>percent_11lev</td>
+<td><img alt="_images/percent_11lev.png" class="first last" src="_images/percent_11lev.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>posneg_2</td>
+<td><img alt="_images/posneg_2.png" class="first last" src="_images/posneg_2.png" />
+</td>
+</tr>
+<tr class="row-even"><td>prcp_1</td>
+<td><img alt="_images/prcp_1.png" class="first last" src="_images/prcp_1.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>prcp_2</td>
+<td><img alt="_images/prcp_2.png" class="first last" src="_images/prcp_2.png" />
+</td>
+</tr>
+<tr class="row-even"><td>prcp_3</td>
+<td><img alt="_images/prcp_3.png" class="first last" src="_images/prcp_3.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>precip_11lev</td>
+<td><img alt="_images/precip_11lev.png" class="first last" src="_images/precip_11lev.png" />
+</td>
+</tr>
+<tr class="row-even"><td>precip_diff_12lev</td>
+<td><img alt="_images/precip_diff_12lev.png" class="first last" src="_images/precip_diff_12lev.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>precip_diff_1lev</td>
+<td><img alt="_images/precip_diff_1lev.png" class="first last" src="_images/precip_diff_1lev.png" />
+</td>
+</tr>
+<tr class="row-even"><td>precip2_15lev</td>
+<td><img alt="_images/precip2_15lev.png" class="first last" src="_images/precip2_15lev.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>precip2_17lev</td>
+<td><img alt="_images/precip2_17lev.png" class="first last" src="_images/precip2_17lev.png" />
+</td>
+</tr>
+<tr class="row-even"><td>precip3_16lev</td>
+<td><img alt="_images/precip3_16lev.png" class="first last" src="_images/precip3_16lev.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>precip4_11lev</td>
+<td><img alt="_images/precip4_11lev.png" class="first last" src="_images/precip4_11lev.png" />
+</td>
+</tr>
+<tr class="row-even"><td>precip4_diff_19lev</td>
+<td><img alt="_images/precip4_diff_19lev.png" class="first last" src="_images/precip4_diff_19lev.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>radar</td>
+<td><img alt="_images/radar.png" class="first last" src="_images/radar.png" />
+</td>
+</tr>
+<tr class="row-even"><td>radar_1</td>
+<td><img alt="_images/radar_1.png" class="first last" src="_images/radar_1.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>rh_19lev</td>
+<td><img alt="_images/rh_19lev.png" class="first last" src="_images/rh_19lev.png" />
+</td>
+</tr>
+<tr class="row-even"><td>seaice_1</td>
+<td><img alt="_images/seaice_1.png" class="first last" src="_images/seaice_1.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>seaice_2</td>
+<td><img alt="_images/seaice_2.png" class="first last" src="_images/seaice_2.png" />
+</td>
+</tr>
+<tr class="row-even"><td>so4_21</td>
+<td><img alt="_images/so4_21.png" class="first last" src="_images/so4_21.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>spread_15lev</td>
+<td><img alt="_images/spread_15lev.png" class="first last" src="_images/spread_15lev.png" />
+</td>
+</tr>
+<tr class="row-even"><td>StepSeq25</td>
+<td><img alt="_images/StepSeq25.png" class="first last" src="_images/StepSeq25.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>sunshine_9lev</td>
+<td><img alt="_images/sunshine_9lev.png" class="first last" src="_images/sunshine_9lev.png" />
+</td>
+</tr>
+<tr class="row-even"><td>sunshine_diff_12lev</td>
+<td><img alt="_images/sunshine_diff_12lev.png" class="first last" src="_images/sunshine_diff_12lev.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>temp_19lev</td>
+<td><img alt="_images/temp_19lev.png" class="first last" src="_images/temp_19lev.png" />
+</td>
+</tr>
+<tr class="row-even"><td>temp_diff_18lev</td>
+<td><img alt="_images/temp_diff_18lev.png" class="first last" src="_images/temp_diff_18lev.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>temp_diff_1lev</td>
+<td><img alt="_images/temp_diff_1lev.png" class="first last" src="_images/temp_diff_1lev.png" />
+</td>
+</tr>
+<tr class="row-even"><td>topo_15lev</td>
+<td><img alt="_images/topo_15lev.png" class="first last" src="_images/topo_15lev.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>wgne15</td>
+<td><img alt="_images/wgne15.png" class="first last" src="_images/wgne15.png" />
+</td>
+</tr>
+<tr class="row-even"><td>wind_17lev</td>
+<td><img alt="_images/wind_17lev.png" class="first last" src="_images/wind_17lev.png" />
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ncar-command-language-large-colour-maps-50-colours">
+<h2>NCAR Command Language - large colour maps (&gt;50 colours)<a class="headerlink" href="#ncar-command-language-large-colour-maps-50-colours" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Scale</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>amwg256</td>
+<td><img alt="_images/amwg256.png" class="first last" src="_images/amwg256.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>BkBlAqGrYeOrReViWh200</td>
+<td><img alt="_images/BkBlAqGrYeOrReViWh200.png" class="first last" src="_images/BkBlAqGrYeOrReViWh200.png" />
+</td>
+</tr>
+<tr class="row-even"><td>BlAqGrYeOrRe</td>
+<td><img alt="_images/BlAqGrYeOrRe.png" class="first last" src="_images/BlAqGrYeOrRe.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>BlAqGrYeOrReVi200</td>
+<td><img alt="_images/BlAqGrYeOrReVi200.png" class="first last" src="_images/BlAqGrYeOrReVi200.png" />
+</td>
+</tr>
+<tr class="row-even"><td>BlGrYeOrReVi200</td>
+<td><img alt="_images/BlGrYeOrReVi200.png" class="first last" src="_images/BlGrYeOrReVi200.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>BlRe</td>
+<td><img alt="_images/BlRe.png" class="first last" src="_images/BlRe.png" />
+</td>
+</tr>
+<tr class="row-even"><td>BlueRed</td>
+<td><img alt="_images/BlueRed.png" class="first last" src="_images/BlueRed.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>BlueRedGray</td>
+<td><img alt="_images/BlueRedGray.png" class="first last" src="_images/BlueRedGray.png" />
+</td>
+</tr>
+<tr class="row-even"><td>BlueWhiteOrangeRed</td>
+<td><img alt="_images/BlueWhiteOrangeRed.png" class="first last" src="_images/BlueWhiteOrangeRed.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>BlueYellowRed</td>
+<td><img alt="_images/BlueYellowRed.png" class="first last" src="_images/BlueYellowRed.png" />
+</td>
+</tr>
+<tr class="row-even"><td>BlWhRe</td>
+<td><img alt="_images/BlWhRe.png" class="first last" src="_images/BlWhRe.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>cmp_b2r</td>
+<td><img alt="_images/cmp_b2r.png" class="first last" src="_images/cmp_b2r.png" />
+</td>
+</tr>
+<tr class="row-even"><td>cmp_haxby</td>
+<td><img alt="_images/cmp_haxby.png" class="first last" src="_images/cmp_haxby.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>detail</td>
+<td><img alt="_images/detail.png" class="first last" src="_images/detail.png" />
+</td>
+</tr>
+<tr class="row-even"><td>extrema</td>
+<td><img alt="_images/extrema.png" class="first last" src="_images/extrema.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>GrayWhiteGray</td>
+<td><img alt="_images/GrayWhiteGray.png" class="first last" src="_images/GrayWhiteGray.png" />
+</td>
+</tr>
+<tr class="row-even"><td>GreenYellow</td>
+<td><img alt="_images/GreenYellow.png" class="first last" src="_images/GreenYellow.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>helix</td>
+<td><img alt="_images/helix.png" class="first last" src="_images/helix.png" />
+</td>
+</tr>
+<tr class="row-even"><td>helix1</td>
+<td><img alt="_images/helix1.png" class="first last" src="_images/helix1.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>hotres</td>
+<td><img alt="_images/hotres.png" class="first last" src="_images/hotres.png" />
+</td>
+</tr>
+<tr class="row-even"><td>matlab_hot</td>
+<td><img alt="_images/matlab_hot.png" class="first last" src="_images/matlab_hot.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>matlab_hsv</td>
+<td><img alt="_images/matlab_hsv.png" class="first last" src="_images/matlab_hsv.png" />
+</td>
+</tr>
+<tr class="row-even"><td>matlab_jet</td>
+<td><img alt="_images/matlab_jet.png" class="first last" src="_images/matlab_jet.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>matlab_lines</td>
+<td><img alt="_images/matlab_lines.png" class="first last" src="_images/matlab_lines.png" />
+</td>
+</tr>
+<tr class="row-even"><td>ncl_default</td>
+<td><img alt="_images/ncl_default.png" class="first last" src="_images/ncl_default.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>ncview_default</td>
+<td><img alt="_images/ncview_default.png" class="first last" src="_images/ncview_default.png" />
+</td>
+</tr>
+<tr class="row-even"><td>OceanLakeLandSnow</td>
+<td><img alt="_images/OceanLakeLandSnow.png" class="first last" src="_images/OceanLakeLandSnow.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>rainbow</td>
+<td><img alt="_images/rainbow.png" class="first last" src="_images/rainbow.png" />
+</td>
+</tr>
+<tr class="row-even"><td>rainbow+white+gray</td>
+<td><img alt="_images/rainbow+white+gray.png" class="first last" src="_images/rainbow+white+gray.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>rainbow+white</td>
+<td><img alt="_images/rainbow+white.png" class="first last" src="_images/rainbow+white.png" />
+</td>
+</tr>
+<tr class="row-even"><td>rainbow+gray</td>
+<td><img alt="_images/rainbow+gray.png" class="first last" src="_images/rainbow+gray.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>tbr_240-300</td>
+<td><img alt="_images/tbr_240-300.png" class="first last" src="_images/tbr_240-300.png" />
+</td>
+</tr>
+<tr class="row-even"><td>tbr_stdev_0-30</td>
+<td><img alt="_images/tbr_stdev_0-30.png" class="first last" src="_images/tbr_stdev_0-30.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>tbr_var_0-500</td>
+<td><img alt="_images/tbr_var_0-500.png" class="first last" src="_images/tbr_var_0-500.png" />
+</td>
+</tr>
+<tr class="row-even"><td>tbrAvg1</td>
+<td><img alt="_images/tbrAvg1.png" class="first last" src="_images/tbrAvg1.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>tbrStd1</td>
+<td><img alt="_images/tbrStd1.png" class="first last" src="_images/tbrStd1.png" />
+</td>
+</tr>
+<tr class="row-even"><td>tbrVar1</td>
+<td><img alt="_images/tbrVar1.png" class="first last" src="_images/tbrVar1.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>thelix</td>
+<td><img alt="_images/thelix.png" class="first last" src="_images/thelix.png" />
+</td>
+</tr>
+<tr class="row-even"><td>ViBlGrWhYeOrRe</td>
+<td><img alt="_images/ViBlGrWhYeOrRe.png" class="first last" src="_images/ViBlGrWhYeOrRe.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>wh-bl-gr-ye-re</td>
+<td><img alt="_images/wh-bl-gr-ye-re.png" class="first last" src="_images/wh-bl-gr-ye-re.png" />
+</td>
+</tr>
+<tr class="row-even"><td>WhBlGrYeRe</td>
+<td><img alt="_images/WhBlGrYeRe.png" class="first last" src="_images/WhBlGrYeRe.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>WhBlReWh</td>
+<td><img alt="_images/WhBlReWh.png" class="first last" src="_images/WhBlReWh.png" />
+</td>
+</tr>
+<tr class="row-even"><td>WhiteBlue</td>
+<td><img alt="_images/WhiteBlue.png" class="first last" src="_images/WhiteBlue.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>WhiteBlueGreenYellowRed</td>
+<td><img alt="_images/WhiteBlueGreenYellowRed.png" class="first last" src="_images/WhiteBlueGreenYellowRed.png" />
+</td>
+</tr>
+<tr class="row-even"><td>WhiteGreen</td>
+<td><img alt="_images/WhiteGreen.png" class="first last" src="_images/WhiteGreen.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>WhiteYellowOrangeRed</td>
+<td><img alt="_images/WhiteYellowOrangeRed.png" class="first last" src="_images/WhiteYellowOrangeRed.png" />
+</td>
+</tr>
+<tr class="row-even"><td>WhViBlGrYeOrRe</td>
+<td><img alt="_images/WhViBlGrYeOrRe.png" class="first last" src="_images/WhViBlGrYeOrRe.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>WhViBlGrYeOrReWh</td>
+<td><img alt="_images/WhViBlGrYeOrReWh.png" class="first last" src="_images/WhViBlGrYeOrReWh.png" />
+</td>
+</tr>
+<tr class="row-even"><td>wxpEnIR</td>
+<td><img alt="_images/wxpEnIR.png" class="first last" src="_images/wxpEnIR.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>3gauss</td>
+<td><img alt="_images/3gauss.png" class="first last" src="_images/3gauss.png" />
+</td>
+</tr>
+<tr class="row-even"><td>3saw</td>
+<td><img alt="_images/3saw.png" class="first last" src="_images/3saw.png" />
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ncar-command-language-enhanced-to-help-with-colour-blindness">
+<h2>NCAR Command Language - Enhanced to help with colour blindness<a class="headerlink" href="#ncar-command-language-enhanced-to-help-with-colour-blindness" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Scale</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>StepSeq25</td>
+<td><img alt="_images/StepSeq25.png" class="first last" src="_images/StepSeq25.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>posneg_2</td>
+<td><img alt="_images/posneg_2.png" class="first last" src="_images/posneg_2.png" />
+</td>
+</tr>
+<tr class="row-even"><td>posneg_1</td>
+<td><img alt="_images/posneg_1.png" class="first last" src="_images/posneg_1.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>BlueDarkOrange18</td>
+<td><img alt="_images/BlueDarkOrange18.png" class="first last" src="_images/BlueDarkOrange18.png" />
+</td>
+</tr>
+<tr class="row-even"><td>BlueDarkRed18</td>
+<td><img alt="_images/BlueDarkRed18.png" class="first last" src="_images/BlueDarkRed18.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>GreenMagenta16</td>
+<td><img alt="_images/GreenMagenta16.png" class="first last" src="_images/GreenMagenta16.png" />
+</td>
+</tr>
+<tr class="row-even"><td>BlueGreen14</td>
+<td><img alt="_images/BlueGreen14.png" class="first last" src="_images/BlueGreen14.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>BrownBlue12</td>
+<td><img alt="_images/BrownBlue12.png" class="first last" src="_images/BrownBlue12.png" />
+</td>
+</tr>
+<tr class="row-even"><td>Cat12</td>
+<td><img alt="_images/Cat12.png" class="first last" src="_images/Cat12.png" />
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="orography-bathymetry-colour-scales">
+<h2>Orography/bathymetry colour scales<a class="headerlink" href="#orography-bathymetry-colour-scales" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Scale</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>os250kmetres</td>
+<td><img alt="_images/os250kmetres.png" class="first last" src="_images/os250kmetres.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>wiki-1.0.2</td>
+<td><img alt="_images/wiki-1.0.2.png" class="first last" src="_images/wiki-1.0.2.png" />
+</td>
+</tr>
+<tr class="row-even"><td>wiki-1.0.3</td>
+<td><img alt="_images/wiki-1.0.3.png" class="first last" src="_images/wiki-1.0.3.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>wiki-2.0</td>
+<td><img alt="_images/wiki-2.0.png" class="first last" src="_images/wiki-2.0.png" />
+</td>
+</tr>
+<tr class="row-even"><td>wiki-2.0-reduced</td>
+<td><img alt="_images/wiki-2.0-reduced.png" class="first last" src="_images/wiki-2.0-reduced.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>arctic</td>
+<td><img alt="_images/arctic.png" class="first last" src="_images/arctic.png" />
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="idl-guide-scales">
+<h2>IDL guide scales<a class="headerlink" href="#idl-guide-scales" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Scale</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>scale1</td>
+<td><img alt="_images/scale1.png" class="first last" src="_images/scale1.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale2</td>
+<td><img alt="_images/scale2.png" class="first last" src="_images/scale2.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale3</td>
+<td><img alt="_images/scale3.png" class="first last" src="_images/scale3.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale4</td>
+<td><img alt="_images/scale4.png" class="first last" src="_images/scale4.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale5</td>
+<td><img alt="_images/scale5.png" class="first last" src="_images/scale5.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale6</td>
+<td><img alt="_images/scale6.png" class="first last" src="_images/scale6.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale7</td>
+<td><img alt="_images/scale7.png" class="first last" src="_images/scale7.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale8</td>
+<td><img alt="_images/scale8.png" class="first last" src="_images/scale8.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale9</td>
+<td><img alt="_images/scale9.png" class="first last" src="_images/scale9.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale10</td>
+<td><img alt="_images/scale10.png" class="first last" src="_images/scale10.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale11</td>
+<td><img alt="_images/scale11.png" class="first last" src="_images/scale11.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale12</td>
+<td><img alt="_images/scale12.png" class="first last" src="_images/scale12.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale13</td>
+<td><img alt="_images/scale13.png" class="first last" src="_images/scale13.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale14</td>
+<td><img alt="_images/scale14.png" class="first last" src="_images/scale14.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale15</td>
+<td><img alt="_images/scale15.png" class="first last" src="_images/scale15.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale16</td>
+<td><img alt="_images/scale16.png" class="first last" src="_images/scale16.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale17</td>
+<td><img alt="_images/scale17.png" class="first last" src="_images/scale17.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale18</td>
+<td><img alt="_images/scale18.png" class="first last" src="_images/scale18.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale19</td>
+<td><img alt="_images/scale19.png" class="first last" src="_images/scale19.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale20</td>
+<td><img alt="_images/scale20.png" class="first last" src="_images/scale20.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale21</td>
+<td><img alt="_images/scale21.png" class="first last" src="_images/scale21.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale22</td>
+<td><img alt="_images/scale22.png" class="first last" src="_images/scale22.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale23</td>
+<td><img alt="_images/scale23.png" class="first last" src="_images/scale23.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale24</td>
+<td><img alt="_images/scale24.png" class="first last" src="_images/scale24.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale25</td>
+<td><img alt="_images/scale25.png" class="first last" src="_images/scale25.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale26</td>
+<td><img alt="_images/scale26.png" class="first last" src="_images/scale26.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale27</td>
+<td><img alt="_images/scale27.png" class="first last" src="_images/scale27.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale28</td>
+<td><img alt="_images/scale28.png" class="first last" src="_images/scale28.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale29</td>
+<td><img alt="_images/scale29.png" class="first last" src="_images/scale29.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale30</td>
+<td><img alt="_images/scale30.png" class="first last" src="_images/scale30.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale31</td>
+<td><img alt="_images/scale31.png" class="first last" src="_images/scale31.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale32</td>
+<td><img alt="_images/scale32.png" class="first last" src="_images/scale32.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale33</td>
+<td><img alt="_images/scale33.png" class="first last" src="_images/scale33.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale34</td>
+<td><img alt="_images/scale34.png" class="first last" src="_images/scale34.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale35</td>
+<td><img alt="_images/scale35.png" class="first last" src="_images/scale35.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale36</td>
+<td><img alt="_images/scale36.png" class="first last" src="_images/scale36.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale37</td>
+<td><img alt="_images/scale37.png" class="first last" src="_images/scale37.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale38</td>
+<td><img alt="_images/scale38.png" class="first last" src="_images/scale38.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale39</td>
+<td><img alt="_images/scale39.png" class="first last" src="_images/scale39.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale40</td>
+<td><img alt="_images/scale40.png" class="first last" src="_images/scale40.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale41</td>
+<td><img alt="_images/scale41.png" class="first last" src="_images/scale41.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale42</td>
+<td><img alt="_images/scale42.png" class="first last" src="_images/scale42.png" />
+</td>
+</tr>
+<tr class="row-even"><td>scale43</td>
+<td><img alt="_images/scale43.png" class="first last" src="_images/scale43.png" />
+</td>
+</tr>
+<tr class="row-odd"><td>scale44</td>
+<td><img alt="_images/scale44.png" class="first last" src="_images/scale44.png" />
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+
+<h3><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/#">Homepage</a><p></h3>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/gallery.html">Gallery</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/user_guide.html">User Guide</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/data.html">Data input</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/routines.html">Routines</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/internal_routines.html">Routines - internal</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/versions.html">Versions</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/issues.html">Issues</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/download.html">Download/Install</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/license.html">License</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/search.html">Search</a><p></h5>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">cf-plot 1.9.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+rgaxes
+*****
+
+.. autofunction:: cfplot.rgaxes
