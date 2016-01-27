@@ -6,14 +6,14 @@ Introduction
 ------------
 
 
-`cf-plot <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/#>`_  is a set of Python routines for making the common contour, vector and line plots that climate researchers use. cf-plot generally uses `cf-python <http://cfpython.bitbucket.org>`_ to present the data and CF attributes for plotting as two-dimensional data fields.
+`cf-plot <http://ajheaps.github.io/cf-plot/#>`_  is a set of Python routines for making the common contour, vector and line plots that climate researchers use. cf-plot generally uses `cf-python <http://cfpython.bitbucket.org>`_ to present the data and CF attributes for plotting as two-dimensional data fields.
 To run the following examples in the Met department at the University of Reading setup the Python path with
 
 ::
 
    setup canopy
 
-Outside of the Meteorology department you’ll need to follow the `cf-plot installation instructions <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/download.html>`_
+Outside of the Meteorology department you’ll need to follow the `cf-plot installation instructions <http://ajheaps.github.io/cf-plot/download.html>`_
 
 
 Using cf-plot

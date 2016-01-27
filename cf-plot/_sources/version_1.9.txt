@@ -21,7 +21,7 @@ the grid to be uniformly spaced when viewed.
 | Was:
 | http://climate.ncas.ac.uk/~andy/cfplot_sphinx/_build/html/#
 | changed to:
-| http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/#
+| http://ajheaps.github.io/cf-plot/#
 
  ::
 
