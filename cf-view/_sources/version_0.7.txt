@@ -1,0 +1,18 @@
+version 0.7 changes
+*******************
+
+0. Specifying subset of time axis in time / date notation
+=========================================================
+        
+This will require some work in cf-plot as well
+
+::
+
+     To do
+
+
+
+
+
+
+
