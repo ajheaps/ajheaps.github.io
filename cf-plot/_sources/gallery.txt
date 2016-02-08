@@ -1,68 +1,69 @@
 cf-plot gallery
 ===============
 
+
 .. image::  images/fig1.png
    :scale: 14% 
-   :target: http://ajheaps.github.io/cf-plot/cylindrical.html
+   :target: http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/cylindrical.html
 .. image::  images/fig4.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/polar.html
+   :target: http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/polar.html
 .. image::  images/fig7.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/pressure.html
+   :target: http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/pressure.html
 
-`Cylindrical projection     <http://ajheaps.github.io/cf-plot/cylindrical.html>`_
-`| Polar stereographic <http://ajheaps.github.io/cf-plot/polar.html>`_
-`| Latitude/longitude - height plots <http://ajheaps.github.io/cf-plot/pressure.html>`_
+`Cylindrical projection     <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/cylindrical.html>`_
+`| Polar stereographic <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/polar.html>`_
+`| Latitude/longitude - height plots <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/pressure.html>`_
 
 
 
 .. image::  images/fig12.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/hovmuller.html
+   :target: http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/hovmuller.html
 .. image::  images/fig13.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/vectors.html
+   :target: http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/vectors.html
 .. image::  images/fig17.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/stipple_plots.html
+   :target: http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/stipple_plots.html
 
 
-`Hovmuller plots <http://ajheaps.github.io/cf-plot/hovmuller.html>`_
-`|    Vector plots <http://ajheaps.github.io/cf-plot/vectors.html>`_
-`|    Stipple (significance) plots <http://ajheaps.github.io/cf-plot/stipple_plots.html>`_
+`Hovmuller plots <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/hovmuller.html>`_
+`|    Vector plots <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/vectors.html>`_
+`|    Stipple (significance) plots <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/stipple_plots.html>`_
 
 
 
 .. image::  images/fig19.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/multiple_plots.html
+   :target: http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/multiple_plots.html
 .. image::  images/cscale.png
    :scale: 20%    
-   :target: http://ajheaps.github.io/cf-plot/colour_scales.html
+   :target: http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/colour_scales.html
 .. image::  images/fig20.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/user_defined.html
+   :target: http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/user_defined.html
 
 
-`Multiple plots on a page <http://ajheaps.github.io/cf-plot/multiple_plots.html>`_
-`| Colour scales <http://ajheaps.github.io/cf-plot/colour_scales.html>`_
-`| User defined axes <http://ajheaps.github.io/cf-plot/user_defined.html>`_
+`Multiple plots on a page <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/multiple_plots.html>`_
+`| Colour scales <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/colour_scales.html>`_
+`| User defined axes <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/user_defined.html>`_
 
 
 .. image::  images/fig21.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/rotated_pole.html
+   :target: http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/rotated_pole.html
 .. image::  images/fig24.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/irregular.html
+   :target: http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/irregular.html
 .. image::  images/fig28.png
    :scale: 11%    
-   :target: http://ajheaps.github.io/cf-plot/graphs.html
+   :target: http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/graphs.html
 
-`Rotated pole plots <http://ajheaps.github.io/cf-plot/rotated_pole.html>`_
-`| Irregular grids <http://ajheaps.github.io/cf-plot/irregular.html>`_
-`| Graph plots <http://ajheaps.github.io/cf-plot/graphs.html>`_
+`Rotated pole plots <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/rotated_pole.html>`_
+`| Irregular grids <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/irregular.html>`_
+`| Graph plots <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/graphs.html>`_
 
 
 

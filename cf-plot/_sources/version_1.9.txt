@@ -21,7 +21,7 @@ the grid to be uniformly spaced when viewed.
 | Was:
 | http://climate.ncas.ac.uk/~andy/cfplot_sphinx/_build/html/#
 | changed to:
-| http://ajheaps.github.io/cf-plot/#
+| http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/#
 
  ::
 
@@ -42,15 +42,4 @@ the grid to be uniformly spaced when viewed.
 Package renamed to cf-plot to fit in with cf-python and cf-view.
 
 
- ::
 
-   Done
-
-5. Change web docs to github
-============================
-
-Web documents location changed to http://ajheaps.github.io/cf-plot.  setup.py etc references changes accordingly. 
-
- ::
-
-   Done

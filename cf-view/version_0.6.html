@@ -43,7 +43,7 @@
             
   <div class="section" id="version-0-6-changes">
 <h1>version 0.6 changes<a class="headerlink" href="#version-0-6-changes" title="Permalink to this headline">¶</a></h1>
-<p>Testing against lots of files to find the bugs in cf-view and cf-plot.</p>
+<p>Testing against lots of files to find the bugs in cf-view and cf-plot.  The cf-plot bugs / modifications will be notified on the cf-plot version 1.7 web page at <a class="reference external" href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/version_1.7.html">http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/version_1.7.html</a></p>
 <div class="section" id="string-formatting-issues">
 <h2>0. String formatting issues<a class="headerlink" href="#string-formatting-issues" title="Permalink to this headline">¶</a></h2>
 <p>In cf-view the description of the needs to be correct to allow data subspacing in cf-python but rounding and interpretation errors when translating from floats to strings meant that in some cases this to not be the case.  For example a time axis value of 1496205.0 was set to 1.4962e+06.  In another case the Gaussian latitude of 3.92521453 was truncated to 3.925.  In both of the above cases cf-view would crash with an error saying it wasn&#8217;t possible to subspace the data.</p>
@@ -159,13 +159,13 @@ for the value up to seven decimal places and then a numpy.float64.</p>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
 
-<h3><a href="http://ajheaps.github.io/cf-view/#">Homepage</a><p></h3>
-<h5><a href="http://ajheaps.github.io/cf-view/download.html">Download/Install</a><p></h5>
-<h5><a href="http://ajheaps.github.io/cf-view/versions.html">Versions</a><p></h5>
-<h5><a href="http://ajheaps.github.io/cf-view/issues.html">Issues</a><p></h5
-><h5><a href="http://ajheaps.github.io/cf-view/routines.html">Routines</a><p></h5>
-<h5><a href="http://ajheaps.github.io/cf-view/license.html">License</a><p></h5>
-<h5><a href="http://ajheaps.github.io/cf-view/search.html">Search</a><p></h5>
+<h3><a href="http://climate.ncas.ac.uk/~swsheaps/cfview_sphinx/_build/html/#">Homepage</a><p></h3>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfview_sphinx/_build/html/download.html">Download/Install</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfview_sphinx/_build/html/versions.html">Versions</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfview_sphinx/_build/html/issues.html">Issues</a><p></h5
+><h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfview_sphinx/_build/html/routines.html">Routines</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfview_sphinx/_build/html/license.html">License</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfview_sphinx/_build/html/search.html">Search</a><p></h5>
         </div>
       </div>
       <div class="clearer"></div>

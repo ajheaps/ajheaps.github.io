@@ -2,7 +2,7 @@ version 0.6 changes
 *******************
 
 
-Testing against lots of files to find the bugs in cf-view and cf-plot.  
+Testing against lots of files to find the bugs in cf-view and cf-plot.  The cf-plot bugs / modifications will be notified on the cf-plot version 1.7 web page at http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/version_1.7.html
 
 
 0. String formatting issues
