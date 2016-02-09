@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Line plots &mdash; cf-plot 1.9.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.9.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="cf-plot 1.9.3 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">cf-plot 1.9.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="line-plots">
+<h1>Line plots<a class="headerlink" href="#line-plots" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="example-27-line-plot">
+<h2>Example 27 - line plot<a class="headerlink" href="#example-27-line-plot" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/fig27.png"><img alt="_images/fig27.png" src="_images/fig27.png" style="width: 442.2px; height: 341.0px;" /></a>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">g</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s">&#39;X: mean&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span>\
+             <span class="n">title</span><span class="o">=</span><span class="s">&#39;Zonal mean zonal wind at 100mb&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Other valid markers are:</p>
+<div class="line-block">
+<div class="line">&#8216;.&#8217;        point</div>
+<div class="line">&#8216;,&#8217;        pixel</div>
+<div class="line">&#8216;o&#8217;        circle</div>
+<div class="line">&#8216;v&#8217;        triangle_down</div>
+<div class="line">&#8216;^&#8217;        triangle_up</div>
+<div class="line">&#8216;&lt;&#8217;        triangle_left</div>
+<div class="line">&#8216;&gt;&#8217;        triangle_right</div>
+<div class="line">&#8216;1&#8217;        tri_down</div>
+<div class="line">&#8216;2&#8217;        tri_up</div>
+<div class="line">&#8216;3&#8217;        tri_left</div>
+<div class="line">&#8216;4&#8217;        tri_right</div>
+<div class="line">&#8216;8&#8217;        octagon</div>
+<div class="line">&#8216;s&#8217;        square</div>
+<div class="line">&#8216;p&#8217;        pentagon</div>
+<div class="line">&#8216;*&#8217;        star</div>
+<div class="line">&#8216;h&#8217;        hexagon1</div>
+<div class="line">&#8216;H&#8217;        hexagon2</div>
+<div class="line">&#8216;+&#8217;        plus</div>
+<div class="line">&#8216;x&#8217;        x</div>
+<div class="line">&#8216;D&#8217;        diamond</div>
+<div class="line">&#8216;d&#8217;        thin_diamond</div>
+</div>
+</div>
+<div class="section" id="example-28-line-plot-with-legend">
+<h2>Example 28 - line plot with legend<a class="headerlink" href="#example-28-line-plot-with-legend" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/fig28.png"><img alt="_images/fig28.png" src="_images/fig28.png" style="width: 451.44px; height: 341.0px;" /></a>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">g</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s">&#39;X: mean&#39;</span><span class="p">)</span>
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">()</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gset</span><span class="p">(</span><span class="n">xmin</span><span class="o">=-</span><span class="mi">90</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span>\
+             <span class="n">title</span><span class="o">=</span><span class="s">&#39;Zonal mean zonal wind&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;100mb&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">200</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;D&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">,</span>\
+             <span class="n">label</span><span class="o">=</span><span class="s">&#39;200mb&#39;</span><span class="p">,</span> <span class="n">legend_location</span><span class="o">=</span><span class="s">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In this example a plot with user specified axes is made.  To add a legend the final call to lineplot has the legend_location keyword set.  All previous calls to lineplot must have set the label attribute so that the line labels are ready for making the legend.</p>
+<p>Valid locations for the legend_location keyword are:</p>
+<div class="line-block">
+<div class="line">&#8216;right&#8217;</div>
+<div class="line">&#8216;center left&#8217;</div>
+<div class="line">&#8216;upper right&#8217;</div>
+<div class="line">&#8216;lower right&#8217;</div>
+<div class="line">&#8216;best&#8217;</div>
+<div class="line">&#8216;center&#8217;</div>
+<div class="line">&#8216;lower left&#8217;</div>
+<div class="line">&#8216;center right&#8217;</div>
+<div class="line">&#8216;upper left&#8217;</div>
+<div class="line">&#8216;upper center&#8217;</div>
+<div class="line">&#8216;lower center&#8217;</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+
+<h3><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/#">Homepage</a><p></h3>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/gallery.html">Gallery</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/user_guide.html">User Guide</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/data.html">Data input</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/routines.html">Routines</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/internal_routines.html">Routines - internal</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/versions.html">Versions</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/issues.html">Issues</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/download.html">Download/Install</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/license.html">License</a><p></h5>
+<h5><a href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/search.html">Search</a><p></h5>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">cf-plot 1.9.3 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

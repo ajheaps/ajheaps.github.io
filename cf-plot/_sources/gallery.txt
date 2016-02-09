@@ -59,11 +59,11 @@ cf-plot gallery
    :target: http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/irregular.html
 .. image::  images/fig28.png
    :scale: 11%    
-   :target: http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/graphs.html
+   :target: http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/line_plots.html
 
 `Rotated pole plots <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/rotated_pole.html>`_
 `| Irregular grids <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/irregular.html>`_
-`| Graph plots <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/graphs.html>`_
+`| Line plots <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/line_plots.html>`_
 
 
 
