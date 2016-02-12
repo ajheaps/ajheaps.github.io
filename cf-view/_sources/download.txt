@@ -13,7 +13,7 @@ cf-view is available as a GitHub repository. To download and install cf-view:
 
 
 You will need to install `cf-python <http://cfpython.bitbucket.org>`_ and 
-`cf-plot <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/_build/html/#>`_ to use cf-view.
+`cf-plot <http://ajheaps.github.io/cf-plot/#>`_ to use cf-view.
 You can install these using pip:
 
 ::
@@ -24,9 +24,6 @@ You can install these using pip:
 
 
 Other cfview dependencies are: gtk, Numpy, Matplotlib, Netcdf4 and Basemap.
-
-
-Download the `sample netCDF dataset <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/data/ggap199006200600.nc>`_
 
 
 To run cf-view
