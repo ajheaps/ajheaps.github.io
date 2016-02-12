@@ -49,8 +49,20 @@ Package renamed to cf-plot to fit in with cf-python and cf-view.
 5. Change web docs to github
 ============================
 
-Web documents location changed to http://ajheaps.github.io/cf-plot.  setup.py etc references changes accordingly. 
+Web documents location changed to http://ajheaps.github.io/cf-plot.  setup.py etc references changed accordingly. 
 
  ::
 
    Done
+
+
+6. Add plot spacing options to gopen
+====================================
+
+Add hspace and wspace plot spacing options to gopen.
+
+ ::
+
+   Done
+
+
