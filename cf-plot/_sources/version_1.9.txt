@@ -66,3 +66,43 @@ Add hspace and wspace plot spacing options to gopen.
    Done
 
 
+7. lineplot - -assing non-CF data
+=================================
+
+Add options so that passing of non-CF data to lineplot works.
+
+ ::
+
+    Done
+
+
+8. vect - turn off vector key 
+=============================
+
+Add show_key option to vect to allow turning off of vector key.
+
+ ::
+
+    Done
+
+
+9. cscale - colour maps not referenced correctly when doing a local install
+===========================================================================
+
+pip install --user cf-plot
+
+Doesn't allow changing of colour maps.
+
+ ::
+
+    Pending
+
+
+
+
+
+
+
+
+
+

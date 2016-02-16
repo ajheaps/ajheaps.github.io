@@ -75,7 +75,6 @@ passed to the cf-plot con routine to indicate that the data is to be plotted on 
    x=f.item('longitude').array
    y=f.item('latitude').array
 
-   cfp.cscale('plasma')
    cfp.con(x=x, y=y, f=z, ptype=1)        
 
 

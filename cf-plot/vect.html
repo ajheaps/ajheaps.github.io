@@ -45,7 +45,7 @@
 <h1>vect<a class="headerlink" href="#vect" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="cfplot.vect">
-<tt class="descclassname">cfplot.</tt><tt class="descname">vect</tt><big>(</big><em>u=None, v=None, x=None, y=None, scale=None, stride=None, pts=None, key_length=None, key_label=None, ptype=None, title=None, width=0.02, headwidth=3, headlength=5, headaxislength=4.5, pivot='middle', key_location=[0.9, -0.06]</em><big>)</big><a class="reference internal" href="_modules/cfplot.html#vect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.vect" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">cfplot.</tt><tt class="descname">vect</tt><big>(</big><em>u=None, v=None, x=None, y=None, scale=None, stride=None, pts=None, key_length=None, key_label=None, ptype=None, title=None, width=0.02, headwidth=3, headlength=5, headaxislength=4.5, pivot='middle', key_location=[0.9, -0.06], key_show=True</em><big>)</big><a class="reference internal" href="_modules/cfplot.html#vect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.vect" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">vect - plot vectors</div>
 <div class="line"><br /></div>
@@ -72,6 +72,7 @@ Generally takes one value but in the case of two supplied values the second vect
 <div class="line">of two supplied values the second vector scaling applies to the v field. </div>
 </div>
 <div class="line">key_location=[0.9, -0.06] - location of the vector key relative to the plot in normalised coordinates.</div>
+<div class="line">key_show=True - draw the key.  Set to False if not required.</div>
 <div class="line">ptype=0 - plot type - not needed for cf fields.</div>
 <div class="line-block">
 <div class="line">0 = no specific plot type,</div>
