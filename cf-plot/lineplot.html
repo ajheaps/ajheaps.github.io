@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>bfill &mdash; cf-plot 1.9.9 documentation</title>
+    <title>lineplot &mdash; cf-plot 1.9.9 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -41,38 +41,32 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="bfill">
-<h1>bfill<a class="headerlink" href="#bfill" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="lineplot">
+<h1>lineplot<a class="headerlink" href="#lineplot" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="cfplot.bfill">
-<tt class="descclassname">cfplot.</tt><tt class="descname">bfill</tt><big>(</big><em>f=None</em>, <em>x=None</em>, <em>y=None</em>, <em>clevs=False</em>, <em>lonlat=False</em>, <em>bound=False</em><big>)</big><a class="reference internal" href="_modules/cfplot.html#bfill"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.bfill" title="Permalink to this definition">¶</a></dt>
+<dt id="cfplot.lineplot">
+<tt class="descclassname">cfplot.</tt><tt class="descname">lineplot</tt><big>(</big><em>f=None</em>, <em>x=None</em>, <em>y=None</em>, <em>fill=True</em>, <em>lines=True</em>, <em>line_labels=True</em>, <em>title=None</em>, <em>ptype=0</em>, <em>linestyle='-'</em>, <em>linewidth=1.0</em>, <em>color='k'</em>, <em>xlog=None</em>, <em>ylog=None</em>, <em>verbose=None</em>, <em>swap_xy=False</em>, <em>marker=None</em>, <em>markersize=5.0</em>, <em>label=None</em>, <em>legend_location=None</em>, <em>xunits=''</em>, <em>yunits=''</em>, <em>xname=''</em>, <em>yname=''</em><big>)</big><a class="reference internal" href="_modules/cfplot.html#lineplot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.lineplot" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">bfill - block fill a field with colour rectangles</div>
-<div class="line">This is an internal routine and is not used by the user.</div>
-<div class="line"><br /></div>
-<div class="line">f=None - field</div>
-<div class="line">x=None - x points for field</div>
-<div class="line">y=None - y points for field </div>
-<div class="line">clevs=None - levels for filling</div>
-<div class="line">lonlat=False - lonlat data</div>
-<div class="line">bound=False - x and y are cf data boundaries</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
+<div class="line">lineplot is the interface to line plotting in cf-plot. The minimum use is lineplot(f) </div>
+<div class="line">f - CF data to make a line plot from </div>
+<div class="line">x - x locations of data in f (only use this if f is a numpy array)</div>
+<div class="line">y - y locations of data in f (only use this if f is a numpy array)</div>
+<div class="line">title=None - graph title</div>
+<div class="line">linestyle=&#8217;-&#8216; - line style</div>
+<div class="line">color=&#8217;k - line color</div>
+<div class="line">linewidth=1.0 - line width</div>
+<div class="line">marker=None - marker for points along the line</div>
+<div class="line">markersize=5.0 - size of the marker</div>
+<div class="line">title=None - plot title</div>
+<div class="line">xlog=None - log x-axis</div>
+<div class="line">ylog=None - log y-axis</div>
+<div class="line">label=None - line label - label for line</div>
+<div class="line">legend_location=None - location of legend, &#8216;upper right&#8217; for instance</div>
+<div class="line">xunits=&#8217;&#8217; - x units</div>
+<div class="line">yunits=&#8217;&#8217; - y units</div>
+<div class="line">xname=&#8217;&#8217; - x name</div>
+<div class="line">yname=&#8217;&#8217; - y name</div>
+<div class="line">verbose=None - change to 1 to get a verbose listing of what lineplot is doing</div>
 </div>
 </dd></dl>
 

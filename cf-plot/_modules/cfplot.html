@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>cfplot &mdash; cf-plot 1.9.6 documentation</title>
+    <title>cfplot &mdash; cf-plot 1.9.9 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.9.6',
+        VERSION:     '1.9.9',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 1.9.6 documentation" href="../index.html" />
+    <link rel="top" title="cf-plot 1.9.9 documentation" href="../index.html" />
     <link rel="up" title="Module code" href="index.html" /> 
   </head>
   <body>
@@ -33,7 +33,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="../index.html">cf-plot 1.9.6 documentation</a> &raquo;</li>
+        <li><a href="../index.html">cf-plot 1.9.9 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -4287,7 +4287,7 @@
    
 
 </div>
-<span class="k">def</span> <span class="nf">lineplot</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">line_labels</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> \
+<div class="viewcode-block" id="lineplot"><a class="viewcode-back" href="../lineplot.html#cfplot.lineplot">[docs]</a><span class="k">def</span> <span class="nf">lineplot</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">line_labels</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> \
              <span class="n">ptype</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="n">xlog</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ylog</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">swap_xy</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>\
              <span class="n">marker</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">legend_location</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">xunits</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">yunits</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">xname</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span>\
              <span class="n">yname</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
@@ -4466,7 +4466,7 @@
         <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="k">print</span> <span class="s">&#39;Saving or viewing plot&#39;</span>
         <span class="c">#gset(user_gset=0)</span>
         <span class="n">gclose</span><span class="p">()</span>
-</pre></div>
+</pre></div></div>
 
           </div>
         </div>
@@ -4495,7 +4495,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="../index.html">cf-plot 1.9.6 documentation</a> &raquo;</li>
+        <li><a href="../index.html">cf-plot 1.9.9 documentation</a> &raquo;</li>
           <li><a href="index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
