@@ -13,7 +13,7 @@ Archer Jasmin RDF - jasmin.rdf.ac.uk - This has the Jasmin Analysis Platform ins
 |  **module load anaconda cf**
 |  and then python to use cf-plot.
 
-Department of Meteorology, University of Reading - The latest version of cf-plot is installed on the Reading University Meteorology department servers.  Type **setup canopy** to set-up Python.
+Department of Meteorology, University of Reading - The latest version of cf-plot is installed on the Reading University Meteorology department servers.  Type **setup canopy** to set-up the Python environment.
 
 |
 |
@@ -22,8 +22,17 @@ Department of Meteorology, University of Reading - The latest version of cf-plot
 To install cf-plot
 ==================
 
-Use pip: 
-Install cf-python and cf-plot
+Using Anaconda Python:
+
+::
+
+   conda install -c ncas -c scitools cf-python cf-plot
+   conda install -c nesii esmpy 
+
+The first line installs cf-python and cf-plot and the second installs esmpy which cf-python uses for regriding data.
+
+
+Using pip:
 
 ::
 
@@ -31,8 +40,7 @@ Install cf-python and cf-plot
    pip install cfplot
 
 
-GitHub:
-
+Using GitHub:
 
 ::
 
@@ -44,12 +52,9 @@ GitHub:
    python setup.py install
 
 
-You will need to download and install `cf-python <http://cfpython.bitbucket.org>`_ to use cf-plot.  This can also be done with 
-
-
+You will need to download and install `cf-python <http://cfpython.bitbucket.org>`_ to use cf-plot.  
 
 Other cf-plot dependencies are: Numpy, Matplotlib, Netcdf4 and Basemap.
-
 
 Download the `sample netCDF datasets <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/data>`_
  

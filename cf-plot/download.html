@@ -53,7 +53,7 @@
 <div class="line"><strong>module load anaconda cf</strong></div>
 <div class="line">and then python to use cf-plot.</div>
 </div>
-<p>Department of Meteorology, University of Reading - The latest version of cf-plot is installed on the Reading University Meteorology department servers.  Type <strong>setup canopy</strong> to set-up Python.</p>
+<p>Department of Meteorology, University of Reading - The latest version of cf-plot is installed on the Reading University Meteorology department servers.  Type <strong>setup canopy</strong> to set-up the Python environment.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -61,13 +61,18 @@
 </div>
 <div class="section" id="to-install-cf-plot">
 <h2>To install cf-plot<a class="headerlink" href="#to-install-cf-plot" title="Permalink to this headline">¶</a></h2>
-<p>Use pip:
-Install cf-python and cf-plot</p>
+<p>Using Anaconda Python:</p>
+<div class="highlight-python"><div class="highlight"><pre>conda install -c ncas -c scitools cf-python cf-plot
+conda install -c nesii esmpy
+</pre></div>
+</div>
+<p>The first line installs cf-python and cf-plot and the second installs esmpy which cf-python uses for regriding data.</p>
+<p>Using pip:</p>
 <div class="highlight-python"><div class="highlight"><pre>pip install cf-python
 pip install cfplot
 </pre></div>
 </div>
-<p>GitHub:</p>
+<p>Using GitHub:</p>
 <div class="highlight-python"><div class="highlight"><pre>git clone git://github.com/ajheaps/cf-plot.git
 (if behind a firewall such as that at the Met Office you may need to use
 git clone https://github.com/ajheaps/cf-plot.git)
@@ -76,7 +81,7 @@ cd cfplot
 python setup.py install
 </pre></div>
 </div>
-<p>You will need to download and install <a class="reference external" href="http://cfpython.bitbucket.org">cf-python</a> to use cf-plot.  This can also be done with</p>
+<p>You will need to download and install <a class="reference external" href="http://cfpython.bitbucket.org">cf-python</a> to use cf-plot.</p>
 <p>Other cf-plot dependencies are: Numpy, Matplotlib, Netcdf4 and Basemap.</p>
 <p>Download the <a class="reference external" href="http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/data">sample netCDF datasets</a></p>
 <div class="line-block">
