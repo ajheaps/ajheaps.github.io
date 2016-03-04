@@ -87,5 +87,17 @@ Valid locations for the legend_location keyword are:
 |	'upper center'
 |	'lower center'
 
+When making a call to lineplot the following parameters overide any predefined CF defaults: 
+
+| title=None - plot title
+| xunits=None - x units
+| yunits=None - y units
+| xname=None - x name
+| yname=None - y name
+| xticks=None - x ticks
+| xticklabels=None - x tick labels
+| yticks=None - y ticks
+| yticklabels - y tick labels
+
 
 
