@@ -95,7 +95,19 @@ Doesn't allow changing of colour maps.
 
  ::
 
-    Pending
+    Done
+
+
+10. lineplot - add axis labelling that overrides any CF information
+===================================================================
+
+Add axis labelling that overrides any CF information in lineplot.
+
+
+ ::
+
+    Done
+
 
 
 
