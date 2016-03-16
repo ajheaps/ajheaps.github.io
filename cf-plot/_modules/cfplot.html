@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>cfplot &mdash; cf-plot 1.9.10 documentation</title>
+    <title>cfplot &mdash; cf-plot 1.9.11 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.9.10',
+        VERSION:     '1.9.11',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 1.9.10 documentation" href="../index.html" />
+    <link rel="top" title="cf-plot 1.9.11 documentation" href="../index.html" />
     <link rel="up" title="Module code" href="index.html" /> 
   </head>
   <body>
@@ -33,7 +33,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="../index.html">cf-plot 1.9.10 documentation</a> &raquo;</li>
+        <li><a href="../index.html">cf-plot 1.9.11 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -1807,9 +1807,10 @@
       <span class="k">if</span> <span class="nb">type</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="o">+</span><span class="s">&#39;.png&#39;</span>
       <span class="n">plotvars</span><span class="o">.</span><span class="n">master_plot</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="n">papertype</span><span class="o">=</span><span class="s">&#39;a4&#39;</span><span class="p">,</span>\
                                    <span class="n">orientation</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">orientation</span><span class="p">)</span>
+      <span class="n">plot</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
    <span class="k">else</span><span class="p">:</span>
       <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
+      <span class="n">plot</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
       
    <span class="c">#Reset plotting</span>
    <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">=</span><span class="bp">None</span>
@@ -4502,6 +4503,7 @@
 <h5><a href="http://ajheaps.github.io/cf-plot/data.html">Data input</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/routines.html">Routines</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/internal_routines.html">Routines - internal</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/advanced.html">Advanced Use</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/versions.html">Versions</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/issues.html">Issues</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/download.html">Download/Install</a><p></h5>
@@ -4517,7 +4519,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="../index.html">cf-plot 1.9.10 documentation</a> &raquo;</li>
+        <li><a href="../index.html">cf-plot 1.9.11 documentation</a> &raquo;</li>
           <li><a href="index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>

@@ -110,7 +110,15 @@ Add axis labelling that overrides any CF information in lineplot.
 
 
 
+11. gclose - plots not closed properly
+======================================
 
+Add plot.close() to gclose routine to properly close each plot when it is finished.
+
+
+ ::
+
+    Done
 
 
 

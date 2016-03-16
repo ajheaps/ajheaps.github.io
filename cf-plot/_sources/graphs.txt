@@ -54,7 +54,7 @@ Example 28 - Line and legend plot
     f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
     g=f.collapse('X: mean')
     xticks=[-90,-75,-60,-45,-30,-15,0,15,30,45,60,75,90]
-    xticklabels['90S','75S','60S','45S','30S','15S','0','15N','30N','45N','60N','75N','90N']
+    xticklabels=['90S','75S','60S','45S','30S','15S','0','15N','30N','45N','60N','75N','90N']
     xpts=[-30, 30, 30, -30, -30]
     ypts=[-8, -8, 5, 5, -8]
 
