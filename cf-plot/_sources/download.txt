@@ -37,7 +37,7 @@ Using pip:
 ::
 
    pip install cf-python
-   pip install cfplot
+   pip install cf-plot
 
 
 Using GitHub:

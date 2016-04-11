@@ -15,10 +15,13 @@ Internal routines
    ndecs.rst
    polar_regular_grid.rst
    process_color_scales.rst
+   rgaxes.rst
+   rgrot.rst
+   rgunrot.rst
    set_map.rst
    stipple_points.rst
    supscr.rst
-
+   vloc.rst
 
 
 | 

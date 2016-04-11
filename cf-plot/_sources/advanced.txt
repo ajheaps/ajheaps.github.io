@@ -18,7 +18,7 @@ To see all the methods for the plot object type
 
 
 
-To make a blank map plot, change the longitude labels and add a box and some text
+In this example we make a blank map plot, change the longitude labels and add a box and some text.  To add text and lines outside of the plot use the same method as below with coordinates outside of the defined plot area.
 
 .. image::  images/advanced1.png
 

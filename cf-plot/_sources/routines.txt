@@ -18,14 +18,11 @@ Contents:
    mapset.rst
    pcon.rst
    regrid.rst
-   rgaxes.rst
-   rgrot.rst
-   rgunrot.rst
    reset.rst
    setvars.rst
    stipple.rst
    vect.rst
-   vloc.rst
+
 
 
 | 

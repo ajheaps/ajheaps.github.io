@@ -15,7 +15,7 @@ More information is needed on the changes made between versions.  This is useful
 
 
 2. Remove redundant __init__.py file from source code
-====================================================
+=====================================================
 Work out which of the source __init__.py are used for version information and delete the other copy.
 
 ::
@@ -76,7 +76,7 @@ in con and vect routines.
 
 
 7. Colour scales prevent cf-plot being used as a stand-alone program
-===================================================================
+====================================================================
 
 The code uses a call to cscale to set the colour scales and this requires
 that the colour scales are installed in the correct place by the installer.
