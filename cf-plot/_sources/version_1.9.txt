@@ -51,7 +51,7 @@ Package renamed to cf-plot to fit in with cf-python and cf-view.
 
 Web documents location changed to http://ajheaps.github.io/cf-plot.  setup.py etc references changed accordingly. 
 
- ::
+::
 
    Done
 
@@ -71,7 +71,7 @@ Add hspace and wspace plot spacing options to gopen.
 
 Add options so that passing of non-CF data to lineplot works.
 
- ::
+::
 
     Done
 
@@ -93,7 +93,7 @@ pip install --user cf-plot
 
 Doesn't allow changing of colour maps.
 
- ::
+::
 
     Done
 
@@ -116,9 +116,48 @@ Add axis labelling that overrides any CF information in lineplot.
 Add plot.close() to gclose routine to properly close each plot when it is finished.
 
 
- ::
+::
 
     Done
+
+
+12. levs - change in floating point levels calculation
+======================================================
+
+Floating point levels were calculated using numpy.arange and this can sometimes give stange contour levels. 
+For example, 
+
+|
+|    np.arange(-0.2,0.2,0.04)
+|    array([ -2.00000000e-01,  -1.60000000e-01,  -1.20000000e-01,
+|        -8.00000000e-02,  -4.00000000e-02,   2.77555756e-17,
+|         4.00000000e-02,   8.00000000e-02,   1.20000000e-01,
+|         1.60000000e-01])
+
+
+Using np.linspace(-0.2,0.2,11) gives a much neater set of levels and the floating point calculation of levels was changed 
+to adopt this method.
+
+::
+
+    Done
+
+
+13. levs - cfp.levs() fails to reset colorbar extensions
+========================================================
+
+cfp.levs() failed to reset colorbar extensions.
+
+
+::
+
+    Done
+
+
+
+  
+
+
 
 
 
