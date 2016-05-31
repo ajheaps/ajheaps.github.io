@@ -1,0 +1,42 @@
+version 0.8 - interface changes
+*******************************
+
+1. Advanced configuration - contour levels
+==========================================
+
+Add levels selection inteface to Configure drop down.  Even and uneven levels and colorbar extensions.
+
+::
+
+    Done
+
+
+2. Advanced configuration - map specification
+=============================================
+
+
+::
+
+    To do
+
+
+3. Advanced configuration - vector specification
+================================================
+
+
+::
+
+    To do
+
+
+4. Advanced configuration - colour maps
+=======================================
+
+
+::
+
+    To do
+
+
+
+
