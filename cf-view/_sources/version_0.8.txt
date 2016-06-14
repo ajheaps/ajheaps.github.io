@@ -17,7 +17,7 @@ Add levels selection inteface to Configure drop down.  Even and uneven levels an
 
 ::
 
-    To do
+    Done
 
 
 3. Advanced configuration - vector specification
@@ -26,10 +26,19 @@ Add levels selection inteface to Configure drop down.  Even and uneven levels an
 
 ::
 
+    Done
+
+
+4. Advanced configuration - add help pop-up windows
+===================================================
+
+
+::
+
     To do
 
 
-4. Advanced configuration - colour maps
+5. Advanced configuration - colour maps
 =======================================
 
 
@@ -39,4 +48,10 @@ Add levels selection inteface to Configure drop down.  Even and uneven levels an
 
 
 
+6. Rearrange main inteface
+==========================
 
+
+::
+
+    To do
