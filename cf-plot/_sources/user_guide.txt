@@ -659,7 +659,7 @@ The internal colour scale is stored in cfp.plotvars.cs as hexadecimal code.  To 
 hex(255)[2:]
 'ff'
 
-The [2:] is to get rid of the preceding 0x is the hex output.
+The [2:] is to get rid of the preceding 0x in the hex output.
 
 
 

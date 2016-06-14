@@ -492,7 +492,7 @@ Once the levs command is used you’ll need to think about the associated colour
 <p>The internal colour scale is stored in cfp.plotvars.cs as hexadecimal code.  To convert from decimal to hexadecimal use hex i.e.
 hex(255)[2:]
 &#8216;ff&#8217;</p>
-<p>The [2:] is to get rid of the preceding 0x is the hex output.</p>
+<p>The [2:] is to get rid of the preceding 0x in the hex output.</p>
 <p>for example to make one of the colours in the viridis colour scale grey use:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/tas_A1.nc&#39;</span><span class="p">)</span>
