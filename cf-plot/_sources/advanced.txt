@@ -39,4 +39,37 @@ In this example we make a blank map plot, change the longitude labels and add a 
 
 
 
+Active plots block the command prompt
+*************************************
+
+When using python an active viewed plot blocks the command prompt until the plot is closed.  This is a known Maplotlib feature and using ipython -pylab will work around this.
+
+
+Changing colours in a colour scale
+**********************************
+
+The simplest way to do this without writing any code is to modify the internal colour scale before plotting.  The colours most people work with are stored as red green blue intensities on a scale of 0 to 255, with 0 being no intesity and 255 full intensity.
+
+White will be represented as 255 255 255 and black as 0 0 0
+
+The internal colour scale is stored in cfp.plotvars.cs as hexadecimal code.  To convert from decimal to hexadecimal use hex i.e.
+hex(255)[2:]
+'ff'
+
+The [2:] is to get rid of the preceding 0x is the hex output.
+
+
+
+for example to make one of the colours in the viridis colour scale grey use:
+
+::
+
+    import cf, cfplot as cfp
+    f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')
+    cfp.cscale('viridis', ncols=17)
+    cfp.plotvars.cs[14]='#a6a6a6'
+    cfp.con(f.subspace(time=15))
+
+
+
 
