@@ -1,0 +1,45 @@
+version 0.9 - pre-release work
+******************************
+
+1. Remove unused code
+=====================
+
+Remove unused code and print statements
+
+::
+
+    To do
+
+
+2. Consolidate textview code in one class
+=========================================
+
+::
+
+    To do
+
+
+3. Is it possible to remove exec calls?
+========================================
+
+::
+
+    To do
+
+
+4. Time axis with many values cause slow start-up
+=================================================
+
+::
+
+    To do
+
+
+5. Test against lots of files
+=============================
+
+::
+
+    To do
+
+

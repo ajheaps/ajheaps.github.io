@@ -48,10 +48,13 @@ Add levels selection inteface to Configure drop down.  Even and uneven levels an
 
 
 
-6. Rearrange main inteface
-==========================
+6. Rearrange main interface
+===========================
 
 
 ::
 
     To do
+
+
+

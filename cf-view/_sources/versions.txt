@@ -13,6 +13,7 @@ The current version is |release|
 - 0.6 `Testing against CF files  <http://ajheaps.github.io/cf-view/version_0.6.html>`_
 - 0.7 `Time axis work <http://ajheaps.github.io/cf-view/version_0.7.html>`_
 - 0.8 `Interface work <http://ajheaps.github.io/cf-view/version_0.8.html>`_
+- 0.9 `Pre-release work <http://ajheaps.github.io/cf-view/version_0.9.html>`_
 
 |
 |
