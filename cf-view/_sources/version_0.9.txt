@@ -35,11 +35,17 @@ Remove unused code and print statements
     To do
 
 
-5. Test against lots of files
-=============================
+5. Consolidate integer and float input checking
+===============================================
 
 ::
 
     To do
 
 
+6. Test against lots of files
+=============================
+
+::
+
+    To do
