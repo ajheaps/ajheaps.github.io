@@ -155,12 +155,26 @@ cfp.levs() failed to reset colorbar extensions.
 
 
 
-  
+14. Change of name for some colour scales
+=========================================
+
+Colour scales with plus and minus in them cause issues in cfview. These colour scales have been renamed with the plus and minus changed to an underscore.
+
+
+::
+
+    Done
 
 
 
+15. con - negative_linestyle and zero_thick issues
+==================================================
 
+Recent changes in the 1.5.x version of Matplotlib causes issues with the con routine negative_linestyle and zero_thick options.  con was changed to the new Matplotlib way of doing these.
 
+::
+
+    Done
 
 
 
