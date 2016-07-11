@@ -177,5 +177,41 @@ Recent changes in the 1.5.x version of Matplotlib causes issues with the con rou
     Done
 
 
+16. con - xlog / log specification
+==================================
+
+Amended the xlog and ylog specification so that it now accpets True as well as 1 to give a log plot.
+
+
+::
+
+    Done
+
+
+17. con added axis labelling commands
+=====================================
+
+Added xticks, xticklabels, yticks, yticklabels, xlabel, ylabel to con to control axis labelling.  Also added axis, axis, yaxis to con to control whether axes are plotted.
+
+
+::
+
+    Done
+
+
+18. con - bug in color scheme
+=============================
+
+When turning off a colorbar with colorbar=None in the con routine the extension colors were then out of alignment.
+
+
+::
+
+    Fixed
+
+
+
+
+
 
 

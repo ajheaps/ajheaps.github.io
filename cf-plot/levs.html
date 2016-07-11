@@ -43,6 +43,41 @@
             
   <div class="section" id="levs">
 <h1>levs<a class="headerlink" href="#levs" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="cfplot.levs">
+<code class="descclassname">cfplot.</code><code class="descname">levs</code><span class="sig-paren">(</span><em>min=None</em>, <em>max=None</em>, <em>step=None</em>, <em>manual=None</em>, <em>extend='both'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#levs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.levs" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The levs command manually sets the contour levels.</div>
+</div>
+<div class="line-block">
+<div class="line">min=min - minimum level</div>
+<div class="line">max=max - maximum level</div>
+<div class="line">step=step - step between levels</div>
+<div class="line">manual= manual - set levels manually</div>
+<div class="line">extend=&#8217;neither&#8217;, &#8216;both&#8217;, &#8216;min&#8217;, or &#8216;max&#8217; - colour bar limit extensions.</div>
+</div>
+<div class="line-block">
+<div class="line">Use the levs command when a predefined set of levels is required. The min, max </div>
+<div class="line">and step parameters are all needed to define a set of  levels. These can take </div>
+<div class="line">integer or floating point numbers. If colour filled contours are plotted then </div>
+<div class="line">the default is to extend the minimum and maximum contours coloured for out of </div>
+<div class="line">range values - extend=&#8217;both&#8217;.</div>
+</div>
+<div class="line-block">
+<div class="line">Once a user call is made to levs the levels are persistent.  i.e. the next plot</div>
+<div class="line">will use the same set of levels.</div>
+<div class="line">Use levs() to reset to undefined levels.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 
 
