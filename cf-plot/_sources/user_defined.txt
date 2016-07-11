@@ -29,9 +29,8 @@ In the following plot the axes were labelled with the axes command before making
    import cf, cfplot as cfp
    import numpy as np
    f=cf.read('/opt/graphics/cfplot_data/Geostropic_Adjustment.nc')[7]
-   cfp.axes(xticks=np.arange(5)*100000+100000, yticks=np.arange(7)*2000+2000, 
-            xlabel='x-axis', ylabel='z-axis')
-   cfp.con(f.subspace[9], title='test data') 
+   cfp.con(f.subspace[9], title='test data', xticks=np.arange(5)*100000+100000, 
+           yticks=np.arange(7)*2000+2000, xlabel='x-axis', ylabel='z-axis') 
 
 
 
