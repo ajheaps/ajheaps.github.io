@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Passing data to cf-plot &mdash; cf-plot 1.9.15 documentation</title>
+    <title>Passing data to cf-plot &mdash; cf-plot 1.9.19 documentation</title>
     
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.9.15',
+        VERSION:     '1.9.19',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 1.9.15 documentation" href="index.html" /> 
+    <link rel="top" title="cf-plot 1.9.19 documentation" href="index.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -32,7 +32,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 1.9.15 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 1.9.19 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -46,12 +46,12 @@
 <div class="section" id="using-cf-python-cf-compliant-data">
 <h2>Using cf-python - cf compliant data<a class="headerlink" href="#using-cf-python-cf-compliant-data" title="Permalink to this headline">¶</a></h2>
 <p>Data is generally passed to cf-plot via cf-python as a 2-dimensional field.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>f is now an list of 12 fields.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>[&lt;CF Field: long_name:Potential vorticity(time(1), pressure(23), latitude(160), longitude(320)) K m**2 kg**-1 s**-1&gt;,
+<div class="highlight-python"><div class="highlight"><pre>[&lt;CF Field: long_name:Potential vorticity(time(1), pressure(23), latitude(160), longitude(320)) K m**2 kg**-1 s**-1&gt;,
 &lt;CF Field: long_name:Ozone mass mixing ratio(time(1), pressure(23), latitude(160), longitude(320)) kg kg**-1&gt;,
 &lt;CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(320)) K&gt;,
 &lt;CF Field: atmosphere_relative_vorticity(time(1), pressure(23), latitude(160), longitude(320)) s**-1&gt;,
@@ -67,14 +67,14 @@
 </pre></div>
 </div>
 <p>To contour data a 2 dimensional field is needed. In the case below we select the 500mb temperature with the cf subspace method.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>f[2].subspace(pressure=500)
+<div class="highlight-python"><div class="highlight"><pre>f[2].subspace(pressure=500)
 &lt;CF Field: air_temperature(time(1), pressure(1), latitude(160), longitude(320)) K&gt;
 cfp.con(f[2].subspace(pressure=500))
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/data_fig1.png"><img alt="_images/data_fig1.png" src="_images/data_fig1.png" style="width: 494.5px; height: 301.0px;" /></a>
 <p>To mean the field use the cf collapse function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>f[2].collapse( &#39;mean&#39;,&#39;longitude&#39;)
+<div class="highlight-python"><div class="highlight"><pre>f[2].collapse( &#39;mean&#39;,&#39;longitude&#39;)
 &lt;CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(1)) K&gt;
 cfp.con(f[2].collapse( &#39;mean&#39;,&#39;longitude&#39;))
 </pre></div>
@@ -87,13 +87,13 @@ cfp.con(f[2].collapse( &#39;mean&#39;,&#39;longitude&#39;))
 <div class="section" id="example-1">
 <h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
 <p>In this locally processed ERA40 reanalysis field there is a distinct lack of standard names.  Even the long names are somewhat terse - p for pressure for example.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>f=cf.read(&#39;/opt/graphics/cfplot_data/ggap199006200600.nc&#39;)[9]
+<div class="highlight-python"><div class="highlight"><pre>f=cf.read(&#39;/opt/graphics/cfplot_data/ggap199006200600.nc&#39;)[9]
 &lt;CF Field: geopotential(long_name:t(1), long_name:p(37), long_name:latitude(256),
 long_name:longitude(512)) kg kg**-1&gt;
 </pre></div>
 </div>
 <p>We can still slice and plot the data by inspecting the dimensions of the field:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>f.items()
+<div class="highlight-python"><div class="highlight"><pre>f.items()
 {&#39;dim2&#39;: &lt;CF DimensionCoordinate: long_name:latitude(256) degrees_north&gt;,
 &#39;dim3&#39;: &lt;CF DimensionCoordinate: long_name:longitude(512) degrees_east&gt;,
 &#39;dim0&#39;: &lt;CF DimensionCoordinate: long_name:t(1) days since 1990-06-20 06:00:00&gt;,
@@ -101,7 +101,7 @@ long_name:longitude(512)) kg kg**-1&gt;
 </pre></div>
 </div>
 <p>We see that dim1 is the pressure coordinate and can select the 700mb level and contour that.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>f.item(&#39;dim1&#39;).array
+<div class="highlight-python"><div class="highlight"><pre>f.item(&#39;dim1&#39;).array
 array([ 1000.,   975.,   950.,   925.,   900.,   875.,   850.,   825.,
       800.,   775.,   750.,   700.,   650.,   600.,   550.,   500.,
       450.,   400.,   350.,   300.,   250.,   225.,   200.,   175.,
@@ -119,12 +119,12 @@ cfp.con(f.subspace(dim1=700))
 <div class="section" id="example-2">
 <h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
 <p>In this dataset there are neither standard or long names.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>f=cf.read(&#39;/opt/graphics/cfplot_data/gdata.nc&#39;)[0]
+<div class="highlight-python"><div class="highlight"><pre>f=cf.read(&#39;/opt/graphics/cfplot_data/gdata.nc&#39;)[0]
 &lt;CF Field: ncvar:temp(ncvar:p(22), ncvar:lat(73), ncvar:lon(145)) &gt;
 </pre></div>
 </div>
 <p>We can still slice and plot the data as below.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>f.items()
+<div class="highlight-python"><div class="highlight"><pre>f.items()
 {&#39;dim2&#39;: &lt;CF DimensionCoordinate: ncvar:lon(145)&gt;,
 &#39;dim0&#39;: &lt;CF DimensionCoordinate: ncvar:p(22)&gt;,
 &#39;dim1&#39;: &lt;CF DimensionCoordinate: ncvar:lat(73)&gt;}
@@ -141,7 +141,7 @@ array([  1.00000000e+03,   7.00000000e+02,   5.00000000e+02,
 </pre></div>
 </div>
 <p>So to plot the 1000mb temperature we would use:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">dim0</span><span class="o">=</span><span class="mi">1000</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">dim0</span><span class="o">=</span><span class="mi">1000</span><span class="p">))</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/data_fig4.png"><img alt="_images/data_fig4.png" src="_images/data_fig4.png" style="width: 494.5px; height: 299.5px;" /></a>
@@ -155,7 +155,7 @@ array([  1.00000000e+03,   7.00000000e+02,   5.00000000e+02,
 <div class="section" id="passing-data-via-arrays">
 <h2>Passing data via arrays<a class="headerlink" href="#passing-data-via-arrays" title="Permalink to this headline">¶</a></h2>
 <p>cf-plot can also make contour and vector plots by passing data arrays.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
 <span class="kn">from</span> <span class="nn">netCDF4</span> <span class="kn">import</span> <span class="n">Dataset</span> <span class="k">as</span> <span class="n">ncfile</span>
 <span class="n">nc</span> <span class="o">=</span> <span class="n">ncfile</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/tas_A1.nc&#39;</span><span class="p">)</span>
 <span class="n">lons</span><span class="o">=</span><span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">][:]</span>
@@ -166,7 +166,7 @@ array([  1.00000000e+03,   7.00000000e+02,   5.00000000e+02,
 </div>
 <a class="reference internal image-reference" href="_images/data_fig5.png"><img alt="_images/data_fig5.png" src="_images/data_fig5.png" style="width: 498.5px; height: 314.5px;" /></a>
 <p>The contouring routine doesn&#8217;t know that the data passed is a map plot. This can be explicitly set with the ptype flag to con.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">temp</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">lons</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">lats</span><span class="p">,</span> <span class="n">ptype</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">temp</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">lons</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">lats</span><span class="p">,</span> <span class="n">ptype</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/data_fig6.png"><img alt="_images/data_fig6.png" src="_images/data_fig6.png" style="width: 494.5px; height: 287.0px;" /></a>
@@ -210,7 +210,7 @@ array([  1.00000000e+03,   7.00000000e+02,   5.00000000e+02,
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 1.9.15 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 1.9.19 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

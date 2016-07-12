@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Cylindrical projection &mdash; cf-plot 1.9.15 documentation</title>
+    <title>Cylindrical projection &mdash; cf-plot 1.9.19 documentation</title>
     
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.9.15',
+        VERSION:     '1.9.19',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 1.9.15 documentation" href="index.html" /> 
+    <link rel="top" title="cf-plot 1.9.19 documentation" href="index.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -32,7 +32,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 1.9.15 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 1.9.19 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -46,7 +46,7 @@
 <div class="section" id="example-1-basic-cylindrical-projection">
 <h2>Example 1 - basic cylindrical projection<a class="headerlink" href="#example-1-basic-cylindrical-projection" title="Permalink to this headline">¶</a></h2>
 <a class="reference internal image-reference" href="_images/fig1.png"><img alt="_images/fig1.png" src="_images/fig1.png" style="width: 514.28px; height: 310.96px;" /></a>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/tas_A1.nc&#39;</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">15</span><span class="p">))</span>
 </pre></div>
@@ -59,7 +59,7 @@
 <div class="section" id="example-2-cylindrical-projection-with-blockfill">
 <h2>Example 2 - cylindrical projection with blockfill<a class="headerlink" href="#example-2-cylindrical-projection-with-blockfill" title="Permalink to this headline">¶</a></h2>
 <a class="reference internal image-reference" href="_images/fig2.png"><img alt="_images/fig2.png" src="_images/fig2.png" style="width: 514.28px; height: 310.96px;" /></a>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/tas_A1.nc&#39;</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">15</span><span class="p">),</span> <span class="n">blockfill</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -72,7 +72,7 @@
 <div class="section" id="example-3-altering-the-map-limits-and-contour-levels">
 <h2>Example 3 - altering the map limits and contour levels<a class="headerlink" href="#example-3-altering-the-map-limits-and-contour-levels" title="Permalink to this headline">¶</a></h2>
 <a class="reference internal image-reference" href="_images/fig3.png"><img alt="_images/fig3.png" src="_images/fig3.png" style="width: 487.24px; height: 341.64px;" /></a>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/tas_A1.nc&#39;</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">lonmin</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span> <span class="n">lonmax</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">latmin</span><span class="o">=</span><span class="mi">48</span><span class="p">,</span> <span class="n">latmax</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">levs</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">265</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">285</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -111,7 +111,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 1.9.15 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 1.9.19 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
