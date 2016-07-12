@@ -331,7 +331,12 @@
            <span class="k">if</span> <span class="n">cval</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">includes_zero</span><span class="o">=</span><span class="mi">1</span>
 
        <span class="k">if</span> <span class="n">includes_zero</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-           <span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;scale1&#39;</span><span class="p">,</span> <span class="n">below</span><span class="o">=</span><span class="n">col_zero</span><span class="p">,</span> <span class="n">above</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">clevs</span><span class="p">)</span><span class="o">-</span><span class="n">col_zero</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+           <span class="n">cs_below</span><span class="o">=</span><span class="n">col_zero</span>
+           <span class="n">cs_above</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">clevs</span><span class="p">)</span><span class="o">-</span><span class="n">col_zero</span><span class="o">+</span><span class="mi">1</span>
+           <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">levels_extend</span> <span class="o">==</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span>
+               <span class="n">cs_below</span><span class="o">=</span><span class="n">cs_below</span><span class="o">-</span><span class="mi">1</span>
+               <span class="n">cs_above</span><span class="o">=</span><span class="n">cs_above</span><span class="o">+</span><span class="mi">1</span>
+           <span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;scale1&#39;</span><span class="p">,</span> <span class="n">below</span><span class="o">=</span><span class="n">cs_below</span><span class="p">,</span> <span class="n">above</span><span class="o">=</span><span class="n">cs_above</span><span class="p">)</span>
        <span class="k">else</span><span class="p">:</span>
            <span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">clevs</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>   
 
@@ -3307,7 +3312,8 @@
 <div class="viewcode-block" id="vect"><a class="viewcode-back" href="../vect.html#cfplot.vect">[docs]</a><span class="k">def</span> <span class="nf">vect</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">pts</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>\
          <span class="n">key_length</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">key_label</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ptype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>\
          <span class="n">width</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">headlength</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">headaxislength</span><span class="o">=</span><span class="mf">4.5</span><span class="p">,</span> <span class="n">pivot</span><span class="o">=</span><span class="s1">&#39;middle&#39;</span><span class="p">,</span> <span class="n">key_location</span><span class="o">=</span><span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.06</span><span class="p">],</span>
-         <span class="n">key_show</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+         <span class="n">key_show</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">xaxis</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">yaxis</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> \
+         <span class="n">yticks</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ylog</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
 
    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    | vect - plot vectors</span>
@@ -3344,6 +3350,16 @@
 <span class="sd">    | headaxislength=4.5 - head length at shaft intersection, default is 4.5</span>
 <span class="sd">    | pivot=&#39;middle&#39; - the part of the arrow that is at the grid point; the arrow rotates about this point</span>
 <span class="sd">                       takes &#39;tail&#39;, &#39;middle&#39;, &#39;tip&#39;</span>
+<span class="sd">    | axes=True - plot x and y axes</span>
+<span class="sd">    | xaxis=True - plot xaxis</span>
+<span class="sd">    | yaxis=True - plot y axis</span>
+<span class="sd">    | xticks=None - xtick positions</span>
+<span class="sd">    | xticklabels=None - xtick labels</span>
+<span class="sd">    | yticks=None - y tick positions</span>
+<span class="sd">    | yticklabels=None - ytick labels</span>
+<span class="sd">    | xlabel=None - label for x axis</span>
+<span class="sd">    | ylabel=None - label for y axis</span>
+<span class="sd">    | ylog=False - log y axis</span>
 <span class="sd">    |</span>
 <span class="sd">    :Returns:</span>
 <span class="sd">     None</span>
@@ -3359,12 +3375,14 @@
    <span class="k">if</span> <span class="n">text_fontsize</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="n">text_fontsize</span><span class="o">=</span><span class="mi">11</span>
    <span class="k">if</span> <span class="n">continent_thickness</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="n">continent_thickness</span><span class="o">=</span><span class="mf">1.5</span>
    <span class="k">if</span> <span class="n">continent_color</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="n">continent_color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span>
-   <span class="n">ylog</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">ylog</span>
+   <span class="c1">#ylog=plotvars.ylog</span>
    <span class="n">title_fontsize</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">title_fontsize</span>
    <span class="n">title_fontweight</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">title_fontweight</span>
    <span class="k">if</span> <span class="n">title_fontsize</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">15</span>
 
-
+   <span class="c1">#Set potential user axis labels</span>
+   <span class="n">user_xlabel</span><span class="o">=</span><span class="n">xlabel</span>
+   <span class="n">user_ylabel</span><span class="o">=</span><span class="n">ylabel</span>
 
 
    <span class="c1">#Extract required data for contouring</span>
@@ -3396,6 +3414,9 @@
       <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
       <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
    
+   <span class="c1">#Reset xlabel and ylabel values with user defined labels in specified</span>
+   <span class="k">if</span> <span class="n">user_xlabel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="n">xlabel</span><span class="o">=</span><span class="n">user_xlabel</span>
+   <span class="k">if</span> <span class="n">user_ylabel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">user_ylabel</span>
 
    <span class="k">if</span> <span class="n">scale</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> 
        <span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">u_data</span><span class="p">)</span><span class="o">/</span><span class="mf">4.0</span>
@@ -3509,7 +3530,9 @@
       <span class="k">if</span> <span class="n">key_show</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
           <span class="n">quiv_key</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">quiverkey</span><span class="p">(</span><span class="n">quiv</span><span class="p">,</span> <span class="n">key_location</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">key_location</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">key_length</span><span class="p">,</span> <span class="n">key_label</span><span class="p">,</span> <span class="n">labelpos</span><span class="o">=</span><span class="s1">&#39;W&#39;</span><span class="p">)</span>
 
+   <span class="c1">#Map vectors</span>
    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+
       <span class="k">if</span> <span class="n">pts</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
          <span class="c1">#convert lons, lats into map coordinates</span>
          <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span><span class="p">(</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">u_x</span><span class="p">,</span> <span class="n">u_y</span><span class="p">))</span>
@@ -3526,20 +3549,52 @@
          <span class="k">if</span> <span class="n">key_show</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
              <span class="n">quiv_key</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">quiverkey</span><span class="p">(</span><span class="n">quiv</span><span class="p">,</span> <span class="n">key_location</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">key_location</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">key_length</span><span class="p">,</span> <span class="n">key_label</span><span class="p">,</span> <span class="n">labelpos</span><span class="o">=</span><span class="s1">&#39;W&#39;</span><span class="p">)</span>
 
-
-
       <span class="c1">#axes</span>
       <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;cyl&#39;</span><span class="p">:</span>
          <span class="n">lonticks</span><span class="p">,</span><span class="n">lonlabels</span><span class="o">=</span><span class="n">mapaxis</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">lonmin</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">lonmax</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
          <span class="n">latticks</span><span class="p">,</span><span class="n">latlabels</span><span class="o">=</span><span class="n">mapaxis</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">latmin</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">latmax</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-         <span class="n">axes_plot</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="n">lonticks</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">lonlabels</span><span class="p">)</span>
-         <span class="n">axes_plot</span><span class="p">(</span><span class="n">yticks</span><span class="o">=</span><span class="n">latticks</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">latlabels</span><span class="p">)</span>
+
+
+         <span class="k">if</span> <span class="n">axes</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+             <span class="k">if</span> <span class="n">xaxis</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+                 <span class="k">if</span> <span class="n">xticks</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                     <span class="n">axes_plot</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="n">lonticks</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">lonlabels</span><span class="p">)</span>
+                 <span class="k">else</span><span class="p">:</span>
+                     <span class="k">if</span> <span class="n">xticklabels</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                         <span class="n">axes_plot</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="n">xticks</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">xticks</span><span class="p">)</span>
+                     <span class="k">else</span><span class="p">:</span>
+                         <span class="n">axes_plot</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="n">xticks</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">xticklabels</span><span class="p">)</span>
+             <span class="k">if</span> <span class="n">yaxis</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+                 <span class="k">if</span> <span class="n">yticks</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                     <span class="n">axes_plot</span><span class="p">(</span><span class="n">yticks</span><span class="o">=</span><span class="n">latticks</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">latlabels</span><span class="p">)</span>
+                 <span class="k">else</span><span class="p">:</span>
+                     <span class="k">if</span> <span class="n">yticklabels</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                         <span class="n">axes_plot</span><span class="p">(</span><span class="n">yticks</span><span class="o">=</span><span class="n">yticks</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">yticks</span><span class="p">)</span>
+                     <span class="k">else</span><span class="p">:</span>
+                         <span class="n">axes_plot</span><span class="p">(</span><span class="n">yticks</span><span class="o">=</span><span class="n">yticks</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">yticklabels</span><span class="p">)</span>
+
+
+         <span class="k">if</span> <span class="n">user_xlabel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">user_xlabel</span><span class="p">)</span>
+         <span class="k">if</span> <span class="n">user_ylabel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">user_ylabel</span><span class="p">)</span>
+
+
    
       <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;npstere&#39;</span> <span class="ow">or</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;spstere&#39;</span><span class="p">:</span> 
          <span class="n">latstep</span><span class="o">=</span><span class="mi">30</span>
          <span class="k">if</span> <span class="mi">90</span><span class="o">-</span><span class="nb">abs</span><span class="p">(</span><span class="n">plotvars</span><span class="o">.</span><span class="n">boundinglat</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">50</span><span class="p">:</span> <span class="n">latstep</span><span class="o">=</span><span class="mi">10</span>
-         <span class="n">mymap</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">120</span><span class="p">,</span><span class="n">latstep</span><span class="p">))</span>
-         <span class="n">mymap</span><span class="o">.</span><span class="n">drawmeridians</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">420</span><span class="p">,</span><span class="mi">60</span><span class="p">),</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> 
+         <span class="k">if</span> <span class="n">axes</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+             <span class="k">if</span> <span class="n">xaxis</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+                 <span class="k">if</span> <span class="n">xticks</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                     <span class="n">mymap</span><span class="o">.</span><span class="n">drawmeridians</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">360</span><span class="p">,</span><span class="mi">60</span><span class="p">),</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> 
+                 <span class="k">else</span><span class="p">:</span>
+                     <span class="n">mymap</span><span class="o">.</span><span class="n">drawmeridians</span><span class="p">(</span><span class="n">xticks</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> 
+             <span class="k">if</span> <span class="n">yaxis</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+                 <span class="k">if</span> <span class="n">yticks</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                     <span class="n">mymap</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">120</span><span class="p">,</span><span class="n">latstep</span><span class="p">))</span>
+                 <span class="k">else</span><span class="p">:</span>
+                     <span class="n">mymap</span><span class="o">.</span><span class="n">drawparallels</span><span class="p">(</span><span class="n">yticks</span><span class="p">)</span>
+
+
 
 
       <span class="c1">#Coastlines and title</span>
@@ -3553,7 +3608,7 @@
    <span class="c1">#Zonal plot</span>
    <span class="c1">###########</span>
    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> 
-      <span class="c1">#and plotvars.user_plot == 0:</span>
+
       <span class="n">user_gset</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">user_gset</span>
       <span class="k">if</span> <span class="n">user_gset</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
          <span class="c1">#Program selected data plot limits</span>
@@ -3595,24 +3650,86 @@
       <span class="k">if</span> <span class="n">ylog</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>   
          <span class="k">if</span> <span class="n">ytype</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
             <span class="n">gset</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">ymax</span><span class="p">,</span> <span class="n">user_gset</span><span class="o">=</span><span class="n">user_gset</span><span class="p">)</span>
-            <span class="n">latticks</span><span class="p">,</span><span class="n">latlabels</span><span class="o">=</span><span class="n">mapaxis</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="n">xmin</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="n">xmax</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-            <span class="n">axes_plot</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="n">latticks</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">latlabels</span><span class="p">,</span>\
-                 <span class="n">yticks</span><span class="o">=</span><span class="n">gvals</span><span class="p">(</span><span class="n">dmin</span><span class="o">=</span><span class="n">ymin</span><span class="p">,</span> <span class="n">dmax</span><span class="o">=</span><span class="n">ymax</span><span class="p">,</span> <span class="n">tight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mystep</span><span class="o">=</span><span class="n">ystep</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>\
-                 <span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">)</span>
          <span class="k">else</span><span class="p">:</span> 
-            <span class="n">gset</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="n">ymax</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">ymin</span><span class="p">,</span> <span class="n">user_gset</span><span class="o">=</span><span class="n">user_gset</span><span class="p">)</span>
-            <span class="n">latticks</span><span class="p">,</span><span class="n">latlabels</span><span class="o">=</span><span class="n">mapaxis</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="n">xmin</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="n">xmax</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-            <span class="n">axes_plot</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="n">latticks</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">latlabels</span><span class="p">,</span>\
-                 <span class="n">yticks</span><span class="o">=</span><span class="n">gvals</span><span class="p">(</span><span class="n">dmin</span><span class="o">=</span><span class="n">ymin</span><span class="p">,</span> <span class="n">dmax</span><span class="o">=</span><span class="n">ymax</span><span class="p">,</span> <span class="n">tight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mystep</span><span class="o">=</span><span class="n">ystep</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>\
-                 <span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">)</span>  
+            <span class="n">gset</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="n">ymax</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">ymin</span><span class="p">,</span> <span class="n">user_gset</span><span class="o">=</span><span class="n">user_gset</span><span class="p">)</span>         
+
+         <span class="c1">#Set default axis labels</span>
+         <span class="n">latticks</span><span class="p">,</span><span class="n">latlabels</span><span class="o">=</span><span class="n">mapaxis</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="n">xmin</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="n">xmax</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+         <span class="n">yaxisticks</span><span class="o">=</span><span class="n">gvals</span><span class="p">(</span><span class="n">dmin</span><span class="o">=</span><span class="n">ymin</span><span class="p">,</span> <span class="n">dmax</span><span class="o">=</span><span class="n">ymax</span><span class="p">,</span> <span class="n">tight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mystep</span><span class="o">=</span><span class="n">ystep</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+         <span class="n">heightticks</span><span class="o">=</span><span class="n">gvals</span><span class="p">(</span><span class="n">dmin</span><span class="o">=</span><span class="n">ymin</span><span class="p">,</span> <span class="n">dmax</span><span class="o">=</span><span class="n">ymax</span><span class="p">,</span> <span class="n">tight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mystep</span><span class="o">=</span><span class="n">ystep</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+         <span class="n">heightlabels</span><span class="o">=</span><span class="n">heightticks</span>
+
+         <span class="k">if</span> <span class="n">axes</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+             <span class="k">if</span> <span class="n">xaxis</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+                 <span class="k">if</span> <span class="n">xticks</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                     <span class="n">latticks</span><span class="o">=</span><span class="n">xticks</span>
+                     <span class="n">latlabels</span><span class="o">=</span><span class="n">xticks</span>
+                     <span class="k">if</span> <span class="n">xticklabels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="n">latlabels</span><span class="o">=</span><span class="n">xticklabels</span>
+             <span class="k">else</span><span class="p">:</span>
+                 <span class="n">latticks</span><span class="o">=</span><span class="p">[</span><span class="mi">100000000</span><span class="p">]</span>
+                 <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+
+             <span class="k">if</span> <span class="n">yaxis</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+                 <span class="k">if</span> <span class="n">yticks</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                     <span class="n">heightticks</span><span class="o">=</span><span class="n">yticks</span>
+                     <span class="n">heightlabels</span><span class="o">=</span><span class="n">yticks</span>
+                     <span class="k">if</span> <span class="n">yticklabels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="n">heightlabels</span><span class="o">=</span><span class="n">yticklabels</span>
+             <span class="k">else</span><span class="p">:</span>
+                 <span class="n">heightticks</span><span class="o">=</span><span class="p">[</span><span class="mi">100000000</span><span class="p">]</span>
+                 <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+
+
+         <span class="k">else</span><span class="p">:</span>
+             <span class="n">latticks</span><span class="o">=</span><span class="p">[</span><span class="mi">100000000</span><span class="p">]</span>
+             <span class="n">heightticks</span><span class="o">=</span><span class="p">[</span><span class="mi">100000000</span><span class="p">]</span>
+             <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+             <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+
+
+         <span class="n">axes_plot</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="n">latticks</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">latlabels</span><span class="p">,</span>\
+                   <span class="n">yticks</span><span class="o">=</span><span class="n">heightticks</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">heightlabels</span><span class="p">,</span>\
+                   <span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">)</span>
+
+
+
+
 
       <span class="c1">#Log y axis </span>
-      <span class="k">if</span> <span class="n">ylog</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-         <span class="k">if</span> <span class="n">ymin</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">ymin</span><span class="o">=</span><span class="mi">1</span>
+      <span class="k">if</span> <span class="n">ylog</span> <span class="o">==</span> <span class="bp">True</span> <span class="ow">or</span> <span class="n">ylog</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+         <span class="k">if</span> <span class="n">ymin</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">ymin</span><span class="o">=</span><span class="mi">1</span> <span class="c1">#reset zero mb/height input to a small value</span>
          <span class="n">gset</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="n">ymax</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ylog</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">user_gset</span><span class="o">=</span><span class="n">user_gset</span><span class="p">)</span>
          <span class="n">latticks</span><span class="p">,</span><span class="n">latlabels</span><span class="o">=</span><span class="n">mapaxis</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="n">xmin</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="n">xmax</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-         <span class="n">axes_plot</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="n">latticks</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">latlabels</span><span class="p">,</span>\
-              <span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">)</span>
+
+         <span class="k">if</span> <span class="n">axes</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+             <span class="k">if</span> <span class="n">xaxis</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+                 <span class="k">if</span> <span class="n">xticks</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                     <span class="n">latticks</span><span class="o">=</span><span class="n">xticks</span>
+                     <span class="n">latlabels</span><span class="o">=</span><span class="n">xticks</span>
+                     <span class="k">if</span> <span class="n">xticklabels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="n">latlabels</span><span class="o">=</span><span class="n">xticklabels</span>
+             <span class="k">else</span><span class="p">:</span>
+                 <span class="n">latticks</span><span class="o">=</span><span class="p">[</span><span class="mi">100000000</span><span class="p">]</span>
+                 <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+
+             <span class="k">if</span> <span class="n">yaxis</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+                 <span class="k">if</span> <span class="n">yticks</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                     <span class="n">heightticks</span><span class="o">=</span><span class="n">yticks</span>
+                     <span class="n">heightlabels</span><span class="o">=</span><span class="n">yticks</span>
+                     <span class="k">if</span> <span class="n">yticklabels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="n">heightlabels</span><span class="o">=</span><span class="n">yticklabels</span>
+             <span class="k">else</span><span class="p">:</span>
+                 <span class="n">heightticks</span><span class="o">=</span><span class="p">[</span><span class="mi">100000000</span><span class="p">]</span>
+                 <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+
+
+             <span class="k">if</span> <span class="n">yticks</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                 <span class="n">axes_plot</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="n">latticks</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">latlabels</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">)</span>
+             <span class="k">else</span><span class="p">:</span>
+                 <span class="n">axes_plot</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="n">latticks</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">latlabels</span><span class="p">,</span> <span class="n">yticks</span><span class="o">=</span><span class="n">heightticks</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">heightlabels</span><span class="p">,</span> \
+                           <span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">)</span>
+
+
+
+
 
 
       <span class="c1">#Regrid the data if requested</span>
@@ -3693,16 +3810,16 @@
 
 
       <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-         <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.03</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">title_fontsize</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="n">title_fontweight</span><span class="p">)</span>
+          <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.03</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">title_fontsize</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="n">title_fontweight</span><span class="p">)</span>
 
 
    <span class="c1">##########</span>
    <span class="c1">#Save plot</span>
    <span class="c1">##########</span>
    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_plot</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> 
-      <span class="n">gset</span><span class="p">()</span>
-      <span class="n">cscale</span><span class="p">()</span>
-      <span class="n">gclose</span><span class="p">()</span></div>
+       <span class="n">gset</span><span class="p">()</span>
+       <span class="n">cscale</span><span class="p">()</span>
+       <span class="n">gclose</span><span class="p">()</span></div>
   
 
 <div class="viewcode-block" id="set_map"><a class="viewcode-back" href="../set_map.html#cfplot.set_map">[docs]</a><span class="k">def</span> <span class="nf">set_map</span><span class="p">():</span>

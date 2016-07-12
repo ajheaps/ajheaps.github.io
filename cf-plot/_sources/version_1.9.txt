@@ -188,10 +188,10 @@ Amended the xlog and ylog specification so that it now accpets True as well as 1
     Done
 
 
-17. con added axis labelling commands
-=====================================
+17. con, vect  added axis labelling commands
+============================================
 
-Added xticks, xticklabels, yticks, yticklabels, xlabel, ylabel to con to control axis labelling.  Also added axis, axis, yaxis to con to control whether axes are plotted.
+Added xticks, xticklabels, yticks, yticklabels, xlabel, ylabel to con and vect to control axis labelling.  Also added axis, axis, yaxis to control whether axes are plotted.
 
 
 ::
@@ -210,7 +210,15 @@ When turning off a colorbar with colorbar=None in the con routine the extension 
     Fixed
 
 
+19. vect - added vertical log scale
+===================================
 
+Added optional vertical log scale to the vect routine.
+
+
+::
+
+    Done
 
 
 
