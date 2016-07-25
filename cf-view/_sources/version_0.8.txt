@@ -11,6 +11,7 @@ Add levels selection inteface to Configure drop down.  Even and uneven levels an
     Done
 
 
+
 2. Advanced configuration - map specification
 =============================================
 
@@ -18,6 +19,7 @@ Add levels selection inteface to Configure drop down.  Even and uneven levels an
 ::
 
     Done
+
 
 
 3. Advanced configuration - vector specification
@@ -29,13 +31,15 @@ Add levels selection inteface to Configure drop down.  Even and uneven levels an
     Done
 
 
+
 4. Advanced configuration - add help pop-up windows
 ===================================================
 
 
 ::
 
-    To do
+    Done
+
 
 
 5. Advanced configuration - colour maps
@@ -44,17 +48,57 @@ Add levels selection inteface to Configure drop down.  Even and uneven levels an
 
 ::
 
-    To do
+    Done
 
 
 
-6. Rearrange main interface
-===========================
+6. Advanced configuration - adjust spacing of text input boxes
+==============================================================
+
+Spacing of text input boxes in advanced configuration sections needs fine tuning.
+
+::
+
+    Done
+
+
+
+
+7. Remove Select, Inspect and Gallery row in the main interface
+===============================================================
+
+The Select, Inspect and Gallery row in main interface isn't needed any more.
 
 
 ::
 
     To do
+
+
+
+
+8. Remove Help button in the Generate and Configure Plots panel
+===============================================================
+
+This button isn't needed any more.
+
+
+::
+
+    To do
+
+
+
+
+9. Remove Projection button in the  Generate and Configure Plots panel
+======================================================================
+
+
+::
+
+    To do
+
+
 
 
 
