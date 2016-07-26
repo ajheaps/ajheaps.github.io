@@ -64,8 +64,8 @@ Spacing of text input boxes in advanced configuration sections needs fine tuning
 
 
 
-7. Remove Select, Inspect and Gallery row in the main interface
-===============================================================
+7. Main interface - remove Select, Inspect and Gallery row
+==========================================================
 
 The Select, Inspect and Gallery row in main interface isn't needed any more.
 
@@ -77,8 +77,8 @@ The Select, Inspect and Gallery row in main interface isn't needed any more.
 
 
 
-8. Remove Help button in the Generate and Configure Plots panel
-===============================================================
+8. Generate and Configure Plots panel - remove Help button
+==========================================================
 
 This button isn't needed any more.
 
@@ -90,13 +90,51 @@ This button isn't needed any more.
 
 
 
-9. Remove Projection button in the  Generate and Configure Plots panel
-======================================================================
+9. Generate and Configure Plots panel - remove Projection button 
+================================================================
 
 
 ::
 
     To do
+
+
+
+10. Configure and Generate Plots panel - add dashed negative lines
+==================================================================
+
+
+::
+
+    To do
+
+
+11. Configure and Generate Plots panel - remove On-- from labels dropdown
+=========================================================================
+
+
+
+::
+
+    To do
+
+
+
+
+12. Configure and Generate Plots panel - add missing colorbar label
+===================================================================
+
+
+
+::
+
+    To do
+
+
+
+
+
+
 
 
 
