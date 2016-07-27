@@ -27,8 +27,8 @@ Remove unused code and print statements
     To do
 
 
-4. Time axis with many values cause slow start-up
-=================================================
+4. Time axis with many values causes slow start-up
+==================================================
 
 ::
 
@@ -49,3 +49,16 @@ Remove unused code and print statements
 ::
 
     To do
+
+
+7. Make a working conda install
+===============================
+
+::
+
+    To do
+
+
+
+
+
