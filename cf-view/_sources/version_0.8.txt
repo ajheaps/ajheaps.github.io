@@ -72,7 +72,7 @@ The Select, Inspect and Gallery row in main interface isn't needed any more.
 
 ::
 
-    To do
+    Done
 
 
 
@@ -80,12 +80,12 @@ The Select, Inspect and Gallery row in main interface isn't needed any more.
 8. Generate and Configure Plots panel - remove Help button
 ==========================================================
 
-This button isn't needed any more.
+This button has it has been superseeded by the main help drop down. 
 
 
 ::
 
-    To do
+    Done
 
 
 
@@ -93,20 +93,23 @@ This button isn't needed any more.
 9. Generate and Configure Plots panel - remove Projection button 
 ================================================================
 
+Remove button and associated code as this is now done in the Configure Map drop down.
 
 ::
 
-    To do
+    Done
 
 
 
-10. Configure and Generate Plots panel - add dashed negative lines
-==================================================================
+10. Configure and Generate Plots panel - add lines dropdown
+===========================================================
 
 
 ::
 
-    To do
+    Done
+
+
 
 
 11. Configure and Generate Plots panel - remove On-- from labels dropdown
@@ -116,19 +119,19 @@ This button isn't needed any more.
 
 ::
 
-    To do
+    Done
 
 
 
 
-12. Configure and Generate Plots panel - add missing colorbar label
-===================================================================
+12. Configure and Generate Plots panel - rearrange contour options 
+==================================================================
 
 
 
 ::
 
-    To do
+    Done
 
 
 
