@@ -8,7 +8,7 @@ Remove unused code and print statements
 
 ::
 
-    To do
+    Done
 
 
 2. Consolidate textview code in one class
@@ -16,18 +16,29 @@ Remove unused code and print statements
 
 ::
 
-    To do
+    Done
 
 
-3. Is it possible to remove exec calls?
-========================================
+3. Review all Help sections to make clear
+=========================================
 
 ::
 
-    To do
+    Done
 
 
-4. Time axis with many values causes slow start-up
+4. Move save code button to view code panel
+===========================================
+
+Move save code button to view code panel and add a help button.
+
+::
+
+    Done
+
+
+
+5. Time axis with many values causes slow start-up
 ==================================================
 
 ::
@@ -35,7 +46,8 @@ Remove unused code and print statements
     To do
 
 
-5. Consolidate integer and float input checking
+
+6. Consolidate integer and float input checking
 ===============================================
 
 ::
@@ -43,7 +55,8 @@ Remove unused code and print statements
     To do
 
 
-6. Test against lots of files
+
+7. Test against lots of files
 =============================
 
 ::
@@ -51,8 +64,21 @@ Remove unused code and print statements
     To do
 
 
-7. Make a working conda install
+
+8. Is it possible to remove exec calls?
+========================================
+
+::
+
+    To do
+
+
+
+9. Make a working conda install
 ===============================
+
+Need a working conda install for pygtk dependencies and a conda package for cfview.
+
 
 ::
 
