@@ -22,7 +22,7 @@ Department of Meteorology, University of Reading - The latest version of cf-plot
 To install cf-plot
 ==================
 
-Using Anaconda Python:
+Download and install Anaconda Python 2.7 for Linux if not already installed.  On the Linux command line type:
 
 ::
 
