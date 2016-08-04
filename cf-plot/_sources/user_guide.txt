@@ -75,7 +75,7 @@ Blockfill plots in the cylindrical projection are made using the **blockfill=1**
    :scale: 52% 
 
 
-Blockfill is only supported in the cylindrical projection at present.  Email me swsheaps Heaps (a.j.heaps@reading.ac.uk) for details on blockfill in other projections.
+Blockfill is only supported in the cylindrical projection and non-map plots at present.  
 
 
 Polar stereographic plots
@@ -547,6 +547,72 @@ A stipple plot is usually used to show areas of significance. These plots use th
 
 .. image::  images/fig18.png
    :scale: 52% 
+
+
+
+Graph plots
+===========
+
+To make a graph plot use the cf-plot lineplot function as below on a single line of data in a field.
+
+:: 
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+   g=f.collapse('X: mean')
+   cfp.lineplot(g.subspace(pressure=100), marker='o', color='blue',\
+                title='Zonal mean zonal wind at 100mb')
+
+
+| Other valid markers are:
+| ‘.’ point
+| ‘,’ pixel
+| ‘o’ circle
+| ‘v’ triangle_down
+| ‘^’ triangle_up
+| ‘<’ triangle_left
+| ‘>’ triangle_right
+| ‘1’ tri_down
+| ‘2’ tri_up
+| ‘3’ tri_left
+| ‘4’ tri_right
+| ‘8’ octagon
+| ‘s’ square
+| ‘p’ pentagon
+| ‘*’ star
+| ‘h’ hexagon1
+| ‘H’ hexagon2
+| ‘+’ plus
+| 'x’ x
+| ‘D’ diamond
+| ‘d’ thin_diamond
+
+
+To make a multiple line plot use the gopen, gclose commands to enclose the plotting commands as in the example below.
+
+
+::
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+   g=f.collapse('X: mean')
+   xticks=[-90,-75,-60,-45,-30,-15,0,15,30,45,60,75,90]
+   xticklabels=['90S','75S','60S','45S','30S','15S','0','15N','30N','45N','60N','75N','90N']
+   xpts=[-30, 30, 30, -30, -30]
+   ypts=[-8, -8, 5, 5, -8]
+
+   cfp.gset(xmin=-90, xmax=90, ymin=-10, ymax=50)
+   cfp.gopen()
+   cfp.lineplot(g.subspace(pressure=100), marker='o', color='blue',\
+             title='Zonal mean zonal wind', label='100mb')
+   cfp.lineplot(g.subspace(pressure=200), marker='D', color='red',\
+                label='200mb', xticks=xticks, xticklabels=xticklabels,\
+                legend_location='upper right')
+   cfp.plotvars.plot.plot(xpts,ypts, linewidth=3.0, color='green')
+   cfp.plotvars.plot.text(35, -2, 'Region of interest', horizontalalignment='left')
+   cfp.gclose()
+
+
 
 
 Setting Contour Levels

@@ -86,7 +86,7 @@ To run the following examples in the Met department at the University of Reading
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/fig2.png"><img alt="_images/fig2.png" src="_images/fig2.png" style="width: 514.28px; height: 310.96px;" /></a>
-<p>Blockfill is only supported in the cylindrical projection at present.  Email me swsheaps Heaps (<a class="reference external" href="mailto:a&#46;j&#46;heaps&#37;&#52;&#48;reading&#46;ac&#46;uk">a<span>&#46;</span>j<span>&#46;</span>heaps<span>&#64;</span>reading<span>&#46;</span>ac<span>&#46;</span>uk</a>) for details on blockfill in other projections.</p>
+<p>Blockfill is only supported in the cylindrical projection and non-map plots at present.</p>
 </div>
 <div class="section" id="polar-stereographic-plots">
 <h2>Polar stereographic plots<a class="headerlink" href="#polar-stereographic-plots" title="Permalink to this headline">¶</a></h2>
@@ -418,6 +418,62 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/fig18.png"><img alt="_images/fig18.png" src="_images/fig18.png" style="width: 454.48px; height: 388.44px;" /></a>
+</div>
+<div class="section" id="graph-plots">
+<h3>Graph plots<a class="headerlink" href="#graph-plots" title="Permalink to this headline">¶</a></h3>
+<p>To make a graph plot use the cf-plot lineplot function as below on a single line of data in a field.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">g</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;X: mean&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>\
+             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Zonal mean zonal wind at 100mb&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Other valid markers are:</div>
+<div class="line">‘.’ point</div>
+<div class="line">‘,’ pixel</div>
+<div class="line">‘o’ circle</div>
+<div class="line">‘v’ triangle_down</div>
+<div class="line">‘^’ triangle_up</div>
+<div class="line">‘&lt;’ triangle_left</div>
+<div class="line">‘&gt;’ triangle_right</div>
+<div class="line">‘1’ tri_down</div>
+<div class="line">‘2’ tri_up</div>
+<div class="line">‘3’ tri_left</div>
+<div class="line">‘4’ tri_right</div>
+<div class="line">‘8’ octagon</div>
+<div class="line">‘s’ square</div>
+<div class="line">‘p’ pentagon</div>
+<div class="line">‘*’ star</div>
+<div class="line">‘h’ hexagon1</div>
+<div class="line">‘H’ hexagon2</div>
+<div class="line">‘+’ plus</div>
+<div class="line">&#8216;x’ x</div>
+<div class="line">‘D’ diamond</div>
+<div class="line">‘d’ thin_diamond</div>
+</div>
+<p>To make a multiple line plot use the gopen, gclose commands to enclose the plotting commands as in the example below.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">g</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;X: mean&#39;</span><span class="p">)</span>
+<span class="n">xticks</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="o">-</span><span class="mi">75</span><span class="p">,</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span><span class="o">-</span><span class="mi">45</span><span class="p">,</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">90</span><span class="p">]</span>
+<span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;90S&#39;</span><span class="p">,</span><span class="s1">&#39;75S&#39;</span><span class="p">,</span><span class="s1">&#39;60S&#39;</span><span class="p">,</span><span class="s1">&#39;45S&#39;</span><span class="p">,</span><span class="s1">&#39;30S&#39;</span><span class="p">,</span><span class="s1">&#39;15S&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;15N&#39;</span><span class="p">,</span><span class="s1">&#39;30N&#39;</span><span class="p">,</span><span class="s1">&#39;45N&#39;</span><span class="p">,</span><span class="s1">&#39;60N&#39;</span><span class="p">,</span><span class="s1">&#39;75N&#39;</span><span class="p">,</span><span class="s1">&#39;90N&#39;</span><span class="p">]</span>
+<span class="n">xpts</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">]</span>
+<span class="n">ypts</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">]</span>
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">gset</span><span class="p">(</span><span class="n">xmin</span><span class="o">=-</span><span class="mi">90</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">()</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>\
+          <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Zonal mean zonal wind&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;100mb&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">200</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>\
+             <span class="n">label</span><span class="o">=</span><span class="s1">&#39;200mb&#39;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="n">xticks</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">xticklabels</span><span class="p">,</span>\
+             <span class="n">legend_location</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xpts</span><span class="p">,</span><span class="n">ypts</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Region of interest&#39;</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="setting-contour-levels">
 <h3>Setting Contour Levels<a class="headerlink" href="#setting-contour-levels" title="Permalink to this headline">¶</a></h3>
