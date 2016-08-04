@@ -548,7 +548,9 @@ A stipple plot is usually used to show areas of significance. These plots use th
 .. image::  images/fig18.png
    :scale: 52% 
 
-
+|
+|
+|
 
 Graph plots
 ===========
@@ -562,6 +564,11 @@ To make a graph plot use the cf-plot lineplot function as below on a single line
    g=f.collapse('X: mean')
    cfp.lineplot(g.subspace(pressure=100), marker='o', color='blue',\
                 title='Zonal mean zonal wind at 100mb')
+
+
+.. image::  images/fig27.png
+   :scale: 52% 
+
 
 
 | Other valid markers are:
@@ -612,6 +619,9 @@ To make a multiple line plot use the gopen, gclose commands to enclose the plott
    cfp.plotvars.plot.text(35, -2, 'Region of interest', horizontalalignment='left')
    cfp.gclose()
 
+
+.. image::  images/fig28.png
+   :scale: 52% 
 
 
 
