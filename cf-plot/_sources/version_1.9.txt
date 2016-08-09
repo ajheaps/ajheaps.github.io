@@ -231,3 +231,14 @@ Added time vs height plots.
 
     Done
 
+21. colour scales - adjust name
+===============================
+
+One of the colour scales had an incorrect extension and this caused an issue in cf-view.
+
+::
+
+    Done
+
+
+

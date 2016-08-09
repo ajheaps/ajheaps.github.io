@@ -38,16 +38,27 @@ Move save code button to view code panel and add a help button.
 
 
 
-5. Time axis with many values causes slow start-up
-==================================================
+5. Consolidate library imports
+==============================
+
+Remove and consolidate library imports.
 
 ::
 
-    To do
+    Done
 
 
+6. Make a working conda install
+===============================
 
-6. Consolidate integer and float input checking
+Need a working conda install for pygtk dependencies and a conda package for cfview.
+
+::
+
+    Done
+
+
+7. Consolidate integer and float input checking
 ===============================================
 
 ::
@@ -55,36 +66,20 @@ Move save code button to view code panel and add a help button.
     To do
 
 
-
-7. Test against lots of files
-=============================
+8. Time axis with many values causes slow start-up
+==================================================
 
 ::
 
     To do
 
 
-
-8. Is it possible to remove exec calls?
+9. Is it possible to remove exec calls?
 ========================================
 
 ::
 
     To do
-
-
-
-9. Make a working conda install
-===============================
-
-Need a working conda install for pygtk dependencies and a conda package for cfview.
-
-
-::
-
-    To do
-
-
 
 
 
