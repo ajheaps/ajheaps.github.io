@@ -45,32 +45,24 @@
 <h1>Download/Install<a class="headerlink" href="#download-install" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="to-install-cf-view">
 <h2>To install cf-view<a class="headerlink" href="#to-install-cf-view" title="Permalink to this headline">¶</a></h2>
-<p>cf-view is available as a GitHub repository. To download and install cf-view:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ajheaps</span><span class="o">/</span><span class="n">CF</span><span class="o">-</span><span class="n">View</span><span class="o">.</span><span class="n">git</span>
+<p>Download and install Anaconda Python 2.7 for Linux if this is not already installed. The following will work on a more recent version of Linux i.e. Mint 17:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">ncas</span> <span class="o">-</span><span class="n">c</span> <span class="n">scitools</span> <span class="n">cf</span><span class="o">-</span><span class="n">python</span> <span class="n">cf</span><span class="o">-</span><span class="n">plot</span> <span class="n">cf</span><span class="o">-</span><span class="n">view</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">jochym</span> <span class="n">pygobject2</span> <span class="n">pygtk</span> <span class="n">pango</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">trung</span> <span class="n">libiconv</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">pcre</span>
 </pre></div>
 </div>
-<p>You will need to install <a class="reference external" href="http://cfpython.bitbucket.org">cf-python</a> and
-<a class="reference external" href="http://ajheaps.github.io/cf-plot/#">cf-plot</a> to use cf-view.
-You can install these using pip:</p>
+<p>cf-view is also available as an install using pip:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">cf</span><span class="o">-</span><span class="n">python</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">cf</span><span class="o">-</span><span class="n">plot</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">cf</span><span class="o">-</span><span class="n">view</span>
 </pre></div>
 </div>
-<p>Other cfview dependencies are: gtk, Numpy, Matplotlib, Netcdf4 and Basemap.</p>
+<p>cfview dependencies are pygtk, Numpy, Matplotlib, Netcdf4 and Basemap and these will also need to be installed before using cfview.</p>
 </div>
 <div class="section" id="to-run-cf-view">
 <h2>To run cf-view<a class="headerlink" href="#to-run-cf-view" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">CF</span><span class="o">-</span><span class="n">View</span>
-<span class="n">cfview</span> <span class="o">&lt;</span><span class="n">optional</span> <span class="n">netCDF</span><span class="p">,</span> <span class="n">Met</span> <span class="n">Office</span> <span class="n">PP</span> <span class="ow">or</span> <span class="n">fields</span> <span class="n">file</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>The cfview script runs python2.7 as this is the version of Python in the <a class="reference external" href="http://proj.badc.rl.ac.uk/cedaservices/wiki/JASMIN/FAQ">Jasmin Application Platform (JAP)</a> that has gtk installed.  You may
-need to change this in the cfview script to suit your local Python distribution.</p>
-</div>
-<div class="section" id="firewall-issues">
-<h2>Firewall issues<a class="headerlink" href="#firewall-issues" title="Permalink to this headline">¶</a></h2>
-<p>If you are behind a firewall such as that at the Met Office you may need to use the following the download cf-view.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ajheaps</span><span class="o">/</span><span class="n">CF</span><span class="o">-</span><span class="n">View</span><span class="o">.</span><span class="n">git</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cfview</span> <span class="o">&lt;</span><span class="n">optional</span> <span class="n">netCDF</span><span class="p">,</span> <span class="n">Met</span> <span class="n">Office</span> <span class="n">PP</span> <span class="ow">or</span> <span class="n">fields</span> <span class="n">file</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <div class="line-block">
