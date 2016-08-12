@@ -63,23 +63,34 @@ Need a working conda install for pygtk dependencies and a conda package for cfvi
 
 ::
 
+    Done
+
+
+8. Check code for use of exec
+=============================
+
+exec is used to build and run the cf-plot commands i.e.
+A user changes the contour levels to have min, max and step.  
+These are checked to make sure they are numbers and that min <man and step is positve.
+A cf-plot command is then assembled and run with the exec command:
+cfp.levs(min=min, max=max, step=step)
+Is this safe? Is there an easy work around for this?
+
+::
+
     To do
 
 
-8. Time axis with many values causes slow start-up
+9. Time axis with many values causes slow start-up
 ==================================================
 
-::
-
-    To do
-
-
-9. Is it possible to remove exec calls?
-========================================
+A time axis with 18,000 valuescauses cfview to have a slow start-up
 
 ::
 
     To do
+
+
 
 
 

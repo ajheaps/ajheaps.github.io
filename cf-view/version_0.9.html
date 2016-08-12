@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>version 0.9 - pre-release work &mdash; cf-view 0.9.6 documentation</title>
+    <title>version 0.9 - pre-release work &mdash; cf-view 0.9.7 documentation</title>
     
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.9.6',
+        VERSION:     '0.9.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="cf-view 0.9.6 documentation" href="index.html" /> 
+    <link rel="top" title="cf-view 0.9.7 documentation" href="index.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -32,7 +32,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-view 0.9.6 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-view 0.9.7 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -85,18 +85,25 @@
 </div>
 <div class="section" id="consolidate-integer-and-float-input-checking">
 <h2>7. Consolidate integer and float input checking<a class="headerlink" href="#consolidate-integer-and-float-input-checking" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="check-code-for-use-of-exec">
+<h2>8. Check code for use of exec<a class="headerlink" href="#check-code-for-use-of-exec" title="Permalink to this headline">¶</a></h2>
+<p>exec is used to build and run the cf-plot commands i.e.
+A user changes the contour levels to have min, max and step.
+These are checked to make sure they are numbers and that min &lt;man and step is positve.
+A cf-plot command is then assembled and run with the exec command:
+cfp.levs(min=min, max=max, step=step)
+Is this safe? Is there an easy work around for this?</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">do</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="time-axis-with-many-values-causes-slow-start-up">
-<h2>8. Time axis with many values causes slow start-up<a class="headerlink" href="#time-axis-with-many-values-causes-slow-start-up" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">do</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="is-it-possible-to-remove-exec-calls">
-<h2>9. Is it possible to remove exec calls?<a class="headerlink" href="#is-it-possible-to-remove-exec-calls" title="Permalink to this headline">¶</a></h2>
+<h2>9. Time axis with many values causes slow start-up<a class="headerlink" href="#time-axis-with-many-values-causes-slow-start-up" title="Permalink to this headline">¶</a></h2>
+<p>A time axis with 18,000 valuescauses cfview to have a slow start-up</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">do</span>
 </pre></div>
 </div>
@@ -127,7 +134,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-view 0.9.6 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-view 0.9.7 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
