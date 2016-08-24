@@ -78,13 +78,13 @@ Is this safe? Is there an easy work around for this?
 
 ::
 
-    To do
+    All exec calls removed and recoded to make more readable
 
 
 9. Time axis with many values causes slow start-up
 ==================================================
 
-A time axis with 18,000 valuescauses cfview to have a slow start-up
+A time axis with 18,000 values causes cfview to have a slow start-up
 
 ::
 
