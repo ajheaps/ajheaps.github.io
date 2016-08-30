@@ -84,11 +84,15 @@ Is this safe? Is there an easy work around for this?
 9. Time axis with many values causes slow start-up
 ==================================================
 
-A time axis with 18,000 values causes cfview to have a slow start-up
+A time axis with 18,000 values causes cfview to have a very slow start-up
 
 ::
 
-    To do
+    Moved the list append loop to before the list is added to a gtk.combobox. This changed the start-up 
+    time from 180 seconds to 14 seconds.
+
+    Done
+ 
 
 
 

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>version 0.9 - pre-release work &mdash; cf-view 0.9.8 documentation</title>
+    <title>version 0.9 - pre-release work &mdash; cf-view 1.0.0 documentation</title>
     
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.9.8',
+        VERSION:     '1.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="cf-view 0.9.8 documentation" href="index.html" /> 
+    <link rel="top" title="cf-view 1.0.0 documentation" href="index.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -32,7 +32,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-view 0.9.8 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-view 1.0.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -103,8 +103,11 @@ Is this safe? Is there an easy work around for this?</p>
 </div>
 <div class="section" id="time-axis-with-many-values-causes-slow-start-up">
 <h2>9. Time axis with many values causes slow start-up<a class="headerlink" href="#time-axis-with-many-values-causes-slow-start-up" title="Permalink to this headline">¶</a></h2>
-<p>A time axis with 18,000 values causes cfview to have a slow start-up</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">do</span>
+<p>A time axis with 18,000 values causes cfview to have a very slow start-up</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Moved</span> <span class="n">the</span> <span class="nb">list</span> <span class="n">append</span> <span class="n">loop</span> <span class="n">to</span> <span class="n">before</span> <span class="n">the</span> <span class="nb">list</span> <span class="ow">is</span> <span class="n">added</span> <span class="n">to</span> <span class="n">a</span> <span class="n">gtk</span><span class="o">.</span><span class="n">combobox</span><span class="o">.</span> <span class="n">This</span> <span class="n">changed</span> <span class="n">the</span> <span class="n">start</span><span class="o">-</span><span class="n">up</span>
+<span class="n">time</span> <span class="kn">from</span> <span class="mi">180</span> <span class="n">seconds</span> <span class="n">to</span> <span class="mi">14</span> <span class="n">seconds</span><span class="o">.</span>
+
+<span class="n">Done</span>
 </pre></div>
 </div>
 </div>
@@ -134,7 +137,7 @@ Is this safe? Is there an easy work around for this?</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-view 0.9.8 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-view 1.0.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
