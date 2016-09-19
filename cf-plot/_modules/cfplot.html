@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>cfplot &mdash; cf-plot 1.9.21 documentation</title>
+    <title>cfplot &mdash; cf-plot 1.9.22 documentation</title>
     
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.9.21',
+        VERSION:     '1.9.22',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 1.9.21 documentation" href="../index.html" />
+    <link rel="top" title="cf-plot 1.9.22 documentation" href="../index.html" />
     <link rel="up" title="Module code" href="index.html" /> 
   </head>
   <body role="document">
@@ -33,7 +33,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.21 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.22 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -46,7 +46,7 @@
   <h1>Source code for cfplot</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Routines for making climate contour/vector plots using cf-python, matplotlib and basemap.</span>
-<span class="sd">Andy Heaps NCAS-CMS March 2016</span>
+<span class="sd">Andy Heaps NCAS-CMS September 2016</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 
@@ -73,12 +73,10 @@
    <span class="k">raise</span>  <span class="ne">Warning</span><span class="p">(</span><span class="n">cf_errstr</span><span class="p">)</span> 
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">call</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>
 <span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">call</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="kn">import</span> <span class="nn">matplotlib.tri</span> <span class="kn">as</span> <span class="nn">triang</span>
 <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 
 
@@ -92,6 +90,24 @@
 <span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span><span class="p">,</span> <span class="n">shiftgrid</span><span class="p">,</span> <span class="n">addcyclic</span>
 
 
+
+<span class="c1">#Code to check if the ImageMagick display command is available</span>
+<span class="k">def</span> <span class="nf">which</span><span class="p">(</span><span class="n">program</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">is_exe</span><span class="p">(</span><span class="n">fpath</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fpath</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">access</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">X_OK</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">ext_candidates</span><span class="p">(</span><span class="n">fpath</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">fpath</span>
+        <span class="k">for</span> <span class="n">ext</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;PATHEXT&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">pathsep</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">fpath</span> <span class="o">+</span> <span class="n">ext</span>
+
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PATH&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">pathsep</span><span class="p">):</span>
+        <span class="n">exe_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">program</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">candidate</span> <span class="ow">in</span> <span class="n">ext_candidates</span><span class="p">(</span><span class="n">exe_file</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">is_exe</span><span class="p">(</span><span class="n">candidate</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">candidate</span>
+
+    <span class="k">return</span> <span class="bp">None</span>
 
 
 <span class="c1">#Default colour scales</span>
@@ -144,7 +160,7 @@
                <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">axis_label_fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">text_fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> \
                <span class="n">text_fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">axis_label_fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> \
                <span class="n">title_fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> \
-               <span class="n">continent_thickness</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">continent_color</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+               <span class="n">continent_thickness</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">continent_color</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">viewer</span><span class="o">=</span><span class="s1">&#39;display&#39;</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="con"><a class="viewcode-back" href="../con.html#cfplot.con">[docs]</a><span class="k">def</span> <span class="nf">con</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">line_labels</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> \
@@ -2048,13 +2064,25 @@
       <span class="k">if</span> <span class="nb">file</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span> <span class="o">==</span> <span class="s1">&#39;.png&#39;</span><span class="p">:</span> <span class="nb">type</span><span class="o">=</span><span class="mi">1</span>
       <span class="k">if</span> <span class="nb">file</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span> <span class="o">==</span> <span class="s1">&#39;.pdf&#39;</span><span class="p">:</span> <span class="nb">type</span><span class="o">=</span><span class="mi">1</span>
       <span class="k">if</span> <span class="nb">type</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span>
-      <span class="n">plotvars</span><span class="o">.</span><span class="n">master_plot</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="n">papertype</span><span class="o">=</span><span class="s1">&#39;a4&#39;</span><span class="p">,</span>\
-                                   <span class="n">orientation</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">orientation</span><span class="p">)</span>
+      <span class="n">plotvars</span><span class="o">.</span><span class="n">master_plot</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="n">papertype</span><span class="o">=</span><span class="s1">&#39;a4&#39;</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">orientation</span><span class="p">)</span>
       <span class="n">plot</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
    <span class="k">else</span><span class="p">:</span>
-      <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-      <span class="n">plot</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-      
+
+       
+      <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">viewer</span> <span class="o">==</span> <span class="s1">&#39;display&#39;</span><span class="p">:</span>
+          <span class="c1">#Use Imagemagick display command if this exists</span>
+          <span class="n">disp</span><span class="o">=</span><span class="n">which</span><span class="p">(</span><span class="s1">&#39;display&#39;</span><span class="p">)</span>
+          <span class="k">if</span> <span class="n">disp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> 
+              <span class="n">tfile</span><span class="o">=</span><span class="s1">&#39;cfplot.png&#39;</span>
+              <span class="n">plotvars</span><span class="o">.</span><span class="n">master_plot</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">tfile</span><span class="p">,</span> <span class="n">papertype</span><span class="o">=</span><span class="s1">&#39;a4&#39;</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">orientation</span><span class="p">)</span>
+              <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="n">disp</span><span class="p">,</span> <span class="n">tfile</span><span class="p">])</span>
+          <span class="k">else</span><span class="p">:</span>
+              <span class="n">plotvars</span><span class="o">.</span><span class="n">viewer</span><span class="o">=</span><span class="s1">&#39;matplotlib&#39;</span>
+      <span class="k">else</span><span class="p">:</span>
+          <span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+          <span class="n">plot</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
    <span class="c1">#Reset plotting</span>
    <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">=</span><span class="bp">None</span></div>
 
@@ -4133,7 +4161,7 @@
          <span class="n">plot</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
          <span class="c1">#Use covert to trim the png file to remove white space</span>
-         <span class="n">call</span><span class="p">([</span><span class="s2">&quot;convert&quot;</span><span class="p">,</span> <span class="s2">&quot;-trim&quot;</span><span class="p">,</span> <span class="nb">file</span><span class="p">,</span> <span class="nb">file</span><span class="p">])</span>
+         <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s2">&quot;convert&quot;</span><span class="p">,</span> <span class="s2">&quot;-trim&quot;</span><span class="p">,</span> <span class="nb">file</span><span class="p">,</span> <span class="nb">file</span><span class="p">])</span>
 
          <span class="n">name_pad</span><span class="o">=</span><span class="n">scale</span>
          <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">name_pad</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">chars</span><span class="p">:</span> <span class="n">name_pad</span><span class="o">=</span><span class="n">name_pad</span><span class="o">+</span><span class="s1">&#39; &#39;</span>
@@ -4172,7 +4200,7 @@
 
 <div class="viewcode-block" id="setvars"><a class="viewcode-back" href="../setvars.html#cfplot.setvars">[docs]</a><span class="k">def</span> <span class="nf">setvars</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">text_fontsize</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">axis_label_fontsize</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> \
         <span class="n">title_fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">text_fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">axis_label_fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> \
-        <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">continent_thickness</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">continent_color</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">continent_thickness</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">continent_color</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">viewer</span><span class="o">=</span><span class="s1">&#39;display&#39;</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    | setvars - set plotting variables</span>
 <span class="sd">    |</span>
@@ -4185,6 +4213,10 @@
 <span class="sd">    | axis_label_fontweight=&#39;normal&#39; - axis font weight</span>
 <span class="sd">    | continent_thickness=None - default=1.5</span>
 <span class="sd">    | continent_color=None - default=&#39;k&#39; (black)</span>
+<span class="sd">    | viewer=&#39;display&#39; - use ImageMagick display program to display the pictures.  Set to </span>
+<span class="sd">    |                    &#39;matplotlib&#39; to use the built in matplotlib viewer.  display is </span>
+<span class="sd">    |                    non-blocking of the command prompt while the built in matplotlib viewer</span>
+<span class="sd">    |                    is blocking.</span>
 <span class="sd">    | </span>
 <span class="sd">    | Use setvars() to reset to the defaults</span>
 <span class="sd">    |</span>
@@ -4219,7 +4251,8 @@
    <span class="n">plotvars</span><span class="o">.</span><span class="n">text_fontsize</span><span class="o">=</span><span class="n">text_fontsize</span>
    <span class="n">plotvars</span><span class="o">.</span><span class="n">text_fontweight</span><span class="o">=</span><span class="n">text_fontweight</span>
    <span class="n">plotvars</span><span class="o">.</span><span class="n">axis_label_fontweight</span><span class="o">=</span><span class="n">axis_label_fontweight</span>
-   <span class="n">plotvars</span><span class="o">.</span><span class="n">title_fontweight</span><span class="o">=</span><span class="n">title_fontweight</span></div>
+   <span class="n">plotvars</span><span class="o">.</span><span class="n">title_fontweight</span><span class="o">=</span><span class="n">title_fontweight</span>
+   <span class="n">plotvars</span><span class="o">.</span><span class="n">viewer</span><span class="o">=</span><span class="n">viewer</span></div>
 
 
 
@@ -4883,7 +4916,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.21 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.22 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>

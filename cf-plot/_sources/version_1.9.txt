@@ -241,4 +241,17 @@ One of the colour scales had an incorrect extension and this caused an issue in 
     Done
 
 
+22. Plot blocking resolved
+==========================
+
+If the display command from ImageMagick is available this is now used in conjunction with subprocess 
+in preference to build-in Matplotlib viewer. This gets around the problem of a plot blocking the command prompt 
+preventing further plots from being made.
+
+
+::
+
+    Done
+
+
 
