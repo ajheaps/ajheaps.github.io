@@ -26,7 +26,29 @@ Once a plot is made and is displayed this blocks any further interaction with cf
 
 
 
-3. Field selector needs modifying
+3. Combined colour bar
+======================
+
+Need a method of making a combined colour bar.  This is selected in the configure -> contour levels window and must be done before making the first plot in a multi-plot picture.
+
+
+::
+
+    Done.
+
+
+
+4. Use actual times in the time grid selector
+=============================================
+
+
+::
+
+    To do
+
+
+
+5. Field selector needs modifying
 =================================
 
 The field selector only works properly when the Field Name is in alphabetical order.
@@ -38,7 +60,7 @@ on long_name and short_name.
     To do
 
 
-4. Multiple vector plots fail to produce any plots
+6. Multiple vector plots fail to produce any plots
 ==================================================
 
 ::
@@ -47,25 +69,6 @@ on long_name and short_name.
 
 
 
-5. Combined colour bar
-======================
-
-Need a method of making a combined colour bar.
-
-
-::
-
-    To do
-
-
-
-6. Use actual times in the time grid selector
-=============================================
-
-
-::
-
-    To do
 
 
 
