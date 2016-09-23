@@ -255,4 +255,33 @@ built-in matplotlib picture viewer.
     Done
 
 
+23. timeaxis routine introduced
+===============================
+
+The timeaxis routine takes a time axis and returns a sensible set of tick positions and labels.  This is an internal
+routine that is used in Hovmuller and graph plots.
+
+
+::
+
+    Done
+
+
+
+24. Multiple hovmuller plot calls produce incorrect pictures
+============================================================
+
+Subsequent plots after the first hovmuller plot call produce incorrect pictures.
+
+::
+
+    Fixed
+
+
+
+
+
+
+
+
 

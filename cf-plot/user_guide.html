@@ -1353,6 +1353,48 @@ hex(255)[2:]
 </tr>
 </tbody>
 </table>
+<div class="section" id="labelling-time-axes">
+<h3>Labelling time axes<a class="headerlink" href="#labelling-time-axes" title="Permalink to this headline">¶</a></h3>
+<p>To extract tick positions from cf-python:</p>
+<div class="line-block">
+<div class="line"><strong>f=cf.read(&#8216;/opt/graphics/cfplot_data/tas_A1.nc&#8217;)</strong></div>
+<div class="line"><strong>f.items(&#8216;T&#8217;)</strong></div>
+<div class="line">{&#8216;dim0&#8217;: &lt;CF DimensionCoordinate: time(1680) 360_day&gt;}</div>
+</div>
+<p>The time strings are stored in dtarray and the time values in array:</p>
+<div class="line-block">
+<div class="line"><strong>f.item(&#8216;T&#8217;).dtarray</strong></div>
+<div class="line">array([1860-01-16 00:00:00, 1860-02-16 00:00:00, 1860-03-16 00:00:00, ...,</div>
+<div class="line-block">
+<div class="line">1999-10-16 00:00:00, 1999-11-16 00:00:00, 1999-12-16 00:00:00], dtype=object)</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>f.item(&#8216;T&#8217;).array</strong></div>
+<div class="line">array([  1.50000000e+01,   4.50000000e+01,   7.50000000e+01, ...,</div>
+<div class="line-block">
+<div class="line">5.03250000e+04,   5.03550000e+04,   5.03850000e+04])</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>f.item(&#8216;T&#8217;).year.array</strong></div>
+<div class="line">array([1860, 1860, 1860, ..., 1999, 1999, 1999])</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>f.item(&#8216;T&#8217;).month.array</strong></div>
+<div class="line">array([ 1,  2,  3, ..., 10, 11, 12])</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>time_units=cf.Units(f.item(&#8216;T&#8217;).units, f.item(&#8216;T&#8217;).calendar)</strong></div>
+<div class="line"><strong>time_units</strong></div>
+<div class="line">&lt;CF Units: days since 1860-1-1 calendar=360_day&gt;</div>
+</div>
+<p>To find the time value for January 1st 1980 00:00hrs:</p>
+<div class="line-block">
+<div class="line"><strong>np.min((cf.Data(cf.dt(&#8216;1980-01-01 00:00:00&#8217;), units=time_units).array))</strong></div>
+<div class="line">43200.0</div>
+</div>
+</div>
 <div class="section" id="making-postscript-or-png-pictures">
 <h3>Making postscript or PNG pictures<a class="headerlink" href="#making-postscript-or-png-pictures" title="Permalink to this headline">¶</a></h3>
 <p>There are various methods of producing a figure for use in an external package such as a web document or LaTeX, Word etc.</p>
@@ -1370,7 +1412,7 @@ cfp.gclose()
 </div>
 <div class="section" id="making-non-blocking-plots">
 <h3>Making non-blocking plots<a class="headerlink" href="#making-non-blocking-plots" title="Permalink to this headline">¶</a></h3>
-<p>Using the Python prompt a cf-plot plot on the screen will block further interaction vial the prompt.  To get around this start Python with <strong>ipython –pylab</strong></p>
+<p>Using the Python prompt cf-plot will try to use the ImageMagick display command to show the plots.  This is done with subprocess and plots will remain on the screen even if the user exits the Python session.  If the display command isn&#8217;t installed then cf-plot will use the Matplotlib picture viewer which will block the command prompt until it is quit.  Use <strong>cfp.setvars(viewer=&#8217;matplotlib&#8217;)</strong> to set this to be the defaul for a session even if teh display command is available.</p>
 </div>
 <div class="section" id="using-cf-plot-in-batch-mode">
 <h3>Using cf-plot in batch mode<a class="headerlink" href="#using-cf-plot-in-batch-mode" title="Permalink to this headline">¶</a></h3>

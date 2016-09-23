@@ -989,6 +989,47 @@ scale44 .. image:: images/colour_scales/scale44.png
 
 
 
+Labelling time axes
+===================
+
+To extract tick positions from cf-python:
+
+| **f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')**
+| **f.items('T')**
+| {'dim0': <CF DimensionCoordinate: time(1680) 360_day>}
+
+The time strings are stored in dtarray and the time values in array:
+
+| **f.item('T').dtarray**
+| array([1860-01-16 00:00:00, 1860-02-16 00:00:00, 1860-03-16 00:00:00, ...,
+|        1999-10-16 00:00:00, 1999-11-16 00:00:00, 1999-12-16 00:00:00], dtype=object)
+
+| **f.item('T').array**
+| array([  1.50000000e+01,   4.50000000e+01,   7.50000000e+01, ...,
+|          5.03250000e+04,   5.03550000e+04,   5.03850000e+04])
+
+| **f.item('T').year.array**
+| array([1860, 1860, 1860, ..., 1999, 1999, 1999])
+
+| **f.item('T').month.array**
+| array([ 1,  2,  3, ..., 10, 11, 12])
+
+
+| **time_units=cf.Units(f.item('T').units, f.item('T').calendar)**
+| **time_units**
+| <CF Units: days since 1860-1-1 calendar=360_day>
+
+To find the time value for January 1st 1980 00:00hrs:
+
+| **np.min((cf.Data(cf.dt('1980-01-01 00:00:00'), units=time_units).array))**
+| 43200.0
+ 
+
+
+
+
+
+
 
 Making postscript or PNG pictures 
 =================================
@@ -1007,9 +1048,12 @@ Another method is to use **gopen** as when used in making multiple plots.
    cfp.con(f.subspace(time=15))
    cfp.gclose()
 
+
 Making non-blocking plots
 =========================
-Using the Python prompt a cf-plot plot on the screen will block further interaction vial the prompt.  To get around this start Python with **ipython –pylab**
+Using the Python prompt cf-plot will try to use the ImageMagick display command to show the plots.  This is done with subprocess and plots will remain on the screen even if the user exits the Python session.  If the display command isn\'t installed then cf-plot will use the Matplotlib picture viewer which will block the command prompt until it is quit.  Use **cfp.setvars(viewer='matplotlib')** to set this to be the defaul for a session even if teh display command is available.
+
+
 
 
 Using cf-plot in batch mode
