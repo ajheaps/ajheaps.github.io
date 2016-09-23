@@ -992,7 +992,8 @@ scale44 .. image:: images/colour_scales/scale44.png
 Labelling time axes
 ===================
 
-To extract tick positions from cf-python:
+The default time axis labelling in cf-plot might not be acceptable and here is some information on 
+using cf-python to extract values for yourself.
 
 | **f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')**
 | **f.items('T')**
@@ -1008,6 +1009,7 @@ The time strings are stored in dtarray and the time values in array:
 | array([  1.50000000e+01,   4.50000000e+01,   7.50000000e+01, ...,
 |          5.03250000e+04,   5.03550000e+04,   5.03850000e+04])
 
+Likewise the years and months are in year.array and month.array:
 | **f.item('T').year.array**
 | array([1860, 1860, 1860, ..., 1999, 1999, 1999])
 
@@ -1015,13 +1017,8 @@ The time strings are stored in dtarray and the time values in array:
 | array([ 1,  2,  3, ..., 10, 11, 12])
 
 
-| **time_units=cf.Units(f.item('T').units, f.item('T').calendar)**
-| **time_units**
-| <CF Units: days since 1860-1-1 calendar=360_day>
-
-To find the time value for January 1st 1980 00:00hrs:
-
-| **np.min((cf.Data(cf.dt('1980-01-01 00:00:00'), units=time_units).array))**
+To find the time value for to the tick position for January 1st 1980 00:00hrs:
+| **np.min(cf.Data(cf.dt('1980-01-01 00:00:00'), units=f.item('T').Units).array)**
 | 43200.0
  
 

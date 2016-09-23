@@ -1355,7 +1355,8 @@ hex(255)[2:]
 </table>
 <div class="section" id="labelling-time-axes">
 <h3>Labelling time axes<a class="headerlink" href="#labelling-time-axes" title="Permalink to this headline">¶</a></h3>
-<p>To extract tick positions from cf-python:</p>
+<p>The default time axis labelling in cf-plot might not be acceptable and here is some information on
+using cf-python to extract values for yourself.</p>
 <div class="line-block">
 <div class="line"><strong>f=cf.read(&#8216;/opt/graphics/cfplot_data/tas_A1.nc&#8217;)</strong></div>
 <div class="line"><strong>f.items(&#8216;T&#8217;)</strong></div>
@@ -1376,24 +1377,16 @@ hex(255)[2:]
 <div class="line">5.03250000e+04,   5.03550000e+04,   5.03850000e+04])</div>
 </div>
 </div>
-<div class="line-block">
-<div class="line"><strong>f.item(&#8216;T&#8217;).year.array</strong></div>
-<div class="line">array([1860, 1860, 1860, ..., 1999, 1999, 1999])</div>
-</div>
+<p>Likewise the years and months are in year.array and month.array:
+| <strong>f.item(&#8216;T&#8217;).year.array</strong>
+| array([1860, 1860, 1860, ..., 1999, 1999, 1999])</p>
 <div class="line-block">
 <div class="line"><strong>f.item(&#8216;T&#8217;).month.array</strong></div>
 <div class="line">array([ 1,  2,  3, ..., 10, 11, 12])</div>
 </div>
-<div class="line-block">
-<div class="line"><strong>time_units=cf.Units(f.item(&#8216;T&#8217;).units, f.item(&#8216;T&#8217;).calendar)</strong></div>
-<div class="line"><strong>time_units</strong></div>
-<div class="line">&lt;CF Units: days since 1860-1-1 calendar=360_day&gt;</div>
-</div>
-<p>To find the time value for January 1st 1980 00:00hrs:</p>
-<div class="line-block">
-<div class="line"><strong>np.min((cf.Data(cf.dt(&#8216;1980-01-01 00:00:00&#8217;), units=time_units).array))</strong></div>
-<div class="line">43200.0</div>
-</div>
+<p>To find the time value for to the tick position for January 1st 1980 00:00hrs:
+| <strong>np.min(cf.Data(cf.dt(&#8216;1980-01-01 00:00:00&#8217;), units=f.item(&#8216;T&#8217;).Units).array)</strong>
+| 43200.0</p>
 </div>
 <div class="section" id="making-postscript-or-png-pictures">
 <h3>Making postscript or PNG pictures<a class="headerlink" href="#making-postscript-or-png-pictures" title="Permalink to this headline">¶</a></h3>
