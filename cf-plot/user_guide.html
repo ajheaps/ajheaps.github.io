@@ -1377,16 +1377,20 @@ using cf-python to extract values for yourself.</p>
 <div class="line">5.03250000e+04,   5.03550000e+04,   5.03850000e+04])</div>
 </div>
 </div>
-<p>Likewise the years and months are in year.array and month.array:
-| <strong>f.item(&#8216;T&#8217;).year.array</strong>
-| array([1860, 1860, 1860, ..., 1999, 1999, 1999])</p>
+<p>Likewise the years and months are in year.array and month.array:</p>
+<div class="line-block">
+<div class="line"><strong>f.item(&#8216;T&#8217;).year.array</strong></div>
+<div class="line">array([1860, 1860, 1860, ..., 1999, 1999, 1999])</div>
+</div>
 <div class="line-block">
 <div class="line"><strong>f.item(&#8216;T&#8217;).month.array</strong></div>
 <div class="line">array([ 1,  2,  3, ..., 10, 11, 12])</div>
 </div>
-<p>To find the time value for to the tick position for January 1st 1980 00:00hrs:
-| <strong>np.min(cf.Data(cf.dt(&#8216;1980-01-01 00:00:00&#8217;), units=f.item(&#8216;T&#8217;).Units).array)</strong>
-| 43200.0</p>
+<p>To find the time value for to the tick position for January 1st 1980 00:00hrs:</p>
+<div class="line-block">
+<div class="line"><strong>np.min(cf.Data(cf.dt(&#8216;1980-01-01 00:00:00&#8217;), units=f.item(&#8216;T&#8217;).Units).array)</strong></div>
+<div class="line">43200.0</div>
+</div>
 </div>
 <div class="section" id="making-postscript-or-png-pictures">
 <h3>Making postscript or PNG pictures<a class="headerlink" href="#making-postscript-or-png-pictures" title="Permalink to this headline">¶</a></h3>

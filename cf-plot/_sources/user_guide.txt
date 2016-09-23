@@ -1010,6 +1010,7 @@ The time strings are stored in dtarray and the time values in array:
 |          5.03250000e+04,   5.03550000e+04,   5.03850000e+04])
 
 Likewise the years and months are in year.array and month.array:
+
 | **f.item('T').year.array**
 | array([1860, 1860, 1860, ..., 1999, 1999, 1999])
 
@@ -1018,6 +1019,7 @@ Likewise the years and months are in year.array and month.array:
 
 
 To find the time value for to the tick position for January 1st 1980 00:00hrs:
+
 | **np.min(cf.Data(cf.dt('1980-01-01 00:00:00'), units=f.item('T').Units).array)**
 | 43200.0
  
