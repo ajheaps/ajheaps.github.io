@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>cfplot &mdash; cf-plot 1.9.22 documentation</title>
+    <title>cfplot &mdash; cf-plot 1.9.25 documentation</title>
     
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.9.22',
+        VERSION:     '1.9.25',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 1.9.22 documentation" href="../index.html" />
+    <link rel="top" title="cf-plot 1.9.25 documentation" href="../index.html" />
     <link rel="up" title="Module code" href="index.html" /> 
   </head>
   <body role="document">
@@ -33,7 +33,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.22 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.25 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -160,7 +160,8 @@
                <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">axis_label_fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">text_fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> \
                <span class="n">text_fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">axis_label_fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> \
                <span class="n">title_fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> \
-               <span class="n">continent_thickness</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">continent_color</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">viewer</span><span class="o">=</span><span class="s1">&#39;display&#39;</span><span class="p">)</span>
+               <span class="n">continent_thickness</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">continent_color</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">viewer</span><span class="o">=</span><span class="s1">&#39;display&#39;</span><span class="p">,</span> \
+               <span class="n">tspace_year</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tspace_month</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tspace_day</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tspace_hour</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="con"><a class="viewcode-back" href="../con.html#cfplot.con">[docs]</a><span class="k">def</span> <span class="nf">con</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">line_labels</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> \
@@ -1102,6 +1103,25 @@
          <span class="n">tmin</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">ymin</span>
          <span class="n">tmax</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">ymax</span>
 
+         <span class="c1">#Check data has CF attributes needed</span>
+         <span class="n">check_units</span><span class="o">=</span><span class="n">check_units</span><span class="o">=</span><span class="bp">True</span>
+         <span class="n">check_calendar</span><span class="o">=</span><span class="bp">True</span>
+         <span class="n">check_Units_reftime</span><span class="o">=</span><span class="bp">True</span>
+         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">),</span> <span class="s1">&#39;units&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span> <span class="n">check_units</span><span class="o">=</span><span class="bp">False</span>
+         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">),</span> <span class="s1">&#39;calendar&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span> <span class="n">check_calendar</span><span class="o">=</span><span class="bp">False</span>
+         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">),</span> <span class="s1">&#39;Units&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span> 
+             <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">Units</span><span class="p">,</span> <span class="s1">&#39;reftime&#39;</span><span class="p">):</span> <span class="n">check_Units_reftime</span><span class="o">=</span><span class="bp">False</span>
+         <span class="k">else</span><span class="p">:</span>
+             <span class="n">check_Units_reftime</span><span class="o">=</span><span class="bp">False</span>
+         <span class="k">if</span> <span class="n">check_units</span> <span class="ow">is</span> <span class="bp">False</span> <span class="ow">or</span> <span class="n">check_calendar</span> <span class="ow">is</span> <span class="bp">False</span> <span class="ow">or</span> <span class="n">check_Units_reftime</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span>
+             <span class="k">print</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">The required CF time information to make the plot is not available&#39;</span>
+             <span class="k">print</span> <span class="s1">&#39;please fix the following before trying to plot again&#39;</span>
+             <span class="k">if</span> <span class="n">check_units</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span> <span class="k">print</span> <span class="s1">&#39;Time axis missing: units&#39;</span>
+             <span class="k">if</span> <span class="n">check_calendar</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span> <span class="k">print</span> <span class="s1">&#39;Time axis missing: calendar&#39;</span>
+             <span class="k">if</span> <span class="n">check_Units_reftime</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span> <span class="k">print</span> <span class="s1">&#39;Time axis missing: Units.reftime&#39;</span>
+             <span class="k">return</span>
+
+
          <span class="c1">#Change from date string in ymin and ymax to date as a float</span>
          <span class="n">ref_time</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">units</span>
          <span class="n">ref_calendar</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">calendar</span>
@@ -1133,7 +1153,7 @@
  
 
 
-      <span class="n">time_ticks</span><span class="p">,</span> <span class="n">time_labels</span><span class="o">=</span><span class="n">timeaxis</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">))</span>
+      <span class="n">time_ticks</span><span class="p">,</span> <span class="n">time_labels</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">timeaxis</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">))</span>
 
       <span class="k">if</span> <span class="n">ptype</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span> <span class="n">lonlatticks</span><span class="p">,</span> <span class="n">lonlatlabels</span><span class="o">=</span><span class="n">mapaxis</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="n">xmin</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="n">xmax</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
       <span class="k">if</span> <span class="n">ptype</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span> <span class="n">lonlatticks</span><span class="p">,</span> <span class="n">lonlatlabels</span><span class="o">=</span><span class="n">mapaxis</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="n">xmin</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="n">xmax</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -1730,7 +1750,7 @@
 <span class="sd">     | marks given a time span  This is an internal routine and is not used </span>
 <span class="sd">     | by the user.</span>
 
-<span class="sd">     | dtimes=None - data times as a CF variable</span>
+<span class="sd">     | dtimes=None - data times as a CF variable i.e. f.item(&#39;T&#39;)</span>
 <span class="sd">  </span>
 <span class="sd">     :Returns:</span>
 <span class="sd">      time ticks and labels</span>
@@ -1743,16 +1763,12 @@
 <span class="sd">     | </span>
 <span class="sd">    &quot;&quot;&quot;</span> 
 
-    <span class="n">ref_time</span><span class="o">=</span><span class="n">dtimes</span><span class="o">.</span><span class="n">units</span>
-    <span class="n">ref_calendar</span><span class="o">=</span><span class="n">dtimes</span><span class="o">.</span><span class="n">calendar</span>
-    <span class="n">ref_time_origin</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">dtimes</span><span class="o">.</span><span class="n">Units</span><span class="o">.</span><span class="n">reftime</span><span class="p">)</span>
 
-    <span class="n">time_units</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">Units</span><span class="p">(</span><span class="n">ref_time</span><span class="p">,</span> <span class="n">ref_calendar</span><span class="p">)</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">Data</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="n">ref_time_origin</span><span class="p">),</span> <span class="n">units</span><span class="o">=</span><span class="n">time_units</span><span class="p">)</span>
-
+    <span class="n">time_units</span> <span class="o">=</span> <span class="n">dtimes</span><span class="o">.</span><span class="n">Units</span>
 
     <span class="n">time_ticks</span><span class="o">=</span><span class="p">[]</span>
     <span class="n">time_labels</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">axis_label</span><span class="o">=</span><span class="s1">&#39;Time&#39;</span>
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_gset</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">yearmin</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="n">dtimes</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
         <span class="n">yearmax</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">dtimes</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
@@ -1760,33 +1776,114 @@
         <span class="n">tmax</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">dtimes</span><span class="o">.</span><span class="n">dtarray</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">t</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">Data</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="n">plotvars</span><span class="o">.</span><span class="n">ymin</span><span class="p">),</span> <span class="n">units</span><span class="o">=</span><span class="n">time_units</span><span class="p">)</span>
-        <span class="n">yearmin</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">year</span>
+        <span class="n">yearmin</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
         <span class="n">t</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">Data</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="n">plotvars</span><span class="o">.</span><span class="n">ymax</span><span class="p">),</span> <span class="n">units</span><span class="o">=</span><span class="n">time_units</span><span class="p">)</span>
-        <span class="n">yearmax</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">year</span>
-        <span class="n">tmin</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">ymin</span>
-        <span class="n">tmax</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">ymax</span>
+        <span class="n">yearmax</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+        <span class="n">tmin</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="n">plotvars</span><span class="o">.</span><span class="n">ymin</span><span class="p">)</span> <span class="c1">####Added cf.dt to this - correct?</span>
+        <span class="n">tmax</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="n">plotvars</span><span class="o">.</span><span class="n">ymax</span><span class="p">)</span> <span class="c1">####Added cf.dt to this - correct?</span>
              
 
     <span class="c1">#Years</span>
-    <span class="k">if</span> <span class="n">yearmax</span><span class="o">-</span><span class="n">yearmin</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span> 
-        <span class="n">tvals</span><span class="o">=</span><span class="n">gvals</span><span class="p">(</span><span class="n">dmin</span><span class="o">=</span><span class="n">yearmin</span><span class="p">,</span> <span class="n">dmax</span><span class="o">=</span><span class="n">yearmax</span><span class="p">,</span> <span class="n">tight</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">span</span><span class="o">=</span><span class="n">yearmax</span><span class="o">-</span><span class="n">yearmin</span>
+    <span class="k">if</span> <span class="n">span</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">span</span> <span class="o">&lt;</span> <span class="mi">3000</span><span class="p">:</span> 
+        <span class="n">axis_label</span><span class="o">=</span><span class="s1">&#39;Time (year)&#39;</span>
+        <span class="n">tvals</span><span class="o">=</span><span class="p">[]</span>
+        <span class="k">if</span> <span class="n">span</span> <span class="o">&lt;=</span> <span class="mi">15</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">span</span> <span class="o">&gt;</span> <span class="mi">15</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="mi">2</span>
+        <span class="k">if</span> <span class="n">span</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span>
+        <span class="k">if</span> <span class="n">span</span> <span class="o">&gt;</span> <span class="mi">60</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span>
+        <span class="k">if</span> <span class="n">span</span> <span class="o">&gt;</span> <span class="mi">160</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="mi">20</span>
+        <span class="k">if</span> <span class="n">span</span> <span class="o">&gt;</span> <span class="mi">300</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="mi">50</span>
+        <span class="k">if</span> <span class="n">span</span> <span class="o">&gt;</span> <span class="mi">600</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="mi">100</span>
+        <span class="k">if</span> <span class="n">span</span> <span class="o">&gt;</span> <span class="mi">1300</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="mi">200</span>
+
+        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_year</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_year</span>
+
+        <span class="n">years</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">yearmax</span><span class="o">/</span><span class="n">step</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">step</span>
+        <span class="n">tvals</span><span class="o">=</span><span class="n">years</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">years</span> <span class="o">&gt;=</span><span class="n">yearmin</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">years</span> <span class="o">&lt;=</span><span class="n">yearmax</span><span class="p">))]</span>
+
+        <span class="c1">#Catch tvals if not properly defined and use gvals to generate some year tick marks</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">tvals</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span> <span class="n">tvals</span><span class="o">=</span><span class="n">gvals</span><span class="p">(</span><span class="n">dmin</span><span class="o">=</span><span class="n">yearmin</span><span class="p">,</span> <span class="n">dmax</span><span class="o">=</span><span class="n">yearmax</span><span class="p">,</span> <span class="n">tight</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
         <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">tvals</span><span class="p">:</span>
             <span class="n">time_ticks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">((</span><span class="n">cf</span><span class="o">.</span><span class="n">Data</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">))</span><span class="o">+</span><span class="s1">&#39;-01-01 00:00:00&#39;</span><span class="p">),</span> <span class="n">units</span><span class="o">=</span><span class="n">time_units</span><span class="p">)</span><span class="o">.</span><span class="n">array</span><span class="p">)))</span>
             <span class="n">time_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">)))</span>
 
     <span class="c1">#Months</span>
-        <span class="k">if</span> <span class="n">yearmax</span><span class="o">-</span><span class="n">yearmin</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">:</span>
-            <span class="n">months</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Jan&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb&#39;</span><span class="p">,</span> <span class="s1">&#39;Mar&#39;</span><span class="p">,</span> <span class="s1">&#39;Apr&#39;</span><span class="p">,</span> <span class="s1">&#39;May&#39;</span><span class="p">,</span> <span class="s1">&#39;Jun&#39;</span><span class="p">,</span> <span class="s1">&#39;Jul&#39;</span><span class="p">,</span> <span class="s1">&#39;Aug&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep&#39;</span><span class="p">,</span> <span class="s1">&#39;Oct&#39;</span><span class="p">,</span> <span class="s1">&#39;Nov&#39;</span><span class="p">,</span> <span class="s1">&#39;Dec&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">yearmax</span><span class="o">-</span><span class="n">yearmin</span> <span class="o">&lt;=</span> <span class="mi">4</span><span class="p">:</span>
 
-            <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">yearmax</span><span class="o">-</span><span class="n">yearmin</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">yearmin</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
-                    <span class="n">mytime</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">month</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-01 00:00:00&#39;</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="n">mytime</span> <span class="o">&gt;=</span> <span class="n">tmin</span> <span class="ow">and</span> <span class="n">mytime</span> <span class="o">&lt;=</span> <span class="n">tmax</span><span class="p">:</span>
-                        <span class="n">time_ticks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">((</span><span class="n">cf</span><span class="o">.</span><span class="n">Data</span><span class="p">(</span><span class="n">mytime</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">time_units</span><span class="p">)</span><span class="o">.</span><span class="n">array</span><span class="p">)))</span>
-                        <span class="n">time_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">months</span><span class="p">[</span><span class="n">month</span><span class="p">])</span><span class="o">+</span><span class="s1">&#39; &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">)))</span>
+        <span class="n">time_label</span><span class="o">=</span><span class="s1">&#39;Time (month and year)&#39;</span>
+        <span class="n">months</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Jan&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb&#39;</span><span class="p">,</span> <span class="s1">&#39;Mar&#39;</span><span class="p">,</span> <span class="s1">&#39;Apr&#39;</span><span class="p">,</span> <span class="s1">&#39;May&#39;</span><span class="p">,</span> <span class="s1">&#39;Jun&#39;</span><span class="p">,</span> <span class="s1">&#39;Jul&#39;</span><span class="p">,</span> <span class="s1">&#39;Aug&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep&#39;</span><span class="p">,</span> <span class="s1">&#39;Oct&#39;</span><span class="p">,</span> <span class="s1">&#39;Nov&#39;</span><span class="p">,</span> <span class="s1">&#39;Dec&#39;</span><span class="p">]</span>
+
+        <span class="c1">#Check number of labels with 1 month steps</span>
+        <span class="n">tsteps</span><span class="o">=</span><span class="mi">0</span>
+        <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">yearmax</span><span class="o">-</span><span class="n">yearmin</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">yearmin</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
+                <span class="n">mytime</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">month</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-01 00:00:00&#39;</span><span class="p">)</span>                
+                <span class="k">if</span> <span class="n">mytime</span> <span class="o">&gt;=</span> <span class="n">tmin</span> <span class="ow">and</span> <span class="n">mytime</span> <span class="o">&lt;=</span> <span class="n">tmax</span><span class="p">:</span> <span class="n">tsteps</span><span class="o">=</span><span class="n">tsteps</span><span class="o">+</span><span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">tsteps</span> <span class="o">&lt;</span> <span class="mi">17</span><span class="p">:</span> <span class="n">mvals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">tsteps</span> <span class="o">&gt;=</span> <span class="mi">17</span><span class="p">:</span> <span class="n">mvals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="mi">3</span>
+
+        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_month</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="n">mvals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="o">/</span><span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_month</span><span class="p">)</span><span class="o">*</span><span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_month</span>
+
+        <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">yearmax</span><span class="o">-</span><span class="n">yearmin</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">yearmin</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">mvals</span><span class="p">:</span>
+                <span class="n">mytime</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">month</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-01 00:00:00&#39;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">mytime</span> <span class="o">&gt;=</span> <span class="n">tmin</span> <span class="ow">and</span> <span class="n">mytime</span> <span class="o">&lt;=</span> <span class="n">tmax</span><span class="p">:</span>
+                    <span class="n">time_ticks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">((</span><span class="n">cf</span><span class="o">.</span><span class="n">Data</span><span class="p">(</span><span class="n">mytime</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="n">time_units</span><span class="p">)</span><span class="o">.</span><span class="n">array</span><span class="p">)))</span>
+                    <span class="n">time_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">months</span><span class="p">[</span><span class="n">month</span><span class="p">])</span><span class="o">+</span><span class="s1">&#39; &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">)))</span>
 
 
-    <span class="k">return</span><span class="p">(</span><span class="n">time_ticks</span><span class="p">,</span> <span class="n">time_labels</span><span class="p">)</span> 
+    <span class="c1">#Days and hours</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">tsteps</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">myday</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">tmin</span><span class="o">.</span><span class="n">year</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">tmin</span><span class="o">.</span><span class="n">month</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">tmin</span><span class="o">.</span><span class="n">day</span><span class="p">))</span>
+
+        <span class="n">not_found</span><span class="o">=</span><span class="mi">0</span>
+        <span class="n">hour_counter</span><span class="o">=</span><span class="mi">0</span>
+        <span class="n">span</span><span class="o">=</span><span class="mi">0</span>
+        <span class="k">while</span> <span class="n">not_found</span> <span class="o">&lt;=</span> <span class="mi">48</span><span class="p">:</span>
+            <span class="n">mydate</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">Data</span><span class="p">(</span><span class="n">myday</span><span class="p">,</span> <span class="n">dtimes</span><span class="o">.</span><span class="n">Units</span><span class="p">)</span><span class="o">+</span> <span class="n">cf</span><span class="o">.</span><span class="n">Data</span><span class="p">(</span><span class="n">hour_counter</span><span class="p">,</span> <span class="s1">&#39;hour&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">mydate</span> <span class="o">&gt;=</span> <span class="n">tmin</span> <span class="ow">and</span> <span class="n">mydate</span> <span class="o">&lt;=</span> <span class="n">tmax</span><span class="p">:</span>
+                <span class="n">span</span><span class="o">=</span><span class="n">span</span><span class="o">+</span><span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">not_found</span><span class="o">=</span><span class="n">not_found</span><span class="o">+</span><span class="mi">1</span>
+                
+            <span class="n">hour_counter</span><span class="o">=</span><span class="n">hour_counter</span><span class="o">+</span><span class="mi">1</span>
+            
+
+        <span class="n">step</span><span class="o">=</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">span</span> <span class="o">&gt;</span> <span class="mi">13</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">span</span> <span class="o">&gt;</span> <span class="mi">13</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="mi">4</span>
+        <span class="k">if</span> <span class="n">span</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="mi">6</span>
+        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_hour</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_hour</span>
+        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_day</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_day</span><span class="o">*</span><span class="mi">24</span>
+
+        <span class="n">not_found</span><span class="o">=</span><span class="mi">0</span>
+        <span class="n">hour_counter</span><span class="o">=</span><span class="mi">0</span>
+        <span class="n">span</span><span class="o">=</span><span class="mi">0</span>
+        <span class="n">axis_label</span><span class="o">=</span><span class="s1">&#39;Time (day and hour)&#39;</span>
+        <span class="n">time_ticks</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">time_labels</span><span class="o">=</span><span class="p">[]</span>
+
+
+        <span class="k">while</span> <span class="n">not_found</span> <span class="o">&lt;=</span> <span class="mi">48</span><span class="p">:</span>
+            <span class="n">mytime</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">Data</span><span class="p">(</span><span class="n">myday</span><span class="p">,</span> <span class="n">dtimes</span><span class="o">.</span><span class="n">Units</span><span class="p">)</span><span class="o">+</span> <span class="n">cf</span><span class="o">.</span><span class="n">Data</span><span class="p">(</span><span class="n">hour_counter</span><span class="p">,</span> <span class="s1">&#39;hour&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">mytime</span> <span class="o">&gt;=</span> <span class="n">tmin</span> <span class="ow">and</span> <span class="n">mytime</span> <span class="o">&lt;=</span> <span class="n">tmax</span><span class="p">:</span>
+                <span class="n">time_ticks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">mytime</span><span class="o">.</span><span class="n">array</span><span class="p">))</span>
+                <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">mytime</span><span class="o">.</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">mytime</span><span class="o">.</span><span class="n">month</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">mytime</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">step</span><span class="o">/</span><span class="mi">24</span> <span class="o">!=</span> <span class="n">step</span><span class="o">/</span><span class="mf">24.0</span><span class="p">:</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="o">+</span><span class="s1">&#39; &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">mytime</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;:00:00&#39;</span>
+                <span class="n">time_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">not_found</span><span class="o">=</span><span class="n">not_found</span><span class="o">+</span><span class="mi">1</span>
+                
+            <span class="n">hour_counter</span><span class="o">=</span><span class="n">hour_counter</span><span class="o">+</span><span class="n">step</span>
+
+
+
+
+
+    <span class="k">return</span><span class="p">(</span><span class="n">time_ticks</span><span class="p">,</span> <span class="n">time_labels</span><span class="p">,</span> <span class="n">axis_label</span><span class="p">)</span> 
 
 
 
@@ -4253,7 +4350,8 @@
 
 <div class="viewcode-block" id="setvars"><a class="viewcode-back" href="../setvars.html#cfplot.setvars">[docs]</a><span class="k">def</span> <span class="nf">setvars</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">text_fontsize</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">axis_label_fontsize</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> \
         <span class="n">title_fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">text_fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">axis_label_fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> \
-        <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">continent_thickness</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">continent_color</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">viewer</span><span class="o">=</span><span class="s1">&#39;display&#39;</span><span class="p">):</span>
+        <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">continent_thickness</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">continent_color</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">viewer</span><span class="o">=</span><span class="s1">&#39;display&#39;</span><span class="p">,</span> \
+        <span class="n">tspace_year</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tspace_month</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tspace_day</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tspace_hour</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    | setvars - set plotting variables</span>
 <span class="sd">    |</span>
@@ -4271,6 +4369,10 @@
 <span class="sd">    |                    non-blocking of the command prompt while the built in matplotlib viewer</span>
 <span class="sd">    |                    is blocking.</span>
 <span class="sd">    | </span>
+<span class="sd">    | tspace_year=None - time axis spacing in years</span>
+<span class="sd">    | tspace_month=None - time axis spacing in months</span>
+<span class="sd">    | tspace_day=None - time axis spacing in days</span>
+<span class="sd">    | tspace_hour=None - time axis spacing in hours</span>
 <span class="sd">    | Use setvars() to reset to the defaults</span>
 <span class="sd">    |</span>
 <span class="sd">    |</span>
@@ -4295,6 +4397,10 @@
       <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span>
       <span class="n">continent_thickness</span><span class="o">=</span><span class="bp">None</span>
       <span class="n">continent_color</span><span class="o">=</span><span class="bp">None</span>
+      <span class="n">tspace_year</span><span class="o">=</span><span class="bp">None</span>
+      <span class="n">tspace_month</span><span class="o">=</span><span class="bp">None</span>
+      <span class="n">tspace_day</span><span class="o">=</span><span class="bp">None</span>
+      <span class="n">tspace_hour</span><span class="o">=</span><span class="bp">None</span>
 
    <span class="n">plotvars</span><span class="o">.</span><span class="n">file</span><span class="o">=</span><span class="nb">file</span>
    <span class="n">plotvars</span><span class="o">.</span><span class="n">title_fontsize</span><span class="o">=</span><span class="n">title_fontsize</span>
@@ -4305,7 +4411,11 @@
    <span class="n">plotvars</span><span class="o">.</span><span class="n">text_fontweight</span><span class="o">=</span><span class="n">text_fontweight</span>
    <span class="n">plotvars</span><span class="o">.</span><span class="n">axis_label_fontweight</span><span class="o">=</span><span class="n">axis_label_fontweight</span>
    <span class="n">plotvars</span><span class="o">.</span><span class="n">title_fontweight</span><span class="o">=</span><span class="n">title_fontweight</span>
-   <span class="n">plotvars</span><span class="o">.</span><span class="n">viewer</span><span class="o">=</span><span class="n">viewer</span></div>
+   <span class="n">plotvars</span><span class="o">.</span><span class="n">viewer</span><span class="o">=</span><span class="n">viewer</span>
+   <span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_year</span><span class="o">=</span><span class="n">tspace_year</span>
+   <span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_month</span><span class="o">=</span><span class="n">tspace_month</span>
+   <span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_day</span><span class="o">=</span><span class="n">tspace_day</span>
+   <span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_hour</span><span class="o">=</span><span class="n">tspace_hour</span></div>
 
 
 
@@ -4842,6 +4952,7 @@
         <span class="n">maxx</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">xmax</span>
         <span class="n">maxy</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">ymax</span>
 
+
     <span class="c1">#Set x and y labelling</span>
     <span class="k">if</span> <span class="n">xname</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
@@ -4857,8 +4968,7 @@
         <span class="k">if</span> <span class="n">xlabel</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="n">xticks</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">mapaxis</span><span class="p">(</span><span class="n">minx</span><span class="p">,</span> <span class="n">maxx</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">xlabel</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="n">xticks</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">mapaxis</span><span class="p">(</span><span class="n">minx</span><span class="p">,</span> <span class="n">maxx</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span> 
-            <span class="n">xticks</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">timeaxis</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">))</span>
-            <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Time&#39;</span>
+            <span class="n">xticks</span><span class="p">,</span> <span class="n">xticklabels</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="n">timeaxis</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">xticklabels</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">xticks</span>
     <span class="k">if</span> <span class="n">yticks</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
@@ -4900,10 +5010,17 @@
     <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
     <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
     <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
+    <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">swap_xy</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span>
+            <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span>
+            <span class="n">align</span><span class="o">=</span><span class="s1">&#39;right&#39;</span>
+
     <span class="k">if</span> <span class="n">swap_xy</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">True</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">xticks</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">xticks</span><span class="p">)</span>
-            <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">xticklabels</span><span class="p">)</span>
+            <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">xticklabels</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="n">rotation</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="n">align</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">yticks</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">yticks</span><span class="p">)</span>
             <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">yticklabels</span><span class="p">)</span>
@@ -4913,10 +5030,15 @@
             <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">xticklabels</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">yticks</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">xticks</span><span class="p">)</span>
-            <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">xticklabels</span><span class="p">)</span>
+            <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">xticklabels</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="n">rotation</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="n">ha</span><span class="p">)</span>
 
     <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xpts</span><span class="p">,</span> <span class="n">ypts</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="n">linestyle</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span>\
                        <span class="n">markersize</span><span class="o">=</span><span class="n">markersize</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>   
+
+
+    <span class="c1">#Time axes sometimes spill over the edge of the plot limits so</span>
+    <span class="c1">#use tight_layout() to adjust these plots</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">master_plot</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 
     <span class="c1">#Add a legend if needed</span>
     <span class="k">if</span> <span class="n">legend_location</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">legend_location</span><span class="p">)</span>
@@ -4972,7 +5094,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.22 documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.25 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>

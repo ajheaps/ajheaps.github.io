@@ -11,9 +11,6 @@ Once a plot is made and is displayed this blocks any further interaction with cf
 
      cf-plot was changed to use the display command from ImageMagick if this is available.  
      This allows the subprocesss module to be used and the plots will display in a non-blocking manner.
-     The previous method of using the Matplotlib plot viewer can still be used by typing
-     cfp.setvars(viewer='matplotlib') on the command prompt.
-
 
 
 2. Configure -> reset all needs to reset everything
@@ -44,7 +41,7 @@ Need a method of making a combined colour bar.  This is selected in the configur
 
 ::
 
-    To do
+    Done
 
 
 

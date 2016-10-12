@@ -280,8 +280,18 @@ Subsequent plots after the first hovmuller plot call produce incorrect pictures.
 
 
 
+25. Added time axis options to setvars
+======================================
 
+Added time axis tick marks and labelling options to setvars. Once set these plot options are used
+for all subsequent time axes.
 
+| tspace_year=None - time axis spacing in years
+| tspace_month=None - time axis spacing in months
+| tspace_day=None - time axis spacing in days
+| tspace_hour=None - time axis spacing in hours
 
+::
 
+    Done
 
