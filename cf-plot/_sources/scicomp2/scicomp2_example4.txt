@@ -1,0 +1,29 @@
+.. currentmodule:: cf
+.. default-role:: obj
+
+
+Example 4 - Make longitude-latitude and polar contour plots
+===========================================================
+
+The cf-plot package is useful for plotting fields from cf-python.  See `cf-plot <http://ajheaps.github.io/cf-plot/>`_ for full documentation and examples.
+
+**1.** Load the cf-plot package.
+
+>>> import cfplot as cfp
+
+
+**2.** Select a 2D field for plotting.
+
+>>> u=f[2]
+>>> u_500=u.subspace(Z=500)
+>>> u_500
+<CF Field: eastward_wind(time(1), pressure(1), latitude(160), longitude(320)) m s**-1>
+
+
+**3.** Make a contour plot.
+
+
+>>> cfp.con(u_500)
+
+
+

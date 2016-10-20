@@ -1,0 +1,46 @@
+.. currentmodule:: cf
+.. default-role:: obj
+
+
+Example 2 - Add a missing CF attribute, change units for a field
+================================================================
+
+**1.** Select a field without a CF standard_name
+
+>>> h=f[0]
+>>> h
+<CF Field: long_name:Potential vorticity(time(1), pressure(23), latitude(160), longitude(320)) K m**2 kg**-1 s**-1>
+
+
+
+**2.** Add a CF standard_name
+
+>>> h.standard_name='potential_vorticity'
+>>> h
+<CF Field: Potential_vorticity(time(1), pressure(23), latitude(160), longitude(320)) K m**2 kg**-1 s**-1>
+
+
+**3.** Change the units of a field
+
+Here we select the temperature field again and change the Units from Kelvin to Celsius.  In Udunits Celsius is marked as an offset of 273.15 degrees from zero Kelvin.
+
+>>> g=f[2]
+>>> g
+<CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(320)) K>
+>>> g.Units
+<CF Units: K>
+
+View the minimum and maximum of the field using numpy.
+
+>>> import numpy as np
+>>> print np.min(g.array), np.max(g.array)
+188.336 312.293
+
+Change to Celsiuis and view thw maximum and minimum of the field.
+
+>>> g.Units -= 273.15
+>>> g.Units
+<CF Units: K @ 273.15>
+>>> print np.min(g.array), np.max(g.array)
+-84.8141 39.1428
+

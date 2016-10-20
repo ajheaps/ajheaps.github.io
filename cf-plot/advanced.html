@@ -6,15 +6,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Advanced Use &mdash; cf-plot 1.9.25 documentation</title>
+    <title>Advanced Use &mdash; cf-plot 1.9.26 documentation</title>
     
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.9.25',
+        VERSION:     '1.9.26',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,23 +23,23 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 1.9.25 documentation" href="index.html" /> 
+    <link rel="top" title="cf-plot 1.9.26 documentation" href="index.html" /> 
   </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
+  <body>
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 1.9.25 documentation</a> &raquo;</li> 
+        <li><a href="index.html">cf-plot 1.9.26 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <div class="section" id="advanced-use">
 <h1>Advanced Use<a class="headerlink" href="#advanced-use" title="Permalink to this headline">¶</a></h1>
@@ -48,13 +48,13 @@
 <h2>Adding user defined lines and text to plots<a class="headerlink" href="#adding-user-defined-lines-and-text-to-plots" title="Permalink to this headline">¶</a></h2>
 <p>In cf-plot the plot is stored in a plot object with the name cfp.plotvars.plot.  The page containing the plots is named cfp.plotvars.plot_master.</p>
 <p>To see all the methods for the plot object type</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">()</span>
 <span class="nb">dir</span><span class="p">(</span><span class="n">cfp</span><span class="o">.</span><span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>In this example we make a blank map plot, change the longitude labels and add a box and some text.  To add text and lines outside of the plot use the same method as below with coordinates outside of the defined plot area.</p>
 <img alt="_images/advanced1.png" src="_images/advanced1.png" />
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">()</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">levs</span><span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="o">-</span><span class="mi">900</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">15</span><span class="p">),</span><span class="n">lines</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">45.0</span><span class="p">])</span>
@@ -82,7 +82,7 @@ hex(255)[2:]
 &#8216;ff&#8217;</p>
 <p>The [2:] is to get rid of the preceding 0x in the hex output.</p>
 <p>for example to make one of the colours in the viridis colour scale grey use:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/tas_A1.nc&#39;</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">plotvars</span><span class="o">.</span><span class="n">cs</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;#a6a6a6&#39;</span>
@@ -96,7 +96,7 @@ hex(255)[2:]
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -115,18 +115,18 @@ hex(255)[2:]
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 1.9.25 documentation</a> &raquo;</li> 
+        <li><a href="index.html">cf-plot 1.9.26 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
+    <div class="footer">
         &copy; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

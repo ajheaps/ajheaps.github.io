@@ -6,15 +6,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>cfplot &mdash; cf-plot 1.9.25 documentation</title>
+    <title>cfplot &mdash; cf-plot 1.9.26 documentation</title>
     
-    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.9.25',
+        VERSION:     '1.9.26',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,25 +23,25 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 1.9.25 documentation" href="../index.html" />
+    <link rel="top" title="cf-plot 1.9.26 documentation" href="../index.html" />
     <link rel="up" title="Module code" href="index.html" /> 
   </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
+  <body>
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.25 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
+        <li><a href="../index.html">cf-plot 1.9.26 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <h1>Source code for cfplot</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -1517,12 +1517,12 @@
       
       <span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="o">**</span><span class="n">old_settings</span><span class="p">)</span>  <span class="c1"># reset to default numpy error settings</span>
 
-      <span class="n">gclose</span><span class="p">()</span></div>
+      <span class="n">gclose</span><span class="p">()</span>
   
 
 
 
-
+</div>
 <div class="viewcode-block" id="mapset"><a class="viewcode-back" href="../mapset.html#cfplot.mapset">[docs]</a><span class="k">def</span> <span class="nf">mapset</span><span class="p">(</span><span class="n">lonmin</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">lonmax</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">latmin</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">latmax</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">proj</span><span class="o">=</span><span class="s1">&#39;cyl&#39;</span><span class="p">,</span> <span class="n">boundinglat</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
            <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">user_mapset</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot;</span>
@@ -1598,12 +1598,12 @@
    <span class="n">plotvars</span><span class="o">.</span><span class="n">boundinglat</span><span class="o">=</span><span class="n">boundinglat</span> 
    <span class="n">plotvars</span><span class="o">.</span><span class="n">lon_0</span><span class="o">=</span><span class="n">lon_0</span>
    <span class="n">plotvars</span><span class="o">.</span><span class="n">user_mapset</span><span class="o">=</span><span class="n">user_mapset</span>
-   <span class="n">set_map</span><span class="p">()</span>   </div>
+   <span class="n">set_map</span><span class="p">()</span>   
 
 
 
   
-
+</div>
 <div class="viewcode-block" id="levs"><a class="viewcode-back" href="../levs.html#cfplot.levs">[docs]</a><span class="k">def</span> <span class="nf">levs</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">manual</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">    | The levs command manually sets the contour levels.</span>
@@ -1665,10 +1665,10 @@
              <span class="n">plotvars</span><span class="o">.</span><span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">vals</span><span class="p">))</span>
          <span class="n">plotvars</span><span class="o">.</span><span class="n">user_levs</span><span class="o">=</span><span class="mi">1</span>
 
-   <span class="n">plotvars</span><span class="o">.</span><span class="n">levels_extend</span><span class="o">=</span><span class="n">extend</span></div>
+   <span class="n">plotvars</span><span class="o">.</span><span class="n">levels_extend</span><span class="o">=</span><span class="n">extend</span>
 
 
-
+</div>
 <div class="viewcode-block" id="mapaxis"><a class="viewcode-back" href="../mapaxis.html#cfplot.mapaxis">[docs]</a><span class="k">def</span> <span class="nf">mapaxis</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="nb">max</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">    | mapaxis is used to work out a sensible set of longitude and latitude </span>
@@ -1741,16 +1741,16 @@
          <span class="k">if</span> <span class="n">lat</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">latlabels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;N&#39;</span><span class="p">)</span>
          <span class="k">if</span> <span class="n">lat</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">latlabels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
      
-      <span class="k">return</span><span class="p">(</span><span class="n">latticks</span><span class="p">,</span> <span class="n">latlabels</span><span class="p">)</span> </div>
+      <span class="k">return</span><span class="p">(</span><span class="n">latticks</span><span class="p">,</span> <span class="n">latlabels</span><span class="p">)</span> 
 
-
+</div>
 <span class="k">def</span> <span class="nf">timeaxis</span><span class="p">(</span><span class="n">dtimes</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">     | timeaxis is used to work out a sensible set of time labels and tick </span>
 <span class="sd">     | marks given a time span  This is an internal routine and is not used </span>
 <span class="sd">     | by the user.</span>
 
-<span class="sd">     | dtimes=None - data times as a CF variable i.e. f.item(&#39;T&#39;)</span>
+<span class="sd">     | dtimes=None - data times as a CF variable</span>
 <span class="sd">  </span>
 <span class="sd">     :Returns:</span>
 <span class="sd">      time ticks and labels</span>
@@ -1825,7 +1825,6 @@
         <span class="k">if</span> <span class="n">tsteps</span> <span class="o">&lt;</span> <span class="mi">17</span><span class="p">:</span> <span class="n">mvals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">tsteps</span> <span class="o">&gt;=</span> <span class="mi">17</span><span class="p">:</span> <span class="n">mvals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="mi">3</span>
 
-        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_month</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="n">mvals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="o">/</span><span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_month</span><span class="p">)</span><span class="o">*</span><span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_month</span>
 
         <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">yearmax</span><span class="o">-</span><span class="n">yearmin</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">yearmin</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">mvals</span><span class="p">:</span>
@@ -1836,7 +1835,7 @@
 
 
     <span class="c1">#Days and hours</span>
-    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">tsteps</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">time_ticks</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
         <span class="n">myday</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">tmin</span><span class="o">.</span><span class="n">year</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">tmin</span><span class="o">.</span><span class="n">month</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">tmin</span><span class="o">.</span><span class="n">day</span><span class="p">))</span>
 
         <span class="n">not_found</span><span class="o">=</span><span class="mi">0</span>
@@ -1856,13 +1855,18 @@
         <span class="k">if</span> <span class="n">span</span> <span class="o">&gt;</span> <span class="mi">13</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span>
         <span class="k">if</span> <span class="n">span</span> <span class="o">&gt;</span> <span class="mi">13</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="mi">4</span>
         <span class="k">if</span> <span class="n">span</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="mi">6</span>
+        <span class="k">if</span> <span class="n">span</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="mi">12</span>
+        <span class="k">if</span> <span class="n">span</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="mi">24</span>
+        <span class="k">if</span> <span class="n">span</span> <span class="o">&gt;</span> <span class="mi">400</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="mi">48</span>
+        <span class="k">if</span> <span class="n">span</span> <span class="o">&gt;</span> <span class="mi">800</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="mi">96</span>
         <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_hour</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_hour</span>
         <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_day</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="n">step</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_day</span><span class="o">*</span><span class="mi">24</span>
 
         <span class="n">not_found</span><span class="o">=</span><span class="mi">0</span>
         <span class="n">hour_counter</span><span class="o">=</span><span class="mi">0</span>
         <span class="n">span</span><span class="o">=</span><span class="mi">0</span>
-        <span class="n">axis_label</span><span class="o">=</span><span class="s1">&#39;Time (day and hour)&#39;</span>
+        <span class="n">axis_label</span><span class="o">=</span><span class="s1">&#39;Time (day)&#39;</span>
+        <span class="k">if</span> <span class="n">span</span> <span class="o">&gt;=</span> <span class="mi">24</span><span class="p">:</span> <span class="n">axis_label</span><span class="o">=</span><span class="s1">&#39;Time (day and hour)&#39;</span>
         <span class="n">time_ticks</span><span class="o">=</span><span class="p">[]</span>
         <span class="n">time_labels</span><span class="o">=</span><span class="p">[]</span>
 
@@ -1915,9 +1919,9 @@
          <span class="n">number_decs</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
          <span class="k">if</span> <span class="n">number_decs</span> <span class="o">&gt;</span> <span class="n">maxdecs</span><span class="p">:</span> <span class="n">maxdecs</span><span class="o">=</span><span class="n">number_decs</span>
   
-   <span class="k">return</span> <span class="n">maxdecs</span></div>
+   <span class="k">return</span> <span class="n">maxdecs</span>
 
-
+</div>
 <div class="viewcode-block" id="axes"><a class="viewcode-back" href="../axes.html#cfplot.axes">[docs]</a><span class="k">def</span> <span class="nf">axes</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">yticks</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>\
          <span class="n">xstep</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ystep</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>	  
    <span class="sd">&quot;&quot;&quot;</span>
@@ -1963,10 +1967,10 @@
    <span class="n">plotvars</span><span class="o">.</span><span class="n">ystep</span><span class="o">=</span><span class="n">ystep</span>
    <span class="n">plotvars</span><span class="o">.</span><span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span>
    <span class="n">plotvars</span><span class="o">.</span><span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span>
-   <span class="n">plotvars</span><span class="o">.</span><span class="n">title</span><span class="o">=</span><span class="n">title</span></div>
+   <span class="n">plotvars</span><span class="o">.</span><span class="n">title</span><span class="o">=</span><span class="n">title</span>
 
 
-
+</div>
 <span class="k">def</span> <span class="nf">axes_plot</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">yticks</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>\
          <span class="n">xstep</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ystep</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>	    
    <span class="sd">&quot;&quot;&quot;</span>
@@ -2125,11 +2129,11 @@
    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
       <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="n">plotvars</span><span class="o">.</span><span class="n">xmin</span><span class="p">,</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">xmax</span><span class="p">,</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">ymin</span><span class="p">,</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">ymax</span><span class="p">])</span>
       <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">xlog</span> <span class="o">==</span> <span class="bp">True</span> <span class="ow">or</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">xlog</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
-      <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">ylog</span> <span class="o">==</span> <span class="bp">True</span> <span class="ow">or</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">ylog</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>  </div>
+      <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">ylog</span> <span class="o">==</span> <span class="bp">True</span> <span class="ow">or</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">ylog</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>  
 
 
   
-
+</div>
 <div class="viewcode-block" id="gopen"><a class="viewcode-back" href="../gopen.html#cfplot.gopen">[docs]</a><span class="k">def</span> <span class="nf">gopen</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">user_plot</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> \
           <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;landscape&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mf">11.7</span><span class="p">,</span> <span class="mf">8.3</span><span class="p">],</span> \
           <span class="n">left</span><span class="o">=</span><span class="mf">0.12</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.92</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.92</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
@@ -2190,10 +2194,10 @@
    <span class="c1">#Change tick length for plots &gt; 2x2</span>
    <span class="k">if</span> <span class="p">(</span><span class="n">columns</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">rows</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">):</span>
       <span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;xtick.major.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-      <span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;ytick.major.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span></div>
+      <span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;ytick.major.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
 
  
-
+</div>
 <div class="viewcode-block" id="gclose"><a class="viewcode-back" href="../gclose.html#cfplot.gclose">[docs]</a><span class="k">def</span> <span class="nf">gclose</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    | gclose saves a graphics file.  The default is to view the file as well</span>
@@ -2247,9 +2251,9 @@
 
 
    <span class="c1">#Reset plotting</span>
-   <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">=</span><span class="bp">None</span></div>
+   <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">=</span><span class="bp">None</span>
 
-
+</div>
 <span class="k">def</span> <span class="nf">showplot</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
       <span class="n">plot</span><span class="o">=</span><span class="n">data</span>
@@ -2293,7 +2297,7 @@
    <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">)</span>
    
    <span class="c1">#Set osition in global variables</span>
-   <span class="n">plotvars</span><span class="o">.</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span></div>
+   <span class="n">plotvars</span><span class="o">.</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span>
 
    <span class="c1">#if plotvars.user_plot == 0: </span>
    <span class="c1">#   if plotvars.user_gset == 1: gset(user_gset=plotvars.user_gset)</span>
@@ -2304,7 +2308,7 @@
 <span class="c1">#######################################</span>
 <span class="c1">#pcon - convert mb to km and vice-versa</span>
 <span class="c1">#######################################</span>
-
+</div>
 <div class="viewcode-block" id="pcon"><a class="viewcode-back" href="../pcon.html#cfplot.pcon">[docs]</a><span class="k">def</span> <span class="nf">pcon</span><span class="p">(</span><span class="n">mb</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">km</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">7.0</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">    | pcon is a function for converting pressure to height in kilometers and </span>
@@ -2337,12 +2341,12 @@
       <span class="k">raise</span>  <span class="ne">Warning</span><span class="p">(</span><span class="n">errstr</span><span class="p">)</span>      
  
    <span class="k">if</span> <span class="n">mb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="k">return</span> <span class="n">h</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">p0</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mb</span><span class="p">))</span>
-   <span class="k">if</span> <span class="n">km</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">km</span><span class="p">)</span><span class="o">/</span><span class="n">h</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">p0</span><span class="p">)))</span></div>
+   <span class="k">if</span> <span class="n">km</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">km</span><span class="p">)</span><span class="o">/</span><span class="n">h</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">p0</span><span class="p">)))</span>
  
 
 
 
-
+</div>
 <div class="viewcode-block" id="supscr"><a class="viewcode-back" href="../supscr.html#cfplot.supscr">[docs]</a><span class="k">def</span> <span class="nf">supscr</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    | supscr - add superscript text formatting for ** and ^</span>
@@ -2392,11 +2396,11 @@
    <span class="n">tform</span><span class="o">=</span><span class="n">tform</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;s-2&#39;</span><span class="p">,</span> <span class="s1">&#39;s$^{-2}$&#39;</span><span class="p">)</span>
 
 
-   <span class="k">return</span> <span class="n">tform</span></div>
+   <span class="k">return</span> <span class="n">tform</span>
 
 
 
-
+</div>
 <div class="viewcode-block" id="gvals"><a class="viewcode-back" href="../gvals.html#cfplot.gvals">[docs]</a><span class="k">def</span> <span class="nf">gvals</span><span class="p">(</span><span class="n">dmin</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dmax</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tight</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">mystep</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">mod</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span> 
    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    | gvals - work out a sensible set of values between two limits</span>
@@ -2516,10 +2520,10 @@
       <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">dmax</span><span class="p">:</span> <span class="n">vals</span><span class="o">=</span><span class="n">vals</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
       <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">dmin</span><span class="p">:</span> <span class="n">vals</span><span class="o">=</span><span class="n">vals</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 
-   <span class="k">return</span> <span class="n">vals</span><span class="p">,</span> <span class="n">mult</span></div>
+   <span class="k">return</span> <span class="n">vals</span><span class="p">,</span> <span class="n">mult</span>
 
 
-
+</div>
 <div class="viewcode-block" id="cf_data_assign"><a class="viewcode-back" href="../cf_data_assign.html#cfplot.cf_data_assign">[docs]</a><span class="k">def</span> <span class="nf">cf_data_assign</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">colorbar_title</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    | Check cf input data is okay and return data for contour plot.</span>
@@ -2818,10 +2822,10 @@
     
 
    <span class="c1">#Return data</span>
-   <span class="k">return</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ptype</span><span class="p">,</span> <span class="n">colorbar_title</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span> <span class="n">xpole</span><span class="p">,</span> <span class="n">ypole</span><span class="p">)</span></div>
+   <span class="k">return</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ptype</span><span class="p">,</span> <span class="n">colorbar_title</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span> <span class="n">xpole</span><span class="p">,</span> <span class="n">ypole</span><span class="p">)</span>
 
 
-
+</div>
 <div class="viewcode-block" id="check_data"><a class="viewcode-back" href="../check_data.html#cfplot.check_data">[docs]</a><span class="k">def</span> <span class="nf">check_data</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    | check_data - check user input contour data is correct.</span>
@@ -2889,10 +2893,10 @@
       <span class="n">errstr</span><span class="o">=</span><span class="n">errstr</span><span class="o">+</span><span class="s1">&#39;Expected x=xpts, y=ypts, field=(ypts,xpts)</span><span class="se">\n</span><span class="s1">&#39;</span>
       <span class="n">errstr</span><span class="o">=</span><span class="n">errstr</span><span class="o">+</span><span class="s1">&#39;x=npts, y=npts, field=npts</span><span class="se">\n</span><span class="s1">&#39;</span>
       <span class="n">errstr</span><span class="o">=</span><span class="n">errstr</span><span class="o">+</span><span class="s1">&#39;or x=[ypts, xpts], y=[ypts, xpts], field=[ypts, xpts]</span><span class="se">\n</span><span class="s1">&#39;</span>
-      <span class="k">raise</span>  <span class="ne">Warning</span><span class="p">(</span><span class="n">errstr</span><span class="p">)</span>  </div>
+      <span class="k">raise</span>  <span class="ne">Warning</span><span class="p">(</span><span class="n">errstr</span><span class="p">)</span>  
 
 
-
+</div>
 <div class="viewcode-block" id="cscale"><a class="viewcode-back" href="../cscale.html#cfplot.cscale">[docs]</a><span class="k">def</span> <span class="nf">cscale</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">white</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">below</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">above</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">   | cscale - choose and manipulate colour maps.  Around 200 colour scales are</span>
@@ -3064,9 +3068,9 @@
   
   
    <span class="c1">#Set colour scale </span>
-   <span class="n">plotvars</span><span class="o">.</span><span class="n">cs</span><span class="o">=</span><span class="nb">hex</span></div>
+   <span class="n">plotvars</span><span class="o">.</span><span class="n">cs</span><span class="o">=</span><span class="nb">hex</span>
 
-
+</div>
 <div class="viewcode-block" id="cscale_get_map"><a class="viewcode-back" href="../cscale_get_map.html#cfplot.cscale_get_map">[docs]</a><span class="k">def</span> <span class="nf">cscale_get_map</span><span class="p">():</span>
    <span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">   | cscale_get_map - return colour map for use in contour plots.  </span>
@@ -3087,10 +3091,10 @@
    <span class="k">if</span> <span class="p">(</span><span class="n">plotvars</span><span class="o">.</span><span class="n">levels_extend</span> <span class="o">==</span> <span class="s1">&#39;min&#39;</span><span class="p">):</span> <span class="n">colmap</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">cs</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>   
    <span class="k">if</span> <span class="p">(</span><span class="n">plotvars</span><span class="o">.</span><span class="n">levels_extend</span> <span class="o">==</span> <span class="s1">&#39;max&#39;</span><span class="p">):</span> <span class="n">colmap</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">cs</span><span class="p">[:</span><span class="n">cscale_ncols</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>   
    <span class="k">if</span> <span class="p">(</span><span class="n">plotvars</span><span class="o">.</span><span class="n">levels_extend</span> <span class="o">==</span> <span class="s1">&#39;neither&#39;</span><span class="p">):</span> <span class="n">colmap</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">cs</span>  
-   <span class="k">return</span> <span class="p">(</span><span class="n">colmap</span><span class="p">)</span></div>
+   <span class="k">return</span> <span class="p">(</span><span class="n">colmap</span><span class="p">)</span>
 
 
-
+</div>
 <div class="viewcode-block" id="bfill"><a class="viewcode-back" href="../bfill.html#cfplot.bfill">[docs]</a><span class="k">def</span> <span class="nf">bfill</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">lonlat</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">    | bfill - block fill a field with colour rectangles</span>
@@ -3200,7 +3204,7 @@
       <span class="n">cmap</span><span class="o">.</span><span class="n">set_over</span><span class="p">(</span><span class="n">plotvars</span><span class="o">.</span><span class="n">cs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 
    <span class="n">norm</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">BoundaryNorm</span><span class="p">(</span><span class="n">clevs</span><span class="p">,</span> <span class="n">ncolors</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">N</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-   <span class="n">im</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xpts</span><span class="p">,</span> <span class="n">ypts</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span></div>
+   <span class="n">im</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xpts</span><span class="p">,</span> <span class="n">ypts</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
 
    
 
@@ -3208,7 +3212,7 @@
 
 
 
-
+</div>
 <div class="viewcode-block" id="regrid"><a class="viewcode-back" href="../regrid.html#cfplot.regrid">[docs]</a><span class="k">def</span> <span class="nf">regrid</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">xnew</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ynew</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">lonlat</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 
    <span class="sd">&quot;&quot;&quot;</span>
@@ -3277,9 +3281,9 @@
   
       <span class="n">fieldout</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fieldout</span><span class="p">,</span> <span class="n">newval3</span><span class="p">)</span>
 
-   <span class="k">return</span> <span class="n">fieldout</span></div>
+   <span class="k">return</span> <span class="n">fieldout</span>
 
-
+</div>
 <div class="viewcode-block" id="stipple"><a class="viewcode-back" href="../stipple.html#cfplot.stipple">[docs]</a><span class="k">def</span> <span class="nf">stipple</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">pts</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
     
    <span class="sd">&quot;&quot;&quot;</span>
@@ -3373,12 +3377,12 @@
 
 
    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-      <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xnew</span><span class="p">[</span><span class="n">valid_points</span><span class="p">],</span> <span class="n">ynew</span><span class="p">[</span><span class="n">valid_points</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">marker</span><span class="p">)</span></div>
+      <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xnew</span><span class="p">[</span><span class="n">valid_points</span><span class="p">],</span> <span class="n">ynew</span><span class="p">[</span><span class="n">valid_points</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">marker</span><span class="p">)</span>
 
 
 
 
-
+</div>
 <div class="viewcode-block" id="stipple_points"><a class="viewcode-back" href="../stipple_points.html#cfplot.stipple_points">[docs]</a><span class="k">def</span> <span class="nf">stipple_points</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">pts</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">stype</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     
    <span class="sd">&quot;&quot;&quot;</span>
@@ -3454,11 +3458,11 @@
       
 
 
-   <span class="k">return</span> <span class="n">xnew</span><span class="p">,</span> <span class="n">ynew</span></div>
+   <span class="k">return</span> <span class="n">xnew</span><span class="p">,</span> <span class="n">ynew</span>
 
 
 
-
+</div>
 <div class="viewcode-block" id="find_pos_in_array"><a class="viewcode-back" href="../find_pos_in_array.html#cfplot.find_pos_in_array">[docs]</a><span class="k">def</span> <span class="nf">find_pos_in_array</span><span class="p">(</span><span class="n">vals</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">above</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
     
    <span class="sd">&quot;&quot;&quot;</span>
@@ -3491,10 +3495,10 @@
 
       <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span> <span class="o">&gt;</span> <span class="n">pos</span><span class="p">:</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="o">+</span><span class="mi">1</span>
 
-   <span class="k">return</span> <span class="n">pos</span></div>
+   <span class="k">return</span> <span class="n">pos</span>
 
 
-
+</div>
 <div class="viewcode-block" id="vect"><a class="viewcode-back" href="../vect.html#cfplot.vect">[docs]</a><span class="k">def</span> <span class="nf">vect</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">pts</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>\
          <span class="n">key_length</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">key_label</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ptype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>\
          <span class="n">width</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">headlength</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">headaxislength</span><span class="o">=</span><span class="mf">4.5</span><span class="p">,</span> <span class="n">pivot</span><span class="o">=</span><span class="s1">&#39;middle&#39;</span><span class="p">,</span> <span class="n">key_location</span><span class="o">=</span><span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.06</span><span class="p">],</span>
@@ -4005,9 +4009,9 @@
    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_plot</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> 
        <span class="n">gset</span><span class="p">()</span>
        <span class="n">cscale</span><span class="p">()</span>
-       <span class="n">gclose</span><span class="p">()</span></div>
+       <span class="n">gclose</span><span class="p">()</span>
   
-
+</div>
 <div class="viewcode-block" id="set_map"><a class="viewcode-back" href="../set_map.html#cfplot.set_map">[docs]</a><span class="k">def</span> <span class="nf">set_map</span><span class="p">():</span>
    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    | set_map - set map and write into plotvars.mymap</span>
@@ -4046,10 +4050,10 @@
       <span class="n">mymap</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;moll&#39;</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">lon_0</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">resolution</span><span class="p">)</span>
 
    <span class="c1">#Store map </span>
-   <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span><span class="o">=</span><span class="n">mymap</span></div>
+   <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span><span class="o">=</span><span class="n">mymap</span>
 
 
-
+</div>
 <div class="viewcode-block" id="polar_regular_grid"><a class="viewcode-back" href="../polar_regular_grid.html#cfplot.polar_regular_grid">[docs]</a><span class="k">def</span> <span class="nf">polar_regular_grid</span><span class="p">(</span><span class="n">pts</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    | polar_regular_grid - return a regular grid over a polar stereographic area</span>
@@ -4102,10 +4106,10 @@
             <span class="n">valid_points</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">valid_points</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
 
 
-   <span class="k">return</span> <span class="n">lons</span><span class="p">[</span><span class="n">valid_points</span><span class="p">],</span> <span class="n">lats</span><span class="p">[</span><span class="n">valid_points</span><span class="p">],</span> <span class="n">xnew</span><span class="p">[</span><span class="n">valid_points</span><span class="p">],</span> <span class="n">ynew</span><span class="p">[</span><span class="n">valid_points</span><span class="p">]</span></div>
+   <span class="k">return</span> <span class="n">lons</span><span class="p">[</span><span class="n">valid_points</span><span class="p">],</span> <span class="n">lats</span><span class="p">[</span><span class="n">valid_points</span><span class="p">],</span> <span class="n">xnew</span><span class="p">[</span><span class="n">valid_points</span><span class="p">],</span> <span class="n">ynew</span><span class="p">[</span><span class="n">valid_points</span><span class="p">]</span>
 
 
-
+</div>
 <div class="viewcode-block" id="cf_var_name"><a class="viewcode-back" href="../cf_var_name.html#cfplot.cf_var_name">[docs]</a><span class="k">def</span> <span class="nf">cf_var_name</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    | cf_var_name - return the name from a supplied dimension</span>
@@ -4152,10 +4156,10 @@
    <span class="c1">#if hasattr(field.item(dim), &#39;standard_name&#39;): name=field.standard_name</span>
 
 
-   <span class="k">return</span> <span class="n">name</span></div>
+   <span class="k">return</span> <span class="n">name</span>
 
 
-
+</div>
 <div class="viewcode-block" id="process_color_scales"><a class="viewcode-back" href="../process_color_scales.html#cfplot.process_color_scales">[docs]</a><span class="k">def</span> <span class="nf">process_color_scales</span><span class="p">():</span>
    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    | Process colour scales to generate images of them for the web</span>
@@ -4319,10 +4323,10 @@
 
       <span class="k">print</span> <span class="n">div</span>
       <span class="k">print</span> <span class="s1">&#39;&#39;</span>
-      <span class="k">print</span> <span class="s1">&#39;&#39;</span></div>
+      <span class="k">print</span> <span class="s1">&#39;&#39;</span>
 
 
-
+</div>
 <div class="viewcode-block" id="reset"><a class="viewcode-back" href="../reset.html#cfplot.reset">[docs]</a><span class="k">def</span> <span class="nf">reset</span><span class="p">():</span>   
    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    | reset all plotting variables</span>
@@ -4344,10 +4348,10 @@
    <span class="n">levs</span><span class="p">()</span>
    <span class="n">gset</span><span class="p">()</span>
    <span class="n">mapset</span><span class="p">()</span>
-   <span class="n">setvars</span><span class="p">()</span></div>
+   <span class="n">setvars</span><span class="p">()</span>
 
 
-
+</div>
 <div class="viewcode-block" id="setvars"><a class="viewcode-back" href="../setvars.html#cfplot.setvars">[docs]</a><span class="k">def</span> <span class="nf">setvars</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">text_fontsize</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">axis_label_fontsize</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> \
         <span class="n">title_fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">text_fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">axis_label_fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> \
         <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">continent_thickness</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">continent_color</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">viewer</span><span class="o">=</span><span class="s1">&#39;display&#39;</span><span class="p">,</span> \
@@ -4415,10 +4419,10 @@
    <span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_year</span><span class="o">=</span><span class="n">tspace_year</span>
    <span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_month</span><span class="o">=</span><span class="n">tspace_month</span>
    <span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_day</span><span class="o">=</span><span class="n">tspace_day</span>
-   <span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_hour</span><span class="o">=</span><span class="n">tspace_hour</span></div>
+   <span class="n">plotvars</span><span class="o">.</span><span class="n">tspace_hour</span><span class="o">=</span><span class="n">tspace_hour</span>
 
 
-
+</div>
 <div class="viewcode-block" id="rgrot"><a class="viewcode-back" href="../rgrot.html#cfplot.rgrot">[docs]</a><span class="k">def</span> <span class="nf">rgrot</span><span class="p">(</span><span class="n">xin</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">yin</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">xpole</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ypole</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    | rgrot - rotate longitude and latitude points onto a rotated grid</span>
@@ -4526,11 +4530,11 @@
    <span class="n">xpole</span><span class="o">=</span><span class="n">xpole_orig</span>
 
 
-   <span class="k">return</span> <span class="p">(</span><span class="n">xout</span><span class="p">,</span> <span class="n">yout</span><span class="p">)</span></div>
+   <span class="k">return</span> <span class="p">(</span><span class="n">xout</span><span class="p">,</span> <span class="n">yout</span><span class="p">)</span>
 
 
 
-
+</div>
 <div class="viewcode-block" id="rgunrot"><a class="viewcode-back" href="../rgunrot.html#cfplot.rgunrot">[docs]</a><span class="k">def</span> <span class="nf">rgunrot</span><span class="p">(</span><span class="n">xin</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">yin</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">xpole</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ypole</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    | rgunrot - translate points from a rotated grid to longitude/latitude grid</span>
@@ -4642,9 +4646,9 @@
    <span class="c1">#Reset xpole</span>
    <span class="n">xpole</span><span class="o">=</span><span class="n">xpole_orig</span>
 
-   <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span></div>
+   <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 
-
+</div>
 <div class="viewcode-block" id="vloc"><a class="viewcode-back" href="../vloc.html#cfplot.vloc">[docs]</a><span class="k">def</span> <span class="nf">vloc</span><span class="p">(</span><span class="n">xvec</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">yvec</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">lons</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">lats</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">    | vloc is used to locate the positions of a set of points in a vector</span>
@@ -4728,12 +4732,12 @@
       <span class="k">else</span><span class="p">:</span>
          <span class="n">yarr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="bp">None</span> 
 
-   <span class="k">return</span> <span class="p">(</span><span class="n">xarr</span><span class="p">,</span> <span class="n">yarr</span><span class="p">)</span></div>
+   <span class="k">return</span> <span class="p">(</span><span class="n">xarr</span><span class="p">,</span> <span class="n">yarr</span><span class="p">)</span>
 
 
 
 
-
+</div>
 <div class="viewcode-block" id="rgaxes"><a class="viewcode-back" href="../rgaxes.html#cfplot.rgaxes">[docs]</a><span class="k">def</span> <span class="nf">rgaxes</span><span class="p">(</span><span class="n">xpole</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ypole</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">xvec</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">yvec</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">spacing</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">degspacing</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> \
            <span class="n">continents</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot;</span>
@@ -4841,10 +4845,10 @@
       <span class="c1">#ENDIF</span>
 
 
-   <span class="n">yvec</span><span class="o">=</span><span class="n">yvec_orig</span></div>
+   <span class="n">yvec</span><span class="o">=</span><span class="n">yvec_orig</span>
    
 
-
+</div>
 <div class="viewcode-block" id="lineplot"><a class="viewcode-back" href="../lineplot.html#cfplot.lineplot">[docs]</a><span class="k">def</span> <span class="nf">lineplot</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">line_labels</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> \
              <span class="n">ptype</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">xlog</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">ylog</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">swap_xy</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>\
              <span class="n">marker</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">legend_location</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">xunits</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">yunits</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">xname</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>\
@@ -5060,16 +5064,13 @@
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_plot</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>       
         <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="k">print</span> <span class="s1">&#39;Saving or viewing plot&#39;</span>
         <span class="c1">#gset(user_gset=0)</span>
-        <span class="n">gclose</span><span class="p">()</span></div>
-
-
-
-</pre></div>
+        <span class="n">gclose</span><span class="p">()</span>
+</pre></div></div>
 
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -5088,19 +5089,19 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.25 documentation</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &raquo;</li> 
+        <li><a href="../index.html">cf-plot 1.9.26 documentation</a> &raquo;</li>
+          <li><a href="index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
+    <div class="footer">
         &copy; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

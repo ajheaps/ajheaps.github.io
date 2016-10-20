@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Example 3 - Data slicing and meaning &mdash; cf-plot 1.9.26 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.9.26',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="cf-plot 1.9.26 documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">cf-plot 1.9.26 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="example-3-data-slicing-and-meaning">
+<h1>Example 3 - Data slicing and meaning<a class="headerlink" href="#example-3-data-slicing-and-meaning" title="Permalink to this headline">¶</a></h1>
+<p><strong>1.</strong> Select a field and show the axis values.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;eastward_wind&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span>
+<span class="go">&lt;CF Field: eastward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;pressure&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
+<span class="go">or</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>array([ 1000.,   925.,   850.,   775.,   700.,   600.,   500.,   400.,</dt>
+<dd><dl class="first last docutils">
+<dt>300.,   250.,   200.,   150.,   100.,    70.,    50.,    30.,</dt>
+<dd>20.,    10.,     7.,     5.,     3.,     2.,     1.], dtype=float32)</dd>
+</dl>
+</dd>
+</dl>
+<p><strong>2.</strong> Slice the data at 500mb.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">u500</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">Z</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">u500</span>
+<span class="go">eastward_wind field summary</span>
+<span class="go">---------------------------</span>
+<span class="go">Data           : eastward_wind(time(1), pressure(1), latitude(160), longitude(320)) m s**-1</span>
+<span class="go">Axes           : time(1) = [1964-01-21 00:00:00]</span>
+<span class="go">               : pressure(1) = [500.0] mbar</span>
+<span class="go">               : latitude(160) = [89.1415176392, ..., -89.1415176392] degrees_north</span>
+<span class="go">               : longitude(320) = [0.0, ..., 358.875] degrees_east</span>
+</pre></div>
+</div>
+<p><strong>3.</strong> Make a zonal mean.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">zonalmean_u</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here we see that the cell methods states that the longitude axis has had a zonal mean operator applied.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">zonalmean_u</span>
+<span class="go">eastward_wind field summary</span>
+<span class="go">---------------------------</span>
+<span class="go">Data           : eastward_wind(time(1), pressure(23), latitude(160), longitude(1)) m s**-1</span>
+<span class="go">Cell methods   : longitude: mean</span>
+<span class="go">Axes           : longitude(1) = [179.4375] degrees_east</span>
+<span class="go">               : time(1) = [1964-01-21 00:00:00]</span>
+<span class="go">               : pressure(23) = [1000.0, ..., 1.0] mbar</span>
+<span class="go">               : latitude(160) = [89.1415176392, ..., -89.1415176392] degrees_north</span>
+</pre></div>
+</div>
+<p>Various operators are available within the collapse method in cf-Python</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="62%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><em>method</em></th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">'max'</span></tt> or <tt class="docutils literal"><span class="pre">'maximum'</span></tt></td>
+<td>Maximum</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">'min'</span></tt> or <tt class="docutils literal"><span class="pre">'minimum'</span></tt></td>
+<td>Minimum</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">'sum'</span></tt></td>
+<td>Sum</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">'mid_range'</span></tt></td>
+<td>Mid-range</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">'range'</span></tt></td>
+<td>Range</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">'mean'</span></tt> or <tt class="docutils literal"><span class="pre">'average'</span></tt> or <tt class="docutils literal"><span class="pre">'avg'</span></tt></td>
+<td>Mean</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">'sd'</span></tt> or <tt class="docutils literal"><span class="pre">'standard_deviation'</span></tt></td>
+<td>Standard deviation</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">'var'</span></tt> or <tt class="docutils literal"><span class="pre">'variance'</span></tt></td>
+<td>Variance</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">'sample_size'</span></tt></td>
+<td>Sample size</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">'sum_of_weights'</span></tt></td>
+<td>Sum of weights</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">'sum_of_weights2'</span></tt></td>
+<td>Sum of squares of weights</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+
+<h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
+<h5><a href="http://ajheaps.github.io/cf-plot/gallery.html">Gallery</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/user_guide.html">User Guide</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/data.html">Data input</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/routines.html">Routines</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/internal_routines.html">Routines - internal</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/advanced.html">Advanced Use</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/versions.html">Versions</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/issues.html">Issues</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/download.html">Download/Install</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/license.html">License</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/search.html">Search</a><p></h5>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">cf-plot 1.9.26 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

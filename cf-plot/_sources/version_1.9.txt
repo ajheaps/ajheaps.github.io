@@ -295,3 +295,13 @@ for all subsequent time axes.
 
     Done
 
+26. Time axes bugfix
+====================
+
+Bugfix for an issue in time axes.
+
+::
+
+    Done
+
+

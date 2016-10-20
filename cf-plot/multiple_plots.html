@@ -6,15 +6,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Multiple plots &mdash; cf-plot 1.9.25 documentation</title>
+    <title>Multiple plots &mdash; cf-plot 1.9.26 documentation</title>
     
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.9.25',
+        VERSION:     '1.9.26',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,23 +23,23 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 1.9.25 documentation" href="index.html" /> 
+    <link rel="top" title="cf-plot 1.9.26 documentation" href="index.html" /> 
   </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
+  <body>
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 1.9.25 documentation</a> &raquo;</li> 
+        <li><a href="index.html">cf-plot 1.9.26 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <div class="section" id="multiple-plots">
 <h1>Multiple plots<a class="headerlink" href="#multiple-plots" title="Permalink to this headline">¶</a></h1>
@@ -47,18 +47,18 @@
 <h2>Example 19 - multiple plots<a class="headerlink" href="#example-19-multiple-plots" title="Permalink to this headline">¶</a></h2>
 <p>Plots are arranged over rows and columns with the first plot at the top left and the last plot is the bottom right.  Here the margin at the bottom of the plot is increased with the bottom parameter to gopen to accomodate a unified colorbar.  The colorbars are turned off for all plots apart from the last one.</p>
 <a class="reference internal image-reference" href="_images/fig19.png"><img alt="_images/fig19.png" src="_images/fig19.png" style="width: 429.88px; height: 306.24px;" /></a>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
 
 <span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span> <span class="n">colorbar</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">proj</span><span class="o">=</span><span class="s1">&#39;moll&#39;</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span> <span class="n">colorbar</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">proj</span><span class="o">=</span><span class="s1">&#39;npstere&#39;</span><span class="p">,</span> <span class="n">boundinglat</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span> <span class="n">colorbar</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">proj</span><span class="o">=</span><span class="s1">&#39;spstere&#39;</span><span class="p">,</span> <span class="n">boundinglat</span><span class="o">=-</span><span class="mi">30</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span> <span class="n">colorbar_position</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">],</span> <span class="n">colorbar_orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">)</span>
@@ -72,7 +72,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -91,18 +91,18 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 1.9.25 documentation</a> &raquo;</li> 
+        <li><a href="index.html">cf-plot 1.9.26 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
+    <div class="footer">
         &copy; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>
