@@ -23,9 +23,9 @@ The example may be reproduced by downloading the :download:`sample
 netCDF file (scicomp1.nc) <data/data1.nc>` (taking care not to overwrite an
 existing file with that name) 
 
-**1.** Import the cf package.
+**1.** Import the cf and cf-plot packages.
 
->>> import cf
+>>> import cf, cfplot as cfp
 
 **2.** Read a netCDF file from disk and view its contents.
 

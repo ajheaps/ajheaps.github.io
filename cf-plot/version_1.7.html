@@ -8,7 +8,7 @@
     
     <title>version 1.7 changes &mdash; cf-plot 1.9.26 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -25,21 +25,21 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="cf-plot 1.9.26 documentation" href="index.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="index.html">cf-plot 1.9.26 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 1.9.26 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="version-1-7-changes">
 <h1>version 1.7 changes<a class="headerlink" href="#version-1-7-changes" title="Permalink to this headline">¶</a></h1>
@@ -47,7 +47,7 @@
 <div class="section" id="irregular-grid-plotting">
 <h2>1. Irregular grid plotting<a class="headerlink" href="#irregular-grid-plotting" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Introduced</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Introduced</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -55,7 +55,7 @@
 <div class="section" id="zonal-vector-plots">
 <h2>2. Zonal vector plots<a class="headerlink" href="#zonal-vector-plots" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Introduced</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Introduced</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -63,7 +63,7 @@
 <div class="section" id="bug-in-cf-data-assign-for-user-defined-plots">
 <h2>3. Bug in cf_data_assign for user defined plots<a class="headerlink" href="#bug-in-cf-data-assign-for-user-defined-plots" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -71,7 +71,7 @@
 <div class="section" id="bug-in-vect-for-multiple-plots">
 <h2>4. Bug in vect for multiple plots<a class="headerlink" href="#bug-in-vect-for-multiple-plots" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -80,7 +80,7 @@
 <h2>5. Code change for cf-python major release<a class="headerlink" href="#code-change-for-cf-python-major-release" title="Permalink to this headline">¶</a></h2>
 <p>Change .transform for .ref to work with new naming scheme in cf-python 1.0.0</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Implemented</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Implemented</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -89,7 +89,7 @@
 <h2>6. Minor bug fix in manual contour level specification<a class="headerlink" href="#minor-bug-fix-in-manual-contour-level-specification" title="Permalink to this headline">¶</a></h2>
 <p>In the bfill routine levs=clevs.astype(float) was changed to levs=np.array(clevs).astype(float)</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -98,7 +98,7 @@
 <h2>7. No change<a class="headerlink" href="#no-change" title="Permalink to this headline">¶</a></h2>
 <p>An error was made in changing to version 1.7.7 and was reverted in 1.7.8.</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -107,7 +107,7 @@
 <h2>8. Check cf-python is able to be imported and is greater or equal to version 1.0.1<a class="headerlink" href="#check-cf-python-is-able-to-be-imported-and-is-greater-or-equal-to-version-1-0-1" title="Permalink to this headline">¶</a></h2>
 <p>Change import section at start of cf-plot code so that version 1.0.1 or greater of cf is present.</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -116,7 +116,7 @@
 <h2>9. Add reverse keyword to cscale routine<a class="headerlink" href="#add-reverse-keyword-to-cscale-routine" title="Permalink to this headline">¶</a></h2>
 <p>Added the reverse keyword to the cscale routine to rever the colour scale</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -126,7 +126,7 @@
 <p>Added viridis, magma, inferno, plasma, parula and gray uniform sequential colour scales.  These scales
 are colour blind friendly and also perceptually uniform.</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -135,7 +135,7 @@ are colour blind friendly and also perceptually uniform.</p>
 <h2>11. Make viridis the default sequential colour scale<a class="headerlink" href="#make-viridis-the-default-sequential-colour-scale" title="Permalink to this headline">¶</a></h2>
 <p>Make viridis the default sequential colour scale.</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -143,7 +143,7 @@ are colour blind friendly and also perceptually uniform.</p>
 <div class="section" id="bug-in-mapset-coastline-resolution-cannot-be-changed">
 <h2>12. Bug in mapset - coastline resolution cannot be changed<a class="headerlink" href="#bug-in-mapset-coastline-resolution-cannot-be-changed" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -153,7 +153,7 @@ are colour blind friendly and also perceptually uniform.</p>
 <p>When setting a different colour scale cf-plot now automatically matches colour table to
 the contour levels.</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -165,7 +165,7 @@ numpy warning level was reduced in the con routine so this warning isn&#8217;t s
 be removed in a future version of cf-plot as it looks like the numpy warning isn&#8217;t there in
 later versions of numpy.</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -176,7 +176,7 @@ later versions of numpy.</p>
 data colour map.  Other examples were also changed to show the new magma, inferno, plasma,
 parula and gray colour scales.</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -185,7 +185,7 @@ parula and gray colour scales.</p>
 <h2>16. Missing field name on PP data<a class="headerlink" href="#missing-field-name-on-pp-data" title="Permalink to this headline">¶</a></h2>
 <p>With PP data that has no standard_name, long_name or short_name the field name is blank.  The field naming scheme was changed to use the cf-python method field.name(&#8216;No Name&#8217;) setting the field name to &#8216;No Name&#8217; as a catch all.</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -194,7 +194,7 @@ parula and gray colour scales.</p>
 <h2>17.  Vector key location<a class="headerlink" href="#vector-key-location" title="Permalink to this headline">¶</a></h2>
 <p>vect now takes key_location=[xloc, yloc] to change the position of the vector key.  The xloc, yloc are in normalized coordinates with the default being [0.9, -0.06]</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -203,7 +203,7 @@ parula and gray colour scales.</p>
 <h2>18. Single colorbar for multiple plots<a class="headerlink" href="#single-colorbar-for-multiple-plots" title="Permalink to this headline">¶</a></h2>
 <p>con now takes colorbar_position= [xmin, ymin, x_extent, y_extent] option.  These values are in normalised coordinates. For use when a common colorbar is required for a set of plots. A typical set of values would be [0.1, 0.05, 0.8, 0.02]</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -216,7 +216,7 @@ left=0.12 - left margin in normalised coordinates
 right=0.92 - right margin in normalised coordinates
 top=0.92 - top margin in normalised coordinates
 bottom=0.08 - bottom margin in normalised coordinates</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
@@ -227,7 +227,7 @@ bottom=0.08 - bottom margin in normalised coordinates</p>
 <div class="section" id="ep-flux-vectors">
 <h2>27. EP flux vectors<a class="headerlink" href="#ep-flux-vectors" title="Permalink to this headline">¶</a></h2>
 <p>vect to be modified to take addition values so that EP flux vector etc plots are possible.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Done - see example 15
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span> <span class="o">-</span> <span class="n">see</span> <span class="n">example</span> <span class="mi">15</span>
 </pre></div>
 </div>
 </div>
@@ -237,7 +237,7 @@ bottom=0.08 - bottom margin in normalised coordinates</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -256,18 +256,18 @@ bottom=0.08 - bottom margin in normalised coordinates</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="index.html">cf-plot 1.9.26 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 1.9.26 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.
     </div>
   </body>
 </html>

@@ -8,7 +8,7 @@
     
     <title>Download/Install &mdash; cf-plot 1.9.26 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -25,21 +25,21 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="cf-plot 1.9.26 documentation" href="index.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="index.html">cf-plot 1.9.26 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 1.9.26 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="download-install">
 <h1>Download/Install<a class="headerlink" href="#download-install" title="Permalink to this headline">¶</a></h1>
@@ -62,20 +62,20 @@
 <div class="section" id="to-install-cf-plot">
 <h2>To install cf-plot<a class="headerlink" href="#to-install-cf-plot" title="Permalink to this headline">¶</a></h2>
 <p>Download and install Anaconda Python 2.7 for Linux if not already installed.  On the Linux command line type:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>conda install -c ncas -c scitools cf-python cf-plot
-conda install -c nesii esmpy
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">ncas</span> <span class="o">-</span><span class="n">c</span> <span class="n">scitools</span> <span class="n">cf</span><span class="o">-</span><span class="n">python</span> <span class="n">cf</span><span class="o">-</span><span class="n">plot</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">nesii</span> <span class="n">esmpy</span>
 </pre></div>
 </div>
 <p>The first line installs cf-python and cf-plot and the second installs esmpy which cf-python uses for regriding data.</p>
 <p>Using pip:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>pip install cf-python
-pip install cf-plot
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">cf</span><span class="o">-</span><span class="n">python</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">cf</span><span class="o">-</span><span class="n">plot</span>
 </pre></div>
 </div>
 <p>Using GitHub:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>git clone git://github.com/ajheaps/cf-plot.git
-cd cfplot
-python setup.py install
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ajheaps</span><span class="o">/</span><span class="n">cf</span><span class="o">-</span><span class="n">plot</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">cfplot</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>You will need to download and install <a class="reference external" href="http://cfpython.bitbucket.org">cf-python</a> to use cf-plot.  Other cf-plot dependencies are: Numpy, Matplotlib, Netcdf4 and Basemap.</p>
@@ -97,7 +97,7 @@ python setup.py install
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -116,18 +116,18 @@ python setup.py install
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="index.html">cf-plot 1.9.26 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 1.9.26 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.
     </div>
   </body>
 </html>

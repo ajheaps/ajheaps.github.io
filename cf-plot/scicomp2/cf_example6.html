@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Example 6 - Regridding &mdash; cf-plot 1.9.26 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.9.26',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="cf-plot 1.9.26 documentation" href="../index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.26 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="example-6-regridding">
+<h1>Example 6 - Regridding<a class="headerlink" href="#example-6-regridding" title="Permalink to this headline">¶</a></h1>
+<p>In this example we:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Read in two sets of data</li>
+<li>Inspect the new data attributes</li>
+<li>Regrid one set of data to the other data grid</li>
+<li>Make plots of the data and difference</li>
+</ul>
+</div></blockquote>
+<p><strong>1.</strong> Read in two sets of data.</p>
+<p>temp_era40 is a global temperature field at 1000mb for 21st January 1981 from the era40 data reanalysys dataset.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_era40</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data2.nc&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">temp_era40</span>
+<span class="go">air_temperature field summary</span>
+<span class="go">-----------------------------</span>
+<span class="go">Data           : air_temperature(long_name:t(1), long_name:p(1), latitude(160), longitude(320)) K</span>
+<span class="go">Axes           : long_name:t(1) = [1981-01-21 00:00:00]</span>
+<span class="go">               : long_name:p(1) = [1000.0] mbar</span>
+<span class="go">               : latitude(160) = [89.1415176392, ..., -89.1415176392] degrees_north</span>
+<span class="go">               : longitude(320) = [0.0, ..., 358.875] degrees_east</span>
+</pre></div>
+</div>
+<p>temp_era_in is a global temperature field at 1000mb for 21st January 1981 from the era-interim data reanalysys dataset.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_era_in</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data3.nc&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">temp_era_in</span>
+<span class="go">air_temperature field summary</span>
+<span class="go">-----------------------------</span>
+<span class="go">Data           : air_temperature(long_name:t(1), long_name:p(1), long_name:latitude(256), long_name:longitude(512)) K</span>
+<span class="go">Axes           : long_name:t(1) = [1981-01-21 00:00:00]</span>
+<span class="go">               : long_name:p(1) = [1000.0] mbar</span>
+<span class="go">               : long_name:latitude(256) = [89.4629440308, ..., -89.4629440308] degrees_north</span>
+<span class="go">               : long_name:longitude(512) = [0.0, ..., 359.296875] degrees_east</span>
+</pre></div>
+</div>
+<p><strong>2.</strong> Regrid one set of data to the other data grid.</p>
+<p>Regrid the era-interim data onto the era40 grid
+&gt;&gt;&gt; temp_regrid = temp_era_in.regrids(temp_era40, method=&#8217;bilinear&#8217;)</p>
+<p><strong>3.</strong> Inspect the new data attributes.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">temp_regrid</span>
+<span class="go">air_temperature field summary</span>
+<span class="go">-----------------------------</span>
+<span class="go">Data           : air_temperature(altitude(1), time(1), latitude(160), longitude(320)) K</span>
+<span class="go">Cell methods   : time: maximum</span>
+<span class="go">Axes           : altitude(1) = [1.5] m</span>
+<span class="go">               : time(1) = [1979-06-01 12:00:00] gregorian</span>
+<span class="go">               : latitude(160) = [89.1415176392, ..., -89.1415176392] degrees_north</span>
+<span class="go">               : longitude(320) = [0.0, ..., 358.875] degrees_east</span>
+</pre></div>
+</div>
+<p><strong>4.</strong> Make plots of the data and the difference between the two datasets.</p>
+<p>The era40 data.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">temp_era40</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;era40&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/cf_example6_1.png"><img alt="../_images/cf_example6_1.png" src="../_images/cf_example6_1.png" style="width: 792.8px; height: 501.6px;" /></a>
+<p>The era-interim data.  Note the higher resolution compared to the era40 plot.
+&gt;&gt;&gt; cfp.con(temp_era_in, title=&#8217;era_interim&#8217;)</p>
+<a class="reference internal image-reference" href="../_images/cf_example6_2.png"><img alt="../_images/cf_example6_2.png" src="../_images/cf_example6_2.png" style="width: 792.8px; height: 500.8px;" /></a>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">temp_era_in</span><span class="o">-</span><span class="n">temp_era40</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;era_interim - era40 difference&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/cf_example6_3.png"><img alt="../_images/cf_example6_3.png" src="../_images/cf_example6_3.png" style="width: 792.8px; height: 500.8px;" /></a>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+<h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
+<h5><a href="http://ajheaps.github.io/cf-plot/gallery.html">Gallery</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/user_guide.html">User Guide</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/data.html">Data input</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/routines.html">Routines</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/internal_routines.html">Routines - internal</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/advanced.html">Advanced Use</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/versions.html">Versions</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/issues.html">Issues</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/download.html">Download/Install</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/license.html">License</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/search.html">Search</a><p></h5>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.26 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>
