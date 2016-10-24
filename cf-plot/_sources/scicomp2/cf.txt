@@ -6,17 +6,15 @@ Examples of data analysis and visualisation
 ===========================================
 
 
-1) `Read in netCDF file, select a field, print attributes of this field, save data as a netCDF <file:///home/swsheaps/cf-docs/cfplot_sphinx/_build/html/scicomp2/cf_example1.html>`_
-2) `Add a missing CF attribute, change units <file:///home/swsheaps/cf-docs/cfplot_sphinx/_build/html/scicomp2/cf_example2.html>`_
-3) `Data slicing and meaning <file:///home/swsheaps/cf-docs/cfplot_sphinx/_build/html/scicomp2/cf_example3.html>`_
-4) `Cylindrical projection and polar contour plots <file:///home/swsheaps/cf-docs/cfplot_sphinx/_build/html/scicomp2/cf_example4.html>`_
-5) `Zonal mean plots with linear and log pressure axes <file:///home/swsheaps/cf-docs/cfplot_sphinx/_build/html/scicomp2/cf_example5.html>`_
-6) Take two data sets and interpolate them to the same grid.  Plot before and after
-   Discuss area averages, and field conservation?
-7) Monthly mean some daily data and plot
-8) Ensemble average some data
-9) A stats example
-
+1) `Read in netCDF file, select a field, print attributes of this field, save data as a netCDF <http://ajheaps.github.io/cf-plot/scicomp2/cf_example1.html>`_
+2) `Add a missing CF attribute, change units <http://ajheaps.github.io/cf-plot/scicomp2/cf_example2.html>`_
+3) `Data slicing and meaning <http://ajheaps.github.io/cf-plot/scicomp2/cf_example3.html>`_
+4) `Cylindrical projection and polar contour plots <http://ajheaps.github.io/cf-plot/scicomp2/cf_example4.html>`_
+5) `Zonal mean plots with linear and log pressure axes <http://ajheaps.github.io/cf-plot/scicomp2/cf_example5.html>`_
+6) `Take two data sets and interpolate them to the same grid  <http://ajheaps.github.io/cf-plot/scicomp2/cf_example6.html>`_
+7) `Monthly mean some daily data and plot <http://ajheaps.github.io/cf-plot/scicomp2/cf_example7.html>`_
+8) Ensemble average some data 
+9) A stats example 
 10) Combining data (i.e. collection of netcdf files into netcdf entity)
 11) Split-apply-combine and reshaping
 
