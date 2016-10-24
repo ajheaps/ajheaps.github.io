@@ -20,7 +20,7 @@ read-modify-write example which:
 
 
 The example may be reproduced by downloading the :download:`sample
-netCDF file (scicomp1.nc) <data/data1.nc>` (taking care not to overwrite an
+netCDF file (data1.nc) <data/data1.nc>` (taking care not to overwrite an
 existing file with that name) 
 
 **1.** Import the cf and cf-plot packages.
@@ -50,14 +50,14 @@ existing file with that name)
 
 **3.** Select a field and print a summary of its contents.
 
->>> g=f[2]
+>>> temp=f[2]
 or 
->>> g=f.select('air_temperature')
+>>> temp=f.select('air_temperature')
 
->>> g
+>>> temp
 <CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(320)) K>
 
->>> print g
+>>> print temp
 air_temperature field summary
 -----------------------------
 Data           : air_temperature(time(1), pressure(23), latitude(160), longitude(320)) K
@@ -69,23 +69,23 @@ Axes           : time(1) = [1964-01-21 00:00:00]
 
 **4.** Display attributes.
 
->>> g.properties
+>>> temp.properties
 {'_FillValue': 2e+20, 'name': 'PV', 'title': 'Potential vorticity', 'valid_min': -0.0081740506, 
 'Conventions': 'CF-1.5', 'long_name': 'Potential vorticity', 'standard_name': 'potential_vorticity', 
 'source': 'GRIB data', 'time': '00:00', 'date': '21/01/64', 'missing_value': 2e+20, 'valid_max': 0.018913519,
 'history': 'Sun Sep 16 11:26:16 BST 2012 - CONVSH V1.92 16-February-2006'}
 
 
->>> g.standard_name
+>>> temp.standard_name
 'potential_vorticity'
 
->>> g.Units
+>>> temp.Units
 <CF Units: K m**2 kg**-1 s**-1>
 
 
 **5.** Write out the data.
 
->>> cf.write(g, 'newfile.nc')
+>>> cf.write(temp, 'newfile.nc')
 
 
 

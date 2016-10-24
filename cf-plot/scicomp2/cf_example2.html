@@ -44,37 +44,37 @@
   <div class="section" id="example-2-add-a-missing-cf-attribute-change-units-for-a-field">
 <h1>Example 2 - Add a missing CF attribute, change units for a field<a class="headerlink" href="#example-2-add-a-missing-cf-attribute-change-units-for-a-field" title="Permalink to this headline">¶</a></h1>
 <p><strong>1.</strong> Select a field without a CF standard_name</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pv</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pv</span>
 <span class="go">&lt;CF Field: long_name:Potential vorticity(time(1), pressure(23), latitude(160), longitude(320)) K m**2 kg**-1 s**-1&gt;</span>
 </pre></div>
 </div>
 <p><strong>2.</strong> Add a CF standard_name</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">standard_name</span><span class="o">=</span><span class="s1">&#39;potential_vorticity&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pv</span><span class="o">.</span><span class="n">standard_name</span><span class="o">=</span><span class="s1">&#39;potential_vorticity&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pv</span>
 <span class="go">&lt;CF Field: Potential_vorticity(time(1), pressure(23), latitude(160), longitude(320)) K m**2 kg**-1 s**-1&gt;</span>
 </pre></div>
 </div>
 <p><strong>3.</strong> Change the units of a field</p>
 <p>Here we select the temperature field again and change the Units from Kelvin to Celsius.  In Udunits Celsius is marked as an offset of 273.15 degrees from zero Kelvin.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span>
 <span class="go">&lt;CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(320)) K&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">Units</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span><span class="o">.</span><span class="n">Units</span>
 <span class="go">&lt;CF Units: K&gt;</span>
 </pre></div>
 </div>
 <p>View the minimum and maximum of the field using numpy.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">array</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">array</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
 <span class="go">188.336 312.293</span>
 </pre></div>
 </div>
-<p>Change to Celsiuis and view thw maximum and minimum of the field.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">Units</span> <span class="o">-=</span> <span class="mf">273.15</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">Units</span>
+<p>Change the units to Celsius and view the maximum and minimum of the field.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span><span class="o">.</span><span class="n">Units</span> <span class="o">-=</span> <span class="mf">273.15</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span><span class="o">.</span><span class="n">Units</span>
 <span class="go">&lt;CF Units: K @ 273.15&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">array</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">array</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
 <span class="go">-84.8141 39.1428</span>
 </pre></div>
 </div>
