@@ -23,11 +23,9 @@ temp_era40 is a global temperature field at 1000mb for 21st January 1981 from th
 
 
 
-temp_era_in is a global temperature field at 1000mb for 21st January 1981 from the ERA-interim data reanalysis dataset and has 512 longitudes and 256 latitudes::
+temp_era_in is a global temperature field at 1000mb for 21st January 1981 from the ERA-interim data reanalysis dataset and has 512 longitudes and 256 latitudes.
 
-   >>> temp_era_in=cf.read('data3.nc')
-
-
+>>> temp_era_in=cf.read('data3.nc')
 
 
 
@@ -41,17 +39,17 @@ Regrid the ERA-interim data onto the ERA40 grid
 
 **3.** Inspect the new data attributes.
 
-Check the interpolated data is on the same grid as the ERA40 data::
+Check the interpolated data is on the same grid as the ERA40 data
 
-   >>> print temp_regrid
-   air_temperature field summary
-   -----------------------------
-   Data           : air_temperature(altitude(1), time(1), latitude(160), longitude(320)) K
-   Cell methods   : time: maximum
-   Axes           : altitude(1) = [1.5] m
-                  : time(1) = [1979-06-01 12:00:00] gregorian
-                  : latitude(160) = [89.1415176392, ..., -89.1415176392] degrees_north
-                  : longitude(320) = [0.0, ..., 358.875] degrees_east
+>>> print temp_regrid
+air_temperature field summary
+-----------------------------
+Data           : air_temperature(altitude(1), time(1), latitude(160), longitude(320)) K
+Cell methods   : time: maximum
+Axes           : altitude(1) = [1.5] m
+               : time(1) = [1979-06-01 12:00:00] gregorian
+               : latitude(160) = [89.1415176392, ..., -89.1415176392] degrees_north
+               : longitude(320) = [0.0, ..., 358.875] degrees_east
 
 
 
