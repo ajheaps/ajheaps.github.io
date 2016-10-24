@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Examples of data analysis and visualisation &mdash; cf-plot 1.9.26 documentation</title>
+    <title>Example 7 - Regridding &mdash; cf-plot 1.9.26 documentation</title>
     
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -41,21 +41,30 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="examples-of-data-analysis-and-visualisation">
-<h1>Examples of data analysis and visualisation<a class="headerlink" href="#examples-of-data-analysis-and-visualisation" title="Permalink to this headline">¶</a></h1>
-<ol class="arabic simple">
-<li><a class="reference external" href="http://ajheaps.github.io/cf-plot/scicomp2/cf_example1.html">Read in netCDF file, select a field and save data as a netCDF</a></li>
-<li><a class="reference external" href="http://ajheaps.github.io/cf-plot/scicomp2/cf_example2.html">Add a missing CF attribute and change units</a></li>
-<li><a class="reference external" href="http://ajheaps.github.io/cf-plot/scicomp2/cf_example3.html">Data slicing and meaning</a></li>
-<li><a class="reference external" href="http://ajheaps.github.io/cf-plot/scicomp2/cf_example4.html">Cylindrical projection and polar contour plots</a></li>
-<li><a class="reference external" href="http://ajheaps.github.io/cf-plot/scicomp2/cf_example5.html">Zonal mean plots with linear and log pressure axes</a></li>
-<li><a class="reference external" href="http://ajheaps.github.io/cf-plot/scicomp2/cf_example6.html">Take two data sets and interpolate them to the same grid</a></li>
-<li><a class="reference external" href="http://ajheaps.github.io/cf-plot/scicomp2/cf_example7.html">Monthly mean some daily data and plot</a></li>
-<li>Ensemble average some data</li>
-<li>A stats example</li>
-<li>Combining data (i.e. collection of netcdf files into netcdf entity)</li>
-<li>Split-apply-combine and reshaping</li>
-</ol>
+  <div class="section" id="example-7-regridding">
+<h1>Example 7 - Regridding<a class="headerlink" href="#example-7-regridding" title="Permalink to this headline">¶</a></h1>
+<p>In this example we:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Read in a monthly mean temperature dataset</li>
+<li>Select the data between 1900 and 1980</li>
+<li>Collapse the data to yearly means</li>
+<li>Collapse the data to area weighted global average</li>
+<li>Plot the data</li>
+</ul>
+</div></blockquote>
+<p><strong>1.</strong> Read in a dataset and show the axis values.</p>
+<p>&gt;&gt;f=cf.read(&#8216;data4.nc&#8217;)
+&gt;&gt;&gt; print f
+air_temperature field summary
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;
+Data           : air_temperature(time(1680), latitude(73), longitude(96)) K
+Cell methods   : time: mean
+Axes           : height(1) = [2.0] m</p>
+<blockquote>
+<div>: latitude(73) = [-90.0, ..., 90.0] degrees_north
+: longitude(96) = [0.0, ..., 356.25] degrees_east
+: time(1680) = [1860-01-16 00:00:00, ..., 1999-12-16 00:00:00] 360_day</div></blockquote>
 </div>
 
 

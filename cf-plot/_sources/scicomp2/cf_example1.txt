@@ -70,17 +70,20 @@ Axes           : time(1) = [1964-01-21 00:00:00]
 **4.** Display attributes.
 
 >>> temp.properties
-{'_FillValue': 2e+20, 'name': 'PV', 'title': 'Potential vorticity', 'valid_min': -0.0081740506, 
-'Conventions': 'CF-1.5', 'long_name': 'Potential vorticity', 'standard_name': 'potential_vorticity', 
-'source': 'GRIB data', 'time': '00:00', 'date': '21/01/64', 'missing_value': 2e+20, 'valid_max': 0.018913519,
+{'_FillValue': 2e+20, 'name': 'T', 'title': 'Temperature', 'standard_name': 'air_temperature', 
+'Conventions': 'CF-1.5', 'long_name': 'Temperature', 'valid_min': 188.33594, 'source': 'GRIB data',
+'time': '00:00', 'date': '21/01/64', 'missing_value': 2e+20, 'valid_max': 312.29285, 
 'history': 'Sun Sep 16 11:26:16 BST 2012 - CONVSH V1.92 16-February-2006'}
 
 
+
+
 >>> temp.standard_name
-'potential_vorticity'
+'air_temperature'
+
 
 >>> temp.Units
-<CF Units: K m**2 kg**-1 s**-1>
+<CF Units: K>
 
 
 **5.** Write out the data.

@@ -106,18 +106,18 @@ existing file with that name)</p>
 </div>
 <p><strong>4.</strong> Display attributes.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span><span class="o">.</span><span class="n">properties</span>
-<span class="go">{&#39;_FillValue&#39;: 2e+20, &#39;name&#39;: &#39;PV&#39;, &#39;title&#39;: &#39;Potential vorticity&#39;, &#39;valid_min&#39;: -0.0081740506,</span>
-<span class="go">&#39;Conventions&#39;: &#39;CF-1.5&#39;, &#39;long_name&#39;: &#39;Potential vorticity&#39;, &#39;standard_name&#39;: &#39;potential_vorticity&#39;,</span>
-<span class="go">&#39;source&#39;: &#39;GRIB data&#39;, &#39;time&#39;: &#39;00:00&#39;, &#39;date&#39;: &#39;21/01/64&#39;, &#39;missing_value&#39;: 2e+20, &#39;valid_max&#39;: 0.018913519,</span>
+<span class="go">{&#39;_FillValue&#39;: 2e+20, &#39;name&#39;: &#39;T&#39;, &#39;title&#39;: &#39;Temperature&#39;, &#39;standard_name&#39;: &#39;air_temperature&#39;,</span>
+<span class="go">&#39;Conventions&#39;: &#39;CF-1.5&#39;, &#39;long_name&#39;: &#39;Temperature&#39;, &#39;valid_min&#39;: 188.33594, &#39;source&#39;: &#39;GRIB data&#39;,</span>
+<span class="go">&#39;time&#39;: &#39;00:00&#39;, &#39;date&#39;: &#39;21/01/64&#39;, &#39;missing_value&#39;: 2e+20, &#39;valid_max&#39;: 312.29285,</span>
 <span class="go">&#39;history&#39;: &#39;Sun Sep 16 11:26:16 BST 2012 - CONVSH V1.92 16-February-2006&#39;}</span>
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span><span class="o">.</span><span class="n">standard_name</span>
-<span class="go">&#39;potential_vorticity&#39;</span>
+<span class="go">&#39;air_temperature&#39;</span>
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span><span class="o">.</span><span class="n">Units</span>
-<span class="go">&lt;CF Units: K m**2 kg**-1 s**-1&gt;</span>
+<span class="go">&lt;CF Units: K&gt;</span>
 </pre></div>
 </div>
 <p><strong>5.</strong> Write out the data.</p>

@@ -53,11 +53,11 @@
 </ul>
 </div></blockquote>
 <p><strong>1.</strong> Read in two sets of data.</p>
-<p>temp_era40 is a global temperature field at 1000mb for 21st January 1981 from the ERA40 data reanalysys dataset and has 320 longitudes and 160 latitudes.</p>
+<p>temp_era40 is a global temperature field at 1000mb for 21st January 1981 from the ERA40 data reanalysis dataset and has 320 longitudes and 160 latitudes.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_era40</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data2.nc&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>temp_era_in is a global temperature field at 1000mb for 21st January 1981 from the ERA-interim data reanalysys dataset and has 512 longitudes and 256 latitudes.</p>
+<p>temp_era_in is a global temperature field at 1000mb for 21st January 1981 from the ERA-interim data reanalysis dataset and has 512 longitudes and 256 latitudes:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_era_in</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data3.nc&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -67,18 +67,19 @@
 </pre></div>
 </div>
 <p><strong>3.</strong> Inspect the new data attributes.</p>
-<p>Check the interpolated data is on the same grid as the ERA40 data.</p>
+<p>Check the interpolated data is on the same grid as the ERA40 data:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">temp_regrid</span>
-<span class="go">air_temperature field summary</span>
-<span class="go">-----------------------------</span>
-<span class="go">Data           : air_temperature(altitude(1), time(1), latitude(160), longitude(320)) K</span>
-<span class="go">Cell methods   : time: maximum</span>
-<span class="go">Axes           : altitude(1) = [1.5] m</span>
-<span class="go">               : time(1) = [1979-06-01 12:00:00] gregorian</span>
-<span class="go">               : latitude(160) = [89.1415176392, ..., -89.1415176392] degrees_north</span>
-<span class="go">               : longitude(320) = [0.0, ..., 358.875] degrees_east</span>
 </pre></div>
 </div>
+<div class="section" id="air-temperature-field-summary">
+<h2>air_temperature field summary<a class="headerlink" href="#air-temperature-field-summary" title="Permalink to this headline">¶</a></h2>
+<p>Data           : air_temperature(altitude(1), time(1), latitude(160), longitude(320)) K
+Cell methods   : time: maximum
+Axes           : altitude(1) = [1.5] m</p>
+<blockquote>
+<div>: time(1) = [1979-06-01 12:00:00] gregorian
+: latitude(160) = [89.1415176392, ..., -89.1415176392] degrees_north
+: longitude(320) = [0.0, ..., 358.875] degrees_east</div></blockquote>
 <p><strong>4.</strong> Make plots of the data and the difference between the two datasets.</p>
 <p>The ERA40 data.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">temp_era40</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;era40&#39;</span><span class="p">)</span>
@@ -95,6 +96,7 @@
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/cf_example6_3.png"><img alt="../_images/cf_example6_3.png" src="../_images/cf_example6_3.png" style="width: 792.8px; height: 500.8px;" /></a>
+</div>
 </div>
 
 

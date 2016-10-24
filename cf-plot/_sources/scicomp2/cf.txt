@@ -6,8 +6,8 @@ Examples of data analysis and visualisation
 ===========================================
 
 
-1) `Read in netCDF file, select a field, print attributes of this field, save data as a netCDF <http://ajheaps.github.io/cf-plot/scicomp2/cf_example1.html>`_
-2) `Add a missing CF attribute, change units <http://ajheaps.github.io/cf-plot/scicomp2/cf_example2.html>`_
+1) `Read in netCDF file, select a field and save data as a netCDF <http://ajheaps.github.io/cf-plot/scicomp2/cf_example1.html>`_
+2) `Add a missing CF attribute and change units  <http://ajheaps.github.io/cf-plot/scicomp2/cf_example2.html>`_
 3) `Data slicing and meaning <http://ajheaps.github.io/cf-plot/scicomp2/cf_example3.html>`_
 4) `Cylindrical projection and polar contour plots <http://ajheaps.github.io/cf-plot/scicomp2/cf_example4.html>`_
 5) `Zonal mean plots with linear and log pressure axes <http://ajheaps.github.io/cf-plot/scicomp2/cf_example5.html>`_

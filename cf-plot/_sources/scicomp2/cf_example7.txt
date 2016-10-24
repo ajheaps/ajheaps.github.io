@@ -1,0 +1,33 @@
+.. currentmodule:: cf
+.. default-role:: obj
+
+
+Example 7 - Regridding
+======================
+
+
+In this example we:
+
+    * Read in a monthly mean temperature dataset
+    * Select the data between 1900 and 1980
+    * Collapse the data to yearly means
+    * Collapse the data to area weighted global average
+    * Plot the data
+
+
+**1.** Read in a dataset and show the axis values.
+
+>>f=cf.read('data4.nc')
+>>> print f
+air_temperature field summary
+-----------------------------
+Data           : air_temperature(time(1680), latitude(73), longitude(96)) K
+Cell methods   : time: mean
+Axes           : height(1) = [2.0] m
+               : latitude(73) = [-90.0, ..., 90.0] degrees_north
+               : longitude(96) = [0.0, ..., 356.25] degrees_east
+               : time(1680) = [1860-01-16 00:00:00, ..., 1999-12-16 00:00:00] 360_day
+
+
+
+
