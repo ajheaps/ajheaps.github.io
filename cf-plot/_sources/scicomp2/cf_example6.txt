@@ -44,7 +44,6 @@ Regrid the ERA-interim data onto the ERA40 grid
 Check the interpolated data is on the same grid as the ERA40 data.
 
 >>> print temp_regrid
-
 air_temperature field summary
 -----------------------------
 Data           : air_temperature(altitude(1), time(1), latitude(160), longitude(320)) K
@@ -67,7 +66,8 @@ The ERA40 data.
    :scale: 80% 
 
 
-The ERA-interim data.  Note the higher resolution of the newer dataset compared to the ERA40 plot.
+The ERA-interim data.  
+
 >>> cfp.con(temp_era_in, title='era_interim')
 
 .. image::  images/cf_example6_2.png
@@ -76,6 +76,7 @@ The ERA-interim data.  Note the higher resolution of the newer dataset compared 
 
 
 Plot the difference between the regridded ERA interim data and the ERA 40 data.
+
 >>> cfp.con(temp_era_in-temp_era40, lines=False, title='era_interim - era40 difference')
 
 .. image::  images/cf_example6_3.png
