@@ -17,32 +17,15 @@ In this example we:
 
 **1.** Read in two sets of data.
 
-temp_era40 is a global temperature field at 1000mb for 21st January 1981 from the era40 data reanalysys dataset.
+temp_era40 is a global temperature field at 1000mb for 21st January 1981 from the ERA40 data reanalysys dataset and has 320 longitudes and 160 latitudes.
 
 >>> temp_era40=cf.read('data2.nc')
->>> print temp_era40        
-air_temperature field summary
------------------------------
-Data           : air_temperature(long_name:t(1), long_name:p(1), latitude(160), longitude(320)) K
-Axes           : long_name:t(1) = [1981-01-21 00:00:00]
-               : long_name:p(1) = [1000.0] mbar
-               : latitude(160) = [89.1415176392, ..., -89.1415176392] degrees_north
-               : longitude(320) = [0.0, ..., 358.875] degrees_east
 
 
 
-temp_era_in is a global temperature field at 1000mb for 21st January 1981 from the era-interim data reanalysys dataset.
+temp_era_in is a global temperature field at 1000mb for 21st January 1981 from the ERA-interim data reanalysys dataset and has 512 longitudes and 256 latitudes.
 
 >>> temp_era_in=cf.read('data3.nc')
->>> print temp_era_in
-air_temperature field summary
------------------------------
-Data           : air_temperature(long_name:t(1), long_name:p(1), long_name:latitude(256), long_name:longitude(512)) K
-Axes           : long_name:t(1) = [1981-01-21 00:00:00]
-               : long_name:p(1) = [1000.0] mbar
-               : long_name:latitude(256) = [89.4629440308, ..., -89.4629440308] degrees_north
-               : long_name:longitude(512) = [0.0, ..., 359.296875] degrees_east
-
 
 
 
@@ -50,12 +33,15 @@ Axes           : long_name:t(1) = [1981-01-21 00:00:00]
 
 **2.** Regrid one set of data to the other data grid.
 
-Regrid the era-interim data onto the era40 grid
+Regrid the ERA-interim data onto the ERA40 grid
+
 >>> temp_regrid = temp_era_in.regrids(temp_era40, method='bilinear')
+
 
 
 **3.** Inspect the new data attributes.
 
+Check the interpolated data is on the same grid as the ERA40 data.
 >>> print temp_regrid
 air_temperature field summary
 -----------------------------
@@ -71,7 +57,7 @@ Axes           : altitude(1) = [1.5] m
 
 **4.** Make plots of the data and the difference between the two datasets.
 
-The era40 data.
+The ERA40 data.
 
 >>> cfp.con(temp_era40, title='era40')
 
@@ -79,7 +65,7 @@ The era40 data.
    :scale: 80% 
 
 
-The era-interim data.  Note the higher resolution compared to the era40 plot.
+The ERA-interim data.  Note the higher resolution of the newer dataset compared to the ERA40 plot.
 >>> cfp.con(temp_era_in, title='era_interim')
 
 .. image::  images/cf_example6_2.png
@@ -87,7 +73,7 @@ The era-interim data.  Note the higher resolution compared to the era40 plot.
 
 
 
-
+Plot the difference between the regridded ERA interim data and the ERA 40 data.
 >>> cfp.con(temp_era_in-temp_era40, lines=False, title='era_interim - era40 difference')
 
 .. image::  images/cf_example6_3.png

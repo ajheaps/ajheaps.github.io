@@ -53,57 +53,42 @@
 </ul>
 </div></blockquote>
 <p><strong>1.</strong> Read in two sets of data.</p>
-<p>temp_era40 is a global temperature field at 1000mb for 21st January 1981 from the era40 data reanalysys dataset.</p>
+<p>temp_era40 is a global temperature field at 1000mb for 21st January 1981 from the ERA40 data reanalysys dataset and has 320 longitudes and 160 latitudes.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_era40</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data2.nc&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">temp_era40</span>
-<span class="go">air_temperature field summary</span>
-<span class="go">-----------------------------</span>
-<span class="go">Data           : air_temperature(long_name:t(1), long_name:p(1), latitude(160), longitude(320)) K</span>
-<span class="go">Axes           : long_name:t(1) = [1981-01-21 00:00:00]</span>
-<span class="go">               : long_name:p(1) = [1000.0] mbar</span>
-<span class="go">               : latitude(160) = [89.1415176392, ..., -89.1415176392] degrees_north</span>
-<span class="go">               : longitude(320) = [0.0, ..., 358.875] degrees_east</span>
 </pre></div>
 </div>
-<p>temp_era_in is a global temperature field at 1000mb for 21st January 1981 from the era-interim data reanalysys dataset.</p>
+<p>temp_era_in is a global temperature field at 1000mb for 21st January 1981 from the ERA-interim data reanalysys dataset and has 512 longitudes and 256 latitudes.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_era_in</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data3.nc&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">temp_era_in</span>
-<span class="go">air_temperature field summary</span>
-<span class="go">-----------------------------</span>
-<span class="go">Data           : air_temperature(long_name:t(1), long_name:p(1), long_name:latitude(256), long_name:longitude(512)) K</span>
-<span class="go">Axes           : long_name:t(1) = [1981-01-21 00:00:00]</span>
-<span class="go">               : long_name:p(1) = [1000.0] mbar</span>
-<span class="go">               : long_name:latitude(256) = [89.4629440308, ..., -89.4629440308] degrees_north</span>
-<span class="go">               : long_name:longitude(512) = [0.0, ..., 359.296875] degrees_east</span>
 </pre></div>
 </div>
 <p><strong>2.</strong> Regrid one set of data to the other data grid.</p>
-<p>Regrid the era-interim data onto the era40 grid
-&gt;&gt;&gt; temp_regrid = temp_era_in.regrids(temp_era40, method=&#8217;bilinear&#8217;)</p>
-<p><strong>3.</strong> Inspect the new data attributes.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">temp_regrid</span>
-<span class="go">air_temperature field summary</span>
-<span class="go">-----------------------------</span>
-<span class="go">Data           : air_temperature(altitude(1), time(1), latitude(160), longitude(320)) K</span>
-<span class="go">Cell methods   : time: maximum</span>
-<span class="go">Axes           : altitude(1) = [1.5] m</span>
-<span class="go">               : time(1) = [1979-06-01 12:00:00] gregorian</span>
-<span class="go">               : latitude(160) = [89.1415176392, ..., -89.1415176392] degrees_north</span>
-<span class="go">               : longitude(320) = [0.0, ..., 358.875] degrees_east</span>
+<p>Regrid the ERA-interim data onto the ERA40 grid</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_regrid</span> <span class="o">=</span> <span class="n">temp_era_in</span><span class="o">.</span><span class="n">regrids</span><span class="p">(</span><span class="n">temp_era40</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p><strong>3.</strong> Inspect the new data attributes.</p>
+<p>Check the interpolated data is on the same grid as the ERA40 data.
+&gt;&gt;&gt; print temp_regrid
+air_temperature field summary
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;
+Data           : air_temperature(altitude(1), time(1), latitude(160), longitude(320)) K
+Cell methods   : time: maximum
+Axes           : altitude(1) = [1.5] m</p>
+<blockquote>
+<div>: time(1) = [1979-06-01 12:00:00] gregorian
+: latitude(160) = [89.1415176392, ..., -89.1415176392] degrees_north
+: longitude(320) = [0.0, ..., 358.875] degrees_east</div></blockquote>
 <p><strong>4.</strong> Make plots of the data and the difference between the two datasets.</p>
-<p>The era40 data.</p>
+<p>The ERA40 data.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">temp_era40</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;era40&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/cf_example6_1.png"><img alt="../_images/cf_example6_1.png" src="../_images/cf_example6_1.png" style="width: 792.8px; height: 501.6px;" /></a>
-<p>The era-interim data.  Note the higher resolution compared to the era40 plot.
+<p>The ERA-interim data.  Note the higher resolution of the newer dataset compared to the ERA40 plot.
 &gt;&gt;&gt; cfp.con(temp_era_in, title=&#8217;era_interim&#8217;)</p>
 <a class="reference internal image-reference" href="../_images/cf_example6_2.png"><img alt="../_images/cf_example6_2.png" src="../_images/cf_example6_2.png" style="width: 792.8px; height: 500.8px;" /></a>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">temp_era_in</span><span class="o">-</span><span class="n">temp_era40</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;era_interim - era40 difference&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
+<p>Plot the difference between the regridded ERA interim data and the ERA 40 data.
+&gt;&gt;&gt; cfp.con(temp_era_in-temp_era40, lines=False, title=&#8217;era_interim - era40 difference&#8217;)</p>
 <a class="reference internal image-reference" href="../_images/cf_example6_3.png"><img alt="../_images/cf_example6_3.png" src="../_images/cf_example6_3.png" style="width: 792.8px; height: 500.8px;" /></a>
 </div>
 
