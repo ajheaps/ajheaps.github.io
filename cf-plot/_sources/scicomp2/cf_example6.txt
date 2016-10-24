@@ -42,7 +42,9 @@ Regrid the ERA-interim data onto the ERA40 grid
 **3.** Inspect the new data attributes.
 
 Check the interpolated data is on the same grid as the ERA40 data.
+
 >>> print temp_regrid
+
 air_temperature field summary
 -----------------------------
 Data           : air_temperature(altitude(1), time(1), latitude(160), longitude(320)) K

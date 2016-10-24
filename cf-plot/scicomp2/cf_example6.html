@@ -67,11 +67,13 @@
 </pre></div>
 </div>
 <p><strong>3.</strong> Inspect the new data attributes.</p>
-<p>Check the interpolated data is on the same grid as the ERA40 data.
-&gt;&gt;&gt; print temp_regrid
-air_temperature field summary
-&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;
-Data           : air_temperature(altitude(1), time(1), latitude(160), longitude(320)) K
+<p>Check the interpolated data is on the same grid as the ERA40 data.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">temp_regrid</span>
+</pre></div>
+</div>
+<div class="section" id="air-temperature-field-summary">
+<h2>air_temperature field summary<a class="headerlink" href="#air-temperature-field-summary" title="Permalink to this headline">¶</a></h2>
+<p>Data           : air_temperature(altitude(1), time(1), latitude(160), longitude(320)) K
 Cell methods   : time: maximum
 Axes           : altitude(1) = [1.5] m</p>
 <blockquote>
@@ -90,6 +92,7 @@ Axes           : altitude(1) = [1.5] m</p>
 <p>Plot the difference between the regridded ERA interim data and the ERA 40 data.
 &gt;&gt;&gt; cfp.con(temp_era_in-temp_era40, lines=False, title=&#8217;era_interim - era40 difference&#8217;)</p>
 <a class="reference internal image-reference" href="../_images/cf_example6_3.png"><img alt="../_images/cf_example6_3.png" src="../_images/cf_example6_3.png" style="width: 792.8px; height: 500.8px;" /></a>
+</div>
 </div>
 
 
