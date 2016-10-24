@@ -12,10 +12,11 @@ In this example we:
     * Select the data between 1900 and 1980
     * Collapse the data to yearly means
     * Collapse the data to area weighted global average
+    * Convert from Kelvin to Celsius.
     * Plot the data
 
 
-**1.** Read in a dataset and show the axis values.
+**1.** Read in a monthly mean temperature dataset.
 
 >>f=cf.read('data4.nc')
 >>> print f
@@ -28,6 +29,65 @@ Axes           : height(1) = [2.0] m
                : longitude(96) = [0.0, ..., 356.25] degrees_east
                : time(1680) = [1860-01-16 00:00:00, ..., 1999-12-16 00:00:00] 360_day
 
+
+
+**2.** Select the data between 1900 and 1980.
+
+>>> temp=f.subspace(time=cf.wi(cf.dt('1900-01-01'), cf.dt('1980-01-01')))
+>>> print temp
+air_temperature field summary
+-----------------------------
+Data           : air_temperature(time(960), latitude(73), longitude(96)) K
+Cell methods   : time: mean
+Axes           : height(1) = [2.0] m
+               : latitude(73) = [-90.0, ..., 90.0] degrees_north
+               : longitude(96) = [0.0, ..., 356.25] degrees_east
+               : time(960) = [1900-01-16 00:00:00, ..., 1979-12-16 00:00:00] 360_day
+
+
+**3.** Collapse the data to yearly means.
+
+>>> temp_annual=temp.collapse('T: mean', group=cf.Y())
+>>> print temp_annual
+air_temperature field summary
+-----------------------------
+Data           : air_temperature(time(80), latitude(73), longitude(96)) K
+Cell methods   : time: mean
+Axes           : height(1) = [2.0] m
+               : latitude(73) = [-90.0, ..., 90.0] degrees_north
+               : time(80) = [1900-07-01 00:00:00, ..., 1979-07-01 00:00:00] 360_day
+               : longitude(96) = [0.0, ..., 356.25] degrees_east
+
+
+
+**4.** Collapse the data to area weighted global average.
+
+
+>>> temp_annual_global=temp_annual.collapse('area: mean')
+>>> print temp_annual_global
+air_temperature field summary
+-----------------------------
+Data           : air_temperature(time(80), latitude(1), longitude(1)) K
+Cell methods   : time: mean latitude: longitude: mean
+Axes           : longitude(1) = [178.125] degrees_east
+               : height(1) = [2.0] m
+               : latitude(1) = [0.0] degrees_north
+               : time(80) = [1900-07-01 00:00:00, ..., 1979-07-01 00:00:00] 360_day
+
+
+
+**5.** Convert from Kelvin to Celsius.
+
+>>> temp_annual_global.Units -= 273.15
+
+
+**6.** Plot the data.
+
+
+>>> cfp.lineplot(temp_annual_global, title='Global average annual temperature', color='blue')
+
+.. image::  images/cf_example7_1.png
+   :scale: 80% 
 
 
 
