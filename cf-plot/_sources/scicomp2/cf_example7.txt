@@ -18,7 +18,7 @@ In this example we:
 
 **1.** Read in a monthly mean temperature dataset.
 
->>f=cf.read('data4.nc')
+>>>f=cf.read('data4.nc')
 >>> print f
 air_temperature field summary
 -----------------------------
