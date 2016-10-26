@@ -295,6 +295,8 @@ for all subsequent time axes.
 
     Done
 
+
+
 26. Time axes bugfix
 ====================
 
@@ -306,7 +308,7 @@ Bugfix for an issue in time axes.
 
 
 
-26. Add axis label and alignment options to setvars
+27. Add axis label and alignment options to setvars
 ===================================================
 
 Add axis label and alignment options to setvars:
