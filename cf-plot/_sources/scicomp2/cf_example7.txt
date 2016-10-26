@@ -81,6 +81,7 @@ Axes           : longitude(1) = [178.125] degrees_east
 >>> temp_annual_global.Units -= 273.15
 
 
+
 **6.** Plot the data.
 
 

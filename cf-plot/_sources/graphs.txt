@@ -101,3 +101,22 @@ When making a call to lineplot the following parameters overide any predefined C
 
 
 
+Example 29 - Global average annual temperature
+----------------------------------------------
+
+.. image::  images/fig29.png
+   :scale: 44% 
+
+In this example we subset a time data series of global temperature, area mean the data, convert to Celsius and plot a linegraph.
+
+::
+
+    import cf, cfplot as cfp
+    f=cf.read('/home/swsheaps/cfplot_data/tas_A1.nc')
+    temp=f.subspace(time=cf.wi(cf.dt('1900-01-01'), cf.dt('1980-01-01')))
+    temp_annual=temp.collapse('T: mean', group=cf.Y())
+    temp_annual_global=temp_annual.collapse('area: mean')
+    temp_annual_global.Units -= 273.15
+    cfp.lineplot(temp_annual_global, title='Global average annual temperature', color='blue')
+
+
