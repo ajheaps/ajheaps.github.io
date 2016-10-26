@@ -22,7 +22,7 @@ Planned releases
 
 
 
-Further functionality may be added on request - please email <a.j.heaps@reading.ac.uk> with details.
+Further functionality may be added on request - please email <andy.heaps@ncas.ac.uk> with details.
 
 Join the cf-plot email list to find out when new functionality is added to cf-plot.
 http://www.lists.rdg.ac.uk/mailman/listinfo/met-cfplot

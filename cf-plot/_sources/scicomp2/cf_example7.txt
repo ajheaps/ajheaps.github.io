@@ -18,45 +18,19 @@ In this example we:
 
 **1.** Read in a monthly mean temperature dataset.
 
->>>f=cf.read('data4.nc')
->>> print f
-air_temperature field summary
------------------------------
-Data           : air_temperature(time(1680), latitude(73), longitude(96)) K
-Cell methods   : time: mean
-Axes           : height(1) = [2.0] m
-               : latitude(73) = [-90.0, ..., 90.0] degrees_north
-               : longitude(96) = [0.0, ..., 356.25] degrees_east
-               : time(1680) = [1860-01-16 00:00:00, ..., 1999-12-16 00:00:00] 360_day
+>>> f=cf.read('data4.nc')
 
+This is a global temperature field at 2m for the years 1900 to 1979.
 
 
 **2.** Select the data between 1900 and 1980.
 
 >>> temp=f.subspace(time=cf.wi(cf.dt('1900-01-01'), cf.dt('1980-01-01')))
->>> print temp
-air_temperature field summary
------------------------------
-Data           : air_temperature(time(960), latitude(73), longitude(96)) K
-Cell methods   : time: mean
-Axes           : height(1) = [2.0] m
-               : latitude(73) = [-90.0, ..., 90.0] degrees_north
-               : longitude(96) = [0.0, ..., 356.25] degrees_east
-               : time(960) = [1900-01-16 00:00:00, ..., 1979-12-16 00:00:00] 360_day
 
 
 **3.** Collapse the data to yearly means.
 
 >>> temp_annual=temp.collapse('T: mean', group=cf.Y())
->>> print temp_annual
-air_temperature field summary
------------------------------
-Data           : air_temperature(time(80), latitude(73), longitude(96)) K
-Cell methods   : time: mean
-Axes           : height(1) = [2.0] m
-               : latitude(73) = [-90.0, ..., 90.0] degrees_north
-               : time(80) = [1900-07-01 00:00:00, ..., 1979-07-01 00:00:00] 360_day
-               : longitude(96) = [0.0, ..., 356.25] degrees_east
 
 
 
@@ -64,15 +38,8 @@ Axes           : height(1) = [2.0] m
 
 
 >>> temp_annual_global=temp_annual.collapse('area: mean')
->>> print temp_annual_global
-air_temperature field summary
------------------------------
-Data           : air_temperature(time(80), latitude(1), longitude(1)) K
-Cell methods   : time: mean latitude: longitude: mean
-Axes           : longitude(1) = [178.125] degrees_east
-               : height(1) = [2.0] m
-               : latitude(1) = [0.0] degrees_north
-               : time(80) = [1900-07-01 00:00:00, ..., 1979-07-01 00:00:00] 360_day
+
+Collapsing over 'area: mean' gives a global area average.
 
 
 

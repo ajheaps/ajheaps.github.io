@@ -1,7 +1,7 @@
 cf-plot issues
 **************
 
-If you find a problem with cf8plot please email me Andy Heaps (a.j.heaps@reading.ac.uk) with the following:
+If you find a problem with cf8plot please email me Andy Heaps (andy.heaps@ncas.ac.uk) with the following:
 
 |   (i) A short piece of code showing the problem
 |   (ii) The data needed to make the plot

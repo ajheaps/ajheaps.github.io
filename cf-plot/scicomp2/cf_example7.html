@@ -55,56 +55,23 @@
 </ul>
 </div></blockquote>
 <p><strong>1.</strong> Read in a monthly mean temperature dataset.</p>
-<p>&gt;&gt;&gt;f=cf.read(&#8216;data4.nc&#8217;)
-&gt;&gt;&gt; print f
-air_temperature field summary
-&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;
-Data           : air_temperature(time(1680), latitude(73), longitude(96)) K
-Cell methods   : time: mean
-Axes           : height(1) = [2.0] m</p>
-<blockquote>
-<div>: latitude(73) = [-90.0, ..., 90.0] degrees_north
-: longitude(96) = [0.0, ..., 356.25] degrees_east
-: time(1680) = [1860-01-16 00:00:00, ..., 1999-12-16 00:00:00] 360_day</div></blockquote>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data4.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is a global temperature field at 2m for the years 1900 to 1979.</p>
 <p><strong>2.</strong> Select the data between 1900 and 1980.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">wi</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="s1">&#39;1900-01-01&#39;</span><span class="p">),</span> <span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="s1">&#39;1980-01-01&#39;</span><span class="p">)))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">temp</span>
-<span class="go">air_temperature field summary</span>
-<span class="go">-----------------------------</span>
-<span class="go">Data           : air_temperature(time(960), latitude(73), longitude(96)) K</span>
-<span class="go">Cell methods   : time: mean</span>
-<span class="go">Axes           : height(1) = [2.0] m</span>
-<span class="go">               : latitude(73) = [-90.0, ..., 90.0] degrees_north</span>
-<span class="go">               : longitude(96) = [0.0, ..., 356.25] degrees_east</span>
-<span class="go">               : time(960) = [1900-01-16 00:00:00, ..., 1979-12-16 00:00:00] 360_day</span>
 </pre></div>
 </div>
 <p><strong>3.</strong> Collapse the data to yearly means.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_annual</span><span class="o">=</span><span class="n">temp</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;T: mean&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">Y</span><span class="p">())</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">temp_annual</span>
-<span class="go">air_temperature field summary</span>
-<span class="go">-----------------------------</span>
-<span class="go">Data           : air_temperature(time(80), latitude(73), longitude(96)) K</span>
-<span class="go">Cell methods   : time: mean</span>
-<span class="go">Axes           : height(1) = [2.0] m</span>
-<span class="go">               : latitude(73) = [-90.0, ..., 90.0] degrees_north</span>
-<span class="go">               : time(80) = [1900-07-01 00:00:00, ..., 1979-07-01 00:00:00] 360_day</span>
-<span class="go">               : longitude(96) = [0.0, ..., 356.25] degrees_east</span>
 </pre></div>
 </div>
 <p><strong>4.</strong> Collapse the data to area weighted global average.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_annual_global</span><span class="o">=</span><span class="n">temp_annual</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;area: mean&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">temp_annual_global</span>
-<span class="go">air_temperature field summary</span>
-<span class="go">-----------------------------</span>
-<span class="go">Data           : air_temperature(time(80), latitude(1), longitude(1)) K</span>
-<span class="go">Cell methods   : time: mean latitude: longitude: mean</span>
-<span class="go">Axes           : longitude(1) = [178.125] degrees_east</span>
-<span class="go">               : height(1) = [2.0] m</span>
-<span class="go">               : latitude(1) = [0.0] degrees_north</span>
-<span class="go">               : time(80) = [1900-07-01 00:00:00, ..., 1979-07-01 00:00:00] 360_day</span>
 </pre></div>
 </div>
+<p>Collapsing over &#8216;area: mean&#8217; gives a global area average.</p>
 <p><strong>5.</strong> Convert from Kelvin to Celsius.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_annual_global</span><span class="o">.</span><span class="n">Units</span> <span class="o">-=</span> <span class="mf">273.15</span>
 </pre></div>
@@ -113,7 +80,7 @@ Axes           : height(1) = [2.0] m</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cfp</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">temp_annual_global</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Global average annual temperature&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/cf_example7_1.png"><img alt="../_images/cf_example7_1.png" src="../_images/cf_example7_1.png" style="width: 915.2px; height: 652.0px;" /></a>
+<a class="reference internal image-reference" href="../_images/cf_example7_1.png"><img alt="../_images/cf_example7_1.png" src="../_images/cf_example7_1.png" style="width: 915.2px; height: 652.8px;" /></a>
 </div>
 
 
