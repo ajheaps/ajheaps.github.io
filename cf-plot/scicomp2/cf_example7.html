@@ -6,9 +6,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Example 7 - Regridding &mdash; cf-plot 1.9.27 documentation</title>
+    <title>Example 7 -Globally average a timeseries and plot &mdash; cf-plot 1.9.27 documentation</title>
     
-    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -25,24 +25,24 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="cf-plot 1.9.27 documentation" href="../index.html" /> 
   </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
+  <body>
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.27 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">cf-plot 1.9.27 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
-  <div class="section" id="example-7-regridding">
-<h1>Example 7 - Regridding<a class="headerlink" href="#example-7-regridding" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="example-7-globally-average-a-timeseries-and-plot">
+<h1>Example 7 -Globally average a timeseries and plot<a class="headerlink" href="#example-7-globally-average-a-timeseries-and-plot" title="Permalink to this headline">¶</a></h1>
 <p>In this example we:</p>
 <blockquote>
 <div><ul class="simple">
@@ -55,29 +55,29 @@
 </ul>
 </div></blockquote>
 <p><strong>1.</strong> Read in a monthly mean temperature dataset.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data4.nc&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;scicomp2_data4.nc&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This is a global temperature field at 2m for the years 1900 to 1979.</p>
 <p><strong>2.</strong> Select the data between 1900 and 1980.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">wi</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="s1">&#39;1900-01-01&#39;</span><span class="p">),</span> <span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="s1">&#39;1980-01-01&#39;</span><span class="p">)))</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">wi</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="s1">&#39;1900-01-01&#39;</span><span class="p">),</span> <span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="s1">&#39;1980-01-01&#39;</span><span class="p">)))</span>
 </pre></div>
 </div>
 <p><strong>3.</strong> Collapse the data to yearly means.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_annual</span><span class="o">=</span><span class="n">temp</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;T: mean&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">Y</span><span class="p">())</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_annual</span><span class="o">=</span><span class="n">temp</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;T: mean&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">Y</span><span class="p">())</span>
 </pre></div>
 </div>
 <p><strong>4.</strong> Collapse the data to area weighted global average.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_annual_global</span><span class="o">=</span><span class="n">temp_annual</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;area: mean&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_annual_global</span><span class="o">=</span><span class="n">temp_annual</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;area: mean&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Collapsing over &#8216;area: mean&#8217; gives a global area average.</p>
 <p><strong>5.</strong> Convert from Kelvin to Celsius.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_annual_global</span><span class="o">.</span><span class="n">Units</span> <span class="o">-=</span> <span class="mf">273.15</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_annual_global</span><span class="o">.</span><span class="n">Units</span> <span class="o">-=</span> <span class="mf">273.15</span>
 </pre></div>
 </div>
 <p><strong>6.</strong> Plot the data.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cfp</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">temp_annual_global</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Global average annual temperature&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cfp</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">temp_annual_global</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Global average annual temperature&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/cf_example7_1.png"><img alt="../_images/cf_example7_1.png" src="../_images/cf_example7_1.png" style="width: 915.2px; height: 652.8px;" /></a>
@@ -87,7 +87,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -106,18 +106,18 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.27 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">cf-plot 1.9.27 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
+    <div class="footer">
         &copy; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

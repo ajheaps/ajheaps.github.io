@@ -1,0 +1,10 @@
+.. currentmodule:: cf
+.. default-role:: obj
+
+
+Example 9 - Ensemble averages
+=============================
+
+
+
+

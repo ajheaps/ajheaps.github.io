@@ -19,13 +19,13 @@ In this example we:
 
 temp_era40 is a global temperature field at 1000mb for 21st January 1981 from the ERA40 data reanalysis dataset and has 320 longitudes and 160 latitudes.
 
->>> temp_era40=cf.read('data2.nc')
+>>> temp_era40=cf.read('scicomp_data2.nc')
 
 
 
 temp_era_in is a global temperature field at 1000mb for 21st January 1981 from the ERA-interim data reanalysis dataset and has 512 longitudes and 256 latitudes.
 
->>> temp_era_in=cf.read('data3.nc')
+>>> temp_era_in=cf.read('scicomp_data3.nc')
 
 
 

@@ -2,8 +2,8 @@
 .. default-role:: obj
 
 
-Example 7 - Regridding
-======================
+Example 7 -Globally average a timeseries and plot
+=================================================
 
 
 In this example we:
@@ -18,7 +18,7 @@ In this example we:
 
 **1.** Read in a monthly mean temperature dataset.
 
->>> f=cf.read('data4.nc')
+>>> f=cf.read('scicomp2_data4.nc')
 
 This is a global temperature field at 2m for the years 1900 to 1979.
 

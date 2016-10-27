@@ -8,7 +8,7 @@
     
     <title>Example 4 - Make longitude-latitude and polar contour plots &mdash; cf-plot 1.9.27 documentation</title>
     
-    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -25,39 +25,40 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="cf-plot 1.9.27 documentation" href="../index.html" /> 
   </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
+  <body>
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.27 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">cf-plot 1.9.27 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <div class="section" id="example-4-make-longitude-latitude-and-polar-contour-plots">
 <h1>Example 4 - Make longitude-latitude and polar contour plots<a class="headerlink" href="#example-4-make-longitude-latitude-and-polar-contour-plots" title="Permalink to this headline">¶</a></h1>
 <p>The cf-plot package is useful for plotting fields from cf-python.  See <a class="reference external" href="http://ajheaps.github.io/cf-plot/">cf-plot</a> for full documentation and examples.</p>
 <p><strong>1.</strong> Select a 2D field for plotting.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;scicomp_data1.nc&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">u_500</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">Z</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">u_500</span>
 <span class="go">&lt;CF Field: eastward_wind(time(1), pressure(1), latitude(160), longitude(320)) m s**-1&gt;</span>
 </pre></div>
 </div>
 <p><strong>2.</strong> Make a contour plot.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">u_500</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">u_500</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/cf_example4_1.png"><img alt="../_images/cf_example4_1.png" src="../_images/cf_example4_1.png" style="width: 792.8px; height: 483.2px;" /></a>
 <p><strong>3.</strong> Make a Northern Hemisphere polar plot</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">proj</span><span class="o">=</span><span class="s1">&#39;npstere&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">proj</span><span class="o">=</span><span class="s1">&#39;npstere&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">u_500</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -68,7 +69,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -87,18 +88,18 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.27 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">cf-plot 1.9.27 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
+    <div class="footer">
         &copy; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

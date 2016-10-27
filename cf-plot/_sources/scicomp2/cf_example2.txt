@@ -7,6 +7,7 @@ Example 2 - Add a missing CF attribute, change units for a field
 
 **1.** Select a field without a CF standard_name
 
+>>> f=cf.read('scicomp_data1.nc')
 >>> pv=f[0]
 >>> pv
 <CF Field: long_name:Potential vorticity(time(1), pressure(23), latitude(160), longitude(320)) K m**2 kg**-1 s**-1>

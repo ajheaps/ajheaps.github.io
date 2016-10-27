@@ -20,7 +20,7 @@ read-modify-write example which:
 
 
 The example may be reproduced by downloading the :download:`sample
-netCDF file (data1.nc) <data/data1.nc>` (taking care not to overwrite an
+netCDF file (data1.nc) <scicomp2_data/scicomp_data1.nc>` (taking care not to overwrite an
 existing file with that name) 
 
 **1.** Import the cf and cf-plot packages.
@@ -29,7 +29,7 @@ existing file with that name)
 
 **2.** Read a netCDF file from disk and view its contents.
 
->>> f=cf.read('data1.nc')
+>>> f=cf.read('scicomp_data1.nc')
 >>> type(f)
 <class 'cf.field.FieldList'>
 

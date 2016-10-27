@@ -10,6 +10,7 @@ The cf-plot package is useful for plotting fields from cf-python.  See `cf-plot 
 
 **1.** Select a 2D field for plotting.
 
+>>> f=cf.read('scicomp_data1.nc')
 >>> u=f[2]
 >>> u_500=u.subspace(Z=500)
 >>> u_500

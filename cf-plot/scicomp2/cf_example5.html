@@ -8,7 +8,7 @@
     
     <title>Example 5 - Zonal mean plots with linear and log pressure axes &mdash; cf-plot 1.9.27 documentation</title>
     
-    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -25,27 +25,27 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="cf-plot 1.9.27 documentation" href="../index.html" /> 
   </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
+  <body>
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.27 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">cf-plot 1.9.27 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <div class="section" id="example-5-zonal-mean-plots-with-linear-and-log-pressure-axes">
 <h1>Example 5 - Zonal mean plots with linear and log pressure axes<a class="headerlink" href="#example-5-zonal-mean-plots-with-linear-and-log-pressure-axes" title="Permalink to this headline">¶</a></h1>
 <p><strong>1.</strong> Make a zonal mean with linear pressure axis plot
 This plot emphasizes the troposphere.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;eastward_wind&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">u</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;eastward_wind&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">zonalmean_u</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">zonalmean_u</span><span class="p">)</span>
 </pre></div>
@@ -53,7 +53,7 @@ This plot emphasizes the troposphere.</p>
 <a class="reference internal image-reference" href="../_images/cf_example5_1.png"><img alt="../_images/cf_example5_1.png" src="../_images/cf_example5_1.png" style="width: 819.2px; height: 527.2px;" /></a>
 <p><strong>2.</strong> Make a zonal mean with log pressure axis plot</p>
 <p>This plot emphasizes the stratosphere.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">zonalmean_u</span><span class="p">,</span> <span class="n">ylog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">zonalmean_u</span><span class="p">,</span> <span class="n">ylog</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/cf_example5_2.png"><img alt="../_images/cf_example5_2.png" src="../_images/cf_example5_2.png" style="width: 810.4px; height: 528.8px;" /></a>
@@ -63,7 +63,7 @@ This plot emphasizes the troposphere.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -82,18 +82,18 @@ This plot emphasizes the troposphere.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.27 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">cf-plot 1.9.27 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
+    <div class="footer">
         &copy; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

@@ -8,7 +8,7 @@
     
     <title>Example 1 - read in a multi-field netCDF file, display attributes and write out a single field &mdash; cf-plot 1.9.27 documentation</title>
     
-    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -25,27 +25,27 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="cf-plot 1.9.27 documentation" href="../index.html" /> 
   </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
+  <body>
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.27 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">cf-plot 1.9.27 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <div class="section" id="example-1-read-in-a-multi-field-netcdf-file-display-attributes-and-write-out-a-single-field">
 <h1>Example 1 - read in a multi-field netCDF file, display attributes and write out a single field<a class="headerlink" href="#example-1-read-in-a-multi-field-netcdf-file-display-attributes-and-write-out-a-single-field" title="Permalink to this headline">¶</a></h1>
 <p>The cf package allows a data array and its associated metadata to be
 contained and manipulated as a single entity called a <em>field</em>, which
-is stored in a <code class="xref py py-obj docutils literal"><span class="pre">cf.Field</span></code> object.</p>
+is stored in a <tt class="xref py py-obj docutils literal"><span class="pre">cf.Field</span></tt> object.</p>
 <p>Much of the basic field manipulation syntax can be seen in this simple
 read-modify-write example which:</p>
 <blockquote>
@@ -55,20 +55,20 @@ read-modify-write example which:</p>
 <li>Writes this out to another file on disk.</li>
 </ul>
 </div></blockquote>
-<p>The example may be reproduced by downloading the <a class="reference download internal" href="../_downloads/data1.nc" download=""><code class="xref download docutils literal"><span class="pre">sample</span>
-<span class="pre">netCDF</span> <span class="pre">file</span> <span class="pre">(data1.nc)</span></code></a> (taking care not to overwrite an
+<p>The example may be reproduced by downloading the <tt class="xref download docutils literal"><span class="pre">sample</span>
+<span class="pre">netCDF</span> <span class="pre">file</span> <span class="pre">(data1.nc)</span></tt> (taking care not to overwrite an
 existing file with that name)</p>
 <p><strong>1.</strong> Import the cf and cf-plot packages.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
 </pre></div>
 </div>
 <p><strong>2.</strong> Read a netCDF file from disk and view its contents.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data1.nc&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;scicomp_data1.nc&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 <span class="go">&lt;class &#39;cf.field.FieldList&#39;&gt;</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span>
 <span class="go">[&lt;CF Field: long_name:Potential vorticity(time(1), pressure(23), latitude(160), longitude(320)) K m**2 kg**-1 s**-1&gt;,</span>
 <span class="go"> &lt;CF Field: long_name:Ozone mass mixing ratio(time(1), pressure(23), latitude(160), longitude(320)) kg kg**-1&gt;,</span>
 <span class="go"> &lt;CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(320)) K&gt;,</span>
@@ -85,16 +85,16 @@ existing file with that name)</p>
 </pre></div>
 </div>
 <p><strong>3.</strong> Select a field and print a summary of its contents.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 <span class="go">or</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;air_temperature&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span>
 <span class="go">&lt;CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(320)) K&gt;</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">temp</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">temp</span>
 <span class="go">air_temperature field summary</span>
 <span class="go">-----------------------------</span>
 <span class="go">Data           : air_temperature(time(1), pressure(23), latitude(160), longitude(320)) K</span>
@@ -105,23 +105,23 @@ existing file with that name)</p>
 </pre></div>
 </div>
 <p><strong>4.</strong> Display attributes.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span><span class="o">.</span><span class="n">properties</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span><span class="o">.</span><span class="n">properties</span>
 <span class="go">{&#39;_FillValue&#39;: 2e+20, &#39;name&#39;: &#39;T&#39;, &#39;title&#39;: &#39;Temperature&#39;, &#39;standard_name&#39;: &#39;air_temperature&#39;,</span>
 <span class="go">&#39;Conventions&#39;: &#39;CF-1.5&#39;, &#39;long_name&#39;: &#39;Temperature&#39;, &#39;valid_min&#39;: 188.33594, &#39;source&#39;: &#39;GRIB data&#39;,</span>
 <span class="go">&#39;time&#39;: &#39;00:00&#39;, &#39;date&#39;: &#39;21/01/64&#39;, &#39;missing_value&#39;: 2e+20, &#39;valid_max&#39;: 312.29285,</span>
 <span class="go">&#39;history&#39;: &#39;Sun Sep 16 11:26:16 BST 2012 - CONVSH V1.92 16-February-2006&#39;}</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span><span class="o">.</span><span class="n">standard_name</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span><span class="o">.</span><span class="n">standard_name</span>
 <span class="go">&#39;air_temperature&#39;</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span><span class="o">.</span><span class="n">Units</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span><span class="o">.</span><span class="n">Units</span>
 <span class="go">&lt;CF Units: K&gt;</span>
 </pre></div>
 </div>
 <p><strong>5.</strong> Write out the data.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="s1">&#39;newfile.nc&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="s1">&#39;newfile.nc&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -130,7 +130,7 @@ existing file with that name)</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -149,18 +149,18 @@ existing file with that name)</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 1.9.27 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">cf-plot 1.9.27 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
+    <div class="footer">
         &copy; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

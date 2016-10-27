@@ -1,0 +1,41 @@
+.. currentmodule:: cf
+.. default-role:: obj
+
+
+Example 10 - Combining data
+===========================
+
+
+In this example we:
+
+    * Read in and combine separate files with daily data for Jan 1994
+    * Produce a monthly mean at 500mb
+    * Plot this as a northern hemisphere stereograpic plot
+
+
+**1.** Read in and combine separate files with daily data for January 1994.
+
+>>> f=cf.read("data/jan*.nc")
+>>> print f
+air_temperature field summary
+-----------------------------
+Data           : air_temperature(time(31), pressure(23), latitude(160), longitude(320)) K
+Axes           : pressure(23) = [1000.0, ..., 1.0] mbar
+               : time(31) = [1994-01-01 00:00:00, ..., 1994-01-31 00:00:00]
+               : latitude(160) = [89.1415176392, ..., -89.1415176392] degrees_north
+               : longitude(320) = [0.0, ..., 358.875] degrees_east
+
+
+
+**2.** Produce and plot a monthly mean at 500mb.
+
+>>> tmean=f.collapse('time: mean')
+
+**3.** Plot the 500mb temperaure
+
+>>> cfp.mapset(proj='npstere')
+>>> tmean.Units -= 273.15
+>>> cfp.con(tmean.subspace(pressure=700), title='January 1994')
+
+.. image::  images/cf_example10_1.png
+   :scale: 80% 

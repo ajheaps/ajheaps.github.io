@@ -7,7 +7,7 @@ Example 3 - Data slicing and meaning
 
 **1.** Select a field and show the axis values.
 
-
+>>> f=cf.read('scicomp_data1.nc')
 >>> u=f.select('eastward_wind')
 >>> u
 <CF Field: eastward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1>
