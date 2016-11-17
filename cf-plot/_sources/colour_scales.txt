@@ -289,7 +289,7 @@ Cat12            .. image:: images/colour_scales/Cat12.png
 
 
 Orography/bathymetry colour scales
------------------------
+----------------------------------
 
 ================ =====
 Name             Scale
