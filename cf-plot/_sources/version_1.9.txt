@@ -328,7 +328,7 @@ Add axis label and alignment options to setvars:
 28. Bugfix in gset
 ==================
 
-Bugfix in gset fro recent time changes.
+Bugfix in gset for recent time axis changes.
 
 ::
 

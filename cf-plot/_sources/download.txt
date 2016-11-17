@@ -22,15 +22,35 @@ Department of Meteorology, University of Reading - The latest version of cf-plot
 To install cf-plot
 ==================
 
-Download and install Anaconda Python 2.7 for Linux if not already installed.  On the Linux command line type:
+Linux
+-----
+Download and install Anaconda Python 2.7 for Linux.  On the command line type:
 
 ::
 
    conda install -c ncas -c scitools cf-python cf-plot
    conda install -c nesii esmpy 
 
-The first line installs cf-python and cf-plot and the second installs esmpy which cf-python uses for regriding data.
+The first line installs cf-python, cf-plot and the second installs esmpy which cf-python uses for regriding data.
 
+MacOS
+-----
+Download and install Anaconda Python 2.7 for MacOS.  On the command line type:
+
+::
+
+   conda install -c ncas -c scitools cf-python cf-plot
+   conda install -c scitools esmpy
+
+The first line installs cf-python, cf-plot and the second installs esmpy which cf-python uses for regriding data.
+
+To use esmpy you'll also need to do a conda install of gcc and gfortran.  An fiddly part is putting the fortran libraries where esmpy needs to find them.  At the Python command prompt type import ESMF and an error message will indicate which libraries it cannot find.
+
+
+
+Windows
+-------
+Windows is not supported. If you are a Windows guru and manage to get cf-python and cf-plot working please contact andy.heaps@ncas.ac.uk with the details and I will the installation details here.
 
 Using pip:
 
