@@ -52,6 +52,9 @@ Windows
 -------
 Windows is not supported. If you are a Windows guru and manage to get cf-python and cf-plot working please contact andy.heaps@ncas.ac.uk with the details and I will the installation details here.
 
+
+Other install methods
+---------------------
 Using pip:
 
 ::
