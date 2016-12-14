@@ -110,6 +110,28 @@ will give a red white blue colour scale.  If the file is saved as /home/swsheaps
    cfp.cscale('/home/swsheaps/rwb.txt')
 
 
+
+Selecting colours for graph lines
+---------------------------------
+
+This can be done in several ways:
+
+1) Select the colours from the Matplotlib colour names - Google 'Images for matplotlib color names'.
+
+cfp.lineplot(g.subspace(pressure=925), color='plum')
+
+2) Use the hexadecimal code for the colour.
+
+cfp.lineplot(g.subspace(pressure=925), color = '#eeefff')
+ 
+  
+3) Shades of grey can be selected with cmap(shade), where shade go from 0 to 1.
+
+cfp.lineplot(g.subspace(pressure=925), color=cmap(0.8))
+
+
+
+
 Predefined colour scales
 ------------------------
 A lot of the following colour maps were downloaded from the NCAR Command Language web site.  Users of the IDL guide colour maps can see these maps at the end of the colour scales.

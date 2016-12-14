@@ -332,7 +332,94 @@ Bugfix in gset for recent time axis changes.
 
 ::
 
-    Done
+    Fixed
+
+
+29. Bug in lineplot
+===================
+
+Lineplot is now more logical and takes a CF-field (f) as the base use. The other use is
+not to pass f but to have x=x and y=y.  This allows x vs y plots and y vs x plots.
+
+::
+
+    Fixed
+
+
+
+30. con - filled contours and irregular contour levels
+======================================================
+
+Selecting irregular contour levels with cfp.levs(manual=manual) and filled contours gives a slight 
+colour scale mismatch.  This was resolved by calculating a normalization array: 
+plotvars.norm=matplotlib.colors.BoundaryNorm(boundaries=plotvars.levels, ncolors=ncolors)
+
+::
+
+    Fixed
+
+
+31. con - blockfill plots
+=========================
+
+Slight bug in blockfill colours at the top end of the drawn colours.
+
+
+::
+
+    Fixed
+
+
+
+32. setvars / lineplot - legend text size and weight
+====================================================
+
+Two new options were added to cfp.setvars to change the font size and weight for the legend in lineplot:
+
+legend_text_size=None - legend text size
+legend_text_weight=None - legend text weight
+
+
+::
+
+    Added
+
+
+
+33. levs - changed level generation scheme
+==========================================
+
+The level generation scheme in levs when the user passes min, max, step has been changed.  It is now using Neil
+Massey's scheme:
+
+If min, max, step are integers:
+levs = ((((np.arange(min, max+step*1e-10, step, dtype=np.float64)*1e10)).astype(np.int64)).astype(np.float64)/1e10).astype(np.int)
+
+else:
+levs = (((np.arange(min, max+step*1e-10, step, dtype=np.float64)*1e10)).astype(np.int64)).astype(np.float64)/1e10
+
+
+
+::
+
+    Changed
+
+
+
+34. gvals - changed scheme for step >= 1
+========================================
+
+gvals changed to use more sensible steps when step >= 1.
+
+steps are now 1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000, 2000, 2500, 5000, 10000, 20000, 25000, 50000, 100000, 
+200000, 250000, 500000, 1000000.
+              
+If the number of steps from the above in (data max - data min) is greater than 12 then this step is used.
+
+
+::
+
+    Changed
 
 
 

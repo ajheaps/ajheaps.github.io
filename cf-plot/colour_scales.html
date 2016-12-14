@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Colour scales &mdash; cf-plot 1.9.28 documentation</title>
+    <title>Colour scales &mdash; cf-plot 1.9.34 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.9.28',
+        VERSION:     '1.9.34',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 1.9.28 documentation" href="index.html" /> 
+    <link rel="top" title="cf-plot 1.9.34 documentation" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -32,7 +32,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="index.html">cf-plot 1.9.28 documentation</a> &raquo;</li> 
+        <li><a href="index.html">cf-plot 1.9.34 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -111,6 +111,22 @@
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;/home/swsheaps/rwb.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="selecting-colours-for-graph-lines">
+<h2>Selecting colours for graph lines<a class="headerlink" href="#selecting-colours-for-graph-lines" title="Permalink to this headline">¶</a></h2>
+<p>This can be done in several ways:</p>
+<ol class="arabic simple">
+<li>Select the colours from the Matplotlib colour names - Google &#8216;Images for matplotlib color names&#8217;.</li>
+</ol>
+<p>cfp.lineplot(g.subspace(pressure=925), color=&#8217;plum&#8217;)</p>
+<ol class="arabic simple" start="2">
+<li>Use the hexadecimal code for the colour.</li>
+</ol>
+<p>cfp.lineplot(g.subspace(pressure=925), color = &#8216;#eeefff&#8217;)</p>
+<ol class="arabic simple" start="3">
+<li>Shades of grey can be selected with cmap(shade), where shade go from 0 to 1.</li>
+</ol>
+<p>cfp.lineplot(g.subspace(pressure=925), color=cmap(0.8))</p>
 </div>
 <div class="section" id="predefined-colour-scales">
 <h2>Predefined colour scales<a class="headerlink" href="#predefined-colour-scales" title="Permalink to this headline">¶</a></h2>
@@ -972,7 +988,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="index.html">cf-plot 1.9.28 documentation</a> &raquo;</li> 
+        <li><a href="index.html">cf-plot 1.9.34 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

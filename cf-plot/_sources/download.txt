@@ -33,6 +33,14 @@ Download and install Anaconda Python 2.7 for Linux.  On the command line type:
 
 The first line installs cf-python, cf-plot and the second installs esmpy which cf-python uses for regriding data.
 
+
+
+Other OSs
+---------
+It is recommended that you use a virtual machine with Linux running in it as some things don't, and probably won't ever, work on other OSs - Met Office PP file reading for instance.  
+
+
+
 MacOS
 -----
 Download and install Anaconda Python 2.7 for MacOS.  On the command line type:
@@ -46,11 +54,11 @@ The first line installs cf-python, cf-plot and the second installs esmpy which c
 
 To use esmpy you'll also need to do a conda install of gcc and gfortran.  An fiddly part is putting the fortran libraries where esmpy needs to find them.  At the Python command prompt type import ESMF and an error message will indicate which libraries it cannot find.
 
-
+On Macs to get Matplotlib graphic windows to appear user cfp.setvars(viewer='matplotlib') before making any plots.
 
 Windows
 -------
-Windows is not supported. If you are a Windows guru and manage to get cf-python and cf-plot working please contact andy.heaps@ncas.ac.uk with the details and I will the installation details here.
+Windows is not supported or expected to be supported. If you are a Windows guru and manage to get cf-python and cf-plot working please contact andy.heaps@ncas.ac.uk with the details and I will post the installation details here.
 
 
 Other install methods
