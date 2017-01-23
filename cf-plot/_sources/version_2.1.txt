@@ -40,6 +40,7 @@ contour plots where no user colour scale has been defined.
 
 Use cfp.setvars(cs_uniform=False) to revert to the previous behaviour.
 
+
 .. image::  images/scale1_original.png
    :scale: 52% 
 
@@ -81,6 +82,10 @@ Lambert conformal projections can now be cropped as in the following code:
 |    cfp.mapset(proj='lcc', lon_0=0, lat_0=50, lat_1=45, lat_2=55, width=12000000,
 |    height=9000000, plimits=[-50, 50, 20, 85])
 |    cfp.con(f.subspace(time=15))
+
+
+.. image::  images/cm.png
+   :scale: 52% 
 
 
 For a corresponding southern hemisphere plot use:
