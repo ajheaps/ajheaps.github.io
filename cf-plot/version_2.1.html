@@ -68,9 +68,13 @@
 so that blues are below zero and reds above zero.  When the number of colours above and below differ quite markedly
 this can give undue emphasis to data by having too strong colours in the above or below zero scale.  A new keyword was
 introduced, uniform=True (or False), to address this issue.  The default is now uniform=True for divergent data
-contour plots where no user colour scale has been defined.</p>
+contour plots where no user colour scale has been defined:</p>
 <a class="reference internal image-reference" href="_images/scale1_new.png"><img alt="_images/scale1_new.png" src="_images/scale1_new.png" style="width: 502.84px; height: 33.28px;" /></a>
-<p>Use cfp.setvars(cs_uniform=False) to revert to the previous behaviour.</p>
+<p>Use:</p>
+<div class="line-block">
+<div class="line">cfp.setvars(cs_uniform=False)</div>
+</div>
+<p>to revert to the previous behaviour:</p>
 </div>
 <div class="section" id="mapset-new-projections-added">
 <h2>4. mapset - new projections added<a class="headerlink" href="#mapset-new-projections-added" title="Permalink to this headline">¶</a></h2>
