@@ -35,12 +35,12 @@ this can give undue emphasis to data by having too strong colours in the above o
 introduced, uniform=True (or False), to address this issue.  The default is now uniform=True for divergent data 
 contour plots where no user colour scale has been defined.
 
-.. image::  images/scale_new.png
+.. image::  images/scale1_new.png
    :scale: 52% 
 
 Use cfp.setvars(cs_uniform=False) to revert to the previous behaviour.
 
-.. image::  images/scale_original.png
+.. image::  images/scale1_original.png
    :scale: 52% 
 
 
