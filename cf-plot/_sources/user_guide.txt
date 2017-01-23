@@ -62,13 +62,13 @@ To reset the mapping to the default cylindrical projection -180 to 180 in longit
 
 Blockfill plots
 ---------------
-Blockfill plots in the cylindrical projection are made using the **blockfill=1** flag to the **con** routine.
+Blockfill plots in the cylindrical projection are made using the **blockfill=True** flag to the **con** routine.
 
 ::
 
    import cf, cfplot as cfp
    f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
-   cfp.con(f.subspace(time=15), blockfill=1)
+   cfp.con(f.subspace(time=15), blockfill=True, lines=False)
 
 
 .. image::  images/fig2.png
@@ -366,13 +366,13 @@ A mean of the data along the longitude (zonal mean) is made using the cf.collaps
 
 
 
-To make a log pressure on the y axis use the ylog=1 flag to the con routine.
+To make a log pressure on the y axis use the ylog=True flag to the con routine.
 
 ::
 
    import cf, cfplot as cfp
    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
-   cfp.con(f.collapse('mean','longitude'), ylog=1)
+   cfp.con(f.collapse('mean','longitude'), ylog=True)
 
 .. image::  images/fig8.png
    :scale: 52% 
@@ -699,9 +699,9 @@ For data where you need white to indicate that this data region is insignificant
 .. image::  images/cs4.png
    :scale: 52% 
 
-To reverse a colour scale use the **reverse=1** option to **cscale** and specify the number of colours required.
+To reverse a colour scale use the **reverse=True** option to **cscale** and specify the number of colours required.
 
-**cfp.cscale('viridis', reverse=1, ncols=17)**
+**cfp.cscale('viridis', reverse=True, ncols=17)**
 
 
 User defined colour scales

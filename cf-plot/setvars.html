@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>setvars &mdash; cf-plot 1.9.34 documentation</title>
+    <title>setvars &mdash; cf-plot 2.1.10 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.9.34',
+        VERSION:     '2.1.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 1.9.34 documentation" href="index.html" /> 
+    <link rel="top" title="cf-plot 2.1.10 documentation" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -32,7 +32,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="index.html">cf-plot 1.9.34 documentation</a> &raquo;</li> 
+        <li><a href="index.html">cf-plot 2.1.10 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -45,7 +45,7 @@
 <h1>setvars<a class="headerlink" href="#setvars" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="cfplot.setvars">
-<tt class="descclassname">cfplot.</tt><tt class="descname">setvars</tt><big>(</big><em>file=None</em>, <em>title_fontsize=None</em>, <em>text_fontsize=None</em>, <em>axis_label_fontsize=None</em>, <em>title_fontweight=None</em>, <em>text_fontweight=None</em>, <em>axis_label_fontweight=None</em>, <em>fontweight=None</em>, <em>continent_thickness=None</em>, <em>continent_color=None</em>, <em>viewer=None</em>, <em>tspace_year=None</em>, <em>tspace_month=None</em>, <em>tspace_day=None</em>, <em>tspace_hour=None</em>, <em>xtick_label_rotation=None</em>, <em>xtick_label_align=None</em>, <em>ytick_label_rotation=None</em>, <em>ytick_label_align=None</em>, <em>legend_text_weight=None</em>, <em>legend_text_size=None</em><big>)</big><a class="reference internal" href="_modules/cfplot.html#setvars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.setvars" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">cfplot.</tt><tt class="descname">setvars</tt><big>(</big><em>file=None</em>, <em>title_fontsize=None</em>, <em>text_fontsize=None</em>, <em>axis_label_fontsize=None</em>, <em>title_fontweight=None</em>, <em>text_fontweight=None</em>, <em>axis_label_fontweight=None</em>, <em>fontweight=None</em>, <em>continent_thickness=None</em>, <em>continent_color=None</em>, <em>viewer=None</em>, <em>tspace_year=None</em>, <em>tspace_month=None</em>, <em>tspace_day=None</em>, <em>tspace_hour=None</em>, <em>xtick_label_rotation=None</em>, <em>xtick_label_align=None</em>, <em>ytick_label_rotation=None</em>, <em>ytick_label_align=None</em>, <em>legend_text_weight=None</em>, <em>legend_text_size=None</em>, <em>cs_uniform=None</em><big>)</big><a class="reference internal" href="_modules/cfplot.html#setvars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.setvars" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">setvars - set plotting variables</div>
 <div class="line"><br /></div>
@@ -58,11 +58,12 @@
 <div class="line">axis_label_fontweight=&#8217;normal&#8217; - axis font weight</div>
 <div class="line">continent_thickness=None - default=1.5</div>
 <div class="line">continent_color=None - default=&#8217;k&#8217; (black)</div>
-<div class="line">viewer=&#8217;display&#8217; - use ImageMagick display program to display the pictures.  Set to </div>
+<div class="line">viewer=&#8217;display&#8217; - use ImageMagick display program to display</div>
 <div class="line-block">
-<div class="line">&#8216;matplotlib&#8217; to use the built in matplotlib viewer.  display is </div>
-<div class="line">non-blocking of the command prompt while the built in matplotlib viewer</div>
-<div class="line">is blocking.</div>
+<div class="line">the pictures.  Set to &#8216;matplotlib&#8217; to use the</div>
+<div class="line">built in matplotlib viewer.  display is non-blocking</div>
+<div class="line">of the command prompt while the built in matplotlib</div>
+<div class="line">viewer is blocking.</div>
 <div class="line"><br /></div>
 </div>
 <div class="line">tspace_year=None - time axis spacing in years</div>
@@ -75,6 +76,7 @@
 <div class="line">ytick_label_align=&#8217;right&#8217; - alignment of ytick labels</div>
 <div class="line">legend_text_size=None - legend text size</div>
 <div class="line">legend_text_weight=None - legend text weight</div>
+<div class="line">cs_uniform=None - make a uniform differential colour scale</div>
 <div class="line"><br /></div>
 <div class="line">Use setvars() to reset to the defaults</div>
 <div class="line"><br /></div>
@@ -127,7 +129,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="index.html">cf-plot 1.9.34 documentation</a> &raquo;</li> 
+        <li><a href="index.html">cf-plot 2.1.10 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

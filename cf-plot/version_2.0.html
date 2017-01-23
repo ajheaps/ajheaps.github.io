@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>set_map &mdash; cf-plot 2.1.10 documentation</title>
+    <title>version 2.0 changes &mdash; cf-plot 2.1.10 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -41,37 +41,36 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="set-map">
-<h1>set_map<a class="headerlink" href="#set-map" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="cfplot.set_map">
-<tt class="descclassname">cfplot.</tt><tt class="descname">set_map</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/cfplot.html#set_map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.set_map" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line">set_map - set map and write into plotvars.mymap</div>
-<div class="line"><br /></div>
-<div class="line">No inputs</div>
-<div class="line">This is an internal routine and not used by the user</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
+  <div class="section" id="version-2-0-changes">
+<h1>version 2.0 changes<a class="headerlink" href="#version-2-0-changes" title="Permalink to this headline">¶</a></h1>
+<p>Code base changes.</p>
+<div class="section" id="pep8-compliance">
+<h2>1. Pep8 compliance<a class="headerlink" href="#pep8-compliance" title="Permalink to this headline">¶</a></h2>
+<p>The cf-plot code has been made pep8 compliant using the pep8 online checker <a class="reference external" href="http://pep8online.com">http://pep8online.com</a> and the Python autopep8 program.  After running the code through autopep8 &#8211;in-place &#8211;aggressive cfplot.py the code was then run through the online checker and manually changed where needed.  The code is now much easier to read and the logic easier to follow.</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
+</div></blockquote>
 </div>
-</dd></dl>
-
+<div class="section" id="regression-testing">
+<h2>2. Regression testing<a class="headerlink" href="#regression-testing" title="Permalink to this headline">¶</a></h2>
+<p>Regression code has been added so that new releases are more robust.  The gallery plots are compared to a series of previous plots using python md5 checksums.  If tany plots are different the plots are passed through the Imagemagick compare routine and the differences displayed on the screen.</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="merge-all-x-y-t-vs-z-contour-code">
+<h2>3. Merge all X,Y,T vs Z contour code<a class="headerlink" href="#merge-all-x-y-t-vs-z-contour-code" title="Permalink to this headline">¶</a></h2>
+<p>The three X,Y,T vs Z contour code sections were merged together to reduce code sprawl.</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
 </div>
 
 

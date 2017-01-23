@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>cscale &mdash; cf-plot 1.9.34 documentation</title>
+    <title>cscale &mdash; cf-plot 2.1.10 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.9.34',
+        VERSION:     '2.1.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 1.9.34 documentation" href="index.html" /> 
+    <link rel="top" title="cf-plot 2.1.10 documentation" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -32,7 +32,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="index.html">cf-plot 1.9.34 documentation</a> &raquo;</li> 
+        <li><a href="index.html">cf-plot 2.1.10 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -45,29 +45,36 @@
 <h1>cscale<a class="headerlink" href="#cscale" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="cfplot.cscale">
-<tt class="descclassname">cfplot.</tt><tt class="descname">cscale</tt><big>(</big><em>cmap=None</em>, <em>ncols=None</em>, <em>white=None</em>, <em>below=None</em>, <em>above=None</em>, <em>reverse=0</em><big>)</big><a class="reference internal" href="_modules/cfplot.html#cscale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.cscale" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">cfplot.</tt><tt class="descname">cscale</tt><big>(</big><em>cmap=None</em>, <em>ncols=None</em>, <em>white=None</em>, <em>below=None</em>, <em>above=None</em>, <em>reverse=False</em>, <em>uniform=False</em><big>)</big><a class="reference internal" href="_modules/cfplot.html#cscale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.cscale" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">cscale - choose and manipulate colour maps.  Around 200 colour scales are</div>
 <div class="line-block">
 <div class="line">available - see the gallery section for more details.</div>
 <div class="line"><br /></div>
 </div>
-<div class="line">cmap=cmap - name of colour map</div>
-<div class="line">ncols=ncols - number of colours for colour map</div>
-<div class="line">white=white - change these colours to be white</div>
-<div class="line">below=below - change the number of colours below the mid point of </div>
+<div class="line">cmap=None - name of colour map</div>
+<div class="line">ncols=None - number of colours for colour map</div>
+<div class="line">white=None - change these colours to be white</div>
+<div class="line">below=None - change the number of colours below the mid point of</div>
 <div class="line-block">
 <div class="line">the colour scale to be this</div>
 </div>
-<div class="line">above=above - change the number of colours above the mid point of </div>
+<div class="line">above=None - change the number of colours above the mid point of</div>
 <div class="line-block">
 <div class="line">the colour scale to be this</div>
 </div>
 <div class="line">reverse=False - reverse the colour scale</div>
+<div class="line">uniform=False - produce a uniform colour scale.</div>
+<div class="line-block">
+<div class="line">For example: if below=3 and above=10 are specified</div>
+<div class="line">then initially below=10 and above=10 are used.  The</div>
+<div class="line">colour scale is then cropped to use scale colours</div>
+<div class="line">6 to 19.</div>
 <div class="line"><br /></div>
 <div class="line"><br /></div>
-<div class="line">Personal colour maps are available by saving the map as red green blue </div>
-<div class="line">to a file with a set of values on each line. </div>
+</div>
+<div class="line">Personal colour maps are available by saving the map as red green blue</div>
+<div class="line">to a file with a set of values on each line.</div>
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 <div class="line">Use cscale() To reset to the default settings.</div>
@@ -120,7 +127,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="index.html">cf-plot 1.9.34 documentation</a> &raquo;</li> 
+        <li><a href="index.html">cf-plot 2.1.10 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

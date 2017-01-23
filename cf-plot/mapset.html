@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mapset &mdash; cf-plot 1.9.34 documentation</title>
+    <title>mapset &mdash; cf-plot 2.1.10 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.9.34',
+        VERSION:     '2.1.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 1.9.34 documentation" href="index.html" /> 
+    <link rel="top" title="cf-plot 2.1.10 documentation" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -32,7 +32,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="index.html">cf-plot 1.9.34 documentation</a> &raquo;</li> 
+        <li><a href="index.html">cf-plot 2.1.10 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -45,7 +45,7 @@
 <h1>mapset<a class="headerlink" href="#mapset" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="cfplot.mapset">
-<tt class="descclassname">cfplot.</tt><tt class="descname">mapset</tt><big>(</big><em>lonmin=None</em>, <em>lonmax=None</em>, <em>latmin=None</em>, <em>latmax=None</em>, <em>proj='cyl'</em>, <em>boundinglat=0</em>, <em>lon_0=0</em>, <em>resolution='c'</em>, <em>user_mapset=1</em><big>)</big><a class="reference internal" href="_modules/cfplot.html#mapset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.mapset" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">cfplot.</tt><tt class="descname">mapset</tt><big>(</big><em>lonmin=None</em>, <em>lonmax=None</em>, <em>latmin=None</em>, <em>latmax=None</em>, <em>proj='cyl'</em>, <em>boundinglat=0</em>, <em>lon_0=0</em>, <em>lat_0=40</em>, <em>resolution='c'</em>, <em>user_mapset=1</em>, <em>width=12000000</em>, <em>height=9000000</em>, <em>lat_1=45.0</em>, <em>lat_2=55</em>, <em>plimits=None</em><big>)</big><a class="reference internal" href="_modules/cfplot.html#mapset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.mapset" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">mapset sets the mapping parameters.</div>
 <div class="line"><br /></div>
@@ -53,40 +53,55 @@
 <div class="line">lonmax=lonmax - maximum longitude</div>
 <div class="line">latmin=latmin - minimum latitude</div>
 <div class="line">latmax=latmax - maximum latitude</div>
-<div class="line">proj=proj - &#8216;cyl&#8217; for cylindrical projection. &#8216;npstere&#8217; or &#8216;spstere&#8217; for northern </div>
+<div class="line">proj=proj - &#8216;cyl&#8217; for cylindrical projection. &#8216;npstere&#8217; or &#8216;spstere&#8217;</div>
 <div class="line-block">
-<div class="line">hemisphere or southern hemisphere polar stereographic projection</div>
-<div class="line">&#8216;moll&#8217; for the mollweide projection</div>
+<div class="line">for northern hemisphere or southern hemisphere polar stereographic</div>
+<div class="line">projection. Use&#8217;moll&#8217; for the mollweide projection.</div>
 </div>
-<div class="line">boundinglat=boundinglat - edge of the viewable latitudes in a stereographic plot</div>
-<div class="line">lon_0=lon_0 - centre of desired map domain in stereographic or   plots</div>
-<div class="line">resolution=resolution - the map resolution - can be one of &#8216;c&#8217; (crude), &#8216;l&#8217; (low), </div>
+<div class="line">boundinglat=boundinglat - edge of the viewable latitudes in a</div>
 <div class="line-block">
-<div class="line">&#8216;i&#8217; (intermediate), &#8216;h&#8217; (high), &#8216;f&#8217; (full) or &#8216;None&#8217;</div>
+<div class="line">stereographic plot</div>
 </div>
-<div class="line">user_mapset=user_mapset - variable to indicate whether a user call to mapset has been </div>
+<div class="line">lon_0=0 - longitude centre of desired map domain in polar</div>
 <div class="line-block">
-<div class="line">made. </div>
+<div class="line">stereographic and orthogrphic plots</div>
+</div>
+<div class="line">lat_0=40 - latitude centre of desired map domain in orthogrphic plots</div>
+<div class="line">resolution=resolution - the map resolution - can be one of &#8216;c&#8217; (crude),</div>
+<div class="line-block">
+<div class="line">&#8216;l&#8217; (low), &#8216;i&#8217; (intermediate), &#8216;h&#8217; (high), &#8216;f&#8217; (full) or &#8216;None&#8217;</div>
+</div>
+<div class="line">user_mapset=user_mapset - variable to indicate whether a user call</div>
+<div class="line-block">
+<div class="line">to mapset has been made.</div>
+</div>
+<div class="line">lat_1=45 - first standard parallel</div>
+<div class="line">lat_2=55 - second standard parallel</div>
+<div class="line">width=12000000 - width of Lambert Conformal Projection, lcc</div>
+<div class="line">height=9000000 - height of Lambert Conformal Projection, lcc</div>
+<div class="line">plimits=None - plot limits [lonmin, lonmax, latmin, latmax] for lcc plot</div>
 <div class="line"><br /></div>
-</div>
-<div class="line">The default map plotting projection is the cyclindrical equidistant projection from </div>
-<div class="line">-180 to 180 in longitude and -90 to 90 in latitude. To change the map view in this </div>
-<div class="line">projection to over the United Kingdom, for example, you would use</div>
-<div class="line">mapset(lonmin=-6, lonmax=3, latmin=50, latmax=60) or mapset(-6, 3, 50, 60).</div>
+<div class="line">The default map plotting projection is the cyclindrical equidistant</div>
+<div class="line">projection from-180 to 180 in longitude and -90 to 90 in latitude.</div>
+<div class="line">To change the map view in this projection to over the United Kingdom,</div>
+<div class="line">for example, you would use</div>
+<div class="line">mapset(lonmin=-6, lonmax=3, latmin=50, latmax=60)</div>
+<div class="line">or mapset(-6, 3, 50, 60)</div>
 <div class="line"><br /></div>
-<div class="line">The limits are -360 to 720 in longitude so to look at the equatorial Pacific you </div>
-<div class="line">could use</div>
+<div class="line">The limits are -360 to 720 in longitude so to look at the equatorial</div>
+<div class="line">Pacific you could use</div>
 <div class="line">mapset(lonmin=90, lonmax=300, latmin=-30, latmax=30)</div>
 <div class="line">or</div>
 <div class="line">mapset(lonmin=-270, lonmax=-60, latmin=-30, latmax=30)</div>
 <div class="line"><br /></div>
-<div class="line">The proj parameter for the present accepts just two values - &#8216;npstere&#8217; and &#8216;spstere&#8217; </div>
-<div class="line">for northern hemisphere or southern hemisphere polar stereographic projections. In </div>
-<div class="line">addition to these the boundinglat parameter sets the edge of the viewable latitudes</div>
-<div class="line">and lat_0 sets the centre of desired map domain.</div>
+<div class="line">The proj parameter for the present accepts just two values - &#8216;npstere&#8217;</div>
+<div class="line">and &#8216;spstere&#8217; for northern hemisphere or southern hemisphere polar</div>
+<div class="line">stereographic projections. In addition to these the boundinglat</div>
+<div class="line">parameter sets the edge of the viewable latitudes and lat_0 sets the</div>
+<div class="line">centre of desired map domain.</div>
 <div class="line"><br /></div>
-<div class="line">Map settings are persistent until a new call to mapset is made. To reset to the default</div>
-<div class="line">map settings use mapset().</div>
+<div class="line">Map settings are persistent until a new call to mapset is made. To</div>
+<div class="line">reset to the default map settings use mapset().</div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -129,7 +144,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="index.html">cf-plot 1.9.34 documentation</a> &raquo;</li> 
+        <li><a href="index.html">cf-plot 2.1.10 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

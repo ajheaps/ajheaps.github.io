@@ -43,6 +43,8 @@ It is recommended that you use a virtual machine with Linux running in it as som
 
 MacOS
 -----
+It is recommended that a Linux virtual machine is used on Macs.  If you wish to use a slighly out of date version of cf-plot directly on a Mac then follow the instructions below.
+
 Download and install Anaconda Python 2.7 for MacOS.  On the command line type:
 
 ::
@@ -76,7 +78,7 @@ Using GitHub:
 ::
 
    git clone git://github.com/ajheaps/cf-plot.git
-   cd cfplot
+   cd cf-plot
    python setup.py install
 
 

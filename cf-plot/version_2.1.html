@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>version 2.1 changes &mdash; cf-plot 2.1.10 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.1.10',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="cf-plot 2.1.10 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">cf-plot 2.1.10 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="version-2-1-changes">
+<h1>version 2.1 changes<a class="headerlink" href="#version-2-1-changes" title="Permalink to this headline">¶</a></h1>
+<p>Rolling set of small additions and bug fixes.</p>
+<div class="section" id="log-pressure-axis-labelling">
+<h2>1. Log pressure axis labelling<a class="headerlink" href="#log-pressure-axis-labelling" title="Permalink to this headline">¶</a></h2>
+<p>Log pressure axis labelling was changed from the in-built Matplotlib labelling with used 10^3, 10^2 10^1 to 1000, 10, 1.</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="rotated-grid-axis-labelling">
+<h2>2. Rotated grid axis labelling<a class="headerlink" href="#rotated-grid-axis-labelling" title="Permalink to this headline">¶</a></h2>
+<p>Missing longitude and latitude labels were added to rotated pole plots.</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="cscale-uniform-keyword-added">
+<h2>3. cscale - uniform keyword added<a class="headerlink" href="#cscale-uniform-keyword-added" title="Permalink to this headline">¶</a></h2>
+<p>When a divergent colour scheme is used such as in example 4 in the gallery the default colour scale is stretched
+so that blues are below zero and reds above zero.  When the number of colours above and below differ quite markedly
+this can give undue emphasis to data by having too strong colours in the above or below zero scale.  A new keyword was
+introduced, uniform=True (or False), to address this issue.  The default is now uniform=True for divergent data
+contour plots where no user colour scale has been defined.</p>
+<a class="reference internal image-reference" href="images/scale_new.png"><img alt="images/scale_new.png" src="images/scale_new.png" /></a>
+<p>Use cfp.setvars(cs_uniform=False) to revert to the previous behaviour.</p>
+</div>
+<div class="section" id="mapset-new-projections-added">
+<h2>4. mapset - new projections added<a class="headerlink" href="#mapset-new-projections-added" title="Permalink to this headline">¶</a></h2>
+<p>Added Mercator, Lambert Conformal, Orthographic and Robinson projections.  See the Basemap documentation
+at <a class="reference external" href="http://matplotlib.org/basemap/users/mapsetup.html">http://matplotlib.org/basemap/users/mapsetup.html</a> for calling parameters.</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="lineplot-axis-labelling-renamed">
+<h2>5. lineplot - axis labelling renamed<a class="headerlink" href="#lineplot-axis-labelling-renamed" title="Permalink to this headline">¶</a></h2>
+<p>xname and yname have been depreciated in favour of xlabel and ylabel.  This change was made to be consistent
+with xlabel and ylabel as used in the con and vect routines.</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="cropped-area-on-map-lcc-projections">
+<h2>6. Cropped area on map lcc projections<a class="headerlink" href="#cropped-area-on-map-lcc-projections" title="Permalink to this headline">¶</a></h2>
+<p>Lambert conformal projections can now be cropped as in the following code:</p>
+<div class="line-block">
+<div class="line">import cf, cfplot as cfp</div>
+<div class="line">f=cf.read(&#8216;/opt/graphics/cfplot_data/tas_A1.nc&#8217;)</div>
+<div class="line">cfp.mapset(proj=&#8217;lcc&#8217;, lon_0=0, lat_0=50, lat_1=45, lat_2=55, width=12000000,</div>
+<div class="line">height=9000000, plimits=[-50, 50, 20, 85])</div>
+<div class="line">cfp.con(f.subspace(time=15))</div>
+</div>
+<p>For a corresponding southern hemisphere plot use:</p>
+<div class="line-block">
+<div class="line">cfp.mapset(proj=&#8217;lcc&#8217;, lon_0=0, lat_0=-50, lat_1=-55, lat_2=-45, width=12000000,height=9000000,</div>
+<div class="line">plimits=[-50, 50, -85, -20])</div>
+</div>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="better-determination-of-up-on-the-z-axis">
+<h2>7. Better determination of up on the Z axis<a class="headerlink" href="#better-determination-of-up-on-the-z-axis" title="Permalink to this headline">¶</a></h2>
+<p>The CF metadata attribute of postitive for the Z coordinate is now used in the con and lineplot routines.</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="con-colors-option-for-contour-lines">
+<h2>9. con - colors option for contour lines<a class="headerlink" href="#con-colors-option-for-contour-lines" title="Permalink to this headline">¶</a></h2>
+<p>con - added colors keyword for the contour lines.  This keyword takes a single colour or a list
+of colours.  The default is &#8216;k&#8217; or black&#8217;</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="con-lines-true-now-the-default">
+<h2>10. con - lines=True now the default<a class="headerlink" href="#con-lines-true-now-the-default" title="Permalink to this headline">¶</a></h2>
+<p>Within con the lines=True parameter is now the default.  This change was made due to the complex and
+somewhat obscure logic in the blockfill section of code.  The change will affect blockfill plots
+which were previously drawn with no lines using blockfill=True.  The syntax for blockfill with no lines
+is now blockfill=True, lines=False.</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+
+<h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
+<h5><a href="http://ajheaps.github.io/cf-plot/gallery.html">Gallery</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/user_guide.html">User Guide</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/data.html">Data input</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/routines.html">Routines</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/internal_routines.html">Routines - internal</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/advanced.html">Advanced Use</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/versions.html">Versions</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/issues.html">Issues</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/download.html">Download/Install</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/license.html">License</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/search.html">Search</a><p></h5>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">cf-plot 2.1.10 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
