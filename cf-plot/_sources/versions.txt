@@ -19,6 +19,8 @@ Planned releases
 - 1.7 `Rolling update of features    <http://ajheaps.github.io/cf-plot/version_1.7.html>`_
 - 1.8 `Graph plots    <http://ajheaps.github.io/cf-plot/version_1.8.html>`_
 - 1.9 `Rolling update of features    <http://ajheaps.github.io/cf-plot/version_1.9.html>`_
+- 2.0 `Code base changes    <http://ajheaps.github.io/cf-plot/version_2.0.html>`_
+- 2.1 `Rolling set of small additions and bug fixes    <http://ajheaps.github.io/cf-plot/version_2.1.html>`_
 
 
 
