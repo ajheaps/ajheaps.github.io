@@ -289,6 +289,7 @@ WhViBlGrYeOrReWh        .. image:: images/colour_scales/WhViBlGrYeOrReWh.png
 wxpEnIR                 .. image:: images/colour_scales/wxpEnIR.png
 3gauss                  .. image:: images/colour_scales/3gauss.png
 3saw                    .. image:: images/colour_scales/3saw.png
+BrBG                    .. image:: images/colour_scales/BrBG.png
 ======================= =====
 
 

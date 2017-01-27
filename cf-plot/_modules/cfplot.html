@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>cfplot &mdash; cf-plot 2.1.10 documentation</title>
+    <title>cfplot &mdash; cf-plot 2.1.12 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2.1.10',
+        VERSION:     '2.1.12',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 2.1.10 documentation" href="../index.html" />
+    <link rel="top" title="cf-plot 2.1.12 documentation" href="../index.html" />
     <link rel="up" title="Module code" href="index.html" /> 
   </head>
   <body>
@@ -33,7 +33,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="../index.html">cf-plot 2.1.10 documentation</a> &raquo;</li>
+        <li><a href="../index.html">cf-plot 2.1.12 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
@@ -317,8 +317,8 @@
             <span class="k">raise</span> <span class="ne">Warning</span><span class="p">(</span><span class="n">errstr</span><span class="p">)</span>
 
     <span class="c1"># Turn off colorbar if fill is turned off</span>
-    <span class="k">if</span> <span class="n">fill</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">blockfill</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">colorbar</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">fill</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">blockfill</span><span class="p">:</span>
+        <span class="n">colorbar</span> <span class="o">=</span> <span class="bp">False</span>
 
     <span class="c1"># Revert to default colour scale if cscale_flag flag is set</span>
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">cscale_flag</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -741,7 +741,7 @@
             <span class="n">fontweight</span><span class="o">=</span><span class="n">title_fontweight</span><span class="p">)</span>
 
         <span class="c1"># Color bar</span>
-        <span class="k">if</span> <span class="n">colorbar</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">colorbar</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
                 <span class="k">print</span> <span class="s1">&#39;con - adding colour bar&#39;</span>
             <span class="n">pad</span> <span class="o">=</span> <span class="mf">0.10</span>
@@ -1130,7 +1130,7 @@
                                                <span class="n">linewidths</span><span class="o">=</span><span class="n">zero_thick</span><span class="p">,</span> <span class="n">tri</span><span class="o">=</span><span class="n">tri</span><span class="p">)</span>
 
         <span class="c1"># Colorbar</span>
-        <span class="k">if</span> <span class="n">colorbar</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">colorbar</span><span class="p">:</span>
             <span class="n">pad</span> <span class="o">=</span> <span class="mf">0.15</span>
             <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">rows</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
                 <span class="n">pad</span> <span class="o">=</span> <span class="mf">0.25</span>
@@ -1498,8 +1498,7 @@
                                            <span class="n">linewidths</span><span class="o">=</span><span class="n">zero_thick</span><span class="p">,</span> <span class="n">tri</span><span class="o">=</span><span class="n">tri</span><span class="p">)</span>
 
         <span class="c1"># Colorbar</span>
-        <span class="k">if</span> <span class="n">colorbar</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-
+        <span class="k">if</span> <span class="n">colorbar</span><span class="p">:</span>
             <span class="n">pad</span> <span class="o">=</span> <span class="mf">0.15</span>
             <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">rows</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
                 <span class="n">pad</span> <span class="o">=</span> <span class="mf">0.25</span>
@@ -1691,8 +1690,7 @@
                                            <span class="n">linewidths</span><span class="o">=</span><span class="n">zero_thick</span><span class="p">,</span> <span class="n">tri</span><span class="o">=</span><span class="n">tri</span><span class="p">)</span>
 
         <span class="c1"># Colorbar</span>
-        <span class="k">if</span> <span class="n">colorbar</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-
+        <span class="k">if</span> <span class="n">colorbar</span><span class="p">:</span>
             <span class="n">pad</span> <span class="o">=</span> <span class="mf">0.15</span>
             <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">rows</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
                 <span class="n">pad</span> <span class="o">=</span> <span class="mf">0.25</span>
@@ -4757,14 +4755,14 @@
                  <span class="s1">&#39;GrayWhiteGray&#39;</span><span class="p">,</span> <span class="s1">&#39;GreenYellow&#39;</span><span class="p">,</span> <span class="s1">&#39;helix&#39;</span><span class="p">,</span> <span class="s1">&#39;helix1&#39;</span><span class="p">,</span>
                  <span class="s1">&#39;hotres&#39;</span><span class="p">,</span> <span class="s1">&#39;matlab_hot&#39;</span><span class="p">,</span> <span class="s1">&#39;matlab_hsv&#39;</span><span class="p">,</span> <span class="s1">&#39;matlab_jet&#39;</span><span class="p">,</span>
                  <span class="s1">&#39;matlab_lines&#39;</span><span class="p">,</span> <span class="s1">&#39;ncl_default&#39;</span><span class="p">,</span> <span class="s1">&#39;ncview_default&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;OceanLakeLandSnow&#39;</span><span class="p">,</span> <span class="s1">&#39;rainbow&#39;</span><span class="p">,</span> <span class="s1">&#39;rainbow+white+gray&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;rainbow+white&#39;</span><span class="p">,</span> <span class="s1">&#39;rainbow+gray&#39;</span><span class="p">,</span> <span class="s1">&#39;tbr_240-300&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;tbr_stdev_0-30&#39;</span><span class="p">,</span> <span class="s1">&#39;tbr_var_0-500&#39;</span><span class="p">,</span> <span class="s1">&#39;tbrAvg1&#39;</span><span class="p">,</span> <span class="s1">&#39;tbrStd1&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;tbrVar1&#39;</span><span class="p">,</span> <span class="s1">&#39;thelix&#39;</span><span class="p">,</span> <span class="s1">&#39;ViBlGrWhYeOrRe&#39;</span><span class="p">,</span> <span class="s1">&#39;wh-bl-gr-ye-re&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;OceanLakeLandSnow&#39;</span><span class="p">,</span> <span class="s1">&#39;rainbow&#39;</span><span class="p">,</span> <span class="s1">&#39;rainbow_white_gray&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;rainbow_white&#39;</span><span class="p">,</span> <span class="s1">&#39;rainbow_gray&#39;</span><span class="p">,</span> <span class="s1">&#39;tbr_240_300&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;tbr_stdev_0_30&#39;</span><span class="p">,</span> <span class="s1">&#39;tbr_var_0_500&#39;</span><span class="p">,</span> <span class="s1">&#39;tbrAvg1&#39;</span><span class="p">,</span> <span class="s1">&#39;tbrStd1&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;tbrVar1&#39;</span><span class="p">,</span> <span class="s1">&#39;thelix&#39;</span><span class="p">,</span> <span class="s1">&#39;ViBlGrWhYeOrRe&#39;</span><span class="p">,</span> <span class="s1">&#39;wh_bl_gr_ye_re&#39;</span><span class="p">,</span>
                  <span class="s1">&#39;WhBlGrYeRe&#39;</span><span class="p">,</span> <span class="s1">&#39;WhBlReWh&#39;</span><span class="p">,</span> <span class="s1">&#39;WhiteBlue&#39;</span><span class="p">,</span>
                  <span class="s1">&#39;WhiteBlueGreenYellowRed&#39;</span><span class="p">,</span> <span class="s1">&#39;WhiteGreen&#39;</span><span class="p">,</span>
                  <span class="s1">&#39;WhiteYellowOrangeRed&#39;</span><span class="p">,</span> <span class="s1">&#39;WhViBlGrYeOrRe&#39;</span><span class="p">,</span> <span class="s1">&#39;WhViBlGrYeOrReWh&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;wxpEnIR&#39;</span><span class="p">,</span> <span class="s1">&#39;3gauss&#39;</span><span class="p">,</span> <span class="s1">&#39;3saw&#39;</span><span class="p">]</span>
+                 <span class="s1">&#39;wxpEnIR&#39;</span><span class="p">,</span> <span class="s1">&#39;3gauss&#39;</span><span class="p">,</span> <span class="s1">&#39;3saw&#39;</span><span class="p">,</span> <span class="s1">&#39;BrBG&#39;</span><span class="p">]</span>
 
     <span class="n">ncl_meteoswiss</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hotcold_18lev&#39;</span><span class="p">,</span> <span class="s1">&#39;hotcolr_19lev&#39;</span><span class="p">,</span> <span class="s1">&#39;mch_default&#39;</span><span class="p">,</span>
                       <span class="s1">&#39;perc2_9lev&#39;</span><span class="p">,</span> <span class="s1">&#39;percent_11lev&#39;</span><span class="p">,</span> <span class="s1">&#39;precip2_15lev&#39;</span><span class="p">,</span>
@@ -4792,8 +4790,8 @@
                  <span class="s1">&#39;sunshine_diff_12lev&#39;</span><span class="p">,</span> <span class="s1">&#39;temp_19lev&#39;</span><span class="p">,</span> <span class="s1">&#39;temp_diff_18lev&#39;</span><span class="p">,</span>
                  <span class="s1">&#39;temp_diff_1lev&#39;</span><span class="p">,</span> <span class="s1">&#39;topo_15lev&#39;</span><span class="p">,</span> <span class="s1">&#39;wgne15&#39;</span><span class="p">,</span> <span class="s1">&#39;wind_17lev&#39;</span><span class="p">]</span>
 
-    <span class="n">orography</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;os250kmetres&#39;</span><span class="p">,</span> <span class="s1">&#39;wiki-1.0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;wiki-1.0.3&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;wiki-2.0&#39;</span><span class="p">,</span> <span class="s1">&#39;wiki-2.0-reduced&#39;</span><span class="p">,</span> <span class="s1">&#39;arctic&#39;</span><span class="p">]</span>
+    <span class="n">orography</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;os250kmetres&#39;</span><span class="p">,</span> <span class="s1">&#39;wiki_1_0_2&#39;</span><span class="p">,</span> <span class="s1">&#39;wiki_1_0_3&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;wiki_2_0&#39;</span><span class="p">,</span> <span class="s1">&#39;wiki_2_0_reduced&#39;</span><span class="p">,</span> <span class="s1">&#39;arctic&#39;</span><span class="p">]</span>
 
     <span class="n">idl_guide</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">45</span><span class="p">):</span>
@@ -4893,7 +4891,7 @@
                 <span class="n">ax1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
             <span class="n">cb1</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
             <span class="n">cb1</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">])</span>
-            <span class="nb">file</span> <span class="o">=</span> <span class="s1">&#39;/home/swsheaps/public_html/cfplot_sphinx/images/&#39;</span>
+            <span class="nb">file</span> <span class="o">=</span> <span class="s1">&#39;/home/swsheaps/cf-docs/cfplot_sphinx/images/&#39;</span>
             <span class="nb">file</span> <span class="o">+=</span> <span class="s1">&#39;colour_scales/&#39;</span> <span class="o">+</span> <span class="n">scale</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span>
             <span class="n">plot</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
             <span class="n">plot</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -6408,7 +6406,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="../index.html">cf-plot 2.1.10 documentation</a> &raquo;</li>
+        <li><a href="../index.html">cf-plot 2.1.12 documentation</a> &raquo;</li>
           <li><a href="index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>

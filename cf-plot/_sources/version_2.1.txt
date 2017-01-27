@@ -40,13 +40,15 @@ contour plots where no user colour scale has been defined:
 
 Use:
 
-|    cfp.setvars(cs_uniform=False)
+ ::    cfp.setvars(cs_uniform=False)
 
-to revert to the previous behaviour:
+to revert to the previous behaviour.
 
 
 .. image::  images/scale1_original.png
    :scale: 52% 
+
+
 
 
  ::
@@ -137,6 +139,32 @@ is now blockfill=True, lines=False.
  ::
 
    Done
+
+
+
+11. con - colorbar logic correction
+===================================
+
+A correction was made to the colorbar logic so that it works properly when fill=False is selected.
+
+ ::
+
+   Done
+
+
+
+12. cscale - new colour scale added
+===================================
+
+A new colour scale was added - brow to blue - BrBG.
+
+.. image::  images/colourscales/BrBG.png
+   :scale: 52% 
+
+ ::
+
+   Done
+
 
 
 

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>version 2.1 changes &mdash; cf-plot 2.1.10 documentation</title>
+    <title>version 2.1 changes &mdash; cf-plot 2.1.12 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.1.10',
+        VERSION:     '2.1.12',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 2.1.10 documentation" href="index.html" /> 
+    <link rel="top" title="cf-plot 2.1.12 documentation" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -32,7 +32,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="index.html">cf-plot 2.1.10 documentation</a> &raquo;</li> 
+        <li><a href="index.html">cf-plot 2.1.12 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -71,10 +71,9 @@ introduced, uniform=True (or False), to address this issue.  The default is now 
 contour plots where no user colour scale has been defined:</p>
 <a class="reference internal image-reference" href="_images/scale1_new.png"><img alt="_images/scale1_new.png" src="_images/scale1_new.png" style="width: 502.84px; height: 33.28px;" /></a>
 <p>Use:</p>
-<div class="line-block">
-<div class="line">cfp.setvars(cs_uniform=False)</div>
-</div>
-<p>to revert to the previous behaviour:</p>
+<blockquote>
+<div>::    cfp.setvars(cs_uniform=False)</div></blockquote>
+<p>to revert to the previous behaviour.</p>
 </div>
 <div class="section" id="mapset-new-projections-added">
 <h2>4. mapset - new projections added<a class="headerlink" href="#mapset-new-projections-added" title="Permalink to this headline">¶</a></h2>
@@ -149,6 +148,19 @@ is now blockfill=True, lines=False.</p>
 </div>
 </div></blockquote>
 </div>
+<div class="section" id="con-colorbar-logic-correction">
+<h2>11. con - colorbar logic correction<a class="headerlink" href="#con-colorbar-logic-correction" title="Permalink to this headline">¶</a></h2>
+<p>A correction was made to the colorbar logic so that it works properly when fill=False is selected.</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="cscale-new-colour-scale-added">
+<h2>12. cscale - new colour scale added<a class="headerlink" href="#cscale-new-colour-scale-added" title="Permalink to this headline">¶</a></h2>
+<p>A new colour scale was added - brow to blue - BrBG.</p>
+</div>
 </div>
 
 
@@ -180,7 +192,7 @@ is now blockfill=True, lines=False.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="index.html">cf-plot 2.1.10 documentation</a> &raquo;</li> 
+        <li><a href="index.html">cf-plot 2.1.12 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
