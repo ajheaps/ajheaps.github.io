@@ -156,10 +156,12 @@ A correction was made to the colorbar logic so that it works properly when fill=
 12. cscale - new colour scale added
 ===================================
 
-A new colour scale was added - brow to blue - BrBG.
+A new colour scale was added - brown to blue - BrBG.
+
 
 .. image::  images/colourscales/BrBG.png
    :scale: 52% 
+
 
  ::
 
