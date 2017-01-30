@@ -45,7 +45,7 @@
 <h1>Polar stereographic projection<a class="headerlink" href="#polar-stereographic-projection" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="example-4-north-pole">
 <h2>Example 4 - north pole<a class="headerlink" href="#example-4-north-pole" title="Permalink to this headline">¶</a></h2>
-<a class="reference internal image-reference" href="_images/fig4.png"><img alt="_images/fig4.png" src="_images/fig4.png" style="width: 514.8px; height: 365.2px;" /></a>
+<a class="reference internal image-reference" href="_images/fig4.png"><img alt="_images/fig4.png" src="_images/fig4.png" style="width: 388.52px; height: 328.68px;" /></a>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">proj</span><span class="o">=</span><span class="s1">&#39;npstere&#39;</span><span class="p">)</span>
@@ -61,7 +61,7 @@
 </div>
 <div class="section" id="example-5-south-pole-with-30-degrees-south-being-the-latitude-plot-limit">
 <h2>Example 5 - south pole with 30 degrees south being the latitude plot limit<a class="headerlink" href="#example-5-south-pole-with-30-degrees-south-being-the-latitude-plot-limit" title="Permalink to this headline">¶</a></h2>
-<a class="reference internal image-reference" href="_images/fig5.png"><img alt="_images/fig5.png" src="_images/fig5.png" style="width: 514.8px; height: 365.2px;" /></a>
+<a class="reference internal image-reference" href="_images/fig5.png"><img alt="_images/fig5.png" src="_images/fig5.png" style="width: 388.52px; height: 328.68px;" /></a>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">proj</span><span class="o">=</span><span class="s1">&#39;spstere&#39;</span><span class="p">,</span> <span class="n">boundinglat</span><span class="o">=-</span><span class="mi">30</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>

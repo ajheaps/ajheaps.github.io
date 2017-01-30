@@ -45,7 +45,7 @@
 <h1>Rotated pole plots<a class="headerlink" href="#rotated-pole-plots" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="example-21-rotated-pole-plot">
 <h2>Example 21 - rotated pole plot<a class="headerlink" href="#example-21-rotated-pole-plot" title="Permalink to this headline">¶</a></h2>
-<a class="reference internal image-reference" href="_images/fig21.png"><img alt="_images/fig21.png" src="_images/fig21.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/fig21.png"><img alt="_images/fig21.png" src="_images/fig21.png" style="width: 533.0px; height: 354.12px;" /></a>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/rgp.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
@@ -62,7 +62,7 @@
 <p>The previous example uses the CF attributes to extract the rotated pole coordinates.
 If these are not available then the following example shows how to make the
 plot using more basic cf-plot commands.</p>
-<a class="reference internal image-reference" href="_images/fig22.png"><img alt="_images/fig22.png" src="_images/fig22.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/fig22.png"><img alt="_images/fig22.png" src="_images/fig22.png" style="width: 491.4px; height: 336.96px;" /></a>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
@@ -94,7 +94,7 @@ plot using more basic cf-plot commands.</p>
 <p>Here we extract the real longitude and latitude data locations from a rotated grid file
 and use these to make a cylindrical projection contour plot of the data. The ptype=1 flag is
 passed to the cf-plot con routine to indicate that the data is to be plotted on a map.</p>
-<a class="reference internal image-reference" href="_images/fig23.png"><img alt="_images/fig23.png" src="_images/fig23.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/fig23.png"><img alt="_images/fig23.png" src="_images/fig23.png" style="width: 491.4px; height: 323.96px;" /></a>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span><span class="o">,</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/xjpgaa_ca072_byteswapped.pp&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>

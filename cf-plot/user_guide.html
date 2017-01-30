@@ -63,7 +63,7 @@ To run the following examples in the Met department at the University of Reading
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">15</span><span class="p">))</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/fig1.png"><img alt="_images/fig1.png" src="_images/fig1.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/fig1.png"><img alt="_images/fig1.png" src="_images/fig1.png" style="width: 515.32px; height: 312.52px;" /></a>
 <p>The <strong>mapset</strong> routine is used to change the map area and projection.
 <strong>cfp.mapset(lonmin=-15, lonmax=3, latmin=48, latmax=60)</strong> sets the map to a view over the British Isles. Further plots will use the same map projection and limits.  The levels are taken from the whole field so in this example we specify the levels explicitly with the <strong>levs</strong> command.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
@@ -73,7 +73,7 @@ To run the following examples in the Met department at the University of Reading
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">15</span><span class="p">))</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/fig3.png"><img alt="_images/fig3.png" src="_images/fig3.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/fig3.png"><img alt="_images/fig3.png" src="_images/fig3.png" style="width: 487.24px; height: 341.12px;" /></a>
 <p>The default settings are for colour fill and contour lines.  These can be changed with the <strong>fill=0</strong> and <strong>lines=0</strong> flags to <strong>con</strong>.</p>
 <p>To reset the mapping to the default cylindrical projection -180 to 180 in longitude and -90 to 90 in latitude use <strong>cfp.mapset()</strong>.</p>
 </div>
@@ -85,7 +85,7 @@ To run the following examples in the Met department at the University of Reading
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">15</span><span class="p">),</span> <span class="n">blockfill</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/fig2.png"><img alt="_images/fig2.png" src="_images/fig2.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/fig2.png"><img alt="_images/fig2.png" src="_images/fig2.png" style="width: 515.32px; height: 312.52px;" /></a>
 <p>Blockfill is only supported in the cylindrical projection and non-map plots at present.</p>
 </div>
 <div class="section" id="polar-stereographic-plots">
@@ -97,7 +97,7 @@ To run the following examples in the Met department at the University of Reading
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/fig4.png"><img alt="_images/fig4.png" src="_images/fig4.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/fig4.png"><img alt="_images/fig4.png" src="_images/fig4.png" style="width: 459.16px; height: 388.44px;" /></a>
 <p>The <strong>mapset</strong> <strong>bounding_lat</strong> and <strong>lon_0</strong> parameters are used to set the latitude limit of the plot and the orientation of the plot. Generally for the southern hemisphere the Greenwich Meridian (zero degrees longitude) is plotted at the top of the plot and is set with <strong>lon_0=180</strong>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
@@ -105,7 +105,7 @@ To run the following examples in the Met department at the University of Reading
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/fig5.png"><img alt="_images/fig5.png" src="_images/fig5.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/fig5.png"><img alt="_images/fig5.png" src="_images/fig5.png" style="width: 459.16px; height: 388.44px;" /></a>
 </div>
 <div class="section" id="passing-data-to-cf-plot">
 <h2>Passing data to cf-plot<a class="headerlink" href="#passing-data-to-cf-plot" title="Permalink to this headline">¶</a></h2>
@@ -289,14 +289,14 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="s1">&#39;longitude&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/fig7.png"><img alt="_images/fig7.png" src="_images/fig7.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/fig7.png"><img alt="_images/fig7.png" src="_images/fig7.png" style="width: 532.48px; height: 342.16px;" /></a>
 <p>To make a log pressure on the y axis use the ylog=True flag to the con routine.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="s1">&#39;longitude&#39;</span><span class="p">),</span> <span class="n">ylog</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/fig8.png"><img alt="_images/fig8.png" src="_images/fig8.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/fig8.png"><img alt="_images/fig8.png" src="_images/fig8.png" style="width: 532.48px; height: 342.16px;" /></a>
 </div>
 <div class="section" id="hovmuller-plots">
 <h3>Hovmuller plots<a class="headerlink" href="#hovmuller-plots" title="Permalink to this headline">¶</a></h3>
@@ -307,7 +307,7 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">longitude</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">lines</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/fig10.png"><img alt="_images/fig10.png" src="_images/fig10.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/fig10.png"><img alt="_images/fig10.png" src="_images/fig10.png" style="width: 532.48px; height: 340.6px;" /></a>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/tas_A1.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gset</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;1960-1-1&#39;</span><span class="p">,</span> <span class="s1">&#39;1980-1-1&#39;</span><span class="p">)</span>
@@ -316,7 +316,7 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">longitude</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">lines</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/fig11.png"><img alt="_images/fig11.png" src="_images/fig11.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/fig11.png"><img alt="_images/fig11.png" src="_images/fig11.png" style="width: 531.96px; height: 341.12px;" /></a>
 </div>
 <div class="section" id="vector-plots">
 <h3>Vector Plots<a class="headerlink" href="#vector-plots" title="Permalink to this headline">¶</a></h3>
@@ -328,7 +328,7 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 <span class="n">cfp</span><span class="o">.</span><span class="n">vect</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="n">v</span><span class="p">,</span> <span class="n">key_length</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/fig13.png"><img alt="_images/fig13.png" src="_images/fig13.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/fig13.png"><img alt="_images/fig13.png" src="_images/fig13.png" style="width: 515.32px; height: 263.64px;" /></a>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -347,7 +347,7 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 <span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/fig14.png"><img alt="_images/fig14.png" src="_images/fig14.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/fig14.png"><img alt="_images/fig14.png" src="_images/fig14.png" style="width: 517.4px; height: 338.0px;" /></a>
 <p>Here we make a zonal mean vector plot with different vector keys and scaling factors for the X and Y directions.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
 
@@ -365,7 +365,7 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
          <span class="n">headlength</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">headaxislength</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pivot</span><span class="o">=</span><span class="s1">&#39;middle&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;DJF&#39;</span><span class="p">,</span> <span class="n">key_location</span><span class="o">=</span><span class="p">[</span><span class="mf">0.95</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">])</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/fig16.png"><img alt="_images/fig16.png" src="_images/fig16.png" style="width: 514.8px; height: 365.2px;" /></a>
+<a class="reference internal image-reference" href="_images/fig16.png"><img alt="_images/fig16.png" src="_images/fig16.png" style="width: 463.32px; height: 352.0px;" /></a>
 </div>
 <div class="section" id="multiple-plots-on-a-page">
 <h3>Multiple Plots on a Page<a class="headerlink" href="#multiple-plots-on-a-page" title="Permalink to this headline">¶</a></h3>
@@ -385,7 +385,7 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 <span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/fig19.png"><img alt="_images/fig19.png" src="_images/fig19.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/fig19.png"><img alt="_images/fig19.png" src="_images/fig19.png" style="width: 509.08px; height: 367.12px;" /></a>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -405,7 +405,7 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 <span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/fig17.png"><img alt="_images/fig17.png" src="_images/fig17.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/fig17.png"><img alt="_images/fig17.png" src="_images/fig17.png" style="width: 515.32px; height: 312.52px;" /></a>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/tas_A1.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">g</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
@@ -417,7 +417,7 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 <span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/fig18.png"><img alt="_images/fig18.png" src="_images/fig18.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/fig18.png"><img alt="_images/fig18.png" src="_images/fig18.png" style="width: 456.56px; height: 388.44px;" /></a>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -434,7 +434,7 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
              <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Zonal mean zonal wind at 100mb&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/fig27.png"><img alt="_images/fig27.png" src="_images/fig27.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/fig27.png"><img alt="_images/fig27.png" src="_images/fig27.png" style="width: 520.52px; height: 403.52px;" /></a>
 <div class="line-block">
 <div class="line">Other valid markers are:</div>
 <div class="line">‘.’ point</div>
@@ -480,7 +480,7 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 <span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/fig28.png"><img alt="_images/fig28.png" src="_images/fig28.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/fig28.png"><img alt="_images/fig28.png" src="_images/fig28.png" style="width: 528.84px; height: 403.52px;" /></a>
 </div>
 <div class="section" id="setting-contour-levels">
 <h3>Setting Contour Levels<a class="headerlink" href="#setting-contour-levels" title="Permalink to this headline">¶</a></h3>
