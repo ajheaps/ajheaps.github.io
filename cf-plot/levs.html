@@ -6,9 +6,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>levs &#8212; cf-plot 2.1.18 documentation</title>
+    <title>levs &mdash; cf-plot 2.1.18 documentation</title>
     
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -17,41 +17,74 @@
         VERSION:     '2.1.18',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="top" title="cf-plot 2.1.18 documentation" href="index.html" /> 
   </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
+  <body>
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.18 documentation</a> &#187;</li> 
+        <li><a href="index.html">cf-plot 2.1.18 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <div class="section" id="levs">
 <h1>levs<a class="headerlink" href="#levs" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="cfplot.levs">
+<tt class="descclassname">cfplot.</tt><tt class="descname">levs</tt><big>(</big><em>min=None</em>, <em>max=None</em>, <em>step=None</em>, <em>manual=None</em>, <em>extend='both'</em><big>)</big><a class="reference internal" href="_modules/cfplot.html#levs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.levs" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The levs command manually sets the contour levels.</div>
+</div>
+<div class="line-block">
+<div class="line">min=min - minimum level</div>
+<div class="line">max=max - maximum level</div>
+<div class="line">step=step - step between levels</div>
+<div class="line">manual= manual - set levels manually</div>
+<div class="line">extend=&#8217;neither&#8217;, &#8216;both&#8217;, &#8216;min&#8217;, or &#8216;max&#8217; - colour bar limit extensions.</div>
+</div>
+<div class="line-block">
+<div class="line">Use the levs command when a predefined set of levels is required. The</div>
+<div class="line">min, max and step parameters are all needed to define a set of  levels.</div>
+<div class="line">These can take integer or floating point numbers. If colour filled</div>
+<div class="line">contours are plotted then the default is to extend the minimum and</div>
+<div class="line">maximum contours coloured for out of range values - extend=&#8217;both&#8217;.</div>
+</div>
+<div class="line-block">
+<div class="line">Once a user call is made to levs the levels are persistent.</div>
+<div class="line">i.e. the next plot will use the same set of levels.</div>
+<div class="line">Use levs() to reset to undefined levels.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 
 
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -70,18 +103,18 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.18 documentation</a> &#187;</li> 
+        <li><a href="index.html">cf-plot 2.1.18 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    <div class="footer">
+        &copy; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

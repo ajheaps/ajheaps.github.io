@@ -1039,17 +1039,21 @@ In cf-python the tolerance for equivalence is
 2.220446049250313e-16
 
 To set to a lower tolerance use
+
 >>> g=cf.RTOL(1e-5)
 >>> cf.RTOL()
 1e-05
 
 To swap back use
+
 >>> cf.RTOL(g)
 
 After swapping the tolerance to 1e-5 the following finds teh latitide as expected.
+
 >>> cfp.lineplot(f.subspace(latitude=50.17530806))
 
 We could have worked around this with
+
 >>> cfp.lineplot(f.subspace(latitude=cf.wi(50, 50.2))) 
 
 

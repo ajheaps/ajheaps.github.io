@@ -24,7 +24,7 @@ To install cf-plot
 
 Linux
 -----
-Download and install Anaconda Python 2.7 for Linux.  On the command line type:
+To install cf-plot on your own Linux box download and install Anaconda Python 2.7 for Linux.  On the command line type:
 
 ::
 
@@ -37,7 +37,7 @@ The first line installs cf-python, cf-plot and the second installs esmpy which c
 
 Other OSs
 ---------
-It is recommended that you use a virtual machine with Linux running in it as some things don't, and probably won't ever, work on other OSs - Met Office PP file reading for instance.  
+It is recommended that you use a virtual machine with Linux running in it as some things don't, and probably won't ever work on other OSs - Met Office PP file reading for instance.  
 
 
 
@@ -84,7 +84,7 @@ Using GitHub:
 
 You will need to download and install `cf-python <http://cfpython.bitbucket.org>`_ to use cf-plot.  Other cf-plot dependencies are: Numpy, Matplotlib, Netcdf4 and Basemap.
 
-Download the `sample netCDF datasets <http://climate.ncas.ac.uk/~swsheaps/cfplot_sphinx/data>`_
+Download the `sample netCDF datasets <http://www.met.reading.ac.uk/~swsheaps/cfplot_data>`_
  
 |
 |

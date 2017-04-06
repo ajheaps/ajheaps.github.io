@@ -39,10 +39,6 @@ In this example we make a blank map plot, change the longitude labels and add a 
 
 
 
-Active plots block the command prompt
--------------------------------------
-
-When using python an active viewed plot blocks the command prompt until the plot is closed.  This is a known Maplotlib feature and using ipython -pylab will work around this.
 
 
 Changing colours in a colour scale

@@ -6,9 +6,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>gset &#8212; cf-plot 2.1.18 documentation</title>
+    <title>gset &mdash; cf-plot 2.1.18 documentation</title>
     
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -17,41 +17,82 @@
         VERSION:     '2.1.18',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="top" title="cf-plot 2.1.18 documentation" href="index.html" /> 
   </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
+  <body>
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.18 documentation</a> &#187;</li> 
+        <li><a href="index.html">cf-plot 2.1.18 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <div class="section" id="gset">
 <h1>gset<a class="headerlink" href="#gset" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="cfplot.gset">
+<tt class="descclassname">cfplot.</tt><tt class="descname">gset</tt><big>(</big><em>xmin=None</em>, <em>xmax=None</em>, <em>ymin=None</em>, <em>ymax=None</em>, <em>xlog=False</em>, <em>ylog=False</em>, <em>user_gset=1</em><big>)</big><a class="reference internal" href="_modules/cfplot.html#gset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.gset" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Set plot limits for all non longitude-latitide plots.</div>
+<div class="line">xmin, xmax, ymin, ymax are all needed to set the plot limits.</div>
+<div class="line">Set xlog/ylog to True or 1 to get a log axis.</div>
+<div class="line"><br /></div>
+<div class="line">xmin=None - x minimum</div>
+<div class="line">xmax=None - x maximum</div>
+<div class="line">ymin=None - y minimum</div>
+<div class="line">ymax=None - y maximum</div>
+<div class="line">xlog=False - log x</div>
+<div class="line">ylog=False - log y</div>
+<div class="line"><br /></div>
+<div class="line">Once a user call is made to gset the plot limits are persistent.</div>
+<div class="line">i.e. the next plot will use the same set of plot limits.</div>
+<div class="line">Use gset() to reset to undefined plot limits i.e. the full range</div>
+<div class="line">of the data.</div>
+<div class="line"><br /></div>
+<div class="line">To set date axes use date strings i.e.</div>
+<div class="line">cfp.gset(xmin = &#8216;170-1-1&#8217;, xmax = &#8216;300-1-1&#8217;, ymin = 285,</div>
+<div class="line-block">
+<div class="line">ymax = 295)</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
 </div>
 
 
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -70,18 +111,18 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.18 documentation</a> &#187;</li> 
+        <li><a href="index.html">cf-plot 2.1.18 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    <div class="footer">
+        &copy; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

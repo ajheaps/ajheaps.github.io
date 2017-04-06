@@ -6,9 +6,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>version 2.1 changes &#8212; cf-plot 2.1.18 documentation</title>
+    <title>version 2.1 changes &mdash; cf-plot 2.1.18 documentation</title>
     
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -17,31 +17,29 @@
         VERSION:     '2.1.18',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="top" title="cf-plot 2.1.18 documentation" href="index.html" /> 
   </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
+  <body>
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.18 documentation</a> &#187;</li> 
+        <li><a href="index.html">cf-plot 2.1.18 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <div class="section" id="version-2-1-changes">
 <h1>version 2.1 changes<a class="headerlink" href="#version-2-1-changes" title="Permalink to this headline">¶</a></h1>
@@ -50,7 +48,7 @@
 <h2>1. Log pressure axis labelling<a class="headerlink" href="#log-pressure-axis-labelling" title="Permalink to this headline">¶</a></h2>
 <p>Log pressure axis labelling was changed from the in-built Matplotlib labelling with used 10^3, 10^2 10^1 to 1000, 10, 1.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -59,7 +57,7 @@
 <h2>2. Rotated grid axis labelling<a class="headerlink" href="#rotated-grid-axis-labelling" title="Permalink to this headline">¶</a></h2>
 <p>Missing longitude and latitude labels were added to rotated pole plots.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -82,7 +80,7 @@ contour plots where no user colour scale has been defined:</p>
 <p>Added Mercator, Lambert Conformal, Orthographic and Robinson projections.  See the Basemap documentation
 at <a class="reference external" href="http://matplotlib.org/basemap/users/mapsetup.html">http://matplotlib.org/basemap/users/mapsetup.html</a> for calling parameters.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -92,7 +90,7 @@ at <a class="reference external" href="http://matplotlib.org/basemap/users/mapse
 <p>xname and yname have been depreciated in favour of xlabel and ylabel.  This change was made to be consistent
 with xlabel and ylabel as used in the con and vect routines.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -114,7 +112,7 @@ with xlabel and ylabel as used in the con and vect routines.</p>
 <div class="line">plimits=[-50, 50, -85, -20])</div>
 </div>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -123,7 +121,7 @@ with xlabel and ylabel as used in the con and vect routines.</p>
 <h2>7. Better determination of up on the Z axis<a class="headerlink" href="#better-determination-of-up-on-the-z-axis" title="Permalink to this headline">¶</a></h2>
 <p>The CF metadata attribute of postitive for the Z coordinate is now used in the con and lineplot routines.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -133,7 +131,7 @@ with xlabel and ylabel as used in the con and vect routines.</p>
 <p>con - added colors keyword for the contour lines.  This keyword takes a single colour or a list
 of colours.  The default is &#8216;k&#8217; or black&#8217;</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -145,7 +143,7 @@ somewhat obscure logic in the blockfill section of code.  The change will affect
 which were previously drawn with no lines using blockfill=True.  The syntax for blockfill with no lines
 is now blockfill=True, lines=False.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -154,7 +152,7 @@ is now blockfill=True, lines=False.</p>
 <h2>11. con - colorbar logic correction<a class="headerlink" href="#con-colorbar-logic-correction" title="Permalink to this headline">¶</a></h2>
 <p>A correction was made to the colorbar logic so that it works properly when fill=False is selected.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -168,7 +166,7 @@ is now blockfill=True, lines=False.</p>
 <p>The edcolors keyword was added to the stipple routine.  This contrils the border colour of the filled polygon.
 Setting it to &#8216;face&#8217; gives the same colour as the filled polygon.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -177,7 +175,7 @@ Setting it to &#8216;face&#8217; gives the same colour as the filled polygon.</p
 <h2>14. con - better yaxis labelling for hybrid height coordinates<a class="headerlink" href="#con-better-yaxis-labelling-for-hybrid-height-coordinates" title="Permalink to this headline">¶</a></h2>
 <p>Better yaxis labelling for hybrid height coordinates.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -186,7 +184,7 @@ Setting it to &#8216;face&#8217; gives the same colour as the filled polygon.</p
 <h2>15. lineplot - check for a &#8216;T&#8217; axis before accessing it<a class="headerlink" href="#lineplot-check-for-a-t-axis-before-accessing-it" title="Permalink to this headline">¶</a></h2>
 <p>Check if a cf-field has a &#8216;T&#8217; axis before trying to access it.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -195,7 +193,7 @@ Setting it to &#8216;face&#8217; gives the same colour as the filled polygon.</p
 <h2>16. lineplot - check xlabel is not None before accessing it<a class="headerlink" href="#lineplot-check-xlabel-is-not-none-before-accessing-it" title="Permalink to this headline">¶</a></h2>
 <p>Check if xlabel is not None before trying to access it.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -204,7 +202,7 @@ Setting it to &#8216;face&#8217; gives the same colour as the filled polygon.</p
 <h2>17. lineplot - Generate a more correct set of yticks if yrange &lt; 1<a class="headerlink" href="#lineplot-generate-a-more-correct-set-of-yticks-if-yrange-1" title="Permalink to this headline">¶</a></h2>
 <p>Generate a more correct set of yticks if yrange &lt; 1.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -213,7 +211,7 @@ Setting it to &#8216;face&#8217; gives the same colour as the filled polygon.</p
 <h2>18. con - blockfill code correction for masked arrays<a class="headerlink" href="#con-blockfill-code-correction-for-masked-arrays" title="Permalink to this headline">¶</a></h2>
 <p>In con the blockfill code was updated to correct an error when plotting masked arrays.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -224,7 +222,7 @@ Setting it to &#8216;face&#8217; gives the same colour as the filled polygon.</p
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -243,18 +241,18 @@ Setting it to &#8216;face&#8217; gives the same colour as the filled polygon.</p
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.18 documentation</a> &#187;</li> 
+        <li><a href="index.html">cf-plot 2.1.18 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    <div class="footer">
+        &copy; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

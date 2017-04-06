@@ -6,9 +6,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pcon &#8212; cf-plot 2.1.18 documentation</title>
+    <title>pcon &mdash; cf-plot 2.1.18 documentation</title>
     
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -17,41 +17,86 @@
         VERSION:     '2.1.18',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="top" title="cf-plot 2.1.18 documentation" href="index.html" /> 
   </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
+  <body>
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.18 documentation</a> &#187;</li> 
+        <li><a href="index.html">cf-plot 2.1.18 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <div class="section" id="pcon">
 <h1>pcon<a class="headerlink" href="#pcon" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="cfplot.pcon">
+<tt class="descclassname">cfplot.</tt><tt class="descname">pcon</tt><big>(</big><em>mb=None</em>, <em>km=None</em>, <em>h=7.0</em>, <em>p0=1000</em><big>)</big><a class="reference internal" href="_modules/cfplot.html#pcon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.pcon" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">pcon is a function for converting pressure to height in kilometers and</div>
+<div class="line">vice-versa. This function uses the equation P=P0exp(-z/H) to translate</div>
+<div class="line">between pressure and height. In pcon the surface pressure P0 is set to</div>
+<div class="line">1000.0mb and the scale height H is set to 7.0. The value of H can vary</div>
+<div class="line">from 6.0 in the polar regions to 8.5 in the tropics as well as</div>
+<div class="line">seasonally. The value of P0 could also be said to be 1013.25mb rather</div>
+<div class="line">than 1000.0mb.</div>
+</div>
+<div class="line-block">
+<div class="line">As this relationship is approximate:</div>
+<div class="line">(i) Only use this for making the axis labels on y axis pressure plots</div>
+<div class="line">(ii) Put the converted axis on the right hand side to indicate that</div>
+<div class="line-block">
+<div class="line">this isn&#8217;t the primary unit of measure</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">print cfp.pcon(mb=[1000, 300, 100, 30, 10, 3, 1, 0.3])</div>
+<div class="line">[0. 8.42780963 16.11809565 24.54590528 32.2361913</div>
+<div class="line-block">
+<div class="line">40.66400093 48.35428695, 56.78209658]</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">mb=None - input pressure</div>
+<div class="line">km=None - input height</div>
+<div class="line">h=7.0 - default value for h</div>
+<div class="line">p0=1000 - default value for p0</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><div class="first last line-block">
+<div class="line">pressure(mb) if height(km) input,</div>
+<div class="line">height(km) if pressure(mb) input</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 
 
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -70,18 +115,18 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.18 documentation</a> &#187;</li> 
+        <li><a href="index.html">cf-plot 2.1.18 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    <div class="footer">
+        &copy; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

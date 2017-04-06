@@ -169,6 +169,74 @@ A new colour scale was added - brown to blue - BrBG.
 
 
 
+13. stipple - added edgecolors keyword
+======================================
+
+The edcolors keyword was added to the stipple routine.  This contrils the border colour of the filled polygon.
+Setting it to 'face' gives the same colour as the filled polygon.
+
+
+ ::
+
+   Done
+
+
+
+14. con - better yaxis labelling for hybrid height coordinates
+==============================================================
+
+Better yaxis labelling for hybrid height coordinates.
+
+ ::
+
+   Done
+
+
+
+15. lineplot - check for a 'T' axis before accessing it
+=======================================================
+
+Check if a cf-field has a 'T' axis before trying to access it. 
+
+
+ ::
+
+   Done
+
+
+16. lineplot - check xlabel is not None before accessing it
+===========================================================
+
+Check if xlabel is not None before trying to access it. 
+
+
+ ::
+
+   Done
+
+
+
+17. lineplot - Generate a more correct set of yticks if yrange < 1
+==================================================================
+
+Generate a more correct set of yticks if yrange < 1. 
+
+
+ ::
+
+   Done
+
+
+
+18. con - blockfill code correction for masked arrays
+=====================================================
+
+In con the blockfill code was updated to correct an error when plotting masked arrays.
+
+
+ ::
+
+   Done
 
 
 

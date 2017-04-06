@@ -1025,8 +1025,36 @@ To find the time value for to the tick position for January 1st 1980 00:00hrs:
 | 43200.0
  
 
+Selecting data that has a lot of decimal places in the axis values
+==================================================================
 
+Axes with a lot of decimal places can cause issues with numeric representation and rounding,
+In one case 
+>>> cfp.lineplot(f.subspace(latitude=50.17530806))
+caused an error as the latitude with 50.17530806 wasn\'t found.
 
+In cf-python the tolerance for equivalence is
+
+>>> cf.RTOL()
+2.220446049250313e-16
+
+To set to a lower tolerance use
+
+>>> g=cf.RTOL(1e-5)
+>>> cf.RTOL()
+1e-05
+
+To swap back use
+
+>>> cf.RTOL(g)
+
+After swapping the tolerance to 1e-5 the following finds teh latitide as expected.
+
+>>> cfp.lineplot(f.subspace(latitude=50.17530806))
+
+We could have worked around this with
+
+>>> cfp.lineplot(f.subspace(latitude=cf.wi(50, 50.2))) 
 
 
 
