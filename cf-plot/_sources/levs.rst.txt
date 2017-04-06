@@ -1,0 +1,4 @@
+levs
+****
+
+.. autofunction:: cfplot.levs

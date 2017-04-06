@@ -1,0 +1,1118 @@
+cf-plot user guide
+******************
+
+
+Introduction
+------------
+
+
+`cf-plot <http://ajheaps.github.io/cf-plot/#>`_  is a set of Python routines for making the common contour, vector and line plots that climate researchers use. cf-plot generally uses `cf-python <http://cfpython.bitbucket.org>`_ to present the data and CF attributes for plotting as two-dimensional data fields.
+To run the following examples in the Met department at the University of Reading setup the Python path with
+
+::
+
+   setup canopy
+
+Outside of the Meteorology department you’ll need to follow the `cf-plot installation instructions <http://ajheaps.github.io/cf-plot/download.html>`_
+
+
+Using cf-plot
+-------------
+The data to make a contour plot can be read in and passed to cf-plot using cf-python as per the following example.
+
+
+
+Cylindrical projection
+----------------------
+
+::
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+   cfp.con(f.subspace(time=15))
+
+
+
+.. image::  images/fig1.png
+   :scale: 52% 
+
+
+
+The **mapset** routine is used to change the map area and projection.  
+**cfp.mapset(lonmin=-15, lonmax=3, latmin=48, latmax=60)** sets the map to a view over the British Isles. Further plots will use the same map projection and limits.  The levels are taken from the whole field so in this example we specify the levels explicitly with the **levs** command.
+
+::
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+   cfp.mapset(lonmin=-15, lonmax=3, latmin=48, latmax=60)
+   cfp.levs(min=265, max=285, step=1)
+   cfp.con(f.subspace(time=15))
+
+.. image::  images/fig3.png
+   :scale: 52% 
+
+
+
+
+The default settings are for colour fill and contour lines.  These can be changed with the **fill=0** and **lines=0** flags to **con**. 
+
+To reset the mapping to the default cylindrical projection -180 to 180 in longitude and -90 to 90 in latitude use **cfp.mapset()**.
+
+
+Blockfill plots
+---------------
+Blockfill plots in the cylindrical projection are made using the **blockfill=True** flag to the **con** routine.
+
+::
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+   cfp.con(f.subspace(time=15), blockfill=True, lines=False)
+
+
+.. image::  images/fig2.png
+   :scale: 52% 
+
+
+Blockfill is only supported in the cylindrical projection and non-map plots at present.  
+
+
+Polar stereographic plots
+-------------------------
+
+Polar Stereographic plots are set using **proj=’npstere’** or **proj=’spstere’** in the call to **mapset**.
+
+::
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+   cfp.mapset(proj='npstere')
+   cfp.con(f.subspace(pressure=500))
+
+
+.. image::  images/fig4.png
+   :scale: 52% 
+
+
+
+The **mapset** **bounding_lat** and **lon_0** parameters are used to set the latitude limit of the plot and the orientation of the plot. Generally for the southern hemisphere the Greenwich Meridian (zero degrees longitude) is plotted at the top of the plot and is set with **lon_0=180**.
+
+::
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+   cfp.mapset(proj='spstere', boundinglat=-30, lon_0=180)
+   cfp.con(f.subspace(pressure=500))
+
+
+
+.. image::  images/fig5.png
+   :scale: 52% 
+
+
+
+Passing data to cf-plot
+-----------------------
+
+Using cf-python - CF compliant data
+-----------------------------------
+
+Data is generally passed to cf-plot for ploting via cf-python.  Contour and vector plots require a 2-dimensional field.  cf-python is very flexible and can be used to select fields, levels, times, means for both CF and non-CF compliant data.
+CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Conventions.  The conventions define metadata that provide a definitive description of what the data in each variable represents, and of the spatial and temporal properties of the data.
+
+::
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')
+
+
+f is now an list of 12 fields.
+
+
+|  [<CF Field: long_name:Potential vorticity(time(1), pressure(23), latitude(160), longitude(320)) K m**2 kg**-1 s**-1>,
+|  <CF Field: long_name:Ozone mass mixing ratio(time(1), pressure(23), latitude(160), longitude(320)) kg kg**-1>,**
+|  <CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(320)) K>,**
+|  <CF Field: atmosphere_relative_vorticity(time(1), pressure(23), latitude(160), longitude(320)) s**-1>,**
+|  <CF Field: atmosphere_relative_vorticity(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-1>,**
+|  <CF Field: divergence_of_wind(time(1), pressure(23), latitude(160), longitude(320)) s**-1>,**
+|  <CF Field: divergence_of_wind(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-1>,**
+|  <CF Field: eastward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1>,**
+|  <CF Field: geopotential(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-2>,**
+|  <CF Field: northward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1>,**
+|  <CF Field: relative_humidity(time(1), pressure(23), latitude(160), longitude(320)) %>,**
+|  <CF Field: specific_humidity(time(1), pressure(23), latitude(160), longitude(320)) kg kg**-1>,**
+|  <CF Field: vertical_air_velocity_expressed_as_tendency_of_pressure(time(1), pressure(23), latitude(160), longitude(320)) Pa s**-1>]
+
+
+To see what levels are available in the data use **f[2].item('pressure').array**
+
+
+|  array([ 1000.,   925.,   850.,   775.,   700.,   600.,   500.,   400.,
+|  300.,   250.,   200.,   150.,   100.,    70.,    50.,    30.,
+|  20.,    10.,     7.,     5.,     3.,     2.,     1.], dtype=float32)
+
+
+
+
+In the case below we select the 500mb temperature with the cf subspace method.
+
+:: 
+
+   f[2].subspace(pressure=500)
+
+
+|  <CF Field: air_temperature(time(1), pressure(1), latitude(160), longitude(320)) K>
+and contour the data
+
+::
+
+   cfp.con(f[2].subspace(pressure=500))
+
+
+.. image::  images/guide1.png
+   :scale: 52% 
+
+
+
+To mean the field use the cf collapse function:
+
+::
+
+   f[2].collapse('mean','longitude')
+
+|  <CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(1)) K>
+
+::
+
+   cfp.con(f[2].collapse('mean','longitude'))
+
+.. image::  images/guide2.png
+   :scale: 52% 
+
+
+
+Using cf-plot with non-cf compliant data
+----------------------------------------
+
+Although newer model and reanalyis products are generally cf compliant there is a considerable amount of data being used that is of varying degrees of cf compliance.
+
+In this locally processed ERA40 reanalysis field there is a distinct lack of standard names. Even the long names are somewhat terse - p for pressure for example.
+
+::
+
+   f=cf.read('/opt/graphics/cfplot_data/ggap199006200600.nc')[9]
+
+|  <CF Field: geopotential(long_name:t(1), long_name:p(37), long_name:latitude(256), long_name:longitude(512)) kg kg**-1>
+
+
+
+We can still slice and plot the data by inspecting the dimensions of the field:
+
+::
+
+   f.items()
+
+|  {'dim2': <CF DimensionCoordinate: long_name:latitude(256) degrees_north>,
+|  'dim3': <CF DimensionCoordinate: long_name:longitude(512) degrees_east>,
+|  'dim0': <CF DimensionCoordinate: long_name:t(1) days since 1990-06-20 06:00:00>,
+|  'dim1': <CF DimensionCoordinate: long_name:p(37) mbar>}
+
+We see that dim1 is the pressure coordinate and can select the 700mb level and contour that.
+
+::
+
+   f.item('dim1').array
+
+|  array([ 1000.,   975.,   950.,   925.,   900.,   875.,   850.,   825.,
+|  800.,   775.,   750.,   700.,   650.,   600.,   550.,   500.,
+|  450.,   400.,   350.,   300.,   250.,   225.,   200.,   175.,
+|  150.,   125.,   100.,    70.,    50.,    30.,    20.,    10.,
+|  7.,     5.,     3.,     2.,     1.], dtype=float32)
+
+::
+
+   f.subspace(dim1=700)
+
+|  <CF Field: geopotential(long_name:t(1), long_name:p(1), long_name:latitude(256), long_name:longitude(512)) kg kg**-1>
+
+
+::
+
+   cfp.con(f.subspace(dim1=700))
+
+
+.. image::  images/guide3.png
+   :scale: 52% 
+
+
+
+In the following dataset there are neither standard nor long names to identify the data.
+
+::
+
+   f=cf.read('/opt/graphics/cfplot_data/gdata.nc')[0]
+
+
+|  <CF Field: ncvar:temp(ncvar:p(22), ncvar:lat(73), ncvar:lon(145)) >
+
+
+We can still slice and plot the data as below.
+
+::
+
+   f.items()
+
+|  {'dim2': <CF DimensionCoordinate: ncvar:lon(145)>,
+|  'dim0': <CF DimensionCoordinate: ncvar:p(22)>,
+|  'dim1': <CF DimensionCoordinate: ncvar:lat(73)>}
+
+::
+
+   f.item('dim0').array
+
+
+| array([  1.00000000e+03,   7.00000000e+02,   5.00000000e+02,
+|  3.20000000e+02,   2.15000000e+02,   1.50000000e+02,
+|  1.00000000e+02,   7.00000000e+01,   5.00000000e+01,
+|  3.20000000e+01,   2.00000000e+01,   1.50000000e+01,
+|   1.00000000e+01,   7.00000000e+00,   5.00000000e+00,
+|   3.20000005e+00,   2.00000000e+00,   1.50000000e+00,
+|  1.00000000e+00,   6.99999988e-01,   5.00000000e-01,
+|   3.00000012e-01], dtype=float32)
+
+So to plot the 1000mb temperature we would use:
+
+
+:: 
+
+   cfp.con(f.subspace(dim0=1000))
+
+
+.. image::  images/guide4.png
+   :scale: 52% 
+
+
+
+Passing data via arrays
+-----------------------
+
+cf-plot can also make contour and vector plots by passing data arrays. In this example we read in a temperature field from a netCDF file and pass it to cf-plot for plotting.
+
+::
+
+   import cfplot as cfp
+   from netCDF4 import Dataset as ncfile
+   nc = ncfile('/opt/graphics/cfplot_data/tas_A1.nc')
+   lons=nc.variables['lon'][:]
+   lats=nc.variables['lat'][:]
+   temp=nc.variables['tas'][0,:,:]
+   cfp.con(f=temp, x=lons, y=lats)
+
+
+
+.. image::  images/guide5.png
+   :scale: 52% 
+
+
+The contouring routine doesn’t know that the data passed is a map plot as the only information passed is data arrays. This can be explicitly set with the **ptype** flag to **con**.
+
+::
+
+   cfp.con(f=temp, x=lons, y=lats, ptype=1)
+
+.. image::  images/guide6.png
+   :scale: 52% 
+
+
+Other types of plot are:
+
+|  **ptype=2** - latitude - height plot
+|  **ptype=3**  - longitude – height plot
+|  **ptype=4** - longitude - time plot
+|  **ptype=5** - latitude - time plot
+|
+|
+|
+
+
+Latitude - Pressure Plots
+=========================
+The latitude-pressure plot below is made by using the cf subspace method to select the temperature at longitude=0 degrees.
+
+::
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[2]
+   cfp.con(f.subspace(longitude=0))
+
+
+.. image::  images/guide7.png
+   :scale: 52% 
+
+
+A mean of the data along the longitude (zonal mean) is made using the cf.collapse method.
+
+::
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+   cfp.con(f.collapse('mean','longitude'))
+
+
+.. image::  images/fig7.png
+   :scale: 52% 
+
+
+
+
+To make a log pressure on the y axis use the ylog=True flag to the con routine.
+
+::
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+   cfp.con(f.collapse('mean','longitude'), ylog=True)
+
+.. image::  images/fig8.png
+   :scale: 52% 
+
+
+
+Hovmuller plots
+===============
+A Hovmuller plot is one of longitude or latitude versus time as per the following examples.
+
+::
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+   cfp.cscale('plasma')
+   cfp.con(f.subspace(longitude=0), lines=0)
+
+
+.. image::  images/fig10.png
+   :scale: 52% 
+
+
+::
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+   cfp.gset(-30, 30, '1960-1-1', '1980-1-1')
+   cfp.levs(min=280, max=305, step=1)
+   cfp.cscale('plasma')
+   cfp.con(f.subspace(longitude=0), lines=0)
+
+
+.. image::  images/fig11.png
+   :scale: 52% 
+
+
+
+
+
+
+Vector Plots
+============
+Vector plots are made using the **vect** routine.
+
+::
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')
+   u=f[7].subspace(pressure=500)
+   v=f[9].subspace(pressure=500)
+   cfp.vect(u=u, v=v, key_length=10, scale=100, stride=5)
+
+
+.. image::  images/fig13.png
+   :scale: 52% 
+
+|
+|
+
+In this example vectors are overlaid on a contour plot. 
+
+::
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')
+   u=f[7].subspace(pressure=500)
+   v=f[9].subspace(pressure=500)
+   t=f[2].subspace(pressure=500)
+   cfp.gopen()
+   cfp.mapset(lonmin=10, lonmax=120, latmin=-30, latmax=30)
+   cfp.levs(min=254, max=270, step=1)
+   cfp.con(t)
+   cfp.vect(u=u, v=v, key_length=10, scale=50, stride=2)
+   cfp.gclose()
+
+
+.. image::  images/fig14.png
+   :scale: 52% 
+
+
+
+Here we make a zonal mean vector plot with different vector keys and scaling factors for the X and Y directions.
+
+::
+
+    import cf, cfplot as cfp
+
+    c=cf.read('vaAMIPlcd_DJF.nc')
+    c=c.subspace(Y=cf.wi(-60,60))
+    c=c.subspace(X=cf.wi(80,160))  
+    c=c.collapse('T: mean X: mean')
+
+    g=cf.read('wapAMIPlcd_DJF.nc')    
+    g=g.subspace(Y=cf.wi(-60,60))
+    g=g.subspace(X=cf.wi(80,160))
+    g=g.collapse('T: mean X: mean')
+
+    cfp.vect(u=c, v=-g, key_length=[4, 0.2], scale=[20.0, 0.2], stride=[2,1], width=0.02, headwidth=6,
+             headlength=6, headaxislength=5, pivot='middle', title='DJF', key_location=[0.95, -0.05])
+
+.. image::  images/fig16.png
+   :scale: 44% 
+
+
+
+
+
+
+
+Multiple Plots on a Page
+========================
+To make multiple plots on the page open a graphic file with the gopen command and pass the rows and columns parameters. Make each plot in turn first selecting the position with the gpos command.  The first position is the top left plot and increases by one for one plot to the right until the final plot is made in the bottom right. When all the plots have been made close the plot with the **gclose()** command.  A combined colrbar is also made helping to reduce the plot complexity.
+
+::
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')
+   cfp.gopen(rows=2, columns=2)
+   cfp.mapset(proj='spstere', boundinglat=-30, lon_0=180)
+   cfp.gpos(1)
+   cfp.con(f[2].subspace(pressure=500))
+   cfp.gpos(2)
+   cfp.con(f[8].subspace(pressure=500))
+   cfp.gpos(3)
+   cfp.con(f[7].subspace(pressure=500))
+   cfp.gpos(4)
+   cfp.con(f[9].subspace(pressure=500))
+   cfp.gclose()
+
+.. image::  images/fig19.png
+   :scale: 52% 
+
+|
+|
+
+
+
+
+Stipple plots
+=============
+A stipple plot is usually used to show areas of significance. These plots use the overlay technique as used in the previous contour/vector plot.
+
+::
+   
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+   g=f.subspace(time=15)
+   cfp.gopen()
+   cfp.cscale('magma')
+   cfp.con(g)
+   cfp.stipple(f=g, min=220, max=260, size=100, color='#00ff00')
+   cfp.stipple(f=g, min=300, max=330, size=50, color='#0000ff', marker='s')
+   cfp.gclose()
+
+
+.. image::  images/fig17.png
+   :scale: 52% 
+
+
+::
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+   g=f.subspace(time=15)
+   cfp.gopen()
+   cfp.mapset(proj='npstere')
+   cfp.cscale('magma')   
+   cfp.con(g)
+   cfp.stipple(f=g, min=265, max=295, size=100, color='#00ff00')
+   cfp.gclose()
+
+
+.. image::  images/fig18.png
+   :scale: 52% 
+
+|
+|
+|
+
+Graph plots
+===========
+
+To make a graph plot use the cf-plot lineplot function as below on a single line of data in a field.
+
+:: 
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+   g=f.collapse('X: mean')
+   cfp.lineplot(g.subspace(pressure=100), marker='o', color='blue',\
+                title='Zonal mean zonal wind at 100mb')
+
+
+.. image::  images/fig27.png
+   :scale: 52% 
+
+
+
+| Other valid markers are:
+| ‘.’ point
+| ‘,’ pixel
+| ‘o’ circle
+| ‘v’ triangle_down
+| ‘^’ triangle_up
+| ‘<’ triangle_left
+| ‘>’ triangle_right
+| ‘1’ tri_down
+| ‘2’ tri_up
+| ‘3’ tri_left
+| ‘4’ tri_right
+| ‘8’ octagon
+| ‘s’ square
+| ‘p’ pentagon
+| ‘*’ star
+| ‘h’ hexagon1
+| ‘H’ hexagon2
+| ‘+’ plus
+| 'x’ x
+| ‘D’ diamond
+| ‘d’ thin_diamond
+
+
+To make a multiple line plot use the gopen, gclose commands to enclose the plotting commands as in the example below.
+
+
+::
+
+   import cf, cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+   g=f.collapse('X: mean')
+   xticks=[-90,-75,-60,-45,-30,-15,0,15,30,45,60,75,90]
+   xticklabels=['90S','75S','60S','45S','30S','15S','0','15N','30N','45N','60N','75N','90N']
+   xpts=[-30, 30, 30, -30, -30]
+   ypts=[-8, -8, 5, 5, -8]
+
+   cfp.gset(xmin=-90, xmax=90, ymin=-10, ymax=50)
+   cfp.gopen()
+   cfp.lineplot(g.subspace(pressure=100), marker='o', color='blue',\
+             title='Zonal mean zonal wind', label='100mb')
+   cfp.lineplot(g.subspace(pressure=200), marker='D', color='red',\
+                label='200mb', xticks=xticks, xticklabels=xticklabels,\
+                legend_location='upper right')
+   cfp.plotvars.plot.plot(xpts,ypts, linewidth=3.0, color='green')
+   cfp.plotvars.plot.text(35, -2, 'Region of interest', horizontalalignment='left')
+   cfp.gclose()
+
+
+.. image::  images/fig28.png
+   :scale: 52% 
+
+
+
+Setting Contour Levels
+======================
+cf-plot generally does a reasonable job of setting appropriate contour levels.  In the cases where it doesn’t do this or you need a consistent set of levels between plots for comparison purposes use the levs routine.  
+The levs command manually sets the contour levels.
+
+| **min=min** - minimum level
+| **max=max** - maximum level
+| **step=step** - step between levels
+| **manual= manual** - set levels manually
+| **extend=’neither’, ‘both’, ‘min’, or ‘max’** – the colour bar limit extensions. These are the triangles at the ends of the colour bar indicating the rest of the data is in this colour.
+
+Use the **levs** command when a predefined set of levels is required. The **min, max and step** parameters are all needed to define a set of levels. These can take integer or floating point numbers. If colour filled contours are plotted then the default is to extend the minimum and maximum contours coloured for out of range values - extend=’both’. Use the manual option to define a set of uneven contours i.e.
+
+::
+
+   cfp.levs(manual=[-10, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 10])
+
+Once a user call is made to levs the levels are persistent. i.e. the next plot will use the same set of levels. Use **levs()** to reset to undefined levels i.e. let cf-plot generate the levels again.
+Once the levs command is used you’ll need to think about the associated colour scale.  
+
+
+
+Colour scales
+=============
+There are around 140 colour scales included with cf-plot. Colour scales are set with the cscale command. There are two default colour scales that suit differing types of data. 
+
+A continuous scale ('viridis') that goes from blue to green and then yellow and suits data that has no zero in it.  For example air temperature in Kelvin or geopotential height - see example 1.
+
+A diverging scale ('scale1') that goes from blue to red and suits data with a zero in it.  For example temperature in Celsius or zonal wind - see example 4.  
+
+::
+
+   cfp.levs(min=-80, max=80, step=10)
+   cfp.cscale('scale1')
+
+.. image::  images/cs1.png
+   :scale: 52% 
+
+If no call has been made to adjust the colour scale then continuous and diverging colour scales are self adjusting to fit the number of levels automatically generated by cf-plot or specified by the user with the **levs** command.  This behaviour is also followed for a simple call to **cscale** specifying a different colour scale - for example **cfp.cscale('radar')** to select the radar colour scheme.
+
+If a call to **cscale** specifies additional parameters to the colour scale, then the automatic colour adjustment is turned off giving the user fine tuning of colours as below.
+
+To change the number of colours in a scale use the ncols parameters.
+
+::
+
+   cfp.cscale('scale1', ncols=12)
+   cfp.levs(min=-5, max=5, step=1)
+
+.. image::  images/cs2.png
+   :scale: 52% 
+
+
+To change the number of colours above and below the mid-point of the scale use the above and below parameters. This is useful for fields where you have differing extents of data above and below the zero line.
+
+::
+
+   cfp.cscale('scale1', below=4, above=7)
+   cfp.levs(min=-30, max=60, step=10)
+
+.. image::  images/cs3.png
+   :scale: 52% 
+
+
+For data where you need white to indicate that this data region is insignificant use the white=white parameter. This can take single or multiple values.
+
+::
+
+   cfp.cscale('scale1', ncols=11, white=5)
+   cfp.levs(manual=[-10,-8, -6, -4, -2, 2, 4, 6, 8, 10])
+
+.. image::  images/cs4.png
+   :scale: 52% 
+
+To reverse a colour scale use the **reverse=True** option to **cscale** and specify the number of colours required.
+
+**cfp.cscale('viridis', reverse=True, ncols=17)**
+
+
+User defined colour scales
+--------------------------
+
+Colour scales are stored as red green blue values on a scale of 0 to 255. Put these in a file with one red green blue value per line. i.e.
+
+|  255 0   0
+|  255 255 255
+|  0   0   255
+
+
+will give a red white blue colour scale. If the file is saved as /home/swsheaps/rwb.txt it is read in using
+
+::
+   
+   cfp.cscale('/home/swsheaps/rwb.txt')
+
+If the colour scale selected has too few colours for the number of contour levels then the colours will be used cyclically. 
+
+
+
+Changing colours in a colour scale
+----------------------------------
+
+The simplest way to do this without writing any code is to modify the internal colour scale before plotting.  The colours most people work with are stored as red green blue intensities on a scale of 0 to 255, with 0 being no intesity and 255 full intensity.
+
+White will be represented as 255 255 255 and black as 0 0 0
+
+The internal colour scale is stored in cfp.plotvars.cs as hexadecimal code.  To convert from decimal to hexadecimal use hex i.e.
+hex(255)[2:]
+'ff'
+
+The [2:] is to get rid of the preceding 0x in the hex output.
+
+
+
+for example to make one of the colours in the viridis colour scale grey use:
+
+::
+
+    import cf, cfplot as cfp
+    f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')
+    cfp.cscale('viridis', ncols=17)
+    cfp.plotvars.cs[14]='#a6a6a6'
+    cfp.con(f.subspace(time=15))
+
+
+
+Predefined colour scales
+------------------------
+
+A lot of the following colour maps were downloaded from the NCAR Command Language web site. Users of the IDL guide colour maps can see these maps at the end of the colour scales.
+
+Perceptually uniform colour scales
+----------------------------------
+A selection of perceptually uniform colour scales for contouring data without a zero in. See `The end of the rainbow <http://www.climate-lab-book.ac.uk/2014/end-of-the-rainbow>`_ and `Matplotlib colour maps <http://bids.github.io/colormap>`_ for a good discussion on colour scales, colour blindness and uniform colour scales.
+
+================== =====
+Name               Scale
+================== =====
+viridis            .. image:: images/colour_scales/viridis.png
+magma              .. image:: images/colour_scales/magma.png
+inferno            .. image:: images/colour_scales/inferno.png
+plasma             .. image:: images/colour_scales/plasma.png
+parula             .. image:: images/colour_scales/parula.png
+gray               .. image:: images/colour_scales/gray.png
+================== =====
+
+
+NCAR Command Language - MeteoSwiss colour maps
+----------------------------------------------
+
+================== =====
+Name               Scale
+================== =====
+hotcold_18lev      .. image:: images/colour_scales/hotcold_18lev.png
+hotcolr_19lev      .. image:: images/colour_scales/hotcolr_19lev.png
+mch_default        .. image:: images/colour_scales/mch_default.png
+perc2_9lev         .. image:: images/colour_scales/perc2_9lev.png
+percent_11lev      .. image:: images/colour_scales/percent_11lev.png
+precip2_15lev      .. image:: images/colour_scales/precip2_15lev.png
+precip2_17lev      .. image:: images/colour_scales/precip2_17lev.png
+precip3_16lev      .. image:: images/colour_scales/precip3_16lev.png
+precip4_11lev      .. image:: images/colour_scales/precip4_11lev.png
+precip4_diff_19lev .. image:: images/colour_scales/precip4_diff_19lev.png
+precip_11lev       .. image:: images/colour_scales/precip_11lev.png
+precip_diff_12lev  .. image:: images/colour_scales/precip_diff_12lev.png
+precip_diff_1lev   .. image:: images/colour_scales/precip_diff_1lev.png
+rh_19lev           .. image:: images/colour_scales/rh_19lev.png
+spread_15lev       .. image:: images/colour_scales/spread_15lev.png
+================== =====
+
+
+
+NCAR Command Language - small color maps (<50 colours)
+------------------------------------------------------
+
+=================== =====
+Name                Scale
+=================== =====
+amwg                .. image:: images/colour_scales/amwg.png
+amwg_blueyellowred  .. image:: images/colour_scales/amwg_blueyellowred.png
+BlueDarkRed18       .. image:: images/colour_scales/BlueDarkRed18.png
+BlueDarkOrange18    .. image:: images/colour_scales/BlueDarkOrange18.png
+BlueGreen14         .. image:: images/colour_scales/BlueGreen14.png
+BrownBlue12         .. image:: images/colour_scales/BrownBlue12.png
+Cat12               .. image:: images/colour_scales/Cat12.png
+cmp_flux            .. image:: images/colour_scales/cmp_flux.png
+cosam12             .. image:: images/colour_scales/cosam12.png
+cosam               .. image:: images/colour_scales/cosam.png
+GHRSST_anomaly      .. image:: images/colour_scales/GHRSST_anomaly.png
+GreenMagenta16      .. image:: images/colour_scales/GreenMagenta16.png
+hotcold_18lev       .. image:: images/colour_scales/hotcold_18lev.png
+hotcolr_19lev       .. image:: images/colour_scales/hotcolr_19lev.png
+mch_default         .. image:: images/colour_scales/mch_default.png
+nrl_sirkes          .. image:: images/colour_scales/nrl_sirkes.png
+nrl_sirkes_nowhite  .. image:: images/colour_scales/nrl_sirkes_nowhite.png
+perc2_9lev          .. image:: images/colour_scales/perc2_9lev.png
+percent_11lev       .. image:: images/colour_scales/percent_11lev.png
+posneg_2            .. image:: images/colour_scales/posneg_2.png
+prcp_1              .. image:: images/colour_scales/prcp_1.png
+prcp_2              .. image:: images/colour_scales/prcp_2.png
+prcp_3              .. image:: images/colour_scales/prcp_3.png
+precip_11lev        .. image:: images/colour_scales/precip_11lev.png
+precip_diff_12lev   .. image:: images/colour_scales/precip_diff_12lev.png
+precip_diff_1lev    .. image:: images/colour_scales/precip_diff_1lev.png
+precip2_15lev       .. image:: images/colour_scales/precip2_15lev.png
+precip2_17lev       .. image:: images/colour_scales/precip2_17lev.png
+precip3_16lev       .. image:: images/colour_scales/precip3_16lev.png
+precip4_11lev       .. image:: images/colour_scales/precip4_11lev.png
+precip4_diff_19lev  .. image:: images/colour_scales/precip4_diff_19lev.png
+radar               .. image:: images/colour_scales/radar.png
+radar_1             .. image:: images/colour_scales/radar_1.png
+rh_19lev            .. image:: images/colour_scales/rh_19lev.png
+seaice_1            .. image:: images/colour_scales/seaice_1.png
+seaice_2            .. image:: images/colour_scales/seaice_2.png
+so4_21              .. image:: images/colour_scales/so4_21.png
+spread_15lev        .. image:: images/colour_scales/spread_15lev.png
+StepSeq25           .. image:: images/colour_scales/StepSeq25.png
+sunshine_9lev       .. image:: images/colour_scales/sunshine_9lev.png
+sunshine_diff_12lev .. image:: images/colour_scales/sunshine_diff_12lev.png
+temp_19lev          .. image:: images/colour_scales/temp_19lev.png
+temp_diff_18lev     .. image:: images/colour_scales/temp_diff_18lev.png
+temp_diff_1lev      .. image:: images/colour_scales/temp_diff_1lev.png
+topo_15lev          .. image:: images/colour_scales/topo_15lev.png
+wgne15              .. image:: images/colour_scales/wgne15.png
+wind_17lev          .. image:: images/colour_scales/wind_17lev.png
+=================== =====
+
+
+NCAR Command Language - large colour maps (>50 colours)
+-------------------------------------------------------
+
+======================= =====
+Name                    Scale
+======================= =====
+amwg256                 .. image:: images/colour_scales/amwg256.png
+BkBlAqGrYeOrReViWh200   .. image:: images/colour_scales/BkBlAqGrYeOrReViWh200.png
+BlAqGrYeOrRe            .. image:: images/colour_scales/BlAqGrYeOrRe.png
+BlAqGrYeOrReVi200       .. image:: images/colour_scales/BlAqGrYeOrReVi200.png
+BlGrYeOrReVi200         .. image:: images/colour_scales/BlGrYeOrReVi200.png
+BlRe                    .. image:: images/colour_scales/BlRe.png
+BlueRed                 .. image:: images/colour_scales/BlueRed.png
+BlueRedGray             .. image:: images/colour_scales/BlueRedGray.png
+BlueWhiteOrangeRed      .. image:: images/colour_scales/BlueWhiteOrangeRed.png
+BlueYellowRed           .. image:: images/colour_scales/BlueYellowRed.png
+BlWhRe                  .. image:: images/colour_scales/BlWhRe.png
+cmp_b2r                 .. image:: images/colour_scales/cmp_b2r.png
+cmp_haxby               .. image:: images/colour_scales/cmp_haxby.png
+detail                  .. image:: images/colour_scales/detail.png
+extrema                 .. image:: images/colour_scales/extrema.png
+GrayWhiteGray           .. image:: images/colour_scales/GrayWhiteGray.png
+GreenYellow             .. image:: images/colour_scales/GreenYellow.png
+helix                   .. image:: images/colour_scales/helix.png
+helix1                  .. image:: images/colour_scales/helix1.png
+hotres                  .. image:: images/colour_scales/hotres.png
+matlab_hot              .. image:: images/colour_scales/matlab_hot.png
+matlab_hsv              .. image:: images/colour_scales/matlab_hsv.png
+matlab_jet              .. image:: images/colour_scales/matlab_jet.png
+matlab_lines            .. image:: images/colour_scales/matlab_lines.png
+ncl_default             .. image:: images/colour_scales/ncl_default.png
+ncview_default          .. image:: images/colour_scales/ncview_default.png
+OceanLakeLandSnow       .. image:: images/colour_scales/OceanLakeLandSnow.png
+rainbow                 .. image:: images/colour_scales/rainbow.png
+rainbow_white_gray      .. image:: images/colour_scales/rainbow_white_gray.png
+rainbow_white           .. image:: images/colour_scales/rainbow_white.png
+rainbow_gray            .. image:: images/colour_scales/rainbow_gray.png
+tbr_240_300             .. image:: images/colour_scales/tbr_240_300.png
+tbr_stdev_0_30          .. image:: images/colour_scales/tbr_stdev_0_30.png
+tbr_var_0_500           .. image:: images/colour_scales/tbr_var_0_500.png
+tbrAvg1                 .. image:: images/colour_scales/tbrAvg1.png
+tbrStd1                 .. image:: images/colour_scales/tbrStd1.png
+tbrVar1                 .. image:: images/colour_scales/tbrVar1.png
+thelix                  .. image:: images/colour_scales/thelix.png
+ViBlGrWhYeOrRe          .. image:: images/colour_scales/ViBlGrWhYeOrRe.png
+wh_bl_gr_ye_re          .. image:: images/colour_scales/wh_bl_gr_ye_re.png
+WhBlGrYeRe              .. image:: images/colour_scales/WhBlGrYeRe.png
+WhBlReWh                .. image:: images/colour_scales/WhBlReWh.png
+WhiteBlue               .. image:: images/colour_scales/WhiteBlue.png
+WhiteBlueGreenYellowRed .. image:: images/colour_scales/WhiteBlueGreenYellowRed.png
+WhiteGreen              .. image:: images/colour_scales/WhiteGreen.png
+WhiteYellowOrangeRed    .. image:: images/colour_scales/WhiteYellowOrangeRed.png
+WhViBlGrYeOrRe          .. image:: images/colour_scales/WhViBlGrYeOrRe.png
+WhViBlGrYeOrReWh        .. image:: images/colour_scales/WhViBlGrYeOrReWh.png
+wxpEnIR                 .. image:: images/colour_scales/wxpEnIR.png
+3gauss                  .. image:: images/colour_scales/3gauss.png
+3saw                    .. image:: images/colour_scales/3saw.png
+BrBG                    .. image:: images/colour_scales/BrBG.png
+======================= =====
+
+
+
+NCAR Command Language - Enhanced to help with colour blindness
+--------------------------------------------------------------
+
+================ =====
+Name             Scale
+================ =====
+StepSeq25        .. image:: images/colour_scales/StepSeq25.png
+posneg_2         .. image:: images/colour_scales/posneg_2.png
+posneg_1         .. image:: images/colour_scales/posneg_1.png
+BlueDarkOrange18 .. image:: images/colour_scales/BlueDarkOrange18.png
+BlueDarkRed18    .. image:: images/colour_scales/BlueDarkRed18.png
+GreenMagenta16   .. image:: images/colour_scales/GreenMagenta16.png
+BlueGreen14      .. image:: images/colour_scales/BlueGreen14.png
+BrownBlue12      .. image:: images/colour_scales/BrownBlue12.png
+Cat12            .. image:: images/colour_scales/Cat12.png
+================ =====
+
+
+
+
+IDL guide scales
+----------------
+
+======= =====
+Name    Scale
+======= =====
+scale1  .. image:: images/colour_scales/scale1.png
+scale2  .. image:: images/colour_scales/scale2.png
+scale3  .. image:: images/colour_scales/scale3.png
+scale4  .. image:: images/colour_scales/scale4.png
+scale5  .. image:: images/colour_scales/scale5.png
+scale6  .. image:: images/colour_scales/scale6.png
+scale7  .. image:: images/colour_scales/scale7.png
+scale8  .. image:: images/colour_scales/scale8.png
+scale9  .. image:: images/colour_scales/scale9.png
+scale10 .. image:: images/colour_scales/scale10.png
+scale11 .. image:: images/colour_scales/scale11.png
+scale12 .. image:: images/colour_scales/scale12.png
+scale13 .. image:: images/colour_scales/scale13.png
+scale14 .. image:: images/colour_scales/scale14.png
+scale15 .. image:: images/colour_scales/scale15.png
+scale16 .. image:: images/colour_scales/scale16.png
+scale17 .. image:: images/colour_scales/scale17.png
+scale18 .. image:: images/colour_scales/scale18.png
+scale19 .. image:: images/colour_scales/scale19.png
+scale20 .. image:: images/colour_scales/scale20.png
+scale21 .. image:: images/colour_scales/scale21.png
+scale22 .. image:: images/colour_scales/scale22.png
+scale23 .. image:: images/colour_scales/scale23.png
+scale24 .. image:: images/colour_scales/scale24.png
+scale25 .. image:: images/colour_scales/scale25.png
+scale26 .. image:: images/colour_scales/scale26.png
+scale27 .. image:: images/colour_scales/scale27.png
+scale28 .. image:: images/colour_scales/scale28.png
+scale29 .. image:: images/colour_scales/scale29.png
+scale30 .. image:: images/colour_scales/scale30.png
+scale31 .. image:: images/colour_scales/scale31.png
+scale32 .. image:: images/colour_scales/scale32.png
+scale33 .. image:: images/colour_scales/scale33.png
+scale34 .. image:: images/colour_scales/scale34.png
+scale35 .. image:: images/colour_scales/scale35.png
+scale36 .. image:: images/colour_scales/scale36.png
+scale37 .. image:: images/colour_scales/scale37.png
+scale38 .. image:: images/colour_scales/scale38.png
+scale39 .. image:: images/colour_scales/scale39.png
+scale40 .. image:: images/colour_scales/scale40.png
+scale41 .. image:: images/colour_scales/scale41.png
+scale42 .. image:: images/colour_scales/scale42.png
+scale43 .. image:: images/colour_scales/scale43.png
+scale44 .. image:: images/colour_scales/scale44.png
+======= =====
+
+
+
+
+Labelling time axes
+===================
+
+The default time axis labelling in cf-plot might not be acceptable and here is some information on 
+using cf-python to extract values for yourself.
+
+| **f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')**
+| **f.items('T')**
+| {'dim0': <CF DimensionCoordinate: time(1680) 360_day>}
+
+The time strings are stored in dtarray and the time values in array:
+
+| **f.item('T').dtarray**
+| array([1860-01-16 00:00:00, 1860-02-16 00:00:00, 1860-03-16 00:00:00, ...,
+|        1999-10-16 00:00:00, 1999-11-16 00:00:00, 1999-12-16 00:00:00], dtype=object)
+
+| **f.item('T').array**
+| array([  1.50000000e+01,   4.50000000e+01,   7.50000000e+01, ...,
+|          5.03250000e+04,   5.03550000e+04,   5.03850000e+04])
+
+Likewise the years and months are in year.array and month.array:
+
+| **f.item('T').year.array**
+| array([1860, 1860, 1860, ..., 1999, 1999, 1999])
+
+| **f.item('T').month.array**
+| array([ 1,  2,  3, ..., 10, 11, 12])
+
+
+To find the time value for to the tick position for January 1st 1980 00:00hrs:
+
+| **np.min(cf.Data(cf.dt('1980-01-01 00:00:00'), units=f.item('T').Units).array)**
+| 43200.0
+ 
+
+Selecting data that has a lot of decimal places in the axis values
+==================================================================
+
+Axes with a lot of decimal places can cause issues with numeric representation and rounding,
+In one case 
+>>> cfp.lineplot(f.subspace(latitude=50.17530806))
+caused an error as the latitude with 50.17530806 wasn\'t found.
+
+In cf-python the tolerance for equivalence is
+
+>>> cf.RTOL()
+2.220446049250313e-16
+
+To set to a lower tolerance use
+>>> g=cf.RTOL(1e-5)
+>>> cf.RTOL()
+1e-05
+
+To swap back use
+>>> cf.RTOL(g)
+
+After swapping the tolerance to 1e-5 the following finds teh latitide as expected.
+>>> cfp.lineplot(f.subspace(latitude=50.17530806))
+
+We could have worked around this with
+>>> cfp.lineplot(f.subspace(latitude=cf.wi(50, 50.2))) 
+
+
+
+
+Making postscript or PNG pictures 
+=================================
+There are various methods of producing a figure for use in an external package such as a web document or LaTeX, Word etc.
+
+| **cfp.setvars(file=’zonal.ps’)** write subsequent graphics output directly to a file called zonal.ps
+| **cfp.setvars(file=’zonal.png)’** write subsequent graphics output to a file called zonal.png
+
+To reset to viewing the picture on the screen again use **cfp.setvars()**.
+
+Another method is to use **gopen** as when used in making multiple plots.
+
+::
+
+   cfp.gopen, file=’zonal.ps’
+   cfp.con(f.subspace(time=15))
+   cfp.gclose()
+
+
+Making non-blocking plots
+=========================
+Using the Python prompt cf-plot will try to use the ImageMagick display command to show the plots.  This is done with subprocess and plots will remain on the screen even if the user exits the Python session.  If the display command isn\'t installed then cf-plot will use the Matplotlib picture viewer which will block the command prompt until it is quit.  Use **cfp.setvars(viewer='matplotlib')** to set this to be the defaul for a session even if teh display command is available.
+
+
+
+
+Using cf-plot in batch mode
+===========================
+
+The following method works in the Reading Meteorology department.
+In the file /home/swsheaps/ajh.sh:
+
+::
+
+  #!/bin/sh
+  /home/opt-user/Enthought/Canopy_64bit/User/bin/python /home/swsheaps/ajh.py
+
+In the file /home/swsheaps/ajh.py:
+
+::
+
+   import cf
+   import cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+   cfp.setvars(file='/home/swsheaps/ll.png')
+   cfp.con(f.subspace(time=15))
+
+run the batch job today at 16:33:
+
+**at -f /home/swsheaps/ajh.sh 16:33**
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,40 +6,42 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Irregular grid plots &mdash; cf-plot 2.1.12 documentation</title>
+    <title>Irregular grid plots &#8212; cf-plot 2.1.18 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.1.12',
+        VERSION:     '2.1.18',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 2.1.12 documentation" href="index.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="index.html">cf-plot 2.1.12 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.18 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="irregular-grid-plots">
 <h1>Irregular grid plots<a class="headerlink" href="#irregular-grid-plots" title="Permalink to this headline">¶</a></h1>
@@ -49,9 +51,9 @@
 <h2>Example 24 - irregular grid plot<a class="headerlink" href="#example-24-irregular-grid-plot" title="Permalink to this headline">¶</a></h2>
 <p>Here we read in and contour temperature from meteorological stations around the Bristish Isles.</p>
 <a class="reference internal image-reference" href="_images/fig24.png"><img alt="_images/fig24.png" src="_images/fig24.png" style="width: 487.24px; height: 326.56px;" /></a>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib.mlab</span> <span class="kn">import</span> <span class="n">griddata</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib.mlab</span> <span class="k">import</span> <span class="n">griddata</span>
 
 <span class="c1">#Arrays for data</span>
 <span class="n">lons</span><span class="o">=</span><span class="p">[]</span>
@@ -86,7 +88,7 @@
 <div class="section" id="example-25-irregular-grid-plot-check-of-data-values">
 <h2>Example 25 - irregular grid plot - Check of data values<a class="headerlink" href="#example-25-irregular-grid-plot-check-of-data-values" title="Permalink to this headline">¶</a></h2>
 <p>To see if this plot is correct we can add some extra code to that above to plot the station locations and values at that point.  The decimal point is roughly where the data point is located.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">()</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">lons_new</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">lats_new</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">temp_new</span><span class="p">,</span> <span class="n">ptype</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)):</span>
    <span class="n">cfp</span><span class="o">.</span><span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">lons</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">lats</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="nb">str</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> \
@@ -104,10 +106,10 @@
 <div class="section" id="example-26-orca2-grid">
 <h2>Example 26 - Orca2 grid<a class="headerlink" href="#example-26-orca2-grid" title="Permalink to this headline">¶</a></h2>
 <a class="reference internal image-reference" href="_images/fig26.png"><img alt="_images/fig26.png" src="_images/fig26.png" style="width: 515.32px; height: 298.48px;" /></a>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
-<span class="kn">from</span> <span class="nn">netCDF4</span> <span class="kn">import</span> <span class="n">Dataset</span> <span class="k">as</span> <span class="n">ncfile</span>
-<span class="kn">from</span> <span class="nn">matplotlib.mlab</span> <span class="kn">import</span> <span class="n">griddata</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="kn">from</span> <span class="nn">netCDF4</span> <span class="k">import</span> <span class="n">Dataset</span> <span class="k">as</span> <span class="n">ncfile</span>
+<span class="kn">from</span> <span class="nn">matplotlib.mlab</span> <span class="k">import</span> <span class="n">griddata</span>
 
 <span class="c1">#Get an Orca grid and flatten the arrays</span>
 <span class="n">nc</span> <span class="o">=</span> <span class="n">ncfile</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/orca2.nc&#39;</span><span class="p">)</span>
@@ -143,7 +145,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -162,18 +164,18 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="index.html">cf-plot 2.1.12 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.18 documentation</a> &#187;</li> 
       </ul>
     </div>
-    <div class="footer">
-        &copy; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
     </div>
   </body>
 </html>

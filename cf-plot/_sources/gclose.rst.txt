@@ -1,0 +1,4 @@
+gclose
+******
+
+.. autofunction:: cfplot.gclose

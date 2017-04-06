@@ -1,0 +1,6 @@
+reset
+*****
+
+.. autofunction:: cfplot.reset
+
+

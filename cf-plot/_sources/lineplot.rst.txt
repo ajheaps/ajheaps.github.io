@@ -1,0 +1,4 @@
+lineplot
+********
+
+.. autofunction:: cfplot.lineplot

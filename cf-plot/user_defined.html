@@ -6,56 +6,58 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>User defined axes &mdash; cf-plot 2.1.12 documentation</title>
+    <title>User defined axes &#8212; cf-plot 2.1.18 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.1.12',
+        VERSION:     '2.1.18',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 2.1.12 documentation" href="index.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="index.html">cf-plot 2.1.12 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.18 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="user-defined-axes">
 <h1>User defined axes<a class="headerlink" href="#user-defined-axes" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="example-20-user-labelling-of-axes">
 <h2>Example 20 - User labelling of axes<a class="headerlink" href="#example-20-user-labelling-of-axes" title="Permalink to this headline">¶</a></h2>
 <a class="reference internal image-reference" href="_images/fig20a.png"><img alt="_images/fig20a.png" src="_images/fig20a.png" style="width: 459.36px; height: 286.44px;" /></a>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/Geostropic_Adjustment.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">[</span><span class="mi">9</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>In the following plot the axes were labelled with the axes command before making a contour map of the data.  The xticklabels and yticklabels options can be used to fine tune the axis labels.</p>
 <a class="reference internal image-reference" href="_images/fig20.png"><img alt="_images/fig20.png" src="_images/fig20.png" style="width: 488.84px; height: 286.44px;" /></a>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="kn">as</span> <span class="nn">cfp</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/Geostropic_Adjustment.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;test data&#39;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="mi">100000</span><span class="o">+</span><span class="mi">100000</span><span class="p">,</span>
         <span class="n">yticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">*</span><span class="mi">2000</span><span class="o">+</span><span class="mi">2000</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;x-axis&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;z-axis&#39;</span><span class="p">)</span>
@@ -68,7 +70,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -87,18 +89,18 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="index.html">cf-plot 2.1.12 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.18 documentation</a> &#187;</li> 
       </ul>
     </div>
-    <div class="footer">
-        &copy; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
     </div>
   </body>
 </html>

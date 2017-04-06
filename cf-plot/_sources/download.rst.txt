@@ -1,0 +1,98 @@
+Download/Install
+****************
+
+Is cf-plot already installed?
+=============================
+
+Jasmin@CEDA - cf-plot is available inside the Jasmin Analysis Platform - type python2.7 to start python.
+
+Archer Jasmin RDF - jasmin.rdf.ac.uk - This has the Jasmin Analysis Platform installed - type python2.7 to start python.
+
+|  Archer - type  
+|  **module swap PrgEnv-cray PrgEnv-intel**
+|  **module load anaconda cf**
+|  and then python to use cf-plot.
+
+Department of Meteorology, University of Reading - The latest version of cf-plot is installed on the Reading University Meteorology department servers.  Type **setup canopy** to set-up the Python environment.
+
+|
+|
+
+
+To install cf-plot
+==================
+
+Linux
+-----
+To install cf-plot on your own Linux box download and install Anaconda Python 2.7 for Linux.  On the command line type:
+
+::
+
+   conda install -c ncas -c scitools cf-python cf-plot
+   conda install -c nesii esmpy 
+
+The first line installs cf-python, cf-plot and the second installs esmpy which cf-python uses for regriding data.
+
+
+
+Other OSs
+---------
+It is recommended that you use a virtual machine with Linux running in it as some things don't, and probably won't ever work on other OSs - Met Office PP file reading for instance.  
+
+
+
+MacOS
+-----
+It is recommended that a Linux virtual machine is used on Macs.  If you wish to use a slighly out of date version of cf-plot directly on a Mac then follow the instructions below.
+
+Download and install Anaconda Python 2.7 for MacOS.  On the command line type:
+
+::
+
+   conda install -c ncas -c scitools cf-python cf-plot
+   conda install -c scitools esmpy
+
+The first line installs cf-python, cf-plot and the second installs esmpy which cf-python uses for regriding data.
+
+To use esmpy you'll also need to do a conda install of gcc and gfortran.  An fiddly part is putting the fortran libraries where esmpy needs to find them.  At the Python command prompt type import ESMF and an error message will indicate which libraries it cannot find.
+
+On Macs to get Matplotlib graphic windows to appear user cfp.setvars(viewer='matplotlib') before making any plots.
+
+Windows
+-------
+Windows is not supported or expected to be supported. If you are a Windows guru and manage to get cf-python and cf-plot working please contact andy.heaps@ncas.ac.uk with the details and I will post the installation details here.
+
+
+Other install methods
+---------------------
+Using pip:
+
+::
+
+   pip install cf-python
+   pip install cf-plot
+
+
+Using GitHub:
+
+::
+
+   git clone git://github.com/ajheaps/cf-plot.git
+   cd cf-plot
+   python setup.py install
+
+
+You will need to download and install `cf-python <http://cfpython.bitbucket.org>`_ to use cf-plot.  Other cf-plot dependencies are: Numpy, Matplotlib, Netcdf4 and Basemap.
+
+Download the `sample netCDF datasets <http://www.met.reading.ac.uk/~swsheaps/cfplot_data>`_
+ 
+|
+|
+|
+|
+|
+|
+|
+| 
+
+

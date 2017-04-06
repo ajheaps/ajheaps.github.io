@@ -6,132 +6,52 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>con &mdash; cf-plot 2.1.12 documentation</title>
+    <title>con &#8212; cf-plot 2.1.18 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.1.12',
+        VERSION:     '2.1.18',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 2.1.12 documentation" href="index.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="index.html">cf-plot 2.1.12 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.18 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="con">
 <h1>con<a class="headerlink" href="#con" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="cfplot.con">
-<tt class="descclassname">cfplot.</tt><tt class="descname">con</tt><big>(</big><em>f=None</em>, <em>x=None</em>, <em>y=None</em>, <em>fill=True</em>, <em>lines=True</em>, <em>line_labels=True</em>, <em>title=None</em>, <em>colorbar_title=None</em>, <em>colorbar=True</em>, <em>colorbar_label_skip=None</em>, <em>ptype=0</em>, <em>negative_linestyle=None</em>, <em>blockfill=False</em>, <em>zero_thick=False</em>, <em>colorbar_shrink=None</em>, <em>colorbar_orientation=None</em>, <em>colorbar_position=None</em>, <em>xlog=False</em>, <em>ylog=False</em>, <em>axes=True</em>, <em>xaxis=True</em>, <em>yaxis=True</em>, <em>xticks=None</em>, <em>xticklabels=None</em>, <em>yticks=None</em>, <em>yticklabels=None</em>, <em>xlabel=None</em>, <em>ylabel=None</em>, <em>colors='k'</em>, <em>verbose=None</em><big>)</big><a class="reference internal" href="_modules/cfplot.html#con"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.con" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line">con is the interface to contouring in cf-plot. The minimum use is con(f)</div>
-<div class="line">where f is a 2 dimensional array. If a cf field is passed then an</div>
-<div class="line">appropriate plot will be produced i.e. a longitude-latitude or</div>
-<div class="line">latitude-height plot for example. If a 2d numeric array is passed then</div>
-<div class="line">the optional arrays x and y can be used to describe the x and y data</div>
-<div class="line">point locations.</div>
-<div class="line"><br /></div>
-<div class="line">f - array to contour</div>
-<div class="line">x - x locations of data in f (optional)</div>
-<div class="line">y - y locations of data in f (optional)</div>
-<div class="line">fill=True - colour fill contours</div>
-<div class="line">lines=True - draw contour lines and labels</div>
-<div class="line">line_labels=True - label contour lines</div>
-<div class="line">title=title - title for the plot</div>
-<div class="line">ptype=0 - plot type - not needed for cf fields.</div>
-<div class="line-block">
-<div class="line">0 = no specific plot type,</div>
-<div class="line">1 = longitude-latitude,</div>
-<div class="line">2 = latitude - height,</div>
-<div class="line">3 = longitude - height,</div>
-<div class="line">4 = latitude - time,</div>
-<div class="line">5 = longitude - time</div>
-<div class="line">6 = rotated pole</div>
-</div>
-<div class="line">negative_linestyle=False - set to True to get dashed negative contours</div>
-<div class="line">zero_thick=False - add a thick zero contour line. Set to 3 for example.</div>
-<div class="line">blockfill=False - set to True for a blockfill plot</div>
-<div class="line">colorbar_title=colbar_title - title for the colour bar</div>
-<div class="line">colorbar=1 - add a colour bar if a filled contour plot</div>
-<div class="line">colorbar_label_skip=None - skip colour bar labels. Set to 2 to skip</div>
-<div class="line-block">
-<div class="line">every other label.</div>
-</div>
-<div class="line">colorbar_orientation=None - options are &#8216;horizontal&#8217; and &#8216;vertical&#8217;</div>
-<div class="line-block">
-<div class="line">The default for most plots is horizontal but</div>
-<div class="line">for polar stereographic plots this is vertical.</div>
-</div>
-<div class="line">colorbar_shrink=None - value to shrink the colorbar by.  If the colorbar</div>
-<div class="line-block">
-<div class="line">exceeds the plot area then values of 1.0, 0.55</div>
-<div class="line">or 0.5m ay help it better fit the plot area.</div>
-</div>
-<div class="line">colorbar_position=None - position of colorbar</div>
-<div class="line-block">
-<div class="line">[xmin, ymin, x_extent,y_extent]in normalised</div>
-<div class="line">coordinates. Use when a common colorbar</div>
-<div class="line">is required for a set of plots. A typical set</div>
-<div class="line">of values would be [0.1, 0.05, 0.8, 0.02]</div>
-</div>
-<div class="line">colors=&#8217;k&#8217; - contour line colors</div>
-<div class="line">xlog=False - logarithmic x axis</div>
-<div class="line">ylog=False - logarithmic y axis</div>
-<div class="line">axes=True - plot x and y axes</div>
-<div class="line">xaxis=True - plot xaxis</div>
-<div class="line">yaxis=True - plot y axis</div>
-<div class="line">xticks=None - xtick positions</div>
-<div class="line">xticklabels=None - xtick labels</div>
-<div class="line">yticks=None - y tick positions</div>
-<div class="line">yticklabels=None - ytick labels</div>
-<div class="line">xlabel=None - label for x axis</div>
-<div class="line">ylabel=None - label for y axis</div>
-<div class="line">verbose=None - change to 1 to get a verbose listing of what con</div>
-<div class="line-block">
-<div class="line">is doing</div>
-<div class="line"><br /></div>
-</div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 </div>
 
 
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -150,18 +70,18 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="index.html">cf-plot 2.1.12 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.18 documentation</a> &#187;</li> 
       </ul>
     </div>
-    <div class="footer">
-        &copy; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
     </div>
   </body>
 </html>

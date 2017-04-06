@@ -6,40 +6,42 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>version 1.9 changes &mdash; cf-plot 2.1.12 documentation</title>
+    <title>version 1.9 changes &#8212; cf-plot 2.1.18 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.1.12',
+        VERSION:     '2.1.18',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 2.1.12 documentation" href="index.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="index.html">cf-plot 2.1.12 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.18 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="version-1-9-changes">
 <h1>version 1.9 changes<a class="headerlink" href="#version-1-9-changes" title="Permalink to this headline">¶</a></h1>
@@ -49,7 +51,7 @@
 <p>Vector polar plots introduced.  Use the pts option to vect when doing a stereographic polar vector plot to interpolate
 the grid to be uniformly spaced when viewed.</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -63,7 +65,7 @@ the grid to be uniformly spaced when viewed.</p>
 <div class="line"><a class="reference external" href="http://ajheaps.github.io/cf-plot">http://ajheaps.github.io/cf-plot</a>/#</div>
 </div>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -71,7 +73,7 @@ the grid to be uniformly spaced when viewed.</p>
 <div class="section" id="add-orography-bathymetry-colour-scales">
 <h2>3. Add orography / bathymetry colour scales<a class="headerlink" href="#add-orography-bathymetry-colour-scales" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -80,7 +82,7 @@ the grid to be uniformly spaced when viewed.</p>
 <h2>4. Change cfplot to cf-plot<a class="headerlink" href="#change-cfplot-to-cf-plot" title="Permalink to this headline">¶</a></h2>
 <p>Package renamed to cf-plot to fit in with cf-python and cf-view.</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -88,7 +90,7 @@ the grid to be uniformly spaced when viewed.</p>
 <div class="section" id="change-web-docs-to-github">
 <h2>5. Change web docs to github<a class="headerlink" href="#change-web-docs-to-github" title="Permalink to this headline">¶</a></h2>
 <p>Web documents location changed to <a class="reference external" href="http://ajheaps.github.io/cf-plot">http://ajheaps.github.io/cf-plot</a>.  setup.py etc references changed accordingly.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
@@ -96,7 +98,7 @@ the grid to be uniformly spaced when viewed.</p>
 <h2>6. Add plot spacing options to gopen<a class="headerlink" href="#add-plot-spacing-options-to-gopen" title="Permalink to this headline">¶</a></h2>
 <p>Add hspace and wspace plot spacing options to gopen.</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -104,7 +106,7 @@ the grid to be uniformly spaced when viewed.</p>
 <div class="section" id="lineplot-assing-non-cf-data">
 <h2>7. lineplot - -assing non-CF data<a class="headerlink" href="#lineplot-assing-non-cf-data" title="Permalink to this headline">¶</a></h2>
 <p>Add options so that passing of non-CF data to lineplot works.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
@@ -112,7 +114,7 @@ the grid to be uniformly spaced when viewed.</p>
 <h2>8. vect - turn off vector key<a class="headerlink" href="#vect-turn-off-vector-key" title="Permalink to this headline">¶</a></h2>
 <p>Add show_key option to vect to allow turning off of vector key.</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -121,7 +123,7 @@ the grid to be uniformly spaced when viewed.</p>
 <h2>9. cscale - colour maps not referenced correctly when doing a local install<a class="headerlink" href="#cscale-colour-maps-not-referenced-correctly-when-doing-a-local-install" title="Permalink to this headline">¶</a></h2>
 <p>pip install &#8211;user cf-plot</p>
 <p>Doesn&#8217;t allow changing of colour maps.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
@@ -129,7 +131,7 @@ the grid to be uniformly spaced when viewed.</p>
 <h2>10. lineplot - add axis labelling that overrides any CF information<a class="headerlink" href="#lineplot-add-axis-labelling-that-overrides-any-cf-information" title="Permalink to this headline">¶</a></h2>
 <p>Add axis labelling that overrides any CF information in lineplot.</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -137,7 +139,7 @@ the grid to be uniformly spaced when viewed.</p>
 <div class="section" id="gclose-plots-not-closed-properly">
 <h2>11. gclose - plots not closed properly<a class="headerlink" href="#gclose-plots-not-closed-properly" title="Permalink to this headline">¶</a></h2>
 <p>Add plot.close() to gclose routine to properly close each plot when it is finished.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
@@ -161,70 +163,70 @@ For example,</p>
 </div>
 <p>Using np.linspace(-0.2,0.2,11) gives a much neater set of levels and the floating point calculation of levels was changed
 to adopt this method.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="levs-cfp-levs-fails-to-reset-colorbar-extensions">
 <h2>13. levs - cfp.levs() fails to reset colorbar extensions<a class="headerlink" href="#levs-cfp-levs-fails-to-reset-colorbar-extensions" title="Permalink to this headline">¶</a></h2>
 <p>cfp.levs() failed to reset colorbar extensions.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="change-of-name-for-some-colour-scales">
 <h2>14. Change of name for some colour scales<a class="headerlink" href="#change-of-name-for-some-colour-scales" title="Permalink to this headline">¶</a></h2>
 <p>Colour scales with plus and minus in them cause issues in cfview. These colour scales have been renamed with the plus and minus changed to an underscore.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="con-negative-linestyle-and-zero-thick-issues">
 <h2>15. con - negative_linestyle and zero_thick issues<a class="headerlink" href="#con-negative-linestyle-and-zero-thick-issues" title="Permalink to this headline">¶</a></h2>
 <p>Recent changes in the 1.5.x version of Matplotlib causes issues with the con routine negative_linestyle and zero_thick options.  con was changed to the new Matplotlib way of doing these.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="con-xlog-log-specification">
 <h2>16. con - xlog / log specification<a class="headerlink" href="#con-xlog-log-specification" title="Permalink to this headline">¶</a></h2>
 <p>Amended the xlog and ylog specification so that it now accpets True as well as 1 to give a log plot.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="con-vect-added-axis-labelling-commands">
 <h2>17. con, vect  added axis labelling commands<a class="headerlink" href="#con-vect-added-axis-labelling-commands" title="Permalink to this headline">¶</a></h2>
 <p>Added xticks, xticklabels, yticks, yticklabels, xlabel, ylabel to con and vect to control axis labelling.  Also added axis, axis, yaxis to control whether axes are plotted.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="con-bug-in-color-scheme">
 <h2>18. con - bug in color scheme<a class="headerlink" href="#con-bug-in-color-scheme" title="Permalink to this headline">¶</a></h2>
 <p>When turning off a colorbar with colorbar=None in the con routine the extension colors were then out of alignment.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="vect-added-vertical-log-scale">
 <h2>19. vect - added vertical log scale<a class="headerlink" href="#vect-added-vertical-log-scale" title="Permalink to this headline">¶</a></h2>
 <p>Added optional vertical log scale to the vect routine.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="con-added-time-vs-height-plots">
 <h2>20. con  - added time vs height plots<a class="headerlink" href="#con-added-time-vs-height-plots" title="Permalink to this headline">¶</a></h2>
 <p>Added time vs height plots.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="colour-scales-adjust-name">
 <h2>21. colour scales - adjust name<a class="headerlink" href="#colour-scales-adjust-name" title="Permalink to this headline">¶</a></h2>
 <p>One of the colour scales had an incorrect extension and this caused an issue in cf-view.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
@@ -234,7 +236,7 @@ to adopt this method.</p>
 in preference to build-in Matplotlib viewer. This gets around the problem of a plot blocking the command prompt
 preventing further plots from being made.  Using cfp.setvars(viewer=&#8217;matplotlib&#8217;) will revert to using the
 built-in matplotlib picture viewer.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
@@ -242,14 +244,14 @@ built-in matplotlib picture viewer.</p>
 <h2>23. timeaxis routine introduced<a class="headerlink" href="#timeaxis-routine-introduced" title="Permalink to this headline">¶</a></h2>
 <p>The timeaxis routine takes a time axis and returns a sensible set of tick positions and labels.  This is an internal
 routine that is used in Hovmuller and graph plots.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="multiple-hovmuller-plot-calls-produce-incorrect-pictures">
 <h2>24. Multiple hovmuller plot calls produce incorrect pictures<a class="headerlink" href="#multiple-hovmuller-plot-calls-produce-incorrect-pictures" title="Permalink to this headline">¶</a></h2>
 <p>Subsequent plots after the first hovmuller plot call produce incorrect pictures.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div>
@@ -263,14 +265,14 @@ for all subsequent time axes.</p>
 <div class="line">tspace_day=None - time axis spacing in days</div>
 <div class="line">tspace_hour=None - time axis spacing in hours</div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="time-axes-bugfix">
 <h2>26. Time axes bugfix<a class="headerlink" href="#time-axes-bugfix" title="Permalink to this headline">¶</a></h2>
 <p>Bugfix for an issue in time axes.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
@@ -283,14 +285,14 @@ for all subsequent time axes.</p>
 <div class="line">ytick_label_rotation=0 - rotation of ytick labels</div>
 <div class="line">ytick_label_align=&#8217;right&#8217; - alignment of ytick labels</div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="bugfix-in-gset">
 <h2>28. Bugfix in gset<a class="headerlink" href="#bugfix-in-gset" title="Permalink to this headline">¶</a></h2>
 <p>Bugfix in gset for recent time axis changes.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div>
@@ -298,7 +300,7 @@ for all subsequent time axes.</p>
 <h2>29. Bug in lineplot<a class="headerlink" href="#bug-in-lineplot" title="Permalink to this headline">¶</a></h2>
 <p>Lineplot is now more logical and takes a CF-field (f) as the base use. The other use is
 not to pass f but to have x=x and y=y.  This allows x vs y plots and y vs x plots.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div>
@@ -307,14 +309,14 @@ not to pass f but to have x=x and y=y.  This allows x vs y plots and y vs x plot
 <p>Selecting irregular contour levels with cfp.levs(manual=manual) and filled contours gives a slight
 colour scale mismatch.  This was resolved by calculating a normalization array:
 plotvars.norm=matplotlib.colors.BoundaryNorm(boundaries=plotvars.levels, ncolors=ncolors)</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="con-blockfill-plots">
 <h2>31. con - blockfill plots<a class="headerlink" href="#con-blockfill-plots" title="Permalink to this headline">¶</a></h2>
 <p>Slight bug in blockfill colours at the top end of the drawn colours.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div>
@@ -323,7 +325,7 @@ plotvars.norm=matplotlib.colors.BoundaryNorm(boundaries=plotvars.levels, ncolors
 <p>Two new options were added to cfp.setvars to change the font size and weight for the legend in lineplot:</p>
 <p>legend_text_size=None - legend text size
 legend_text_weight=None - legend text weight</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Added</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Added</span>
 </pre></div>
 </div>
 </div>
@@ -335,7 +337,7 @@ Massey&#8217;s scheme:</p>
 levs = ((((np.arange(min, max+step*1e-10, step, dtype=np.float64)*1e10)).astype(np.int64)).astype(np.float64)/1e10).astype(np.int)</p>
 <p>else:
 levs = (((np.arange(min, max+step*1e-10, step, dtype=np.float64)*1e10)).astype(np.int64)).astype(np.float64)/1e10</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Changed</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Changed</span>
 </pre></div>
 </div>
 </div>
@@ -345,7 +347,7 @@ levs = (((np.arange(min, max+step*1e-10, step, dtype=np.float64)*1e10)).astype(n
 <p>steps are now 1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000, 2000, 2500, 5000, 10000, 20000, 25000, 50000, 100000,
 200000, 250000, 500000, 1000000.</p>
 <p>If the number of steps from the above in (data max - data min) is greater than 12 then this step is used.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Changed</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Changed</span>
 </pre></div>
 </div>
 </div>
@@ -355,7 +357,7 @@ levs = (((np.arange(min, max+step*1e-10, step, dtype=np.float64)*1e10)).astype(n
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -374,18 +376,18 @@ levs = (((np.arange(min, max+step*1e-10, step, dtype=np.float64)*1e10)).astype(n
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="index.html">cf-plot 2.1.12 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.18 documentation</a> &#187;</li> 
       </ul>
     </div>
-    <div class="footer">
-        &copy; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
     </div>
   </body>
 </html>

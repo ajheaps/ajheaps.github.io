@@ -1,0 +1,4 @@
+vect
+****
+
+.. autofunction:: cfplot.vect
