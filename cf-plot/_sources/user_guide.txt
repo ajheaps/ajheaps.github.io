@@ -6,7 +6,7 @@ Introduction
 ------------
 
 
-`cf-plot <http://ajheaps.github.io/cf-plot/#>`_  is a set of Python routines for making the common contour, vector and line plots that climate researchers use. cf-plot generally uses `cf-python <http://cfpython.bitbucket.org>`_ to present the data and CF attributes for plotting as two-dimensional data fields.
+`cf-plot <http://ajheaps.github.io/cf-plot/#>`_  is a set of Python routines for making the common contour, vector and line plots that climate researchers use. cf-plot generally uses `cf-python <https://cfpython.bitbucket.io>`_ to present the data and CF attributes for plotting as two-dimensional data fields.
 To run the following examples in the Met department at the University of Reading setup the Python path with
 
 ::
@@ -704,6 +704,19 @@ To reverse a colour scale use the **reverse=True** option to **cscale** and spec
 **cfp.cscale('viridis', reverse=True, ncols=17)**
 
 
+Producing a 'uniform' colour scale
+----------------------------------
+
+The uniform parameter may be of use when using a set of contour levels where there is wide mismatch between the 
+above and below numbers.
+
+uniform = False - produce a uniform colour scale.
+For example: if below=3 and above=10 are specified then initially below=10 and above=10 are used. The
+colour scale is then cropped to use scale colours 6 to 19.  This produces a more uniform intensity colour 
+scale than one where all the blues are compressed into 3 colours.
+
+
+
 User defined colour scales
 --------------------------
 
@@ -1048,13 +1061,86 @@ To swap back use
 
 >>> cf.RTOL(g)
 
-After swapping the tolerance to 1e-5 the following finds teh latitide as expected.
+After swapping the tolerance to 1e-5 the following finds the latitide as expected.
 
 >>> cfp.lineplot(f.subspace(latitude=50.17530806))
 
 We could have worked around this with
 
 >>> cfp.lineplot(f.subspace(latitude=cf.wi(50, 50.2))) 
+
+
+Map options
+===========
+
+The default map plotting projection is the cyclindrical equidistant
+projection from -180 to 180 in longitude and -90 to 90 in latitude.
+To change the map view in this projection to over the United Kingdom,
+for example, you would use
+mapset(lonmin=-6, lonmax=3, latmin=50, latmax=60)
+or
+mapset(-6, 3, 50, 60)
+
+The limits are -360 to 720 in longitude so to look at the equatorial
+Pacific you could use
+mapset(lonmin=90, lonmax=300, latmin=-30, latmax=30)
+or
+mapset(lonmin=-270, lonmax=-60, latmin=-30, latmax=30)
+
+The proj parameter accepts 'npstere' and 'spstere' for northern 
+hemisphere or southern hemisphere polar stereographic projections.
+In addition to these the boundinglat parameter sets the edge of the
+viewable latitudes and lat_0 sets the centre of desired map domain.
+
+Additional map projections via proj are: ortho, merc, moll, robin and lcc
+These are abreviations for orthographic, mercator, mollweide, robinson 
+and lambert conformal projections
+
+
+Cropped area on map lcc projections
+Lambert conformal projections can now be cropped as in the following code:
+
+|    import cf, cfplot as cfp
+|    f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')
+|    cfp.mapset(proj='lcc', lon_0=0, lat_0=50, lat_1=45, lat_2=55, width=12000000,
+|    height=9000000, plimits=[-50, 50, 20, 85])
+|    cfp.con(f.subspace(time=15))
+
+
+.. image::  images/cm.png
+   :scale: 52% 
+
+
+For a corresponding southern hemisphere plot use:
+
+|    cfp.mapset(proj='lcc', lon_0=0, lat_0=-50, lat_1=-55, lat_2=-45, width=12000000,height=9000000,
+|    plimits=[-50, 50, -85, -20])
+
+
+Axis labelling
+==============
+
+The priority order of axis labeling in order of preference is:
+1) user passed to routine
+2) user defined by axes command
+3) labels generated internally
+
+For 1 and 2 the available options are 
+
+| xticks=None - xtick positions
+| xticklabels=None - xtick labels
+| yticks=None - y tick positions
+| yticklabels=None - ytick labels
+| xlabel=None - label for x axis
+| ylabel=None - label for y axis
+
+When specifying the xticklabels or yticklabels the supplied values must be a string or list of strings and match the number of corresponding tick marks.
+
+
+Blockfill plots
+===============
+
+Blockfill plots used to use the pcolormesh method but this had the advantage of being fast but gave incorrect results with masked data or when the data range wasn't extended in both 'min' and 'max' directions.  The blockfill method now uses PolyCollection from matplotlib.collections to draw the polygons for each colour interval specified by the contour levels.  This also has the advantage that blockfill is now available in other projections such as polar stereographic.  When doing blockfill plots of larger numbers of points the new method is slower so trim down the data to the area being shown before passing to cfp.con to speed it up. 
 
 
 

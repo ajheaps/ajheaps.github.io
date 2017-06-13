@@ -29,38 +29,25 @@ To install cf-plot on your own Linux box download and install Anaconda Python 2.
 ::
 
    conda install -c ncas -c scitools cf-python cf-plot
-   conda install -c nesii esmpy 
+   conda install -c conda-forge -c nesii netcdf-fortran=4.4.4 mpich esmpy
 
-The first line installs cf-python, cf-plot and the second installs esmpy which cf-python uses for regriding data.
+
+The first line installs cf-python, cf-plot.  The second installs esmpy, together with the netcdf-fortran and mpich requirements, which cf-python uses for regriding data.
 
 
 
 Other OSs
 ---------
-It is recommended that you use a virtual machine with Linux running in it as some things don't, and probably won't ever work on other OSs - Met Office PP file reading for instance.  
+It is recommended that you use a virtual machine with Linux running in it as some things don't, and probably won't ever work on other OSs - Met Office PP file reading for instance.  Windows is not supported or expected to be supported. If you are a Windows guru and manage to get cf-python and cf-plot working please contact andy.heaps@ncas.ac.uk with the details and I will post the installation details here.
 
 
-
-MacOS
------
-It is recommended that a Linux virtual machine is used on Macs.  If you wish to use a slighly out of date version of cf-plot directly on a Mac then follow the instructions below.
-
-Download and install Anaconda Python 2.7 for MacOS.  On the command line type:
+Basemap and Cartopy conflict
+----------------------------
+The map projection that cf-plot uses at present conflicts with the Cartopy software.  cf-plot will move to using Cartopy when it is a little more mature but in the meantime if you need both then install them with the following before installing cf-plot.
 
 ::
 
-   conda install -c ncas -c scitools cf-python cf-plot
-   conda install -c scitools esmpy
-
-The first line installs cf-python, cf-plot and the second installs esmpy which cf-python uses for regriding data.
-
-To use esmpy you'll also need to do a conda install of gcc and gfortran.  An fiddly part is putting the fortran libraries where esmpy needs to find them.  At the Python command prompt type import ESMF and an error message will indicate which libraries it cannot find.
-
-On Macs to get Matplotlib graphic windows to appear user cfp.setvars(viewer='matplotlib') before making any plots.
-
-Windows
--------
-Windows is not supported or expected to be supported. If you are a Windows guru and manage to get cf-python and cf-plot working please contact andy.heaps@ncas.ac.uk with the details and I will post the installation details here.
+   conda install -c conda-forge basemap cartopy
 
 
 Other install methods
@@ -82,7 +69,7 @@ Using GitHub:
    python setup.py install
 
 
-You will need to download and install `cf-python <http://cfpython.bitbucket.org>`_ to use cf-plot.  Other cf-plot dependencies are: Numpy, Matplotlib, Netcdf4 and Basemap.
+You will need to download and install `cf-python <https://cfpython.bitbucket.io>`_ to use cf-plot.  Other cf-plot dependencies are: Numpy, Matplotlib, Netcdf4 and Basemap.
 
 Download the `sample netCDF datasets <http://www.met.reading.ac.uk/~swsheaps/cfplot_data>`_
  

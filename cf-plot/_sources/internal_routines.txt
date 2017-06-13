@@ -21,6 +21,7 @@ Internal routines
    set_map.rst
    stipple_points.rst
    supscr.rst
+   timeaxis.rst
    vloc.rst
 
 

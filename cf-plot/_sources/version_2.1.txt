@@ -240,3 +240,216 @@ In con the blockfill code was updated to correct an error when plotting masked a
 
 
 
+19. mapaxis - change labeling in cylindrical projection
+=======================================================
+
+Change labels returned by mapaxis as below.
+
+180, 120W, 60W, 0, 60E, 120E, 180
+
+to
+
+180W, 120W, 60W, 0, 60E, 120E, 180E
+
+
+ ::
+
+   Done
+
+
+20. con -  Hovmuller user axis labeling
+=======================================
+
+Hovmuller user axis labeling wasn't working.
+
+
+ ::
+
+   Done
+
+
+
+21. setvars -  A master title for multi-panel plots
+===================================================
+
+Added a master title for multi-panel plots to the setvars routine.
+
+master_title=None - master title text
+master_title_location=None - master title location
+master_title_fontsize=None - master title font size
+master_title_fontweight=None - master title font weight
+
+
+ ::
+
+   Done
+
+
+22. con -  Missing colorbar annotation with ptype=1
+===================================================
+
+When making a contour plot with cfp.con(f=f, x=x, y=y, ptype=1) the default
+contour scaling was omitted from the colorbar label.  This has now been added.
+
+
+ ::
+
+   Done
+
+
+23. vect - missing longitude-height vectors
+===========================================
+
+Longitude-height vector code was missing.
+
+
+ ::
+
+   Done
+
+
+24. con - map colorbar labelling issue
+======================================
+
+In certain circumstances the colourbar labeling in a map plot was in correct.
+Using the string of the colorbar labels produces the correct results.
+
+cbar.set_ticklabels([str(i) for i in colorbar_labels])
+
+
+ ::
+
+   Done
+
+
+25. con - blockfill incorrect for very tight contour ranges
+===========================================================
+
+When the data range is very small the blockfill contour scheme miscalculated the upper bound for 
+the data.
+
+
+ ::
+
+   Fixed
+
+
+26. timeaxis - code change
+==========================
+
+The minimum and maximum years were not calculated due to some faulty logic.
+
+
+ ::
+
+   Fixed
+
+
+27. mapset - documentation improved
+==================================
+
+The documentation for mapset in the routine in the user guide was improved to make it flow better
+and include recent map additions.
+
+
+ ::
+
+   Done
+
+
+28. gset - ylog=True now feeds through to contour plots
+=======================================================
+
+The 2.0 code base changes removed the ylog=True feed through to contour plotting.
+
+
+ ::
+
+   Done
+
+
+29. lineplot - CF field incorrectly plotted
+===========================================
+
+When plotting a CF field with a Z axis the data wasn't correctly plotted
+
+
+ ::
+
+   Fixed
+
+
+30. con - blockfill rewritten
+=============================
+
+Blockfill plots in the con routine were rewitten to use PolyCollection from matplotlib.collections rather than 
+pcolormesh.  The new method allows better control of the various colorbar extension behaviour and data masking.
+It is slower for larger grids than pcolormesh but more accurate.
+
+
+ ::
+
+   Done
+
+
+31. con - blockfill for map plots other than cylindrical projection
+===================================================================
+
+Blockfill for map plots other than the cylindrical projection was implemented. Trim the data to the required 
+map limits to avoid them being plotted.
+
+
+ ::
+
+    Done
+
+
+32. axes - user defined axes 
+============================
+
+Axes defined with the axes command should feed through to con, vect and lineplot.  The priority order of axis
+labeling in order of preference is:
+1) user passed to routine
+2) user defined by axes command
+3) labels generated internally
+
+
+ ::
+
+    Done
+
+
+33. con - ability to swap axes for hovmuller plots
+==================================================
+
+In Hovmuller plots sometimes the axes are show as time vs longitude or latitude.  The swap_axes keyword 
+was added to con to facilitate this.
+
+
+::
+
+    Done
+
+
+34. con - blockfill produces an error for bounded data in Hovmuller plots
+========================================================================= 
+
+The data bounds passed for Hovmuller blockfill plots were incorrect.
+
+
+::
+
+    Fixed
+
+
+
+
+
+
+
+
+
+
+
+
+
