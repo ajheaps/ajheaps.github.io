@@ -1121,18 +1121,18 @@ Axis labelling
 ==============
 
 The priority order of axis labeling in order of preference is:
-1) user passed to routine
-2) user defined by axes command
-3) labels generated internally
+|  1) user passed to routine
+|  2) user defined by axes command
+|  3) labels generated internally
 
 For 1 and 2 the available options are 
 
-| xticks=None - xtick positions
-| xticklabels=None - xtick labels
-| yticks=None - y tick positions
-| yticklabels=None - ytick labels
-| xlabel=None - label for x axis
-| ylabel=None - label for y axis
+|    xticks=None - xtick positions
+|    xticklabels=None - xtick labels
+|    yticks=None - y tick positions
+|    yticklabels=None - ytick labels
+|    xlabel=None - label for x axis
+|    ylabel=None - label for y axis
 
 When specifying the xticklabels or yticklabels the supplied values must be a string or list of strings and match the number of corresponding tick marks.
 

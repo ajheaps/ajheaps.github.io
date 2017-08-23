@@ -443,6 +443,103 @@ The data bounds passed for Hovmuller blockfill plots were incorrect.
 
 
 
+35. jupyter notebook detection of inline images
+===============================================
+
+cf-plot now detects the jupyter notebook magic command for inlining images:
+%matplotlib inline
+
+The cfp.setvars(viewer=None) is no longer required in the jupyter notebook session.
+
+::
+
+    Done
+
+
+
+36. stipple - now works in Y-Z and X-Z plots
+============================================
+
+Stippling now works in Y-Z and X-Z plots.  
+
+::
+
+    Done
+
+
+
+37. con - axis labels for lcc map plots
+=======================================
+
+The axis_label_fontsize and axis_label_fontweight now apply to lcc (Lambert Conformal projection)
+plots.
+
+
+::
+
+    Done
+
+
+
+
+38. lineplot - user defined time axis fails
+===========================================
+
+When making a time lineplot with a predefined gset call to set the axes an error occurs.
+
+
+::
+
+    Done
+
+
+
+
+39. con - negative_linestyle
+============================
+
+con - negative_linestyle takes 'solid' and 'dashed' for Matplotlib < 2.  With Matplotlib > 2
+it also takes 'None', 'dotted' and 'dashdot'.
+
+
+::
+
+    Done
+
+
+40. cf-plot updated for cf 2.x
+==============================
+
+cf-plot was updated to be compatible with the 1.x to 2.x API changes to cf-python.
+See https://cfpython.bitbucket.io/docs/latest/1_to_2_changes.html
+
+::
+
+    Done
+
+
+
+41. levs - check extend input is valid
+======================================
+
+levs now checks that the input for extend is one on 'neither', 'min, 'max' or 'both'
+
+::
+
+    Done
+
+
+42. con - blockfill an user cscale checks
+=========================================
+
+The blockfill contour section now checks when the user has selected a colour scale with
+a set number of colours this matches the number of levels that are being contoured.
+
+
+::
+
+    Done
+
 
 
 
