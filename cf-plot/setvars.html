@@ -1,66 +1,65 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>setvars &mdash; cf-plot 2.1.42 documentation</title>
-    
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <title>setvars &#8212; cf-plot 2.1.51 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.1.42',
+        VERSION:     '2.1.51',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 2.1.42 documentation" href="index.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
   </head>
   <body>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="index.html">cf-plot 2.1.42 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.51 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="setvars">
 <h1>setvars<a class="headerlink" href="#setvars" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="cfplot.setvars">
-<tt class="descclassname">cfplot.</tt><tt class="descname">setvars</tt><big>(</big><em>file=None</em>, <em>title_fontsize=None</em>, <em>text_fontsize=None</em>, <em>axis_label_fontsize=None</em>, <em>title_fontweight=None</em>, <em>text_fontweight=None</em>, <em>axis_label_fontweight=None</em>, <em>fontweight=None</em>, <em>continent_thickness=None</em>, <em>continent_color=None</em>, <em>viewer=None</em>, <em>tspace_year=None</em>, <em>tspace_month=None</em>, <em>tspace_day=None</em>, <em>tspace_hour=None</em>, <em>xtick_label_rotation=None</em>, <em>xtick_label_align=None</em>, <em>ytick_label_rotation=None</em>, <em>ytick_label_align=None</em>, <em>legend_text_weight=None</em>, <em>legend_text_size=None</em>, <em>cs_uniform=None</em>, <em>master_title=None</em>, <em>master_title_location=None</em>, <em>master_title_fontsize=None</em>, <em>master_title_fontweight=None</em><big>)</big><a class="reference internal" href="_modules/cfplot.html#setvars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.setvars" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">cfplot.</code><code class="descname">setvars</code><span class="sig-paren">(</span><em>file=None</em>, <em>title_fontsize=None</em>, <em>text_fontsize=None</em>, <em>axis_label_fontsize=None</em>, <em>title_fontweight=None</em>, <em>text_fontweight=None</em>, <em>axis_label_fontweight=None</em>, <em>fontweight=None</em>, <em>continent_thickness=None</em>, <em>continent_color=None</em>, <em>viewer=None</em>, <em>tspace_year=None</em>, <em>tspace_month=None</em>, <em>tspace_day=None</em>, <em>tspace_hour=None</em>, <em>xtick_label_rotation=None</em>, <em>xtick_label_align=None</em>, <em>ytick_label_rotation=None</em>, <em>ytick_label_align=None</em>, <em>legend_text_weight=None</em>, <em>legend_text_size=None</em>, <em>cs_uniform=None</em>, <em>master_title=None</em>, <em>master_title_location=None</em>, <em>master_title_fontsize=None</em>, <em>master_title_fontweight=None</em>, <em>dpi=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#setvars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.setvars" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">setvars - set plotting variables</div>
 <div class="line"><br /></div>
 <div class="line">file=None - output file name</div>
 <div class="line">title_fontsize=None - title fontsize, default=15</div>
-<div class="line">text_fontsize=&#8217;normal&#8217; - text font size, default=11</div>
+<div class="line">text_fontsize=’normal’ - text font size, default=11</div>
 <div class="line">axis_label_fontsize=None - axis label fontsize, default=11</div>
-<div class="line">title_fontweight=&#8217;normal&#8217; - title fontweight</div>
-<div class="line">text_fontweight=&#8217;normal&#8217; - text font weight</div>
-<div class="line">axis_label_fontweight=&#8217;normal&#8217; - axis font weight</div>
+<div class="line">title_fontweight=’normal’ - title fontweight</div>
+<div class="line">text_fontweight=’normal’ - text font weight</div>
+<div class="line">axis_label_fontweight=’normal’ - axis font weight</div>
 <div class="line">continent_thickness=None - default=1.5</div>
-<div class="line">continent_color=None - default=&#8217;k&#8217; (black)</div>
+<div class="line">continent_color=None - default=’k’ (black)</div>
 <div class="line">viewer=None - use ImageMagick display program to display</div>
 <div class="line-block">
-<div class="line">the pictures.  Set to &#8216;matplotlib&#8217; to use the</div>
+<div class="line">the pictures.  Set to ‘matplotlib’ to use the</div>
 <div class="line">built in matplotlib viewer.  display is non-blocking</div>
 <div class="line">of the command prompt while the built in matplotlib</div>
 <div class="line">viewer is blocking.  Set to anything else to not</div>
@@ -71,9 +70,9 @@
 <div class="line">tspace_day=None - time axis spacing in days</div>
 <div class="line">tspace_hour=None - time axis spacing in hours</div>
 <div class="line">xtick_label_rotation=0 - rotation of xtick labels</div>
-<div class="line">xtick_label_align=&#8217;center&#8217; - alignment of xtick labels</div>
+<div class="line">xtick_label_align=’center’ - alignment of xtick labels</div>
 <div class="line">ytick_label_rotation=0 - rotation of ytick labels</div>
-<div class="line">ytick_label_align=&#8217;right&#8217; - alignment of ytick labels</div>
+<div class="line">ytick_label_align=’right’ - alignment of ytick labels</div>
 <div class="line">legend_text_size=None - legend text size</div>
 <div class="line">legend_text_weight=None - legend text weight</div>
 <div class="line">cs_uniform=None - make a uniform differential colour scale</div>
@@ -81,6 +80,7 @@
 <div class="line">master_title_location=None - master title location</div>
 <div class="line">master_title_fontsize=None - master title font size</div>
 <div class="line">master_title_fontweight=None - master title font weight</div>
+<div class="line">dpi=None - dots per inch setting</div>
 <div class="line"><br /></div>
 <div class="line">Use setvars() to reset to the defaults</div>
 <div class="line"><br /></div>
@@ -108,7 +108,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -127,18 +127,18 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="index.html">cf-plot 2.1.42 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.51 documentation</a> &#187;</li> 
       </ul>
     </div>
-    <div class="footer">
-        &copy; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

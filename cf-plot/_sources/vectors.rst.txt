@@ -78,12 +78,12 @@ Example 16 - zonal vector plot
 
     import cf, cfplot as cfp
 
-    c=cf.read('/opt/graphics/cfplot_data/vaAMIPlcd_DJF.nc')
+    c=cf.read_field('/opt/graphics/cfplot_data/vaAMIPlcd_DJF.nc')
     c=c.subspace(Y=cf.wi(-60,60))
     c=c.subspace(X=cf.wi(80,160))  
     c=c.collapse('T: mean X: mean')
 
-    g=cf.read('/opt/graphics/cfplot_data/wapAMIPlcd_DJF.nc')    
+    g=cf.read_field('/opt/graphics/cfplot_data/wapAMIPlcd_DJF.nc')    
     g=g.subspace(Y=cf.wi(-60,60))
     g=g.subspace(X=cf.wi(80,160))
     g=g.collapse('T: mean X: mean')

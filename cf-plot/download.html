@@ -1,45 +1,44 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Download/Install &mdash; cf-plot 2.1.42 documentation</title>
-    
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <title>Download/Install &#8212; cf-plot 2.1.51 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.1.42',
+        VERSION:     '2.1.51',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 2.1.42 documentation" href="index.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
   </head>
   <body>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="index.html">cf-plot 2.1.42 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.51 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="download-install">
 <h1>Download/Install<a class="headerlink" href="#download-install" title="Permalink to this headline">¶</a></h1>
@@ -64,34 +63,34 @@
 <div class="section" id="linux">
 <h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
 <p>To install cf-plot on your own Linux box download and install Anaconda Python 2.7 for Linux.  On the command line type:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>conda install -c ncas -c scitools cf-python cf-plot
-conda install -c conda-forge -c nesii netcdf-fortran=4.4.4 mpich esmpy
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">ncas</span> <span class="o">-</span><span class="n">c</span> <span class="n">scitools</span> <span class="n">cf</span><span class="o">-</span><span class="n">python</span> <span class="n">cf</span><span class="o">-</span><span class="n">plot</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="o">-</span><span class="n">c</span> <span class="n">nesii</span> <span class="n">netcdf</span><span class="o">-</span><span class="n">fortran</span><span class="o">=</span><span class="mf">4.4</span><span class="o">.</span><span class="mi">4</span> <span class="n">mpich</span> <span class="n">esmpy</span>
 </pre></div>
 </div>
 <p>The first line installs cf-python, cf-plot.  The second installs esmpy, together with the netcdf-fortran and mpich requirements, which cf-python uses for regriding data.</p>
 </div>
 <div class="section" id="other-oss">
 <h3>Other OSs<a class="headerlink" href="#other-oss" title="Permalink to this headline">¶</a></h3>
-<p>It is recommended that you use a virtual machine with Linux running in it as some things don&#8217;t, and probably won&#8217;t ever work on other OSs - Met Office PP file reading for instance.  Windows is not supported or expected to be supported. If you are a Windows guru and manage to get cf-python and cf-plot working please contact <a class="reference external" href="mailto:andy&#46;heaps&#37;&#52;&#48;ncas&#46;ac&#46;uk">andy<span>&#46;</span>heaps<span>&#64;</span>ncas<span>&#46;</span>ac<span>&#46;</span>uk</a> with the details and I will post the installation details here.</p>
+<p>It is recommended that you use a virtual machine with Linux running in it as some things don’t, and probably won’t ever work on other OSs - Met Office PP file reading for instance.  Windows is not supported or expected to be supported. If you are a Windows guru and manage to get cf-python and cf-plot working please contact <a class="reference external" href="mailto:andy&#46;heaps&#37;&#52;&#48;ncas&#46;ac&#46;uk">andy<span>&#46;</span>heaps<span>&#64;</span>ncas<span>&#46;</span>ac<span>&#46;</span>uk</a> with the details and I will post the installation details here.</p>
 </div>
 <div class="section" id="basemap-and-cartopy-conflict">
 <h3>Basemap and Cartopy conflict<a class="headerlink" href="#basemap-and-cartopy-conflict" title="Permalink to this headline">¶</a></h3>
 <p>The map projection that cf-plot uses at present conflicts with the Cartopy software.  cf-plot will move to using Cartopy when it is a little more mature but in the meantime if you need both then install them with the following before installing cf-plot.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>conda install -c conda-forge basemap cartopy
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">basemap</span> <span class="n">cartopy</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="other-install-methods">
 <h3>Other install methods<a class="headerlink" href="#other-install-methods" title="Permalink to this headline">¶</a></h3>
 <p>Using pip:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>pip install cf-python
-pip install cf-plot
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">cf</span><span class="o">-</span><span class="n">python</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">cf</span><span class="o">-</span><span class="n">plot</span>
 </pre></div>
 </div>
 <p>Using GitHub:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>git clone git://github.com/ajheaps/cf-plot.git
-cd cf-plot
-python setup.py install
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ajheaps</span><span class="o">/</span><span class="n">cf</span><span class="o">-</span><span class="n">plot</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">cf</span><span class="o">-</span><span class="n">plot</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
 </pre></div>
 </div>
 <p>You will need to download and install <a class="reference external" href="https://cfpython.bitbucket.io">cf-python</a> to use cf-plot.  Other cf-plot dependencies are: Numpy, Matplotlib, Netcdf4 and Basemap.</p>
@@ -114,7 +113,7 @@ python setup.py install
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -133,18 +132,18 @@ python setup.py install
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="index.html">cf-plot 2.1.42 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.51 documentation</a> &#187;</li> 
       </ul>
     </div>
-    <div class="footer">
-        &copy; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

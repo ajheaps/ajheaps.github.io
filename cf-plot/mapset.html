@@ -1,51 +1,50 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>mapset &mdash; cf-plot 2.1.42 documentation</title>
-    
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <title>mapset &#8212; cf-plot 2.1.51 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.1.42',
+        VERSION:     '2.1.51',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="cf-plot 2.1.42 documentation" href="index.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
   </head>
   <body>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="index.html">cf-plot 2.1.42 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.51 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="mapset">
 <h1>mapset<a class="headerlink" href="#mapset" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="cfplot.mapset">
-<tt class="descclassname">cfplot.</tt><tt class="descname">mapset</tt><big>(</big><em>lonmin=None</em>, <em>lonmax=None</em>, <em>latmin=None</em>, <em>latmax=None</em>, <em>proj='cyl'</em>, <em>boundinglat=0</em>, <em>lon_0=0</em>, <em>lat_0=40</em>, <em>resolution='c'</em>, <em>user_mapset=1</em>, <em>width=12000000</em>, <em>height=9000000</em>, <em>lat_1=45.0</em>, <em>lat_2=55</em>, <em>plimits=None</em><big>)</big><a class="reference internal" href="_modules/cfplot.html#mapset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.mapset" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">cfplot.</code><code class="descname">mapset</code><span class="sig-paren">(</span><em>lonmin=None</em>, <em>lonmax=None</em>, <em>latmin=None</em>, <em>latmax=None</em>, <em>proj='cyl'</em>, <em>boundinglat=0</em>, <em>lon_0=0</em>, <em>lat_0=40</em>, <em>resolution='c'</em>, <em>user_mapset=1</em>, <em>width=12000000</em>, <em>height=9000000</em>, <em>lat_1=45.0</em>, <em>lat_2=55</em>, <em>plimits=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#mapset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.mapset" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">mapset sets the mapping parameters.</div>
 <div class="line"><br /></div>
@@ -53,10 +52,10 @@
 <div class="line">lonmax=lonmax - maximum longitude</div>
 <div class="line">latmin=latmin - minimum latitude</div>
 <div class="line">latmax=latmax - maximum latitude</div>
-<div class="line">proj=proj - &#8216;cyl&#8217; for cylindrical projection. &#8216;npstere&#8217; or &#8216;spstere&#8217;</div>
+<div class="line">proj=proj - ‘cyl’ for cylindrical projection. ‘npstere’ or ‘spstere’</div>
 <div class="line-block">
 <div class="line">for northern hemisphere or southern hemisphere polar stereographic</div>
-<div class="line">projection. Use&#8217;moll&#8217; for the mollweide projection.</div>
+<div class="line">projection. Use’moll’ for the mollweide projection.</div>
 </div>
 <div class="line">boundinglat=boundinglat - edge of the viewable latitudes in a</div>
 <div class="line-block">
@@ -67,9 +66,9 @@
 <div class="line">stereographic and orthogrphic plots</div>
 </div>
 <div class="line">lat_0=40 - latitude centre of desired map domain in orthogrphic plots</div>
-<div class="line">resolution=resolution - the map resolution - can be one of &#8216;c&#8217; (crude),</div>
+<div class="line">resolution=resolution - the map resolution - can be one of ‘c’ (crude),</div>
 <div class="line-block">
-<div class="line">&#8216;l&#8217; (low), &#8216;i&#8217; (intermediate), &#8216;h&#8217; (high), &#8216;f&#8217; (full) or &#8216;None&#8217;</div>
+<div class="line">‘l’ (low), ‘i’ (intermediate), ‘h’ (high), ‘f’ (full) or ‘None’</div>
 </div>
 <div class="line">user_mapset=user_mapset - variable to indicate whether a user call</div>
 <div class="line-block">
@@ -90,7 +89,7 @@
 <div class="line">or</div>
 <div class="line">mapset(lonmin=-270, lonmax=-60, latmin=-30, latmax=30)</div>
 <div class="line"><br /></div>
-<div class="line">The proj parameter accepts &#8216;npstere&#8217; and &#8216;spstere&#8217; for northern </div>
+<div class="line">The proj parameter accepts ‘npstere’ and ‘spstere’ for northern </div>
 <div class="line">hemisphere or southern hemisphere polar stereographic projections.</div>
 <div class="line">In addition to these the boundinglat parameter sets the edge of the</div>
 <div class="line">viewable latitudes and lat_0 sets the centre of desired map domain.</div>
@@ -132,7 +131,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
@@ -151,18 +150,18 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="index.html">cf-plot 2.1.42 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.51 documentation</a> &#187;</li> 
       </ul>
     </div>
-    <div class="footer">
-        &copy; Copyright 2016, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>
