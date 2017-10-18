@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>cfplot &#8212; cf-plot 2.1.51 documentation</title>
+    <title>cfplot &#8212; cf-plot 2.1.52 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2.1.51',
+        VERSION:     '2.1.52',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -31,7 +31,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 2.1.51 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 2.1.52 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
@@ -2174,19 +2174,18 @@
         <span class="n">lonlabels</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">lon</span> <span class="ow">in</span> <span class="n">lonticks</span><span class="p">:</span>
             <span class="n">lon2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">lon</span> <span class="o">+</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">360</span><span class="p">)</span> <span class="o">-</span> <span class="mi">180</span>
-            <span class="k">if</span> <span class="n">lon2</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">lon2</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">180</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">lon2</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">lon2</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">180</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">lon</span> <span class="o">!=</span> <span class="mi">180</span><span class="p">:</span> 
                     <span class="n">lonlabels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">lon2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;W&#39;</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">lon</span> <span class="o">==</span> <span class="mi">180</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">lonticks</span><span class="p">)</span> <span class="o">==</span> <span class="mi">180</span><span class="p">:</span> 
-                        <span class="n">lonlabels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;180E&#39;</span><span class="p">)</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">lonlabels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;180&#39;</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">lon2</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">lon2</span> <span class="o">&lt;=</span> <span class="mi">180</span><span class="p">:</span>
                 <span class="n">lonlabels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">lon2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;E&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">lon2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">lonlabels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">lon</span> <span class="o">==</span> <span class="mi">180</span> <span class="ow">or</span> <span class="n">lon</span> <span class="o">==</span> <span class="o">-</span><span class="mi">180</span><span class="p">:</span>
+                   <span class="n">lonlabels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;180&#39;</span><span class="p">)</span>
+
 
         <span class="k">return</span><span class="p">(</span><span class="n">lonticks</span><span class="p">,</span> <span class="n">lonlabels</span><span class="p">)</span>
 
@@ -2656,13 +2655,14 @@
 
     <span class="n">plotvars</span><span class="o">.</span><span class="n">user_gset</span> <span class="o">=</span> <span class="n">user_gset</span>
 
+
     <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">]):</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">xmin</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">xmax</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">ymin</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">ymax</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="n">plotvars</span><span class="o">.</span><span class="n">xlog</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="n">plotvars</span><span class="o">.</span><span class="n">ylog</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">plotvars</span><span class="o">.</span><span class="n">xlog</span> <span class="o">=</span> <span class="n">xlog</span>
+        <span class="n">plotvars</span><span class="o">.</span><span class="n">ylog</span> <span class="o">=</span> <span class="n">ylog</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">user_gset</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">return</span>
 
@@ -2999,7 +2999,7 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">     | gvals - work out a sensible set of values between two limits</span>
 <span class="sd">     | This is an internal routine used for contour levels and axis</span>
-<span class="sd">     | labelling and is not used by the user.</span>
+<span class="sd">     | labelling and is not generally used by the user.</span>
 
 <span class="sd">     | dmin=None - minimum</span>
 <span class="sd">     | dmax=None - maximum</span>
@@ -3037,8 +3037,70 @@
 
     <span class="c1"># Don&#39;t modify if dmin1 and dmax1 are both negative as this will create a</span>
     <span class="c1"># race condition</span>
-    <span class="k">if</span> <span class="n">dmin1</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">dmax1</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">dmin1</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">dmax1</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">mod</span> <span class="o">=</span> <span class="mi">0</span>
+
+
+    <span class="c1"># Small range code</span>
+    <span class="c1"># Return a linspace set of values if dmax1 - dmin1 is &lt;= 3</span>
+    <span class="k">if</span> <span class="n">dmax1</span> <span class="o">-</span> <span class="n">dmin1</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">mult</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">mindecs</span> <span class="o">=</span> <span class="mi">40</span> <span class="c1"># minimum number of decimal places - a high starting value</span>
+        <span class="n">minval</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># spacing value of the minimum number of decimal spaces</span>
+        <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="p">:</span>
+            <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">dmin</span><span class="p">,</span> <span class="n">dmax</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+            <span class="n">nd</span> <span class="o">=</span> <span class="n">ndecs</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nd</span> <span class="o">&lt;=</span> <span class="n">mindecs</span><span class="p">:</span>
+                <span class="n">minval</span> <span class="o">=</span> <span class="n">val</span>
+                <span class="n">mindecs</span> <span class="o">=</span> <span class="n">nd</span>
+
+        <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">dmin</span><span class="p">,</span> <span class="n">dmax</span><span class="p">,</span> <span class="n">minval</span><span class="p">)</span>
+
+
+        <span class="c1"># Try to recalculate if too many decimal places</span>
+        <span class="k">if</span> <span class="n">mindecs</span> <span class="o">&gt;=</span><span class="mi">4</span><span class="p">:</span>
+
+            <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span>
+            <span class="k">if</span> <span class="n">dmax1</span><span class="o">-</span><span class="n">dmin1</span> <span class="o">&lt;=</span> <span class="mf">0.1</span><span class="p">:</span>
+                 <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span>
+            <span class="k">if</span> <span class="n">dmax1</span><span class="o">-</span><span class="n">dmin1</span> <span class="o">&lt;=</span> <span class="mf">0.01</span><span class="p">:</span>
+                 <span class="n">step</span><span class="o">=</span><span class="mf">0.001</span>
+            <span class="k">if</span> <span class="n">dmax1</span><span class="o">-</span><span class="n">dmin1</span> <span class="o">&lt;=</span> <span class="mf">0.001</span><span class="p">:</span>
+                 <span class="n">step</span><span class="o">=</span><span class="mf">0.0001</span>
+            <span class="k">if</span> <span class="n">dmax1</span><span class="o">-</span><span class="n">dmin1</span> <span class="o">&lt;=</span> <span class="mf">0.0001</span><span class="p">:</span>
+                 <span class="n">step</span><span class="o">=</span><span class="mf">0.00001</span>
+            <span class="k">if</span> <span class="n">dmax1</span><span class="o">-</span><span class="n">dmin1</span> <span class="o">&lt;=</span> <span class="mf">0.00001</span><span class="p">:</span>
+                 <span class="n">step</span><span class="o">=</span><span class="mf">0.000001</span>
+
+
+            <span class="n">newvals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">dmin1</span><span class="p">))]</span>
+            <span class="k">while</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">newvals</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">dmax1</span><span class="p">:</span>
+                <span class="n">newvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newvals</span><span class="p">,</span> <span class="n">newvals</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">step</span><span class="p">)</span>
+
+
+            <span class="c1"># Remove any points outside of limits</span>
+            <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">newvals</span> <span class="o">&gt;=</span> <span class="n">dmin1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">newvals</span> <span class="o">&lt;=</span> <span class="n">dmax1</span><span class="p">))</span>
+            <span class="n">newvals</span> <span class="o">=</span> <span class="n">newvals</span><span class="p">[</span><span class="n">pts</span> <span class="p">]</span> 
+
+            <span class="c1"># Remove upper and lower limits if tight=0 - i.e. a contour plot</span>
+            <span class="k">if</span> <span class="n">tight</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">newvals</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">dmax1</span><span class="p">:</span>
+                    <span class="n">newvals</span> <span class="o">=</span> <span class="n">newvals</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">newvals</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">dmin1</span><span class="p">:</span>
+                    <span class="n">newvals</span> <span class="o">=</span> <span class="n">newvals</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">newvals</span><span class="p">)</span> <span class="o">&gt;</span><span class="mi">2</span><span class="p">:</span>
+                <span class="n">vals</span><span class="o">=</span><span class="n">newvals</span>
+
+
+        <span class="k">return</span> <span class="n">vals</span><span class="p">,</span> <span class="n">mult</span>
+
+
+
+
+
+
+
 
     <span class="k">if</span> <span class="n">mod</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">mystep</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
@@ -3051,30 +3113,26 @@
                 <span class="n">dmax1</span> <span class="o">=</span> <span class="n">dmax1</span> <span class="o">*</span> <span class="mf">10.0</span>
                 <span class="n">mult</span> <span class="o">=</span> <span class="n">mult</span> <span class="o">-</span> <span class="mi">1</span>
 
-        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">dmax2</span> <span class="o">-</span> <span class="n">dmin2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
-            <span class="n">step</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="n">mult</span> <span class="o">=</span> <span class="mi">0</span>
-
-            <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span>
-                        <span class="mi">2500</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">20000</span><span class="p">,</span> <span class="mi">25000</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span>
-                        <span class="mi">200000</span><span class="p">,</span> <span class="mi">250000</span><span class="p">,</span> <span class="mi">500000</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">,</span> <span class="mi">10000000</span> <span class="p">]:</span>
-
-                <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">dmax2</span> <span class="o">-</span> <span class="n">dmin2</span><span class="p">)</span> <span class="o">/</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
-                    <span class="n">step</span> <span class="o">=</span> <span class="n">val</span>
-                    <span class="n">mult</span> <span class="o">=</span> <span class="mi">0</span>
-
-
-            <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">dmax2</span> <span class="o">-</span> <span class="n">dmin2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000000</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
-                <span class="n">step</span> <span class="o">=</span> <span class="p">(</span><span class="n">dmax2</span> <span class="o">-</span> <span class="n">dmin2</span><span class="p">)</span> <span class="o">/</span> <span class="mf">16.0</span>
-
-    <span class="c1"># Return a linspace set of values if dmax1 - dmin1 is &lt; 1</span>
-    <span class="k">if</span> <span class="n">dmax1</span> <span class="o">-</span> <span class="n">dmin1</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">dmax2</span> <span class="o">-</span> <span class="n">dmin2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="n">mult</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">dmin</span><span class="p">,</span> <span class="n">dmax</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">vals</span><span class="p">,</span> <span class="n">mult</span>
+        <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span>
+                    <span class="mi">2500</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">20000</span><span class="p">,</span> <span class="mi">25000</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span>
+                    <span class="mi">200000</span><span class="p">,</span> <span class="mi">250000</span><span class="p">,</span> <span class="mi">500000</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">,</span> <span class="mi">10000000</span> <span class="p">]:</span>
+
+            <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">dmax2</span> <span class="o">-</span> <span class="n">dmin2</span><span class="p">)</span> <span class="o">/</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+                <span class="n">step</span> <span class="o">=</span> <span class="n">val</span>
+                <span class="n">mult</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">dmax2</span> <span class="o">-</span> <span class="n">dmin2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000000</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">step</span> <span class="o">=</span> <span class="p">(</span><span class="n">dmax2</span> <span class="o">-</span> <span class="n">dmin2</span><span class="p">)</span> <span class="o">/</span> <span class="mf">16.0</span>
 
 
-    <span class="c1"># Reset to user or mone zero values</span>
+
+
+
+
+    <span class="c1"># Reset to user or non-zero values</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">mystep</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
         <span class="n">step</span> <span class="o">=</span> <span class="n">mystep</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">step</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
@@ -3095,8 +3153,8 @@
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">dmin1</span><span class="p">:</span>
             <span class="n">vals</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 
-    <span class="c1"># Return values if inputs are integers</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dmin1</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dmax1</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="c1"># Return values if there are five or more</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">vals</span><span class="p">,</span> <span class="n">mult</span>
 
     <span class="k">if</span> <span class="n">mystep</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -3104,14 +3162,6 @@
             <span class="k">return</span> <span class="n">vals</span><span class="p">,</span> <span class="n">mult</span>
 
 
-    <span class="c1"># Floating point step</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">mult</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="ow">and</span> <span class="nb">float</span><span class="p">(</span>
-            <span class="s2">&quot;</span><span class="si">%.1f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">((</span><span class="n">dmax1</span> <span class="o">-</span> <span class="n">dmin1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">16</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">vals</span><span class="p">,</span> <span class="n">mult</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">step</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.1f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">((</span><span class="n">dmax1</span> <span class="o">-</span> <span class="n">dmin1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">16</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">step</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">step</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">((</span><span class="n">dmax1</span> <span class="o">-</span> <span class="n">dmin1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">16</span><span class="p">))</span>
 
     <span class="k">if</span> <span class="n">step</span> <span class="o">==</span> <span class="o">.</span><span class="mi">9</span><span class="p">:</span>
         <span class="n">step</span> <span class="o">=</span> <span class="mf">1.0</span>
@@ -3136,8 +3186,12 @@
     <span class="k">if</span> <span class="n">step</span> <span class="o">==</span> <span class="o">.</span><span class="mi">03</span><span class="p">:</span>
         <span class="n">step</span> <span class="o">=</span> <span class="o">.</span><span class="mi">02</span>
 
+
     <span class="k">if</span> <span class="p">(</span><span class="n">dmax1</span> <span class="o">-</span> <span class="n">dmin1</span> <span class="o">==</span> <span class="n">step</span><span class="p">):</span>
         <span class="n">step</span> <span class="o">=</span> <span class="n">step</span> <span class="o">/</span> <span class="mf">10.</span>
+
+    <span class="k">if</span> <span class="n">step</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="p">(</span><span class="n">dmax1</span><span class="o">-</span><span class="n">dmin1</span><span class="p">)</span><span class="o">/</span><span class="mf">16.</span>
     <span class="n">vals</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">dmin1</span> <span class="o">/</span> <span class="n">step</span><span class="p">)</span> <span class="o">*</span> <span class="n">step</span><span class="p">))</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span> <span class="o">+</span> <span class="n">step</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">dmax1</span><span class="p">:</span>
         <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span> <span class="o">+</span> <span class="n">step</span><span class="p">)))</span>
@@ -4106,12 +4160,11 @@
 
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">:</span>
 
-        <span class="nb">print</span> <span class="s1">&#39;plotvars.plot_type is&#39;</span><span class="p">,</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span>
+
 
         <span class="c1"># Flip data if a lat-height plot and lats start at the north pole</span>
         <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">xpts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">xpts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-                <span class="nb">print</span> <span class="s1">&#39;flipping Y&#39;</span>
                 <span class="n">xpts</span> <span class="o">=</span> <span class="n">xpts</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
                 <span class="n">field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
 
@@ -4882,8 +4935,8 @@
                                              <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="n">headwidth</span><span class="p">,</span>
                                              <span class="n">headlength</span><span class="o">=</span><span class="n">headlength</span><span class="p">,</span>
                                              <span class="n">clip_on</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                             <span class="n">color</span><span class="o">=</span><span class="n">qkey_color</span><span class="p">,</span>
-                                             <span class="n">fontproperties</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="nb">str</span><span class="p">(</span><span class="n">plotvars</span><span class="o">.</span><span class="n">axis_label_fontsize</span><span class="p">)})</span>
+                                             <span class="n">color</span><span class="o">=</span><span class="n">qkey_color</span><span class="p">)</span>
+
                 <span class="n">quiv2</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">xpos</span><span class="p">,</span> <span class="n">ypos</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">key_length</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
                                              <span class="n">pivot</span><span class="o">=</span><span class="s1">&#39;tail&#39;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;inches&#39;</span><span class="p">,</span>
                                              <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -4891,8 +4944,8 @@
                                              <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="n">headwidth</span><span class="p">,</span>
                                              <span class="n">headlength</span><span class="o">=</span><span class="n">headlength</span><span class="p">,</span>
                                              <span class="n">clip_on</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                             <span class="n">color</span><span class="o">=</span><span class="n">qkey_color</span><span class="p">,</span>
-                                             <span class="n">fontproperties</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="nb">str</span><span class="p">(</span><span class="n">plotvars</span><span class="o">.</span><span class="n">axis_label_fontsize</span><span class="p">)})</span>
+                                             <span class="n">color</span><span class="o">=</span><span class="n">qkey_color</span><span class="p">)</span>
+
                 <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
                     <span class="n">xpos</span><span class="p">,</span>
                     <span class="n">ypos</span> <span class="o">+</span> <span class="n">yoffset</span><span class="p">,</span>
@@ -6096,7 +6149,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">yticklabels</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">yticks</span><span class="p">)</span>
 
-    <span class="n">mod</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">mod</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">tight</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_gset</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">tight</span> <span class="o">=</span> <span class="mi">1</span>
@@ -6280,9 +6333,9 @@
     <span class="n">compare_arrays</span><span class="p">(</span><span class="n">ref</span><span class="o">=</span><span class="n">ref_answer</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">280.50619506835938</span><span class="p">,</span>
                    <span class="nb">max</span><span class="o">=</span><span class="mf">293.48431396484375</span><span class="p">,</span> <span class="n">mult</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">gvals_test</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="n">ref_answer</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.6</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mf">4.6</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">,</span> <span class="mf">5.4</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">,</span>
-                  <span class="mf">6.0</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="mf">6.4</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">]</span>
-    <span class="n">compare_arrays</span><span class="p">(</span><span class="n">ref</span><span class="o">=</span><span class="n">ref_answer</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.356</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.675</span><span class="p">,</span> <span class="n">mult</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">ref_answer</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.356</span><span class="p">,</span>  <span class="mf">0.385</span><span class="p">,</span>  <span class="mf">0.414</span><span class="p">,</span>  <span class="mf">0.443</span><span class="p">,</span>  <span class="mf">0.472</span><span class="p">,</span>  <span class="mf">0.501</span><span class="p">,</span>  <span class="mf">0.53</span> <span class="p">,</span>  <span class="mf">0.559</span><span class="p">,</span>
+        <span class="mf">0.588</span><span class="p">,</span>  <span class="mf">0.617</span><span class="p">,</span>  <span class="mf">0.646</span><span class="p">,</span>  <span class="mf">0.675</span><span class="p">]</span>
+    <span class="n">compare_arrays</span><span class="p">(</span><span class="n">ref</span><span class="o">=</span><span class="n">ref_answer</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.356</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.675</span><span class="p">,</span> <span class="n">mult</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                    <span class="n">gvals_test</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">ref_answer</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span>
@@ -6295,6 +6348,13 @@
                   <span class="mi">63000</span><span class="p">,</span> <span class="mi">64000</span><span class="p">]</span>
     <span class="n">compare_arrays</span><span class="p">(</span><span class="n">ref</span><span class="o">=</span><span class="n">ref_answer</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">46956</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">64538</span><span class="p">,</span> <span class="n">mult</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                    <span class="n">gvals_test</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">ref_answer</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.</span> <span class="p">,</span> <span class="o">-</span><span class="mf">0.9</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span>  <span class="mf">0.</span> <span class="p">,</span>
+        <span class="mf">0.1</span><span class="p">]</span>
+    <span class="n">compare_arrays</span><span class="p">(</span><span class="n">ref</span><span class="o">=</span><span class="n">ref_answer</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">mult</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                   <span class="n">gvals_test</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
 
     <span class="nb">print</span> <span class="s1">&#39;&#39;</span>
     <span class="nb">print</span> <span class="s1">&#39;----------------------------------------&#39;</span>
@@ -6393,7 +6453,7 @@
     <span class="n">reset</span><span class="p">()</span>
     <span class="n">setvars</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s1">&#39;fig9.png&#39;</span><span class="p">)</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
-    <span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="mf">0.56074494</span><span class="p">))</span>
+    <span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">))</span>
     <span class="n">compare_images</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
 
     <span class="c1"># example10</span>
@@ -6543,7 +6603,7 @@
     <span class="c1"># example22</span>
     <span class="n">reset</span><span class="p">()</span>
     <span class="n">setvars</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s1">&#39;fig22.png&#39;</span><span class="p">)</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/rgp.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read_field</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/rgp.nc&#39;</span><span class="p">)</span>
     <span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
     <span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
     <span class="n">compare_images</span><span class="p">(</span><span class="mi">22</span><span class="p">)</span>
@@ -6551,7 +6611,7 @@
     <span class="c1"># example23</span>
     <span class="n">reset</span><span class="p">()</span>
     <span class="n">setvars</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s1">&#39;fig23.png&#39;</span><span class="p">)</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/rgp.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read_field</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/rgp.nc&#39;</span><span class="p">)</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">array</span>
     <span class="n">xvec</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;dim1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
     <span class="n">yvec</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;dim0&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
@@ -6684,7 +6744,7 @@
     <span class="n">f</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/tas_A1.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">temp</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">wi</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="s1">&#39;1900-01-01&#39;</span><span class="p">),</span> <span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="s1">&#39;1980-01-01&#39;</span><span class="p">)))</span>
     <span class="n">temp_annual</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;T: mean&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">Y</span><span class="p">())</span>
-    <span class="n">temp_annual_global</span> <span class="o">=</span> <span class="n">temp_annual</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;area: mean&#39;</span><span class="p">)</span>
+    <span class="n">temp_annual_global</span> <span class="o">=</span> <span class="n">temp_annual</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;area: mean&#39;</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="s1">&#39;area&#39;</span><span class="p">)</span>
     <span class="n">temp_annual_global</span><span class="o">.</span><span class="n">Units</span> <span class="o">-=</span> <span class="mf">273.15</span>
     <span class="n">lineplot</span><span class="p">(</span>
         <span class="n">temp_annual_global</span><span class="p">,</span>
@@ -6781,6 +6841,7 @@
 
         <span class="k">if</span> <span class="n">anom</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="nb">print</span> <span class="s1">&#39;***gvals failure***&#39;</span>
+            <span class="nb">print</span> <span class="s1">&#39;cfp.gvals(&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">min</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">max</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
             <span class="nb">print</span> <span class="s1">&#39;&#39;</span>
             <span class="nb">print</span> <span class="s1">&#39;generated values are:&#39;</span><span class="p">,</span> <span class="n">vals</span>
             <span class="nb">print</span> <span class="s1">&#39;with a  multiplier of &#39;</span><span class="p">,</span> <span class="n">testmult</span>
@@ -6788,8 +6849,7 @@
             <span class="nb">print</span> <span class="s1">&#39;expected values:&#39;</span><span class="p">,</span> <span class="n">ref</span>
             <span class="nb">print</span> <span class="s1">&#39;with a  multiplier of &#39;</span><span class="p">,</span> <span class="n">mult</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">pass_str</span> <span class="o">=</span> <span class="s1">&#39;Passed cfp.gvals(min=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">min</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, max=&#39;</span>
-            <span class="n">pass_str</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">max</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+            <span class="n">pass_str</span> <span class="o">=</span> <span class="s1">&#39;Passed cfp.gvals(&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">min</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">max</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
             <span class="nb">print</span> <span class="n">pass_str</span>
 
     <span class="n">anom</span> <span class="o">=</span> <span class="mi">0</span>
@@ -6809,7 +6869,7 @@
         <span class="k">if</span> <span class="n">anom</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="nb">print</span> <span class="s1">&#39;***mapaxis failure***&#39;</span>
             <span class="nb">print</span> <span class="s1">&#39;&#39;</span>
-            <span class="nb">print</span> <span class="s1">&#39;scfp.mapaxis(min=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">min</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, max=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">max</span><span class="p">)</span>
+            <span class="nb">print</span> <span class="s1">&#39;cfp.mapaxis(min=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">min</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, max=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">max</span><span class="p">)</span>
             <span class="nb">print</span> <span class="s1">&#39;, type=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
             <span class="nb">print</span> <span class="s1">&#39;generated values are:&#39;</span><span class="p">,</span> <span class="n">test_ticks</span>
             <span class="nb">print</span> <span class="s1">&#39;with labels:&#39;</span><span class="p">,</span> <span class="n">test_labels</span>
@@ -7234,7 +7294,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 2.1.51 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 2.1.52 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>

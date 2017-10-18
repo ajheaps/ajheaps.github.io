@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Latitude / longitude - pressure &#8212; cf-plot 2.1.51 documentation</title>
+    <title>Latitude / longitude - pressure &#8212; cf-plot 2.1.52 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.1.51',
+        VERSION:     '2.1.52',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -31,7 +31,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.51 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.52 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -86,7 +86,7 @@
 <a class="reference internal image-reference" href="_images/fig9.png"><img alt="_images/fig9.png" src="_images/fig9.png" style="width: 447.04px; height: 288.64px;" /></a>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="mf">0.56074494</span><span class="p">))</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -121,7 +121,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.51 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.52 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

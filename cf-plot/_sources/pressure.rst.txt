@@ -70,7 +70,7 @@ Example 9 - longitude - pressure
 
    import cf, cfplot as cfp
    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[2]
-   cfp.con(f.subspace(latitude=0.56074494))
+   cfp.con(f.collapse('mean', 'latitude'))
 
 
 

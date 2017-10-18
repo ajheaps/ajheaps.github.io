@@ -35,8 +35,8 @@ plot using more basic cf-plot commands.
    import cf, cfplot as cfp
    import numpy as np
 
-   f=cf.read('/opt/graphics/cfplot_data/rgp.nc')[0]
-   data=f[0].array
+   f=cf.read_field('/opt/graphics/cfplot_data/rgp.nc')
+   data=f.array
    xvec=f.item('dim1').array    
    yvec=f.item('dim0').array  
    xpole=160
@@ -70,7 +70,7 @@ passed to the cf-plot con routine to indicate that the data is to be plotted on 
 
    import cf, cfplot as cfp, numpy as np
 
-   f=cf.read('/opt/graphics/cfplot_data/xjpgaa_ca072_byteswapped.pp')[0]
+   f=cf.read('/opt/graphics/cfplot_data/xjpgaa_ca072_byteswapped.pp')[12]
    z=np.squeeze(f.subspace(model_level_number=1).array)
    x=f.item('longitude').array
    y=f.item('latitude').array

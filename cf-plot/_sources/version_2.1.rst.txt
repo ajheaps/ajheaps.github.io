@@ -642,7 +642,19 @@ corrected.
 
 
 
-52. Sample netCDF file to be include in the distribution
+52. gvals modification
+======================
+
+The gvals code which generates sensible values for labelling contours and axes was changed 
+to produce reasonable levels between -1.0 and 0.1.
+
+::
+
+    Done
+
+
+
+53. Sample netCDF file to be include in the distribution
 ========================================================
 
 A sample netCDF file is to be included in the distribution and usage notes updated.
@@ -653,7 +665,7 @@ A sample netCDF file is to be included in the distribution and usage notes updat
     To do
 
 
-53. cfp.gset(ylog=True) doesn't produce a log y-axis plot
+54. cfp.gset(ylog=True) doesn't produce a log y-axis plot
 =========================================================
 
 cfp.gset(ylog=True) doesn't produce a log y-axis plot.
@@ -665,7 +677,7 @@ cfp.gset(ylog=True) doesn't produce a log y-axis plot.
 
 
 
-54. Independent user positioning of plot figures on a page
+55. Independent user positioning of plot figures on a page
 ==========================================================
 
 Independent positioning of plot figures on a page isn't possible.
@@ -676,7 +688,7 @@ Independent positioning of plot figures on a page isn't possible.
     To do
 
 
-55.  
+
 
 
 
