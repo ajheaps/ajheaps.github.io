@@ -86,7 +86,7 @@ As a short example to show the flexibilty of the colour scale routines we will m
 ::
 
    import cf, cfplot as cfp, numpy as np
-   f=cf.read('/opt/graphics/cfplot_data/12km_orog.nc')
+   f=cf.read_field('/opt/graphics/cfplot_data/12km_orog.nc')
    cfp.cscale('wiki-2.0', ncols=16, below=2, above=14)
    cfp.levs(manual=np.arange(15)*150)
    cfp.con(f, lines=0) 

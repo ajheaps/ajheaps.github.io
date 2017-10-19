@@ -24,19 +24,48 @@ In this example we make a blank map plot, change the longitude labels and add a 
 
 ::
 
+    import cf
+    import cfplot as cfp
+    import matplotlib
+    from matplotlib.patches import Polygon
+    from matplotlib.collections import PatchCollection
+
+    f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+
     cfp.gopen()
     cfp.levs(-1000, -900, 100)
-    cfp.con(f.subspace(time=15),lines=0, fill=0)
-    cfp.plotvars.plot.set_xticks([0.0, 45.0])
-    cfp.plotvars.plot.set_xticklabels(['label1', 'label2'])
-    cfp.plotvars.plot.set_xlabel('X axis plot label')
+    xticks=[0.0, 45.0]
+    xticklabels=['xlabel1', 'xlabel2']
+    yticks=[-30.0, 70.0]
+    yticklabels=['ylabel1', 'ylabel2']
 
+    cfp.con(f.subspace(time=15), fill=False, colorbar=None, 
+        xticks=xticks, xticklabels=xticklabels,
+        yticks=yticks, yticklabels=yticklabels)
+
+    # A box
     xpts=[-150, -150, -90, -90, -150]
     ypts=[-5, 5, 5, -5, -5]
     cfp.plotvars.plot.plot(xpts,ypts, linewidth=3.0, color='blue')
-    cfp.plotvars.plot.text(-120, 8, 'Nino3 region', horizontalalignment='center')
-    cfp.gclose()
 
+    # A symbol
+    cfp.plotvars.plot.plot(-30,-60, linewidth=3.0, marker='o', color='blue')
+
+    # Text
+    cfp.plotvars.plot.text(-120, 8, 'Nino3 region', horizontalalignment='center')
+
+    # Equation
+    cfp.plotvars.plot.text(-40, 40, r'$\sum_{i=0}^\infty x_i$')
+
+    # Filled polygon
+    box=[[90, -60], [100,-20], [110, -60]]
+    patches = []
+    polygon = Polygon(box, True)
+    patches.append(polygon)
+    p = PatchCollection(patches, cmap=matplotlib.cm.jet, alpha=0.4)
+    cfp.plotvars.plot.add_collection(p)
+
+    cfp.gclose()
 
 
 
