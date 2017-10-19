@@ -28,7 +28,7 @@ To install cf-plot on your own Linux box download and install Anaconda Python 2.
 
 ::
 
-   conda install -c ncas -c scitools cf-python cf-plot
+   conda install -c ncas -c conda-forge cf-python cf-plot
    conda install -c conda-forge -c nesii netcdf-fortran=4.4.4 mpich esmpy
 
 
