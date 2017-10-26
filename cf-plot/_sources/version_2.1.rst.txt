@@ -654,7 +654,47 @@ to produce reasonable levels between -1.0 and 0.1.
 
 
 
-53. Sample netCDF file to be include in the distribution
+53. levs - allow only step to generate contour levels
+=====================================================
+
+Code was added to the levs and con routines to allow step to generate the levels for the contour field without having to 
+specify the min and max for the levels genration.
+
+
+::
+
+    Done
+
+
+
+54. con - blockfill transparency
+================================
+
+Added alpha transparency to the blockfill contour routine.  To call this add the blockfill=True and 
+alpha=alpha keywords to the cfp.con command.
+
+::
+
+    Done
+
+
+
+
+55. Independent user positioning of plot figures on a page
+==========================================================
+
+Independent positioning of plot figures on a page isn't possible.
+
+This is now possible and an example has been added to the http://ajheaps.github.io/cf-plot/multiple_plots.html page.
+
+
+::
+
+    Done
+
+
+
+56. Sample netCDF file to be include in the distribution
 ========================================================
 
 A sample netCDF file is to be included in the distribution and usage notes updated.
@@ -665,7 +705,7 @@ A sample netCDF file is to be included in the distribution and usage notes updat
     To do
 
 
-54. cfp.gset(ylog=True) doesn't produce a log y-axis plot
+57. cfp.gset(ylog=True) doesn't produce a log y-axis plot
 =========================================================
 
 cfp.gset(ylog=True) doesn't produce a log y-axis plot.
@@ -677,15 +717,6 @@ cfp.gset(ylog=True) doesn't produce a log y-axis plot.
 
 
 
-55. Independent user positioning of plot figures on a page
-==========================================================
-
-Independent positioning of plot figures on a page isn't possible.
-
-
-::
-
-    To do
 
 
 

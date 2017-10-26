@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>version 2.1 changes &#8212; cf-plot 2.1.52 documentation</title>
+    <title>version 2.1 changes &#8212; cf-plot 2.1.55 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.1.52',
+        VERSION:     '2.1.55',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -31,7 +31,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.52 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.55 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -516,23 +516,40 @@ to produce reasonable levels between -1.0 and 0.1.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="sample-netcdf-file-to-be-include-in-the-distribution">
-<h2>53. Sample netCDF file to be include in the distribution<a class="headerlink" href="#sample-netcdf-file-to-be-include-in-the-distribution" title="Permalink to this headline">¶</a></h2>
-<p>A sample netCDF file is to be included in the distribution and usage notes updated.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">do</span>
+<div class="section" id="levs-allow-only-step-to-generate-contour-levels">
+<h2>53. levs - allow only step to generate contour levels<a class="headerlink" href="#levs-allow-only-step-to-generate-contour-levels" title="Permalink to this headline">¶</a></h2>
+<p>Code was added to the levs and con routines to allow step to generate the levels for the contour field without having to
+specify the min and max for the levels genration.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="cfp-gset-ylog-true-doesn-t-produce-a-log-y-axis-plot">
-<h2>54. cfp.gset(ylog=True) doesn’t produce a log y-axis plot<a class="headerlink" href="#cfp-gset-ylog-true-doesn-t-produce-a-log-y-axis-plot" title="Permalink to this headline">¶</a></h2>
-<p>cfp.gset(ylog=True) doesn’t produce a log y-axis plot.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">do</span>
+<div class="section" id="con-blockfill-transparency">
+<h2>54. con - blockfill transparency<a class="headerlink" href="#con-blockfill-transparency" title="Permalink to this headline">¶</a></h2>
+<p>Added alpha transparency to the blockfill contour routine.  To call this add the blockfill=True and
+alpha=alpha keywords to the cfp.con command.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="independent-user-positioning-of-plot-figures-on-a-page">
 <h2>55. Independent user positioning of plot figures on a page<a class="headerlink" href="#independent-user-positioning-of-plot-figures-on-a-page" title="Permalink to this headline">¶</a></h2>
 <p>Independent positioning of plot figures on a page isn’t possible.</p>
+<p>This is now possible and an example has been added to the <a class="reference external" href="http://ajheaps.github.io/cf-plot/multiple_plots.html">http://ajheaps.github.io/cf-plot/multiple_plots.html</a> page.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sample-netcdf-file-to-be-include-in-the-distribution">
+<h2>56. Sample netCDF file to be include in the distribution<a class="headerlink" href="#sample-netcdf-file-to-be-include-in-the-distribution" title="Permalink to this headline">¶</a></h2>
+<p>A sample netCDF file is to be included in the distribution and usage notes updated.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">do</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cfp-gset-ylog-true-doesn-t-produce-a-log-y-axis-plot">
+<h2>57. cfp.gset(ylog=True) doesn’t produce a log y-axis plot<a class="headerlink" href="#cfp-gset-ylog-true-doesn-t-produce-a-log-y-axis-plot" title="Permalink to this headline">¶</a></h2>
+<p>cfp.gset(ylog=True) doesn’t produce a log y-axis plot.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">do</span>
 </pre></div>
 </div>
@@ -568,7 +585,7 @@ to produce reasonable levels between -1.0 and 0.1.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.52 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.55 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

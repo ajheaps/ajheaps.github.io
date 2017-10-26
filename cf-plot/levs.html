@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>levs &#8212; cf-plot 2.1.52 documentation</title>
+    <title>levs &#8212; cf-plot 2.1.55 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.1.52',
+        VERSION:     '2.1.55',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -31,7 +31,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.52 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.55 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -53,14 +53,19 @@
 <div class="line">max=max - maximum level</div>
 <div class="line">step=step - step between levels</div>
 <div class="line">manual= manual - set levels manually</div>
-<div class="line">extend=’neither’, ‘both’, ‘min’, or ‘max’ - colour bar limit extensions.</div>
+<div class="line">extend=’neither’, ‘both’, ‘min’, or ‘max’ - colour bar limit extensions</div>
 </div>
 <div class="line-block">
 <div class="line">Use the levs command when a predefined set of levels is required. The</div>
-<div class="line">min, max and step parameters are all needed to define a set of  levels.</div>
-<div class="line">These can take integer or floating point numbers. If colour filled</div>
-<div class="line">contours are plotted then the default is to extend the minimum and</div>
-<div class="line">maximum contours coloured for out of range values - extend=’both’.</div>
+<div class="line">min, max and step parameters can be used to define a set of  levels.</div>
+<div class="line">These can take integer or floating point numbers. If just the step is </div>
+<div class="line">defined then cf-plot will internally try to define a reasonable set</div>
+<div class="line">of levels. </div>
+</div>
+<div class="line-block">
+<div class="line">If colour filled contours are plotted then the default is to extend </div>
+<div class="line">the minimum and maximum contours coloured for out of range values</div>
+<div class="line">- extend=’both’.</div>
 </div>
 <div class="line-block">
 <div class="line">Once a user call is made to levs the levels are persistent.</div>
@@ -108,7 +113,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.52 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.55 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
