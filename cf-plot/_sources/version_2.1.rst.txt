@@ -694,7 +694,50 @@ This is now possible and an example has been added to the http://ajheaps.github.
 
 
 
-56. Sample netCDF file to be include in the distribution
+56. con - vertical colorbars don't pick up user set font size
+=============================================================
+
+Vertical colorbars did't pick up user set font size or font weight.
+
+
+::
+
+    Corrected
+
+
+
+57. con - addcyclic change in Basemap
+=====================================
+
+The behaviour of add cyclic in Basemap changed
+
+1.0.7 longitudes 1.875, 5.625, ..., 358.125 went to 1.875, 5.625,..., 358.125, 361.875
+1.0.8.dev0 and 1.1.0 longitudes 1.875, 5.625, ..., 358.125 went to 1.875, 5.625,..., 358.125, 1.875
+
+This was reported to the Baemap authors and a fix put into cf-plot so that all version above work as expected.
+
+
+::
+
+    Fixed
+
+
+
+58. cfp.gset(ylog=True) doesn't produce a log y-axis plot
+=========================================================
+
+cfp.gset(ylog=True) when issued just on its own doesn't produce a log y-axis plot.
+To produce a log pressure plot xmin, xmax, ymin, ymax also need to be added.
+
+
+::
+
+    To do
+
+
+
+
+59. Sample netCDF file to be include in the distribution
 ========================================================
 
 A sample netCDF file is to be included in the distribution and usage notes updated.
@@ -703,22 +746,6 @@ A sample netCDF file is to be included in the distribution and usage notes updat
 ::
 
     To do
-
-
-57. cfp.gset(ylog=True) doesn't produce a log y-axis plot
-=========================================================
-
-cfp.gset(ylog=True) doesn't produce a log y-axis plot.
-
-
-::
-
-    To do
-
-
-
-
-
 
 
 

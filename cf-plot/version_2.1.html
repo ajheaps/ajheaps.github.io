@@ -540,16 +540,34 @@ alpha=alpha keywords to the cfp.con command.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="sample-netcdf-file-to-be-include-in-the-distribution">
-<h2>56. Sample netCDF file to be include in the distribution<a class="headerlink" href="#sample-netcdf-file-to-be-include-in-the-distribution" title="Permalink to this headline">¶</a></h2>
-<p>A sample netCDF file is to be included in the distribution and usage notes updated.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">do</span>
+<div class="section" id="con-vertical-colorbars-don-t-pick-up-user-set-font-size">
+<h2>56. con - vertical colorbars don’t pick up user set font size<a class="headerlink" href="#con-vertical-colorbars-don-t-pick-up-user-set-font-size" title="Permalink to this headline">¶</a></h2>
+<p>Vertical colorbars did’t pick up user set font size or font weight.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Corrected</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="con-addcyclic-change-in-basemap">
+<h2>57. con - addcyclic change in Basemap<a class="headerlink" href="#con-addcyclic-change-in-basemap" title="Permalink to this headline">¶</a></h2>
+<p>The behaviour of add cyclic in Basemap changed</p>
+<p>1.0.7 longitudes 1.875, 5.625, …, 358.125 went to 1.875, 5.625,…, 358.125, 361.875
+1.0.8.dev0 and 1.1.0 longitudes 1.875, 5.625, …, 358.125 went to 1.875, 5.625,…, 358.125, 1.875</p>
+<p>This was reported to the Baemap authors and a fix put into cf-plot so that all version above work as expected.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="cfp-gset-ylog-true-doesn-t-produce-a-log-y-axis-plot">
-<h2>57. cfp.gset(ylog=True) doesn’t produce a log y-axis plot<a class="headerlink" href="#cfp-gset-ylog-true-doesn-t-produce-a-log-y-axis-plot" title="Permalink to this headline">¶</a></h2>
-<p>cfp.gset(ylog=True) doesn’t produce a log y-axis plot.</p>
+<h2>58. cfp.gset(ylog=True) doesn’t produce a log y-axis plot<a class="headerlink" href="#cfp-gset-ylog-true-doesn-t-produce-a-log-y-axis-plot" title="Permalink to this headline">¶</a></h2>
+<p>cfp.gset(ylog=True) when issued just on its own doesn’t produce a log y-axis plot.
+To produce a log pressure plot xmin, xmax, ymin, ymax also need to be added.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">do</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sample-netcdf-file-to-be-include-in-the-distribution">
+<h2>59. Sample netCDF file to be include in the distribution<a class="headerlink" href="#sample-netcdf-file-to-be-include-in-the-distribution" title="Permalink to this headline">¶</a></h2>
+<p>A sample netCDF file is to be included in the distribution and usage notes updated.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">do</span>
 </pre></div>
 </div>

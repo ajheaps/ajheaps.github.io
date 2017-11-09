@@ -33,8 +33,8 @@ Plots are arranged over rows and columns with the first plot at the top left and
 
 
 
-Example 19 - multiple plots - user specified plot positions
------------------------------------------------------------
+Example 19a - multiple plots - user specified plot positions
+------------------------------------------------------------
 
 User specified plot limits are set by first specifying the user_position=True parameter to gopen and then the plot position to
 the gpos routines.  The xmin, xmax, ymin, ymax paramenters for the plot display area are in normalised coordinates.

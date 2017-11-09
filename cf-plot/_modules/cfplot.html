@@ -628,6 +628,11 @@
             <span class="c1"># Add cyclic information if missing.</span>
             <span class="k">if</span> <span class="n">lonrange</span> <span class="o">&lt;</span> <span class="mi">360</span><span class="p">:</span>
                 <span class="n">field</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">addcyclic</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+                <span class="c1"># New code to take account of addcyclic behaviour change from 1.0.7 to 1.1.0</span>
+                <span class="c1"># 1.0.7: 1.875, 5.625, ..., 358.125 went to 1.875, 5.625,..., 358.125, 361.875</span>
+                <span class="c1"># 1.1.0: 1.875, 5.625, ..., 358.125 went to 1.875, 5.625,..., 358.125, 1.875</span>
+                <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span>
+                    <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">360.0</span>
                 <span class="n">lonrange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
             <span class="c1"># Shift grid if needed</span>
@@ -641,6 +646,8 @@
             <span class="n">lonrange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmin</span>
             <span class="k">if</span> <span class="n">lonrange</span> <span class="o">&lt;</span> <span class="mi">360</span><span class="p">:</span>
                 <span class="n">field</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">addcyclic</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span>
+                    <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">360.0</span>
                 <span class="n">lonrange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
         <span class="c1"># Flip latitudes and field if latitudes are in descending order</span>
@@ -879,9 +886,16 @@
             <span class="c1"># Labels are [0, 2, 10001, 20001, 30001, 40001, 50001, 60001]</span>
             <span class="c1"># With a +1 near to the colorbar label</span>
             <span class="n">cbar</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">colorbar_labels</span><span class="p">])</span>
-            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">():</span>
-                <span class="n">t</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="n">text_fontsize</span><span class="p">)</span>
-                <span class="n">t</span><span class="o">.</span><span class="n">set_fontweight</span><span class="p">(</span><span class="n">text_fontweight</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">colorbar_orientation</span> <span class="o">==</span> <span class="s1">&#39;horizontal&#39;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">():</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="n">text_fontsize</span><span class="p">)</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontweight</span><span class="p">(</span><span class="n">text_fontweight</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">():</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="n">text_fontsize</span><span class="p">)</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontweight</span><span class="p">(</span><span class="n">text_fontweight</span><span class="p">)</span>
+
+
 
         <span class="c1"># Mask off selected area in Lambert Conformal projection if requested</span>
         <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;lcc&#39;</span> <span class="ow">and</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lcc_plimits</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -1319,9 +1333,14 @@
                 <span class="n">fontweight</span><span class="o">=</span><span class="n">title_fontweight</span><span class="p">)</span>
             <span class="c1"># Bug in Matplotlib colorbar labelling</span>
             <span class="n">cbar</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">colorbar_labels</span><span class="p">])</span>
-            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">():</span>
-                <span class="n">t</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="n">text_fontsize</span><span class="p">)</span>
-                <span class="n">t</span><span class="o">.</span><span class="n">set_fontweight</span><span class="p">(</span><span class="n">text_fontweight</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">colorbar_orientation</span> <span class="o">==</span> <span class="s1">&#39;horizontal&#39;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">():</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="n">text_fontsize</span><span class="p">)</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontweight</span><span class="p">(</span><span class="n">text_fontweight</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">():</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="n">text_fontsize</span><span class="p">)</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontweight</span><span class="p">(</span><span class="n">text_fontweight</span><span class="p">)</span>
 
         <span class="c1"># Title</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.03</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">title_fontsize</span><span class="p">,</span>
@@ -1605,9 +1624,15 @@
                 <span class="n">fontweight</span><span class="o">=</span><span class="n">title_fontweight</span><span class="p">)</span>
             <span class="c1"># Bug in Matplotlib colorbar labelling</span>
             <span class="n">cbar</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">colorbar_labels</span><span class="p">])</span>
-            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">():</span>
-                <span class="n">t</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="n">text_fontsize</span><span class="p">)</span>
-                <span class="n">t</span><span class="o">.</span><span class="n">set_fontweight</span><span class="p">(</span><span class="n">text_fontweight</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">colorbar_orientation</span> <span class="o">==</span> <span class="s1">&#39;horizontal&#39;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">():</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="n">text_fontsize</span><span class="p">)</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontweight</span><span class="p">(</span><span class="n">text_fontweight</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">():</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="n">text_fontsize</span><span class="p">)</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontweight</span><span class="p">(</span><span class="n">text_fontweight</span><span class="p">)</span>
+
 
         <span class="c1"># Title</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
@@ -1726,9 +1751,16 @@
                 <span class="n">fontweight</span><span class="o">=</span><span class="n">title_fontweight</span><span class="p">)</span>
             <span class="c1"># Bug in Matplotlib colorbar labelling</span>
             <span class="n">cbar</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">colorbar_labels</span><span class="p">])</span>
-            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">():</span>
-                <span class="n">t</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="n">text_fontsize</span><span class="p">)</span>
-                <span class="n">t</span><span class="o">.</span><span class="n">set_fontweight</span><span class="p">(</span><span class="n">text_fontweight</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">colorbar_orientation</span> <span class="o">==</span> <span class="s1">&#39;horizontal&#39;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">():</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="n">text_fontsize</span><span class="p">)</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontweight</span><span class="p">(</span><span class="n">text_fontweight</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">():</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="n">text_fontsize</span><span class="p">)</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontweight</span><span class="p">(</span><span class="n">text_fontweight</span><span class="p">)</span>
+
+
 
         <span class="c1"># Rotated grid axes</span>
         <span class="k">if</span> <span class="n">axes</span><span class="p">:</span>
@@ -1924,9 +1956,16 @@
                 <span class="n">fontweight</span><span class="o">=</span><span class="n">title_fontweight</span><span class="p">)</span>
             <span class="c1"># Bug in Matplotlib colorbar labelling</span>
             <span class="n">cbar</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">colorbar_labels</span><span class="p">])</span>
-            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">():</span>
-                <span class="n">t</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="n">text_fontsize</span><span class="p">)</span>
-                <span class="n">t</span><span class="o">.</span><span class="n">set_fontweight</span><span class="p">(</span><span class="n">text_fontweight</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">colorbar_orientation</span> <span class="o">==</span> <span class="s1">&#39;horizontal&#39;</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">():</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="n">text_fontsize</span><span class="p">)</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontweight</span><span class="p">(</span><span class="n">text_fontweight</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">():</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="n">text_fontsize</span><span class="p">)</span>
+                    <span class="n">t</span><span class="o">.</span><span class="n">set_fontweight</span><span class="p">(</span><span class="n">text_fontweight</span><span class="p">)</span>
+
+
 
         <span class="c1"># Title</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
@@ -2709,21 +2748,13 @@
     <span class="n">plotvars</span><span class="o">.</span><span class="n">user_gset</span> <span class="o">=</span> <span class="n">user_gset</span>
 
 
-    <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">xlog</span><span class="p">,</span> <span class="n">ylog</span><span class="p">]):</span>
-        <span class="n">plotvars</span><span class="o">.</span><span class="n">xmin</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="n">plotvars</span><span class="o">.</span><span class="n">xmax</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="n">plotvars</span><span class="o">.</span><span class="n">ymin</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="n">plotvars</span><span class="o">.</span><span class="n">ymax</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="n">plotvars</span><span class="o">.</span><span class="n">xlog</span> <span class="o">=</span> <span class="n">xlog</span>
-        <span class="n">plotvars</span><span class="o">.</span><span class="n">ylog</span> <span class="o">=</span> <span class="n">ylog</span>
-        <span class="n">plotvars</span><span class="o">.</span><span class="n">user_gset</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">return</span>
-
     <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">]):</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">xmin</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">xmax</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">ymin</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">ymax</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">plotvars</span><span class="o">.</span><span class="n">xlog</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">plotvars</span><span class="o">.</span><span class="n">ylog</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">user_gset</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">return</span>
 
