@@ -10,6 +10,7 @@ Jupyter Notebooks and data for training class
 The tarred jupyter notebooks and data is 580MB: `jupyter.tar <http://www.met.reading.ac.uk/~swsheaps/ncas_data_tools/jupyter.tar>`_
 
 Once downloaded in a terminal window type:
+
 |    tar xf jupyter.tar
 |    cd jupyter
 |    jupyter notebook
