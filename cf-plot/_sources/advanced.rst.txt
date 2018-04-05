@@ -147,6 +147,7 @@ Masked data isn't plotted.
     cfp.con(h, blockfill=True, title='Plot with masked data')
 
 
+
 .. image::  images/advanced4.png
 
 
@@ -176,11 +177,11 @@ Masked data is plotted as blockfill in grey.
 .. image::  images/advanced5.png
 
 
-Blockfill with idividual colours
---------------------------------
+Blockfill with individual colours
+---------------------------------
 
 If a plot needs to be built up as a series of blockfill plots then this is
-possile using the cf-plot internal blockfill routine.
+possible using the cf-plot internal blockfill routine.
 
 ::
 
@@ -199,10 +200,11 @@ possile using the cf-plot internal blockfill routine.
     cfp.con(g, ylog=True)
 
     # Call internal block filling routine 
-    cfp.bfill(f=data, x=x, y=y, clevs=[-50, 0], single_fill_color='b')
+    cfp.bfill(f=data, x=x, y=y, clevs=[-50, 0], single_fill_color='green')
 
-    cfp.bfill(f=data, x=x, y=y, clevs=[20, 40], single_fill_color='orange')
+    cfp.bfill(f=data, x=x, y=y, clevs=[20, 40], single_fill_color='purple')
     cfp.gclose()
+
 
 
 .. image::  images/advanced6.png
