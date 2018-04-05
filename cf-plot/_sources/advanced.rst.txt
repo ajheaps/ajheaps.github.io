@@ -146,6 +146,7 @@ Plotting missing data
     # Normal plot with masked data
     cfp.con(h, blockfill=True, title='Plot with masked data')
 
+
 .. image::  images/advanced4.png
 
 
