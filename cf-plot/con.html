@@ -44,7 +44,7 @@
 <h1>con<a class="headerlink" href="#con" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="cfplot.con">
-<code class="descclassname">cfplot.</code><code class="descname">con</code><span class="sig-paren">(</span><em>f=None</em>, <em>x=None</em>, <em>y=None</em>, <em>fill=True</em>, <em>lines=True</em>, <em>line_labels=True</em>, <em>title=None</em>, <em>colorbar_title=None</em>, <em>colorbar=True</em>, <em>colorbar_label_skip=None</em>, <em>ptype=0</em>, <em>negative_linestyle='solid'</em>, <em>blockfill=False</em>, <em>zero_thick=False</em>, <em>colorbar_shrink=None</em>, <em>colorbar_orientation=None</em>, <em>colorbar_position=None</em>, <em>xlog=False</em>, <em>ylog=False</em>, <em>axes=True</em>, <em>xaxis=True</em>, <em>yaxis=True</em>, <em>xticks=None</em>, <em>xticklabels=None</em>, <em>yticks=None</em>, <em>yticklabels=None</em>, <em>xlabel=None</em>, <em>ylabel=None</em>, <em>colors='k'</em>, <em>swap_axes=False</em>, <em>verbose=None</em>, <em>linewidths=None</em>, <em>alpha=1.0</em>, <em>colorbar_text_up_down=False</em>, <em>colorbar_text_down_up=False</em>, <em>colorbar_drawedges=True</em>, <em>linestyles=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#con"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.con" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">cfplot.</code><code class="descname">con</code><span class="sig-paren">(</span><em>f=None</em>, <em>x=None</em>, <em>y=None</em>, <em>fill=True</em>, <em>lines=True</em>, <em>line_labels=True</em>, <em>title=None</em>, <em>colorbar_title=None</em>, <em>colorbar=True</em>, <em>colorbar_label_skip=None</em>, <em>ptype=0</em>, <em>negative_linestyle='solid'</em>, <em>blockfill=False</em>, <em>zero_thick=False</em>, <em>colorbar_shrink=None</em>, <em>colorbar_orientation=None</em>, <em>colorbar_position=None</em>, <em>xlog=False</em>, <em>ylog=False</em>, <em>axes=True</em>, <em>xaxis=True</em>, <em>yaxis=True</em>, <em>xticks=None</em>, <em>xticklabels=None</em>, <em>yticks=None</em>, <em>yticklabels=None</em>, <em>xlabel=None</em>, <em>ylabel=None</em>, <em>colors='k'</em>, <em>swap_axes=False</em>, <em>verbose=None</em>, <em>linewidths=None</em>, <em>alpha=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot/cfplot.html#con"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.con" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">con is the interface to contouring in cf-plot. The minimum use is con(f)</div>
 <div class="line">where f is a 2 dimensional array. If a cf field is passed then an</div>
@@ -91,20 +91,11 @@
 </div>
 <div class="line">colorbar_position=None - position of colorbar</div>
 <div class="line-block">
-<div class="line">[xmin, ymin, x_extent,y_extent] in normalised</div>
+<div class="line">[xmin, ymin, x_extent,y_extent]in normalised</div>
 <div class="line">coordinates. Use when a common colorbar</div>
 <div class="line">is required for a set of plots. A typical set</div>
 <div class="line">of values would be [0.1, 0.05, 0.8, 0.02]</div>
 </div>
-<div class="line">colorbar_text_up_down=False - if True horizontal colour bar labels alternate</div>
-<div class="line-block">
-<div class="line">above (start) and below the colour bar</div>
-</div>
-<div class="line">colorbar_text_down_up=False - if True horizontal colour bar labels alternate</div>
-<div class="line-block">
-<div class="line">below (start) and above the colour bar</div>
-</div>
-<div class="line">colorbar_drawedges=True - Draw internal divisions in the colorbar</div>
 <div class="line">colors=’k’ - contour line colors - takes one or many values.</div>
 <div class="line">xlog=False - logarithmic x axis</div>
 <div class="line">ylog=False - logarithmic y axis</div>
@@ -126,17 +117,8 @@
 <div class="line-block">
 <div class="line">lines or array of widths</div>
 </div>
-<div class="line">linestyles=None - takes ‘solid’, ‘dashed’, ‘dashdot’ or ‘dotted’</div>
 <div class="line">alpha=1.0 - transparency setting.  The default is no transparency.</div>
-<div class="line">colorbar_text_up_down=False - on a horizontal colorbar alternate the </div>
-<div class="line-block">
-<div class="line">labels top and bottom starting in the up position </div>
-</div>
-<div class="line">colorbar_text_down_up=False - on a horizontal colorbar alternate the </div>
-<div class="line-block">
-<div class="line">labels bottom and top starting in the bottom position </div>
-</div>
-<div class="line">colorbar_drawedges=True - draw internal delimeter lines in the colorbar</div>
+<div class="line"><br /></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

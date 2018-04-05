@@ -44,7 +44,7 @@
 <h1>gset<a class="headerlink" href="#gset" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="cfplot.gset">
-<code class="descclassname">cfplot.</code><code class="descname">gset</code><span class="sig-paren">(</span><em>xmin=None</em>, <em>xmax=None</em>, <em>ymin=None</em>, <em>ymax=None</em>, <em>xlog=False</em>, <em>ylog=False</em>, <em>user_gset=1</em>, <em>twinx=None</em>, <em>twiny=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#gset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.gset" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">cfplot.</code><code class="descname">gset</code><span class="sig-paren">(</span><em>xmin=None</em>, <em>xmax=None</em>, <em>ymin=None</em>, <em>ymax=None</em>, <em>xlog=False</em>, <em>ylog=False</em>, <em>user_gset=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot/cfplot.html#gset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.gset" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Set plot limits for all non longitude-latitide plots.</div>
 <div class="line">xmin, xmax, ymin, ymax are all needed to set the plot limits.</div>
@@ -56,8 +56,6 @@
 <div class="line">ymax=None - y maximum</div>
 <div class="line">xlog=False - log x</div>
 <div class="line">ylog=False - log y</div>
-<div class="line">twinx=None - set to True to make a twin y axis plot</div>
-<div class="line">twiny=None - set to True to make a twin x axis plot</div>
 <div class="line"><br /></div>
 <div class="line">Once a user call is made to gset the plot limits are persistent.</div>
 <div class="line">i.e. the next plot will use the same set of plot limits.</div>
@@ -70,8 +68,6 @@
 <div class="line">ymax = 295)</div>
 <div class="line"><br /></div>
 </div>
-<div class="line">Note the correct date format is ‘YYYY-MM-DD’ or ‘YYYY-MM-DD HH:MM:SS’</div>
-<div class="line">anything else will give unexpected results.</div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

@@ -7,7 +7,7 @@ We run one day courses on cf-python / cf-plot using the following training mater
 Jupyter Notebooks and data for training class
 =============================================
 
-The tarred jupyter notebooks and data is 580MB: jupyter.tar <http://www.met.reading.ac.uk/~swsheaps/ncas_data_tools/jupyter.tar>`_
+The tarred jupyter notebooks and data is 580MB: `jupyter.tar <http://www.met.reading.ac.uk/~swsheaps/ncas_data_tools/jupyter.tar>`_
 
 In the course we run through the exercises and student material in the following order:
 
@@ -18,15 +18,12 @@ Morning session
 |    introduction.ipynb
 |    
 |    cf-python/cf_python.ipynb - sections 1 and 2
-|    
 |    cf-python/cf_python_exercise_1.ipynb
 |    cf-python/cf_python_exercise_2.ipynb
 |    
 |    cf-python/cf_python.ipynb- sections 3 and 4
 |    cf-python/cf_python_exercise_3.ipynb
 |    cf-python/cf_python_exercise_4.ipynb
-|    
-|    
 |    
 
 
@@ -45,13 +42,9 @@ Afternoon session
 |
 |    wrap_up.ipynb
 |
-|
-|
 
 Worked exercise solutions are available in the model_answers directory for each section.
 
-|
-|
 |
 
 
@@ -61,19 +54,12 @@ PDF documentation
 
 The PDF documentation is used in the following order:
 
-An introduction to the NCAS data tools and capabilities `introduction.pdf <http://www.met.reading.ac.uk/~swsheaps/ncas_data_tools/introduction.pdf>`_
-
-An in-depth discussion of cf-python `cf_python.pdf <http://www.met.reading.ac.uk/~swsheaps/ncas_data_tools/cf_python.pdf>`_
-
-Making contour plots in cf-plot `contour_plots.pdf <http://www.met.reading.ac.uk/~swsheaps/ncas_data_tools/contour_plots.pdf>`_
-
-Regridding in cf-python `cf-python_regridding.pdf <http://www.met.reading.ac.uk/~swsheaps/ncas_data_tools/cf-python_regridding.pdf>`_
-
-Line, vector and significance plots  `vector_line_significance.pdf <http://www.met.reading.ac.uk/~swsheaps/ncas_data_tools/vector_line_significance.pdf>`_
-
-Concluding notes for course `wrap_up.pdf <http://www.met.reading.ac.uk/~swsheaps/ncas_data_tools/wrap_up.pdf>`_
-
-
+|    An introduction to the NCAS data tools and capabilities `introduction.pdf <http://www.met.reading.ac.uk/~swsheaps/ncas_data_tools//pdf/introduction.pdf>`_
+|    An in-depth discussion of cf-python `cf_python.pdf <http://www.met.reading.ac.uk/~swsheaps/ncas_data_tools/pdf/cf_python.pdf>`_
+|    Making contour plots in cf-plot `contour_plots.pdf <http://www.met.reading.ac.uk/~swsheaps/ncas_data_tools/pdf/contour_plots.pdf>`_
+|    Regridding in cf-python `cf-python_regridding.pdf <http://www.met.reading.ac.uk/~swsheaps/ncas_data_tools/pdf/cf-python_regridding.pdf>`_
+|    Line, vector and significance plots  `vector_line_significance.pdf <http://www.met.reading.ac.uk/~swsheaps/ncas_data_tools/pdf/vector_line_significance.pdf>`_
+|    Concluding notes for course `wrap_up.pdf <http://www.met.reading.ac.uk/~swsheaps/ncas_data_tools/pdf/wrap_up.pdf>`_
 |
 |
 |
