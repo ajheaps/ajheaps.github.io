@@ -125,7 +125,7 @@ This is done by changing the land_color and lake_color variables in cfp.setvars.
 Plotting missing data
 ---------------------
 
-
+Masked data isn't plotted.
 
 
 ::
@@ -150,6 +150,10 @@ Plotting missing data
 .. image::  images/advanced4.png
 
 
+Masked data is plotted as blockfill in grey.
+
+::
+
     # Turn off the hardmask and set masked points to 999
     h.hardmask=False
     i = h.where(h.mask, 999)
@@ -172,7 +176,14 @@ Plotting missing data
 .. image::  images/advanced5.png
 
 
-    import cf, cfplot as cfp, numpy as np
+Blockfill with idividual colours
+--------------------------------
+
+If a plot needs to be built up as a series of blockfill plots then this is
+possile using the cf-plot internal blockfill routine.
+
+::
+
     f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
     g=f.collapse('mean','longitude')
 
@@ -184,7 +195,7 @@ Plotting missing data
     data=np.squeeze(g.array)
 
 
-    cfp.gopen(file='advanced6.png')
+    cfp.gopen()
     cfp.con(g, ylog=True)
 
     # Call internal block filling routine 

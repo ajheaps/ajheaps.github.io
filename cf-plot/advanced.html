@@ -131,6 +131,7 @@ hex(255)[2:]
 </div>
 <div class="section" id="plotting-missing-data">
 <h2>Plotting missing data<a class="headerlink" href="#plotting-missing-data" title="Permalink to this headline">¶</a></h2>
+<p>Masked data isn’t plotted.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -148,7 +149,54 @@ hex(255)[2:]
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">blockfill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Plot with masked data&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="images/advanced6.png" src="images/advanced6.png" />
+<img alt="_images/advanced4.png" src="_images/advanced4.png" />
+<p>Masked data is plotted as blockfill in grey.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Turn off the hardmask and set masked points to 999</span>
+<span class="n">h</span><span class="o">.</span><span class="n">hardmask</span><span class="o">=</span><span class="kc">False</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="mi">999</span><span class="p">)</span>
+
+
+<span class="c1"># Open a plot with gopen as we will be plotting over a contour plot</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">()</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">blockfill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Masked data plotted in grey&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Call internal block filling routine</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">bfill</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">array</span><span class="p">),</span> <span class="n">x</span><span class="o">=</span><span class="n">i</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">i</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+          <span class="n">clevs</span><span class="o">=</span><span class="p">[</span><span class="mi">990</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> <span class="n">lonlat</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">single_fill_color</span><span class="o">=</span><span class="s1">&#39;#d3d3d3&#39;</span><span class="p">)</span>
+
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/advanced5.png" src="_images/advanced5.png" />
+</div>
+<div class="section" id="blockfill-with-idividual-colours">
+<h2>Blockfill with idividual colours<a class="headerlink" href="#blockfill-with-idividual-colours" title="Permalink to this headline">¶</a></h2>
+<p>If a plot needs to be built up as a series of blockfill plots then this is
+possile using the cf-plot internal blockfill routine.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">g</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="s1">&#39;longitude&#39;</span><span class="p">)</span>
+
+
+
+
+<span class="n">x</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
+<span class="n">y</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
+<span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
+
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">()</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">ylog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Call internal block filling routine</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">bfill</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">single_fill_color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">bfill</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="n">single_fill_color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/advanced6.png" src="_images/advanced6.png" />
 </div>
 </div>
 
