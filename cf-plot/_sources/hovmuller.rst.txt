@@ -34,7 +34,10 @@ Example 11 - latitude-time subset
    cfp.cscale('plasma')
    cfp.con(f.subspace(longitude=0), lines=0) 
 
+| 
 
+
+When using cfp.gset the correct date format is 'YYYY-MM-DD' or 'YYYY-MM-DD HH:MM:SS' - anything else will give unexpected results.
 
 | 
 | 

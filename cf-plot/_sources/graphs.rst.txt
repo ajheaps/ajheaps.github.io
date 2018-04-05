@@ -10,7 +10,7 @@ Example 27 - graph plot
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
    g=f.collapse('X: mean')
    cfp.lineplot(g.subspace(pressure=100), marker='o', color='blue',\
                 title='Zonal mean zonal wind at 100mb')
@@ -51,7 +51,7 @@ Example 28 - Line and legend plot
 ::
 
     import cf, cfplot as cfp
-    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
     g=f.collapse('X: mean')
     xticks=[-90,-75,-60,-45,-30,-15,0,15,30,45,60,75,90]
     xticklabels=['90S','75S','60S','45S','30S','15S','0','15N','30N','45N','60N','75N','90N']
@@ -112,6 +112,8 @@ In this example we subset a time data series of global temperature, area mean th
 When using gset to set the limits on the plotting axes and a time axis pass time strings to give the limits i.e.
 cfp.gset(xmin = '1980-1-1', xmax = '1990-1-1', ymin = 285, ymax = 295)
 
+The correct date format is 'YYYY-MM-DD' or 'YYYY-MM-DD HH:MM:SS' - anything else will give unexpected results.
+
 
 ::
 
@@ -122,6 +124,47 @@ cfp.gset(xmin = '1980-1-1', xmax = '1990-1-1', ymin = 285, ymax = 295)
     temp_annual_global=temp_annual.collapse('area: mean', weights='area')
     temp_annual_global.Units -= 273.15
     cfp.lineplot(temp_annual_global, title='Global average annual temperature', color='blue')
+
+
+
+Example 30 - Two axis plotting
+------------------------------
+
+.. image::  images/fig30.png
+   :scale: 44% 
+
+In this example we plot two x-axes, one with zonal mean zonal wind data and one with temperature data.  Somewhat confusingly 
+the option for a twin x-axis is twiny=True.  This is a Matplotlib keyword which has been adopted within teh cf-plot code.
+
+
+::
+
+    import cf, cfplot as cfp
+    tol=cf.RTOL(1e-5)
+    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
+    u=f.collapse('X: mean')
+    u1=u.subspace(Y=-61.12099075)
+    u2=u.subspace(Y=0.56074494)
+
+    g=cf.read('/opt/graphics/cfplot_data/ggap.nc')[0]
+    t=g.collapse('X: mean')
+    t1=t.subspace(Y=-61.12099075)
+    t2=t.subspace(Y=0.56074494)
+
+    cfp.gopen()
+    cfp.gset(-30, 30, 1000, 0)
+    cfp.lineplot(u1,color='r')
+    cfp.lineplot(u2, color='r')
+
+    cfp.gset(190, 300, 1000, 0, twiny=True)
+    cfp.lineplot(t1,color='b')
+    cfp.lineplot(t2, color='b')
+
+    cfp.gclose()
+
+
+
+
 
 
 

@@ -86,7 +86,7 @@ Polar Stereographic plots are set using **proj=’npstere’** or **proj=’spst
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
    cfp.mapset(proj='npstere')
    cfp.con(f.subspace(pressure=500))
 
@@ -101,7 +101,7 @@ The **mapset** **bounding_lat** and **lon_0** parameters are used to set the lat
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
    cfp.mapset(proj='spstere', boundinglat=-30, lon_0=180)
    cfp.con(f.subspace(pressure=500))
 
@@ -127,25 +127,17 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')
 
 
-f is now an list of 12 fields.
+f is now an list of 4 fields.
+
+|   [<CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(320)) K>,
+|    <CF Field: eastward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1>,
+|    <CF Field: geopotential(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-2>,
+|    <CF Field: northward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1>]
 
 
-|  [<CF Field: long_name:Potential vorticity(time(1), pressure(23), latitude(160), longitude(320)) K m**2 kg**-1 s**-1>,
-|  <CF Field: long_name:Ozone mass mixing ratio(time(1), pressure(23), latitude(160), longitude(320)) kg kg**-1>,**
-|  <CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(320)) K>,**
-|  <CF Field: atmosphere_relative_vorticity(time(1), pressure(23), latitude(160), longitude(320)) s**-1>,**
-|  <CF Field: atmosphere_relative_vorticity(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-1>,**
-|  <CF Field: divergence_of_wind(time(1), pressure(23), latitude(160), longitude(320)) s**-1>,**
-|  <CF Field: divergence_of_wind(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-1>,**
-|  <CF Field: eastward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1>,**
-|  <CF Field: geopotential(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-2>,**
-|  <CF Field: northward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1>,**
-|  <CF Field: relative_humidity(time(1), pressure(23), latitude(160), longitude(320)) %>,**
-|  <CF Field: specific_humidity(time(1), pressure(23), latitude(160), longitude(320)) kg kg**-1>,**
-|  <CF Field: vertical_air_velocity_expressed_as_tendency_of_pressure(time(1), pressure(23), latitude(160), longitude(320)) Pa s**-1>]
 
 
-To see what levels are available in the data use **f[2].item('pressure').array**
+To see what levels are available in the data use **f[0].item('pressure').array**
 
 
 |  array([ 1000.,   925.,   850.,   775.,   700.,   600.,   500.,   400.,
@@ -154,12 +146,11 @@ To see what levels are available in the data use **f[2].item('pressure').array**
 
 
 
-
 In the case below we select the 500mb temperature with the cf subspace method.
 
 :: 
 
-   f[2].subspace(pressure=500)
+   f[0].subspace(pressure=500)
 
 
 |  <CF Field: air_temperature(time(1), pressure(1), latitude(160), longitude(320)) K>
@@ -167,7 +158,7 @@ and contour the data
 
 ::
 
-   cfp.con(f[2].subspace(pressure=500))
+   cfp.con(f[0].subspace(pressure=500))
 
 
 .. image::  images/guide1.png
@@ -179,13 +170,13 @@ To mean the field use the cf collapse function:
 
 ::
 
-   f[2].collapse('mean','longitude')
+   f[0].collapse('mean','longitude')
 
 |  <CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(1)) K>
 
 ::
 
-   cfp.con(f[2].collapse('mean','longitude'))
+   cfp.con(f[0].collapse('mean','longitude'))
 
 .. image::  images/guide2.png
    :scale: 52% 
@@ -201,9 +192,11 @@ In this locally processed ERA40 reanalysis field there is a distinct lack of sta
 
 ::
 
-   f=cf.read('/opt/graphics/cfplot_data/ggap199006200600.nc')[9]
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[2]
+   f
 
-|  <CF Field: geopotential(long_name:t(1), long_name:p(37), long_name:latitude(256), long_name:longitude(512)) kg kg**-1>
+|  <CF Field: geopotential(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-2>
+
 
 
 
@@ -213,10 +206,12 @@ We can still slice and plot the data by inspecting the dimensions of the field:
 
    f.items()
 
-|  {'dim2': <CF DimensionCoordinate: long_name:latitude(256) degrees_north>,
-|  'dim3': <CF DimensionCoordinate: long_name:longitude(512) degrees_east>,
-|  'dim0': <CF DimensionCoordinate: long_name:t(1) days since 1990-06-20 06:00:00>,
-|  'dim1': <CF DimensionCoordinate: long_name:p(37) mbar>}
+|  {'dim2': <CF DimensionCoordinate: latitude(160) degrees_north>, 
+|  'dim3': <CF DimensionCoordinate: longitude(320) degrees_east>, 
+|  'dim0': <CF DimensionCoordinate: time(1) days since 1964-01-21 00:00:00>, 
+|  'dim1': <CF DimensionCoordinate: pressure(23) mbar>}
+
+
 
 We see that dim1 is the pressure coordinate and can select the 700mb level and contour that.
 
@@ -224,17 +219,18 @@ We see that dim1 is the pressure coordinate and can select the 700mb level and c
 
    f.item('dim1').array
 
-|  array([ 1000.,   975.,   950.,   925.,   900.,   875.,   850.,   825.,
-|  800.,   775.,   750.,   700.,   650.,   600.,   550.,   500.,
-|  450.,   400.,   350.,   300.,   250.,   225.,   200.,   175.,
-|  150.,   125.,   100.,    70.,    50.,    30.,    20.,    10.,
-|  7.,     5.,     3.,     2.,     1.], dtype=float32)
+| array([ 1000.,   925.,   850.,   775.,   700.,   600.,   500.,   400.,
+| 300.,   250.,   200.,   150.,   100.,    70.,    50.,    30.,
+| 20.,    10.,     7.,     5.,     3.,     2.,     1.], dtype=float32)
+
+
 
 ::
 
    f.subspace(dim1=700)
 
-|  <CF Field: geopotential(long_name:t(1), long_name:p(1), long_name:latitude(256), long_name:longitude(512)) kg kg**-1>
+|  <CF Field: geopotential(time(1), pressure(1), latitude(160), longitude(320)) m**2 s**-2>
+
 
 
 ::
@@ -331,6 +327,8 @@ Other types of plot are:
 |  **ptype=3**  - longitude – height plot
 |  **ptype=4** - longitude - time plot
 |  **ptype=5** - latitude - time plot
+|  **ptype=6** - rotated pole plot
+|  **ptype=7** - time - height plot
 |
 |
 |
@@ -343,7 +341,7 @@ The latitude-pressure plot below is made by using the cf subspace method to sele
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[2]
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[0]
    cfp.con(f.subspace(longitude=0))
 
 
@@ -356,7 +354,7 @@ A mean of the data along the longitude (zonal mean) is made using the cf.collaps
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
    cfp.con(f.collapse('mean','longitude'))
 
 
@@ -371,7 +369,7 @@ To make a log pressure on the y axis use the ylog=True flag to the con routine.
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
    cfp.con(f.collapse('mean','longitude'), ylog=True)
 
 .. image::  images/fig8.png
@@ -421,8 +419,8 @@ Vector plots are made using the **vect** routine.
 
    import cf, cfplot as cfp
    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')
-   u=f[7].subspace(pressure=500)
-   v=f[9].subspace(pressure=500)
+   u=f[1].subspace(pressure=500)
+   v=f[3].subspace(pressure=500)
    cfp.vect(u=u, v=v, key_length=10, scale=100, stride=5)
 
 
@@ -438,9 +436,9 @@ In this example vectors are overlaid on a contour plot.
 
    import cf, cfplot as cfp
    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')
-   u=f[7].subspace(pressure=500)
-   v=f[9].subspace(pressure=500)
-   t=f[2].subspace(pressure=500)
+   u=f[1].subspace(pressure=500)
+   v=f[3].subspace(pressure=500)
+   t=f[0].subspace(pressure=500)
    cfp.gopen()
    cfp.mapset(lonmin=10, lonmax=120, latmin=-30, latmax=30)
    cfp.levs(min=254, max=270, step=1)
@@ -489,17 +487,17 @@ To make multiple plots on the page open a graphic file with the gopen command an
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')
+   u=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
    cfp.gopen(rows=2, columns=2)
    cfp.mapset(proj='spstere', boundinglat=-30, lon_0=180)
    cfp.gpos(1)
-   cfp.con(f[2].subspace(pressure=500))
+   cfp.con(u.subspace(pressure=500))
    cfp.gpos(2)
-   cfp.con(f[8].subspace(pressure=500))
+   cfp.con(u.subspace(pressure=500))
    cfp.gpos(3)
-   cfp.con(f[7].subspace(pressure=500))
+   cfp.con(u.subspace(pressure=500))
    cfp.gpos(4)
-   cfp.con(f[9].subspace(pressure=500))
+   cfp.con(u.subspace(pressure=500))
    cfp.gclose()
 
 .. image::  images/fig19.png
@@ -560,7 +558,7 @@ To make a graph plot use the cf-plot lineplot function as below on a single line
 :: 
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
    g=f.collapse('X: mean')
    cfp.lineplot(g.subspace(pressure=100), marker='o', color='blue',\
                 title='Zonal mean zonal wind at 100mb')
@@ -601,7 +599,7 @@ To make a multiple line plot use the gopen, gclose commands to enclose the plott
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
    g=f.collapse('X: mean')
    xticks=[-90,-75,-60,-45,-30,-15,0,15,30,45,60,75,90]
    xticklabels=['90S','75S','60S','45S','30S','15S','0','15N','30N','45N','60N','75N','90N']
@@ -1036,14 +1034,21 @@ To find the time value for to the tick position for January 1st 1980 00:00hrs:
 
 | **np.min(cf.Data(cf.dt('1980-01-01 00:00:00'), units=f.item('T').Units).array)**
 | 43200.0
- 
+
+With this technique arrays of custom tick label and positions can be constructed and passed to 
+the cfp.lineplot or to the cfp.con routines.
+
+Note the correct date format is 'YYYY-MM-DD' or 'YYYY-MM-DD HH:MM:SS' - anything else will give unexpected results.
+
 
 Selecting data that has a lot of decimal places in the axis values
 ==================================================================
 
 Axes with a lot of decimal places can cause issues with numeric representation and rounding,
 In one case 
+
 >>> cfp.lineplot(f.subspace(latitude=50.17530806))
+
 caused an error as the latitude with 50.17530806 wasn\'t found.
 
 In cf-python the tolerance for equivalence is
@@ -1165,7 +1170,7 @@ Another method is to use **gopen** as when used in making multiple plots.
 
 Making non-blocking plots
 =========================
-Using the Python prompt cf-plot will try to use the ImageMagick display command to show the plots.  This is done with subprocess and plots will remain on the screen even if the user exits the Python session.  If the display command isn\'t installed then cf-plot will use the Matplotlib picture viewer which will block the command prompt until it is quit.  Use **cfp.setvars(viewer='matplotlib')** to set this to be the defaul for a session even if teh display command is available.
+Using the Python prompt cf-plot will try to use the ImageMagick display command to show the plots.  This is done with subprocess and plots will remain on the screen even if the user exits the Python session.  If the display command isn\'t installed then cf-plot will use the Matplotlib picture viewer which will block the command prompt until it is quit.  Use **cfp.setvars(viewer='matplotlib')** to set this to be the defaul for a session even if the display command is available.
 
 
 
@@ -1198,7 +1203,42 @@ run the batch job today at 16:33:
 
 
 
+Changing defaults via the ~/.cfplot_defaults file
+=================================================
 
+A ~/.cfplot_defaults default overide file in the user home directory may contain three 
+values affecting contour plots initially. Please contact me if you would like any more defaults changed in this manner.
+
+| blockfill True
+| fill False
+| lines False
+
+This changes the default cfplot con options from contour fill with contour lines
+on top to blockfill with no contour lines on top.  The blockfill, fill and line 
+options to the con routine override any of these preset values.  The delimter beween the
+option and the value must be a space.
+
+
+
+Plotting data with different time units
+======================================
+
+When plotting data with different time units users need to move their data to using a common set of units as below.
+
+|   data1.item('T').Units
+|   <CF Units: hours since 1900-01-01 00:00:00 standard>
+
+|   data2.item('T').Units
+|   <CF Units: days since 2008-09-01 00:00:00 standard>
+
+
+|   data1.item('T').Units=data2.item('T').Units
+
+|   data1.item('T').Units
+|   <CF Units: days since 2008-09-01 00:00:00 standard>
+
+This is because when making a contour or line plot the axes are defined in terms of a linear scale of numbers.  Having two 
+different linear scales breaks the connection between the data.
 
 
 

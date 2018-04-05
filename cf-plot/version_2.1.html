@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>version 2.1 changes &#8212; cf-plot 2.1.57 documentation</title>
+    <title>version 2.1 changes &#8212; cf-plot 2.1.75 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.1.57',
+        VERSION:     '2.1.75',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -31,7 +31,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.57 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -550,25 +550,181 @@ alpha=alpha keywords to the cfp.con command.</p>
 <div class="section" id="con-addcyclic-change-in-basemap">
 <h2>57. con - addcyclic change in Basemap<a class="headerlink" href="#con-addcyclic-change-in-basemap" title="Permalink to this headline">¶</a></h2>
 <p>The behaviour of add cyclic in Basemap changed</p>
-<p>1.0.7 longitudes 1.875, 5.625, …, 358.125 went to 1.875, 5.625,…, 358.125, 361.875
-1.0.8.dev0 and 1.1.0 longitudes 1.875, 5.625, …, 358.125 went to 1.875, 5.625,…, 358.125, 1.875</p>
-<p>This was reported to the Baemap authors and a fix put into cf-plot so that all version above work as expected.</p>
+<p>1.0.7 longitudes 1.875, 5.625, …, 358.125 went to 1.875, 5.625,…, 358.125, 361.875</p>
+<p>1.0.8.dev0 and 1.1.0 longitudes 1.875, 5.625, …, 358.125 went to 1.875, 5.625,…, 358.125, 1.875</p>
+<p>This was reported to the Basemap authors and a fix put into cf-plot so that all version above work as expected.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="cfp-gset-ylog-true-doesn-t-produce-a-log-y-axis-plot">
-<h2>58. cfp.gset(ylog=True) doesn’t produce a log y-axis plot<a class="headerlink" href="#cfp-gset-ylog-true-doesn-t-produce-a-log-y-axis-plot" title="Permalink to this headline">¶</a></h2>
-<p>cfp.gset(ylog=True) when issued just on its own doesn’t produce a log y-axis plot.
-To produce a log pressure plot xmin, xmax, ymin, ymax also need to be added.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">do</span>
+<div class="section" id="con-better-data-limits-when-making-a-reduced-map-plot">
+<h2>58. con - better data limits when making a reduced map plot<a class="headerlink" href="#con-better-data-limits-when-making-a-reduced-map-plot" title="Permalink to this headline">¶</a></h2>
+<p>When passing reduced data for a map contour plot only the longitude range was checked.  This has been
+corrected so that the latitude range is also checked.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="sample-netcdf-file-to-be-include-in-the-distribution">
-<h2>59. Sample netCDF file to be include in the distribution<a class="headerlink" href="#sample-netcdf-file-to-be-include-in-the-distribution" title="Permalink to this headline">¶</a></h2>
-<p>A sample netCDF file is to be included in the distribution and usage notes updated.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">To</span> <span class="n">do</span>
+<div class="section" id="con-merge-all-colorbar-calls-into-one-routine">
+<h2>60. con - merge all colorbar calls into one routine<a class="headerlink" href="#con-merge-all-colorbar-calls-into-one-routine" title="Permalink to this headline">¶</a></h2>
+<p>An internal coding change to merge the five colourbar routines in con into one that is a separate
+routine.  This makes it eaier to maintain the code base.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="con-colorbar-changes">
+<h2>61. con - colorbar changes<a class="headerlink" href="#con-colorbar-changes" title="Permalink to this headline">¶</a></h2>
+<p>Added new functionality to the colorbar in con:</p>
+<div class="line-block">
+<div class="line">colorbar_text_up_down=False - on a horizontal colorbar alternate the</div>
+<div class="line-block">
+<div class="line">labels top and bottom starting in the up position</div>
+</div>
+<div class="line">colorbar_text_down_up=False - on a horizontal colorbar alternate the</div>
+<div class="line-block">
+<div class="line">labels bottom and top starting in the bottom position</div>
+</div>
+<div class="line">colorbar_drawedges=True - draw internal delimeter lines in the colorbar</div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="con-longitude-wrapping-bug-in-basemap">
+<h2>62. con - longitude wrapping bug in basemap<a class="headerlink" href="#con-longitude-wrapping-bug-in-basemap" title="Permalink to this headline">¶</a></h2>
+<p>As per change 57.  The tolerance limit was changed from 1E-5 to 1E-4 to cope with N215 Met Office
+data.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="introduced-a-cfplot-defaults-file">
+<h2>63. Introduced a ~/.cfplot_defaults file<a class="headerlink" href="#introduced-a-cfplot-defaults-file" title="Permalink to this headline">¶</a></h2>
+<p>A ~/.cfplot_defaults default overide file in the user home directory may contain three
+values initially. Please contact me if you would like any more defaults changed in this manner.</p>
+<div class="line-block">
+<div class="line">blockfill True</div>
+<div class="line">fill False</div>
+<div class="line">lines False</div>
+</div>
+<p>This changes the default cfplot con options from contour fill with contour lines
+on top to blockfill with no contour lines on top.  The blockfill, fill and line
+options to the con routine override any of these preset values.  The delimter beween the
+option and the value must be a space.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setvars-introduced-land-and-ocean-colours">
+<h2>64. setvars - introduced land and ocean colours<a class="headerlink" href="#setvars-introduced-land-and-ocean-colours" title="Permalink to this headline">¶</a></h2>
+<p>Introduced some extra plotting variables to the setvars routine to colour the land, ocean and lakes in a single
+colour.</p>
+<div class="line-block">
+<div class="line">land_color=None - land colour</div>
+<div class="line">ocean_color=None - ocean colour</div>
+<div class="line">lake_color=None - lake colour</div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="con-polar-stereographic-changing-axis-label-fontsize">
+<h2>65. con - polar stereographic changing axis label fontsize<a class="headerlink" href="#con-polar-stereographic-changing-axis-label-fontsize" title="Permalink to this headline">¶</a></h2>
+<p>It wasn’t possible to change the polar stereographic longitude label fontsize or fontweight.
+This is now done using the setvars routine and changing the axis_label_fontsize and
+axis_label_fontweight values.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lineplot-twinx-or-twiny-axes">
+<h2>66. lineplot - twinx or twiny axes<a class="headerlink" href="#lineplot-twinx-or-twiny-axes" title="Permalink to this headline">¶</a></h2>
+<p>It is now possible to do twinx or twiny plots in lineplot.  See example 30 in
+<a class="reference external" href="http://ajheaps.github.io/cf-plot/graphs.html">http://ajheaps.github.io/cf-plot/graphs.html</a></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="vect-polar-vectors-on-original-grid">
+<h2>67. vect - polar vectors on original grid<a class="headerlink" href="#vect-polar-vectors-on-original-grid" title="Permalink to this headline">¶</a></h2>
+<p>It is now possible to plot polar vectors on the original grid as in example 15 in
+<a class="reference external" href="http://ajheaps.github.io/cf-plot/vectors.html">http://ajheaps.github.io/cf-plot/vectors.html</a></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="con-linestyles-keyword-added">
+<h2>68. con - linestyles keyword added<a class="headerlink" href="#con-linestyles-keyword-added" title="Permalink to this headline">¶</a></h2>
+<p>The linestyles keyword was added to the con routine to allow user selection of linestyle.
+Value should be one of ‘solid’, ‘dashed’, ‘dashdot’ or ‘dotted’</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lineplot-axes-xaxis-yaxis-keywords-added">
+<h2>69. lineplot - axes, xaxis, yaxis keywords added<a class="headerlink" href="#lineplot-axes-xaxis-yaxis-keywords-added" title="Permalink to this headline">¶</a></h2>
+<p>The axes, xaxis, yaxis keywords were added to lineplot.  The defaults are:</p>
+<div class="line-block">
+<div class="line">axes=True - plot x and y axes</div>
+<div class="line">xaxis=True - plot xaxis</div>
+<div class="line">yaxis=True - plot y axis</div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lineplot-user-defined-time-axes">
+<h2>70. lineplot - user defined time axes<a class="headerlink" href="#lineplot-user-defined-time-axes" title="Permalink to this headline">¶</a></h2>
+<p>A bug in the specification of user time axes in lineplot caused the user time axis to be ignored.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="con-user-defined-time-vs-height-pressure-axes">
+<h2>71. con - user defined time vs height / pressure axes<a class="headerlink" href="#con-user-defined-time-vs-height-pressure-axes" title="Permalink to this headline">¶</a></h2>
+<p>A bug in the specification of user defined time axes in  time vs height / pressure plots caused the
+user time axis to be ignored.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lineplot-user-specification-of-xlabel-and-xunits-not-properly-implemented">
+<h2>72. lineplot - user specification of xlabel and xunits not properly implemented<a class="headerlink" href="#lineplot-user-specification-of-xlabel-and-xunits-not-properly-implemented" title="Permalink to this headline">¶</a></h2>
+<p>The user user specification of xlabel and xunits and ylabel and yunits was not properly implemented incorrect
+axis labels were produced.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setvars-rotated-pole-options-added">
+<h2>73. setvars - rotated pole options added<a class="headerlink" href="#setvars-rotated-pole-options-added" title="Permalink to this headline">¶</a></h2>
+<p>Some new keywords were added to setvars that affect the plotting of rotated pole grid labelling.</p>
+<div class="line-block">
+<div class="line">rotated_grid_spacing=10 - rotated grid spacing in degrees</div>
+<div class="line">rotated_deg_spacing=0.75 - rotated grid spacing between graticule dots</div>
+<div class="line">rotated_continents=True - draw rotated continents</div>
+<div class="line">rotated_grid=True - draw rotated grid</div>
+<div class="line">rotated_labels=True - draw rotated grid labels</div>
+</div>
+<p>To turn off plotting for  the rotated gid for instance use
+cfp.setvars(rotated_grid=False)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="training-material-added-to-cf-plot-page">
+<h2>74. Training material added to cf-plot page<a class="headerlink" href="#training-material-added-to-cf-plot-page" title="Permalink to this headline">¶</a></h2>
+<p>The NCAS data tools training material one day course was added to the cf-plot web pages under
+<a class="reference external" href="http://ajheaps.github.io/cf-plot/training">http://ajheaps.github.io/cf-plot/training</a></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rotated-pole-grid-not-drawn-in-numpy-1-13">
+<h2>75. Rotated pole grid not drawn in numpy 1.13<a class="headerlink" href="#rotated-pole-grid-not-drawn-in-numpy-1-13" title="Permalink to this headline">¶</a></h2>
+<p>The rotated pole grid was not drawn in numpy 1.13.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div>
@@ -584,6 +740,7 @@ To produce a log pressure plot xmin, xmax, ymin, ymax also need to be added.</p>
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
 <h5><a href="http://ajheaps.github.io/cf-plot/gallery.html">Gallery</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/user_guide.html">User Guide</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/training.html">Training material</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/data.html">Data input</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/routines.html">Routines</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/internal_routines.html">Routines - internal</a><p></h5>
@@ -603,7 +760,7 @@ To produce a log pressure plot xmin, xmax, ymin, ymax also need to be added.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.57 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

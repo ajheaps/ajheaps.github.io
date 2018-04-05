@@ -11,8 +11,8 @@ Example 13 - vector plot
 
    import cf, cfplot as cfp
    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')
-   u=f[7].subspace(pressure=500)
-   v=f[9].subspace(pressure=500)
+   u=f[1].subspace(pressure=500)
+   v=f[3].subspace(pressure=500)
    cfp.vect(u=u, v=v, key_length=10, scale=100, stride=5)
 
 
@@ -28,9 +28,9 @@ Example 14 - vector plot with colour contour map
 
    import cf, cfplot as cfp
    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')
-   u=f[7].subspace(pressure=500)
-   v=f[9].subspace(pressure=500)
-   t=f[2].subspace(pressure=500)
+   u=f[1].subspace(pressure=500)
+   v=f[3].subspace(pressure=500)
+   t=f[0].subspace(pressure=500)
 
    cfp.gopen()
    cfp.mapset(lonmin=10, lonmax=120, latmin=-30, latmax=30)
@@ -52,13 +52,16 @@ Example 15 - polar vector plot
 .. image::  images/fig15.png
    :scale: 44% 
 
+Here we see the difference between plotting the vectors on the data grid and on a interpolated grid.
+The supplied grid gives a bullseye effect making the wind direction difficult to see near the pole.
+
 
 ::
 
     import cf, cfplot as cfp
 
-    u=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
-    v=cf.read('/opt/graphics/cfplot_data/ggap.nc')[9]
+    u=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
+    v=cf.read('/opt/graphics/cfplot_data/ggap.nc')[3]
     u=u.subspace(Z=500)
     v=v.subspace(Z=500)
 

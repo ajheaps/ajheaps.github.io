@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>cf-plot issues &#8212; cf-plot 2.1.57 documentation</title>
+    <title>cf-plot issues &#8212; cf-plot 2.1.75 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.1.57',
+        VERSION:     '2.1.75',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -31,7 +31,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.57 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -48,12 +48,12 @@
 <div class="line">(ii) The data needed to make the plot</div>
 </div>
 <p>i.e. if you make a plot using:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="s1">&#39;longitude&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Then use cf-python to write out the data used to make the plot and then send the data (newfile.nc) and plotting line to me.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">g</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="s1">&#39;longitude&#39;</span><span class="p">)</span>
 <span class="n">cf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s1">&#39;newfile.nc&#39;</span><span class="p">)</span>
 </pre></div>
@@ -95,6 +95,7 @@
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
 <h5><a href="http://ajheaps.github.io/cf-plot/gallery.html">Gallery</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/user_guide.html">User Guide</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/training.html">Training material</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/data.html">Data input</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/routines.html">Routines</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/internal_routines.html">Routines - internal</a><p></h5>
@@ -114,7 +115,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.57 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

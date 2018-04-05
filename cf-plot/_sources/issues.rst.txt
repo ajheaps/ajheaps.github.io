@@ -10,14 +10,14 @@ i.e. if you make a plot using:
 
 ::
 
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
    cfp.con(f.collapse('mean','longitude'))
 
 Then use cf-python to write out the data used to make the plot and then send the data (newfile.nc) and plotting line to me.  
 
 ::
 
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
    g=f.collapse('mean','longitude')
    cf.write(g, 'newfile.nc')
 

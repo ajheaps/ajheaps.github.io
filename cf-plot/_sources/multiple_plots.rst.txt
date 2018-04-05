@@ -13,7 +13,7 @@ Plots are arranged over rows and columns with the first plot at the top left and
 ::
 
     import cf, cfplot as cfp
-    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
 
     cfp.gopen(rows=2, columns=2, bottom=0.2)
     cfp.gpos(1)
@@ -48,7 +48,7 @@ this type might not fill the plot area specified as expected.
 ::
 
     import cf, cfplot as cfp
-    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[7]
+    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
 
     cfp.gopen(user_position=True)
     cfp.gpos(xmin=0.1, xmax=0.5, ymin=0.5, ymax=0.9)

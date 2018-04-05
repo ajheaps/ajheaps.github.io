@@ -71,7 +71,9 @@ Using GitHub:
 
 You will need to download and install `cf-python <https://cfpython.bitbucket.io>`_ to use cf-plot.  Other cf-plot dependencies are: Numpy, Matplotlib, Netcdf4 and Basemap.
 
-Download the `sample netCDF datasets <http://www.met.reading.ac.uk/~swsheaps/cfplot_data>`_
+Download the `sample netCDF datasets <http://www.met.reading.ac.uk/~swsheaps/cfplot_data.tar>`_
+
+If you have system priviledges and can store the directory with the sample files in /opt/graphics the all the examples will work out of the box.  If not then store the files elsewhere and modify the file path appropriately.
  
 |
 |

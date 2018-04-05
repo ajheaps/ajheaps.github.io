@@ -70,12 +70,12 @@ In this example we make a blank map plot, change the longitude labels and add a 
 
 
 
-Changing colours in a colour scale
-----------------------------------
+Manually changing colours in a colour scale
+-------------------------------------------
 
 The simplest way to do this without writing any code is to modify the internal colour scale before plotting.  The colours most people work with are stored as red green blue intensities on a scale of 0 to 255, with 0 being no intesity and 255 full intensity.
 
-White will be represented as 255 255 255 and black as 0 0 0
+White will be represented as 255 255 255 and black as 0 0 0.
 
 The internal colour scale is stored in cfp.plotvars.cs as hexadecimal code.  To convert from decimal to hexadecimal use hex i.e.
 hex(255)[2:]
@@ -85,15 +85,115 @@ The [2:] is to get rid of the preceding 0x in the hex output.
 
 
 
-for example to make one of the colours in the viridis colour scale grey use:
+For example, to make one of the colours in the viridis colour scale grey use:
 
 ::
 
-    import cf, cfplot as cfp
+    import cf
+    import cfplot as cfp
     f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
     cfp.cscale('viridis', ncols=17)
     cfp.plotvars.cs[14]='#a6a6a6'
     cfp.con(f.subspace(time=15))
+
+
+
+
+.. image::  images/advanced2.png
+
+
+
+Colouring land and lakes
+------------------------
+
+This is done by changing the land_color and lake_color variables in cfp.setvars.
+
+::
+
+    import cf
+    import cfplot as cfp
+    f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+    cfp.setvars(land_color='red', lake_color='grey')
+    cfp.con(f.subspace(time=15))
+
+
+.. image::  images/advanced3.png
+
+
+
+
+Plotting missing data
+---------------------
+
+
+
+
+::
+
+    import cf
+    import cfplot as cfp
+    import numpy as np
+
+
+    f = cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+    g = f.subspace(time=15)
+
+
+    # Mask off data less that 290 K
+    h = g.where(g<290, cf.masked)
+
+
+    # Normal plot with masked data
+    cfp.con(h, blockfill=True, title='Plot with masked data')
+
+.. image::  images/advanced4.png
+
+
+    # Turn off the hardmask and set masked points to 999
+    h.hardmask=False
+    i = h.where(h.mask, 999)
+
+
+    # Open a plot with gopen as we will be plotting over a contour plot
+    cfp.gopen()
+    cfp.con(h, blockfill=True, title='Masked data plotted in grey')
+
+
+    # Call internal block filling routine 
+    cfp.bfill(f=np.squeeze(i.array), x=i.item('X').array, y=i.item('Y').array,
+              clevs=[990, 1000], lonlat=True, single_fill_color='#d3d3d3')
+
+            
+    cfp.gclose()
+
+
+
+.. image::  images/advanced5.png
+
+
+    import cf, cfplot as cfp, numpy as np
+    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
+    g=f.collapse('mean','longitude')
+
+
+
+
+    x=g.item('Y').array
+    y=g.item('Z').array
+    data=np.squeeze(g.array)
+
+
+    cfp.gopen(file='advanced6.png')
+    cfp.con(g, ylog=True)
+
+    # Call internal block filling routine 
+    cfp.bfill(f=data, x=x, y=y, clevs=[-50, 0], single_fill_color='b')
+
+    cfp.bfill(f=data, x=x, y=y, clevs=[20, 40], single_fill_color='orange')
+    cfp.gclose()
+
+
+.. image::  images/advanced6.png
 
 
 

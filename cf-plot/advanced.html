@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Advanced Use &#8212; cf-plot 2.1.57 documentation</title>
+    <title>Advanced Use &#8212; cf-plot 2.1.75 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.1.57',
+        VERSION:     '2.1.75',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -31,7 +31,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.57 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -98,22 +98,57 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="changing-colours-in-a-colour-scale">
-<h2>Changing colours in a colour scale<a class="headerlink" href="#changing-colours-in-a-colour-scale" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="manually-changing-colours-in-a-colour-scale">
+<h2>Manually changing colours in a colour scale<a class="headerlink" href="#manually-changing-colours-in-a-colour-scale" title="Permalink to this headline">¶</a></h2>
 <p>The simplest way to do this without writing any code is to modify the internal colour scale before plotting.  The colours most people work with are stored as red green blue intensities on a scale of 0 to 255, with 0 being no intesity and 255 full intensity.</p>
-<p>White will be represented as 255 255 255 and black as 0 0 0</p>
+<p>White will be represented as 255 255 255 and black as 0 0 0.</p>
 <p>The internal colour scale is stored in cfp.plotvars.cs as hexadecimal code.  To convert from decimal to hexadecimal use hex i.e.
 hex(255)[2:]
 ‘ff’</p>
 <p>The [2:] is to get rid of the preceding 0x in the hex output.</p>
-<p>for example to make one of the colours in the viridis colour scale grey use:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<p>For example, to make one of the colours in the viridis colour scale grey use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
+<span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/tas_A1.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">plotvars</span><span class="o">.</span><span class="n">cs</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;#a6a6a6&#39;</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">15</span><span class="p">))</span>
 </pre></div>
 </div>
+<img alt="_images/advanced2.png" src="_images/advanced2.png" />
+</div>
+<div class="section" id="colouring-land-and-lakes">
+<h2>Colouring land and lakes<a class="headerlink" href="#colouring-land-and-lakes" title="Permalink to this headline">¶</a></h2>
+<p>This is done by changing the land_color and lake_color variables in cfp.setvars.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
+<span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/tas_A1.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">setvars</span><span class="p">(</span><span class="n">land_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">lake_color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">15</span><span class="p">))</span>
+</pre></div>
+</div>
+<img alt="_images/advanced3.png" src="_images/advanced3.png" />
+</div>
+<div class="section" id="plotting-missing-data">
+<h2>Plotting missing data<a class="headerlink" href="#plotting-missing-data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
+<span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/tas_A1.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+
+<span class="c1"># Mask off data less that 290 K</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">g</span><span class="o">&lt;</span><span class="mi">290</span><span class="p">,</span> <span class="n">cf</span><span class="o">.</span><span class="n">masked</span><span class="p">)</span>
+
+
+<span class="c1"># Normal plot with masked data</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">blockfill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Plot with masked data&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="images/advanced6.png" src="images/advanced6.png" />
 </div>
 </div>
 
@@ -127,6 +162,7 @@ hex(255)[2:]
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
 <h5><a href="http://ajheaps.github.io/cf-plot/gallery.html">Gallery</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/user_guide.html">User Guide</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/training.html">Training material</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/data.html">Data input</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/routines.html">Routines</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/internal_routines.html">Routines - internal</a><p></h5>
@@ -146,7 +182,7 @@ hex(255)[2:]
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.57 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

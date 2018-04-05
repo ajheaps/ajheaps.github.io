@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>gset &#8212; cf-plot 2.1.57 documentation</title>
+    <title>gset &#8212; cf-plot 2.1.75 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.1.57',
+        VERSION:     '2.1.75',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -31,7 +31,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.57 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -44,7 +44,7 @@
 <h1>gset<a class="headerlink" href="#gset" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="cfplot.gset">
-<code class="descclassname">cfplot.</code><code class="descname">gset</code><span class="sig-paren">(</span><em>xmin=None</em>, <em>xmax=None</em>, <em>ymin=None</em>, <em>ymax=None</em>, <em>xlog=False</em>, <em>ylog=False</em>, <em>user_gset=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#gset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.gset" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">cfplot.</code><code class="descname">gset</code><span class="sig-paren">(</span><em>xmin=None</em>, <em>xmax=None</em>, <em>ymin=None</em>, <em>ymax=None</em>, <em>xlog=False</em>, <em>ylog=False</em>, <em>user_gset=1</em>, <em>twinx=None</em>, <em>twiny=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#gset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.gset" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Set plot limits for all non longitude-latitide plots.</div>
 <div class="line">xmin, xmax, ymin, ymax are all needed to set the plot limits.</div>
@@ -56,6 +56,8 @@
 <div class="line">ymax=None - y maximum</div>
 <div class="line">xlog=False - log x</div>
 <div class="line">ylog=False - log y</div>
+<div class="line">twinx=None - set to True to make a twin y axis plot</div>
+<div class="line">twiny=None - set to True to make a twin x axis plot</div>
 <div class="line"><br /></div>
 <div class="line">Once a user call is made to gset the plot limits are persistent.</div>
 <div class="line">i.e. the next plot will use the same set of plot limits.</div>
@@ -68,6 +70,8 @@
 <div class="line">ymax = 295)</div>
 <div class="line"><br /></div>
 </div>
+<div class="line">Note the correct date format is ‘YYYY-MM-DD’ or ‘YYYY-MM-DD HH:MM:SS’</div>
+<div class="line">anything else will give unexpected results.</div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -97,6 +101,7 @@
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
 <h5><a href="http://ajheaps.github.io/cf-plot/gallery.html">Gallery</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/user_guide.html">User Guide</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/training.html">Training material</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/data.html">Data input</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/routines.html">Routines</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/internal_routines.html">Routines - internal</a><p></h5>
@@ -116,7 +121,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.57 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

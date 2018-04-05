@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>cf-plot user guide &#8212; cf-plot 2.1.57 documentation</title>
+    <title>cf-plot user guide &#8212; cf-plot 2.1.75 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.1.57',
+        VERSION:     '2.1.75',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -31,7 +31,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.57 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -91,7 +91,7 @@ To run the following examples in the Met department at the University of Reading
 <h2>Polar stereographic plots<a class="headerlink" href="#polar-stereographic-plots" title="Permalink to this headline">¶</a></h2>
 <p>Polar Stereographic plots are set using <strong>proj=’npstere’</strong> or <strong>proj=’spstere’</strong> in the call to <strong>mapset</strong>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
-<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">proj</span><span class="o">=</span><span class="s1">&#39;npstere&#39;</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
 </pre></div>
@@ -99,7 +99,7 @@ To run the following examples in the Met department at the University of Reading
 <a class="reference internal image-reference" href="_images/fig4.png"><img alt="_images/fig4.png" src="_images/fig4.png" style="width: 459.16px; height: 388.44px;" /></a>
 <p>The <strong>mapset</strong> <strong>bounding_lat</strong> and <strong>lon_0</strong> parameters are used to set the latitude limit of the plot and the orientation of the plot. Generally for the southern hemisphere the Greenwich Meridian (zero degrees longitude) is plotted at the top of the plot and is set with <strong>lon_0=180</strong>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
-<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">proj</span><span class="o">=</span><span class="s1">&#39;spstere&#39;</span><span class="p">,</span> <span class="n">boundinglat</span><span class="o">=-</span><span class="mi">30</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
 </pre></div>
@@ -117,48 +117,41 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>f is now an list of 12 fields.</p>
+<p>f is now an list of 4 fields.</p>
 <div class="line-block">
-<div class="line">[&lt;CF Field: long_name:Potential vorticity(time(1), pressure(23), latitude(160), longitude(320)) K m**2 kg**-1 s**-1&gt;,</div>
-<div class="line">&lt;CF Field: long_name:Ozone mass mixing ratio(time(1), pressure(23), latitude(160), longitude(320)) kg kg**-1&gt;,**</div>
-<div class="line">&lt;CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(320)) K&gt;,**</div>
-<div class="line">&lt;CF Field: atmosphere_relative_vorticity(time(1), pressure(23), latitude(160), longitude(320)) s**-1&gt;,**</div>
-<div class="line">&lt;CF Field: atmosphere_relative_vorticity(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-1&gt;,**</div>
-<div class="line">&lt;CF Field: divergence_of_wind(time(1), pressure(23), latitude(160), longitude(320)) s**-1&gt;,**</div>
-<div class="line">&lt;CF Field: divergence_of_wind(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-1&gt;,**</div>
-<div class="line">&lt;CF Field: eastward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1&gt;,**</div>
-<div class="line">&lt;CF Field: geopotential(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-2&gt;,**</div>
-<div class="line">&lt;CF Field: northward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1&gt;,**</div>
-<div class="line">&lt;CF Field: relative_humidity(time(1), pressure(23), latitude(160), longitude(320)) %&gt;,**</div>
-<div class="line">&lt;CF Field: specific_humidity(time(1), pressure(23), latitude(160), longitude(320)) kg kg**-1&gt;,**</div>
-<div class="line">&lt;CF Field: vertical_air_velocity_expressed_as_tendency_of_pressure(time(1), pressure(23), latitude(160), longitude(320)) Pa s**-1&gt;]</div>
+<div class="line">[&lt;CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(320)) K&gt;,</div>
+<div class="line-block">
+<div class="line">&lt;CF Field: eastward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1&gt;,</div>
+<div class="line">&lt;CF Field: geopotential(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-2&gt;,</div>
+<div class="line">&lt;CF Field: northward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1&gt;]</div>
 </div>
-<p>To see what levels are available in the data use <strong>f[2].item(‘pressure’).array</strong></p>
+</div>
+<p>To see what levels are available in the data use <strong>f[0].item(‘pressure’).array</strong></p>
 <div class="line-block">
 <div class="line">array([ 1000.,   925.,   850.,   775.,   700.,   600.,   500.,   400.,</div>
 <div class="line">300.,   250.,   200.,   150.,   100.,    70.,    50.,    30.,</div>
 <div class="line">20.,    10.,     7.,     5.,     3.,     2.,     1.], dtype=float32)</div>
 </div>
 <p>In the case below we select the 500mb temperature with the cf subspace method.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line">&lt;CF Field: air_temperature(time(1), pressure(1), latitude(160), longitude(320)) K&gt;</div>
 </div>
 <p>and contour the data</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/guide1.png"><img alt="_images/guide1.png" src="_images/guide1.png" style="width: 514.28px; height: 313.04px;" /></a>
 <p>To mean the field use the cf collapse function:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="s1">&#39;longitude&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="s1">&#39;longitude&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line">&lt;CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(1)) K&gt;</div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="s1">&#39;longitude&#39;</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="s1">&#39;longitude&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/guide2.png"><img alt="_images/guide2.png" src="_images/guide2.png" style="width: 530.92px; height: 341.64px;" /></a>
@@ -167,43 +160,42 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 <h2>Using cf-plot with non-cf compliant data<a class="headerlink" href="#using-cf-plot-with-non-cf-compliant-data" title="Permalink to this headline">¶</a></h2>
 <p>Although newer model and reanalyis products are generally cf compliant there is a considerable amount of data being used that is of varying degrees of cf compliance.</p>
 <p>In this locally processed ERA40 reanalysis field there is a distinct lack of standard names. Even the long names are somewhat terse - p for pressure for example.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap199006200600.nc&#39;</span><span class="p">)[</span><span class="mi">9</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">f</span>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">&lt;CF Field: geopotential(long_name:t(1), long_name:p(37), long_name:latitude(256), long_name:longitude(512)) kg kg**-1&gt;</div>
+<div class="line">&lt;CF Field: geopotential(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-2&gt;</div>
 </div>
 <p>We can still slice and plot the data by inspecting the dimensions of the field:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">{‘dim2’: &lt;CF DimensionCoordinate: long_name:latitude(256) degrees_north&gt;,</div>
-<div class="line">‘dim3’: &lt;CF DimensionCoordinate: long_name:longitude(512) degrees_east&gt;,</div>
-<div class="line">‘dim0’: &lt;CF DimensionCoordinate: long_name:t(1) days since 1990-06-20 06:00:00&gt;,</div>
-<div class="line">‘dim1’: &lt;CF DimensionCoordinate: long_name:p(37) mbar&gt;}</div>
+<div class="line">{‘dim2’: &lt;CF DimensionCoordinate: latitude(160) degrees_north&gt;,</div>
+<div class="line">‘dim3’: &lt;CF DimensionCoordinate: longitude(320) degrees_east&gt;,</div>
+<div class="line">‘dim0’: &lt;CF DimensionCoordinate: time(1) days since 1964-01-21 00:00:00&gt;,</div>
+<div class="line">‘dim1’: &lt;CF DimensionCoordinate: pressure(23) mbar&gt;}</div>
 </div>
 <p>We see that dim1 is the pressure coordinate and can select the 700mb level and contour that.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;dim1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">array([ 1000.,   975.,   950.,   925.,   900.,   875.,   850.,   825.,</div>
-<div class="line">800.,   775.,   750.,   700.,   650.,   600.,   550.,   500.,</div>
-<div class="line">450.,   400.,   350.,   300.,   250.,   225.,   200.,   175.,</div>
-<div class="line">150.,   125.,   100.,    70.,    50.,    30.,    20.,    10.,</div>
-<div class="line">7.,     5.,     3.,     2.,     1.], dtype=float32)</div>
+<div class="line">array([ 1000.,   925.,   850.,   775.,   700.,   600.,   500.,   400.,</div>
+<div class="line">300.,   250.,   200.,   150.,   100.,    70.,    50.,    30.,</div>
+<div class="line">20.,    10.,     7.,     5.,     3.,     2.,     1.], dtype=float32)</div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">dim1</span><span class="o">=</span><span class="mi">700</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">&lt;CF Field: geopotential(long_name:t(1), long_name:p(1), long_name:latitude(256), long_name:longitude(512)) kg kg**-1&gt;</div>
+<div class="line">&lt;CF Field: geopotential(time(1), pressure(1), latitude(160), longitude(320)) m**2 s**-2&gt;</div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">dim1</span><span class="o">=</span><span class="mi">700</span><span class="p">))</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/guide3.png"><img alt="_images/guide3.png" src="_images/guide3.png" style="width: 608.4px; height: 431.6px;" /></a>
+<a class="reference internal image-reference" href="_images/guide3.png"><img alt="_images/guide3.png" src="_images/guide3.png" style="width: 514.28px; height: 314.08px;" /></a>
 <p>In the following dataset there are neither standard nor long names to identify the data.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/gdata.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
@@ -269,6 +261,8 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 <div class="line"><strong>ptype=3</strong>  - longitude – height plot</div>
 <div class="line"><strong>ptype=4</strong> - longitude - time plot</div>
 <div class="line"><strong>ptype=5</strong> - latitude - time plot</div>
+<div class="line"><strong>ptype=6</strong> - rotated pole plot</div>
+<div class="line"><strong>ptype=7</strong> - time - height plot</div>
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -277,21 +271,21 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 <h3>Latitude - Pressure Plots<a class="headerlink" href="#latitude-pressure-plots" title="Permalink to this headline">¶</a></h3>
 <p>The latitude-pressure plot below is made by using the cf subspace method to select the temperature at longitude=0 degrees.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
-<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">longitude</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/guide7.png"><img alt="_images/guide7.png" src="_images/guide7.png" style="width: 530.92px; height: 341.64px;" /></a>
 <p>A mean of the data along the longitude (zonal mean) is made using the cf.collapse method.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
-<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="s1">&#39;longitude&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/fig7.png"><img alt="_images/fig7.png" src="_images/fig7.png" style="width: 532.48px; height: 342.16px;" /></a>
 <p>To make a log pressure on the y axis use the ylog=True flag to the con routine.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
-<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="s1">&#39;longitude&#39;</span><span class="p">),</span> <span class="n">ylog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -322,8 +316,8 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 <p>Vector plots are made using the <strong>vect</strong> routine.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)</span>
-<span class="n">u</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
-<span class="n">v</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">u</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">v</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">vect</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="n">v</span><span class="p">,</span> <span class="n">key_length</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -335,9 +329,9 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 <p>In this example vectors are overlaid on a contour plot.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)</span>
-<span class="n">u</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
-<span class="n">v</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
-<span class="n">t</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">u</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">v</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">t</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">()</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">lonmin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">lonmax</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="n">latmin</span><span class="o">=-</span><span class="mi">30</span><span class="p">,</span> <span class="n">latmax</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">levs</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">254</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -370,17 +364,17 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 <h3>Multiple Plots on a Page<a class="headerlink" href="#multiple-plots-on-a-page" title="Permalink to this headline">¶</a></h3>
 <p>To make multiple plots on the page open a graphic file with the gopen command and pass the rows and columns parameters. Make each plot in turn first selecting the position with the gpos command.  The first position is the top left plot and increases by one for one plot to the right until the final plot is made in the bottom right. When all the plots have been made close the plot with the <strong>gclose()</strong> command.  A combined colrbar is also made helping to reduce the plot complexity.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
-<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)</span>
+<span class="n">u</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">proj</span><span class="o">=</span><span class="s1">&#39;spstere&#39;</span><span class="p">,</span> <span class="n">boundinglat</span><span class="o">=-</span><span class="mi">30</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -427,7 +421,7 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 <h3>Graph plots<a class="headerlink" href="#graph-plots" title="Permalink to this headline">¶</a></h3>
 <p>To make a graph plot use the cf-plot lineplot function as below on a single line of data in a field.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
-<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">g</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;X: mean&#39;</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>\
              <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Zonal mean zonal wind at 100mb&#39;</span><span class="p">)</span>
@@ -460,7 +454,7 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 </div>
 <p>To make a multiple line plot use the gopen, gclose commands to enclose the plotting commands as in the example below.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
-<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">g</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;X: mean&#39;</span><span class="p">)</span>
 <span class="n">xticks</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="o">-</span><span class="mi">75</span><span class="p">,</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span><span class="o">-</span><span class="mi">45</span><span class="p">,</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">90</span><span class="p">]</span>
 <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;90S&#39;</span><span class="p">,</span><span class="s1">&#39;75S&#39;</span><span class="p">,</span><span class="s1">&#39;60S&#39;</span><span class="p">,</span><span class="s1">&#39;45S&#39;</span><span class="p">,</span><span class="s1">&#39;30S&#39;</span><span class="p">,</span><span class="s1">&#39;15S&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;15N&#39;</span><span class="p">,</span><span class="s1">&#39;30N&#39;</span><span class="p">,</span><span class="s1">&#39;45N&#39;</span><span class="p">,</span><span class="s1">&#39;60N&#39;</span><span class="p">,</span><span class="s1">&#39;75N&#39;</span><span class="p">,</span><span class="s1">&#39;90N&#39;</span><span class="p">]</span>
@@ -1403,13 +1397,18 @@ using cf-python to extract values for yourself.</p>
 <div class="line"><strong>np.min(cf.Data(cf.dt(‘1980-01-01 00:00:00’), units=f.item(‘T’).Units).array)</strong></div>
 <div class="line">43200.0</div>
 </div>
+<p>With this technique arrays of custom tick label and positions can be constructed and passed to
+the cfp.lineplot or to the cfp.con routines.</p>
+<p>Note the correct date format is ‘YYYY-MM-DD’ or ‘YYYY-MM-DD HH:MM:SS’ - anything else will give unexpected results.</p>
 </div>
 <div class="section" id="selecting-data-that-has-a-lot-of-decimal-places-in-the-axis-values">
 <h3>Selecting data that has a lot of decimal places in the axis values<a class="headerlink" href="#selecting-data-that-has-a-lot-of-decimal-places-in-the-axis-values" title="Permalink to this headline">¶</a></h3>
 <p>Axes with a lot of decimal places can cause issues with numeric representation and rounding,
-In one case
-&gt;&gt;&gt; cfp.lineplot(f.subspace(latitude=50.17530806))
-caused an error as the latitude with 50.17530806 wasn’t found.</p>
+In one case</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cfp</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="mf">50.17530806</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>caused an error as the latitude with 50.17530806 wasn’t found.</p>
 <p>In cf-python the tolerance for equivalence is</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cf</span><span class="o">.</span><span class="n">RTOL</span><span class="p">()</span>
 <span class="go">2.220446049250313e-16</span>
@@ -1509,7 +1508,7 @@ cfp.gclose()
 </div>
 <div class="section" id="making-non-blocking-plots">
 <h3>Making non-blocking plots<a class="headerlink" href="#making-non-blocking-plots" title="Permalink to this headline">¶</a></h3>
-<p>Using the Python prompt cf-plot will try to use the ImageMagick display command to show the plots.  This is done with subprocess and plots will remain on the screen even if the user exits the Python session.  If the display command isn’t installed then cf-plot will use the Matplotlib picture viewer which will block the command prompt until it is quit.  Use <strong>cfp.setvars(viewer=’matplotlib’)</strong> to set this to be the defaul for a session even if teh display command is available.</p>
+<p>Using the Python prompt cf-plot will try to use the ImageMagick display command to show the plots.  This is done with subprocess and plots will remain on the screen even if the user exits the Python session.  If the display command isn’t installed then cf-plot will use the Matplotlib picture viewer which will block the command prompt until it is quit.  Use <strong>cfp.setvars(viewer=’matplotlib’)</strong> to set this to be the defaul for a session even if the display command is available.</p>
 </div>
 <div class="section" id="using-cf-plot-in-batch-mode">
 <h3>Using cf-plot in batch mode<a class="headerlink" href="#using-cf-plot-in-batch-mode" title="Permalink to this headline">¶</a></h3>
@@ -1530,6 +1529,41 @@ In the file /home/swsheaps/ajh.sh:</p>
 <p>run the batch job today at 16:33:</p>
 <p><strong>at -f /home/swsheaps/ajh.sh 16:33</strong></p>
 </div>
+<div class="section" id="changing-defaults-via-the-cfplot-defaults-file">
+<h3>Changing defaults via the ~/.cfplot_defaults file<a class="headerlink" href="#changing-defaults-via-the-cfplot-defaults-file" title="Permalink to this headline">¶</a></h3>
+<p>A ~/.cfplot_defaults default overide file in the user home directory may contain three
+values affecting contour plots initially. Please contact me if you would like any more defaults changed in this manner.</p>
+<div class="line-block">
+<div class="line">blockfill True</div>
+<div class="line">fill False</div>
+<div class="line">lines False</div>
+</div>
+<p>This changes the default cfplot con options from contour fill with contour lines
+on top to blockfill with no contour lines on top.  The blockfill, fill and line
+options to the con routine override any of these preset values.  The delimter beween the
+option and the value must be a space.</p>
+</div>
+<div class="section" id="plotting-data-with-different-time-units">
+<h3>Plotting data with different time units<a class="headerlink" href="#plotting-data-with-different-time-units" title="Permalink to this headline">¶</a></h3>
+<p>When plotting data with different time units users need to move their data to using a common set of units as below.</p>
+<div class="line-block">
+<div class="line">data1.item(‘T’).Units</div>
+<div class="line">&lt;CF Units: hours since 1900-01-01 00:00:00 standard&gt;</div>
+</div>
+<div class="line-block">
+<div class="line">data2.item(‘T’).Units</div>
+<div class="line">&lt;CF Units: days since 2008-09-01 00:00:00 standard&gt;</div>
+</div>
+<div class="line-block">
+<div class="line">data1.item(‘T’).Units=data2.item(‘T’).Units</div>
+</div>
+<div class="line-block">
+<div class="line">data1.item(‘T’).Units</div>
+<div class="line">&lt;CF Units: days since 2008-09-01 00:00:00 standard&gt;</div>
+</div>
+<p>This is because when making a contour or line plot the axes are defined in terms of a linear scale of numbers.  Having two
+different linear scales breaks the connection between the data.</p>
+</div>
 </div>
 </div>
 
@@ -1543,6 +1577,7 @@ In the file /home/swsheaps/ajh.sh:</p>
 <h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
 <h5><a href="http://ajheaps.github.io/cf-plot/gallery.html">Gallery</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/user_guide.html">User Guide</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/training.html">Training material</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/data.html">Data input</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/routines.html">Routines</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/internal_routines.html">Routines - internal</a><p></h5>
@@ -1562,7 +1597,7 @@ In the file /home/swsheaps/ajh.sh:</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.57 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
