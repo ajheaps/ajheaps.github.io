@@ -9,7 +9,7 @@ Jupyter Notebooks and data for training class
 
 The tarred jupyter notebooks and data is 580MB: `jupyter.tar <http://www.met.reading.ac.uk/~swsheaps/ncas_data_tools/jupyter.tar>`_
 
-Once downloaded in a terminal window type:
+Once downloaded in a terminal window type
 
 |    tar xf jupyter.tar
 |    cd jupyter
@@ -17,7 +17,7 @@ Once downloaded in a terminal window type:
 
 You will have needed to have installed cf-python and cf-plot if they are not already installed.  See the `installation notes <http://ajheaps.github.io/cf-plot/download.html>`_  if you need to do this.
 
-Jasmin@CEDA don't allow Jupyter notebooks at present as they are viewed as a possible security problem potentially allowing write access into user directories.
+Jasmin don't allow Jupyter notebooks at present as they are viewed as a possible security problem potentially allowing write access into user directories.
 
 In the course we run through the exercises and student material in the following order:
 
