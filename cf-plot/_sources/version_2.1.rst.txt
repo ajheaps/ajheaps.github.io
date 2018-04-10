@@ -46,7 +46,7 @@ to revert to the previous behaviour.
 
 
 .. image::  images/scale1_original.png
-   :scale: 52% 
+   :scale: 52%
 
 
 
@@ -157,6 +157,7 @@ A correction was made to the colorbar logic so that it works properly when fill=
 ===================================
 
 A new colour scale was added - brown to blue - BrBG.
+
 
 
 .. image::  images/colourscales/BrBG.png
@@ -346,7 +347,7 @@ The minimum and maximum years were not calculated due to some faulty logic.
 
 
 27. mapset - documentation improved
-==================================
+===================================
 
 The documentation for mapset in the routine in the user guide was improved to make it flow better
 and include recent map additions.

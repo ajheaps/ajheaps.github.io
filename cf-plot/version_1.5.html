@@ -4,27 +4,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>version 1.5 changes &#8212; cf-plot 2.1.75 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '2.1.75',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
-  </head>
-  <body>
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -51,7 +42,7 @@ will give the correct contour lines and labels but incorrect colorbar labels.  T
 be 0, 2, 10001, 20001, 30001, 40001, 50001, 60001 and a +1 will appear next to the color bar label.</p>
 <p>It looks like this is an intentional behaviour of the code for colorbar and is correct but not what is required. The cf-plot code was changed to substitute the correct colorbar labels for the ones that colorbar thinks it should use.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -60,7 +51,7 @@ be 0, 2, 10001, 20001, 30001, 40001, 50001, 60001 and a +1 will appear next to t
 <h2>2. Incorrect plot limits for multiple plots<a class="headerlink" href="#incorrect-plot-limits-for-multiple-plots" title="Permalink to this headline">¶</a></h2>
 <p>A longitude-latitude plot followed by a latitude-pressure plot on the same page gives incorrect plot limits for the second plot.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -69,7 +60,7 @@ be 0, 2, 10001, 20001, 30001, 40001, 50001, 60001 and a +1 will appear next to t
 <h2>3. Bug in longitude wrapping<a class="headerlink" href="#bug-in-longitude-wrapping" title="Permalink to this headline">¶</a></h2>
 <p>Non global data in longitude-latitude causes a crash in the longitude wrapping section</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -78,7 +69,7 @@ be 0, 2, 10001, 20001, 30001, 40001, 50001, 60001 and a +1 will appear next to t
 <h2>4. Non-global longitude/latitude data is plotted on a global grid<a class="headerlink" href="#non-global-longitude-latitude-data-is-plotted-on-a-global-grid" title="Permalink to this headline">¶</a></h2>
 <p>The default cylindirical projection limits of -180 to 180 in longitude and -90 to 90 in latitude are used for all map plots.  This needs changing to be the limits of the data in these cases.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -87,7 +78,7 @@ be 0, 2, 10001, 20001, 30001, 40001, 50001, 60001 and a +1 will appear next to t
 <h2>5. Automatic colour scales bug<a class="headerlink" href="#automatic-colour-scales-bug" title="Permalink to this headline">¶</a></h2>
 <p>Automatic colour scales are broken.  Remove call to cscale() in gpos.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -98,7 +89,7 @@ be 0, 2, 10001, 20001, 30001, 40001, 50001, 60001 and a +1 will appear next to t
 columns.  If the user hasn’t supplied a value for colorbar_label_skip to the con routine then the calculated value is
 used.  The labels used will start at the lowest for a continuous data set and from zero for a diverging one.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -107,7 +98,7 @@ used.  The labels used will start at the lowest for a continuous data set and fr
 <h2>7. Latitude vs log pressure plot axes cause an abort<a class="headerlink" href="#latitude-vs-log-pressure-plot-axes-cause-an-abort" title="Permalink to this headline">¶</a></h2>
 <p>Latitude vs log pressure plot axes cause an abort due to zero being used for the top of the atmosphere.  Line of code inadvertently deleted but this is now back in place.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -116,7 +107,7 @@ used.  The labels used will start at the lowest for a continuous data set and fr
 <h2>8. A CF field list with one field is rejected by cf-plot before plotting<a class="headerlink" href="#a-cf-field-list-with-one-field-is-rejected-by-cf-plot-before-plotting" title="Permalink to this headline">¶</a></h2>
 <p>Code changed to check and pass the field for plotting.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -126,7 +117,7 @@ used.  The labels used will start at the lowest for a continuous data set and fr
 <p>Longitude-height plots were missing from cf_data_assign and from the contouring routine.
 These have now been added.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -135,7 +126,7 @@ These have now been added.</p>
 <h2>10. Documentation change<a class="headerlink" href="#documentation-change" title="Permalink to this headline">¶</a></h2>
 <p>The web and user guide documentation has chaged so that the examples reference data in /opt/graphics/cfplot_data.  This is so the gallery examples work as written and to prevent multiple copies of the example data being on local disks.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -144,7 +135,7 @@ These have now been added.</p>
 <h2>11. Reset command<a class="headerlink" href="#reset-command" title="Permalink to this headline">¶</a></h2>
 <p>A reset command was added to the code to reset all the graphics options in one step.  Use cfp.reset().</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Added</span> <span class="n">to</span> <span class="n">code</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Added</span> <span class="n">to</span> <span class="n">code</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -154,7 +145,7 @@ These have now been added.</p>
 <p>A lot of internal work was done on the axes command to make it write the passed data into the plotvars array.
 The data from here then superceeds any automatically generated axis labels.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Added</span> <span class="n">to</span> <span class="n">code</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Added</span> <span class="n">to</span> <span class="n">code</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -178,7 +169,7 @@ Options are:</p>
 <div class="line">continent_color=None - default=’k’ (black)</div>
 </div>
 </div></blockquote>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Added</span> <span class="n">to</span> <span class="n">code</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Added</span> <span class="n">to</span> <span class="n">code</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -188,7 +179,7 @@ Options are:</p>
 <p>A reduced longitude grid isn’t plotted correctly due to a bug in
 the calculation of the lonrange variable.</p>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -230,7 +221,7 @@ the calculation of the lonrange variable.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.2.
     </div>
   </body>
 </html>

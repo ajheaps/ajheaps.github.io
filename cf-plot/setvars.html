@@ -4,27 +4,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>setvars &#8212; cf-plot 2.1.75 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '2.1.75',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
-  </head>
-  <body>
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -44,7 +35,7 @@
 <h1>setvars<a class="headerlink" href="#setvars" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="cfplot.setvars">
-<code class="descclassname">cfplot.</code><code class="descname">setvars</code><span class="sig-paren">(</span><em>file=None</em>, <em>title_fontsize=None</em>, <em>text_fontsize=None</em>, <em>axis_label_fontsize=None</em>, <em>title_fontweight=None</em>, <em>text_fontweight=None</em>, <em>axis_label_fontweight=None</em>, <em>fontweight=None</em>, <em>continent_thickness=None</em>, <em>continent_color=None</em>, <em>viewer=None</em>, <em>tspace_year=None</em>, <em>tspace_month=None</em>, <em>tspace_day=None</em>, <em>tspace_hour=None</em>, <em>xtick_label_rotation=None</em>, <em>xtick_label_align=None</em>, <em>ytick_label_rotation=None</em>, <em>ytick_label_align=None</em>, <em>legend_text_weight=None</em>, <em>legend_text_size=None</em>, <em>cs_uniform=None</em>, <em>master_title=None</em>, <em>master_title_location=None</em>, <em>master_title_fontsize=None</em>, <em>master_title_fontweight=None</em>, <em>dpi=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot/cfplot.html#setvars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.setvars" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">cfplot.</code><code class="descname">setvars</code><span class="sig-paren">(</span><em>file=None</em>, <em>title_fontsize=None</em>, <em>text_fontsize=None</em>, <em>axis_label_fontsize=None</em>, <em>title_fontweight=None</em>, <em>text_fontweight=None</em>, <em>axis_label_fontweight=None</em>, <em>fontweight=None</em>, <em>continent_thickness=None</em>, <em>continent_color=None</em>, <em>viewer=None</em>, <em>tspace_year=None</em>, <em>tspace_month=None</em>, <em>tspace_day=None</em>, <em>tspace_hour=None</em>, <em>xtick_label_rotation=None</em>, <em>xtick_label_align=None</em>, <em>ytick_label_rotation=None</em>, <em>ytick_label_align=None</em>, <em>legend_text_weight=None</em>, <em>legend_text_size=None</em>, <em>cs_uniform=None</em>, <em>master_title=None</em>, <em>master_title_location=None</em>, <em>master_title_fontsize=None</em>, <em>master_title_fontweight=None</em>, <em>dpi=None</em>, <em>land_color=None</em>, <em>ocean_color=None</em>, <em>lake_color=None</em>, <em>rotated_grid_spacing=None</em>, <em>rotated_deg_spacing=None</em>, <em>rotated_continents=None</em>, <em>rotated_grid=None</em>, <em>rotated_labels=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#setvars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.setvars" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">setvars - set plotting variables</div>
 <div class="line"><br /></div>
@@ -55,9 +46,9 @@
 <div class="line">title_fontweight=’normal’ - title fontweight</div>
 <div class="line">text_fontweight=’normal’ - text font weight</div>
 <div class="line">axis_label_fontweight=’normal’ - axis font weight</div>
-<div class="line">continent_thickness=None - default=1.5</div>
-<div class="line">continent_color=None - default=’k’ (black)</div>
-<div class="line">viewer=None - use ImageMagick display program to display</div>
+<div class="line">continent_thickness=1.5 - default=1.5</div>
+<div class="line">continent_color=’k’ - default=’k’ (black)</div>
+<div class="line">viewer=’display’ - use ImageMagick display program to display</div>
 <div class="line-block">
 <div class="line">the pictures.  Set to ‘matplotlib’ to use the</div>
 <div class="line">built in matplotlib viewer.  display is non-blocking</div>
@@ -73,15 +64,24 @@
 <div class="line">xtick_label_align=’center’ - alignment of xtick labels</div>
 <div class="line">ytick_label_rotation=0 - rotation of ytick labels</div>
 <div class="line">ytick_label_align=’right’ - alignment of ytick labels</div>
-<div class="line">legend_text_size=None - legend text size</div>
-<div class="line">legend_text_weight=None - legend text weight</div>
-<div class="line">cs_uniform=None - make a uniform differential colour scale</div>
+<div class="line">legend_text_size=‘11’ - legend text size</div>
+<div class="line">legend_text_weight=’normal’ - legend text weight</div>
+<div class="line">cs_uniform=True - make a uniform differential colour scale</div>
 <div class="line">master_title=None - master title text</div>
-<div class="line">master_title_location=None - master title location</div>
-<div class="line">master_title_fontsize=None - master title font size</div>
-<div class="line">master_title_fontweight=None - master title font weight</div>
+<div class="line">master_title_location=[0.5,0.95] - master title location</div>
+<div class="line">master_title_fontsize=30 - master title font size</div>
+<div class="line">master_title_fontweight=’normal’ - master title font weight</div>
 <div class="line">dpi=None - dots per inch setting</div>
-<div class="line"><br /></div>
+<div class="line">land_color=None - land colour</div>
+<div class="line">ocean_color=None - ocean colour</div>
+<div class="line">lake_color=None - lake colour</div>
+<div class="line">rotated_grid_spacing=10 - rotated grid spacing in degrees</div>
+<div class="line">rotated_deg_spacing=0.75 - rotated grid spacing between graticule dots</div>
+<div class="line">rotated_continents=True - draw rotated continents</div>
+<div class="line">rotated_grid=True - draw rotated grid</div>
+<div class="line">rotated_labels=True - draw rotated grid labels</div>
+</div>
+<div class="line-block">
 <div class="line">Use setvars() to reset to the defaults</div>
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -139,7 +139,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.2.
     </div>
   </body>
 </html>

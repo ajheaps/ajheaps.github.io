@@ -1221,7 +1221,7 @@ option and the value must be a space.
 
 
 Plotting data with different time units
-======================================
+=======================================
 
 When plotting data with different time units users need to move their data to using a common set of units as below.
 
