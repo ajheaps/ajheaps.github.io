@@ -967,6 +967,29 @@ The rotated pole grid was not drawn in numpy 1.13.
 
 
 
+76. con - cylindrical projection xlabel and ylabel doesn't use user defined fontsize
+====================================================================================
+
+The cylindrical projection contour xlabel and ylabel doesn't use user defined fontsize defined 
+with cfp.setvars(axis_label_fontsize=22) for example.
+
+::
+
+    Fixed
+
+
+77. vect - vector plots now respect reduced map grids
+=====================================================
+
+
+When plotting vectors onto a map previous versions used a whole globe cylindrical projection.  This has now
+changed and will plot the map to match the input vectr area unless any map settings have been changed by the user.
+
+
+::
+
+    Fixed
+
 
 
 

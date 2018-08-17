@@ -35,7 +35,7 @@
 <h1>mapset<a class="headerlink" href="#mapset" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="cfplot.mapset">
-<code class="descclassname">cfplot.</code><code class="descname">mapset</code><span class="sig-paren">(</span><em>lonmin=None</em>, <em>lonmax=None</em>, <em>latmin=None</em>, <em>latmax=None</em>, <em>proj='cyl'</em>, <em>boundinglat=0</em>, <em>lon_0=0</em>, <em>lat_0=40</em>, <em>resolution='c'</em>, <em>user_mapset=1</em>, <em>width=12000000</em>, <em>height=9000000</em>, <em>lat_1=45.0</em>, <em>lat_2=55</em>, <em>plimits=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#mapset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.mapset" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">cfplot.</code><code class="descname">mapset</code><span class="sig-paren">(</span><em>lonmin=None</em>, <em>lonmax=None</em>, <em>latmin=None</em>, <em>latmax=None</em>, <em>proj='cyl'</em>, <em>boundinglat=0</em>, <em>lon_0=0</em>, <em>lat_0=40</em>, <em>resolution='110m'</em>, <em>user_mapset=1</em>, <em>width=12000000</em>, <em>height=9000000</em>, <em>lat_1=45.0</em>, <em>lat_2=55</em>, <em>plimits=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#mapset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.mapset" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">mapset sets the mapping parameters.</div>
 <div class="line"><br /></div>
@@ -57,10 +57,8 @@
 <div class="line">stereographic and orthogrphic plots</div>
 </div>
 <div class="line">lat_0=40 - latitude centre of desired map domain in orthogrphic plots</div>
-<div class="line">resolution=resolution - the map resolution - can be one of ‘c’ (crude),</div>
-<div class="line-block">
-<div class="line">‘l’ (low), ‘i’ (intermediate), ‘h’ (high), ‘f’ (full) or ‘None’</div>
-</div>
+<div class="line">resolution=‘110m’ - the map resolution - can be one of ‘110m’,</div>
+<div class="line">‘50m’ or ‘10m’.  ‘50m’ means 1:50,000,000 and not 50 metre.</div>
 <div class="line">user_mapset=user_mapset - variable to indicate whether a user call</div>
 <div class="line-block">
 <div class="line">to mapset has been made.</div>

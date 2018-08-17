@@ -1,0 +1,58 @@
+version 2.2 changes
+*******************
+
+Change from BaseMap to Cartopy mapping.
+
+0. Base code change from BaseMap to Cartopy mapping
+===================================================
+
+Support for Basemap will be finish at the same time as Python 2.7 at the end of 2020.   Cartopy is now quite mature and the change of use from Basemap to Cartopy should present only a few changes to cf-plot users while offering some useful enhancements.
+
+
+::
+
+    In progress
+
+
+
+1.  mapset - change of resolution parameters
+============================================
+
+resolution=resolution - the map resolution - can be one of '110m',
+'50m' or '10m'.  '50m' means 1:50,000,000 and not 50 metre.
+
+
+::
+
+    Done
+
+
+
+2. setvars - continent linestyle
+================================
+
+The setvars routine can now be used to set the conent linestyle
+
+cfp.setvars(continent_linestyle='dashed') for instance
+
+::
+
+    Done
+
+
+
+3. vect - vector plots now respect reduced map grids
+=====================================================
+
+
+When plotting vectors onto a map previous versions used a whole globe cylindrical projection.  This has now
+changed and will plot the map to match the input vector area unless any map settings have been changed by the user.
+
+
+::
+
+    Fixed
+
+
+
+

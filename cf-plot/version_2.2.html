@@ -1,0 +1,108 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>version 2.2 changes &#8212; cf-plot 2.1.75 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="version-2-2-changes">
+<h1>version 2.2 changes<a class="headerlink" href="#version-2-2-changes" title="Permalink to this headline">¶</a></h1>
+<p>Change from BaseMap to Cartopy mapping.</p>
+<div class="section" id="base-code-change-from-basemap-to-cartopy-mapping">
+<h2>0. Base code change from BaseMap to Cartopy mapping<a class="headerlink" href="#base-code-change-from-basemap-to-cartopy-mapping" title="Permalink to this headline">¶</a></h2>
+<p>Support for Basemap will be finish at the same time as Python 2.7 at the end of 2020.   Cartopy is now quite mature and the change of use from Basemap to Cartopy should present only a few changes to cf-plot users while offering some useful enhancements.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="n">progress</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mapset-change-of-resolution-parameters">
+<h2>1.  mapset - change of resolution parameters<a class="headerlink" href="#mapset-change-of-resolution-parameters" title="Permalink to this headline">¶</a></h2>
+<p>resolution=resolution - the map resolution - can be one of ‘110m’,
+‘50m’ or ‘10m’.  ‘50m’ means 1:50,000,000 and not 50 metre.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setvars-continent-linestyle">
+<h2>2. setvars - continent linestyle<a class="headerlink" href="#setvars-continent-linestyle" title="Permalink to this headline">¶</a></h2>
+<p>The setvars routine can now be used to set the conent linestyle</p>
+<p>cfp.setvars(continent_linestyle=’dashed’) for instance</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="vect-vector-plots-now-respect-reduced-map-grids">
+<h2>3. vect - vector plots now respect reduced map grids<a class="headerlink" href="#vect-vector-plots-now-respect-reduced-map-grids" title="Permalink to this headline">¶</a></h2>
+<p>When plotting vectors onto a map previous versions used a whole globe cylindrical projection.  This has now
+changed and will plot the map to match the input vector area unless any map settings have been changed by the user.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+<h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
+<h5><a href="http://ajheaps.github.io/cf-plot/gallery.html">Gallery</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/user_guide.html">User Guide</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/training.html">Training material</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/data.html">Data input</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/routines.html">Routines</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/internal_routines.html">Routines - internal</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/advanced.html">Advanced Use</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/versions.html">Versions</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/issues.html">Issues</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/download.html">Download/Install</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/license.html">License</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/search.html">Search</a><p></h5>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.2.
+    </div>
+  </body>
+</html>

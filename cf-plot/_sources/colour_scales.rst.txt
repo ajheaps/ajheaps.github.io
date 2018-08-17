@@ -77,7 +77,7 @@ To reverse a colour scale use the **reverse=1** option to **cscale** and specify
 
 
 
-As a short example to show the flexibilty of the colour scale routines we will make a orography plot using the wiki-2.0.rgb orography/bathymetry colour scale. This has as many colours for bathymetry as for the oroggraphy but in this case we just need a blue ocean as we are really only interested in the orography.  So in this case we will define a set of levels using *levs* and then match the colour scale to them.  The wiki-2.0.rgb colour scale has as many colours for the ocean as for the land so we can use the above and below options 
+As a short example to show the flexibilty of the colour scale routines we will make a orography plot using the wiki_2_0.rgb orography/bathymetry colour scale. This has as many colours for bathymetry as for the oroggraphy but in this case we just need a blue ocean as we are really only interested in the orography.  So in this case we will define a set of levels using *levs* and then match the colour scale to them.  The wiki_2_0.rgb colour scale has as many colours for the ocean as for the land so we can use the above and below options 
 
 
 .. image::  images/orog.png
@@ -87,7 +87,7 @@ As a short example to show the flexibilty of the colour scale routines we will m
 
    import cf, cfplot as cfp, numpy as np
    f=cf.read_field('/opt/graphics/cfplot_data/12km_orog.nc')
-   cfp.cscale('wiki-2.0', ncols=16, below=2, above=14)
+   cfp.cscale('wiki_2_0', ncols=16, below=2, above=14)
    cfp.levs(manual=np.arange(15)*150)
    cfp.con(f, lines=0) 
 
@@ -318,10 +318,10 @@ Orography/bathymetry colour scales
 Name             Scale
 ================ =====
 os250kmetres        .. image:: images/colour_scales/os250kmetres.png
-wiki_1.0.2          .. image:: images/colour_scales/wiki_1.0.2.png
-wiki_1.0.3          .. image:: images/colour_scales/wiki_1.0.3.png
-wiki_2.0            .. image:: images/colour_scales/wiki_2.0.png
-wiki_2.0_reduced    .. image:: images/colour_scales/wiki_2.0_reduced.png
+wiki_1_0_2          .. image:: images/colour_scales/wiki_1_0_2.png
+wiki_1_0_3          .. image:: images/colour_scales/wiki_1_0_3.png
+wiki_2_0            .. image:: images/colour_scales/wiki_2_0.png
+wiki_2_0_reduced    .. image:: images/colour_scales/wiki_2_0_reduced.png
 arctic              .. image:: images/colour_scales/arctic.png
 ================ =====
 

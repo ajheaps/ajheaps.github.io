@@ -80,11 +80,11 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;scale1&#39;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>As a short example to show the flexibilty of the colour scale routines we will make a orography plot using the wiki-2.0.rgb orography/bathymetry colour scale. This has as many colours for bathymetry as for the oroggraphy but in this case we just need a blue ocean as we are really only interested in the orography.  So in this case we will define a set of levels using <em>levs</em> and then match the colour scale to them.  The wiki-2.0.rgb colour scale has as many colours for the ocean as for the land so we can use the above and below options</p>
+<p>As a short example to show the flexibilty of the colour scale routines we will make a orography plot using the wiki_2_0.rgb orography/bathymetry colour scale. This has as many colours for bathymetry as for the oroggraphy but in this case we just need a blue ocean as we are really only interested in the orography.  So in this case we will define a set of levels using <em>levs</em> and then match the colour scale to them.  The wiki_2_0.rgb colour scale has as many colours for the ocean as for the land so we can use the above and below options</p>
 <a class="reference internal image-reference" href="_images/orog.png"><img alt="_images/orog.png" src="_images/orog.png" style="width: 487.24px; height: 341.12px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span><span class="o">,</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read_field</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/12km_orog.nc&#39;</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;wiki-2.0&#39;</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">below</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">above</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;wiki_2_0&#39;</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">below</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">above</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">levs</span><span class="p">(</span><span class="n">manual</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">*</span><span class="mi">150</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
@@ -736,20 +736,20 @@
 <td><img alt="_images/os250kmetres.png" class="first last" src="_images/os250kmetres.png" />
 </td>
 </tr>
-<tr class="row-odd"><td>wiki_1.0.2</td>
-<td><img alt="_images/wiki_1.0.2.png" class="first last" src="_images/wiki_1.0.2.png" />
+<tr class="row-odd"><td>wiki_1_0_2</td>
+<td><img alt="_images/wiki_1_0_2.png" class="first last" src="_images/wiki_1_0_2.png" />
 </td>
 </tr>
-<tr class="row-even"><td>wiki_1.0.3</td>
-<td><img alt="_images/wiki_1.0.3.png" class="first last" src="_images/wiki_1.0.3.png" />
+<tr class="row-even"><td>wiki_1_0_3</td>
+<td><img alt="_images/wiki_1_0_3.png" class="first last" src="_images/wiki_1_0_3.png" />
 </td>
 </tr>
-<tr class="row-odd"><td>wiki_2.0</td>
-<td><img alt="_images/wiki_2.0.png" class="first last" src="_images/wiki_2.0.png" />
+<tr class="row-odd"><td>wiki_2_0</td>
+<td><img alt="_images/wiki_2_0.png" class="first last" src="_images/wiki_2_0.png" />
 </td>
 </tr>
-<tr class="row-even"><td>wiki_2.0_reduced</td>
-<td><img alt="_images/wiki_2.0_reduced.png" class="first last" src="_images/wiki_2.0_reduced.png" />
+<tr class="row-even"><td>wiki_2_0_reduced</td>
+<td><img alt="_images/wiki_2_0_reduced.png" class="first last" src="_images/wiki_2_0_reduced.png" />
 </td>
 </tr>
 <tr class="row-odd"><td>arctic</td>

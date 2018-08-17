@@ -719,6 +719,22 @@ cfp.setvars(rotated_grid=False)</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="con-cylindrical-projection-xlabel-and-ylabel-doesn-t-use-user-defined-fontsize">
+<h2>76. con - cylindrical projection xlabel and ylabel doesn’t use user defined fontsize<a class="headerlink" href="#con-cylindrical-projection-xlabel-and-ylabel-doesn-t-use-user-defined-fontsize" title="Permalink to this headline">¶</a></h2>
+<p>The cylindrical projection contour xlabel and ylabel doesn’t use user defined fontsize defined
+with cfp.setvars(axis_label_fontsize=22) for example.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="vect-vector-plots-now-respect-reduced-map-grids">
+<h2>77. vect - vector plots now respect reduced map grids<a class="headerlink" href="#vect-vector-plots-now-respect-reduced-map-grids" title="Permalink to this headline">¶</a></h2>
+<p>When plotting vectors onto a map previous versions used a whole globe cylindrical projection.  This has now
+changed and will plot the map to match the input vectr area unless any map settings have been changed by the user.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
