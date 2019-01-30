@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>version 2.2 changes &#8212; cf-plot 2.1.75 documentation</title>
+    <title>version 2.2 changes &#8212; cf-plot 2.2.18 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="_static/documentation_options.js"></script>
@@ -22,7 +22,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.2.18 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -37,7 +37,7 @@
 <div class="section" id="base-code-change-from-basemap-to-cartopy-mapping">
 <h2>0. Base code change from BaseMap to Cartopy mapping<a class="headerlink" href="#base-code-change-from-basemap-to-cartopy-mapping" title="Permalink to this headline">¶</a></h2>
 <p>Support for Basemap will be finish at the same time as Python 2.7 at the end of 2020.   Cartopy is now quite mature and the change of use from Basemap to Cartopy should present only a few changes to cf-plot users while offering some useful enhancements.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="n">progress</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
@@ -51,7 +51,7 @@
 </div>
 <div class="section" id="setvars-continent-linestyle">
 <h2>2. setvars - continent linestyle<a class="headerlink" href="#setvars-continent-linestyle" title="Permalink to this headline">¶</a></h2>
-<p>The setvars routine can now be used to set the conent linestyle</p>
+<p>The setvars routine can now be used to set the continent linestyle</p>
 <p>cfp.setvars(continent_linestyle=’dashed’) for instance</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
@@ -61,6 +61,136 @@
 <h2>3. vect - vector plots now respect reduced map grids<a class="headerlink" href="#vect-vector-plots-now-respect-reduced-map-grids" title="Permalink to this headline">¶</a></h2>
 <p>When plotting vectors onto a map previous versions used a whole globe cylindrical projection.  This has now
 changed and will plot the map to match the input vector area unless any map settings have been changed by the user.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lineplot-turning-off-the-legend-frame">
+<h2>4. lineplot - turning off the legend frame<a class="headerlink" href="#lineplot-turning-off-the-legend-frame" title="Permalink to this headline">¶</a></h2>
+<p>To turn off the legend frame use
+cfp.setvars(legend_frame=False)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="con-colorbar-font-properties">
+<h2>5. con - colorbar font properties<a class="headerlink" href="#con-colorbar-font-properties" title="Permalink to this headline">¶</a></h2>
+<p>colorbar font properties can now be set using the setvars routine:
+cfp.setvars(colorbar_fontsize=11)
+cfp.setvars(colorbar_fontweight=’normal’)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lineplot-marker-edge-options-added">
+<h2>6. lineplot - marker edge options added<a class="headerlink" href="#lineplot-marker-edge-options-added" title="Permalink to this headline">¶</a></h2>
+<p>Two new marker properties have been introduced to the lineplot routine.</p>
+<div class="line-block">
+<div class="line">markeredgecolor = ‘k’ - colour of edge around the marker</div>
+<div class="line">markeredgewidth = 0.5 - width of edge around the marker</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lineplot-legend-frame-options-added">
+<h2>7. lineplot - legend frame options added<a class="headerlink" href="#lineplot-legend-frame-options-added" title="Permalink to this headline">¶</a></h2>
+<p>The default of having a frame around the legend can now be turned off with:</p>
+<p>cfp.setvars(legend_frame=False)</p>
+<p>Legend frame face and edge colors can be set with:</p>
+<p>cfp.setvars(legend_frame_face_color=’pink’)
+cfp.setvars(legend_frame_edge_color=’blue’)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="axes-degree-symbol-option-for-longitude-and-latitude-labelling">
+<h2>8. axes - degree symbol option for longitude and latitude labelling<a class="headerlink" href="#axes-degree-symbol-option-for-longitude-and-latitude-labelling" title="Permalink to this headline">¶</a></h2>
+<p>The default labelling for longitude and latitude axes is 90E, 30N etc.
+If a degree symbol is required this can be made the default for all subsequent
+plots with:</p>
+<p>cfp.setvars(degsym=True)</p>
+<p>Users can also add this option to the ~/.cfplot_defaults file as</p>
+<p>degsym True</p>
+<p>The degree symbol is ‘$degree$’ as a string for any further plot customisation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rgrot-rgunrot-removed-rotated-axis-routines">
+<h2>9. rgrot, rgunrot - removed rotated axis routines<a class="headerlink" href="#rgrot-rgunrot-removed-rotated-axis-routines" title="Permalink to this headline">¶</a></h2>
+<p>The rgrot and rgunrot routines are no longer needed and have been replaced
+by using the Cartopy ccrs.RotatedPole transform.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="con-incorrect-cropping-of-polar-stereographic-and-lcc-projections">
+<h2>10. con - incorrect cropping of polar stereographic and lcc projections<a class="headerlink" href="#con-incorrect-cropping-of-polar-stereographic-and-lcc-projections" title="Permalink to this headline">¶</a></h2>
+<p>The crop limits used in Cartopy / Matplotlib for polarstereographic and lcc
+projections are slightly wrong.  These were fixed by recalculating the limits
+and setting them with set_xlim and set_ylim within the plot_map_axes routine.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="stipple-add-ylog-parameter">
+<h2>11. stipple - Add ylog parameter<a class="headerlink" href="#stipple-add-ylog-parameter" title="Permalink to this headline">¶</a></h2>
+<p>Stipple now works with log pressure plots by adding the ylog=True parameter.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gvals-very-small-values-bug">
+<h2>12. gvals  - very small values bug<a class="headerlink" href="#gvals-very-small-values-bug" title="Permalink to this headline">¶</a></h2>
+<p>cfp.gvals(1.90028259794e-09, 1.05456045674e-07)</p>
+<p>produced an array error.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Corrected</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lineplot-y-axis-labels-fontsize-and-fontweight">
+<h2>13. lineplot - y-axis labels fontsize and fontweight<a class="headerlink" href="#lineplot-y-axis-labels-fontsize-and-fontweight" title="Permalink to this headline">¶</a></h2>
+<p>lineplot y-axis labels fontsize and fontweight were unaffected by</p>
+<div class="line-block">
+<div class="line">cfp.setvars(axis_label_fontsize=20)</div>
+<div class="line">cfp.setvars(axis_label_fontweight=’bold’)</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Corrected</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setvars-axis-width-keyword-added">
+<h2>14. setvars - axis_width keyword added<a class="headerlink" href="#setvars-axis-width-keyword-added" title="Permalink to this headline">¶</a></h2>
+<p>The axis_width keyword was added to the setvars routine.  This controls the width
+of the drawn axes around the plot.</p>
+</div>
+<div class="section" id="cf-data-assign-rotated-pole-axis-specification-bug">
+<h2>15. cf-data-assign - rotated pole axis specification bug<a class="headerlink" href="#cf-data-assign-rotated-pole-axis-specification-bug" title="Permalink to this headline">¶</a></h2>
+<p>A bug appears in the internal routine cf-data_assign for rotated pole plots when both
+the X and Y axes have the same number of points.  The cf_data_assign routine was modified to
+properly assign grid_longitude and grid_latitude.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="graphs">
+<h2>16. graphs<a class="headerlink" href="#graphs" title="Permalink to this headline">¶</a></h2>
+<p>Documentation updated on line labelling for legends in example 28.  In addition it is also shown how to access a plot legend directly using Matplotlib commands to create a custom legend.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Updated</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="stipple">
+<h2>17. stipple<a class="headerlink" href="#stipple" title="Permalink to this headline">¶</a></h2>
+<p>Incorrect stippling for longitudes &lt; 0 in polar stereographic plots</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lineplot-incorrect-axis-labelling">
+<h2>18. lineplot - incorrect axis labelling<a class="headerlink" href="#lineplot-incorrect-axis-labelling" title="Permalink to this headline">¶</a></h2>
+<p>In lineplot if no axis labels are provided then the axis labels were copied from the tick values.  In the case of floating point numbers these can sometimes give large numbers of decimal places due to numeric rounding.  A fix has been put in place to use the format specifier ‘{}’.format(val) so 13.899999999999997 becomes the more reasonable string value of ‘13.9’.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
@@ -87,6 +217,7 @@ changed and will plot the map to match the input vector area unless any map sett
 <h5><a href="http://ajheaps.github.io/cf-plot/download.html">Download/Install</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/license.html">License</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/search.html">Search</a><p></h5>
+<h5><a href="http://www.met.reading.ac.uk/~swsheaps/cf-plot-2.1.75">Older documentation</a><p></h5>
         </div>
       </div>
       <div class="clearer"></div>
@@ -97,12 +228,12 @@ changed and will plot the map to match the input vector area unless any map sett
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.2.18 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2018, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.2.
+        &#169; Copyright 2019, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
     </div>
   </body>
 </html>

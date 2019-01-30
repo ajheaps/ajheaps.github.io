@@ -58,15 +58,20 @@ The supplied grid gives a bullseye effect making the wind direction difficult to
 
 ::
 
-    import cf, cfplot as cfp
+   import cf, cfplot as cfp
 
-    u=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
-    v=cf.read('/opt/graphics/cfplot_data/ggap.nc')[3]
-    u=u.subspace(Z=500)
-    v=v.subspace(Z=500)
+   u=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
+   v=cf.read('/opt/graphics/cfplot_data/ggap.nc')[3]
+   u=u.subspace(Z=500)
+   v=v.subspace(Z=500)
 
-    cfp.mapset(proj='npstere')
-    cfp.vect(u=u, v=v, key_length=10, scale=100, pts=40, title='Polar plot with regular point distribution')
+   cfp.mapset(proj='npstere')
+   cfp.gopen(columns=2)
+   cfp.vect(u=u, v=v, key_length=10, scale=100, stride=4, title='Polar plot using data grid')
+   cfp.gpos(2)
+   cfp.vect(u=u, v=v, key_length=10, scale=100, pts=40, title='Polar plot with regular point distribution')
+   cfp.gclose()
+
 
 
 

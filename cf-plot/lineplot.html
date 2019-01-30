@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>lineplot &#8212; cf-plot 2.1.75 documentation</title>
+    <title>lineplot &#8212; cf-plot 2.2.18 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="_static/documentation_options.js"></script>
@@ -22,7 +22,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.2.18 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -35,7 +35,7 @@
 <h1>lineplot<a class="headerlink" href="#lineplot" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="cfplot.lineplot">
-<code class="descclassname">cfplot.</code><code class="descname">lineplot</code><span class="sig-paren">(</span><em>f=None</em>, <em>x=None</em>, <em>y=None</em>, <em>fill=True</em>, <em>lines=True</em>, <em>line_labels=True</em>, <em>title=None</em>, <em>ptype=0</em>, <em>linestyle='-'</em>, <em>linewidth=1.0</em>, <em>color='k'</em>, <em>xlog=False</em>, <em>ylog=False</em>, <em>verbose=None</em>, <em>swap_xy=False</em>, <em>marker=None</em>, <em>markersize=5.0</em>, <em>label=None</em>, <em>legend_location='upper right'</em>, <em>xunits=None</em>, <em>yunits=None</em>, <em>xlabel=None</em>, <em>ylabel=None</em>, <em>xticks=None</em>, <em>yticks=None</em>, <em>xticklabels=None</em>, <em>yticklabels=None</em>, <em>xname=None</em>, <em>yname=None</em>, <em>axes=True</em>, <em>xaxis=True</em>, <em>yaxis=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#lineplot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.lineplot" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">cfplot.</code><code class="descname">lineplot</code><span class="sig-paren">(</span><em>f=None</em>, <em>x=None</em>, <em>y=None</em>, <em>fill=True</em>, <em>lines=True</em>, <em>line_labels=True</em>, <em>title=None</em>, <em>ptype=0</em>, <em>linestyle='-'</em>, <em>linewidth=1.0</em>, <em>color='k'</em>, <em>xlog=False</em>, <em>ylog=False</em>, <em>verbose=None</em>, <em>swap_xy=False</em>, <em>marker=None</em>, <em>markersize=5.0</em>, <em>markeredgecolor='k'</em>, <em>markeredgewidth=0.5</em>, <em>label=None</em>, <em>legend_location='upper right'</em>, <em>xunits=None</em>, <em>yunits=None</em>, <em>xlabel=None</em>, <em>ylabel=None</em>, <em>xticks=None</em>, <em>yticks=None</em>, <em>xticklabels=None</em>, <em>yticklabels=None</em>, <em>xname=None</em>, <em>yname=None</em>, <em>axes=True</em>, <em>xaxis=True</em>, <em>yaxis=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#lineplot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.lineplot" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">lineplot is the interface to line plotting in cf-plot.</div>
 <div class="line">The minimum use is lineplot(f) where f is a CF field.</div>
@@ -55,10 +55,22 @@
 <div class="line">linewidth=1.0 - line width</div>
 <div class="line">marker=None - marker for points along the line</div>
 <div class="line">markersize=5.0 - size of the marker</div>
+<div class="line">markeredgecolor = ‘k’ - colour of edge around the marker</div>
+<div class="line">markeredgewidth = 0.5 - width of edge around the marker</div>
 <div class="line">xlog=False - log x-axis</div>
 <div class="line">ylog=False - log y-axis</div>
 <div class="line">label=None - line label - label for line</div>
 <div class="line">legend_location=’upper right’ - default location of legend</div>
+<div class="line-block">
+<div class="line">Other options are {‘best’: 0, ‘center’: 10, ‘center left’: 6,</div>
+<div class="line-block">
+<div class="line">‘center right’: 7, ‘lower center’: 8, </div>
+<div class="line">‘lower left’: 3, ‘lower right’: 4, ‘right’: 5, </div>
+<div class="line">‘upper center’: 9, ‘upper left’: 2, ‘upper right’: 1}</div>
+</div>
+</div>
+</div>
+<div class="line-block">
 <div class="line">verbose=None - change to 1 to get a verbose listing of what lineplot</div>
 <div class="line-block">
 <div class="line">is doing</div>
@@ -79,6 +91,12 @@
 <div class="line">axes=True - plot x and y axes</div>
 <div class="line">xaxis=True - plot xaxis</div>
 <div class="line">yaxis=True - plot y axis</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line">When making a multiple lineplot the last call to lineplot is the one that</div>
+<div class="line">any of the above axis overrides should be placed in.</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
 </div>
 </dd></dl>
 
@@ -104,6 +122,7 @@
 <h5><a href="http://ajheaps.github.io/cf-plot/download.html">Download/Install</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/license.html">License</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/search.html">Search</a><p></h5>
+<h5><a href="http://www.met.reading.ac.uk/~swsheaps/cf-plot-2.1.75">Older documentation</a><p></h5>
         </div>
       </div>
       <div class="clearer"></div>
@@ -114,12 +133,12 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.2.18 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2018, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.2.
+        &#169; Copyright 2019, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
     </div>
   </body>
 </html>

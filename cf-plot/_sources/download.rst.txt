@@ -13,7 +13,8 @@ Archer Jasmin RDF - jasmin.rdf.ac.uk - This has the Jasmin Analysis Platform ins
 |  **module load anaconda cf**
 |  and then python to use cf-plot.
 
-Department of Meteorology, University of Reading - The latest version of cf-plot is installed on the Reading University Meteorology department servers.  Type **setup canopy** to set-up the Python environment.
+Department of Meteorology, University of Reading - The latest version of cf-plot is installed on the Reading Academic Computing Cluster - cluster.act.rdg.ac.uk
+.  Type **module load ncas_anaconda** to set-up the Python environment.
 
 |
 |
@@ -24,30 +25,23 @@ To install cf-plot
 
 Linux
 -----
-To install cf-plot on your own Linux box download and install Anaconda Python 2.7 for Linux.  On the command line type:
+To install cf-plot on your own Linux PC or laptop download and install Anaconda Python 2.7 for Linux.  On the command line type:
 
 ::
 
-   conda install -c ncas -c conda-forge cf-python cf-plot udunits2=2.2.20
+   conda install -c ncas -c conda-forge cf-python cf-plot udunits2=2.2.20 matplotlib=2.0.2
    conda install -c nesii -c conda-forge mpich esmpy
 
 
-The first line installs cf-python, cf-plot.  The second installs esmpy, together with the netcdf-fortran and mpich requirements, which cf-python uses for regriding data.
+The first line installs cf-python and cf-plot.  The second installs esmpy, together with the netcdf-fortran and mpich requirements, which cf-python uses for regriding data.
 
 
 
-Other OSs
----------
-It is recommended that you use a virtual machine with Linux running in it as some things don't, and probably won't ever work on other OSs - Met Office PP file reading for instance.  Windows is not supported or expected to be supported. If you are a Windows guru and manage to get cf-python and cf-plot working please contact andy.heaps@ncas.ac.uk with the details and I will post the installation details here.
+Other Operating Systems
+-----------------------
+We have a small development team and Linux is our main working environment.  If you have the Mac or Windows operating system installing a Linux Virtual Machine is simple and works well.  Installation instructions and a Mint Linux Virtual Machine are avaulable at http://gws-access.ceda.ac.uk/public/ncas_climate/ajh/data_analysis_tools/VM.  
 
 
-Basemap and Cartopy conflict
-----------------------------
-The map projection that cf-plot uses at present conflicts with the Cartopy software.  cf-plot will move to using Cartopy when it is a little more mature but in the meantime if you need both then install them with the following before installing cf-plot.
-
-::
-
-   conda install -c conda-forge basemap cartopy
 
 
 Other install methods
@@ -69,11 +63,11 @@ Using GitHub:
    python setup.py install
 
 
-You will need to download and install `cf-python <https://cfpython.bitbucket.io>`_ to use cf-plot.  Other cf-plot dependencies are: Numpy, Matplotlib, Netcdf4 and Basemap.
+You will need to download and install `cf-python <https://cfpython.bitbucket.io>`_ to use cf-plot.  Other cf-plot dependencies are: Numpy, Matplotlib, NetCDF4 and Cartopy.
 
-Download the `sample netCDF datasets <http://www.met.reading.ac.uk/~swsheaps/cfplot_data.tar>`_
+Download the `sample netCDF datasets <http://gws-access.ceda.ac.uk/public/ncas_climate/ajh/data_analysis_tools/cfplot_data.tar>`_
 
-If you have system priviledges and can store the directory with the sample files in /opt/graphics the all the examples will work out of the box.  If not then store the files elsewhere and modify the file path appropriately.
+If you have system priviledges on your server and can store the directory with the sample files in /opt/graphics the all the examples will work out of the box.  If not then store the files elsewhere and modify the file path appropriately.
  
 |
 |

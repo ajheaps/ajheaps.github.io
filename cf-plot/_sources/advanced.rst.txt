@@ -7,7 +7,7 @@ Here are some hints and tips on advanced use of cf-plot.
 Adding user defined lines and text to plots
 -------------------------------------------
 
-In cf-plot the plot is stored in a plot object with the name cfp.plotvars.plot.  The page containing the plots is named cfp.plotvars.plot_master.
+In cf-plot the plot is stored in a plot object with the name cfp.plotvars.plot.  If you are making a map plot the the map object is cfp.plotvars.mymap and this is the object you should operate on.  The page containing the plots is named cfp.plotvars.plot_master.
 
 To see all the methods for the plot object type
 
@@ -15,10 +15,11 @@ To see all the methods for the plot object type
 
     cfp.gopen()
     dir(cfp.plotvars.plot)
+    or
+    dir(cfp.plotvars.mymap)
 
 
-
-In this example we make a blank map plot, change the longitude labels and add a box and some text.  To add text and lines outside of the plot use the same method as below with coordinates outside of the defined plot area.
+In this example we make a blank map plot, change the longitude labels and add a box and some text.   For map plots we operate on the cfp.plotvars.mymap object and need to specify transform=ccrs.PlateCarree() to make sure that the plotting is made in regular longitude and latitude coordinates.  If the plot is not a map plot then the transform=ccrs.PlateCarree() isn't needed.
 
 .. image::  images/advanced1.png
 
@@ -26,47 +27,50 @@ In this example we make a blank map plot, change the longitude labels and add a 
 
     import cf
     import cfplot as cfp
-    import matplotlib
-    from matplotlib.patches import Polygon
-    from matplotlib.collections import PatchCollection
+    import cartopy.crs as ccrs
+    import matplotlib.patches as mpatches
 
     f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
 
     cfp.gopen()
-    cfp.levs(-1000, -900, 100)
+
     xticks=[0.0, 45.0]
     xticklabels=['xlabel1', 'xlabel2']
     yticks=[-30.0, 70.0]
     yticklabels=['ylabel1', 'ylabel2']
 
-    cfp.con(f.subspace(time=15), fill=False, colorbar=None, 
+    # Specify some contour levels outside the range of the data    
+    # and make a blank contour plot
+    cfp.levs(-1000, -900, 100)
+    cfp.con(f.subspace(time=15), fill=False, colorbar=None,
         xticks=xticks, xticklabels=xticklabels,
         yticks=yticks, yticklabels=yticklabels)
 
     # A box
-    xpts=[-150, -150, -90, -90, -150]
-    ypts=[-5, 5, 5, -5, -5]
-    cfp.plotvars.plot.plot(xpts,ypts, linewidth=3.0, color='blue')
+    cfp.plotvars.mymap.plot([-150, -150, -90, -90, -150],
+                            [-5, 5, 5, -5, -5], linewidth=3.0, 
+                            color='blue', transform=ccrs.PlateCarree())
 
     # A symbol
-    cfp.plotvars.plot.plot(-30,-60, linewidth=3.0, marker='o', color='blue')
+    cfp.plotvars.mymap.plot(-30,-60, linewidth=3.0, marker='o', color='blue', transform=ccrs.PlateCarree())
 
     # Text
-    cfp.plotvars.plot.text(-120, 8, 'Nino3 region', horizontalalignment='center')
+    cfp.plotvars.mymap.text(-120, 8, 'Nino3 region', horizontalalignment='center', transform=ccrs.PlateCarree())
+
 
     # Equation
-    cfp.plotvars.plot.text(-40, 40, r'$\sum_{i=0}^\infty x_i$')
+    cfp.plotvars.mymap.text(-40, 40, r'$\sum_{i=0}^\infty x_i$', transform=ccrs.PlateCarree())
 
     # Filled polygon
-    box=[[90, -60], [100,-20], [110, -60]]
-    patches = []
-    polygon = Polygon(box, True)
-    patches.append(polygon)
-    p = PatchCollection(patches, cmap=matplotlib.cm.jet, alpha=0.4)
-    cfp.plotvars.plot.add_collection(p)
+    cfp.plotvars.mymap.add_patch(mpatches.Polygon([[90, -60], [100,-20], [110, -60]],
+                                 facecolor='red',
+                                 alpha=0.2,
+                                 transform=ccrs.PlateCarree()))
 
     cfp.gclose()
 
+
+Adding country borders etc can be done using the normal Cartopy operations on the cfp.plotvars.mymap object.  Look on the Cartopy web page for examples of these.
 
 
 

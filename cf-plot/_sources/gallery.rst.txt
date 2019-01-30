@@ -11,9 +11,9 @@ cf-plot gallery
    :scale: 14%    
    :target: http://ajheaps.github.io/cf-plot/pressure.html
 
-`Cylindrical projection     <http://ajheaps.github.io/cf-plot/cylindrical.html>`_
-`| Polar stereographic <http://ajheaps.github.io/cf-plot/polar.html>`_
-`| Latitude/longitude - height plots <http://ajheaps.github.io/cf-plot/pressure.html>`_
+`Cylindrical projection     <http://ajheaps.github.io/cf-plot//cylindrical.html>`_
+`| Polar stereographic <http://ajheaps.github.io/cf-plot//polar.html>`_
+`| Latitude/longitude - height plots <http://ajheaps.github.io/cf-plot//pressure.html>`_
 
 
 
@@ -25,12 +25,12 @@ cf-plot gallery
    :target: http://ajheaps.github.io/cf-plot/vectors.html
 .. image::  images/fig17.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/stipple_plots.html
+   :target: http://ajheaps.github.io/cf-plot//stipple_plots.html
 
 
-`Hovmuller plots <http://ajheaps.github.io/cf-plot/hovmuller.html>`_
-`|    Vector plots <http://ajheaps.github.io/cf-plot/vectors.html>`_
-`|    Stipple (significance) plots <http://ajheaps.github.io/cf-plot/stipple_plots.html>`_
+`Hovmuller plots <http://ajheaps.github.io/cf-plot//hovmuller.html>`_
+`|    Vector plots <http://ajheaps.github.io/cf-plot//vectors.html>`_
+`|    Stipple (significance) plots <http://ajheaps.github.io/cf-plot//stipple_plots.html>`_
 
 
 
@@ -45,9 +45,9 @@ cf-plot gallery
    :target: http://ajheaps.github.io/cf-plot/user_defined.html
 
 
-`Multiple plots on a page <http://ajheaps.github.io/cf-plot/multiple_plots.html>`_
-`| Colour scales <http://ajheaps.github.io/cf-plot/colour_scales.html>`_
-`| User defined axes <http://ajheaps.github.io/cf-plot/user_defined.html>`_
+`Multiple plots on a page <http://ajheaps.github.io/cf-plot//multiple_plots.html>`_
+`| Colour scales <http://ajheaps.github.io/cf-plot//colour_scales.html>`_
+`| User defined axes <http://ajheaps.github.io/cf-plot//user_defined.html>`_
 
 
 .. image::  images/fig21.png
@@ -60,9 +60,9 @@ cf-plot gallery
    :scale: 11%    
    :target: http://ajheaps.github.io/cf-plot/graphs.html
 
-`Rotated pole plots <http://ajheaps.github.io/cf-plot/rotated_pole.html>`_
-`| Irregular grids <http://ajheaps.github.io/cf-plot/irregular.html>`_
-`| Graph plots <http://ajheaps.github.io/cf-plot/graphs.html>`_
+`Rotated pole plots <http://ajheaps.github.io/cf-plot//rotated_pole.html>`_
+`| Irregular grids <http://ajheaps.github.io/cf-plot//irregular.html>`_
+`| Graph plots <http://ajheaps.github.io/cf-plot//graphs.html>`_
 
 
 

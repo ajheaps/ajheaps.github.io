@@ -1,17 +1,19 @@
 Rotated pole plots
 ******************
 
-Example 21 - rotated pole plot
-------------------------------
+Example 21 - rotated pole data plot
+-----------------------------------
+
 
 .. image::  images/fig21.png
    :scale: 52% 
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('/opt/graphics/cfplot_data/rgp.nc')[0]
-   cfp.cscale('gray')
+   cfp.cscale('plasma')
    cfp.con(f)
 
 
@@ -19,63 +21,60 @@ Example 21 - rotated pole plot
 | 
 
 
-Example 22 - rotated pole plot from CF uncompliant data
--------------------------------------------------------
+Example 22 - rotated pole data on the native grid
+-------------------------------------------------
 
-The previous example uses the CF attributes to extract the rotated pole coordinates.  
-If these are not available then the following example shows how to make the 
-plot using more basic cf-plot commands.  
+This plot shows some rotated pole data on the native grid. Notice the way that the longitude lines are warped away from the centre of the plot.  Data over the equitorial regions show little of this warping.
 
 .. image::  images/fig22.png
    :scale: 52% 
-
-
 ::
 
-   import cf, cfplot as cfp
-   import numpy as np
-
-   f=cf.read_field('/opt/graphics/cfplot_data/rgp.nc')
-   data=f.array
-   xvec=f.item('dim1').array    
-   yvec=f.item('dim0').array  
-   xpole=160
-   ypole=30
-
-   cfp.gopen()
+   import cf
+   import cfplot as cfp
+   f=cf.read('/opt/graphics/cfplot_data/rgp.nc')[0]
    cfp.cscale('plasma')
-   xpts=np.arange(np.size(xvec))
-   ypts=np.arange(np.size(yvec))
-   cfp.gset(xmin=0, xmax=np.size(xvec)-1, ymin=0, ymax=np.size(yvec)-1)
-   cfp.levs(min=980,max=1035, step=2.5) 
-   cfp.con(data, xpts, ypts[::-1])
-   cfp.rgaxes(xpole=xpole, ypole=ypole, xvec=xvec, yvec=yvec)
-   cfp.gclose()
-
-| 
-| 
-
-Example 23 - rotated pole data on a cylindrical projection map
---------------------------------------------------------------
-
-Here we extract the real longitude and latitude data locations from a rotated grid file 
-and use these to make a cylindrical projection contour plot of the data. The ptype=1 flag is
-passed to the cf-plot con routine to indicate that the data is to be plotted on a map.
+   cfp.mapset(proj='rotated')
+   cfp.con(f)        
 
 
+
+
+
+Example 23 - Overlaying vectors over a rotated pole data plot
+-------------------------------------------------------------
+
+In this plot a cylindrical projection plot of rotated pole data is overlayed with wind vectors.
+
+|   Care is needed when making vector plots as the vectors can be of two forms:
+|   a) eastward wind and westward wind are relative to longitude and latitude axes
+|   b) x-wind and y-wind are relative to the rotated pole axes
+
+Here we have eastward and westward wind so these can be plotted as normal over a cylindrical projection.  For 
+the case of data in case b) above, the x-wind and y-wind will need to be appropriately rotated onto a cylindrical grid.
 
 .. image::  images/fig23.png
    :scale: 52% 
+
+
 ::
 
-   import cf, cfplot as cfp, numpy as np
+    import cf
+    import cfplot as cfp
+   
+    f=cf.read('/opt/graphics/cfplot_data/20160601-05T0000Z_INCOMPASS_km4p4_uv_RH_500.nc')
+    cfp.mapset(50, 100, 5, 35)
+    cfp.levs(0, 90, 15, extend='neither')
 
-   f=cf.read('/opt/graphics/cfplot_data/xjpgaa_ca072_byteswapped.pp')[12]
-   z=np.squeeze(f.subspace(model_level_number=1).array)
-   x=f.item('longitude').array
-   y=f.item('latitude').array
+    cfp.gopen()
+    cfp.con(f[0], lines=False)
+    cfp.vect(u=f[1], v=f[2], stride=40, key_length=10)
+    cfp.gclose()
 
-   cfp.con(x=x, y=y, f=z, ptype=1)        
+
+| 
+| 
+
 
 
 

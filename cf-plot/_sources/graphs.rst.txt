@@ -71,7 +71,19 @@ Example 28 - Line and legend plot
 
 
 
-In this example a plot with user specified axes is made.  The new axis labelling and legend must be added in the final call to lineplot.  All previous calls to lineplot must have set the label attribute so that the line labels are ready for making the legend.  A text box and some text are added to a region of interest.  The cfp.plotvars.plot object contains the plot and will accept normal Matplotlib plotting commands.
+In this example a plot with user specified axes is made.  The new axis labelling and legend position must be added in the final call to lineplot.  All calls to lineplot with the label attribute will appear in the legend.   
+
+The cfp.plotvars.plot object contains the Matplotlib plot and will accept normal Matplotlib plotting commands.  As an example of this the following code within a cfp.gopen() cfp.gclose() construct will make a legend that is independent of any previously made lines and attached labels.
+
+
+|    import matplotlib.lines as mlines
+|    green_line = mlines.Line2D([], [], color='green',  label='green')
+|    black_line = mlines.Line2D([], [], color='black', ls='--' ,  label='black dashed')
+|    cfp.plotvars.plot.legend(handles=[green_line, black_line])
+
+
+
+
 
 Valid locations for the legend_location keyword are:
 
@@ -134,7 +146,7 @@ Example 30 - Two axis plotting
    :scale: 44% 
 
 In this example we plot two x-axes, one with zonal mean zonal wind data and one with temperature data.  Somewhat confusingly 
-the option for a twin x-axis is twiny=True.  This is a Matplotlib keyword which has been adopted within teh cf-plot code.
+the option for a twin x-axis is twiny=True.  This is a Matplotlib keyword which has been adopted within the cf-plot code.
 
 
 ::

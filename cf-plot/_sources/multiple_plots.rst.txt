@@ -25,7 +25,7 @@ Plots are arranged over rows and columns with the first plot at the top left and
     cfp.mapset(proj='npstere', boundinglat=30, lon_0=180)
     cfp.con(f.subspace(pressure=500), colorbar=None)
     cfp.gpos(4)
-    cfp.mapset(proj='spstere', boundinglat=-30, lon_0=180)
+    cfp.mapset(proj='spstere', boundinglat=-30, lon_0=0)
     cfp.con(f.subspace(pressure=500), colorbar_position=[0.1, 0.1, 0.8, 0.02], colorbar_orientation='horizontal')
     cfp.gclose()
 

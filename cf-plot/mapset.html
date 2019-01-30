@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>mapset &#8212; cf-plot 2.1.75 documentation</title>
+    <title>mapset &#8212; cf-plot 2.2.18 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="_static/documentation_options.js"></script>
@@ -22,7 +22,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.2.18 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -35,7 +35,7 @@
 <h1>mapset<a class="headerlink" href="#mapset" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="cfplot.mapset">
-<code class="descclassname">cfplot.</code><code class="descname">mapset</code><span class="sig-paren">(</span><em>lonmin=None</em>, <em>lonmax=None</em>, <em>latmin=None</em>, <em>latmax=None</em>, <em>proj='cyl'</em>, <em>boundinglat=0</em>, <em>lon_0=0</em>, <em>lat_0=40</em>, <em>resolution='110m'</em>, <em>user_mapset=1</em>, <em>width=12000000</em>, <em>height=9000000</em>, <em>lat_1=45.0</em>, <em>lat_2=55</em>, <em>plimits=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#mapset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.mapset" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">cfplot.</code><code class="descname">mapset</code><span class="sig-paren">(</span><em>lonmin=None</em>, <em>lonmax=None</em>, <em>latmin=None</em>, <em>latmax=None</em>, <em>proj='cyl'</em>, <em>boundinglat=0</em>, <em>lon_0=0</em>, <em>lat_0=40</em>, <em>resolution='110m'</em>, <em>user_mapset=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#mapset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.mapset" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">mapset sets the mapping parameters.</div>
 <div class="line"><br /></div>
@@ -45,8 +45,11 @@
 <div class="line">latmax=latmax - maximum latitude</div>
 <div class="line">proj=proj - ‘cyl’ for cylindrical projection. ‘npstere’ or ‘spstere’</div>
 <div class="line-block">
-<div class="line">for northern hemisphere or southern hemisphere polar stereographic</div>
-<div class="line">projection. Use’moll’ for the mollweide projection.</div>
+<div class="line">for northern hemisphere or southern hemisphere polar stereographic.</div>
+<div class="line">ortho, merc, moll, robin and lcc are abreviations for orthographic,</div>
+<div class="line">mercator, mollweide, robinson and lambert conformal projections</div>
+<div class="line">‘rotated’ for contour plots on the native rotated grid.</div>
+<div class="line"><br /></div>
 </div>
 <div class="line">boundinglat=boundinglat - edge of the viewable latitudes in a</div>
 <div class="line-block">
@@ -81,25 +84,9 @@
 <div class="line">The proj parameter accepts ‘npstere’ and ‘spstere’ for northern </div>
 <div class="line">hemisphere or southern hemisphere polar stereographic projections.</div>
 <div class="line">In addition to these the boundinglat parameter sets the edge of the</div>
-<div class="line">viewable latitudes and lat_0 sets the centre of desired map domain.</div>
+<div class="line">viewable latitudes and lon_0 sets the centre of desired map domain.</div>
 <div class="line"><br /></div>
-<div class="line">Additional map projections via proj are:</div>
-<div class="line">ortho, merc, moll, robin and lcc</div>
-<div class="line">These are abreviations for orthographic, mercator, mollweide, robinson </div>
-<div class="line">and lambert conformal projections</div>
 <div class="line"><br /></div>
-<div class="line">For Lambert Conformal Projection, lcc, plots the following extra </div>
-<div class="line">parameters are required.</div>
-<div class="line">lat_1=45 - first standard parallel</div>
-<div class="line">lat_2=55 - second standard parallel</div>
-<div class="line">width=12000000 - width of Lambert Conformal Projection, lcc</div>
-<div class="line">height=9000000 - height of Lambert Conformal Projection, lcc</div>
-<div class="line">plimits=None - plot limits [lonmin, lonmax, latmin, latmax] for lcc plot</div>
-<div class="line">See the <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_2.1.html">http://ajheaps.github.io/cf-plot/version_2.1.html</a> for a couple of</div>
-<div class="line">examples of using the Lambert Conformal Projection.</div>
-<div class="line">Data must be continuous and contiguous and you must select the same </div>
-<div class="line">plot limits as your data.  i.e. if you have data that is -60 to 30 </div>
-<div class="line">in longitude then the plot limits must also be -60 to 30 in longitude.</div>
 <div class="line"><br /></div>
 <div class="line">Map settings are persistent until a new call to mapset is made. To</div>
 <div class="line">reset to the default map settings use mapset().</div>
@@ -136,6 +123,7 @@
 <h5><a href="http://ajheaps.github.io/cf-plot/download.html">Download/Install</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/license.html">License</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/search.html">Search</a><p></h5>
+<h5><a href="http://www.met.reading.ac.uk/~swsheaps/cf-plot-2.1.75">Older documentation</a><p></h5>
         </div>
       </div>
       <div class="clearer"></div>
@@ -146,12 +134,12 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.2.18 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2018, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.2.
+        &#169; Copyright 2019, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
     </div>
   </body>
 </html>

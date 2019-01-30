@@ -13,7 +13,7 @@ To run the following examples in the Met department at the University of Reading
 
    setup canopy
 
-Outside of the Meteorology department you’ll need to follow the `cf-plot installation instructions <http://ajheaps.github.io/cf-plot/download.html>`_
+Outside of the Meteorology department you'll need to follow the `cf-plot installation instructions <http://ajheaps.github.io/cf-plot/download.html>`_
 
 
 Using cf-plot
@@ -81,7 +81,7 @@ Blockfill is only supported in the cylindrical projection and non-map plots at p
 Polar stereographic plots
 -------------------------
 
-Polar Stereographic plots are set using **proj=’npstere’** or **proj=’spstere’** in the call to **mapset**.
+Polar Stereographic plots are set using **proj='npstere'** or **proj='spstere'** in the call to **mapset**.
 
 ::
 
@@ -96,13 +96,13 @@ Polar Stereographic plots are set using **proj=’npstere’** or **proj=’spst
 
 
 
-The **mapset** **bounding_lat** and **lon_0** parameters are used to set the latitude limit of the plot and the orientation of the plot. Generally for the southern hemisphere the Greenwich Meridian (zero degrees longitude) is plotted at the top of the plot and is set with **lon_0=180**.
+The **mapset** **bounding_lat** and **lon_0** parameters are used to set the latitude limit of the plot and the orientation of the plot. Generally for the southern hemisphere the Greenwich Meridian (zero degrees longitude) is plotted at the top of the plot and is set with **lon_0=0**.
 
 ::
 
    import cf, cfplot as cfp
    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
-   cfp.mapset(proj='spstere', boundinglat=-30, lon_0=180)
+   cfp.mapset(proj='spstere', boundinglat=-30, lon_0=0)
    cfp.con(f.subspace(pressure=500))
 
 
@@ -268,14 +268,13 @@ We can still slice and plot the data as below.
    f.item('dim0').array
 
 
-| array([  1.00000000e+03,   7.00000000e+02,   5.00000000e+02,
-|  3.20000000e+02,   2.15000000e+02,   1.50000000e+02,
-|  1.00000000e+02,   7.00000000e+01,   5.00000000e+01,
-|  3.20000000e+01,   2.00000000e+01,   1.50000000e+01,
-|   1.00000000e+01,   7.00000000e+00,   5.00000000e+00,
-|   3.20000005e+00,   2.00000000e+00,   1.50000000e+00,
-|  1.00000000e+00,   6.99999988e-01,   5.00000000e-01,
-|   3.00000012e-01], dtype=float32)
+| array([1.00e+03, 7.00e+02, 5.00e+02, 3.20e+02, 2.15e+02, 1.50e+02,
+|        1.00e+02, 7.00e+01, 5.00e+01, 3.20e+01, 2.00e+01, 1.50e+01,
+|        1.00e+01, 7.00e+00, 5.00e+00, 3.20e+00, 2.00e+00, 1.50e+00,
+|        1.00e+00, 7.00e-01, 5.00e-01, 3.00e-01], dtype=float32)
+
+
+
 
 So to plot the 1000mb temperature we would use:
 
@@ -299,7 +298,7 @@ cf-plot can also make contour and vector plots by passing data arrays. In this e
 
    import cfplot as cfp
    from netCDF4 import Dataset as ncfile
-   nc = ncfile('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+   nc = ncfile('/opt/graphics/cfplot_data/tas_A1.nc')
    lons=nc.variables['lon'][:]
    lats=nc.variables['lat'][:]
    temp=nc.variables['tas'][0,:,:]
@@ -311,7 +310,7 @@ cf-plot can also make contour and vector plots by passing data arrays. In this e
    :scale: 52% 
 
 
-The contouring routine doesn’t know that the data passed is a map plot as the only information passed is data arrays. This can be explicitly set with the **ptype** flag to **con**.
+The contouring routine doesn't know that the data passed is a map plot as the only information passed is data arrays. This can be explicitly set with the **ptype** flag to **con**.
 
 ::
 
@@ -458,12 +457,12 @@ Here we make a zonal mean vector plot with different vector keys and scaling fac
 
     import cf, cfplot as cfp
 
-    c=cf.read('vaAMIPlcd_DJF.nc')
+    c=cf.read('/opt/graphics/cfplot_data/vaAMIPlcd_DJF.nc')
     c=c.subspace(Y=cf.wi(-60,60))
     c=c.subspace(X=cf.wi(80,160))  
     c=c.collapse('T: mean X: mean')
 
-    g=cf.read('wapAMIPlcd_DJF.nc')    
+    g=cf.read('/opt/graphics/cfplot_data/wapAMIPlcd_DJF.nc')    
     g=g.subspace(Y=cf.wi(-60,60))
     g=g.subspace(X=cf.wi(80,160))
     g=g.collapse('T: mean X: mean')
@@ -487,18 +486,22 @@ To make multiple plots on the page open a graphic file with the gopen command an
 ::
 
    import cf, cfplot as cfp
-   u=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
-   cfp.gopen(rows=2, columns=2)
-   cfp.mapset(proj='spstere', boundinglat=-30, lon_0=180)
+   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
+
+   cfp.gopen(rows=2, columns=2, bottom=0.2)
    cfp.gpos(1)
-   cfp.con(u.subspace(pressure=500))
+   cfp.con(f.subspace(pressure=500), colorbar=None)
    cfp.gpos(2)
-   cfp.con(u.subspace(pressure=500))
+   cfp.mapset(proj='moll')
+   cfp.con(f.subspace(pressure=500), colorbar=None)
    cfp.gpos(3)
-   cfp.con(u.subspace(pressure=500))
+   cfp.mapset(proj='npstere', boundinglat=30, lon_0=180)
+   cfp.con(f.subspace(pressure=500), colorbar=None)
    cfp.gpos(4)
-   cfp.con(u.subspace(pressure=500))
+   cfp.mapset(proj='spstere', boundinglat=-30, lon_0=0)
+   cfp.con(f.subspace(pressure=500), colorbar_position=[0.1, 0.1, 0.8, 0.02], colorbar_orientation='horizontal')
    cfp.gclose()
+
 
 .. image::  images/fig19.png
    :scale: 52% 
@@ -570,27 +573,27 @@ To make a graph plot use the cf-plot lineplot function as below on a single line
 
 
 | Other valid markers are:
-| ‘.’ point
-| ‘,’ pixel
-| ‘o’ circle
-| ‘v’ triangle_down
-| ‘^’ triangle_up
-| ‘<’ triangle_left
-| ‘>’ triangle_right
-| ‘1’ tri_down
-| ‘2’ tri_up
-| ‘3’ tri_left
-| ‘4’ tri_right
-| ‘8’ octagon
-| ‘s’ square
-| ‘p’ pentagon
-| ‘*’ star
-| ‘h’ hexagon1
-| ‘H’ hexagon2
-| ‘+’ plus
-| 'x’ x
-| ‘D’ diamond
-| ‘d’ thin_diamond
+| '.' point
+| ',' pixel
+| 'o' circle
+| 'v' triangle_down
+| '^' triangle_up
+| '<' triangle_left
+| '>' triangle_right
+| '1' tri_down
+| '2' tri_up
+| '3' tri_left
+| '4' tri_right
+| '8' octagon
+| 's' square
+| 'p' pentagon
+| '*' star
+| 'h' hexagon1
+| 'H' hexagon2
+| '+' plus
+| 'x' x
+| 'D' diamond
+| 'd' thin_diamond
 
 
 To make a multiple line plot use the gopen, gclose commands to enclose the plotting commands as in the example below.
@@ -625,23 +628,23 @@ To make a multiple line plot use the gopen, gclose commands to enclose the plott
 
 Setting Contour Levels
 ======================
-cf-plot generally does a reasonable job of setting appropriate contour levels.  In the cases where it doesn’t do this or you need a consistent set of levels between plots for comparison purposes use the levs routine.  
+cf-plot generally does a reasonable job of setting appropriate contour levels.  In the cases where it doesn't do this or you need a consistent set of levels between plots for comparison purposes use the levs routine.  
 The levs command manually sets the contour levels.
 
 | **min=min** - minimum level
 | **max=max** - maximum level
 | **step=step** - step between levels
 | **manual= manual** - set levels manually
-| **extend=’neither’, ‘both’, ‘min’, or ‘max’** – the colour bar limit extensions. These are the triangles at the ends of the colour bar indicating the rest of the data is in this colour.
+| **extend='neither', 'both', 'min', or 'max'** – the colour bar limit extensions. These are the triangles at the ends of the colour bar indicating the rest of the data is in this colour.
 
-Use the **levs** command when a predefined set of levels is required. The **min, max and step** parameters are all needed to define a set of levels. These can take integer or floating point numbers. If colour filled contours are plotted then the default is to extend the minimum and maximum contours coloured for out of range values - extend=’both’. Use the manual option to define a set of uneven contours i.e.
+Use the **levs** command when a predefined set of levels is required. The **min, max and step** parameters are all needed to define a set of levels. These can take integer or floating point numbers. If colour filled contours are plotted then the default is to extend the minimum and maximum contours coloured for out of range values - extend='both'. Use the manual option to define a set of uneven contours i.e.
 
 ::
 
    cfp.levs(manual=[-10, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 10])
 
 Once a user call is made to levs the levels are persistent. i.e. the next plot will use the same set of levels. Use **levs()** to reset to undefined levels i.e. let cf-plot generate the levels again.
-Once the levs command is used you’ll need to think about the associated colour scale.  
+Once the levs command is used you'll need to think about the associated colour scale.  
 
 
 
@@ -1154,8 +1157,8 @@ Making postscript or PNG pictures
 =================================
 There are various methods of producing a figure for use in an external package such as a web document or LaTeX, Word etc.
 
-| **cfp.setvars(file=’zonal.ps’)** write subsequent graphics output directly to a file called zonal.ps
-| **cfp.setvars(file=’zonal.png)’** write subsequent graphics output to a file called zonal.png
+| **cfp.setvars(file='zonal.ps')** write subsequent graphics output directly to a file called zonal.ps
+| **cfp.setvars(file='zonal.png')** write subsequent graphics output to a file called zonal.png
 
 To reset to viewing the picture on the screen again use **cfp.setvars()**.
 
@@ -1163,7 +1166,7 @@ Another method is to use **gopen** as when used in making multiple plots.
 
 ::
 
-   cfp.gopen, file=’zonal.ps’
+   cfp.gopen, file='zonal.ps'
    cfp.con(f.subspace(time=15))
    cfp.gclose()
 
@@ -1239,8 +1242,6 @@ When plotting data with different time units users need to move their data to us
 
 This is because when making a contour or line plot the axes are defined in terms of a linear scale of numbers.  Having two 
 different linear scales breaks the connection between the data.
-
-
 
 
 

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Irregular grid plots &#8212; cf-plot 2.1.75 documentation</title>
+    <title>Irregular grid plots &#8212; cf-plot 2.2.18 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="_static/documentation_options.js"></script>
@@ -22,7 +22,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.2.18 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -33,15 +33,15 @@
             
   <div class="section" id="irregular-grid-plots">
 <h1>Irregular grid plots<a class="headerlink" href="#irregular-grid-plots" title="Permalink to this headline">¶</a></h1>
-<p>There are various methods of contouring irregular data.  The one I have had the best results from is to regrid the data to be on a regular longitude latitude grid using the Matplotlib griddata function. This is the method used for the examples below.</p>
-<p>Tricontourf and tricontour can also be used but these produce errors on an Orca2 tripolar grid.  The filled contours are improperly filled, the contour lines sometimes go in a straight line across the plot and contour line labelling produces an error.  There is also the added complication of BaseMap not supporting tricontour at version 1.0.8.</p>
+<p>There are various methods of contouring irregular data.  The method used below is to regrid the data to be on a regular longitude latitude grid using the scipy interpolate package griddata function.</p>
+<p>Tricontourf and tricontour can also be used but these produce errors on an Orca2 tripolar grid.  The filled contours are improperly filled, the contour lines sometimes go in a straight line across the plot and contour line labelling produces an error.</p>
 <div class="section" id="example-24-irregular-grid-plot">
 <h2>Example 24 - irregular grid plot<a class="headerlink" href="#example-24-irregular-grid-plot" title="Permalink to this headline">¶</a></h2>
-<p>Here we read in and contour temperature from meteorological stations around the Bristish Isles.</p>
-<a class="reference internal image-reference" href="_images/fig24.png"><img alt="_images/fig24.png" src="_images/fig24.png" style="width: 487.24px; height: 326.56px;" /></a>
+<p>Here we read in and contour temperature from meteorological stations around the British Isles.</p>
+<a class="reference internal image-reference" href="_images/fig24.png"><img alt="_images/fig24.png" src="_images/fig24.png" style="width: 487.24px; height: 329.68px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib.mlab</span> <span class="k">import</span> <span class="n">griddata</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="k">import</span> <span class="n">griddata</span>
 
 <span class="c1">#Arrays for data</span>
 <span class="n">lons</span><span class="o">=</span><span class="p">[]</span>
@@ -60,9 +60,14 @@
    <span class="n">temp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">mysplit</span><span class="p">[</span><span class="mi">4</span><span class="p">]))</span>
 
 <span class="c1">#Linearly interpolate data to a regular grid</span>
-<span class="n">lons_new</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">140</span><span class="p">)</span><span class="o">*</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">11.0</span>
-<span class="n">lats_new</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">140</span><span class="p">)</span><span class="o">*</span><span class="mf">0.1</span><span class="o">+</span><span class="mf">49.0</span>
-<span class="n">temp_new</span> <span class="o">=</span> <span class="n">griddata</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">lons_new</span><span class="p">,</span> <span class="n">lats_new</span><span class="p">,</span> <span class="n">interp</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+<span class="n">xpts</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">140</span><span class="p">)</span><span class="o">*</span><span class="mf">0.1</span><span class="o">-</span><span class="mf">11.0</span>
+<span class="n">ypts</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">140</span><span class="p">)</span><span class="o">*</span><span class="mf">0.1</span><span class="o">+</span><span class="mf">49.0</span>
+
+<span class="c1"># Expand data into 2D values</span>
+<span class="n">lons_new</span><span class="p">,</span> <span class="n">lats_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xpts</span><span class="p">,</span> <span class="n">ypts</span><span class="p">)</span>
+
+<span class="c1"># Regrid to the new regular grid</span>
+<span class="n">temp_new</span> <span class="o">=</span> <span class="n">griddata</span><span class="p">((</span><span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">),</span> <span class="n">temp</span><span class="p">,</span> <span class="p">(</span><span class="n">lons_new</span><span class="p">,</span> <span class="n">lats_new</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
 
 <span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;parula&#39;</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">lons_new</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">lats_new</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">temp_new</span><span class="p">,</span> <span class="n">ptype</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -76,16 +81,18 @@
 <div class="section" id="example-25-irregular-grid-plot-check-of-data-values">
 <h2>Example 25 - irregular grid plot - Check of data values<a class="headerlink" href="#example-25-irregular-grid-plot-check-of-data-values" title="Permalink to this headline">¶</a></h2>
 <p>To see if this plot is correct we can add some extra code to that above to plot the station locations and values at that point.  The decimal point is roughly where the data point is located.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">()</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">lons_new</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">lats_new</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">temp_new</span><span class="p">,</span> <span class="n">ptype</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)):</span>
-   <span class="n">cfp</span><span class="o">.</span><span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">lons</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">lats</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="nb">str</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> \
-                          <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+   <span class="n">cfp</span><span class="o">.</span><span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">lons</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">lats</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="nb">str</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> \
+                           <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> \
+                           <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
 
 <span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/fig25.png"><img alt="_images/fig25.png" src="_images/fig25.png" style="width: 487.24px; height: 326.56px;" /></a>
+<a class="reference internal image-reference" href="_images/fig25.png"><img alt="_images/fig25.png" src="_images/fig25.png" style="width: 487.24px; height: 329.68px;" /></a>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -93,7 +100,7 @@
 </div>
 <div class="section" id="example-26-orca2-grid">
 <h2>Example 26 - Orca2 grid<a class="headerlink" href="#example-26-orca2-grid" title="Permalink to this headline">¶</a></h2>
-<a class="reference internal image-reference" href="_images/fig26.png"><img alt="_images/fig26.png" src="_images/fig26.png" style="width: 515.32px; height: 298.48px;" /></a>
+<a class="reference internal image-reference" href="_images/fig26.png"><img alt="_images/fig26.png" src="_images/fig26.png" style="width: 514.28px; height: 300.56px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="kn">from</span> <span class="nn">netCDF4</span> <span class="k">import</span> <span class="n">Dataset</span> <span class="k">as</span> <span class="n">ncfile</span>
@@ -149,6 +156,7 @@
 <h5><a href="http://ajheaps.github.io/cf-plot/download.html">Download/Install</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/license.html">License</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/search.html">Search</a><p></h5>
+<h5><a href="http://www.met.reading.ac.uk/~swsheaps/cf-plot-2.1.75">Older documentation</a><p></h5>
         </div>
       </div>
       <div class="clearer"></div>
@@ -159,12 +167,12 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.1.75 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.2.18 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2018, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.2.
+        &#169; Copyright 2019, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
     </div>
   </body>
 </html>

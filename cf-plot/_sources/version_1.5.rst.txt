@@ -156,12 +156,12 @@ Options are:
     | text_fontsize=None - text fontsize, default=11
     | title_fontsize=None - title fontsize, default=15
     | axis_label_fontsize=None - default=11
-    | text_fontweight=’normal’ - text fontweight
-    | title_fontweight=’normal’ - title fontweight
-    | axis_label_fontweight=’normal’ - axis fontweight
-    | fontweight=’normal’ - all above fontweights
+    | text_fontweight='normal' - text fontweight
+    | title_fontweight='normal' - title fontweight
+    | axis_label_fontweight='normal' - axis fontweight
+    | fontweight='normal' - all above fontweights
     | continent_thickness=None - default=1.5
-    | continent_color=None - default=’k’ (black)
+    | continent_color=None - default='k' (black)
 
 
  ::

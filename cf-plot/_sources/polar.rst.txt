@@ -31,7 +31,7 @@ Example 5 - south pole with 30 degrees south being the latitude plot limit
 
    import cf, cfplot as cfp
    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
-   cfp.mapset(proj='spstere', boundinglat=-30, lon_0=180)
+   cfp.mapset(proj='spstere', boundinglat=-30, lon_0=0)
    cfp.con(f.subspace(pressure=500))
 
 
