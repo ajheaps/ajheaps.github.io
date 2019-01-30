@@ -1445,8 +1445,7 @@ Lambert conformal projections can now be cropped as in the following code:</p>
 <div class="line-block">
 <div class="line">import cf, cfplot as cfp</div>
 <div class="line">f=cf.read(‘/opt/graphics/cfplot_data/tas_A1.nc’)[0]</div>
-<div class="line">cfp.mapset(proj=’lcc’, lon_0=0, lat_0=50, lat_1=45, lat_2=55, width=12000000,</div>
-<div class="line">height=9000000, plimits=[-50, 50, 20, 85])</div>
+<div class="line">cfp.mapset(proj=’lcc’, lonmin=-50, lonmax=50, latmin=20, latmax=85])</div>
 <div class="line">cfp.con(f.subspace(time=15))</div>
 </div>
 <a class="reference internal image-reference" href="_images/cm.png"><img alt="_images/cm.png" src="_images/cm.png" style="width: 487.24px; height: 339.04px;" /></a>

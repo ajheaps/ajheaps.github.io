@@ -13,8 +13,9 @@ Archer Jasmin RDF - jasmin.rdf.ac.uk - This has the Jasmin Analysis Platform ins
 |  **module load anaconda cf**
 |  and then python to use cf-plot.
 
-Department of Meteorology, University of Reading - The latest version of cf-plot is installed on the Reading Academic Computing Cluster - cluster.act.rdg.ac.uk
-.  Type **module load ncas_anaconda** to set-up the Python environment.
+Department of Meteorology, University of Reading - The latest version of cf-plot is installed on the Reading Academic Computing Cluster - cluster.act.rdg.ac.uk. 
+
+| Type **module load ncas_anaconda** to set-up the Python environment.
 
 |
 |
@@ -39,7 +40,7 @@ The first line installs cf-python and cf-plot.  The second installs esmpy, toget
 
 Other Operating Systems
 -----------------------
-We have a small development team and Linux is our main working environment.  If you have the Mac or Windows operating system installing a Linux Virtual Machine is simple and works well.  Installation instructions and a Mint Linux Virtual Machine are avaulable at http://gws-access.ceda.ac.uk/public/ncas_climate/ajh/data_analysis_tools/VM.  
+We have a small development team and Linux is our main working environment.  If you have the Mac or Windows operating system installing a Linux Virtual Machine is simple and works well.  Installation instructions and a Mint Linux Virtual Machine are available at http://gws-access.ceda.ac.uk/public/ncas_climate/ajh/data_analysis_tools/VM.  
 
 
 
