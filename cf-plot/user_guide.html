@@ -1442,11 +1442,12 @@ These are abreviations for orthographic, mercator, mollweide, robinson
 and lambert conformal projections</p>
 <p>Cropped area on map lcc projections
 Lambert conformal projections can now be cropped as in the following code:</p>
-<blockquote>
-<div>import cf, cfplot as cfp
-f=cf.read(‘/opt/graphics/cfplot_data/ggap.nc’)[1]
-cfp.mapset(proj=’lcc’, lonmin=-50, lonmax=50, latmin=20, latmax=85])
-cfp.con(f.subspace(pressure=700))</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">proj</span><span class="o">=</span><span class="s1">&#39;lcc&#39;</span><span class="p">,</span> <span class="n">lonmin</span><span class="o">=-</span><span class="mi">50</span><span class="p">,</span> <span class="n">lonmax</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">latmin</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">latmax</span><span class="o">=</span><span class="mi">85</span><span class="p">])</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">700</span><span class="p">))</span>
+</pre></div>
+</div>
 <a class="reference internal image-reference" href="_images/cm.png"><img alt="_images/cm.png" src="_images/cm.png" style="width: 364.0px; height: 339.04px;" /></a>
 </div>
 <div class="section" id="axis-labelling">
