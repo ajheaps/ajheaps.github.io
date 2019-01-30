@@ -1442,12 +1442,11 @@ These are abreviations for orthographic, mercator, mollweide, robinson
 and lambert conformal projections</p>
 <p>Cropped area on map lcc projections
 Lambert conformal projections can now be cropped as in the following code:</p>
-<div class="line-block">
-<div class="line">import cf, cfplot as cfp</div>
-<div class="line">f=cf.read(‘/opt/graphics/cfplot_data/ggap.nc’)[1]</div>
-<div class="line">cfp.mapset(proj=’lcc’, lonmin=-50, lonmax=50, latmin=20, latmax=85])</div>
-<div class="line">cfp.con(f.subspace(pressure=700))</div>
-</div>
+<blockquote>
+<div>import cf, cfplot as cfp
+f=cf.read(‘/opt/graphics/cfplot_data/ggap.nc’)[1]
+cfp.mapset(proj=’lcc’, lonmin=-50, lonmax=50, latmin=20, latmax=85])
+cfp.con(f.subspace(pressure=700))</div></blockquote>
 <a class="reference internal image-reference" href="_images/cm.png"><img alt="_images/cm.png" src="_images/cm.png" style="width: 364.0px; height: 339.04px;" /></a>
 </div>
 <div class="section" id="axis-labelling">

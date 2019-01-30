@@ -1108,10 +1108,10 @@ and lambert conformal projections
 Cropped area on map lcc projections
 Lambert conformal projections can now be cropped as in the following code:
 
-|    import cf, cfplot as cfp
-|    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
-|    cfp.mapset(proj='lcc', lonmin=-50, lonmax=50, latmin=20, latmax=85])
-|    cfp.con(f.subspace(pressure=700))
+    import cf, cfplot as cfp
+    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
+    cfp.mapset(proj='lcc', lonmin=-50, lonmax=50, latmin=20, latmax=85])
+    cfp.con(f.subspace(pressure=700))
 
 
 .. image::  images/cm.png
