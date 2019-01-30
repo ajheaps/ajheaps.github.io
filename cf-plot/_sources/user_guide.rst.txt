@@ -1109,19 +1109,15 @@ Cropped area on map lcc projections
 Lambert conformal projections can now be cropped as in the following code:
 
 |    import cf, cfplot as cfp
-|    f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+|    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
 |    cfp.mapset(proj='lcc', lonmin=-50, lonmax=50, latmin=20, latmax=85])
-|    cfp.con(f.subspace(time=15))
+|    cfp.con(f.subspace(pressure=700))
 
 
 .. image::  images/cm.png
    :scale: 52% 
 
 
-For a corresponding southern hemisphere plot use:
-
-|    cfp.mapset(proj='lcc', lon_0=0, lat_0=-50, lat_1=-55, lat_2=-45, width=12000000,height=9000000,
-|    plimits=[-50, 50, -85, -20])
 
 
 Axis labelling
