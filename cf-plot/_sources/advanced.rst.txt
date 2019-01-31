@@ -30,7 +30,7 @@ In this example we make a blank map plot, change the longitude labels and add a 
     import cartopy.crs as ccrs
     import matplotlib.patches as mpatches
 
-    f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+    f=cf.read('cfplot_data/tas_A1.nc')[0]
 
     cfp.gopen()
 
@@ -95,7 +95,7 @@ For example, to make one of the colours in the viridis colour scale grey use:
 
     import cf
     import cfplot as cfp
-    f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+    f=cf.read('cfplot_data/tas_A1.nc')[0]
     cfp.cscale('viridis', ncols=17)
     cfp.plotvars.cs[14]='#a6a6a6'
     cfp.con(f.subspace(time=15))
@@ -116,7 +116,7 @@ This is done by changing the land_color and lake_color variables in cfp.setvars.
 
     import cf
     import cfplot as cfp
-    f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+    f=cf.read('cfplot_data/tas_A1.nc')[0]
     cfp.setvars(land_color='red', lake_color='grey')
     cfp.con(f.subspace(time=15))
 
@@ -139,7 +139,7 @@ Masked data isn't plotted.
     import numpy as np
 
 
-    f = cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+    f = cf.read('cfplot_data/tas_A1.nc')[0]
     g = f.subspace(time=15)
 
 
@@ -189,7 +189,7 @@ possible using the cf-plot internal blockfill routine.
 
 ::
 
-    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
+    f=cf.read('cfplot_data/ggap.nc')[1]
     g=f.collapse('mean','longitude')
 
 

@@ -10,7 +10,7 @@ Example 13 - vector plot
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')
+   f=cf.read('cfplot_data/ggap.nc')
    u=f[1].subspace(pressure=500)
    v=f[3].subspace(pressure=500)
    cfp.vect(u=u, v=v, key_length=10, scale=100, stride=5)
@@ -27,7 +27,7 @@ Example 14 - vector plot with colour contour map
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')
+   f=cf.read('cfplot_data/ggap.nc')
    u=f[1].subspace(pressure=500)
    v=f[3].subspace(pressure=500)
    t=f[0].subspace(pressure=500)
@@ -60,8 +60,8 @@ The supplied grid gives a bullseye effect making the wind direction difficult to
 
    import cf, cfplot as cfp
 
-   u=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
-   v=cf.read('/opt/graphics/cfplot_data/ggap.nc')[3]
+   u=cf.read('cfplot_data/ggap.nc')[1]
+   v=cf.read('cfplot_data/ggap.nc')[3]
    u=u.subspace(Z=500)
    v=v.subspace(Z=500)
 
@@ -86,12 +86,12 @@ Example 16 - zonal vector plot
 
     import cf, cfplot as cfp
 
-    c=cf.read_field('/opt/graphics/cfplot_data/vaAMIPlcd_DJF.nc')
+    c=cf.read_field('cfplot_data/vaAMIPlcd_DJF.nc')
     c=c.subspace(Y=cf.wi(-60,60))
     c=c.subspace(X=cf.wi(80,160))  
     c=c.collapse('T: mean X: mean')
 
-    g=cf.read_field('/opt/graphics/cfplot_data/wapAMIPlcd_DJF.nc')    
+    g=cf.read_field('cfplot_data/wapAMIPlcd_DJF.nc')    
     g=g.subspace(Y=cf.wi(-60,60))
     g=g.subspace(X=cf.wi(80,160))
     g=g.collapse('T: mean X: mean')

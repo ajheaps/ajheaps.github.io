@@ -10,7 +10,7 @@ Example 27 - graph plot
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
+   f=cf.read('cfplot_data/ggap.nc')[1]
    g=f.collapse('X: mean')
    cfp.lineplot(g.subspace(pressure=100), marker='o', color='blue',\
                 title='Zonal mean zonal wind at 100mb')
@@ -51,7 +51,7 @@ Example 28 - Line and legend plot
 ::
 
     import cf, cfplot as cfp
-    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
+    f=cf.read('cfplot_data/ggap.nc')[1]
     g=f.collapse('X: mean')
     xticks=[-90,-75,-60,-45,-30,-15,0,15,30,45,60,75,90]
     xticklabels=['90S','75S','60S','45S','30S','15S','0','15N','30N','45N','60N','75N','90N']
@@ -130,7 +130,7 @@ The correct date format is 'YYYY-MM-DD' or 'YYYY-MM-DD HH:MM:SS' - anything else
 ::
 
     import cf, cfplot as cfp
-    f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+    f=cf.read('cfplot_data/tas_A1.nc')[0]
     temp=f.subspace(time=cf.wi(cf.dt('1900-01-01'), cf.dt('1980-01-01')))
     temp_annual=temp.collapse('T: mean', group=cf.Y())
     temp_annual_global=temp_annual.collapse('area: mean', weights='area')
@@ -153,12 +153,12 @@ the option for a twin x-axis is twiny=True.  This is a Matplotlib keyword which 
 
     import cf, cfplot as cfp
     tol=cf.RTOL(1e-5)
-    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
+    f=cf.read('cfplot_data/ggap.nc')[1]
     u=f.collapse('X: mean')
     u1=u.subspace(Y=-61.12099075)
     u2=u.subspace(Y=0.56074494)
 
-    g=cf.read('/opt/graphics/cfplot_data/ggap.nc')[0]
+    g=cf.read('cfplot_data/ggap.nc')[0]
     t=g.collapse('X: mean')
     t1=t.subspace(Y=-61.12099075)
     t2=t.subspace(Y=0.56074494)

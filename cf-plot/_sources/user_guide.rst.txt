@@ -28,7 +28,7 @@ Cylindrical projection
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+   f=cf.read('cfplot_data/tas_A1.nc')[0]
    cfp.con(f.subspace(time=15))
 
 
@@ -44,7 +44,7 @@ The **mapset** routine is used to change the map area and projection.
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+   f=cf.read('cfplot_data/tas_A1.nc')[0]
    cfp.mapset(lonmin=-15, lonmax=3, latmin=48, latmax=60)
    cfp.levs(min=265, max=285, step=1)
    cfp.con(f.subspace(time=15))
@@ -67,7 +67,7 @@ Blockfill plots in the cylindrical projection are made using the **blockfill=Tru
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+   f=cf.read('cfplot_data/tas_A1.nc')[0]
    cfp.con(f.subspace(time=15), blockfill=True, lines=False)
 
 
@@ -86,7 +86,7 @@ Polar Stereographic plots are set using **proj='npstere'** or **proj='spstere'**
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
+   f=cf.read('cfplot_data/ggap.nc')[1]
    cfp.mapset(proj='npstere')
    cfp.con(f.subspace(pressure=500))
 
@@ -101,7 +101,7 @@ The **mapset** **bounding_lat** and **lon_0** parameters are used to set the lat
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
+   f=cf.read('cfplot_data/ggap.nc')[1]
    cfp.mapset(proj='spstere', boundinglat=-30, lon_0=0)
    cfp.con(f.subspace(pressure=500))
 
@@ -124,7 +124,7 @@ CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Con
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')
+   f=cf.read('cfplot_data/ggap.nc')
 
 
 f is now an list of 4 fields.
@@ -192,7 +192,7 @@ In this locally processed ERA40 reanalysis field there is a distinct lack of sta
 
 ::
 
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[2]
+   f=cf.read('cfplot_data/ggap.nc')[2]
    f
 
 |  <CF Field: geopotential(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-2>
@@ -247,7 +247,7 @@ In the following dataset there are neither standard nor long names to identify t
 
 ::
 
-   f=cf.read('/opt/graphics/cfplot_data/gdata.nc')[0]
+   f=cf.read('cfplot_data/gdata.nc')[0]
 
 
 |  <CF Field: ncvar:temp(ncvar:p(22), ncvar:lat(73), ncvar:lon(145)) >
@@ -298,7 +298,7 @@ cf-plot can also make contour and vector plots by passing data arrays. In this e
 
    import cfplot as cfp
    from netCDF4 import Dataset as ncfile
-   nc = ncfile('/opt/graphics/cfplot_data/tas_A1.nc')
+   nc = ncfile('cfplot_data/tas_A1.nc')
    lons=nc.variables['lon'][:]
    lats=nc.variables['lat'][:]
    temp=nc.variables['tas'][0,:,:]
@@ -340,7 +340,7 @@ The latitude-pressure plot below is made by using the cf subspace method to sele
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[0]
+   f=cf.read('cfplot_data/ggap.nc')[0]
    cfp.con(f.subspace(longitude=0))
 
 
@@ -353,7 +353,7 @@ A mean of the data along the longitude (zonal mean) is made using the cf.collaps
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
+   f=cf.read('cfplot_data/ggap.nc')[1]
    cfp.con(f.collapse('mean','longitude'))
 
 
@@ -368,7 +368,7 @@ To make a log pressure on the y axis use the ylog=True flag to the con routine.
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
+   f=cf.read('cfplot_data/ggap.nc')[1]
    cfp.con(f.collapse('mean','longitude'), ylog=True)
 
 .. image::  images/fig8.png
@@ -383,7 +383,7 @@ A Hovmuller plot is one of longitude or latitude versus time as per the followin
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+   f=cf.read('cfplot_data/tas_A1.nc')[0]
    cfp.cscale('plasma')
    cfp.con(f.subspace(longitude=0), lines=0)
 
@@ -395,7 +395,7 @@ A Hovmuller plot is one of longitude or latitude versus time as per the followin
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+   f=cf.read('cfplot_data/tas_A1.nc')[0]
    cfp.gset(-30, 30, '1960-1-1', '1980-1-1')
    cfp.levs(min=280, max=305, step=1)
    cfp.cscale('plasma')
@@ -417,7 +417,7 @@ Vector plots are made using the **vect** routine.
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')
+   f=cf.read('cfplot_data/ggap.nc')
    u=f[1].subspace(pressure=500)
    v=f[3].subspace(pressure=500)
    cfp.vect(u=u, v=v, key_length=10, scale=100, stride=5)
@@ -434,7 +434,7 @@ In this example vectors are overlaid on a contour plot.
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')
+   f=cf.read('cfplot_data/ggap.nc')
    u=f[1].subspace(pressure=500)
    v=f[3].subspace(pressure=500)
    t=f[0].subspace(pressure=500)
@@ -457,12 +457,12 @@ Here we make a zonal mean vector plot with different vector keys and scaling fac
 
     import cf, cfplot as cfp
 
-    c=cf.read('/opt/graphics/cfplot_data/vaAMIPlcd_DJF.nc')
+    c=cf.read('cfplot_data/vaAMIPlcd_DJF.nc')
     c=c.subspace(Y=cf.wi(-60,60))
     c=c.subspace(X=cf.wi(80,160))  
     c=c.collapse('T: mean X: mean')
 
-    g=cf.read('/opt/graphics/cfplot_data/wapAMIPlcd_DJF.nc')    
+    g=cf.read('cfplot_data/wapAMIPlcd_DJF.nc')    
     g=g.subspace(Y=cf.wi(-60,60))
     g=g.subspace(X=cf.wi(80,160))
     g=g.collapse('T: mean X: mean')
@@ -486,7 +486,7 @@ To make multiple plots on the page open a graphic file with the gopen command an
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
+   f=cf.read('cfplot_data/ggap.nc')[1]
 
    cfp.gopen(rows=2, columns=2, bottom=0.2)
    cfp.gpos(1)
@@ -519,7 +519,7 @@ A stipple plot is usually used to show areas of significance. These plots use th
 ::
    
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+   f=cf.read('cfplot_data/tas_A1.nc')[0]
    g=f.subspace(time=15)
    cfp.gopen()
    cfp.cscale('magma')
@@ -536,7 +536,7 @@ A stipple plot is usually used to show areas of significance. These plots use th
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+   f=cf.read('cfplot_data/tas_A1.nc')[0]
    g=f.subspace(time=15)
    cfp.gopen()
    cfp.mapset(proj='npstere')
@@ -561,7 +561,7 @@ To make a graph plot use the cf-plot lineplot function as below on a single line
 :: 
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
+   f=cf.read('cfplot_data/ggap.nc')[1]
    g=f.collapse('X: mean')
    cfp.lineplot(g.subspace(pressure=100), marker='o', color='blue',\
                 title='Zonal mean zonal wind at 100mb')
@@ -602,7 +602,7 @@ To make a multiple line plot use the gopen, gclose commands to enclose the plott
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
+   f=cf.read('cfplot_data/ggap.nc')[1]
    g=f.collapse('X: mean')
    xticks=[-90,-75,-60,-45,-30,-15,0,15,30,45,60,75,90]
    xticklabels=['90S','75S','60S','45S','30S','15S','0','15N','30N','45N','60N','75N','90N']
@@ -758,7 +758,7 @@ for example to make one of the colours in the viridis colour scale grey use:
 ::
 
     import cf, cfplot as cfp
-    f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+    f=cf.read('cfplot_data/tas_A1.nc')[0]
     cfp.cscale('viridis', ncols=17)
     cfp.plotvars.cs[14]='#a6a6a6'
     cfp.con(f.subspace(time=15))
@@ -1010,7 +1010,7 @@ Labelling time axes
 The default time axis labelling in cf-plot might not be acceptable and here is some information on 
 using cf-python to extract values for yourself.
 
-| **f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]**
+| **f=cf.read('cfplot_data/tas_A1.nc')[0]**
 | **f.items('T')**
 | {'dim0': <CF DimensionCoordinate: time(1680) 360_day>}
 
@@ -1110,10 +1110,10 @@ Lambert conformal projections can now be cropped as in the following code:
 
 ::
 
-    import cf, cfplot as cfp
-    f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[1]
-    cfp.mapset(proj='lcc', lonmin=-50, lonmax=50, latmin=20, latmax=85])
-    cfp.con(f.subspace(pressure=700))
+   import cf, cfplot as cfp
+   f=cf.read('cfplot_data/ggap.nc')[1]
+   cfp.mapset(proj='lcc', lonmin=-50, lonmax=50, latmin=20, latmax=85)
+   cfp.con(f.subspace(pressure=700))
 
 
 .. image::  images/cm.png
@@ -1192,7 +1192,7 @@ In the file /home/swsheaps/ajh.py:
 
    import cf
    import cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+   f=cf.read('cfplot_data/tas_A1.nc')[0]
    cfp.setvars(file='/home/swsheaps/ll.png')
    cfp.con(f.subspace(time=15))
 

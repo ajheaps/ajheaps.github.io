@@ -30,7 +30,7 @@ Here we read in and contour temperature from meteorological stations around the 
    temp=[]
 
    #Read data
-   f = open('/opt/graphics/cfplot_data/synop_data.txt')
+   f = open('cfplot_data/synop_data.txt')
    lines = f.readlines()
    for line in lines:
       mysplit=line.split()
@@ -99,7 +99,7 @@ Example 26 - Orca2 grid
    from matplotlib.mlab import griddata
 
    #Get an Orca grid and flatten the arrays
-   nc = ncfile('/opt/graphics/cfplot_data/orca2.nc')
+   nc = ncfile('cfplot_data/orca2.nc')
    lons=np.array(nc.variables['longitude'])
    lats=np.array(nc.variables['latitude'])
    temp=np.array(nc.variables['sst'])

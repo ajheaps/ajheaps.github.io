@@ -37,7 +37,7 @@
 <h2>Using cf-python - cf compliant data<a class="headerlink" href="#using-cf-python-cf-compliant-data" title="Permalink to this headline">¶</a></h2>
 <p>Data is generally passed to cf-plot via cf-python as a 2-dimensional field.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
-<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ggap.nc&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>f is now an list of 4 fields.</p>
@@ -68,7 +68,7 @@
 <div class="section" id="example-1">
 <h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
 <p>In this locally processed ERA40 reanalysis field there is a distinct lack of standard names.  Even the long names are somewhat terse - p for pressure for example.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">f</span>
 <span class="o">&lt;</span><span class="n">CF</span> <span class="n">Field</span><span class="p">:</span> <span class="n">geopotential</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">pressure</span><span class="p">(</span><span class="mi">23</span><span class="p">),</span> <span class="n">latitude</span><span class="p">(</span><span class="mi">160</span><span class="p">),</span> <span class="n">longitude</span><span class="p">(</span><span class="mi">320</span><span class="p">))</span> <span class="n">m</span><span class="o">**</span><span class="mi">2</span> <span class="n">s</span><span class="o">**-</span><span class="mi">2</span><span class="o">&gt;</span>
 </pre></div>
@@ -100,7 +100,7 @@
 <div class="section" id="example-2">
 <h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
 <p>In this dataset there are neither standard or long names.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/gdata.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/gdata.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="o">&lt;</span><span class="n">CF</span> <span class="n">Field</span><span class="p">:</span> <span class="n">ncvar</span><span class="p">:</span><span class="n">temp</span><span class="p">(</span><span class="n">ncvar</span><span class="p">:</span><span class="n">p</span><span class="p">(</span><span class="mi">22</span><span class="p">),</span> <span class="n">ncvar</span><span class="p">:</span><span class="n">lat</span><span class="p">(</span><span class="mi">73</span><span class="p">),</span> <span class="n">ncvar</span><span class="p">:</span><span class="n">lon</span><span class="p">(</span><span class="mi">145</span><span class="p">))</span> <span class="o">&gt;</span>
 </pre></div>
 </div>
@@ -138,7 +138,7 @@
 <p>cf-plot can also make contour and vector plots by passing data arrays.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="kn">from</span> <span class="nn">netCDF4</span> <span class="k">import</span> <span class="n">Dataset</span> <span class="k">as</span> <span class="n">ncfile</span>
-<span class="n">nc</span> <span class="o">=</span> <span class="n">ncfile</span><span class="p">(</span><span class="s1">&#39;/opt/graphics/cfplot_data/tas_A1.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">nc</span> <span class="o">=</span> <span class="n">ncfile</span><span class="p">(</span><span class="s1">&#39;cfplot_data/tas_A1.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">lons</span><span class="o">=</span><span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">][:]</span>
 <span class="n">lats</span><span class="o">=</span><span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">][:]</span>
 <span class="n">temp</span><span class="o">=</span><span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;tas&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,:,:]</span>

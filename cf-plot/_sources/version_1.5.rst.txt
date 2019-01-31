@@ -114,7 +114,7 @@ These have now been added.
 10. Documentation change
 ========================
 
-The web and user guide documentation has chaged so that the examples reference data in /opt/graphics/cfplot_data.  This is so the gallery examples work as written and to prevent multiple copies of the example data being on local disks.
+The web and user guide documentation has chaged so that the examples reference data in cfplot_data.  This is so the gallery examples work as written and to prevent multiple copies of the example data being on local disks.
 
  ::
 

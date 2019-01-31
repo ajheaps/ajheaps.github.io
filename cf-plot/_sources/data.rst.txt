@@ -8,7 +8,7 @@ Data is generally passed to cf-plot via cf-python as a 2-dimensional field.
 ::
 
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')
+   f=cf.read('cfplot_data/ggap.nc')
 
 f is now an list of 4 fields. 
 
@@ -60,7 +60,7 @@ In this locally processed ERA40 reanalysis field there is a distinct lack of sta
 
 ::
 
-   f=cf.read('/opt/graphics/cfplot_data/ggap.nc')[2]   
+   f=cf.read('cfplot_data/ggap.nc')[2]   
    f
    <CF Field: geopotential(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-2>
 
@@ -104,7 +104,7 @@ In this dataset there are neither standard or long names.
 
 ::
 
-   f=cf.read('/opt/graphics/cfplot_data/gdata.nc')[0]   
+   f=cf.read('cfplot_data/gdata.nc')[0]   
    <CF Field: ncvar:temp(ncvar:p(22), ncvar:lat(73), ncvar:lon(145)) >
 
 
@@ -151,7 +151,7 @@ cf-plot can also make contour and vector plots by passing data arrays.
 
    import cfplot as cfp
    from netCDF4 import Dataset as ncfile
-   nc = ncfile('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+   nc = ncfile('cfplot_data/tas_A1.nc')[0]
    lons=nc.variables['lon'][:]
    lats=nc.variables['lat'][:]
    temp=nc.variables['tas'][0,:,:]

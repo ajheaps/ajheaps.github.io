@@ -156,7 +156,7 @@ Check cf-plot works in batch mode and modify if not.
 
    /home/swsheaps/ajh.py:
    import cf, cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/tas_A1.nc')[0]
+   f=cf.read('cfplot_data/tas_A1.nc')[0]
    cfp.plotvars.file='/home/swsheaps/ll.png'
    cfp.con(f.subspace(time=15))
 

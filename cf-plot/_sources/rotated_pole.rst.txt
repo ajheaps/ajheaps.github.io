@@ -12,7 +12,7 @@ Example 21 - rotated pole data plot
 
    import cf
    import cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/rgp.nc')[0]
+   f=cf.read('cfplot_data/rgp.nc')[0]
    cfp.cscale('plasma')
    cfp.con(f)
 
@@ -32,7 +32,7 @@ This plot shows some rotated pole data on the native grid. Notice the way that t
 
    import cf
    import cfplot as cfp
-   f=cf.read('/opt/graphics/cfplot_data/rgp.nc')[0]
+   f=cf.read('cfplot_data/rgp.nc')[0]
    cfp.cscale('plasma')
    cfp.mapset(proj='rotated')
    cfp.con(f)        
@@ -62,7 +62,7 @@ the case of data in case b) above, the x-wind and y-wind will need to be appropr
     import cf
     import cfplot as cfp
    
-    f=cf.read('/opt/graphics/cfplot_data/20160601-05T0000Z_INCOMPASS_km4p4_uv_RH_500.nc')
+    f=cf.read('cfplot_data/20160601-05T0000Z_INCOMPASS_km4p4_uv_RH_500.nc')
     cfp.mapset(50, 100, 5, 35)
     cfp.levs(0, 90, 15, extend='neither')
 
