@@ -30,8 +30,8 @@ To install cf-plot on your own Linux PC or laptop download and install Anaconda 
 
 ::
 
-   conda install -c ncas -c conda-forge cf-python cf-plot udunits2=2.2.20 matplotlib=2.0.2
-   conda install -c nesii -c conda-forge mpich esmpy
+   conda install -c ncas -c conda-forge cf-python cf-plot udunits2=2.2.20
+   conda install -c conda-forge mpich esmpy
 
 
 The first line installs cf-python and cf-plot.  The second installs esmpy, together with the netcdf-fortran and mpich requirements, which cf-python uses for regriding data.
