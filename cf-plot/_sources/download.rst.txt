@@ -71,8 +71,9 @@ Sample data sets
 ----------------
 
 These are available in the cfplot_data directory which can be linked using:
-| Jasmin: ln -s /home/users/ajh/cfplot_data ~
-| Reading Academic Computing Cluster (RACC): ln -s /share/apps/NCAS/cfplot_data ~
+
+|   Jasmin: ln -s /home/users/ajh/cfplot_data ~
+|   Reading Academic Computing Cluster (RACC): ln -s /share/apps/NCAS/cfplot_data ~
 
 
 If you are on a different server then download the `sample netCDF datasets <http://gws-access.ceda.ac.uk/public/ncas_climate/ajh/data_analysis_tools/cfplot_data.tar>`_

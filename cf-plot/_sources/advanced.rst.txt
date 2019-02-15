@@ -72,6 +72,50 @@ In this example we make a blank map plot, change the longitude labels and add a 
 
 Adding country borders etc can be done using the normal Cartopy operations on the cfp.plotvars.mymap object.  Look on the Cartopy web page for examples of these.
 
+ 
+
+Plotting shape files
+--------------------
+
+In this example we make a blank map plot and plot the UK rivers from a shapefile.  The shapefile came from DIVA-GIS at http://www.diva-gis.org/gdata.  The pyshp Python package is needed for this program.
+
+
+.. image::  images/advanced_shapefile.png
+
+
+
+
+::
+
+    import shapefile
+    import cf, cfplot as cfp
+    import numpy as np
+    import cartopy.crs as ccrs
+
+    f=cf.read('cfplot_data/ggap.nc')[3] # data for contour map
+
+    sf = shapefile.Reader('GBR_water_lines_dcw.shp') # UK rivers
+
+    cfp.gopen()
+    cfp.levs(-1000, -900, 10)
+    cfp.mapset(-11, 3, 49, 60, resolution='10m')
+    cfp.con(f.subspace(pressure=1000), fill=False)
+
+    for i in np.arange(len(sf.shapes())):
+
+        points = sf.shape(i).points
+        lons = np.zeros((len(points),1))
+        lats = np.zeros((len(points),1))
+        for ip in range(len(points)):
+            lons[ip] = points[ip][0]
+            lats[ip] = points[ip][1]
+        
+        cfp.plotvars.mymap.plot(lons, lats , linewidth=1.0,
+                                color='blue', transform=ccrs.PlateCarree())
+
+
+    cfp.gclose()
+
 
 
 Manually changing colours in a colour scale
