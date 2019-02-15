@@ -95,8 +95,8 @@
 </div>
 <div class="section" id="plotting-shape-files">
 <h2>Plotting shape files<a class="headerlink" href="#plotting-shape-files" title="Permalink to this headline">¶</a></h2>
-<p>In this example we make a blank map plot and plot the UK rivers from a shapefile.  The shapefile came from DIVA-GIS at <a class="reference external" href="http://www.diva-gis.org/gdata">http://www.diva-gis.org/gdata</a>.  The pyshp Python package is needed for this program.</p>
-<img alt="_images/advanced_shapefile.png" src="_images/advanced_shapefile.png" />
+<p>In this example we make a blank map plot and plot the UK rivers from a shapefile.  The shapefile used came from DIVA-GIS at <a class="reference external" href="http://www.diva-gis.org/gdata">http://www.diva-gis.org/gdata</a>.  The pyshp Python package is needed for this program.</p>
+<a class="reference internal image-reference" href="_images/advanced_shapefile.png"><img alt="_images/advanced_shapefile.png" src="_images/advanced_shapefile.png" style="width: 487.24px; height: 379.08px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shapefile</span>
 <span class="kn">import</span> <span class="nn">cf</span><span class="o">,</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -124,6 +124,59 @@
                             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
 
 
+<span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="making-a-transect-plot">
+<h2>Making a transect plot<a class="headerlink" href="#making-a-transect-plot" title="Permalink to this headline">¶</a></h2>
+<p>In this example we make a contour plot and plot a transect.  We use the cfp.regrid bilinear interpolation
+routine to interpolate the data.  Inetrpolation points for this routine must be <strong>within</strong> the data limits
+of the original data.  Care is needed to ensure that the field coordinates go from a low value to a high value.  This is usually not an issue with longitude but with latitude (as in this case) the coordinate goes from the north pole to the south pole.  A simple flip of teh latitude and data is need here.</p>
+<a class="reference internal image-reference" href="_images/advanced_transect.png"><img alt="_images/advanced_transect.png" src="_images/advanced_transect.png" style="width: 340.08px; height: 405.08px;" /></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
+<span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">g</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span> <span class="c1"># g is a 2D eastward wind field at 500mb</span>
+
+
+<span class="c1"># Extract out the lons, lats and data</span>
+<span class="n">lons</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
+<span class="n">lats</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
+<span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
+
+
+<span class="c1"># Flip the lats upside down so they start at -89.14152 and go to 89.14152</span>
+<span class="c1"># Flip the data as well to match the new latitudes</span>
+<span class="n">lats</span> <span class="o">=</span> <span class="n">lats</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+
+<span class="c1"># Generate a set of lons and lats to interpolate to</span>
+<span class="c1"># Here we are making a set of points at 1 degree east and from -87 to 87</span>
+<span class="c1"># The interpolation points need to be inside the lons and lats of the original data</span>
+<span class="n">lons_interp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">179</span><span class="p">)</span>
+<span class="n">lats_interp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">179</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5</span><span class="o">-</span><span class="mi">89</span>
+
+
+<span class="c1"># Interpolate the data to the new grid</span>
+<span class="n">data_interp</span><span class="o">=</span><span class="n">cfp</span><span class="o">.</span><span class="n">regrid</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">lons</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">lats</span><span class="p">,</span> <span class="n">xnew</span><span class="o">=</span><span class="n">lons_interp</span><span class="p">,</span> <span class="n">ynew</span><span class="o">=</span><span class="n">lats_interp</span><span class="p">)</span>
+
+
+<span class="c1"># Finally let&#39;s visually compare our transect data with the original contour field</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">(</span><span class="n">user_position</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span><span class="n">xmax</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lons_interp</span><span class="p">,</span> <span class="n">lats_interp</span> <span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
+                        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span><span class="n">xmax</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">data_interp</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">lons_interp</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Interpolated transect&#39;</span><span class="p">,</span>
+             <span class="n">xticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">*</span><span class="mi">30</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;30E&#39;</span><span class="p">,</span> <span class="s1">&#39;60E&#39;</span><span class="p">,</span> <span class="s1">&#39;90E&#39;</span><span class="p">,</span> <span class="s1">&#39;120E&#39;</span><span class="p">,</span> <span class="s1">&#39;150E&#39;</span><span class="p">,</span> <span class="s1">&#39;180E&#39;</span><span class="p">],</span>
+             <span class="n">yticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span>
+             <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;eastward wind (ms-1)&#39;</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
 </pre></div>
 </div>
