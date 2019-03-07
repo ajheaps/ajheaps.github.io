@@ -35,40 +35,52 @@
 <h1>Download/Install<a class="headerlink" href="#download-install" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="is-cf-plot-already-installed">
 <h2>Is cf-plot already installed?<a class="headerlink" href="#is-cf-plot-already-installed" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="mailto:Jasmin&#37;&#52;&#48;CEDA">Jasmin<span>&#64;</span>CEDA</a> - cf-plot is available inside the Jasmin Analysis Platform
-|  type <strong>python2.7</strong> to start python.</p>
-<p>Archer Jasmin RDF - jasmin.rdf.ac.uk
-|  This has the Jasmin Analysis Platform installed - type <strong>python2.7</strong> to start python.</p>
-<p>Archer - type
-|  <strong>module swap PrgEnv-cray PrgEnv-intel</strong>
-|  <strong>module load anaconda cf</strong>
-|  and then <strong>python</strong> to use cf-plot.</p>
-<p>Department of Meteorology, University of Reading
-|  The latest version of cf-plot is installed on the Reading Academic Computing Cluster - cluster.act.rdg.ac.uk.
-|  Type <strong>module load ncas_anaconda</strong> to set-up the Python environment.
-|  and then <strong>python</strong> to use cf-plot.</p>
-<p>Monsoon postproc server
-|  Type <strong>export PATH=/projects/umadmin/umadmin/anaconda2/bin:$PATH</strong>
-|  and then <strong>python</strong> to use cf-plot.
-|</p>
+<div class="section" id="jasmin-ceda-cf-plot-is-available-inside-the-jasmin-analysis-platform">
+<h3><a class="reference external" href="mailto:Jasmin&#37;&#52;&#48;CEDA">Jasmin<span>&#64;</span>CEDA</a> - cf-plot is available inside the Jasmin Analysis Platform<a class="headerlink" href="#jasmin-ceda-cf-plot-is-available-inside-the-jasmin-analysis-platform" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">type <strong>python2.7</strong> to start python.</div>
+</div>
+</div>
+<div class="section" id="archer-type">
+<h3>Archer - type<a class="headerlink" href="#archer-type" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><strong>module swap PrgEnv-cray PrgEnv-intel</strong></div>
+<div class="line"><strong>module load anaconda cf</strong></div>
+<div class="line">and then <strong>python</strong> to use cf-plot.</div>
+</div>
+</div>
+<div class="section" id="archer-jasmin-rdf-jasmin-rdf-ac-uk">
+<h3>Archer Jasmin RDF - jasmin.rdf.ac.uk<a class="headerlink" href="#archer-jasmin-rdf-jasmin-rdf-ac-uk" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">This has the Jasmin Analysis Platform installed - type <strong>python2.7</strong> to start python.</div>
+</div>
+</div>
+<div class="section" id="department-of-meteorology-university-of-reading">
+<h3>Department of Meteorology, University of Reading<a class="headerlink" href="#department-of-meteorology-university-of-reading" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">The latest version of cf-plot is installed on the Reading Academic Computing Cluster - cluster.act.rdg.ac.uk.</div>
+<div class="line">Type <strong>module load ncas_anaconda</strong> to set-up the Python environment</div>
+<div class="line">and then <strong>python</strong> to use cf-plot.</div>
+</div>
+</div>
+<div class="section" id="monsoon-postproc-server">
+<h3>Monsoon postproc server<a class="headerlink" href="#monsoon-postproc-server" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Type <strong>export PATH=/projects/umadmin/umadmin/anaconda2/bin:$PATH</strong></div>
+<div class="line">and then <strong>python</strong> to use cf-plot.</div>
+<div class="line"><br /></div>
+</div>
+</div>
 </div>
 <div class="section" id="to-install-cf-plot">
 <h2>To install cf-plot<a class="headerlink" href="#to-install-cf-plot" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="linux">
-<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
 <p>To install cf-plot on your own Linux PC or laptop download and install Anaconda Python 2.7 for Linux.  On the command line type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">ncas</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">cf</span><span class="o">-</span><span class="n">python</span> <span class="n">cf</span><span class="o">-</span><span class="n">plot</span> <span class="n">udunits2</span><span class="o">=</span><span class="mf">2.2</span><span class="o">.</span><span class="mi">20</span>
 <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">mpich</span> <span class="n">esmpy</span>
 </pre></div>
 </div>
 <p>The first line installs cf-python and cf-plot.  The second installs esmpy, together with the netcdf-fortran and mpich requirements, which cf-python uses for regriding data.</p>
-</div>
-<div class="section" id="other-operating-systems">
-<h3>Other Operating Systems<a class="headerlink" href="#other-operating-systems" title="Permalink to this headline">¶</a></h3>
 <p>We have a small development team and Linux is our main working environment.  If you have the Mac or Windows operating system installing a Linux Virtual Machine is simple and works well.  Installation instructions and a Mint Linux Virtual Machine are available at <a class="reference external" href="http://gws-access.ceda.ac.uk/public/ncas_climate/ajh/data_analysis_tools/VM">http://gws-access.ceda.ac.uk/public/ncas_climate/ajh/data_analysis_tools/VM</a>.</p>
-</div>
-<div class="section" id="other-install-methods">
-<h3>Other install methods<a class="headerlink" href="#other-install-methods" title="Permalink to this headline">¶</a></h3>
 <p>Using pip:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">cf</span><span class="o">-</span><span class="n">python</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">cf</span><span class="o">-</span><span class="n">plot</span>
@@ -81,9 +93,6 @@
 </pre></div>
 </div>
 <p>You will need to download and install <a class="reference external" href="https://cfpython.bitbucket.io">cf-python</a> to use cf-plot.  Other cf-plot dependencies are: Numpy, Matplotlib, NetCDF4 and Cartopy.</p>
-</div>
-<div class="section" id="sample-data-sets">
-<h3>Sample data sets<a class="headerlink" href="#sample-data-sets" title="Permalink to this headline">¶</a></h3>
 <p>These are available in the cfplot_data directory which can be linked using:</p>
 <div class="line-block">
 <div class="line">Jasmin: <strong>ln -s /home/users/ajh/cfplot_data ~</strong></div>
@@ -99,7 +108,6 @@
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 <div class="line"><br /></div>
-</div>
 </div>
 </div>
 </div>
