@@ -40,7 +40,7 @@ contour plots where no user colour scale has been defined:
 
 Use:
 
- ::    cfp.setvars(cs_uniform=False)
+**cfp.setvars(cs_uniform=False)**
 
 to revert to the previous behaviour.
 
@@ -935,7 +935,8 @@ Some new keywords were added to setvars that affect the plotting of rotated pole
 | rotated_labels=True - draw rotated grid labels
 
 To turn off plotting for  the rotated gid for instance use
-cfp.setvars(rotated_grid=False)
+
+| cfp.setvars(rotated_grid=False)
 
 
 ::
