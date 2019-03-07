@@ -33,12 +33,11 @@ cf-plot gallery
    :target: http://ajheaps.github.io/cf-plot/colour_scales.html
 
 
-`  Vector plots <http://ajheaps.github.io/cf-plot//vectors.html>`_
+
+`Vector plots <http://ajheaps.github.io/cf-plot//vectors.html>`_
 `| Stipple (significance) plots <http://ajheaps.github.io/cf-plot//stipple_plots.html>`_
 `| Multiple plots on a page <http://ajheaps.github.io/cf-plot//multiple_plots.html>`_
 `| Colour scales <http://ajheaps.github.io/cf-plot//colour_scales.html>`_
-
-
 
 .. image::  images/fig20.png
    :scale: 14%    
@@ -54,10 +53,11 @@ cf-plot gallery
    :target: http://ajheaps.github.io/cf-plot/graphs.html
 
 
-`  User defined axes <http://ajheaps.github.io/cf-plot//user_defined.html>`_
+`User defined axes <http://ajheaps.github.io/cf-plot//user_defined.html>`_
 `| Rotated pole plots <http://ajheaps.github.io/cf-plot//rotated_pole.html>`_
 `| Irregular grids <http://ajheaps.github.io/cf-plot//irregular.html>`_
 `| Graph plots <http://ajheaps.github.io/cf-plot//graphs.html>`_
+
 
 
 .. image::  images/fig31.png
@@ -65,7 +65,7 @@ cf-plot gallery
    :target: http://ajheaps.github.io/cf-plot/projections.html
 
 
-` Projections <http://ajheaps.github.io/cf-plot//projections.html>`_
+`Projections <http://ajheaps.github.io/cf-plot//projections.html>`_
 
 
 
