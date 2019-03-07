@@ -9,16 +9,17 @@ Jasmin@CEDA - cf-plot is available inside the Jasmin Analysis Platform
 |  type **python2.7** to start python.
 
 
-Archer - type  
-#############
-|  **module swap PrgEnv-cray PrgEnv-intel**
+Archer
+######
+|  type  **module swap PrgEnv-cray PrgEnv-intel**
 |  **module load anaconda cf**
 |  and then **python** to use cf-plot.
 
 
 Archer Jasmin RDF - jasmin.rdf.ac.uk
 ####################################
-|  This has the Jasmin Analysis Platform installed - type **python2.7** to start python.
+|  This has the Jasmin Analysis Platform installed 
+|  type **python2.7** to start python.
 
 
 Department of Meteorology, University of Reading
@@ -40,7 +41,7 @@ To install cf-plot
 ==================
 
 Linux
------
+#####
 To install cf-plot on your own Linux PC or laptop download and install Anaconda Python 2.7 for Linux.  On the command line type:
 
 ::
@@ -54,14 +55,14 @@ The first line installs cf-python and cf-plot.  The second installs esmpy, toget
 
 
 Other Operating Systems
------------------------
+#######################
 We have a small development team and Linux is our main working environment.  If you have the Mac or Windows operating system installing a Linux Virtual Machine is simple and works well.  Installation instructions and a Mint Linux Virtual Machine are available at http://gws-access.ceda.ac.uk/public/ncas_climate/ajh/data_analysis_tools/VM.  
 
 
 
 
 Other install methods
----------------------
+#####################
 Using pip:
 
 ::
@@ -83,7 +84,7 @@ You will need to download and install `cf-python <https://cfpython.bitbucket.io>
 
 
 Sample data sets
-----------------
+################
 
 These are available in the cfplot_data directory which can be linked using:
 
