@@ -5,28 +5,23 @@ Is cf-plot already installed?
 =============================
 
 Jasmin@CEDA - cf-plot is available inside the Jasmin Analysis Platform
-
 |  type **python2.7** to start python.
 
 Archer Jasmin RDF - jasmin.rdf.ac.uk
-
 |  This has the Jasmin Analysis Platform installed - type **python2.7** to start python.
 
-  Archer - type  
-
+Archer - type  
 |  **module swap PrgEnv-cray PrgEnv-intel**
 |  **module load anaconda cf**
 |  and then **python** to use cf-plot.
 
 Department of Meteorology, University of Reading
-
 |  The latest version of cf-plot is installed on the Reading Academic Computing Cluster - cluster.act.rdg.ac.uk. 
 |  Type **module load ncas_anaconda** to set-up the Python environment.
 |  and then **python** to use cf-plot.
 
 
 Monsoon postproc server
-
 |  Type **export PATH=/projects/umadmin/umadmin/anaconda2/bin:$PATH**
 |  and then **python** to use cf-plot.
 | 

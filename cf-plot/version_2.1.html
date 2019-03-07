@@ -90,21 +90,9 @@ with xlabel and ylabel as used in the con and vect routines.</p>
 <div class="line-block">
 <div class="line">import cf, cfplot as cfp</div>
 <div class="line">f=cf.read(‘cfplot_data/tas_A1.nc’)[0]</div>
-<div class="line">cfp.mapset(proj=’lcc’, lon_0=0, lat_0=50, lat_1=45, lat_2=55, width=12000000,</div>
-<div class="line">height=9000000, plimits=[-50, 50, 20, 85])</div>
+<div class="line">cfp.mapset(proj=’lcc’, lonmin=-50, lonmax=50, latmin=20, latmax=85)</div>
 <div class="line">cfp.con(f.subspace(time=15))</div>
 </div>
-<a class="reference internal image-reference" href="_images/cm.png"><img alt="_images/cm.png" src="_images/cm.png" style="width: 364.0px; height: 339.04px;" /></a>
-<p>For a corresponding southern hemisphere plot use:</p>
-<div class="line-block">
-<div class="line">cfp.mapset(proj=’lcc’, lon_0=0, lat_0=-50, lat_1=-55, lat_2=-45, width=12000000,height=9000000,</div>
-<div class="line">plimits=[-50, 50, -85, -20])</div>
-</div>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
-</pre></div>
-</div>
-</div></blockquote>
 </div>
 <div class="section" id="better-determination-of-up-on-the-z-axis">
 <h2>7. Better determination of up on the Z axis<a class="headerlink" href="#better-determination-of-up-on-the-z-axis" title="Permalink to this headline">¶</a></h2>
@@ -229,10 +217,12 @@ Setting it to ‘face’ gives the same colour as the filled polygon.</p>
 <div class="section" id="setvars-a-master-title-for-multi-panel-plots">
 <h2>21. setvars -  A master title for multi-panel plots<a class="headerlink" href="#setvars-a-master-title-for-multi-panel-plots" title="Permalink to this headline">¶</a></h2>
 <p>Added a master title for multi-panel plots to the setvars routine.</p>
-<p>master_title=None - master title text
-master_title_location=None - master title location
-master_title_fontsize=None - master title font size
-master_title_fontweight=None - master title font weight</p>
+<div class="line-block">
+<div class="line">master_title=None - master title text</div>
+<div class="line">master_title_location=None - master title location</div>
+<div class="line">master_title_fontsize=None - master title font size</div>
+<div class="line">master_title_fontweight=None - master title font weight</div>
+</div>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
@@ -404,8 +394,8 @@ it also takes ‘None’, ‘dotted’ and ‘dashdot’.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="cf-plot-updated-for-cf-2-x">
-<h2>40. cf-plot updated for cf 2.x<a class="headerlink" href="#cf-plot-updated-for-cf-2-x" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cf-plot-updated-for-cf-python-2-x">
+<h2>40. cf-plot updated for cf-python 2.x<a class="headerlink" href="#cf-plot-updated-for-cf-python-2-x" title="Permalink to this headline">¶</a></h2>
 <p>cf-plot was updated to be compatible with the 1.x to 2.x API changes to cf-python.
 See <a class="reference external" href="https://cfpython.bitbucket.io/docs/latest/1_to_2_changes.html">https://cfpython.bitbucket.io/docs/latest/1_to_2_changes.html</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
