@@ -19,6 +19,8 @@ cf-plot gallery
 `| Latitude/longitude - height plots <http://ajheaps.github.io/cf-plot//pressure.html>`_
 `| Hovmuller plots <http://ajheaps.github.io/cf-plot//hovmuller.html>`_
 
+
+
 .. image::  images/fig13.png
    :scale: 14%    
    :target: http://ajheaps.github.io/cf-plot/vectors.html
@@ -32,12 +34,12 @@ cf-plot gallery
    :scale: 20%    
    :target: http://ajheaps.github.io/cf-plot/colour_scales.html
 
-
-
 `Vector plots <http://ajheaps.github.io/cf-plot//vectors.html>`_
 `| Stipple (significance) plots <http://ajheaps.github.io/cf-plot//stipple_plots.html>`_
 `| Multiple plots on a page <http://ajheaps.github.io/cf-plot//multiple_plots.html>`_
 `| Colour scales <http://ajheaps.github.io/cf-plot//colour_scales.html>`_
+
+
 
 .. image::  images/fig20.png
    :scale: 14%    
@@ -51,7 +53,6 @@ cf-plot gallery
 .. image::  images/fig28.png
    :scale: 11%    
    :target: http://ajheaps.github.io/cf-plot/graphs.html
-
 
 `User defined axes <http://ajheaps.github.io/cf-plot//user_defined.html>`_
 `| Rotated pole plots <http://ajheaps.github.io/cf-plot//rotated_pole.html>`_

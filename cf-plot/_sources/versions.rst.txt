@@ -22,7 +22,7 @@ Planned releases
 - 2.0 `Code base changes    <http://ajheaps.github.io/cf-plot/version_2.0.html>`_
 - 2.1 `Rolling set of small additions and bug fixes    <http://ajheaps.github.io/cf-plot/version_2.1.html>`_
 - 2.2 `Change from Basemap to Cartopy mapping    <http://ajheaps.github.io/cf-plot/version_2.2.html>`_
-
+- 2.3 `Support for the UKCP grid   <http://ajheaps.github.io/cf-plot/version_2.3.html>`_
 
 Further functionality may be added on request - please email <andy.heaps@ncas.ac.uk> with details.
 
