@@ -4,21 +4,28 @@ Download/Install
 Is cf-plot already installed?
 =============================
 
-Jasmin@CEDA - cf-plot is available inside the Jasmin Analysis Platform - type python2.7 to start python.
+Jasmin@CEDA - cf-plot is available inside the Jasmin Analysis Platform
+|  type **python2.7** to start python.
 
-Archer Jasmin RDF - jasmin.rdf.ac.uk - This has the Jasmin Analysis Platform installed - type python2.7 to start python.
+Archer Jasmin RDF - jasmin.rdf.ac.uk
+|  This has the Jasmin Analysis Platform installed - type **python2.7** to start python.
 
 |  Archer - type  
 |  **module swap PrgEnv-cray PrgEnv-intel**
 |  **module load anaconda cf**
-|  and then python to use cf-plot.
+|  and then **python** to use cf-plot.
 
-Department of Meteorology, University of Reading - The latest version of cf-plot is installed on the Reading Academic Computing Cluster - cluster.act.rdg.ac.uk. 
+Department of Meteorology, University of Reading
+|  The latest version of cf-plot is installed on the Reading Academic Computing Cluster - cluster.act.rdg.ac.uk. 
+|  Type **module load ncas_anaconda** to set-up the Python environment.
+|  and then **python** to use cf-plot.
 
-| Type **module load ncas_anaconda** to set-up the Python environment.
 
-|
-|
+Monsoon postproc server
+|  Type **export PATH=/projects/umadmin/umadmin/anaconda2/bin:$PATH**
+|  and then **python** to use cf-plot.
+| 
+
 
 
 To install cf-plot
@@ -72,8 +79,8 @@ Sample data sets
 
 These are available in the cfplot_data directory which can be linked using:
 
-|   Jasmin: ln -s /home/users/ajh/cfplot_data ~
-|   Reading Academic Computing Cluster (RACC): ln -s /share/apps/NCAS/cfplot_data ~
+|   Jasmin: **ln -s /home/users/ajh/cfplot_data ~**
+|   Reading Academic Computing Cluster (RACC): **ln -s /share/apps/NCAS/cfplot_data ~**
 
 
 If you are on a different server then download the `sample netCDF datasets <http://gws-access.ceda.ac.uk/public/ncas_climate/ajh/data_analysis_tools/cfplot_data.tar>`_

@@ -124,8 +124,8 @@ Making a transect plot
 ----------------------
 
 In this example we make a contour plot and plot a transect.  We use the cfp.regrid bilinear interpolation 
-routine to interpolate the data.  Inetrpolation points for this routine must be **within** the data limits 
-of the original data.  Care is needed to ensure that the field coordinates go from a low value to a high value.  This is usually not an issue with longitude but with latitude (as in this case) the coordinate goes from the north pole to the south pole.  A simple flip of teh latitude and data is need here.
+routine to interpolate the data.  Interpolation points for this routine must be **within** the data limits 
+of the original data.  Care is needed to ensure that the field coordinates go from a low value to a high value.  This is usually not an issue with longitude but occasionally with latitude (as in this case) the coordinate goes from the north pole to the south pole.  A simple flip of the latitude and data is need here.
 
 .. image::  images/advanced_transect.png
    :scale: 52% 
