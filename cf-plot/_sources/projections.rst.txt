@@ -22,6 +22,12 @@ Example 31 - UKCP projection
 | 
 | 
 
+cf-plot looks for auxiliary coordinates of longitude and latitude and uses them if found.  If they aren't present then cf-plot will generate the grid required using the projection_x_coordinate and projection_y_coordinate variables.  For a blockfill plot as below it uses the latter method and the supplied bounds.
+
+|
+|
+
+
 Example 32 - UKCP projection with blockfill
 -------------------------------------------
 
@@ -30,7 +36,7 @@ New cfp.setvars options affecting the grid plotting for the UKCP grid are:
 | grid=True - draw grid
 | grid_spacing=1 - grid spacing in degrees
 | grid_lons=None - grid longitudes
-| gid_lats=None - grid latitudes
+| grid_lats=None - grid latitudes
 | grid_colour='grey' - grid colour
 | grid_linestyle='--' - grid line style
 | grid_thickness=1.0 - grid thickness
