@@ -14,10 +14,10 @@ cf-plot gallery
    :scale: 14%    
    :target: http://ajheaps.github.io/cf-plot/hovmuller.html
 
-`Cylindrical projection     <http://ajheaps.github.io/cf-plot//cylindrical.html>`_
-`| Polar stereographic <http://ajheaps.github.io/cf-plot//polar.html>`_
-`| Latitude/longitude - height <http://ajheaps.github.io/cf-plot//pressure.html>`_
-`| Hovmuller <http://ajheaps.github.io/cf-plot//hovmuller.html>`_
+`Cylindrical projection     <http://ajheaps.github.io/cf-plot/cylindrical.html>`_
+`| Polar stereographic <http://ajheaps.github.io/cf-plot/polar.html>`_
+`| Latitude/longitude - height <http://ajheaps.github.io/cf-plot/pressure.html>`_
+`| Hovmuller <http://ajheaps.github.io/cf-plot/hovmuller.html>`_
 
 
 
@@ -35,9 +35,9 @@ cf-plot gallery
    :target: http://ajheaps.github.io/cf-plot/colour_scales.html
 
 `Vectors <http://ajheaps.github.io/cf-plot//vectors.html>`_
-`| Stipple (significance) <http://ajheaps.github.io/cf-plot//stipple_plots.html>`_
-`| Multiple plots on a page <http://ajheaps.github.io/cf-plot//multiple_plots.html>`_
-`| Colour scales <http://ajheaps.github.io/cf-plot//colour_scales.html>`_
+`| Stipple (significance) <http://ajheaps.github.io/cf-plot/stipple_plots.html>`_
+`| Multiple plots on a page <http://ajheaps.github.io/cf-plot/multiple_plots.html>`_
+`| Colour scales <http://ajheaps.github.io/cf-plot/colour_scales.html>`_
 
 
 
@@ -54,10 +54,10 @@ cf-plot gallery
    :scale: 11%    
    :target: http://ajheaps.github.io/cf-plot/graphs.html
 
-`User defined axes <http://ajheaps.github.io/cf-plot//user_defined.html>`_
-`| Rotated pole <http://ajheaps.github.io/cf-plot//rotated_pole.html>`_
-`| Irregular grids <http://ajheaps.github.io/cf-plot//irregular.html>`_
-`| Graphs <http://ajheaps.github.io/cf-plot//graphs.html>`_
+`User defined axes <http://ajheaps.github.io/cf-plot/user_defined.html>`_
+`| Rotated pole <http://ajheaps.github.io/cf-plot/rotated_pole.html>`_
+`| Irregular grids <http://ajheaps.github.io/cf-plot/irregular.html>`_
+`| Graphs <http://ajheaps.github.io/cf-plot/graphs.html>`_
 
 
 
@@ -65,8 +65,16 @@ cf-plot gallery
    :scale: 14%    
    :target: http://ajheaps.github.io/cf-plot/projections.html
 
+.. image::  images/fig40.png
+   :scale: 14%    
+   :target: http://ajheaps.github.io/cf-plot/trajectories.html
 
-`Projections <http://ajheaps.github.io/cf-plot//projections.html>`_
+
+
+
+`Projections <http://ajheaps.github.io/cf-plot/projections.html>`_
+`| Trajectories <http://ajheaps.github.io/cf-plot/trajectories.html>`_
+
 
 
 

@@ -1,0 +1,45 @@
+version 2.4 changes
+*******************
+
+Trajectory plotting
+
+0. Added support for trajectories
+=================================
+
+Support added for plotting trajectories in contiguous ragged array format.
+
+
+
+
+::
+
+    Done
+
+
+
+1. zorder option added to plotting commands
+===========================================
+
+The plotting order parameter, zorder, has been added to con, vect, stipple and lineplot.  Using 
+zorder with a larger number puts the plotted item on top of an item with a lower zorder number.
+
+
+::
+
+    Done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

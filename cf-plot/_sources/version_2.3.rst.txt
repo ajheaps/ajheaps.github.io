@@ -41,4 +41,65 @@ OSGB and EuroPP projections have been added.
 
 
 
+2. Colourmaps inadvertently removed
+===================================
+
+The cf-plot colourmaps directory was inadvertently removed.
+
+
+::
+
+    Fixed
+
+
+
+3. Bug with cyclindrical projection map xlabel and ylabel
+=========================================================
+
+A bug with labelling of x and y axes in the cylindrical (PlateCarree) projection
+has been fixed.
+
+
+::
+
+    Fixed
+
+
+4. Update land, ocean and lake colouring example
+================================================
+
+The land, ocean and lake colouring example in http://ajheaps.github.io/cf-plot/advanced.html
+was updated to use cartopy code internally in cf-plot
+
+
+::
+
+    Fixed
+
+
+
+5. Bug in blockfill on a map code
+=================================
+
+A bug in the blockfill code for maps was fixed.  This bug assumed all blockfill plots were maps which is
+incorrect.
+
+
+::
+
+    Fixed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

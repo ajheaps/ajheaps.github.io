@@ -1,0 +1,151 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Trajectories &#8212; cf-plot 2.4.1 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="trajectories">
+<h1>Trajectories<a class="headerlink" href="#trajectories" title="Permalink to this headline">¶</a></h1>
+<p>Data stored in contiguous ragged array format, such as from Kevin Hodges’s TRACK program, can be plotted using cf-plot.</p>
+<div class="section" id="example-39-basic-track-plotting">
+<h2>Example 39 - basic track plotting<a class="headerlink" href="#example-39-basic-track-plotting" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/fig39.png"><img alt="_images/fig39.png" src="_images/fig39.png" style="width: 514.28px; height: 258.96px;" /></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
+<span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ff_trs_pos.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">traj</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Here a plot of relative vorticity tracks is made in the cylindrical projection.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="example-40-tracks-in-the-polar-stereographic-projection">
+<h2>Example 40 - tracks in the polar stereographic projection<a class="headerlink" href="#example-40-tracks-in-the-polar-stereographic-projection" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/fig40.png"><img alt="_images/fig40.png" src="_images/fig40.png" style="width: 368.16px; height: 390.52px;" /></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
+<span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ff_trs_pos.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">proj</span><span class="o">=</span><span class="s1">&#39;npstere&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">traj</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="example-41-feature-propagation-over-europe">
+<h2>Example 41 - feature propagation over Europe<a class="headerlink" href="#example-41-feature-propagation-over-europe" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/fig41.png"><img alt="_images/fig41.png" src="_images/fig41.png" style="width: 390.52px; height: 379.08px;" /></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
+<span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ff_trs_pos.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">lonmin</span><span class="o">=-</span><span class="mi">20</span><span class="p">,</span> <span class="n">lonmax</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">latmin</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">latmax</span><span class="o">=</span><span class="mi">70</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">traj</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">vector</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Data with lots of tracks takes several seconds to plot as the direction vectors have to be plotted individually whether
+they are on the plot or not.</p>
+</div>
+<div class="section" id="example-42-intensity-legend">
+<h2>Example 42 - intensity legend<a class="headerlink" href="#example-42-intensity-legend" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="_images/fig42.png"><img alt="_images/fig42.png" src="_images/fig42.png" style="width: 510.64px; height: 355.68px;" /></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
+<span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ff_trs_pos.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">lonmin</span><span class="o">=-</span><span class="mi">50</span><span class="p">,</span> <span class="n">lonmax</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">latmin</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">latmax</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">g</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">wi</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="s1">&#39;1979-12-01&#39;</span><span class="p">),</span> <span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="s1">&#39;1979-12-30&#39;</span><span class="p">)))</span>
+<span class="n">g</span><span class="o">=</span><span class="n">g</span><span class="o">*</span><span class="mf">1e5</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">levs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;scale1&#39;</span><span class="p">,</span> <span class="n">below</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">above</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">traj</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">colorbar_title</span><span class="o">=</span><span class="s1">&#39;Relative Vorticity (Hz) * 1e5&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>In this plot the tracks between 1979-12-01 and 1979-12-30 are selected and
+labelled according intensity with a colourbar.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+<h3><a href="http://ajheaps.github.io/cf-plot/#">Homepage</a><p></h3>
+<h5><a href="http://ajheaps.github.io/cf-plot/gallery.html">Gallery</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/user_guide.html">User Guide</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/training.html">Training material</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/data.html">Data input</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/routines.html">Routines</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/internal_routines.html">Routines - internal</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/advanced.html">Advanced Use</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/versions.html">Versions</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/issues.html">Issues</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/download.html">Download/Install</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/license.html">License</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/search.html">Search</a><p></h5>
+<h5><a href="http://www.met.reading.ac.uk/~swsheaps/cf-plot-2.1.75">Older documentation</a><p></h5>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>

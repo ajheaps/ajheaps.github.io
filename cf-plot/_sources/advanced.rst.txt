@@ -22,6 +22,8 @@ To see all the methods for the plot object type
 In this example we make a blank map plot, change the longitude labels and add a box and some text.   For map plots we operate on the cfp.plotvars.mymap object and need to specify transform=ccrs.PlateCarree() to make sure that the plotting is made in regular longitude and latitude coordinates.  If the plot is not a map plot then the transform=ccrs.PlateCarree() isn't needed.
 
 .. image::  images/advanced1.png
+   :scale: 52% 
+
 
 ::
 
@@ -213,25 +215,25 @@ For example, to make one of the colours in the viridis colour scale grey use:
 
 
 .. image::  images/advanced2.png
-
+   :scale: 52% 
 
 
 Colouring land and lakes
 ------------------------
 
-This is done by changing the land_color and lake_color variables in cfp.setvars.
+This is done by changing the land_color, ocean_color and lake_color variables in cfp.setvars.
 
 ::
 
     import cf
     import cfplot as cfp
     f=cf.read('cfplot_data/tas_A1.nc')[0]
-    cfp.setvars(land_color='red', lake_color='grey')
+    cfp.setvars(land_color='grey', lake_color='blue')
     cfp.con(f.subspace(time=15))
 
 
 .. image::  images/advanced3.png
-
+   :scale: 52% 
 
 
 
@@ -262,7 +264,7 @@ Masked data isn't plotted.
 
 
 .. image::  images/advanced4.png
-
+   :scale: 52% 
 
 Masked data is plotted as blockfill in grey.
 
@@ -288,7 +290,7 @@ Masked data is plotted as blockfill in grey.
 
 
 .. image::  images/advanced5.png
-
+   :scale: 52% 
 
 Blockfill with individual colours
 ---------------------------------
@@ -298,12 +300,12 @@ possible using the cf-plot internal blockfill routine.
 
 ::
 
+    import cf
+    import cfplot as cfp
+    import numpy as np
+
     f=cf.read('cfplot_data/ggap.nc')[1]
     g=f.collapse('mean','longitude')
-
-
-
-
     x=g.item('Y').array
     y=g.item('Z').array
     data=np.squeeze(g.array)
@@ -314,14 +316,13 @@ possible using the cf-plot internal blockfill routine.
 
     # Call internal block filling routine 
     cfp.bfill(f=data, x=x, y=y, clevs=[-50, 0], single_fill_color='green')
-
     cfp.bfill(f=data, x=x, y=y, clevs=[20, 40], single_fill_color='purple')
     cfp.gclose()
 
 
 
 .. image::  images/advanced6.png
-
+   :scale: 52% 
 
 
 
