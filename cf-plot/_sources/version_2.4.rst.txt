@@ -29,6 +29,18 @@ zorder with a larger number puts the plotted item on top of an item with a lower
     Done
 
 
+2. Fix blockfill on pressure plots
+==================================
+
+A bug in pressure blockplots was fixed.
+
+
+::
+
+    Done
+
+
+
 
 
 

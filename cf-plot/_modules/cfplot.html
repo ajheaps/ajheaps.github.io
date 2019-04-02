@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>cfplot &#8212; cf-plot 2.4.1 documentation</title>
+    <title>cfplot &#8212; cf-plot 2.4.2 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="../_static/documentation_options.js"></script>
@@ -22,7 +22,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 2.4.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 2.4.2 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
@@ -4075,8 +4075,10 @@
         <span class="n">white</span> <span class="o">=</span> <span class="kc">False</span>
   
 
-    <span class="c1"># Set the default map transform</span>
-    <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
+    <span class="c1"># Set the default map coordinates for the data to be PlateCarree</span>
+    <span class="n">plotargs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">lonlat</span><span class="p">:</span>
+        <span class="n">plotargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;transform&#39;</span> <span class="p">:</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()}</span>
 
     <span class="n">transverse_mercator</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">cf</span><span class="o">.</span><span class="n">Field</span><span class="p">):</span>
@@ -4214,10 +4216,7 @@
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">colarr</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span><span class="o">=-</span><span class="mi">1</span>
 
-    <span class="k">if</span> <span class="n">lonlat</span><span class="p">:</span>
-        <span class="n">plotargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;transform&#39;</span> <span class="p">:</span> <span class="n">transform</span><span class="p">}</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">plotargs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1">#print &#39;plotargs are &#39;, **plotargs</span>
 
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">!=</span> <span class="s1">&#39;cyl&#39;</span><span class="p">:</span>
 
@@ -4282,9 +4281,9 @@
                                   <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">,</span> <span class="o">**</span><span class="n">plotargs</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">lonlat</span><span class="p">:</span>
-                <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">coll</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">,</span> <span class="o">**</span><span class="n">plotargs</span><span class="p">)</span>
+                <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">coll</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">coll</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
+                <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">coll</span><span class="p">)</span>
 
 
 
@@ -4308,8 +4307,15 @@
 
         <span class="c1"># Make the collection and add it to the plot.</span>
         <span class="n">color</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">cs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">coll</span> <span class="o">=</span> <span class="n">PolyCollection</span><span class="p">(</span><span class="n">allverts</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
-        <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">coll</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span></div>
+        <span class="n">coll</span> <span class="o">=</span> <span class="n">PolyCollection</span><span class="p">(</span><span class="n">allverts</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span> 
+                              <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">,</span> <span class="o">**</span><span class="n">plotargs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">lonlat</span><span class="p">:</span>
+            <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">coll</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">coll</span><span class="p">)</span></div>
+
+
 
 
 
@@ -7887,7 +7893,6 @@
 <span class="sd">    |</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="nb">print</span> <span class="s1">&#39;colorbar_labels are&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">colorbar_labels</span><span class="p">),</span> <span class="n">colorbar_labels</span>
 
 
     <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
@@ -8517,7 +8522,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 2.4.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 2.4.2 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>
