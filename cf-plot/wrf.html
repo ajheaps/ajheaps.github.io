@@ -54,8 +54,6 @@
 <span class="n">temp</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;air_temperature&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">t1</span><span class="o">=</span><span class="n">temp</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="s1">&#39;2016-12-25&#39;</span><span class="p">))</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">15</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="line-block">

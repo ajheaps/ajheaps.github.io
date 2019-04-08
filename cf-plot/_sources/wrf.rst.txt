@@ -41,8 +41,6 @@ Example 43 - plotting WRF data
    t1=temp.subspace(time=cf.dt('2016-12-25'))
    cfp.con(t1, lines=False)
 
-   cfp.con(f.subspace(time=15))
-
 
 | 
 | 
