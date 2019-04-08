@@ -2,29 +2,17 @@ WRF data
 ********
 
 
-Output data from the Weather Research and Forecasting (WRF) Model is some distance from being CF compliant but an NCL (NCAR Command Language) script is available that converts WRF data into CF netCDF. The NCL script can be downloaded from http://foehn.colorado.edu/wrfout_to_cf/overview.html
+Output data from the Weather Research and Forecasting (WRF) Model is some distance from being CF compliant.  A Python script is available, from the University of Cantabria, that converts WRF data into CF netCDF. The Python script can be downloaded from http://www.meteo.unican.es/wiki/cordexwrf/SoftwareTools/WrfncXnj
 
 Our input file here is called wrf.nc.  As the file is large at 5GB this file isn't distributed and this is a worked example of what is needed. 
 
+**python wrfncxnj.py -v T2 -o wrf2.nc wrf.nc**
 
-
-**ncl 'file_in="wrf.nc"' 'file_out="wrfpost.nc"' wrfout_to_cf.ncl**
-
-
-The variable p_top in the wrfpost.nc is incorrect in that it should have just one value.  Using a couple of NetCDF Operators (NCO) this variable is deleted and then reinserted with just one value.  Note the case of p_top needs to be correct as in the following commands. 
-
-**ncks -x -v p_top wrfpost.nc wrf2.nc**
-
-**ncap2 -s 'P_TOP=10000.0' wrf2.nc wrf3.nc**
-
-
-The file wrf2.nc can be deleted as it is an intermediary file.  
 
 We now have a CF netCDF file which can be readily manipulated and plotted using cf-python and cf-plot.
 
 |
 |
-
 
 Example 43 - plotting WRF data
 ------------------------------
@@ -36,10 +24,10 @@ Example 43 - plotting WRF data
 
    import cf
    import cfplot as cfp
-   f=cf.read('wrf3.nc')
-   temp=f.select('air_temperature')[1]
-   t1=temp.subspace(time=cf.dt('2016-12-25'))
-   cfp.con(t1, lines=False)
+   f=cf.read('wrf2.nc')[0]
+   t2=f.subspace(time=cf.dt('2016-12-25'))
+   t2.units='degC'
+   cfp.con(t2, lines=False)
 
 
 | 

@@ -33,13 +33,9 @@
             
   <div class="section" id="wrf-data">
 <h1>WRF data<a class="headerlink" href="#wrf-data" title="Permalink to this headline">¶</a></h1>
-<p>Output data from the Weather Research and Forecasting (WRF) Model is some distance from being CF compliant but an NCL (NCAR Command Language) script is available that converts WRF data into CF netCDF. The NCL script can be downloaded from <a class="reference external" href="http://foehn.colorado.edu/wrfout_to_cf/overview.html">http://foehn.colorado.edu/wrfout_to_cf/overview.html</a></p>
+<p>Output data from the Weather Research and Forecasting (WRF) Model is some distance from being CF compliant.  A Python script is available, from the University of Cantabria, that converts WRF data into CF netCDF. The Python script can be downloaded from <a class="reference external" href="http://www.meteo.unican.es/wiki/cordexwrf/SoftwareTools/WrfncXnj">http://www.meteo.unican.es/wiki/cordexwrf/SoftwareTools/WrfncXnj</a></p>
 <p>Our input file here is called wrf.nc.  As the file is large at 5GB this file isn’t distributed and this is a worked example of what is needed.</p>
-<p><strong>ncl ‘file_in=”wrf.nc”’ ‘file_out=”wrfpost.nc”’ wrfout_to_cf.ncl</strong></p>
-<p>The variable p_top in the wrfpost.nc is incorrect in that it should have just one value.  Using a couple of NetCDF Operators (NCO) this variable is deleted and then reinserted with just one value.  Note the case of p_top needs to be correct as in the following commands.</p>
-<p><strong>ncks -x -v p_top wrfpost.nc wrf2.nc</strong></p>
-<p><strong>ncap2 -s ‘P_TOP=10000.0’ wrf2.nc wrf3.nc</strong></p>
-<p>The file wrf2.nc can be deleted as it is an intermediary file.</p>
+<p><strong>python wrfncxnj.py -v T2 -o wrf2.nc wrf.nc</strong></p>
 <p>We now have a CF netCDF file which can be readily manipulated and plotted using cf-python and cf-plot.</p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -50,10 +46,10 @@
 <a class="reference internal image-reference" href="_images/fig43.png"><img alt="_images/fig43.png" src="_images/fig43.png" style="width: 487.24px; height: 342.16px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
-<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;wrf3.nc&#39;</span><span class="p">)</span>
-<span class="n">temp</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;air_temperature&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">t1</span><span class="o">=</span><span class="n">temp</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="s1">&#39;2016-12-25&#39;</span><span class="p">))</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;wrf2.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">t2</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="s1">&#39;2016-12-25&#39;</span><span class="p">))</span>
+<span class="n">t2</span><span class="o">.</span><span class="n">units</span><span class="o">=</span><span class="s1">&#39;degC&#39;</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
