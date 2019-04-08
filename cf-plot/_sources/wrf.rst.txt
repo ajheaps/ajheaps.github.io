@@ -9,7 +9,7 @@ Our input file here is called wrf.nc.  As the file is large at 5GB this file isn
 **python wrfncxnj.py -v T2 -o wrf2.nc wrf.nc**
 
 
-We now have a CF netCDF file with teh temperature at 2m which can be readily manipulated and plotted using cf-python and cf-plot.
+We now have a CF netCDF file with the temperature at 2m which can be readily manipulated and plotted using cf-python and cf-plot.
 
 |
 
