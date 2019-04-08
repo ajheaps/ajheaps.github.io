@@ -12,7 +12,6 @@ Our input file here is called wrf.nc.  As the file is large at 5GB this file isn
 We now have a CF netCDF file which can be readily manipulated and plotted using cf-python and cf-plot.
 
 |
-|
 
 Example 43 - plotting WRF data
 ------------------------------
