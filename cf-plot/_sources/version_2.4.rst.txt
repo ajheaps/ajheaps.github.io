@@ -41,8 +41,15 @@ A bug in pressure blockplots was fixed.
 
 
 
+3. Add a gallery item for WRF plots
+===================================
+
+A gallery item was added for Weather Research and Forecasting (WRF) Model plots.
 
 
+::
+
+    Done
 
 
 

@@ -69,11 +69,17 @@ cf-plot gallery
    :scale: 14%    
    :target: http://ajheaps.github.io/cf-plot/trajectories.html
 
+.. image::  images/fig43.png
+   :scale: 14%    
+   :target: http://ajheaps.github.io/cf-plot/wrf.html
+
 
 
 
 `Projections <http://ajheaps.github.io/cf-plot/projections.html>`_
 `| Trajectories <http://ajheaps.github.io/cf-plot/trajectories.html>`_
+`| WRF data <http://ajheaps.github.io/cf-plot/wrf.html>`_
+
 
 
 
