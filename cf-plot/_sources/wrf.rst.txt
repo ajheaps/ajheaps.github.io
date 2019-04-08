@@ -2,22 +2,20 @@ WRF data
 ********
 
 
-Data from the Weather Research and Forecasting (WRF) Model is far from being CF compliant but an NCL (NCAR Command Language) script is available that converts WRF data into CF netCDF.
-
-The NCL script can be downloaded from http://foehn.colorado.edu/wrfout_to_cf/overview.html
+Output data from the Weather Research and Forecasting (WRF) Model is some distance from being CF compliant but an NCL (NCAR Command Language) script is available that converts WRF data into CF netCDF. The NCL script can be downloaded from http://foehn.colorado.edu/wrfout_to_cf/overview.html
 
 Our input file here is called wrf.nc.  As the file is large at 5GB this file isn't distributed and this is a worked example of what is needed. 
 
 
 
-ncl 'file_in="wrf.nc"' 'file_out="wrfpost.nc"' wrfout_to_cf.ncl
+**ncl 'file_in="wrf.nc"' 'file_out="wrfpost.nc"' wrfout_to_cf.ncl**
 
 
 The variable p_top in the wrfpost.nc is incorrect in that it should have just one value.  Using a couple of NetCDF Operators (NCO) this variable is deleted and then reinserted with just one value.  Note the case of p_top needs to be correct as in the following commands. 
 
-ncks -x -v p_top wrfpost.nc wrf2.nc
+**ncks -x -v p_top wrfpost.nc wrf2.nc**
 
-ncap2 -s 'P_TOP=10000.0' wrf2.nc wrf3.nc
+**ncap2 -s 'P_TOP=10000.0' wrf2.nc wrf3.nc**
 
 
 The file wrf2.nc can be deleted as it is an intermediary file.  
