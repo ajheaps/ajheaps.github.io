@@ -17,7 +17,7 @@ Example 39 - basic track plotting
 
    import cf
    import cfplot as cfp
-   f=cf.read('cfplot_data/ff_trs_pos.nc')[1]
+   f=cf.read('cfplot_data/ff_trs_pos.nc')[0]
    cfp.traj(f)
 
 
@@ -44,7 +44,7 @@ Example 40 - tracks in the polar stereographic projection
 
    import cf
    import cfplot as cfp
-   f=cf.read('cfplot_data/ff_trs_pos.nc')[1]
+   f=cf.read('cfplot_data/ff_trs_pos.nc')[0]
    cfp.mapset(proj='npstere')
    cfp.traj(f)
 
@@ -67,7 +67,7 @@ Example 41 - feature propagation over Europe
 
    import cf
    import cfplot as cfp
-   f=cf.read('cfplot_data/ff_trs_pos.nc')[1]
+   f=cf.read('cfplot_data/ff_trs_pos.nc')[0]
    cfp.mapset(lonmin=-20, lonmax=20, latmin=30, latmax=70)
    cfp.traj(f, vector=True, markersize=0.0, fc='b', ec='b')
 
@@ -93,9 +93,9 @@ Example 42 - intensity legend
 
    import cf
    import cfplot as cfp
-   f=cf.read('cfplot_data/ff_trs_pos.nc')[1]
+   f=cf.read('cfplot_data/ff_trs_pos.nc')[0]
    cfp.mapset(lonmin=-50, lonmax=50, latmin=20, latmax=80)
-   g=f.subspace(time=cf.wi(cf.dt('1979-12-01'), cf.dt('1979-12-30')))
+   g=f.subspace(time=cf.wi(cf.dt('1979-12-01'), cf.dt('1979-12-10')))
    g=g*1e5
    cfp.levs(0, 12, 1, extend='max')
    cfp.cscale('scale1', below=0, above=13)

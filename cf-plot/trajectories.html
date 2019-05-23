@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Trajectories &#8212; cf-plot 2.4.3 documentation</title>
+    <title>Trajectories &#8212; cf-plot 2.4.8 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="_static/documentation_options.js"></script>
@@ -22,7 +22,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.3 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -39,7 +39,7 @@
 <a class="reference internal image-reference" href="_images/fig39.png"><img alt="_images/fig39.png" src="_images/fig39.png" style="width: 514.28px; height: 258.96px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
-<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ff_trs_pos.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ff_trs_pos.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">traj</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -57,7 +57,7 @@
 <a class="reference internal image-reference" href="_images/fig40.png"><img alt="_images/fig40.png" src="_images/fig40.png" style="width: 368.16px; height: 390.52px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
-<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ff_trs_pos.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ff_trs_pos.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">proj</span><span class="o">=</span><span class="s1">&#39;npstere&#39;</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">traj</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
@@ -72,7 +72,7 @@
 <a class="reference internal image-reference" href="_images/fig41.png"><img alt="_images/fig41.png" src="_images/fig41.png" style="width: 390.52px; height: 379.08px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
-<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ff_trs_pos.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ff_trs_pos.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">lonmin</span><span class="o">=-</span><span class="mi">20</span><span class="p">,</span> <span class="n">lonmax</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">latmin</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">latmax</span><span class="o">=</span><span class="mi">70</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">traj</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">vector</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
 </pre></div>
@@ -88,9 +88,9 @@ they are on the plot or not.</p>
 <a class="reference internal image-reference" href="_images/fig42.png"><img alt="_images/fig42.png" src="_images/fig42.png" style="width: 510.64px; height: 355.68px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
-<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ff_trs_pos.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ff_trs_pos.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">lonmin</span><span class="o">=-</span><span class="mi">50</span><span class="p">,</span> <span class="n">lonmax</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">latmin</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">latmax</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
-<span class="n">g</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">wi</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="s1">&#39;1979-12-01&#39;</span><span class="p">),</span> <span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="s1">&#39;1979-12-30&#39;</span><span class="p">)))</span>
+<span class="n">g</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">wi</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="s1">&#39;1979-12-01&#39;</span><span class="p">),</span> <span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="s1">&#39;1979-12-10&#39;</span><span class="p">)))</span>
 <span class="n">g</span><span class="o">=</span><span class="n">g</span><span class="o">*</span><span class="mf">1e5</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">levs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;scale1&#39;</span><span class="p">,</span> <span class="n">below</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">above</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
@@ -140,7 +140,7 @@ labelled according intensity with a colourbar.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.3 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

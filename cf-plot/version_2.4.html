@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>version 2.4 changes &#8212; cf-plot 2.4.3 documentation</title>
+    <title>version 2.4 changes &#8212; cf-plot 2.4.8 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="_static/documentation_options.js"></script>
@@ -22,7 +22,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.3 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -63,6 +63,51 @@ zorder with a larger number puts the plotted item on top of an item with a lower
 </pre></div>
 </div>
 </div>
+<div class="section" id="test-release">
+<h2>4. Test release<a class="headerlink" href="#test-release" title="Permalink to this headline">¶</a></h2>
+<p>A test release to fix a bug in the markup in the README.txt file for cf-plot</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="traj-fix-missing-trajectories">
+<h2>5. traj - fix missing trajectories<a class="headerlink" href="#traj-fix-missing-trajectories" title="Permalink to this headline">¶</a></h2>
+<p>An incorrect loop index was used leading to not all teh trajectories being plotted.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="vect-magmin-keyword-added">
+<h2>6. vect - magmin keyword added<a class="headerlink" href="#vect-magmin-keyword-added" title="Permalink to this headline">¶</a></h2>
+<p>The magmin keyword was added to vect.  Any vectors with a magnitude less than this aren’t plotted.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="con-model-level-data-not-properly-labelled">
+<h2>7. con - model level data not properly labelled<a class="headerlink" href="#con-model-level-data-not-properly-labelled" title="Permalink to this headline">¶</a></h2>
+<p>Contour plots of latitude or longitude vs model level number weren’t proper labelled on the y-axis.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="con-polar-plot-labels">
+<h2>8. con - polar plot labels<a class="headerlink" href="#con-polar-plot-labels" title="Permalink to this headline">¶</a></h2>
+<p>If a polar plot is made and the axis_label_fontsize is set to zero then the longitide labels are no longer
+plotted.  Previously they were plotted but still appeared on the plot wven though they had zero size.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="con-rotated-pole-data-change">
+<h2>9. con - Rotated pole data change<a class="headerlink" href="#con-rotated-pole-data-change" title="Permalink to this headline">¶</a></h2>
+<p>Contour plots using rotated pole data - if the longitudes and latitudes for each point are supplied as 2D arrays
+in auxiliary coordinates then these are now used for making a contour plot.  Previously the rotated pole coordinate
+system was used to generate the longitudes and latitudes for the contour plot.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -96,7 +141,7 @@ zorder with a larger number puts the plotted item on top of an item with a lower
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.3 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
