@@ -1,18 +1,20 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>version 1.9 changes &#8212; cf-plot 2.4.8 documentation</title>
+    <meta charset="utf-8" />
+    <title>version 1.9 changes &#8212; cf-plot 3.0.2 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
   </head><body>
@@ -22,7 +24,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -109,8 +111,8 @@ the grid to be uniformly spaced when viewed.</p>
 </div>
 <div class="section" id="cscale-colour-maps-not-referenced-correctly-when-doing-a-local-install">
 <h2>9. cscale - colour maps not referenced correctly when doing a local install<a class="headerlink" href="#cscale-colour-maps-not-referenced-correctly-when-doing-a-local-install" title="Permalink to this headline">¶</a></h2>
-<p>pip install –user cf-plot</p>
-<p>Doesn’t allow changing of colour maps.</p>
+<p>pip install --user cf-plot</p>
+<p>Doesn't allow changing of colour maps.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
@@ -222,7 +224,7 @@ to adopt this method.</p>
 <h2>22. Plot blocking resolved<a class="headerlink" href="#plot-blocking-resolved" title="Permalink to this headline">¶</a></h2>
 <p>If the display command from ImageMagick is available this is now used in conjunction with subprocess
 in preference to build-in Matplotlib viewer. This gets around the problem of a plot blocking the command prompt
-preventing further plots from being made.  Using cfp.setvars(viewer=’matplotlib’) will revert to using the
+preventing further plots from being made.  Using cfp.setvars(viewer='matplotlib') will revert to using the
 built-in matplotlib picture viewer.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
@@ -269,9 +271,9 @@ for all subsequent time axes.</p>
 <p>Add axis label and alignment options to setvars:</p>
 <div class="line-block">
 <div class="line">xtick_label_rotation=0 - rotation of xtick labels</div>
-<div class="line">xtick_label_align=’center’ - alignment of xtick labels</div>
+<div class="line">xtick_label_align='center' - alignment of xtick labels</div>
 <div class="line">ytick_label_rotation=0 - rotation of ytick labels</div>
-<div class="line">ytick_label_align=’right’ - alignment of ytick labels</div>
+<div class="line">ytick_label_align='right' - alignment of ytick labels</div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
@@ -320,7 +322,7 @@ legend_text_weight=None - legend text weight</p>
 <div class="section" id="levs-changed-level-generation-scheme">
 <h2>33. levs - changed level generation scheme<a class="headerlink" href="#levs-changed-level-generation-scheme" title="Permalink to this headline">¶</a></h2>
 <p>The level generation scheme in levs when the user passes min, max, step has been changed.  It is now using Neil
-Massey’s scheme:</p>
+Massey's scheme:</p>
 <p>If min, max, step are integers:
 levs = ((((np.arange(min, max+step*1e-10, step, dtype=np.float64)*1e10)).astype(np.int64)).astype(np.float64)/1e10).astype(np.int)</p>
 <p>else:
@@ -360,8 +362,8 @@ levs = (((np.arange(min, max+step*1e-10, step, dtype=np.float64)*1e10)).astype(n
 <h5><a href="http://ajheaps.github.io/cf-plot/issues.html">Issues</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/download.html">Download/Install</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/license.html">License</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/older_documentation.html">Older documentation</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/search.html">Search</a><p></h5>
-<h5><a href="http://www.met.reading.ac.uk/~swsheaps/cf-plot-2.1.75">Older documentation</a><p></h5>
         </div>
       </div>
       <div class="clearer"></div>
@@ -372,12 +374,12 @@ levs = (((np.arange(min, max+step*1e-10, step, dtype=np.float64)*1e10)).astype(n
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
     </div>
   </body>
 </html>

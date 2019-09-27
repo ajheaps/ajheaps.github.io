@@ -9,7 +9,8 @@ Example 27 - graph plot
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/ggap.nc')[1]
    g=f.collapse('X: mean')
    cfp.lineplot(g.subspace(pressure=100), marker='o', color='blue',\
@@ -50,7 +51,8 @@ Example 28 - Line and legend plot
 
 ::
 
-    import cf, cfplot as cfp
+    import cf
+    import cfplot as cfp
     f=cf.read('cfplot_data/ggap.nc')[1]
     g=f.collapse('X: mean')
     xticks=[-90,-75,-60,-45,-30,-15,0,15,30,45,60,75,90]
@@ -71,7 +73,11 @@ Example 28 - Line and legend plot
 
 
 
-In this example a plot with user specified axes is made.  The new axis labelling and legend position must be added in the final call to lineplot.  All calls to lineplot with the label attribute will appear in the legend.   
+| When making a multiple line plot:
+| a) Set the axis limits if required with cfp.gset before plotting the lines.  Using cfp.gset after the last line has been plotted may give unexpected axis limits and / or labelling.  This is a feature of Matplotlib.
+| b) The last call to lineplot is the one that any of the above 
+|    axis overrides should be placed in.
+| c) All calls to lineplot with the label attribute will appear in the legend.   
 
 The cfp.plotvars.plot object contains the Matplotlib plot and will accept normal Matplotlib plotting commands.  As an example of this the following code within a cfp.gopen() cfp.gclose() construct will make a legend that is independent of any previously made lines and attached labels.
 
@@ -129,7 +135,8 @@ The correct date format is 'YYYY-MM-DD' or 'YYYY-MM-DD HH:MM:SS' - anything else
 
 ::
 
-    import cf, cfplot as cfp
+    import cf
+    import cfplot as cfp
     f=cf.read('cfplot_data/tas_A1.nc')[0]
     temp=f.subspace(time=cf.wi(cf.dt('1900-01-01'), cf.dt('1980-01-01')))
     temp_annual=temp.collapse('T: mean', group=cf.Y())
@@ -151,7 +158,8 @@ the option for a twin x-axis is twiny=True.  This is a Matplotlib keyword which 
 
 ::
 
-    import cf, cfplot as cfp
+    import cf
+    import cfplot as cfp
     tol=cf.RTOL(1e-5)
     f=cf.read('cfplot_data/ggap.nc')[1]
     u=f.collapse('X: mean')

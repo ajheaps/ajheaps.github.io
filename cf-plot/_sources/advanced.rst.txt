@@ -1,7 +1,7 @@
 Advanced Use
 ************
 
-Here are some hints and tips on advanced use of cf-plot.
+Here are some hints and tips on the advanced use of cf-plot.
 
 
 Adding user defined lines and text to plots
@@ -89,9 +89,10 @@ In this example we make a blank map plot and plot the UK rivers from a shapefile
 
 ::
 
-    import shapefile
-    import cf, cfplot as cfp
+    import cf
+    import cfplot as cfp
     import numpy as np
+    import shapefile
     import cartopy.crs as ccrs
 
     f=cf.read('cfplot_data/ggap.nc')[3] # data for contour map
@@ -169,7 +170,7 @@ of the original data.  Care is needed to ensure that the field coordinates go fr
     # Finally let's visually compare our transect data with the original contour field
     cfp.gopen(user_position=True)
     cfp.mapset(0, 180, -90, 0)
-    cfp.gpos(xmin=0.25,xmax=0.75, ymin=0.5, ymax=1)
+    cfp.gpos(xmin=0.25,xmax=0.75, ymin=0.4, ymax=1)
     cfp.con(g, lines=False)
     cfp.plotvars.mymap.plot(lons_interp, lats_interp , linewidth=2.0,
                             color='g', transform=ccrs.PlateCarree())
@@ -295,8 +296,14 @@ Masked data is plotted as blockfill in grey.
 Blockfill with individual colours
 ---------------------------------
 
-If a plot needs to be built up as a series of blockfill plots then this is
-possible using the cf-plot internal blockfill routine.
+|    If a plot needs to be built up as a series of blockfill plots then this is
+|    possible using the cf-plot internal blockfill routine.  A colour contour plot is
+|    made and overlaid with two blockfill regions:
+|    
+|    -50 to 0 = green
+|    20 to 40  = red
+
+A final call to **cfp.con** is made to overlay contour lines.
 
 ::
 
@@ -312,11 +319,12 @@ possible using the cf-plot internal blockfill routine.
 
 
     cfp.gopen()
-    cfp.con(g, ylog=True)
+    cfp.con(g, ylog=True, lines=False)
 
     # Call internal block filling routine 
     cfp.bfill(f=data, x=x, y=y, clevs=[-50, 0], single_fill_color='green')
     cfp.bfill(f=data, x=x, y=y, clevs=[20, 40], single_fill_color='purple')
+    cfp.con(g, ylog=True, fill=True)
     cfp.gclose()
 
 

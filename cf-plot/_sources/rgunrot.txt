@@ -1,4 +1,0 @@
-rgunrot
-*******
-
-.. autofunction:: cfplot.rgunrot

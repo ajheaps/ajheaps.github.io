@@ -1,18 +1,20 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>version 2.2 changes &#8212; cf-plot 2.4.8 documentation</title>
+    <meta charset="utf-8" />
+    <title>version 2.2 changes &#8212; cf-plot 3.0.2 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
   </head><body>
@@ -22,7 +24,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -43,8 +45,8 @@
 </div>
 <div class="section" id="mapset-change-of-resolution-parameters">
 <h2>1.  mapset - change of resolution parameters<a class="headerlink" href="#mapset-change-of-resolution-parameters" title="Permalink to this headline">¶</a></h2>
-<p>resolution=resolution - the map resolution - can be one of ‘110m’,
-‘50m’ or ‘10m’.  ‘50m’ means 1:50,000,000 and not 50 metre.</p>
+<p>resolution=resolution - the map resolution - can be one of '110m',
+'50m' or '10m'.  '50m' means 1:50,000,000 and not 50 metre.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
@@ -52,7 +54,7 @@
 <div class="section" id="setvars-continent-linestyle">
 <h2>2. setvars - continent linestyle<a class="headerlink" href="#setvars-continent-linestyle" title="Permalink to this headline">¶</a></h2>
 <p>The setvars routine can now be used to set the continent linestyle</p>
-<p>cfp.setvars(continent_linestyle=’dashed’) for instance</p>
+<p>cfp.setvars(continent_linestyle='dashed') for instance</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
@@ -77,7 +79,7 @@ cfp.setvars(legend_frame=False)</p>
 <h2>5. con - colorbar font properties<a class="headerlink" href="#con-colorbar-font-properties" title="Permalink to this headline">¶</a></h2>
 <p>colorbar font properties can now be set using the setvars routine:
 cfp.setvars(colorbar_fontsize=11)
-cfp.setvars(colorbar_fontweight=’normal’)</p>
+cfp.setvars(colorbar_fontweight='normal')</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
@@ -86,7 +88,7 @@ cfp.setvars(colorbar_fontweight=’normal’)</p>
 <h2>6. lineplot - marker edge options added<a class="headerlink" href="#lineplot-marker-edge-options-added" title="Permalink to this headline">¶</a></h2>
 <p>Two new marker properties have been introduced to the lineplot routine.</p>
 <div class="line-block">
-<div class="line">markeredgecolor = ‘k’ - colour of edge around the marker</div>
+<div class="line">markeredgecolor = 'k' - colour of edge around the marker</div>
 <div class="line">markeredgewidth = 0.5 - width of edge around the marker</div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
@@ -98,8 +100,8 @@ cfp.setvars(colorbar_fontweight=’normal’)</p>
 <p>The default of having a frame around the legend can now be turned off with:</p>
 <p>cfp.setvars(legend_frame=False)</p>
 <p>Legend frame face and edge colors can be set with:</p>
-<p>cfp.setvars(legend_frame_face_color=’pink’)
-cfp.setvars(legend_frame_edge_color=’blue’)</p>
+<p>cfp.setvars(legend_frame_face_color='pink')
+cfp.setvars(legend_frame_edge_color='blue')</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
@@ -112,7 +114,7 @@ plots with:</p>
 <p>cfp.setvars(degsym=True)</p>
 <p>Users can also add this option to the ~/.cfplot_defaults file as</p>
 <p>degsym True</p>
-<p>The degree symbol is ‘$degree$’ as a string for any further plot customisation.</p>
+<p>The degree symbol is '$degree$' as a string for any further plot customisation.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
@@ -154,7 +156,7 @@ and setting them with set_xlim and set_ylim within the plot_map_axes routine.</p
 <p>lineplot y-axis labels fontsize and fontweight were unaffected by</p>
 <div class="line-block">
 <div class="line">cfp.setvars(axis_label_fontsize=20)</div>
-<div class="line">cfp.setvars(axis_label_fontweight=’bold’)</div>
+<div class="line">cfp.setvars(axis_label_fontweight='bold')</div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Corrected</span>
 </pre></div>
@@ -190,7 +192,7 @@ properly assign grid_longitude and grid_latitude.</p>
 </div>
 <div class="section" id="lineplot-incorrect-axis-labelling">
 <h2>18. lineplot - incorrect axis labelling<a class="headerlink" href="#lineplot-incorrect-axis-labelling" title="Permalink to this headline">¶</a></h2>
-<p>In lineplot if no axis labels are provided then the axis labels were copied from the tick values.  In the case of floating point numbers these can sometimes give large numbers of decimal places due to numeric rounding.  A fix has been put in place to use the format specifier ‘{}’.format(val) so 13.899999999999997 becomes the more reasonable string value of ‘13.9’.</p>
+<p>In lineplot if no axis labels are provided then the axis labels were copied from the tick values.  In the case of floating point numbers these can sometimes give large numbers of decimal places due to numeric rounding.  A fix has been put in place to use the format specifier '{}'.format(val) so 13.899999999999997 becomes the more reasonable string value of '13.9'.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
@@ -216,8 +218,8 @@ properly assign grid_longitude and grid_latitude.</p>
 <h5><a href="http://ajheaps.github.io/cf-plot/issues.html">Issues</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/download.html">Download/Install</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/license.html">License</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/older_documentation.html">Older documentation</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/search.html">Search</a><p></h5>
-<h5><a href="http://www.met.reading.ac.uk/~swsheaps/cf-plot-2.1.75">Older documentation</a><p></h5>
         </div>
       </div>
       <div class="clearer"></div>
@@ -228,12 +230,12 @@ properly assign grid_longitude and grid_latitude.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
     </div>
   </body>
 </html>

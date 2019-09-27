@@ -1,4 +1,0 @@
-mapset
-******
-
-.. autofunction:: cfplot.mapset

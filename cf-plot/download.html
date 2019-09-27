@@ -1,18 +1,20 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Download/Install &#8212; cf-plot 2.4.8 documentation</title>
+    <meta charset="utf-8" />
+    <title>Download/Install &#8212; cf-plot 3.0.2 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
   </head><body>
@@ -22,7 +24,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -33,63 +35,56 @@
             
   <div class="section" id="download-install">
 <h1>Download/Install<a class="headerlink" href="#download-install" title="Permalink to this headline">¶</a></h1>
+<p>The following notes refer to the Python 3 versions of cf-python and cf-plot which will be released on 1st October 2019.</p>
 <div class="section" id="is-cf-plot-already-installed">
 <h2>Is cf-plot already installed?<a class="headerlink" href="#is-cf-plot-already-installed" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="jasmin-ceda-cf-plot-is-available-inside-the-jasmin-analysis-platform">
-<h3><a class="reference external" href="mailto:Jasmin&#37;&#52;&#48;CEDA">Jasmin<span>&#64;</span>CEDA</a> - cf-plot is available inside the Jasmin Analysis Platform<a class="headerlink" href="#jasmin-ceda-cf-plot-is-available-inside-the-jasmin-analysis-platform" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line">type <strong>python2.7</strong> to start python.</div>
+<div class="line"><strong>Jasmin&#64;CEDA</strong></div>
+<div class="line">export PATH=/home/users/ajh/anaconda3/bin:$PATH</div>
+<div class="line">ln -s /home/users/ajh/cfplot_data ~</div>
 </div>
-</div>
-<div class="section" id="archer">
-<h3>Archer<a class="headerlink" href="#archer" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line">type  <strong>module swap PrgEnv-cray PrgEnv-intel</strong></div>
-<div class="line"><strong>module load anaconda cf</strong></div>
-<div class="line">and then <strong>python</strong> to use cf-plot.</div>
+<div class="line"><strong>Archer</strong></div>
+<div class="line">export PATH=/home/n02/n02/ajh/anaconda3/bin:$PATH</div>
+<div class="line">ln -s /home/n02/n02/ajh/cfplot_data ~</div>
 </div>
-</div>
-<div class="section" id="archer-jasmin-rdf-jasmin-rdf-ac-uk">
-<h3>Archer Jasmin RDF - jasmin.rdf.ac.uk<a class="headerlink" href="#archer-jasmin-rdf-jasmin-rdf-ac-uk" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line">This has the Jasmin Analysis Platform installed</div>
-<div class="line">type <strong>python2.7</strong> to start python.</div>
+<div class="line"><strong>Archer Jasmin RDF - jasmin.rdf.ac.uk</strong></div>
+<div class="line">export PATH=/home/n02/n02/ajh/anaconda3/bin:$PATH</div>
+<div class="line">ln -s /home/n02/n02/ajh/cfplot_data ~</div>
 </div>
-</div>
-<div class="section" id="department-of-meteorology-university-of-reading">
-<h3>Department of Meteorology, University of Reading<a class="headerlink" href="#department-of-meteorology-university-of-reading" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line">The latest version of cf-plot is installed on the Reading Academic Computing Cluster - cluster.act.rdg.ac.uk.</div>
-<div class="line">Type <strong>module load ncas_anaconda</strong> to set-up the Python environment</div>
-<div class="line">and then <strong>python</strong> to use cf-plot.</div>
+<div class="line"><strong>Reading University RACC cluster</strong></div>
+<div class="line">module load ncas_anaconda3</div>
+<div class="line">ln -s /share/apps/NCAS/cfplot_data ~</div>
 </div>
-</div>
-<div class="section" id="monsoon-postproc-server">
-<h3>Monsoon postproc server<a class="headerlink" href="#monsoon-postproc-server" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line">Type <strong>export PATH=/projects/umadmin/umadmin/anaconda2/bin:$PATH</strong></div>
-<div class="line">and then <strong>python</strong> to use cf-plot.</div>
-<div class="line"><br /></div>
-</div>
+<div class="line"><strong>Monsoon postproc server</strong></div>
+<div class="line"><strong>to be installed</strong> Contact <a class="reference external" href="mailto:andy&#46;heaps&#37;&#52;&#48;ncas&#46;ac&#46;uk">andy<span>&#46;</span>heaps<span>&#64;</span>ncas<span>&#46;</span>ac<span>&#46;</span>uk</a> for details.</div>
 </div>
 </div>
 <div class="section" id="to-install-cf-plot">
 <h2>To install cf-plot<a class="headerlink" href="#to-install-cf-plot" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="linux">
-<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
-<p>To install cf-plot on your own Linux PC or laptop download and install Anaconda Python 2.7 for Linux.  On the command line type:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">ncas</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">cf</span><span class="o">-</span><span class="n">python</span> <span class="n">cf</span><span class="o">-</span><span class="n">plot</span> <span class="n">udunits2</span><span class="o">=</span><span class="mf">2.2</span><span class="o">.</span><span class="mi">20</span>
+<div class="section" id="linux-and-mac">
+<h3>Linux and Mac<a class="headerlink" href="#linux-and-mac" title="Permalink to this headline">¶</a></h3>
+<p>To install cf-plot on your own Linux PC or Mac download and install Anaconda Python 3 for Linux.  On the command line type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">ncas</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">cf</span><span class="o">-</span><span class="n">python</span> <span class="n">cf</span><span class="o">-</span><span class="n">plot</span> <span class="n">udunits2</span>
 <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">mpich</span> <span class="n">esmpy</span>
 </pre></div>
 </div>
 <p>The first line installs cf-python and cf-plot.  The second installs esmpy, together with the netcdf-fortran and mpich requirements, which cf-python uses for regriding data.</p>
 </div>
-<div class="section" id="other-operating-systems">
-<h3>Other Operating Systems<a class="headerlink" href="#other-operating-systems" title="Permalink to this headline">¶</a></h3>
-<p>We have a small development team and Linux is our main working environment.  If you have the Mac or Windows operating system installing a Linux Virtual Machine is simple and works well.  Installation instructions and a Mint Linux Virtual Machine are available at <a class="reference external" href="http://gws-access.ceda.ac.uk/public/ncas_climate/ajh/data_analysis_tools/VM">http://gws-access.ceda.ac.uk/public/ncas_climate/ajh/data_analysis_tools/VM</a>.</p>
+<div class="section" id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<p>We have a small development team and Linux is our main working environment. Windows isn't an option for us at present given our target user base.</p>
+<p>If you have a Windows operating system there are a couple of options for running Linux:</p>
+<ol class="arabic simple">
+<li><p>Installing a Linux Virtual Machine is simple and works well.  Installation instructions and a Mint Linux Virtual Machine are available at <a class="reference external" href="http://gws-access.ceda.ac.uk/public/ncas_climate/ajh/data_analysis_tools/VM">http://gws-access.ceda.ac.uk/public/ncas_climate/ajh/data_analysis_tools/VM</a>.</p></li>
+<li><p>Install the Microsoft Windows Subsystem for Linux (WSL).  Once this is working install cf-python and cf-plot as per the Linux instructions above.</p></li>
+</ol>
 </div>
-<div class="section" id="other-install-methods">
-<h3>Other install methods<a class="headerlink" href="#other-install-methods" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="other-install-methods-for-linux-and-mac-osx">
+<h3>Other install methods for Linux and Mac OSX<a class="headerlink" href="#other-install-methods-for-linux-and-mac-osx" title="Permalink to this headline">¶</a></h3>
 <p>Using pip:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">cf</span><span class="o">-</span><span class="n">python</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">cf</span><span class="o">-</span><span class="n">plot</span>
@@ -144,8 +139,8 @@
 <h5><a href="http://ajheaps.github.io/cf-plot/issues.html">Issues</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/download.html">Download/Install</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/license.html">License</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/older_documentation.html">Older documentation</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/search.html">Search</a><p></h5>
-<h5><a href="http://www.met.reading.ac.uk/~swsheaps/cf-plot-2.1.75">Older documentation</a><p></h5>
         </div>
       </div>
       <div class="clearer"></div>
@@ -156,12 +151,12 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
     </div>
   </body>
 </html>

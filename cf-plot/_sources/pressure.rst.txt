@@ -10,8 +10,9 @@ Example 6 - latitude - pressure
 
 ::
 
-   import cf, cfplot as cfp
-   f=cf.read('cfplot_data/ggap.nc')[3]
+   import cf
+   import cfplot as cfp
+   f=cf.read('cfplot_data/ggap.nc')[2]
    cfp.con(f.subspace(longitude=0))
 
 | 
@@ -28,7 +29,8 @@ Example 7 - latitude - pressure - zonal mean
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/ggap.nc')[1]
    cfp.con(f.collapse('mean','longitude'))
 
@@ -51,7 +53,8 @@ Example 8 - latitude - log pressure
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/ggap.nc')[1]
    cfp.con(f.collapse('mean','longitude'), ylog=True)
 
@@ -68,7 +71,8 @@ Example 9 - longitude - pressure
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/ggap.nc')[0]
    cfp.con(f.collapse('mean', 'latitude'))
 

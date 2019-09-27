@@ -1,0 +1,48 @@
+version 3.0 changes
+*******************
+
+Change code to use Python 3 and cf-python 3.
+
+0. Change code to use Python 3 and cf-python 3
+==============================================
+
+cf-plot code was changed to use Python 3 and cf-python 3.  Support for Python 2.7 and cf-python2.x was dropped. 
+
+
+::
+
+    Done
+
+
+1. Port to Mac OSX
+==================
+
+The cf-python and cf-plot code base was ported to Mac OSX.
+
+
+::
+
+    Done
+
+
+
+2. Separate out the colour bar routine
+======================================
+
+In the original cf-plot code base the Matplotlib colorbar routine was called individually in many places.  This has now been separated out into the cfp.cbar routine which is callable from anywhere in the cf-plot code or in user code.
+
+
+
+::
+
+    Done
+
+
+
+
+
+
+
+
+
+

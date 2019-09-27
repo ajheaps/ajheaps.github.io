@@ -1,18 +1,20 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>traj &#8212; cf-plot 2.4.8 documentation</title>
+    <meta charset="utf-8" />
+    <title>traj &#8212; cf-plot 3.0.2 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
   </head><body>
@@ -22,7 +24,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -35,19 +37,19 @@
 <h1>traj<a class="headerlink" href="#traj" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="cfplot.traj">
-<code class="descclassname">cfplot.</code><code class="descname">traj</code><span class="sig-paren">(</span><em>f=None</em>, <em>title=None</em>, <em>ptype=0</em>, <em>linestyle='-'</em>, <em>linewidth=1.0</em>, <em>linecolor='b'</em>, <em>marker='o'</em>, <em>markersize=5.0</em>, <em>markerfacecolor='r'</em>, <em>markeredgecolor='g'</em>, <em>latmax=None</em>, <em>latmin=None</em>, <em>axes=True</em>, <em>xaxis=True</em>, <em>yaxis=True</em>, <em>verbose=None</em>, <em>legend=False</em>, <em>xlabel=None</em>, <em>ylabel=None</em>, <em>xticks=None</em>, <em>yticks=None</em>, <em>xticklabels=None</em>, <em>yticklabels=None</em>, <em>colorbar=None</em>, <em>colorbar_position=None</em>, <em>colorbar_orientation='horizontal'</em>, <em>colorbar_title=None</em>, <em>vector=False</em>, <em>head_width=0.4</em>, <em>head_length=1.0</em>, <em>fc='k'</em>, <em>ec='k'</em>, <em>zorder=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#traj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.traj" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cfplot.</code><code class="sig-name descname">traj</code><span class="sig-paren">(</span><em class="sig-param">f=None</em>, <em class="sig-param">title=None</em>, <em class="sig-param">ptype=0</em>, <em class="sig-param">linestyle='-'</em>, <em class="sig-param">linewidth=1.0</em>, <em class="sig-param">linecolor='b'</em>, <em class="sig-param">marker='o'</em>, <em class="sig-param">markevery=1</em>, <em class="sig-param">markersize=5.0</em>, <em class="sig-param">markerfacecolor='r'</em>, <em class="sig-param">markeredgecolor='g'</em>, <em class="sig-param">markeredgewidth=1.0</em>, <em class="sig-param">latmax=None</em>, <em class="sig-param">latmin=None</em>, <em class="sig-param">axes=True</em>, <em class="sig-param">xaxis=True</em>, <em class="sig-param">yaxis=True</em>, <em class="sig-param">verbose=None</em>, <em class="sig-param">legend=False</em>, <em class="sig-param">legend_lines=False</em>, <em class="sig-param">xlabel=None</em>, <em class="sig-param">ylabel=None</em>, <em class="sig-param">xticks=None</em>, <em class="sig-param">yticks=None</em>, <em class="sig-param">xticklabels=None</em>, <em class="sig-param">yticklabels=None</em>, <em class="sig-param">colorbar=None</em>, <em class="sig-param">colorbar_position=None</em>, <em class="sig-param">colorbar_orientation='horizontal'</em>, <em class="sig-param">colorbar_title=None</em>, <em class="sig-param">colorbar_text_up_down=False</em>, <em class="sig-param">colorbar_text_down_up=False</em>, <em class="sig-param">colorbar_drawedges=True</em>, <em class="sig-param">colorbar_fraction=None</em>, <em class="sig-param">colorbar_thick=None</em>, <em class="sig-param">colorbar_anchor=None</em>, <em class="sig-param">colorbar_shrink=None</em>, <em class="sig-param">vector=False</em>, <em class="sig-param">head_width=0.4</em>, <em class="sig-param">head_length=1.0</em>, <em class="sig-param">fc='k'</em>, <em class="sig-param">ec='k'</em>, <em class="sig-param">zorder=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot/cfplot.html#traj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.traj" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">traj is the interface to trajectory plotting in cf-plot.</div>
 <div class="line">The minimum use is traj(f) where f is a CF field.</div>
 <div class="line"><br /></div>
 <div class="line">f - CF data used to make a line plot</div>
-<div class="line">linestyle=’-‘ - line style</div>
-<div class="line">linecolor=’b’ - line colour</div>
+<div class="line">linestyle='-' - line style</div>
+<div class="line">linecolor='b' - line colour</div>
 <div class="line">linewidth=1.0 - line width</div>
-<div class="line">marker=’o’ - marker for points along the line</div>
+<div class="line">marker='o' - marker for points along the line</div>
 <div class="line">markersize=30 - size of the marker</div>
-<div class="line">markerfacecolor=’b’ - colour of the marker face</div>
-<div class="line">markeredgecolor=’g’ - colour of the marker edge</div>
+<div class="line">markerfacecolor='b' - colour of the marker face</div>
+<div class="line">markeredgecolor='g' - colour of the marker edge</div>
 <div class="line">legend=False - plot different colour markers based on a set of user levels</div>
 <div class="line">zorder=None - order for plotting</div>
 <div class="line">verbose=None - Set to True to get a verbose listing of what traj is doing</div>
@@ -73,13 +75,38 @@
 </div>
 <div class="line">colorbar_orientation=None - orientation of the colorbar</div>
 <div class="line">colorbar_title=None - title for the colorbar</div>
-<div class="line"><br /></div>
+<div class="line">colorbar_text_up_down=False - if True horizontal colour bar labels alternate</div>
+<div class="line-block">
+<div class="line">above (start) and below the colour bar</div>
+</div>
+<div class="line">colorbar_text_down_up=False - if True horizontal colour bar labels alternate</div>
+<div class="line-block">
+<div class="line">below (start) and above the colour bar</div>
+</div>
+<div class="line">colorbar_drawedges=True - draw internal divisions in the colorbar</div>
+<div class="line">colorbar_fraction=None - space for the colorbar - default = 0.21, in normalised </div>
+<div class="line-block">
+<div class="line">coordinates </div>
+</div>
+<div class="line">colorbar_thick=None - thickness of the colorbar - default = 0.015, in normalised </div>
+<div class="line-block">
+<div class="line">coordinates </div>
+</div>
+<div class="line">colorbar_anchor=None - default=0.5 - anchor point of colorbar within the fraction space. </div>
+<div class="line-block">
+<div class="line">0.0 = close to plot, 1.0 = further away </div>
+</div>
+<div class="line">colorbar_shrink=None - value to shrink the colorbar by.  If the colorbar</div>
+<div class="line-block">
+<div class="line">exceeds the plot area then values of 1.0, 0.55</div>
+<div class="line">or 0.5m ay help it better fit the plot area.</div>
+</div>
 <div class="line">Vector options</div>
 <div class="line">vector=False - Draw vectors</div>
 <div class="line">head_width=2.0 - vector head width</div>
 <div class="line">head_length=2.0 - vector head length</div>
-<div class="line">fc=’k’ - vector face colour</div>
-<div class="line">ec=’k’ - vector edge colour</div>
+<div class="line">fc='k' - vector face colour</div>
+<div class="line">ec='k' - vector edge colour</div>
 </div>
 </dd></dl>
 
@@ -104,8 +131,8 @@
 <h5><a href="http://ajheaps.github.io/cf-plot/issues.html">Issues</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/download.html">Download/Install</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/license.html">License</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/older_documentation.html">Older documentation</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/search.html">Search</a><p></h5>
-<h5><a href="http://www.met.reading.ac.uk/~swsheaps/cf-plot-2.1.75">Older documentation</a><p></h5>
         </div>
       </div>
       <div class="clearer"></div>
@@ -116,12 +143,12 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
     </div>
   </body>
 </html>

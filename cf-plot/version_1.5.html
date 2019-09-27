@@ -1,18 +1,20 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>version 1.5 changes &#8212; cf-plot 2.4.8 documentation</title>
+    <meta charset="utf-8" />
+    <title>version 1.5 changes &#8212; cf-plot 3.0.2 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
   </head><body>
@@ -22,7 +24,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -86,7 +88,7 @@ be 0, 2, 10001, 20001, 30001, 40001, 50001, 60001 and a +1 will appear next to t
 <div class="section" id="colorbar-labels-overwrite-each-other">
 <h2>6. Colorbar labels overwrite each other<a class="headerlink" href="#colorbar-labels-overwrite-each-other" title="Permalink to this headline">¶</a></h2>
 <p>Colour bar labels overwite each other when large number of contour levels are used or when more plot columns are used.   Include code to take account of these based on the total number of characters in the contour labels and the number of
-columns.  If the user hasn’t supplied a value for colorbar_label_skip to the con routine then the calculated value is
+columns.  If the user hasn't supplied a value for colorbar_label_skip to the con routine then the calculated value is
 used.  The labels used will start at the lowest for a continuous data set and from zero for a diverging one.</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
@@ -161,12 +163,12 @@ Options are:</p>
 <div class="line">text_fontsize=None - text fontsize, default=11</div>
 <div class="line">title_fontsize=None - title fontsize, default=15</div>
 <div class="line">axis_label_fontsize=None - default=11</div>
-<div class="line">text_fontweight=’normal’ - text fontweight</div>
-<div class="line">title_fontweight=’normal’ - title fontweight</div>
-<div class="line">axis_label_fontweight=’normal’ - axis fontweight</div>
-<div class="line">fontweight=’normal’ - all above fontweights</div>
+<div class="line">text_fontweight='normal' - text fontweight</div>
+<div class="line">title_fontweight='normal' - title fontweight</div>
+<div class="line">axis_label_fontweight='normal' - axis fontweight</div>
+<div class="line">fontweight='normal' - all above fontweights</div>
 <div class="line">continent_thickness=None - default=1.5</div>
-<div class="line">continent_color=None - default=’k’ (black)</div>
+<div class="line">continent_color=None - default='k' (black)</div>
 </div>
 </div></blockquote>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Added</span> <span class="n">to</span> <span class="n">code</span>
@@ -176,7 +178,7 @@ Options are:</p>
 </div>
 <div class="section" id="reduced-longitude-grid-not-plotted-correctly">
 <h2>14. Reduced longitude grid not plotted correctly<a class="headerlink" href="#reduced-longitude-grid-not-plotted-correctly" title="Permalink to this headline">¶</a></h2>
-<p>A reduced longitude grid isn’t plotted correctly due to a bug in
+<p>A reduced longitude grid isn't plotted correctly due to a bug in
 the calculation of the lonrange variable.</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
@@ -205,8 +207,8 @@ the calculation of the lonrange variable.</p>
 <h5><a href="http://ajheaps.github.io/cf-plot/issues.html">Issues</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/download.html">Download/Install</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/license.html">License</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/older_documentation.html">Older documentation</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/search.html">Search</a><p></h5>
-<h5><a href="http://www.met.reading.ac.uk/~swsheaps/cf-plot-2.1.75">Older documentation</a><p></h5>
         </div>
       </div>
       <div class="clearer"></div>
@@ -217,12 +219,12 @@ the calculation of the lonrange variable.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
     </div>
   </body>
 </html>

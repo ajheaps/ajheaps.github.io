@@ -1,18 +1,20 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Planned releases &#8212; cf-plot 2.4.8 documentation</title>
+    <meta charset="utf-8" />
+    <title>Planned releases &#8212; cf-plot 3.0.2 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
   </head><body>
@@ -22,7 +24,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -34,28 +36,29 @@
   <div class="section" id="planned-releases">
 <h1>Planned releases<a class="headerlink" href="#planned-releases" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li>0.3 first version on github</li>
-<li>0.4 gset, axes - setting plot limits and plotting axes</li>
-<li>0.5 latitude-height plots</li>
-<li>0.6 gopen, gclose, gpos opening and closing of output files/plot positioning</li>
-<li>0.7 cscale - colour scales</li>
-<li>0.8 stipple - significance plots</li>
-<li>0.9 vect - vector plotting</li>
-<li>1.0 data interface improvements</li>
-<li>1.1 error handling</li>
-<li>1.2 Hovmoller plots</li>
-<li>1.3 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_1.3.html">Bug/feature fix</a></li>
-<li>1.4 PDF user guide</li>
-<li>1.5 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_1.5.html">Bug/feature fix</a></li>
-<li>1.6 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_1.6.html">Rotated pole plots</a></li>
-<li>1.7 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_1.7.html">Rolling update of features</a></li>
-<li>1.8 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_1.8.html">Graph plots</a></li>
-<li>1.9 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_1.9.html">Rolling update of features</a></li>
-<li>2.0 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_2.0.html">Code base changes</a></li>
-<li>2.1 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_2.1.html">Rolling set of small additions and bug fixes</a></li>
-<li>2.2 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_2.2.html">Change from Basemap to Cartopy mapping</a></li>
-<li>2.3 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_2.3.html">Support for the UKCP grid</a></li>
-<li>2.4 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_2.4.html">Trajectories</a></li>
+<li><p>0.3 first version on github</p></li>
+<li><p>0.4 gset, axes - setting plot limits and plotting axes</p></li>
+<li><p>0.5 latitude-height plots</p></li>
+<li><p>0.6 gopen, gclose, gpos opening and closing of output files/plot positioning</p></li>
+<li><p>0.7 cscale - colour scales</p></li>
+<li><p>0.8 stipple - significance plots</p></li>
+<li><p>0.9 vect - vector plotting</p></li>
+<li><p>1.0 data interface improvements</p></li>
+<li><p>1.1 error handling</p></li>
+<li><p>1.2 Hovmoller plots</p></li>
+<li><p>1.3 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_1.3.html">Bug/feature fix</a></p></li>
+<li><p>1.4 PDF user guide</p></li>
+<li><p>1.5 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_1.5.html">Bug/feature fix</a></p></li>
+<li><p>1.6 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_1.6.html">Rotated pole plots</a></p></li>
+<li><p>1.7 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_1.7.html">Rolling update of features</a></p></li>
+<li><p>1.8 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_1.8.html">Graph plots</a></p></li>
+<li><p>1.9 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_1.9.html">Rolling update of features</a></p></li>
+<li><p>2.0 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_2.0.html">Code base changes</a></p></li>
+<li><p>2.1 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_2.1.html">Rolling set of small additions and bug fixes</a></p></li>
+<li><p>2.2 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_2.2.html">Change from Basemap to Cartopy mapping</a></p></li>
+<li><p>2.3 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_2.3.html">Support for the UKCP grid</a></p></li>
+<li><p>2.4 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_2.4.html">Trajectories</a></p></li>
+<li><p>3.0 <a class="reference external" href="http://ajheaps.github.io/cf-plot/version_3.0.html">Port to Python 3 and Mac OSX</a></p></li>
 </ul>
 <p>Further functionality may be added on request - please email &lt;<a class="reference external" href="mailto:andy&#46;heaps&#37;&#52;&#48;ncas&#46;ac&#46;uk">andy<span>&#46;</span>heaps<span>&#64;</span>ncas<span>&#46;</span>ac<span>&#46;</span>uk</a>&gt; with details.</p>
 <p>Join the cf-plot email list to find out when new functionality is added to cf-plot.
@@ -91,8 +94,8 @@
 <h5><a href="http://ajheaps.github.io/cf-plot/issues.html">Issues</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/download.html">Download/Install</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/license.html">License</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/older_documentation.html">Older documentation</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/search.html">Search</a><p></h5>
-<h5><a href="http://www.met.reading.ac.uk/~swsheaps/cf-plot-2.1.75">Older documentation</a><p></h5>
         </div>
       </div>
       <div class="clearer"></div>
@@ -103,12 +106,12 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
     </div>
   </body>
 </html>

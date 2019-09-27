@@ -1,0 +1,4 @@
+cbar
+****
+
+.. autofunction:: cfplot.cbar

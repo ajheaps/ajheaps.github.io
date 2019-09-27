@@ -1,6 +1,0 @@
-regrid
-******
-
-.. autofunction:: cfplot.regrid
-
-

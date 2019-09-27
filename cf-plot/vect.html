@@ -1,18 +1,20 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>vect &#8212; cf-plot 2.4.8 documentation</title>
+    <meta charset="utf-8" />
+    <title>vect &#8212; cf-plot 3.0.2 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
   </head><body>
@@ -22,7 +24,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -35,7 +37,7 @@
 <h1>vect<a class="headerlink" href="#vect" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="cfplot.vect">
-<code class="descclassname">cfplot.</code><code class="descname">vect</code><span class="sig-paren">(</span><em>u=None, v=None, x=None, y=None, scale=None, stride=None, pts=None, key_length=None, key_label=None, ptype=None, title=None, magmin=None, width=0.02, headwidth=3, headlength=5, headaxislength=4.5, pivot='middle', key_location=[0.95, -0.06], key_show=True, axes=True, xaxis=True, yaxis=True, xticks=None, xticklabels=None, yticks=None, yticklabels=None, xlabel=None, ylabel=None, ylog=False, color='k', zorder=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#vect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.vect" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cfplot.</code><code class="sig-name descname">vect</code><span class="sig-paren">(</span><em class="sig-param">u=None, v=None, x=None, y=None, scale=None, stride=None, pts=None, key_length=None, key_label=None, ptype=None, title=None, magmin=None, width=0.02, headwidth=3, headlength=5, headaxislength=4.5, pivot='middle', key_location=[0.95, -0.06], key_show=True, axes=True, xaxis=True, yaxis=True, xticks=None, xticklabels=None, yticks=None, yticklabels=None, xlabel=None, ylabel=None, ylog=False, color='k', zorder=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot/cfplot.html#vect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.vect" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">vect - plot vectors</div>
 <div class="line"><br /></div>
@@ -59,11 +61,7 @@
 <div class="line">If one value is passed then this is used for both the x and</div>
 <div class="line">y axes.</div>
 </div>
-<div class="line">magmin=None - don’t plot any vects with less than this magnitude. </div>
-<div class="line-block">
-<div class="line">Note this keyword doesn’t work in the polar 
-stereographic projection.</div>
-</div>
+<div class="line">magmin=None - don't plot any vects with less than this magnitude. </div>
 <div class="line">key_length=None - length of the key.  Generally takes one value but in</div>
 <div class="line-block">
 <div class="line">the case of two supplied values the second vector</div>
@@ -98,10 +96,10 @@ stereographic projection.</div>
 <div class="line">headwidth=3 - head width as multiple of shaft width, default is 3</div>
 <div class="line">headlength=5 - head length as multiple of shaft width, default is 5</div>
 <div class="line">headaxislength=4.5 - head length at shaft intersection, default is 4.5</div>
-<div class="line">pivot=’middle’ - the part of the arrow that is at the grid point; the</div>
+<div class="line">pivot='middle' - the part of the arrow that is at the grid point; the</div>
 <div class="line-block">
 <div class="line">arrow rotates about this point
-takes ‘tail’, ‘middle’, ‘tip’</div>
+takes 'tail', 'middle', 'tip'</div>
 </div>
 <div class="line">axes=True - plot x and y axes</div>
 <div class="line">xaxis=True - plot xaxis</div>
@@ -113,18 +111,15 @@ takes ‘tail’, ‘middle’, ‘tip’</div>
 <div class="line">xlabel=None - label for x axis</div>
 <div class="line">ylabel=None - label for y axis</div>
 <div class="line">ylog=False - log y axis</div>
-<div class="line">color=’k’ - colour for the vectors - default is black.</div>
+<div class="line">color='k' - colour for the vectors - default is black.</div>
 <div class="line">zorder=None - plotting order</div>
 <div class="line"><br /></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -153,8 +148,8 @@ takes ‘tail’, ‘middle’, ‘tip’</div>
 <h5><a href="http://ajheaps.github.io/cf-plot/issues.html">Issues</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/download.html">Download/Install</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/license.html">License</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/older_documentation.html">Older documentation</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/search.html">Search</a><p></h5>
-<h5><a href="http://www.met.reading.ac.uk/~swsheaps/cf-plot-2.1.75">Older documentation</a><p></h5>
         </div>
       </div>
       <div class="clearer"></div>
@@ -165,12 +160,12 @@ takes ‘tail’, ‘middle’, ‘tip’</div>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
     </div>
   </body>
 </html>

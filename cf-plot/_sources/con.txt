@@ -1,4 +1,0 @@
-con
-***
-
-.. autofunction:: cfplot.con

@@ -1,4 +1,0 @@
-setvars
-*******
-
-.. autofunction:: cfplot.setvars

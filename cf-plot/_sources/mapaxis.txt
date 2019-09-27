@@ -1,4 +1,0 @@
-mapaxis
-*******
-
-.. autofunction:: cfplot.mapaxis

@@ -1,18 +1,20 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>version 1.7 changes &#8212; cf-plot 2.4.8 documentation</title>
+    <meta charset="utf-8" />
+    <title>version 1.7 changes &#8212; cf-plot 3.0.2 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
   </head><body>
@@ -22,7 +24,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -151,8 +153,8 @@ the contour levels.</p>
 <div class="section" id="con-update-numpy-warning-when-having-a-zero-contour">
 <h2>14. con update - numpy warning when having a zero contour<a class="headerlink" href="#con-update-numpy-warning-when-having-a-zero-contour" title="Permalink to this headline">¶</a></h2>
 <p>Having a zero contour in the levels caused a numpy warning when doing a contour map.  The
-numpy warning level was reduced in the con routine so this warning isn’t shown.  This may
-be removed in a future version of cf-plot as it looks like the numpy warning isn’t there in
+numpy warning level was reduced in the con routine so this warning isn't shown.  This may
+be removed in a future version of cf-plot as it looks like the numpy warning isn't there in
 later versions of numpy.</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
@@ -173,7 +175,7 @@ parula and gray colour scales.</p>
 </div>
 <div class="section" id="missing-field-name-on-pp-data">
 <h2>16. Missing field name on PP data<a class="headerlink" href="#missing-field-name-on-pp-data" title="Permalink to this headline">¶</a></h2>
-<p>With PP data that has no standard_name, long_name or short_name the field name is blank.  The field naming scheme was changed to use the cf-python method field.name(‘No Name’) setting the field name to ‘No Name’ as a catch all.</p>
+<p>With PP data that has no standard_name, long_name or short_name the field name is blank.  The field naming scheme was changed to use the cf-python method field.name('No Name') setting the field name to 'No Name' as a catch all.</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
@@ -242,8 +244,8 @@ bottom=0.08 - bottom margin in normalised coordinates</p>
 <h5><a href="http://ajheaps.github.io/cf-plot/issues.html">Issues</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/download.html">Download/Install</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/license.html">License</a><p></h5>
+<h5><a href="http://ajheaps.github.io/cf-plot/older_documentation.html">Older documentation</a><p></h5>
 <h5><a href="http://ajheaps.github.io/cf-plot/search.html">Search</a><p></h5>
-<h5><a href="http://www.met.reading.ac.uk/~swsheaps/cf-plot-2.1.75">Older documentation</a><p></h5>
         </div>
       </div>
       <div class="clearer"></div>
@@ -254,12 +256,12 @@ bottom=0.08 - bottom margin in normalised coordinates</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 2.4.8 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.2 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
     </div>
   </body>
 </html>

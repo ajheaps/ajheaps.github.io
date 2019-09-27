@@ -1,4 +1,0 @@
-gpos
-****
-
-.. autofunction:: cfplot.gpos

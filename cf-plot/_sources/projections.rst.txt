@@ -13,7 +13,8 @@ Example 31 - UKCP projection
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/ukcp_rcm_test.nc')[0]
    cfp.mapset(proj='UKCP', resolution='50m')
    cfp.levs(-3, 7, 0.5)
@@ -49,7 +50,8 @@ Here we change the plotted grid with grid_lons and grid_lats options to cfp.setv
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    import numpy as np
    f=cf.read('cfplot_data/ukcp_rcm_test.nc')[0]
    cfp.mapset(proj='UKCP', resolution='50m')
@@ -70,15 +72,16 @@ Example 33 - OSGB and EuroPP projections
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/ukcp_rcm_test.nc')[0]
    cfp.levs(-3, 7, 0.5)
    cfp.gopen(columns=2)
    cfp.mapset(proj='OSGB', resolution='50m')
-   cfp.con(f, lines=False)
+   cfp.con(f, lines=False, colorbar_label_skip=2)
    cfp.gpos(2)
    cfp.mapset(proj='EuroPP', resolution='50m')
-   cfp.con(f, lines=False)
+   cfp.con(f, lines=False, colorbar_label_skip=2)
    cfp.gclose()
 
 | 
@@ -100,7 +103,8 @@ Lambert conformal projections can now be cropped as in the following code:
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/tas_A1.nc')[0]
    cfp.mapset(proj='lcc', lonmin=-50, lonmax=50, latmin=20, latmax=85)
    cfp.con(f.subspace(time=15))
@@ -122,7 +126,8 @@ Example 35 - Mollweide projection
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/tas_A1.nc')[0]
    cfp.mapset(proj='moll')
    cfp.con(f.subspace(time=15))
@@ -138,7 +143,8 @@ Example 36 - Mercator projection
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/tas_A1.nc')[0]
    cfp.mapset(proj='merc')
    cfp.con(f.subspace(time=15))
@@ -155,7 +161,8 @@ Example 37 - Orthographic projection
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/tas_A1.nc')[0]
    cfp.mapset(proj='ortho')
    cfp.con(f.subspace(time=15))
@@ -175,7 +182,8 @@ Example 38 - Robinson projection
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/tas_A1.nc')[0]
    cfp.mapset(proj='robin')
    cfp.con(f.subspace(time=15))

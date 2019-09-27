@@ -19,7 +19,8 @@ Here we read in and contour temperature from meteorological stations around the 
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    import numpy as np
    from scipy.interpolate import griddata
    
@@ -93,8 +94,9 @@ Example 26 - Orca2 grid
 
 ::
 
+   import cf
+   import cfplot as cfp
    import numpy as np
-   import cf, cfplot as cfp
    from netCDF4 import Dataset as ncfile
    from matplotlib.mlab import griddata
 

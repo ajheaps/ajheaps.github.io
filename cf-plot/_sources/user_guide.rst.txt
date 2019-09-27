@@ -1,33 +1,81 @@
+******************
 cf-plot user guide
 ******************
 
 
+
+############
 Introduction
-------------
+############
 
 
-`cf-plot <http://ajheaps.github.io/cf-plot/#>`_  is a set of Python routines for making the common contour, vector and line plots that climate researchers use. cf-plot generally uses `cf-python <https://cfpython.bitbucket.io>`_ to present the data and CF attributes for plotting as two-dimensional data fields.
-To run the following examples in the Met department at the University of Reading setup the Python path with
-
-::
-
-   setup canopy
-
-Outside of the Meteorology department you'll need to follow the `cf-plot installation instructions <http://ajheaps.github.io/cf-plot/download.html>`_
+cf-plot is a set of Python functions for making common contour, vector and line plots that climate researchers use. cf-plot generally uses `cf-python <https://cfpython.bitbucket.io>`_ to present the data and CF attributes for plotting.  It can also use numpy arrays of data as the input fields making for flexible plotting of data.  cf-plot uses the Python numpy, matplotlib and scipy libraries.
 
 
+At the core of cf-plot are a set of functions for making and controlling plots:
+
+|    **Plot making operators**
+|    `con <http://ajheaps.github.io/cf-plot/con.html>`_ - make a contour plot
+|    `cbar <http://ajheaps.github.io/cf-plot/cbar.html>`_ - make a colour bar
+|    `vect <http://ajheaps.github.io/cf-plot/vect.html>`_ - plot vectors
+|    `traj <http://ajheaps.github.io/cf-plot/traj.html>`_ - trajectory plots
+|    `lineplot <http://ajheaps.github.io/cf-plot/lineplot.html>`_ - make a graph
+|    `stipple <http://ajheaps.github.io/cf-plot/stipple.html>`_ - make a stipple plot
+
+|    **Plot control operators**
+|    `gopen <http://ajheaps.github.io/cf-plot/gopen.html>`_ - open a plot
+|    `gclose <http://ajheaps.github.io/cf-plot/gclose.html>`_ - close a plot
+|    `gpos <http://ajheaps.github.io/cf-plot/gpos.html>`_ - plot positioning
+|    `gset <http://ajheaps.github.io/cf-plot/gset.html>`_ - set non map plotting region
+|    `levs <http://ajheaps.github.io/cf-plot/levs.html>`_ - define contour levels
+|    `cscale <http://ajheaps.github.io/cf-plot/cscale.html>`_ - select and change colour scales
+|    `mapset <http://ajheaps.github.io/cf-plot/mapset.html>`_ - set mapping parameters
+|    `reset <http://ajheaps.github.io/cf-plot/reset.html>`_ - reset all plot parameters 
+|    `setvars <http://ajheaps.github.io/cf-plot/setvars.html>`_ - set a variety of plot parameters
+
+
+
+#######################################
+Gaining access to cf-python and cf-plot
+#######################################
+
+cf-python and cf-plot are pre-installed on the following platforms.
+
+|    **Jasmin super-data-cluster**
+|    export PATH=/home/users/ajh/anaconda3/bin:$PATH
+|    ln -s /home/users/ajh/cfplot_data ~
+
+
+|    **Archer supercomputer in Edinburgh**
+|    export PATH=/home/n02/n02/ajh/anaconda3/bin:$PATH
+|    ln -s /home/n02/n02/ajh/cfplot_data ~
+
+    
+|    **Reading University RACC cluster**
+|    module load ncas_anaconda3
+|    ln -s /share/apps/NCAS/cfplot_data ~
+
+
+For other platforms follow the `cf-plot installation instructions <http://ajheaps.github.io/cf-plot/download.html>`_
+
+
+
+#############
 Using cf-plot
--------------
+#############
+
+The following examples use cf-python to present the data to cf-plot.  The syntax is quite simple and can be learned as the examples progress.  A fuller discussion of using cf-python to manipulate data is available in appendixA_.  If you have numpy arrays that you wish to plot then look in appendixB_ for a couple of examples of how to do this.
+
 The data to make a contour plot can be read in and passed to cf-plot using cf-python as per the following example.
 
-
-
+^^^^^^^^^^^^^^^^^^^^^^
 Cylindrical projection
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/tas_A1.nc')[0]
    cfp.con(f.subspace(time=15))
 
@@ -38,12 +86,26 @@ Cylindrical projection
 
 
 
-The **mapset** routine is used to change the map area and projection.  
-**cfp.mapset(lonmin=-15, lonmax=3, latmin=48, latmax=60)** sets the map to a view over the British Isles. Further plots will use the same map projection and limits.  The levels are taken from the whole field so in this example we specify the levels explicitly with the **levs** command.
+Note that for a contour plot two dimensional data is required.
 
 ::
 
-   import cf, cfplot as cfp
+   f.subspace(time=15)
+
+<CF Field: air_temperature(time(1), latitude(73), longitude(96)) K>
+
+
+Dimensions that have one element, such as time in this instance, are ignored. 
+
+
+
+The **cfp.mapset** routine is used to change the map area and projection.  
+**cfp.mapset(lonmin=-15, lonmax=3, latmin=48, latmax=60)** sets the map to a view over the British Isles. The cfp.mapset command is persistent in that any further map plots will use the same map projection and limits without having to specify the same map again.  The levels are taken from the whole field and in this example we specify the levels explicitly with the **cfp.levs** command.
+
+::
+
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/tas_A1.nc')[0]
    cfp.mapset(lonmin=-15, lonmax=3, latmin=48, latmax=60)
    cfp.levs(min=265, max=285, step=1)
@@ -55,37 +117,42 @@ The **mapset** routine is used to change the map area and projection.
 
 
 
-The default settings are for colour fill and contour lines.  These can be changed with the **fill=0** and **lines=0** flags to **con**. 
+The default settings are for colour fill with contour lines over the top.  These can be changed with the **fill=False** and **lines=False** flags to **cfp.con**. 
 
-To reset the mapping to the default cylindrical projection -180 to 180 in longitude and -90 to 90 in latitude use **cfp.mapset()**.
+To reset the mapping to the default cylindrical projection -180 to 180 in longitude and -90 to 90 in latitude use **cfp.mapset()**.  Likewise to reset the contour levels use **cfp.levs()**.
 
 
+
+
+
+^^^^^^^^^^^^^^^
 Blockfill plots
----------------
-Blockfill plots in the cylindrical projection are made using the **blockfill=True** flag to the **con** routine.
+^^^^^^^^^^^^^^^
+
+Blockfill plots in the cylindrical projection are made using the **blockfill=True** flag to the **cfp.con** routine.
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/tas_A1.nc')[0]
    cfp.con(f.subspace(time=15), blockfill=True, lines=False)
 
 
 .. image::  images/fig2.png
    :scale: 52% 
+ 
 
-
-Blockfill is only supported in the cylindrical projection and non-map plots at present.  
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^
 Polar stereographic plots
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Polar Stereographic plots are set using **proj='npstere'** or **proj='spstere'** in the call to **mapset**.
+Polar Stereographic plots are set using **proj='npstere'** or **proj='spstere'** in the call to **cfp.mapset**.
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/ggap.nc')[1]
    cfp.mapset(proj='npstere')
    cfp.con(f.subspace(pressure=500))
@@ -100,7 +167,8 @@ The **mapset** **bounding_lat** and **lon_0** parameters are used to set the lat
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/ggap.nc')[1]
    cfp.mapset(proj='spstere', boundinglat=-30, lon_0=0)
    cfp.con(f.subspace(pressure=500))
@@ -112,234 +180,26 @@ The **mapset** **bounding_lat** and **lon_0** parameters are used to set the lat
 
 
 
-Passing data to cf-plot
------------------------
-
-Using cf-python - CF compliant data
------------------------------------
-
-Data is generally passed to cf-plot for ploting via cf-python.  Contour and vector plots require a 2-dimensional field.  cf-python is very flexible and can be used to select fields, levels, times, means for both CF and non-CF compliant data.
-CF  data is data that follows  the NetCDF Climate and Forecast (CF) Metadata Conventions.  The conventions define metadata that provide a definitive description of what the data in each variable represents, and of the spatial and temporal properties of the data.
-
-::
-
-   import cf, cfplot as cfp
-   f=cf.read('cfplot_data/ggap.nc')
-
-
-f is now an list of 4 fields.
-
-|   [<CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(320)) K>,
-|    <CF Field: eastward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1>,
-|    <CF Field: geopotential(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-2>,
-|    <CF Field: northward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1>]
-
-
-
-
-To see what levels are available in the data use **f[0].item('pressure').array**
-
-
-|  array([ 1000.,   925.,   850.,   775.,   700.,   600.,   500.,   400.,
-|  300.,   250.,   200.,   150.,   100.,    70.,    50.,    30.,
-|  20.,    10.,     7.,     5.,     3.,     2.,     1.], dtype=float32)
-
-
-
-In the case below we select the 500mb temperature with the cf subspace method.
-
-:: 
-
-   f[0].subspace(pressure=500)
-
-
-|  <CF Field: air_temperature(time(1), pressure(1), latitude(160), longitude(320)) K>
-and contour the data
-
-::
-
-   cfp.con(f[0].subspace(pressure=500))
-
-
-.. image::  images/guide1.png
-   :scale: 52% 
-
-
-
-To mean the field use the cf collapse function:
-
-::
-
-   f[0].collapse('mean','longitude')
-
-|  <CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(1)) K>
-
-::
-
-   cfp.con(f[0].collapse('mean','longitude'))
-
-.. image::  images/guide2.png
-   :scale: 52% 
-
-
-
-Using cf-plot with non-cf compliant data
-----------------------------------------
-
-Although newer model and reanalyis products are generally cf compliant there is a considerable amount of data being used that is of varying degrees of cf compliance.
-
-In this locally processed ERA40 reanalysis field there is a distinct lack of standard names. Even the long names are somewhat terse - p for pressure for example.
-
-::
-
-   f=cf.read('cfplot_data/ggap.nc')[2]
-   f
-
-|  <CF Field: geopotential(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-2>
-
-
-
-
-We can still slice and plot the data by inspecting the dimensions of the field:
-
-::
-
-   f.items()
-
-|  {'dim2': <CF DimensionCoordinate: latitude(160) degrees_north>, 
-|  'dim3': <CF DimensionCoordinate: longitude(320) degrees_east>, 
-|  'dim0': <CF DimensionCoordinate: time(1) days since 1964-01-21 00:00:00>, 
-|  'dim1': <CF DimensionCoordinate: pressure(23) mbar>}
-
-
-
-We see that dim1 is the pressure coordinate and can select the 700mb level and contour that.
-
-::
-
-   f.item('dim1').array
-
-| array([ 1000.,   925.,   850.,   775.,   700.,   600.,   500.,   400.,
-| 300.,   250.,   200.,   150.,   100.,    70.,    50.,    30.,
-| 20.,    10.,     7.,     5.,     3.,     2.,     1.], dtype=float32)
-
-
-
-::
-
-   f.subspace(dim1=700)
-
-|  <CF Field: geopotential(time(1), pressure(1), latitude(160), longitude(320)) m**2 s**-2>
-
-
-
-::
-
-   cfp.con(f.subspace(dim1=700))
-
-
-.. image::  images/guide3.png
-   :scale: 52% 
-
-
-
-In the following dataset there are neither standard nor long names to identify the data.
-
-::
-
-   f=cf.read('cfplot_data/gdata.nc')[0]
-
-
-|  <CF Field: ncvar:temp(ncvar:p(22), ncvar:lat(73), ncvar:lon(145)) >
-
-
-We can still slice and plot the data as below.
-
-::
-
-   f.items()
-
-|  {'dim2': <CF DimensionCoordinate: ncvar:lon(145)>,
-|  'dim0': <CF DimensionCoordinate: ncvar:p(22)>,
-|  'dim1': <CF DimensionCoordinate: ncvar:lat(73)>}
-
-::
-
-   f.item('dim0').array
-
-
-| array([1.00e+03, 7.00e+02, 5.00e+02, 3.20e+02, 2.15e+02, 1.50e+02,
-|        1.00e+02, 7.00e+01, 5.00e+01, 3.20e+01, 2.00e+01, 1.50e+01,
-|        1.00e+01, 7.00e+00, 5.00e+00, 3.20e+00, 2.00e+00, 1.50e+00,
-|        1.00e+00, 7.00e-01, 5.00e-01, 3.00e-01], dtype=float32)
-
-
-
-
-So to plot the 1000mb temperature we would use:
-
-
-:: 
-
-   cfp.con(f.subspace(dim0=1000))
-
-
-.. image::  images/guide4.png
-   :scale: 52% 
-
-
-
-Passing data via arrays
------------------------
-
-cf-plot can also make contour and vector plots by passing data arrays. In this example we read in a temperature field from a netCDF file and pass it to cf-plot for plotting.
-
-::
-
-   import cfplot as cfp
-   from netCDF4 import Dataset as ncfile
-   nc = ncfile('cfplot_data/tas_A1.nc')
-   lons=nc.variables['lon'][:]
-   lats=nc.variables['lat'][:]
-   temp=nc.variables['tas'][0,:,:]
-   cfp.con(f=temp, x=lons, y=lats)
-
-
-
-.. image::  images/guide5.png
-   :scale: 52% 
-
-
-The contouring routine doesn't know that the data passed is a map plot as the only information passed is data arrays. This can be explicitly set with the **ptype** flag to **con**.
-
-::
-
-   cfp.con(f=temp, x=lons, y=lats, ptype=1)
-
-.. image::  images/guide6.png
-   :scale: 52% 
-
-
-Other types of plot are:
-
-|  **ptype=2** - latitude - height plot
-|  **ptype=3**  - longitude – height plot
-|  **ptype=4** - longitude - time plot
-|  **ptype=5** - latitude - time plot
-|  **ptype=6** - rotated pole plot
-|  **ptype=7** - time - height plot
-|
-|
-|
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^
 Latitude - Pressure Plots
-=========================
-The latitude-pressure plot below is made by using the cf subspace method to select the temperature at longitude=0 degrees.
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+The latitude-pressure plot below is made by using the cf subspace method to select the temperature at longitude=0 degrees.  Again this data has two dimensions with multiple values in.
 
 ::
 
-   import cf, cfplot as cfp
+   f.subspace(longitude=0)
+
+<CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(1)) K>
+
+
+
+
+::
+
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/ggap.nc')[0]
    cfp.con(f.subspace(longitude=0))
 
@@ -352,7 +212,8 @@ A mean of the data along the longitude (zonal mean) is made using the cf.collaps
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/ggap.nc')[1]
    cfp.con(f.collapse('mean','longitude'))
 
@@ -367,7 +228,8 @@ To make a log pressure on the y axis use the ylog=True flag to the con routine.
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/ggap.nc')[1]
    cfp.con(f.collapse('mean','longitude'), ylog=True)
 
@@ -375,14 +237,16 @@ To make a log pressure on the y axis use the ylog=True flag to the con routine.
    :scale: 52% 
 
 
-
+^^^^^^^^^^^^^^^
 Hovmuller plots
-===============
-A Hovmuller plot is one of longitude or latitude versus time as per the following examples.
+^^^^^^^^^^^^^^^
+
+A Hovmuller plot is one of longitude or latitude versus time as in the following examples.
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/tas_A1.nc')[0]
    cfp.cscale('plasma')
    cfp.con(f.subspace(longitude=0), lines=0)
@@ -394,7 +258,8 @@ A Hovmuller plot is one of longitude or latitude versus time as per the followin
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/tas_A1.nc')[0]
    cfp.gset(-30, 30, '1960-1-1', '1980-1-1')
    cfp.levs(min=280, max=305, step=1)
@@ -409,17 +274,28 @@ A Hovmuller plot is one of longitude or latitude versus time as per the followin
 
 
 
-
+^^^^^^^^^^^^
 Vector Plots
-============
-Vector plots are made using the **vect** routine.
+^^^^^^^^^^^^
+
+Vector plots are made using the **cfp.vect** routine.  The u and v data must have two dimensions with matching multiple values in as below.
+
+
+|   <CF Field: eastward_wind(time(1), pressure(1), latitude(160), longitude(320)) m s**-1>
+|   <CF Field: northward_wind(time(1), pressure(1), latitude(160), longitude(320)) m s**-1>
+
+
+
+
+
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/ggap.nc')
    u=f[1].subspace(pressure=500)
-   v=f[3].subspace(pressure=500)
+   v=f[2].subspace(pressure=500)
    cfp.vect(u=u, v=v, key_length=10, scale=100, stride=5)
 
 
@@ -429,14 +305,21 @@ Vector plots are made using the **vect** routine.
 |
 |
 
-In this example vectors are overlaid on a contour plot. 
+The **key_length** parameter sets the length of the reference key.  The scale parameter sets the viewable length of the vector with **scale=50** producing vectors that look twice as long as **scale=100**.  There are often too many vectors on the plot giving a mostly black set of lines.  The **stride=5** option helps with this and will plot only every 5th vector location in x and y.  There is also an alternative **npts** parameter that can be user to interpolate the data to this number of points in x and y.
+
+
+
+
+
+In this example vectors are overlaid on a contour plot. Usually a plot is displayed immediately after making a **cfp.con** or **cfp.vect** command.  As we want a vector plot on top of a contour plot we need to open a graphics file file **cfp.gopen()** make our contour and vector plots with **cfp.con** and **cfp.vect** and then close teh graphics file with **cfp.gclose()**.
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/ggap.nc')
    u=f[1].subspace(pressure=500)
-   v=f[3].subspace(pressure=500)
+   v=f[2].subspace(pressure=500)
    t=f[0].subspace(pressure=500)
    cfp.gopen()
    cfp.mapset(lonmin=10, lonmax=120, latmin=-30, latmax=30)
@@ -455,7 +338,8 @@ Here we make a zonal mean vector plot with different vector keys and scaling fac
 
 ::
 
-    import cf, cfplot as cfp
+    import cf
+    import cfplot as cfp
 
     c=cf.read('cfplot_data/vaAMIPlcd_DJF.nc')
     c=c.subspace(Y=cf.wi(-60,60))
@@ -467,8 +351,10 @@ Here we make a zonal mean vector plot with different vector keys and scaling fac
     g=g.subspace(X=cf.wi(80,160))
     g=g.collapse('T: mean X: mean')
 
-    cfp.vect(u=c, v=-g, key_length=[4, 0.2], scale=[20.0, 0.2], stride=[2,1], width=0.02, headwidth=6,
-             headlength=6, headaxislength=5, pivot='middle', title='DJF', key_location=[0.95, -0.05])
+    cfp.vect(u=c, v=-g, key_length=[4, 0.2], scale=[20.0, 0.2], 
+             stride=[2,1], width=0.02, headwidth=6, headlength=6,
+             headaxislength=5, pivot='middle', title='DJF', 
+             key_location=[0.95, -0.05])
 
 .. image::  images/fig16.png
    :scale: 44% 
@@ -478,14 +364,16 @@ Here we make a zonal mean vector plot with different vector keys and scaling fac
 
 
 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Multiple plots on a page and plot positioning
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Multiple Plots on a Page
-========================
-To make multiple plots on the page open a graphic file with the gopen command and pass the rows and columns parameters. Make each plot in turn first selecting the position with the gpos command.  The first position is the top left plot and increases by one for one plot to the right until the final plot is made in the bottom right. When all the plots have been made close the plot with the **gclose()** command.  A combined colrbar is also made helping to reduce the plot complexity.
+To make multiple plots on the page open a graphic file with the gopen command and pass the rows and columns parameters. Make each plot in turn first selecting the position with the **cfp.gpos()** command.  The first position is the top left plot and increases by one for one plot to the right until the final plot is made in the bottom right. When all the plots have been made close the plot with the **cfp.gclose()** command.  A combined colour bar is also made as all the plots have the same contour levels and colour scale helping to reduce the plot complexity.
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/ggap.nc')[1]
 
    cfp.gopen(rows=2, columns=2, bottom=0.2)
@@ -499,7 +387,8 @@ To make multiple plots on the page open a graphic file with the gopen command an
    cfp.con(f.subspace(pressure=500), colorbar=None)
    cfp.gpos(4)
    cfp.mapset(proj='spstere', boundinglat=-30, lon_0=0)
-   cfp.con(f.subspace(pressure=500), colorbar_position=[0.1, 0.1, 0.8, 0.02], colorbar_orientation='horizontal')
+   cfp.con(f.subspace(pressure=500), colorbar_position=[0.1, 0.1, 0.8, 0.02],
+           colorbar_orientation='horizontal')
    cfp.gclose()
 
 
@@ -510,15 +399,110 @@ To make multiple plots on the page open a graphic file with the gopen command an
 |
 
 
+User specified plot limits are set by first specifying the **user_position=True** parameter to gopen and then the plot position to
+the gpos routines.  The **xmin, xmax, ymin, ymax** paramenters for the plot display area are in plot extent normalised coordinates. These are 0.0 for bottom or left and 1.0 for top or right of the plot area. 
+
+Cylidrical projection plots have an additional rider of having a degree in longitude and latitude being the same size so plots of
+this type might not fill the plot area specified as expected.
+
+.. image::  images/fig19a.png
+   :scale: 44% 
+
+::
+
+    import cf
+    import cfplot as cfp
+    f=cf.read('cfplot_data/ggap.nc')[1]
+
+    cfp.gopen(user_position=True)
+    cfp.gpos(xmin=0.1, xmax=0.5, ymin=0.5, ymax=0.9)
+    cfp.con(f.subspace(Z=500), title='500mb')
+
+    cfp.gpos(xmin=0.55, xmax=0.95, ymin=0.5, ymax=0.9)
+    cfp.con(f.subspace(Z=100), title='100mb')
+
+    cfp.gpos(xmin=0.3, xmax=0.7, ymin=0.05, ymax=0.45)
+    cfp.con(f.subspace(Z=10), title='10mb')
+
+    cfp.gclose()
 
 
+
+
+
+The indication that the plot position on the page is to be set manually is made with the **user_position=True** parameter to **cfp.gopen**.
+The required plot position is set in **cfp.gpos** with the **xmin, xmax, ymin, ymax** parameters.  Two calls to the **cfp.cbar** routine then place colour bars on the plot with different colour scales and contour levels.
+
+
+.. image::  images/fig19b.png
+   :scale: 44% 
+
+::
+
+    import cf
+    import cfplot as cfp
+    import numpy as np
+
+    f=cf.read('cfplot_data/ggap.nc')[1]
+    g=f.collapse('X: mean')
+
+    cfp.gopen(user_position=True)
+
+    cfp.gpos(xmin=0.2, ymin=0.2, xmax=0.8, ymax=0.8)
+    cfp.lineplot(g.subspace(pressure=100), marker='o', color='blue',
+                 title='Zonal mean zonal wind at 100mb')
+
+    cfp.cscale('seaice_2', ncols=20)
+    levs=np.arange(282, 320,2)
+    cfp.cbar(levs=levs, position=[0.2, 0.1, 0.6, 0.02], title='seaice_2')
+
+    cfp.cscale('topo_15lev', ncols=22)
+    levs=np.arange(-100, 2000, 100)
+    cfp.cbar(levs=levs, position=[0.03, 0.2, 0.04, 0.6], orientation='vertical', title='topo_15lev')
+
+    cfp.gclose()
+
+
+
+
+^^^^^^^^^^^^
+Trajectories
+^^^^^^^^^^^^
+
+Data stored in contiguous ragged array format, such as from Kevin Hodges's TRACK program, can be plotted using cf-plot using **cfp.traj**.
+
+
+
+
+.. image::  images/fig39.png
+   :scale: 52% 
+
+
+
+::
+
+
+   import cf
+   import cfplot as cfp
+   f=cf.read('cfplot_data/ff_trs_pos.nc')[0]
+   cfp.traj(f)
+
+
+
+
+
+
+
+^^^^^^^^^^^^^
 Stipple plots
-=============
-A stipple plot is usually used to show areas of significance. These plots use the overlay technique as used in the previous contour/vector plot.
+^^^^^^^^^^^^^
+
+A stipple plot is usually used to show areas of significance such as 95% or greater confidence. These plots use the overlay technique as used in the previous contour/vector plot.  In these plots we show a coutour plot and a stipple plot between varous contour levels to show that the stippling works correctly.  For different significance levels such as confidences of 95% and 99% chosing a different sized or colour marker is a common plot technique.
 
 ::
    
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/tas_A1.nc')[0]
    g=f.subspace(time=15)
    cfp.gopen()
@@ -535,7 +519,8 @@ A stipple plot is usually used to show areas of significance. These plots use th
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/tas_A1.nc')[0]
    g=f.subspace(time=15)
    cfp.gopen()
@@ -553,17 +538,20 @@ A stipple plot is usually used to show areas of significance. These plots use th
 |
 |
 
-Graph plots
-===========
 
-To make a graph plot use the cf-plot lineplot function as below on a single line of data in a field.
+^^^^^^^^^^^
+Graph plots
+^^^^^^^^^^^
+
+To make a graph plot use the **cfp.lineplot** function as below on a single line of data in a field.
 
 :: 
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/ggap.nc')[1]
    g=f.collapse('X: mean')
-   cfp.lineplot(g.subspace(pressure=100), marker='o', color='blue',\
+   cfp.lineplot(g.subspace(pressure=100), marker='o', color='blue',
                 title='Zonal mean zonal wind at 100mb')
 
 
@@ -598,23 +586,33 @@ To make a graph plot use the cf-plot lineplot function as below on a single line
 
 To make a multiple line plot use the gopen, gclose commands to enclose the plotting commands as in the example below.
 
+|   When making a multiple line plot:
+|   a) Set the axis limits if required with **cfp.gset** before plotting the lines.  
+|      Using **cfp.gset** after the last line has been plotted may give unexpected axis 
+|      limits and / or labelling.  This is a feature of Matplotlib.
+|   b) The last call to **cfp.lineplot** is the one that any of axis labelling overrides should be placed in.
+|   c) All calls to **cfp.lineplot** with the **label** attribute set will appear in the legend.   
+
+
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/ggap.nc')[1]
    g=f.collapse('X: mean')
    xticks=[-90,-75,-60,-45,-30,-15,0,15,30,45,60,75,90]
-   xticklabels=['90S','75S','60S','45S','30S','15S','0','15N','30N','45N','60N','75N','90N']
+   xticklabels=['90S','75S','60S','45S','30S','15S','0','15N',
+                '30N','45N','60N','75N','90N']
    xpts=[-30, 30, 30, -30, -30]
    ypts=[-8, -8, 5, 5, -8]
 
    cfp.gset(xmin=-90, xmax=90, ymin=-10, ymax=50)
    cfp.gopen()
-   cfp.lineplot(g.subspace(pressure=100), marker='o', color='blue',\
+   cfp.lineplot(g.subspace(pressure=100), marker='o', color='blue',
              title='Zonal mean zonal wind', label='100mb')
-   cfp.lineplot(g.subspace(pressure=200), marker='D', color='red',\
-                label='200mb', xticks=xticks, xticklabels=xticklabels,\
+   cfp.lineplot(g.subspace(pressure=200), marker='D', color='red',
+                label='200mb', xticks=xticks, xticklabels=xticklabels,
                 legend_location='upper right')
    cfp.plotvars.plot.plot(xpts,ypts, linewidth=3.0, color='green')
    cfp.plotvars.plot.text(35, -2, 'Region of interest', horizontalalignment='left')
@@ -626,10 +624,13 @@ To make a multiple line plot use the gopen, gclose commands to enclose the plott
 
 
 
+
+^^^^^^^^^^^^^^^^^^^^^^
 Setting Contour Levels
-======================
+^^^^^^^^^^^^^^^^^^^^^^
+
 cf-plot generally does a reasonable job of setting appropriate contour levels.  In the cases where it doesn't do this or you need a consistent set of levels between plots for comparison purposes use the levs routine.  
-The levs command manually sets the contour levels.
+The **cfp.levs** command manually sets the contour levels.
 
 | **min=min** - minimum level
 | **max=max** - maximum level
@@ -637,24 +638,25 @@ The levs command manually sets the contour levels.
 | **manual= manual** - set levels manually
 | **extend='neither', 'both', 'min', or 'max'** – the colour bar limit extensions. These are the triangles at the ends of the colour bar indicating the rest of the data is in this colour.
 
-Use the **levs** command when a predefined set of levels is required. The **min, max and step** parameters are all needed to define a set of levels. These can take integer or floating point numbers. If colour filled contours are plotted then the default is to extend the minimum and maximum contours coloured for out of range values - extend='both'. Use the manual option to define a set of uneven contours i.e.
+Use the **cfp.levs** command when a predefined set of levels is required. The **min, max and step** parameters are all needed to define a set of levels. These can take integer or floating point numbers. If colour filled contours are plotted then the default is to extend the minimum and maximum contours coloured for out of range values - extend='both'. Use the manual option to define a set of uneven contours i.e.
 
 ::
 
    cfp.levs(manual=[-10, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 10])
 
-Once a user call is made to levs the levels are persistent. i.e. the next plot will use the same set of levels. Use **levs()** to reset to undefined levels i.e. let cf-plot generate the levels again.
-Once the levs command is used you'll need to think about the associated colour scale.  
+Once a user call is made to levs the levels are persistent. i.e. the next plot will use the same set of levels. Use **cfp.levs()** to reset to undefined levels i.e. let cf-plot generate the levels again.
+Once the **cfp.levs** command is used you'll need to think about the associated colour scale.  
 
 
-
+^^^^^^^^^^^^^
 Colour scales
-=============
+^^^^^^^^^^^^^
+
 There are around 140 colour scales included with cf-plot. Colour scales are set with the cscale command. There are two default colour scales that suit differing types of data. 
 
-A continuous scale ('viridis') that goes from blue to green and then yellow and suits data that has no zero in it.  For example air temperature in Kelvin or geopotential height - see example 1.
+A continuous scale **cfp.scale('viridis')** that goes from blue to green and then yellow and suits data that has no zero in it.  For example air temperature in Kelvin or geopotential height - see example 1 in the gallery plots.
 
-A diverging scale ('scale1') that goes from blue to red and suits data with a zero in it.  For example temperature in Celsius or zonal wind - see example 4.  
+A diverging scale **cfp.cscale('scale1')** that goes from blue to red and suits data with a zero in it.  For example temperature in Celsius or zonal wind - see example 4 in the gallery plots.  
 
 ::
 
@@ -664,9 +666,9 @@ A diverging scale ('scale1') that goes from blue to red and suits data with a ze
 .. image::  images/cs1.png
    :scale: 52% 
 
-If no call has been made to adjust the colour scale then continuous and diverging colour scales are self adjusting to fit the number of levels automatically generated by cf-plot or specified by the user with the **levs** command.  This behaviour is also followed for a simple call to **cscale** specifying a different colour scale - for example **cfp.cscale('radar')** to select the radar colour scheme.
+If no call has been made to adjust the colour scale then continuous and diverging colour scales are self adjusting to fit the number of levels automatically generated by cf-plot or specified by the user with the **cfp.levs** command.  This behaviour is also followed for a simple call to **cfp.cscale** specifying a different colour scale - for example **cfp.cscale('radar')** to select the radar colour scheme.
 
-If a call to **cscale** specifies additional parameters to the colour scale, then the automatic colour adjustment is turned off giving the user fine tuning of colours as below.
+If a call to **cfp.cscale** specifies additional parameters to the colour scale, then the automatic colour adjustment is turned off giving the user fine tuning of colours as below.
 
 To change the number of colours in a scale use the ncols parameters.
 
@@ -700,26 +702,27 @@ For data where you need white to indicate that this data region is insignificant
 .. image::  images/cs4.png
    :scale: 52% 
 
-To reverse a colour scale use the **reverse=True** option to **cscale** and specify the number of colours required.
+To reverse a colour scale use the **reverse=True** option to **cfp.cscale** and specify the number of colours required.
 
 **cfp.cscale('viridis', reverse=True, ncols=17)**
 
 
-Producing a 'uniform' colour scale
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Producing a uniform colour scale
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The uniform parameter may be of use when using a set of contour levels where there is wide mismatch between the 
 above and below numbers.
 
-uniform = False - produce a uniform colour scale.
-For example: if below=3 and above=10 are specified then initially below=10 and above=10 are used. The
+**uniform = False** - produce a uniform colour scale.
+For example: if **below=3** and **above=10** are specified then initially **below=10** and **above=10** are used. The
 colour scale is then cropped to use scale colours 6 to 19.  This produces a more uniform intensity colour 
 scale than one where all the blues are compressed into 3 colours.
 
 
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 User defined colour scales
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Colour scales are stored as red green blue values on a scale of 0 to 255. Put these in a file with one red green blue value per line. i.e.
 
@@ -737,41 +740,45 @@ will give a red white blue colour scale. If the file is saved as /home/swsheaps/
 If the colour scale selected has too few colours for the number of contour levels then the colours will be used cyclically. 
 
 
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Changing colours in a colour scale
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The simplest way to do this without writing any code is to modify the internal colour scale before plotting.  The colours most people work with are stored as red green blue intensities on a scale of 0 to 255, with 0 being no intesity and 255 full intensity.
+The simplest way to do this without writing any code is to modify the internal colour scale before plotting.  The colours most people work with are stored as red green blue intensities on a scale of 0 to 255, with 0 being no intensity and 255 full intensity.
 
-White will be represented as 255 255 255 and black as 0 0 0
+White is represented as 255 255 255 and black as 0 0 0
 
-The internal colour scale is stored in cfp.plotvars.cs as hexadecimal code.  To convert from decimal to hexadecimal use hex i.e.
-hex(255)[2:]
-'ff'
+The internal colour scale is stored in cfp.plotvars.cs as hexadecimal code.  To convert from decimal to hexadecimal use the Python hex function i.e.
+
+|   **hex(255)[2:]**
+|   'ff'
 
 The [2:] is to get rid of the preceding 0x in the hex output.
 
 
 
-for example to make one of the colours in the viridis colour scale grey use:
+For example to make one of the colours in the viridis colour scale grey use:
 
 ::
 
-    import cf, cfplot as cfp
+    import cf
+    import cfplot as cfp
     f=cf.read('cfplot_data/tas_A1.nc')[0]
     cfp.cscale('viridis', ncols=17)
     cfp.plotvars.cs[14]='#a6a6a6'
     cfp.con(f.subspace(time=15))
 
 
-
+^^^^^^^^^^^^^^^^^^^^^^^^
 Predefined colour scales
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 A lot of the following colour maps were downloaded from the NCAR Command Language web site. Users of the IDL guide colour maps can see these maps at the end of the colour scales.
 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Perceptually uniform colour scales
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 A selection of perceptually uniform colour scales for contouring data without a zero in. See `The end of the rainbow <http://www.climate-lab-book.ac.uk/2014/end-of-the-rainbow>`_ and `Matplotlib colour maps <http://bids.github.io/colormap>`_ for a good discussion on colour scales, colour blindness and uniform colour scales.
 
 ================== =====
@@ -786,8 +793,9 @@ gray               .. image:: images/colour_scales/gray.png
 ================== =====
 
 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 NCAR Command Language - MeteoSwiss colour maps
-----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ================== =====
 Name               Scale
@@ -810,9 +818,9 @@ spread_15lev       .. image:: images/colour_scales/spread_15lev.png
 ================== =====
 
 
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 NCAR Command Language - small color maps (<50 colours)
-------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 =================== =====
 Name                Scale
@@ -867,8 +875,9 @@ wind_17lev          .. image:: images/colour_scales/wind_17lev.png
 =================== =====
 
 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 NCAR Command Language - large colour maps (>50 colours)
--------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ======================= =====
 Name                    Scale
@@ -928,9 +937,9 @@ BrBG                    .. image:: images/colour_scales/BrBG.png
 ======================= =====
 
 
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 NCAR Command Language - Enhanced to help with colour blindness
---------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ================ =====
 Name             Scale
@@ -948,9 +957,9 @@ Cat12            .. image:: images/colour_scales/Cat12.png
 
 
 
-
+^^^^^^^^^^^^^^^^
 IDL guide scales
-----------------
+^^^^^^^^^^^^^^^^
 
 ======= =====
 Name    Scale
@@ -1003,129 +1012,100 @@ scale44 .. image:: images/colour_scales/scale44.png
 
 
 
-
+^^^^^^^^^^^^^^^^^^^
 Labelling time axes
-===================
+^^^^^^^^^^^^^^^^^^^
 
-The default time axis labelling in cf-plot might not be acceptable and here is some information on 
+The default time axis labelling in cf-plot might not be what is required and here is some information on 
 using cf-python to extract values for yourself.
 
 | **f=cf.read('cfplot_data/tas_A1.nc')[0]**
-| **f.items('T')**
-| {'dim0': <CF DimensionCoordinate: time(1680) 360_day>}
+| **f.construct('T')**
+| <CF DimensionCoordinate: time(1680) days since 1860-1-1 360_day>
 
-The time strings are stored in dtarray and the time values in array:
 
-| **f.item('T').dtarray**
-| array([1860-01-16 00:00:00, 1860-02-16 00:00:00, 1860-03-16 00:00:00, ...,
-|        1999-10-16 00:00:00, 1999-11-16 00:00:00, 1999-12-16 00:00:00], dtype=object)
+The time strings are stored in **dtarray** and the time values in **array**:
 
-| **f.item('T').array**
-| array([  1.50000000e+01,   4.50000000e+01,   7.50000000e+01, ...,
-|          5.03250000e+04,   5.03550000e+04,   5.03850000e+04])
+| **f.construct('T').dtarray**
+|   array([<CF Datetime: 1860-01-16T00:00:00Z 360_day>,
+|          <CF Datetime: 1860-02-16T00:00:00Z 360_day>,
+|          <CF Datetime: 1860-03-16T00:00:00Z 360_day>, ...,
+|          <CF Datetime: 1999-10-16T00:00:00Z 360_day>,
+|          <CF Datetime: 1999-11-16T00:00:00Z 360_day>,
+|          <CF Datetime: 1999-12-16T00:00:00Z 360_day>], dtype=object)
+
+
+
+|   array([1.5000e+01, 4.5000e+01, 7.5000e+01, ..., 5.0325e+04, 5.0355e+04,
+           5.0385e+04])
+
+
+| **f.construct('T').array**
+|   array([1.5000e+01, 4.5000e+01, 7.5000e+01, ..., 5.0325e+04, 5.0355e+04,
+           5.0385e+04])
 
 Likewise the years and months are in year.array and month.array:
 
-| **f.item('T').year.array**
+| **f.construct('T').year.array**
 | array([1860, 1860, 1860, ..., 1999, 1999, 1999])
 
-| **f.item('T').month.array**
+| **f.construct('T').month.array**
 | array([ 1,  2,  3, ..., 10, 11, 12])
 
 
 To find the time value for to the tick position for January 1st 1980 00:00hrs:
 
-| **np.min(cf.Data(cf.dt('1980-01-01 00:00:00'), units=f.item('T').Units).array)**
+| **np.min(cf.Data(cf.dt('1980-01-01 00:00:00'), units=f.construct('T').Units).array)**
 | 43200.0
 
 With this technique arrays of custom tick label and positions can be constructed and passed to 
 the cfp.lineplot or to the cfp.con routines.
 
-Note the correct date format is 'YYYY-MM-DD' or 'YYYY-MM-DD HH:MM:SS' - anything else will give unexpected results.
+Note the correct date format is **'YYYY-MM-DD'** or **'YYYY-MM-DD HH:MM:SS'** - anything else will give unexpected results.
 
 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Selecting data that has a lot of decimal places in the axis values
-==================================================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Axes with a lot of decimal places can cause issues with numeric representation and rounding,
 In one case 
 
->>> cfp.lineplot(f.subspace(latitude=50.17530806))
+|   **cfp.lineplot(f.subspace(latitude=50.17530806))**
 
 caused an error as the latitude with 50.17530806 wasn\'t found.
 
 In cf-python the tolerance for equivalence is
 
->>> cf.RTOL()
-2.220446049250313e-16
+|   **cf.RTOL()**
+|   2.220446049250313e-16
 
 To set to a lower tolerance use
 
->>> g=cf.RTOL(1e-5)
->>> cf.RTOL()
-1e-05
+|   **g=cf.RTOL(1e-5)**
+|   **cf.RTOL()**
+|   1e-05
 
 To swap back use
 
->>> cf.RTOL(g)
+|   **cf.RTOL(g)**
 
 After swapping the tolerance to 1e-5 the following finds the latitide as expected.
 
->>> cfp.lineplot(f.subspace(latitude=50.17530806))
+|   **cfp.lineplot(f.subspace(latitude=50.17530806))**
 
-We could have worked around this with
+We could have worked around this issue with
 
->>> cfp.lineplot(f.subspace(latitude=cf.wi(50, 50.2))) 
-
-
-Map options
-===========
-
-The default map plotting projection is the cyclindrical equidistant
-projection from -180 to 180 in longitude and -90 to 90 in latitude.
-To change the map view in this projection to over the United Kingdom,
-for example, you would use
-mapset(lonmin=-6, lonmax=3, latmin=50, latmax=60)
-or
-mapset(-6, 3, 50, 60)
-
-The limits are -360 to 720 in longitude so to look at the equatorial
-Pacific you could use
-mapset(lonmin=90, lonmax=300, latmin=-30, latmax=30)
-or
-mapset(lonmin=-270, lonmax=-60, latmin=-30, latmax=30)
-
-The proj parameter accepts 'npstere' and 'spstere' for northern 
-hemisphere or southern hemisphere polar stereographic projections.
-In addition to these the boundinglat parameter sets the edge of the
-viewable latitudes and lat_0 sets the centre of desired map domain.
-
-Additional map projections via proj are: ortho, merc, moll, robin and lcc
-These are abreviations for orthographic, mercator, mollweide, robinson 
-and lambert conformal projections
-
-
-Cropped area on map lcc projections
-Lambert conformal projections can now be cropped as in the following code:
-
-::
-
-   import cf, cfplot as cfp
-   f=cf.read('cfplot_data/ggap.nc')[1]
-   cfp.mapset(proj='lcc', lonmin=-50, lonmax=50, latmin=20, latmax=85)
-   cfp.con(f.subspace(pressure=700))
-
-
-.. image::  images/cm.png
-   :scale: 52% 
+|   **cfp.lineplot(f.subspace(latitude=cf.wi(50, 50.2)))** 
 
 
 
-
+^^^^^^^^^^^^^^
 Axis labelling
-==============
+^^^^^^^^^^^^^^
 
 The priority order of axis labeling in order of preference is:
+
 |  1) user passed to routine
 |  2) user defined by axes command
 |  3) labels generated internally
@@ -1142,16 +1122,18 @@ For 1 and 2 the available options are
 When specifying the xticklabels or yticklabels the supplied values must be a string or list of strings and match the number of corresponding tick marks.
 
 
+^^^^^^^^^^^^^^^
 Blockfill plots
-===============
+^^^^^^^^^^^^^^^
 
 Blockfill plots used to use the pcolormesh method but this had the advantage of being fast but gave incorrect results with masked data or when the data range wasn't extended in both 'min' and 'max' directions.  The blockfill method now uses PolyCollection from matplotlib.collections to draw the polygons for each colour interval specified by the contour levels.  This also has the advantage that blockfill is now available in other projections such as polar stereographic.  When doing blockfill plots of larger numbers of points the new method is slower so trim down the data to the area being shown before passing to cfp.con to speed it up. 
 
 
 
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Making postscript or PNG pictures 
-=================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 There are various methods of producing a figure for use in an external package such as a web document or LaTeX, Word etc.
 
 | **cfp.setvars(file='zonal.ps')** write subsequent graphics output directly to a file called zonal.ps
@@ -1159,7 +1141,7 @@ There are various methods of producing a figure for use in an external package s
 
 To reset to viewing the picture on the screen again use **cfp.setvars()**.
 
-Another method is to use **gopen** as when used in making multiple plots.
+Another method is to use **cfp.gopen()** as when used in making multiple plots.
 
 ::
 
@@ -1168,15 +1150,19 @@ Another method is to use **gopen** as when used in making multiple plots.
    cfp.gclose()
 
 
+^^^^^^^^^^^^^^^^^^^^^^^^^
 Making non-blocking plots
-=========================
-Using the Python prompt cf-plot will try to use the ImageMagick display command to show the plots.  This is done with subprocess and plots will remain on the screen even if the user exits the Python session.  If the display command isn\'t installed then cf-plot will use the Matplotlib picture viewer which will block the command prompt until it is quit.  Use **cfp.setvars(viewer='matplotlib')** to set this to be the defaul for a session even if the display command is available.
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Using the Python prompt cf-plot will try to use the ImageMagick display command to show the plots.  This is done with subprocess and plots will remain on the screen even if the user exits the Python session.  If the display command isn\'t installed then cf-plot will use the Matplotlib picture viewer which will block the command prompt until it is quit.  Use **cfp.setvars(viewer='matplotlib')** to set this to be the default for a session even if the display command is available.
+
+On Mac OSX the default is **'matplotlib'** but this can be changed by the user to **'display'** if the ImageMagick display command has been installed.
 
 
 
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Using cf-plot in batch mode
-===========================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following method works in the Reading Meteorology department.
 In the file /home/swsheaps/ajh.sh:
@@ -1184,9 +1170,9 @@ In the file /home/swsheaps/ajh.sh:
 ::
 
   #!/bin/sh
-  /home/opt-user/Enthought/Canopy_64bit/User/bin/python /home/swsheaps/ajh.py
+  /share/apps/NCAS/anaconda3/bin/python /home/users/swsheaps/ajh.py
 
-In the file /home/swsheaps/ajh.py:
+In the file /home/users/swsheaps/ajh.py:
 
 ::
 
@@ -1202,16 +1188,16 @@ run the batch job today at 16:33:
 
 
 
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Changing defaults via the ~/.cfplot_defaults file
-=================================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A ~/.cfplot_defaults default overide file in the user home directory may contain three 
-values affecting contour plots initially. Please contact me if you would like any more defaults changed in this manner.
+values affecting contour plots initially. Please contact andy.heaps@ncas.ac.uk if you would like any more defaults changed in this manner.
 
-| blockfill True
-| fill False
-| lines False
+|   blockfill True
+|   fill False
+|   lines False
 
 This changes the default cfplot con options from contour fill with contour lines
 on top to blockfill with no contour lines on top.  The blockfill, fill and line 
@@ -1219,27 +1205,481 @@ options to the con routine override any of these preset values.  The delimter be
 option and the value must be a space.
 
 
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Plotting data with different time units
-=======================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When plotting data with different time units users need to move their data to using a common set of units as below.
 
-|   data1.item('T').Units
+|   **data1.construct('T').Units**
 |   <CF Units: hours since 1900-01-01 00:00:00 standard>
 
-|   data2.item('T').Units
+|   **data2.construct('T').Units**
 |   <CF Units: days since 2008-09-01 00:00:00 standard>
 
 
-|   data1.item('T').Units=data2.item('T').Units
+|   **data1.construct('T').Units=data2.construct('T').Units**
 
-|   data1.item('T').Units
+|   **data1.construct('T').Units**
 |   <CF Units: days since 2008-09-01 00:00:00 standard>
 
 This is because when making a contour or line plot the axes are defined in terms of a linear scale of numbers.  Having two 
 different linear scales breaks the connection between the data.
 
+
+
+
+.. _appendixA:
+
+**************************************
+Appendix A - Introduction to cf-python
+**************************************
+
+cf-python is very flexible and can be used to select fields, levels, times, means for both CF and non-CF compliant data.  CF data is data that follows the NetCDF Climate and Forecast (CF) Metadata Conventions.  The conventions define metadata that provide a definitive description of what the data in each variable represents, and of the spatial and temporal properties of the data.
+
+
+===================================
+Reading in data and field selection
+===================================
+
+
+|   **import cf**
+|   **fl = cf.read('cfplot_data/ggap.nc')**
+
+
+f is now an list of 4 fields.  The list is indicated by the square brackets surrounding the fields.  
+
+|   **fl**
+
+|   [<CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(320)) K>,
+|    <CF Field: eastward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1>,
+|    <CF Field: northward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1>,
+|    <CF Field: geopotential(time(1), pressure(23), latitude(160), longitude(320)) m**2 s**-2>]
+
+In Python the number of the field starts at zero so to select the temperature we use:
+
+
+|   **g = fl[0]**
+
+We could also have used 
+
+|   **g = fl.select('air_temperature')[0]**
+
+The select method on the field list always returns a list.  This list may have a number of fields spanning from zero upwards.  Again we use [0] to select the first element from this list.  g is now a field as denoted by the lack of square brackets around the item.
+
+
+|   **g**
+
+<CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(320)) K>
+
+
+==========================================
+Looking at what the data is in a dimension
+==========================================
+
+Reading in a new field
+
+|    **g = cf.read('cfplot_data/tas_A1.nc')[0]**
+|    **g**
+
+<CF Field: air_temperature(time(1680), latitude(73), longitude(96)) K>
+
+
+To see what levels are available in the temperature data use:
+
+|    **g.construct('longitude').array** - uses the standard_name attribute if it exists
+|    **g.construct('long_name=longitude').array** - uses the long_name attribute(in this case the long_name is also longitude)
+|    **g.construct('X').array** - uses the field X axis
+
+
+
+|  array([  0.  ,   3.75,   7.5 ,  11.25,  15.  ,  18.75,  22.5 ,  26.25,
+|         30.  ,  33.75,  37.5 ,  41.25,  45.  ,  48.75,  52.5 ,  56.25,
+|         60.  ,  63.75,  67.5 ,  71.25,  75.  ,  78.75,  82.5 ,  86.25,
+|         90.  ,  93.75,  97.5 , 101.25, 105.  , 108.75, 112.5 , 116.25,
+|         120.  , 123.75, 127.5 , 131.25, 135.  , 138.75, 142.5 , 146.25,
+|         150.  , 153.75, 157.5 , 161.25, 165.  , 168.75, 172.5 , 176.25,
+|         180.  , 183.75, 187.5 , 191.25, 195.  , 198.75, 202.5 , 206.25,
+|         210.  , 213.75, 217.5 , 221.25, 225.  , 228.75, 232.5 , 236.25,
+|        240.  , 243.75, 247.5 , 251.25, 255.  , 258.75, 262.5 , 266.25,
+|         270.  , 273.75, 277.5 , 281.25, 285.  , 288.75, 292.5 , 296.25,
+|         300.  , 303.75, 307.5 , 311.25, 315.  , 318.75, 322.5 , 326.25,
+|         330.  , 333.75, 337.5 , 341.25, 345.  , 348.75, 352.5 , 356.25])
+
+
+
+
+
+
+The time dimension is slightly different and as before we can print off the numeric values for the time dimension.
+
+
+|    **g.construct('T').array**
+
+
+|    array([1.5000e+01, 4.5000e+01, 7.5000e+01, ..., 5.0325e+04, 5.0355e+04,
+|           5.0385e+04])
+
+There is also an additional list for this translated into a date time object array
+
+|    **g.construct('T').dtarray**
+
+
+|   array([cftime.Datetime360Day(1860, 1, 16, 0, 0, 0, 0, 2, 16),
+|          cftime.Datetime360Day(1860, 2, 16, 0, 0, 0, 0, 4, 46),
+|          cftime.Datetime360Day(1860, 3, 16, 0, 0, 0, 0, 6, 76), ...,
+|          cftime.Datetime360Day(1999, 10, 16, 0, 0, 0, 0, 3, 286),
+|          cftime.Datetime360Day(1999, 11, 16, 0, 0, 0, 0, 5, 316),
+|          cftime.Datetime360Day(1999, 12, 16, 0, 0, 0, 0, 0, 346)],
+|          dtype=object)
+
+
+
+
+==================================
+Selecting a single dimension value
+==================================
+
+
+In the case below we select the slice of data at longitude=0.0 with the subspace method.
+
+|    **g.subspace(longitude=0.0)**
+|    **g.subspace(X=0.0)**
+|    **g.subspace('long_name:longitude'=500)**
+
+
+
+The field now has one longitude.
+
+<CF Field: air_temperature(time(1680), latitude(73), longitude(1)) K>
+
+
+
+Multiple subspaces can be made in the same line of code:
+
+|    **g.subspace(longitude=0.0, latitude=0.0)**
+
+<CF Field: air_temperature(time(1680), latitude(1), longitude(1)) K>
+
+
+To select on time either use the numeric value or use cf.dt as in the below example.
+
+|    **g.subspace(time=15.0)**
+|    **g.subspace(time=cf.dt('1860-1-16'))**
+
+
+=====================================
+Selecting a range of dimension values
+=====================================
+
+To select a range of values use the cf.wi cf.wi construct
+
+|    **g.subspace(longitude=cf.wi(0, 60))**
+|    **g.subspace(X=cf.wi(0, 60))**
+
+|    **g.subspace(T=cf.wi(cf.dt('1860-1-16'), cf.dt('1960-1-16')))**
+
+
+
+======================
+Collapsing a dimension
+======================
+
+The collapse method allows a variety of statistical operators to be applied over a dimension - mean, min, max, standard_deviation.  The most commonly used one is mean.
+
+To do a time mean of the data
+
+
+|    **h = g.collapse('T: mean')**
+
+<CF Field: air_temperature(time(1), latitude(73), longitude(96)) K>
+
+This now has one time value placed in the middle  of the original time series. 
+
+|    **h.item('T').dtarray**
+|    array([cftime.Datetime360Day(1930, 1, 1, 0, 0, 0, 0, 1, 1)], dtype=object)
+
+The bounds on the data are the minimum and maximum of the original data bounds.
+
+
+|    **h.item('T').bounds.dtarray**
+|    array([[cftime.Datetime360Day(1860, 1, 1, 0, 0, 0, 0, 1, 1),
+|            cftime.Datetime360Day(2000, 1, 1, 0, 0, 0, 0, 1, 1)]],
+|            dtype=object)
+
+
+
+An area mean can be accomplished with a special area operator.  If the weights='area' is left off then the value is not weighted by area and would be an incorrect value.
+
+|    **area_mean = g.collapse('area: mean', weights='area')**
+|    **area_mean**
+
+<CF Field: air_temperature(time(1680), latitude(1), longitude(1)) K>
+
+
+
+
+
+.. _appendixB:
+
+************************************
+Appendix B - Passing data via arrays
+************************************
+
+cf-plot can also make contour and vector plots by passing data arrays. In this example we read in a temperature field from a netCDF file and pass it to cf-plot for plotting.
+
+::
+
+   import cfplot as cfp
+   from netCDF4 import Dataset as ncfile
+   nc = ncfile('cfplot_data/tas_A1.nc')
+   lons=nc.variables['lon'][:]
+   lats=nc.variables['lat'][:]
+   temp=nc.variables['tas'][0,:,:]
+   cfp.con(f=temp, x=lons, y=lats)
+
+
+
+.. image::  images/guide5.png
+   :scale: 52% 
+
+
+The contouring routine doesn't know that the data passed is a map plot as the only information passed is data arrays. i.e. there is no metadata available to help cf-plot to know what type of plot is required.  The plot type can be explicitly set in this case with the **ptype** flag to **cfp.con**.
+
+::
+
+   cfp.con(f=temp, x=lons, y=lats, ptype=1)
+
+.. image::  images/guide6.png
+   :scale: 52% 
+
+
+Other types of plot are:
+
+|  **ptype=2** - latitude - height plot
+|  **ptype=3** - longitude - height plot
+|  **ptype=4** - longitude - time plot
+|  **ptype=5** - latitude - time plot
+|  **ptype=6** - rotated pole plot
+|  **ptype=7** - time - height plot
+|
+|
+|
+
+
+
+import cfplot as cfp
+import numpy as np
+from netCDF4 import Dataset as ncfile
+nc = ncfile('cfplot_data/ggap.nc')
+lats=nc.variables['latitude'][:]
+pressure=nc.variables['p'][:]
+u=nc.variables['U'][:,:,:]
+u_mean=np.mean(u.squeeze(), axis=2)
+cfp.con(f=u_mean, x=lats, y=pressure, ptype=4)
+
+
+
+
+
+
+
+
+
+****************************************
+Appendix C - map projections and options
+****************************************
+
+The default map plotting projection is the cyclindrical equidistant
+projection from -180 to 180 in longitude and -90 to 90 in latitude.
+To change the map view in this projection to over the United Kingdom,
+for example, you would use
+
+|   **mapset(lonmin=-6, lonmax=3, latmin=50, latmax=60)**
+|   or
+|   **mapset(-6, 3, 50, 60)**
+
+The limits are -360 to 720 in longitude so to look at the equatorial
+Pacific you could use
+
+|   **mapset(lonmin=90, lonmax=300, latmin=-30, latmax=30)**
+|   or
+|   **mapset(lonmin=-270, lonmax=-60, latmin=-30, latmax=30)**
+
+Note that Cartopy forces the restriction that in the cyclindrical
+equidistant projection a degrees of longitude has teh same size as a 
+degree of latitude.
+
+The **proj** parameter accepts **'npstere'** and **'spstere'** for northern 
+hemisphere or southern hemisphere polar stereographic projections.
+In addition to these the **boundinglat** parameter sets the edge of the
+viewable latitudes and **lat_0** sets the centre of desired map domain.
+
+Additional map projections via proj are: **ortho**, **merc**, **moll**, **robin** and **lcc**, **ukcp**,
+**osgb** and **EuroPP**.
+
+
+
+.. image::  images/fig31.png
+   :scale: 52% 
+
+::
+
+   import cf
+   import cfplot as cfp
+   f=cf.read('cfplot_data/ukcp_rcm_test.nc')[0]
+   cfp.mapset(proj='UKCP', resolution='50m')
+   cfp.levs(-3, 7, 0.5)
+   cfp.con(f, lines=False)
+
+| 
+| 
+
+cf-plot looks for auxiliary coordinates of longitude and latitude and uses them if found.  If they aren't present then cf-plot will generate the grid required using the **projection_x_coordinate** and **projection_y_coordinate** variables within the netCDF data file.  For a blockfill plot as below it uses the latter method and the supplied bounds.
+
+|
+|
+
+
+
+New **cfp.setvars** options affecting the grid plotting for the UKCP grid are:
+
+|   grid=True - draw grid
+|   grid_spacing=1 - grid spacing in degrees
+|   grid_lons=None - grid longitudes
+|   grid_lats=None - grid latitudes
+|   grid_colour='grey' - grid colour
+|   grid_linestyle='--' - grid line style
+|   grid_thickness=1.0 - grid thickness
+
+
+Here we change the plotted grid with **grid_lons** and **grid_lats** options to **cfp.setvars** and make a blockfill plot.
+
+.. image::  images/fig32.png
+   :scale: 52% 
+
+::
+
+   import cf
+   import cfplot as cfp
+   import numpy as np
+   f=cf.read('cfplot_data/ukcp_rcm_test.nc')[0]
+   cfp.mapset(proj='UKCP', resolution='50m')
+   cfp.levs(-3, 7, 0.5)
+   cfp.setvars(grid_lons=np.arange(14)-11, grid_lats=np.arange(13)+49)
+   cfp.con(f, lines=False, blockfill=True)
+
+| 
+| 
+
+
+
+.. image::  images/fig33.png
+   :scale: 52% 
+
+::
+
+   import cf
+   import cfplot as cfp
+   f=cf.read('cfplot_data/ukcp_rcm_test.nc')[0]
+   cfp.levs(-3, 7, 0.5)
+   cfp.gopen(columns=2)
+   cfp.mapset(proj='OSGB', resolution='50m')
+   cfp.con(f, lines=False)
+   cfp.gpos(2)
+   cfp.mapset(proj='EuroPP', resolution='50m')
+   cfp.con(f, lines=False)
+   cfp.gclose()
+
+| 
+| 
+
+
+
+.. image::  images/fig34.png
+   :scale: 52% 
+
+
+Lambert conformal projections can now be cropped as in the following code:
+
+::
+
+   import cf
+   import cfplot as cfp
+   f=cf.read('cfplot_data/tas_A1.nc')[0]
+   cfp.mapset(proj='lcc', lonmin=-50, lonmax=50, latmin=20, latmax=85)
+   cfp.con(f.subspace(time=15))
+
+
+
+| 
+| 
+
+
+
+
+.. image::  images/fig35.png
+   :scale: 52% 
+
+
+::
+
+   import cf
+   import cfplot as cfp
+   f=cf.read('cfplot_data/tas_A1.nc')[0]
+   cfp.mapset(proj='moll')
+   cfp.con(f.subspace(time=15))
+
+
+
+
+.. image::  images/fig36.png
+   :scale: 52% 
+
+
+::
+
+   import cf
+   import cfplot as cfp
+   f=cf.read('cfplot_data/tas_A1.nc')[0]
+   cfp.mapset(proj='merc')
+   cfp.con(f.subspace(time=15))
+
+| 
+| 
+
+
+
+.. image::  images/fig37.png
+   :scale: 52% 
+
+
+::
+
+   import cf
+   import cfplot as cfp
+   f=cf.read('cfplot_data/tas_A1.nc')[0]
+   cfp.mapset(proj='ortho')
+   cfp.con(f.subspace(time=15))
+
+
+
+| 
+| 
+
+
+
+.. image::  images/fig38.png
+   :scale: 52% 
+
+
+::
+
+   import cf
+   import cfplot as cfp
+   f=cf.read('cfplot_data/tas_A1.nc')[0]
+   cfp.mapset(proj='robin')
+   cfp.con(f.subspace(time=15))
 
 
 

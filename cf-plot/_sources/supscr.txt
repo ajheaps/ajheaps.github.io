@@ -1,4 +1,0 @@
-supscr
-******
-
-.. autofunction:: cfplot.supscr

@@ -1,4 +1,0 @@
-cscale
-******
-
-.. autofunction:: cfplot.cscale

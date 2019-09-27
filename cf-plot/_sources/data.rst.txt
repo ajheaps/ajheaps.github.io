@@ -7,7 +7,8 @@ Data is generally passed to cf-plot via cf-python as a 2-dimensional field.
 
 ::
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    f=cf.read('cfplot_data/ggap.nc')
 
 f is now an list of 4 fields. 

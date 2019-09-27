@@ -10,7 +10,8 @@ Example 20 - User labelling of axes
 ::
 
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    import numpy as np
    f=cf.read('cfplot_data/Geostropic_Adjustment.nc')[0]
    cfp.con(f.subspace[9]) 
@@ -26,7 +27,8 @@ In the following plot the axes were labelled with the axes command before making
 ::
 
 
-   import cf, cfplot as cfp
+   import cf
+   import cfplot as cfp
    import numpy as np
    f=cf.read('cfplot_data/Geostropic_Adjustment.nc')[0]
    cfp.con(f.subspace[9], title='test data', xticks=np.arange(5)*100000+100000, 

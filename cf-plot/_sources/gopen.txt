@@ -1,4 +1,0 @@
-gopen
-*****
-
-.. autofunction:: cfplot.gopen
