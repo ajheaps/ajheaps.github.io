@@ -58,13 +58,14 @@
 </div>
 <div class="section" id="cf-python-3-changes">
 <h2>cf-python 3 changes<a class="headerlink" href="#cf-python-3-changes" title="Permalink to this headline">¶</a></h2>
-<p>To see what is in a cf field in Python 3 use g.construct instead of g.item.</p>
+<p>To see what is in a cf field in cf-python 3 use g.construct instead of g.item.</p>
 <p>For example, to see what levels are available in the temperature data use:</p>
 <div class="line-block">
 <div class="line"><strong>g.construct('longitude').array</strong> - uses the standard_name attribute if it exists</div>
 <div class="line"><strong>g.construct('long_name=longitude').array</strong> - uses the long_name attribute(in this case the long_name is also longitude)</div>
 <div class="line"><strong>g.construct('X').array</strong> - uses the field X axis</div>
 </div>
+<p>For more details see <a class="reference external" href="https://ncas-cms.github.io/cf-python/2_to_3_changes.html">differences between cf-python version 2 and version 3</a></p>
 <p>Mac OSX is now supported.</p>
 </div>
 <div class="section" id="cf-plot-3-changes">

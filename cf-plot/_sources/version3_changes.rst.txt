@@ -38,7 +38,7 @@ See `The key differences between Python 2.7.x and Python 3.x with examples <http
 cf-python 3 changes
 -------------------
 
-To see what is in a cf field in Python 3 use g.construct instead of g.item.
+To see what is in a cf field in cf-python 3 use g.construct instead of g.item.
 
 For example, to see what levels are available in the temperature data use:
 
@@ -46,7 +46,7 @@ For example, to see what levels are available in the temperature data use:
 |    **g.construct('long_name=longitude').array** - uses the long_name attribute(in this case the long_name is also longitude)
 |    **g.construct('X').array** - uses the field X axis
 
-
+For more details see `differences between cf-python version 2 and version 3 <https://ncas-cms.github.io/cf-python/2_to_3_changes.html>`_
 
 Mac OSX is now supported.
 
