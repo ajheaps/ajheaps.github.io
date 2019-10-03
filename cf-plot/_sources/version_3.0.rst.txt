@@ -41,6 +41,31 @@ In the original cf-plot code base the Matplotlib colorbar routine was called ind
 
 
 
+3. cf_var_name - missing initial definition of ncvar
+====================================================
+
+A missing initial definition of ncvar in the cf_var_name routine was fixed.
+
+
+::
+
+    Fixed
+
+
+
+4. Grid drawing options changed
+===============================
+
+The grid_lons and grid_lats options used in cfp.setvars have been removed.  The grid drawing options for
+UKCP grids are now controlled by xticks, yticks and xaxis, yaxis as in other plots.
+
+The polar stereographic grid now takes the line colour, line width and line style from grid_colour, grid_linestyle and grid_thickness 
+that are set in cfp.setvars.
+
+::
+
+    Changed
+
 
 
 

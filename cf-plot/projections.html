@@ -63,13 +63,11 @@
 <div class="line-block">
 <div class="line">grid=True - draw grid</div>
 <div class="line">grid_spacing=1 - grid spacing in degrees</div>
-<div class="line">grid_lons=None - grid longitudes</div>
-<div class="line">grid_lats=None - grid latitudes</div>
-<div class="line">grid_colour='grey' - grid colour</div>
+<div class="line">grid_colour='black' - grid colour</div>
 <div class="line">grid_linestyle='--' - grid line style</div>
 <div class="line">grid_thickness=1.0 - grid thickness</div>
 </div>
-<p>Here we change the plotted grid with grid_lons and grid_lats options to cfp.setvars and make a blockfill plot.</p>
+<p>Here we change the plotted grid with the grid_colour option to cfp.setvars, xticks and yticks options to cfp.con  and make a blockfill plot.</p>
 <a class="reference internal image-reference" href="_images/fig32.png"><img alt="_images/fig32.png" src="_images/fig32.png" style="width: 487.24px; height: 324.48px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
@@ -77,8 +75,8 @@
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ukcp_rcm_test.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">proj</span><span class="o">=</span><span class="s1">&#39;UKCP&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;50m&#39;</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">levs</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">setvars</span><span class="p">(</span><span class="n">grid_lons</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span><span class="o">-</span><span class="mi">11</span><span class="p">,</span> <span class="n">grid_lats</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span><span class="o">+</span><span class="mi">49</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">blockfill</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">setvars</span><span class="p">(</span><span class="n">grid_colour</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">blockfill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span><span class="o">-</span><span class="mi">11</span><span class="p">,</span> <span class="n">yticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span><span class="o">+</span><span class="mi">49</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">

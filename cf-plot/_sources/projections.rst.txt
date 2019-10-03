@@ -36,14 +36,12 @@ New cfp.setvars options affecting the grid plotting for the UKCP grid are:
 
 | grid=True - draw grid
 | grid_spacing=1 - grid spacing in degrees
-| grid_lons=None - grid longitudes
-| grid_lats=None - grid latitudes
-| grid_colour='grey' - grid colour
+| grid_colour='black' - grid colour
 | grid_linestyle='--' - grid line style
 | grid_thickness=1.0 - grid thickness
 
 
-Here we change the plotted grid with grid_lons and grid_lats options to cfp.setvars and make a blockfill plot.
+Here we change the plotted grid with the grid_colour option to cfp.setvars, xticks and yticks options to cfp.con  and make a blockfill plot.
 
 .. image::  images/fig32.png
    :scale: 52% 
@@ -56,8 +54,8 @@ Here we change the plotted grid with grid_lons and grid_lats options to cfp.setv
    f=cf.read('cfplot_data/ukcp_rcm_test.nc')[0]
    cfp.mapset(proj='UKCP', resolution='50m')
    cfp.levs(-3, 7, 0.5)
-   cfp.setvars(grid_lons=np.arange(14)-11, grid_lats=np.arange(13)+49)
-   cfp.con(f, lines=False, blockfill=True)
+   cfp.setvars(grid_colour='grey')
+   cfp.con(f, lines=False, blockfill=True, xticks=np.arange(14)-11, yticks=np.arange(13)+49)
 
 | 
 | 
