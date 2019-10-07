@@ -42,7 +42,7 @@ To install cf-plot on your own Linux PC or Mac download and install Anaconda Pyt
 
 ::
 
-   conda install -c ncas -c conda-forge cf-python cf-plot udunits2
+   conda install -c ncas -c conda-forge cf-python cf-plot udunits2==2.2.25
    conda install -c conda-forge mpich esmpy
 
 

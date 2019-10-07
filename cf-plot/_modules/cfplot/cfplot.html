@@ -229,8 +229,7 @@
                  <span class="n">legend_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend_frame_edge_color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
                  <span class="n">legend_frame_face_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">degsym</span><span class="o">=</span><span class="n">global_degsym</span><span class="p">,</span>
                  <span class="n">axis_width</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">grid_spacing</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                 <span class="n">grid_lons</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grid_lats</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">grid_colour</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">grid_linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> 
+                 <span class="n">grid_colour</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">grid_linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> 
                  <span class="n">grid_thickness</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 
 
@@ -5662,6 +5661,7 @@
     <span class="nb">id</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="n">dim</span><span class="p">),</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
     <span class="c1">#ncvar = getattr(field.construct(dim), &#39;ncvar&#39;, False)</span>
     <span class="n">nc</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span><span class="o">.</span><span class="n">nc_get_variable</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ncvar</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="n">nc</span><span class="p">:</span>
         <span class="n">ncvar</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span><span class="o">.</span><span class="n">nc_get_variable</span><span class="p">()</span>
     <span class="n">short_name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="n">dim</span><span class="p">),</span> <span class="s1">&#39;short_name&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
@@ -5915,7 +5915,7 @@
             <span class="n">legend_frame</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">legend_frame_edge_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">legend_frame_face_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">degsym</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axis_width</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-            <span class="n">grid_spacing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grid_lons</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grid_lats</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">grid_spacing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">grid_colour</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grid_linestyle</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grid_thickness</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">     | setvars - set plotting variables and their defaults</span>
@@ -5972,9 +5972,7 @@
 <span class="sd">     | axis_width=None - width of line for the axes</span>
 <span class="sd">     | grid=True - draw grid</span>
 <span class="sd">     | grid_spacing=1 - grid spacing in degrees</span>
-<span class="sd">     | grid_lons=None - grid longitudes</span>
-<span class="sd">     | grid_lats=None - grid latitudes</span>
-<span class="sd">     | grid_colour=&#39;grey&#39; - grid colour</span>
+<span class="sd">     | grid_colour=&#39;k&#39; - grid colour</span>
 <span class="sd">     | grid_linestyle=&#39;--&#39; - grid line style</span>
 <span class="sd">     | grid_thickness=1.0 - grid thickness</span>
 <span class="sd">     |</span>
@@ -6002,7 +6000,7 @@
             <span class="n">rotated_grid_thickness</span><span class="p">,</span>
             <span class="n">rotated_labels</span><span class="p">,</span> <span class="n">colorbar_fontsize</span><span class="p">,</span> <span class="n">colorbar_fontweight</span><span class="p">,</span>
             <span class="n">legend_frame</span><span class="p">,</span> <span class="n">legend_frame_edge_color</span><span class="p">,</span> <span class="n">legend_frame_face_color</span><span class="p">,</span>
-            <span class="n">degsym</span><span class="p">,</span> <span class="n">axis_width</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">grid_spacing</span><span class="p">,</span> <span class="n">grid_lons</span><span class="p">,</span> <span class="n">grid_lats</span><span class="p">,</span>
+            <span class="n">degsym</span><span class="p">,</span> <span class="n">axis_width</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">grid_spacing</span><span class="p">,</span>
             <span class="n">grid_colour</span><span class="p">,</span> <span class="n">grid_linestyle</span><span class="p">,</span> <span class="n">grid_thickness</span><span class="p">]</span>
     <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">vals</span><span class="p">):</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="kc">None</span>
@@ -6051,9 +6049,7 @@
         <span class="n">plotvars</span><span class="o">.</span><span class="n">axis_width</span><span class="o">=</span><span class="kc">None</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">grid</span><span class="o">=</span><span class="kc">True</span> 
         <span class="n">plotvars</span><span class="o">.</span><span class="n">grid_spacing</span><span class="o">=</span><span class="mi">1</span>
-        <span class="n">plotvars</span><span class="o">.</span><span class="n">grid_lons</span><span class="o">=</span><span class="kc">None</span>
-        <span class="n">plotvars</span><span class="o">.</span><span class="n">grid_lats</span><span class="o">=</span><span class="kc">None</span>
-        <span class="n">plotvars</span><span class="o">.</span><span class="n">grid_colour</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span> 
+        <span class="n">plotvars</span><span class="o">.</span><span class="n">grid_colour</span><span class="o">=</span><span class="s1">&#39;k&#39;</span> 
         <span class="n">plotvars</span><span class="o">.</span><span class="n">grid_linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span> 
         <span class="n">plotvars</span><span class="o">.</span><span class="n">grid_thickness</span><span class="o">=</span><span class="mf">1.0</span>
 
@@ -6149,10 +6145,6 @@
         <span class="n">plotvars</span><span class="o">.</span><span class="n">grid</span><span class="o">=</span><span class="n">grid</span>
     <span class="k">if</span> <span class="n">grid_spacing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">grid_spacing</span><span class="o">=</span><span class="n">grid_spacing</span>
-    <span class="k">if</span> <span class="n">grid_lons</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">plotvars</span><span class="o">.</span><span class="n">grid_lons</span><span class="o">=</span><span class="n">grid_lons</span>
-    <span class="k">if</span> <span class="n">grid_lats</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">plotvars</span><span class="o">.</span><span class="n">grid_lats</span><span class="o">=</span><span class="n">grid_lats</span>
     <span class="k">if</span> <span class="n">grid_colour</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">grid_colour</span><span class="o">=</span><span class="n">grid_colour</span>
     <span class="k">if</span> <span class="n">grid_linestyle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -8359,8 +8351,9 @@
                    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">lat</span> <span class="o">-</span> <span class="n">boundinglat</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
                        <span class="n">lons</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">361</span><span class="p">)</span>
                        <span class="n">lats</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">361</span><span class="p">)</span><span class="o">+</span><span class="n">lat</span>
-                       <span class="n">mymap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> 
-                                  <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span>
+                       <span class="n">mymap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_colour</span><span class="p">,</span> 
+                                  <span class="n">linewidth</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_thickness</span><span class="p">,</span> 
+                                  <span class="n">linestyle</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_linestyle</span><span class="p">,</span>
                                   <span class="n">transform</span><span class="o">=</span><span class="n">proj</span><span class="p">)</span> 
 
             <span class="k">if</span> <span class="n">yaxis</span><span class="p">:</span>
@@ -8377,8 +8370,9 @@
                     <span class="k">else</span><span class="p">:</span>
                         <span class="n">lats</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">boundinglat</span><span class="o">+</span><span class="mi">91</span><span class="p">)</span><span class="o">-</span><span class="mi">90</span>
                     <span class="n">lons</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">lats</span><span class="p">))</span><span class="o">+</span><span class="n">lon</span>
-                    <span class="n">mymap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> 
-                               <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span>
+                    <span class="n">mymap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_colour</span><span class="p">,</span> 
+                               <span class="n">linewidth</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_thickness</span><span class="p">,</span> 
+                               <span class="n">linestyle</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_linestyle</span><span class="p">,</span>
                                <span class="n">transform</span><span class="o">=</span><span class="n">proj</span><span class="p">)</span> 
 
 
@@ -8397,7 +8391,7 @@
             <span class="n">lon_mid</span><span class="p">,</span> <span class="n">lat_mid</span> <span class="o">=</span>  <span class="n">proj</span><span class="o">.</span><span class="n">transform_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">pole</span><span class="p">,</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
 
 
-            <span class="k">if</span> <span class="n">axis_label_fontsize</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">xaxis</span> <span class="ow">and</span> <span class="n">axis_label_fontsize</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">xtick</span> <span class="ow">in</span> <span class="n">lonvals</span><span class="p">:</span>
                     <span class="n">label</span> <span class="o">=</span> <span class="n">mapaxis</span><span class="p">(</span><span class="n">xtick</span><span class="p">,</span> <span class="n">xtick</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
                     <span class="n">lonr</span><span class="p">,</span> <span class="n">latr</span> <span class="o">=</span> <span class="n">proj</span><span class="o">.</span><span class="n">transform_point</span><span class="p">(</span><span class="n">xtick</span><span class="p">,</span><span class="n">latpt</span><span class="p">,</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
@@ -8584,7 +8578,10 @@
                     <span class="n">lons</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">lats</span><span class="p">))</span><span class="o">+</span><span class="n">map_xticks</span><span class="p">[</span><span class="n">tick</span><span class="p">]</span>
                     <span class="n">device_coords</span><span class="o">=</span><span class="n">proj</span><span class="o">.</span><span class="n">transform_points</span><span class="p">(</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">)</span>
                     <span class="n">mymap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">device_coords</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">device_coords</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> 
-                               <span class="n">linewidth</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
+                               <span class="n">linewidth</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_thickness</span><span class="p">,</span> 
+                               <span class="n">linestyle</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_linestyle</span><span class="p">,</span> 
+                               <span class="n">color</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_colour</span><span class="p">,</span> 
+                               <span class="n">zorder</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
 
                     <span class="n">device_coords</span><span class="o">=</span><span class="n">proj</span><span class="o">.</span><span class="n">transform_point</span><span class="p">(</span><span class="n">map_xticks</span><span class="p">[</span><span class="n">tick</span><span class="p">],</span> <span class="n">latmin</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
                     <span class="n">mymap</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">device_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">device_coords</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -8612,7 +8609,9 @@
                 <span class="n">lats</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">lons</span><span class="p">))</span><span class="o">+</span><span class="n">map_yticks</span><span class="p">[</span><span class="n">tick</span><span class="p">]</span>
                 <span class="n">device_coords</span><span class="o">=</span><span class="n">proj</span><span class="o">.</span><span class="n">transform_points</span><span class="p">(</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">)</span>
                 <span class="n">mymap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">device_coords</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">device_coords</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span>
-                           <span class="n">linewidth</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
+                           <span class="n">linewidth</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_thickness</span><span class="p">,</span>
+                           <span class="n">linestyle</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_linestyle</span><span class="p">,</span>
+                           <span class="n">color</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_colour</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
 
                 <span class="n">device_coords</span><span class="o">=</span><span class="n">proj</span><span class="o">.</span><span class="n">transform_point</span><span class="p">(</span><span class="n">lonmin</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">map_yticks</span><span class="p">[</span><span class="n">tick</span><span class="p">],</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
                 <span class="n">mymap</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">device_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">device_coords</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -8641,22 +8640,22 @@
         <span class="n">latmin</span> <span class="o">=</span> <span class="mi">49</span>
         <span class="n">latmax</span> <span class="o">=</span> <span class="mi">61</span>
         <span class="n">spacing</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">grid_spacing</span>
-        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">grid_lons</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">xticks</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">lons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">30</span> <span class="o">/</span> <span class="n">spacing</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">spacing</span>
             <span class="n">lons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">lons</span><span class="o">*-</span><span class="mi">1</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">lons</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">lons</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_lons</span>
-        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">grid_lats</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">lons</span><span class="o">=</span><span class="n">xticks</span>
+        <span class="k">if</span> <span class="n">yticks</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">lats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">90.0</span> <span class="o">/</span> <span class="n">spacing</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">spacing</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">lats</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_lats</span>
+            <span class="n">lats</span><span class="o">=</span><span class="n">yticks</span>
 
 
-
-        <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_colour</span><span class="p">,</span> 
-                                 <span class="n">linewidth</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_thickness</span><span class="p">,</span> 
-                                 <span class="n">linestyle</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_linestyle</span><span class="p">,</span>
-                                 <span class="n">xlocs</span><span class="o">=</span><span class="n">lons</span><span class="p">,</span> <span class="n">ylocs</span><span class="o">=</span><span class="n">lats</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">grid</span><span class="p">:</span>
+            <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_colour</span><span class="p">,</span> 
+                                     <span class="n">linewidth</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_thickness</span><span class="p">,</span> 
+                                     <span class="n">linestyle</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">grid_linestyle</span><span class="p">,</span>
+                                     <span class="n">xlocs</span><span class="o">=</span><span class="n">lons</span><span class="p">,</span> <span class="n">ylocs</span><span class="o">=</span><span class="n">lats</span><span class="p">)</span>
 
 
 
