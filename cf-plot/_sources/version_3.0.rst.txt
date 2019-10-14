@@ -68,6 +68,22 @@ that are set in cfp.setvars.
 
 
 
+5. con - blockfill plots - bug in blockfill code
+================================================
+
+A bug in the blockfill code meant that some data couldn't be plotted in blockfill mode.
+
+
+::
+
+    Fixed
+
+
+
+
+
+
+
 
 
 
