@@ -6,7 +6,7 @@ Contents
 
 
 |    introduction_ 
-|    `Where cf-plot is installed and how to install it gainingaccess_`_ 
+|    gaining_access_ Where cf-plot is installed and how to install it 
 |    
 |    contours_ Making contour plots
 |    vectors_ Plotting vectors
@@ -57,7 +57,7 @@ At the core of cf-plot are a set of functions for making and controlling plots:
 |    `setvars <http://ajheaps.github.io/cf-plot/setvars.html>`_ - set a variety of plot parameters
 
 
-.. _gainingaccess:
+.. _gaining_access:
 
 
 #######################################
