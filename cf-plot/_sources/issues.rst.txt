@@ -3,8 +3,12 @@ cf-plot issues
 
 If you find a problem with cf-plot please email me Andy Heaps (andy.heaps@ncas.ac.uk) with the following:
 
+|   (i) the cf-python and cf-plot version numbers used:
+|       print('cf-python version', cf.__version__)
+|       print('cf-plot version', cfp.__version__)
 |   (i) A short piece of code showing the problem
-|   (ii) The data needed to make the plot
+|   (iii) The data needed to make the plot
+
 
 i.e. if you make a plot using:
 
