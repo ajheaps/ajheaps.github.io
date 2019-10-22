@@ -6,7 +6,7 @@ Contents
 
 
 |    introduction_ 
-|    gaining_access_ Where cf-plot is installed and how to install it 
+|    access_ Where cf-plot is installed and how to install it 
 |    
 |    contours_ Making contour plots
 |    vectors_ Plotting vectors
@@ -57,12 +57,12 @@ At the core of cf-plot are a set of functions for making and controlling plots:
 |    `setvars <http://ajheaps.github.io/cf-plot/setvars.html>`_ - set a variety of plot parameters
 
 
-.. _gaining_access:
+.. _access:
 
 
-#######################################
-Gaining access to cf-python and cf-plot
-#######################################
+################################################
+Where cf-plot is installed and how to install it
+################################################
 
 cf-python and cf-plot are pre-installed on the following platforms.
 
@@ -83,15 +83,16 @@ cf-python and cf-plot are pre-installed on the following platforms.
 
 For other platforms follow the `cf-plot installation instructions <http://ajheaps.github.io/cf-plot/download.html>`_
 
+.. _contours:
 
 
 #############
-Using cf-plot
+Contour plots
 #############
 
 The following examples use cf-python to present the data to cf-plot.  The syntax is quite simple and can be learned as the examples progress.  A fuller discussion of using cf-python to manipulate data is available in appendixA_.  If you have numpy arrays that you wish to plot then look in appendixB_ for a couple of examples of how to do this.
 
-.. _contours:
+
 
 The data to make a contour plot can be read in and passed to cf-plot using cf-python as per the following example.
 
