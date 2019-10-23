@@ -2,19 +2,19 @@
 cf-plot user guide
 ******************
 
-Contents
+**Contents**
 
 
-|    introduction_ 
+|    introduction_ to cf-plot
 |    access_ Where cf-plot is installed and how to install it 
 |    
 |    contours_ Making contour plots
 |    vectors_ Plotting vectors
-|    multiple_plots_ and plot positioning
+|    multiple_  and plot positioning
 |    trajectories_ Plotting trajectories
-|    stipple_plots_ Making stipple (significance) plots
+|    stipple_ plots Making stipple (significance) plots
 |    graphs_ Making graphs
-|    colour_scales_ Using and changing colour scales
+|    colour_ scales Using and changing colour scales
 |    
 |    appendixA_ Introduction to cf-python
 |    appendixB_ Passing data via arrays
@@ -390,7 +390,7 @@ Here we make a zonal mean vector plot with different vector keys and scaling fac
 
 
 
-.. _multiple_plots:
+.. _multiple:
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Multiple plots on a page and plot positioning
@@ -518,7 +518,7 @@ Data stored in contiguous ragged array format, such as from Kevin Hodges's TRACK
 
 
 
-.. _stipple_plots:
+.. _stipple:
 
 
 ^^^^^^^^^^^^^
@@ -679,7 +679,7 @@ Once a user call is made to levs the levels are persistent. i.e. the next plot w
 Once the **cfp.levs** command is used you'll need to think about the associated colour scale.  
 
 
-.. _colour_scales:
+.. _colour:
 
 
 ^^^^^^^^^^^^^
