@@ -12,7 +12,7 @@ cf-plot user guide
 |    vectors_ - plotting vectors
 |    multiple_  plots on a page and plot positioning
 |    trajectories_ - plotting trajectories
-|    stipple_ - making stipple plots
+|    stipple_ - making significance plots
 |    graphs_ - making graphs
 |    colour_ scales - using and changing colour scales
 |    
