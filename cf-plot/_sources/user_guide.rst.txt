@@ -6,20 +6,20 @@ cf-plot user guide
 
 
 |    introduction_ to cf-plot
-|    access_ Where cf-plot is installed and how to install it 
+|    access_ - where cf-plot is installed and how to install it 
 |    
-|    contours_ Making contour plots
-|    vectors_ Plotting vectors
-|    multiple_  and plot positioning
-|    trajectories_ Plotting trajectories
-|    stipple_ plots Making stipple (significance) plots
-|    graphs_ Making graphs
-|    colour_ scales Using and changing colour scales
+|    contours_ - making contour plots
+|    vectors_ - plotting vectors
+|    multiple_  plots on a page and plot positioning
+|    trajectories_ - plotting trajectories
+|    stipple_ plots - making stipple (significance) plots
+|    graphs_ - making graphs
+|    colour_ scales - using and changing colour scales
 |    
-|    appendixA_ Introduction to cf-python
-|    appendixB_ Passing data via arrays
-|    appendixC_ Map projections and options
-|    appendixD_ Fixing data to be more cf-compliant
+|    appendixA_ - introduction to cf-python
+|    appendixB_ - passing data via arrays
+|    appendixC_ - map projections and options
+|    appendixD_ - fixing data to be more cf-compliant
 
 
 
