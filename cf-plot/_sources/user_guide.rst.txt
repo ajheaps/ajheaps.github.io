@@ -12,7 +12,7 @@ cf-plot user guide
 |    vectors_ - plotting vectors
 |    multiple_  plots on a page and plot positioning
 |    trajectories_ - plotting trajectories
-|    contours_ plots - making stipple (significance) plots
+|    stipple_ - making stipple(significance) plots
 |    graphs_ - making graphs
 |    colour_ scales - using and changing colour scales
 |    
@@ -515,7 +515,9 @@ Data stored in contiguous ragged array format, such as from Kevin Hodges's TRACK
    f=cf.read('cfplot_data/ff_trs_pos.nc')[0]
    cfp.traj(f)
 
-
+|
+|
+|
 
 
 .. _stipple:
