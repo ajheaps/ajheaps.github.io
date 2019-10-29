@@ -67,8 +67,8 @@
 <h2>To install cf-plot<a class="headerlink" href="#to-install-cf-plot" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="linux-and-mac">
 <h3>Linux and Mac<a class="headerlink" href="#linux-and-mac" title="Permalink to this headline">¶</a></h3>
-<p>To install cf-plot on your own Linux PC or Mac download and install Anaconda Python 3 for Linux.  On the command line type:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">ncas</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">cf</span><span class="o">-</span><span class="n">python</span> <span class="n">cf</span><span class="o">-</span><span class="n">plot</span> <span class="n">udunits2</span><span class="o">==</span><span class="mf">2.2</span><span class="o">.</span><span class="mi">25</span>
+<p>To install cf-plot on your own Linux PC or Mac download and install Anaconda Python 3 2019_07 from <a class="reference external" href="https://repo.anaconda.com/archive">https://repo.anaconda.com/archive</a>. Anaconda 3 2019_10 fails to resolve jpeg dependencies across all the packages that need it when trying to install the esmpy regridding package so it is recommended to not use that version at present. On the command line type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">ncas</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">cf</span><span class="o">-</span><span class="n">python</span> <span class="n">cf</span><span class="o">-</span><span class="n">plot</span> <span class="n">udunits2</span>
 <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">mpich</span> <span class="n">esmpy</span>
 </pre></div>
 </div>
@@ -79,8 +79,8 @@
 <p>We have a small development team and Linux is our main working environment. Windows isn't an option for us at present given our target user base.</p>
 <p>If you have a Windows operating system there are a couple of options for running Linux:</p>
 <ol class="arabic simple">
-<li><p>Installing a Linux Virtual Machine is simple and works well.  Installation instructions and a Mint Linux Virtual Machine are available at <a class="reference external" href="http://gws-access.ceda.ac.uk/public/ncas_climate/ajh/data_analysis_tools/VM">http://gws-access.ceda.ac.uk/public/ncas_climate/ajh/data_analysis_tools/VM</a>.</p></li>
 <li><p>Install the Microsoft Windows Subsystem for Linux (WSL).  Once this is working install cf-python and cf-plot as per the Linux instructions above.</p></li>
+<li><p>Installing a Linux Virtual Machine is simple and works well.  Installation instructions and a Mint Linux Virtual Machine are available at <a class="reference external" href="http://gws-access.ceda.ac.uk/public/ncas_climate/ajh/data_analysis_tools/VM">http://gws-access.ceda.ac.uk/public/ncas_climate/ajh/data_analysis_tools/VM</a>.</p></li>
 </ol>
 </div>
 <div class="section" id="other-install-methods-for-linux-and-mac-osx">

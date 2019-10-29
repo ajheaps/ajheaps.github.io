@@ -12,7 +12,7 @@ cf-plot user guide
 |    vectors_ - plotting vectors
 |    multiple_  plots on a page and plot positioning
 |    trajectories_ - plotting trajectories
-|    significance_ - making significance plots
+|    significance_ - plots
 |    graphs_ - making graphs
 |    colour_ scales - using and changing colour scales
 |    
@@ -1724,9 +1724,130 @@ Lambert conformal projections can now be cropped as in the following code:
 .. _appendixD:
 
 
-************************
-Appendix D - Fixing data
-************************
+***************************
+Appendix D - Modifying data
+***************************
+
+
+For the list of `CF attributes <http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#attribute-appendix>`_ setting and changing can be done using the form:
+
+field.standard_name = 'new_name'
+
+
+
+This method works for adding in information to the field 
+
+f.set_property('standard_name', 'new_name')
+
+
+There are also corresponding get_property and del_property methods
+
+f.get_property('project')
+f.del_property('project')
+
+
+
+
+Example 1 - adding a standard_name to a field that doesn't have one
+In this case we have a field with a long_name but no standard_name
+
+
+
+::
+
+   import cf
+   f = cf.read('cfplot_data/data1.nc')[2]
+   print f
+
+<CF Field: long_name=Potential vorticity(time(1), pressure(23), latitude(160), longitude(320)) K m**2 kg**-1 s**-1>
+
+Setting the standard_name is done with the standard_name method to the field.
+
+::
+
+   f.standard_name='ertel_potential_vorticity'
+   f
+
+<CF Field: ertel_potential_vorticity(time(1), pressure(23), latitude(160), longitude(320)) K m**2 kg**-1 s**-1>
+
+and write out the new data to a file
+
+::
+
+   cf.write(f, 'newdata.nc')
+
+
+
+
+Example 2 - change the field data to something else
+
+::
+
+   import cf
+   import cfplot as cfp
+   f = cf.read('cfplot_data/data1.nc')[7]
+   f
+
+<CF Field: eastward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1>
+
+   
+   data = f.array
+   data = data + 20
+   f.data[:] = data
+
+
+Make a plot to see the change
+
+
+Example 3 - changing valid_min etc
+
+
+::
+
+   import cf
+   import cfplot as cfp
+   f = cf.read('cfplot_data/data1.nc')[7]
+   print('valid_min before change', f.valid_min)
+   f.valid_min = 0.0
+   print('valid_min after change', f.valid_min)
+
+
+valid_min before change -73.41583
+valid_min after change 0.0
+
+
+::
+
+   
+   # Write out the data
+   cf.write(f, 'modified.nc')
+
+
+Do a comparison plot to see the change
+
+
+
+::
+
+   import cf
+   import cfplot as cfp
+   f = cf.read('cfplot_data/data1.nc')[7]
+   g = cf.read('modified.nc')[0]
+
+   cfp.gopen(rows = 2)
+   cfp.con(f.subspace(Z = 1000), lines = False, title = 'original')
+   cfp.gpos(2)
+   cfp.con(g.subspace(Z = 1000), lines = False, title = 'modified')
+   cfp.gclose()
+
+
+
+
+Does this also work for valid_max, missing_value, _FillValue?
+
+
+Example 4 - masking data as per David's training session example
+
 
 
 

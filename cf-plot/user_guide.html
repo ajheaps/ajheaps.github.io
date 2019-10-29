@@ -44,7 +44,7 @@
 <div class="line"><a class="reference internal" href="#vectors">vectors</a> - plotting vectors</div>
 <div class="line"><a class="reference internal" href="#multiple">multiple</a>  plots on a page and plot positioning</div>
 <div class="line"><a class="reference internal" href="#trajectories">trajectories</a> - plotting trajectories</div>
-<div class="line"><a class="reference internal" href="#significance">significance</a> - making significance plots</div>
+<div class="line"><a class="reference internal" href="#significance">significance</a> - plots</div>
 <div class="line"><a class="reference internal" href="#graphs">graphs</a> - making graphs</div>
 <div class="line"><a class="reference internal" href="#colour">colour</a> scales - using and changing colour scales</div>
 <div class="line"><br /></div>
@@ -1871,8 +1871,77 @@ viewable latitudes and <strong>lat_0</strong> sets the centre of desired map dom
 </pre></div>
 </div>
 </div>
-<div class="section" id="appendix-d-fixing-data">
-<span id="appendixd"></span><h1>Appendix D - Fixing data<a class="headerlink" href="#appendix-d-fixing-data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="appendix-d-modifying-data">
+<span id="appendixd"></span><h1>Appendix D - Modifying data<a class="headerlink" href="#appendix-d-modifying-data" title="Permalink to this headline">¶</a></h1>
+<p>For the list of <a class="reference external" href="http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#attribute-appendix">CF attributes</a> setting and changing can be done using the form:</p>
+<p>field.standard_name = 'new_name'</p>
+<p>This method works for adding in information to the field</p>
+<p>f.set_property('standard_name', 'new_name')</p>
+<p>There are also corresponding get_property and del_property methods</p>
+<p>f.get_property('project')
+f.del_property('project')</p>
+<p>Example 1 - adding a standard_name to a field that doesn't have one
+In this case we have a field with a long_name but no standard_name</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/data1.nc&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span> <span class="n">f</span>
+</pre></div>
+</div>
+<p>&lt;CF Field: long_name=Potential vorticity(time(1), pressure(23), latitude(160), longitude(320)) K m**2 kg**-1 s**-1&gt;</p>
+<p>Setting the standard_name is done with the standard_name method to the field.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">standard_name</span><span class="o">=</span><span class="s1">&#39;ertel_potential_vorticity&#39;</span>
+<span class="n">f</span>
+</pre></div>
+</div>
+<p>&lt;CF Field: ertel_potential_vorticity(time(1), pressure(23), latitude(160), longitude(320)) K m**2 kg**-1 s**-1&gt;</p>
+<p>and write out the new data to a file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;newdata.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Example 2 - change the field data to something else</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
+<span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/data1.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">f</span>
+</pre></div>
+</div>
+<p>&lt;CF Field: eastward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1&gt;</p>
+<blockquote>
+<div><p>data = f.array
+data = data + 20
+f.data[:] = data</p>
+</div></blockquote>
+<p>Make a plot to see the change</p>
+<p>Example 3 - changing valid_min etc</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
+<span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/data1.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;valid_min before change&#39;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">valid_min</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">valid_min</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;valid_min after change&#39;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">valid_min</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>valid_min before change -73.41583
+valid_min after change 0.0</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write out the data</span>
+<span class="n">cf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;modified.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Do a comparison plot to see the change</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
+<span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/data1.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;modified.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">(</span><span class="n">rows</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">Z</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">lines</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;original&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">Z</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">lines</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;modified&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Does this also work for valid_max, missing_value, _FillValue?</p>
+<p>Example 4 - masking data as per David's training session example</p>
 </div>
 
 
