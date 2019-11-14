@@ -38,7 +38,7 @@ To install cf-plot
 
 Linux and Mac
 #############
-To install cf-plot on your own Linux PC or Mac download and install Anaconda Python 3 2019_07 from https://repo.anaconda.com/archive. Anaconda 3 2019_10 fails to resolve jpeg dependencies across all the packages that need it when trying to install the esmpy regridding package so it is recommended to not use that version at present. On the command line type:
+To install cf-plot on your own Linux PC or Mac download and install miniconda. On the command line type:
 
 ::
 
