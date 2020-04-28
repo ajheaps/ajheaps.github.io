@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>version 3.0 changes &#8212; cf-plot 3.0.5 documentation</title>
+    <title>version 3.0 changes &#8212; cf-plot 3.0.19 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -24,7 +24,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.5 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.19 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -76,10 +76,209 @@ that are set in cfp.setvars.</p>
 </div>
 <div class="section" id="con-blockfill-plots-bug-in-blockfill-code">
 <h2>5. con - blockfill plots - bug in blockfill code<a class="headerlink" href="#con-blockfill-plots-bug-in-blockfill-code" title="Permalink to this headline">¶</a></h2>
-<p>A bug in the blockfill code meant that some data couldn't be plotted in blockfill mode.</p>
+<p>A bug in the blockfill code logic meant that some data couldn't be plotted in blockfill mode.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="con-automatic-levels-sometimes-have-too-many-decimal-places">
+<h2>6. con - automatic levels sometimes have too many decimal places<a class="headerlink" href="#con-automatic-levels-sometimes-have-too-many-decimal-places" title="Permalink to this headline">¶</a></h2>
+<p>The automatic contour level generation in con sometimes has too many decimal places.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="setup-py-missing-dependencies">
+<h2>7. setup.py missing dependencies<a class="headerlink" href="#setup-py-missing-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>Missing dependencies for cf-python, scipy and cartopy were added to setup.py</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="plot-viewing-with-the-matplotlib-interface">
+<h2>8. Plot viewing with the Matplotlib interface<a class="headerlink" href="#plot-viewing-with-the-matplotlib-interface" title="Permalink to this headline">¶</a></h2>
+<p>Matplotlib can now be configured to allow non-blocking of the command prompt when a plot is
+active.  The cf-plot code has been changed allow the default plot viewer to be the Matplotlib
+interface.  Users can still use the previous Imagemagick display command by typing</p>
+<p>cfp.setvars(viewer='matplotlib')</p>
+<p>or add the below line to ~/.cfplotrc</p>
+<p>viewer matplotlib</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="mapset-aspect-ratio-in-cylindrical-projection-plots">
+<h2>9. mapset - aspect ratio in cylindrical projection plots<a class="headerlink" href="#mapset-aspect-ratio-in-cylindrical-projection-plots" title="Permalink to this headline">¶</a></h2>
+<p>The default setting for cylindrical plots is for one degree of longitude to be the same size
+as one degree of latitude.  This can now be changed with the aspect option to mapset:</p>
+<div class="line-block">
+<div class="line">aspect = 'equal' - the default, 1 degree longitude is the same size as one degree of latitude</div>
+<div class="line">aspect = 'auto'  - map fills the plot area</div>
+<div class="line">aspect = number  - a circle will be stretched such that the height is number times the width.</div>
+<div class="line-block">
+<div class="line">aspect = 1 is the same as aspect='equal'.</div>
+</div>
+</div>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Added</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="con-hovmuller-plot-with-short-time-axis">
+<h2>10. con - Hovmuller plot with short time axis<a class="headerlink" href="#con-hovmuller-plot-with-short-time-axis" title="Permalink to this headline">¶</a></h2>
+<p>An issue with a short time axis on a Hovmuller plot was found and fixed.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="con-multiple-plot-spacing-incorrect">
+<h2>11. con - multiple plot spacing incorrect<a class="headerlink" href="#con-multiple-plot-spacing-incorrect" title="Permalink to this headline">¶</a></h2>
+<p>Fixed a variety of issues when using cfp.con and mutiple plots using the rows and columns
+spacing options to cfp.gopen.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="con-and-vect-adding-cyclic-data-issue">
+<h2>12. con and vect - adding cyclic data issue<a class="headerlink" href="#con-and-vect-adding-cyclic-data-issue" title="Permalink to this headline">¶</a></h2>
+<p>When adding an extra cyclic point in longitude and the data the cartopy_util.add_cyclic_point
+routine sometimes fails when the data isn't quite regularly spaced.  Generally this happends
+when the numpy value for the data has a lot of decimal points.  A numeric fix for this
+incorrect spacing was put in place.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="con-and-lineplot-long-floating-point-numbers">
+<h2>13. con and lineplot - long floating point numbers<a class="headerlink" href="#con-and-lineplot-long-floating-point-numbers" title="Permalink to this headline">¶</a></h2>
+<p>In cfp.con and cfp.lineplot large floating point numbers sometimes occurred on the axes and in the contour
+labels.  A new internal routine called cfp.fix_floats addresses these issues.  For example a numpy arange array
+from 0 to 5 in steps of 0.1 sometimes produced an axis of
+0, 0.1, 0.2, 0.3, 0.3999999999999999, 0.5
+which produced a badly fored axis.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="con-blockfill-plot-with-a-time-mean-can-sometimes-produce-unexpected-results">
+<h2>14. con - blockfill plot with a time mean can sometimes produce unexpected results<a class="headerlink" href="#con-blockfill-plot-with-a-time-mean-can-sometimes-produce-unexpected-results" title="Permalink to this headline">¶</a></h2>
+<p>When plotting a blockfill contour plot of data with a time mean the plot can sometimes produce unexpected results.
+For example the following data has monthly data points but bounds of ten years for each point.</p>
+<div class="line-block">
+<div class="line"><strong>f.coord('T').dtarray</strong></div>
+<div class="line">array([cftime.Datetime360Day(1983-08-16 00:00:00),</div>
+<div class="line-block">
+<div class="line">cftime.Datetime360Day(1983-09-16 00:00:00),</div>
+<div class="line">cftime.Datetime360Day(1983-10-16 00:00:00)], dtype=object)</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>f.coord('T').bounds.dtarray</strong></div>
+<div class="line">array([[cftime.Datetime360Day(1979-02-01 00:00:00),</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">cftime.Datetime360Day(1988-03-01 00:00:00)],</div>
+</div>
+<div class="line">[cftime.Datetime360Day(1979-03-01 00:00:00),</div>
+<div class="line-block">
+<div class="line">cftime.Datetime360Day(1988-04-01 00:00:00)],</div>
+</div>
+<div class="line">[cftime.Datetime360Day(1979-04-01 00:00:00),</div>
+<div class="line-block">
+<div class="line">cftime.Datetime360Day(1988-05-01 00:00:00)]], dtype=object)</div>
+</div>
+</div>
+</div>
+<p>To reset the bounds for this data to be relevant for blockfill plotting use</p>
+<div class="line-block">
+<div class="line"><strong>T=f.coord('T')</strong></div>
+<div class="line"><strong>T.del_bounds()</strong></div>
+<div class="line"><strong>new_bounds=T.create_bounds()</strong></div>
+<div class="line"><strong>T.set_bounds(new_bounds)</strong></div>
+</div>
+<p>The new time data bounds are now monthly which is what is expected:</p>
+<div class="line-block">
+<div class="line"><strong>f.coord('T').bounds.dtarray</strong></div>
+<div class="line">array([[cftime.Datetime360Day(1983-08-01 00:00:00),</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">cftime.Datetime360Day(1983-09-01 00:00:00)],</div>
+</div>
+<div class="line">[cftime.Datetime360Day(1983-09-01 00:00:00),</div>
+<div class="line-block">
+<div class="line">cftime.Datetime360Day(1983-10-01 00:00:00)],</div>
+</div>
+<div class="line">[cftime.Datetime360Day(1983-10-01 00:00:00),</div>
+<div class="line-block">
+<div class="line">cftime.Datetime360Day(1983-11-01 00:00:00)]], dtype=object)</div>
+</div>
+</div>
+</div>
+<blockquote>
+<div></div></blockquote>
+</div>
+<div class="section" id="con-vect-and-lineplot-input-data-checking">
+<h2>15. con, vect and lineplot - input data checking<a class="headerlink" href="#con-vect-and-lineplot-input-data-checking" title="Permalink to this headline">¶</a></h2>
+<p>Basic data size and shape checking is now done for the inputs of CF data to con, vect and lineplot.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="lineplot-multiple-lines-on-a-single-graph-can-have-incorrect-axis-limits">
+<h2>16. lineplot - multiple lines on a single graph can have incorrect axis limits<a class="headerlink" href="#lineplot-multiple-lines-on-a-single-graph-can-have-incorrect-axis-limits" title="Permalink to this headline">¶</a></h2>
+<p>When making muliple lines on a single graph it can have incorrect axis limits as by
+default the axis limits and labelling were chosen from the last made line.  This was changed so
+that the the min and max of X and Y for the lines in accumulated and applied to the graph.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="mapset-lambert-conformal-projection-lcc-now-works-in-the-southern-hemisphere">
+<h2>17. mapset - Lambert Conformal projection - lcc now works in the southern hemisphere<a class="headerlink" href="#mapset-lambert-conformal-projection-lcc-now-works-in-the-southern-hemisphere" title="Permalink to this headline">¶</a></h2>
+<p>Selecting the Lambert Conformal 'lcc' projection now works in the southern hemisphere.</p>
+<p><strong>cfp.mapset(proj='lcc', lonmin=-50, lonmax=50, latmin=-80, latmax=-10)</strong></p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="setup-py-changes">
+<h2>18. setup.py changes<a class="headerlink" href="#setup-py-changes" title="Permalink to this headline">¶</a></h2>
+<p>Some minor changes to the requirements were made to the setup.py file</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="init-py-change">
+<h2>19. __init__.py change<a class="headerlink" href="#init-py-change" title="Permalink to this headline">¶</a></h2>
+<p>Put in missing quote in __date__ string.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 </div>
 
@@ -113,11 +312,11 @@ that are set in cfp.setvars.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.5 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.19 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Andy Heaps.
+        &#169; Copyright 2020, Andy Heaps.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
     </div>
   </body>

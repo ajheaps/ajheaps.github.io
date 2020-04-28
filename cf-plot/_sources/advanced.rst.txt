@@ -170,7 +170,7 @@ of the original data.  Care is needed to ensure that the field coordinates go fr
     # Finally let's visually compare our transect data with the original contour field
     cfp.gopen(user_position=True)
     cfp.mapset(0, 180, -90, 0)
-    cfp.gpos(xmin=0.25,xmax=0.75, ymin=0.4, ymax=1)
+    cfp.gpos(xmin=0.25,xmax=0.75, ymin=0.55, ymax=1)
     cfp.con(g, lines=False)
     cfp.plotvars.mymap.plot(lons_interp, lats_interp , linewidth=2.0,
                             color='g', transform=ccrs.PlateCarree())
@@ -324,7 +324,7 @@ A final call to **cfp.con** is made to overlay contour lines.
     # Call internal block filling routine 
     cfp.bfill(f=data, x=x, y=y, clevs=[-50, 0], single_fill_color='green')
     cfp.bfill(f=data, x=x, y=y, clevs=[20, 40], single_fill_color='purple')
-    cfp.con(g, ylog=True, fill=True)
+    cfp.con(g, ylog=True, lines=True, fill=False)
     cfp.gclose()
 
 

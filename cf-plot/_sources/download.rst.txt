@@ -1,7 +1,7 @@
 Download/Install
 ****************
 
-The following notes refer to the Python 3 versions of cf-python and cf-plot which will be released on 1st October 2019.
+The following notes refer to the Python 3 versions of cf-python and cf-plot which was released on 1st October 2019.
 
 Is cf-plot already installed?
 =============================
@@ -12,11 +12,6 @@ Is cf-plot already installed?
 
 
 |    **Archer**
-|    export PATH=/home/n02/n02/ajh/anaconda3/bin:$PATH
-|    ln -s /home/n02/n02/ajh/cfplot_data ~
-
-
-|    **Archer Jasmin RDF - jasmin.rdf.ac.uk**
 |    export PATH=/home/n02/n02/ajh/anaconda3/bin:$PATH
 |    ln -s /home/n02/n02/ajh/cfplot_data ~
 
@@ -46,7 +41,7 @@ To install cf-plot on your own Linux PC or Mac download and install miniconda. O
    conda install -c conda-forge mpich esmpy
 
 
-The first line installs cf-python and cf-plot.  The second installs esmpy, together with the netcdf-fortran and mpich requirements, which cf-python uses for regriding data.
+The first line installs cf-python and cf-plot.  The second installs esmpy, together with the netcdf-fortran and mpich requirements, which cf-python uses for regriding data.  Note that Matplotlib 3 was used in the development of cf-plot and it is advised to upgrade to this version if you are not using it already.  Using Matplotlib 2 can give different plot spacings and results such as missing contour plots.
 
 
 
@@ -80,6 +75,7 @@ Using GitHub:
 ::
 
    git clone git://github.com/ajheaps/cf-plot.git
+   (or possibly git clone https://github.com/ajheaps/cf-plot.git)
    cd cf-plot
    python setup.py install
 

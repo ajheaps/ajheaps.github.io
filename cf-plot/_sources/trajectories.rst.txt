@@ -105,7 +105,7 @@ Example 42 - intensity legend
 |
 
 In this plot the tracks between 1979-12-01 and 1979-12-30 are selected and 
-labelled according intensity with a colourbar.
+labelled according intensity with a colorbar.
 
 |
 |

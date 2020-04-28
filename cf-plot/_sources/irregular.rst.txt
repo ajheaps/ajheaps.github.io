@@ -120,12 +120,17 @@ Example 26 - Orca2 grid
    lats=np.append(lats, lats[pts])
    temp=np.append(temp, temp[pts])
 
+   # Make the new grid
    lons_new=np.arange(181*8)*0.25-180.0
    lats_new=np.arange(91*8)*0.25-90.0
-   temp_new = griddata(lons, lats, temp, lons_new, lats_new, interp='linear')
+   lons_1d=np.arange(181*8)*0.25-180.0
+   lats_1d=np.arange(91*8)*0.25-90.0
+   lons_2d, lats_2d = np.meshgrid(lons_1d, lats_1d)
 
-   cfp.con(x=lons_new, y=lats_new, f=temp_new, ptype=1)
+   # Interpolate Orca2 data onto the new regular grid
+   temp_new = griddata((lons, lats), temp, (lons_2d, lats_2d), method='linear')
 
+   cfp.con(x=lons_2d, y=lats_2d, f=temp_new, ptype=1)
 
 
 

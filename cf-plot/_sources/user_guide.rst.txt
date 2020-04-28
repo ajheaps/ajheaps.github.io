@@ -396,7 +396,7 @@ Here we make a zonal mean vector plot with different vector keys and scaling fac
 Multiple plots on a page and plot positioning
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To make multiple plots on the page open a graphic file with the gopen command and pass the rows and columns parameters. Make each plot in turn first selecting the position with the **cfp.gpos()** command.  The first position is the top left plot and increases by one for one plot to the right until the final plot is made in the bottom right. When all the plots have been made close the plot with the **cfp.gclose()** command.  A combined colour bar is also made as all the plots have the same contour levels and colour scale helping to reduce the plot complexity.
+To make multiple plots on the page open a graphic file with **cfp.gopen** and pass the rows and columns parameters. Make each plot in turn first selecting the position with **cfp.gpos()**.  The first position is the top left plot and increases by one for one plot to the right until the final plot is made in the bottom right. When all the plots have been made close the plot with **cfp.gclose()**.  A combined colour bar is also made as all the plots have the same contour levels and colour scale helping to reduce the plot complexity.
 
 ::
 
@@ -406,16 +406,16 @@ To make multiple plots on the page open a graphic file with the gopen command an
 
    cfp.gopen(rows=2, columns=2, bottom=0.2)
    cfp.gpos(1)
-   cfp.con(f.subspace(pressure=500), colorbar=None)
+   cfp.con(f.subspace(pressure=500), lines=False, colorbar=None)
    cfp.gpos(2)
    cfp.mapset(proj='moll')
-   cfp.con(f.subspace(pressure=500), colorbar=None)
+   cfp.con(f.subspace(pressure=500), lines=False, colorbar=None)
    cfp.gpos(3)
    cfp.mapset(proj='npstere', boundinglat=30, lon_0=180)
-   cfp.con(f.subspace(pressure=500), colorbar=None)
+   cfp.con(f.subspace(pressure=500), lines=False, colorbar=None)
    cfp.gpos(4)
    cfp.mapset(proj='spstere', boundinglat=-30, lon_0=0)
-   cfp.con(f.subspace(pressure=500), colorbar_position=[0.1, 0.1, 0.8, 0.02],
+   cfp.con(f.subspace(pressure=500), lines=False, colorbar_position=[0.1, 0.1, 0.8, 0.02],
            colorbar_orientation='horizontal')
    cfp.gclose()
 
@@ -423,15 +423,54 @@ To make multiple plots on the page open a graphic file with the gopen command an
 .. image::  images/fig19.png
    :scale: 52% 
 
+
+Plot spacing options are located in **cfp.gopen** 
+
+| orientation='landscape' - orientation - also takes 'portrait'
+| figsize=[11.7, 8.3]  - figure size in inches
+| left=None - left margin in normalised coordinates - default=0.12
+| right=None - right margin in normalised coordinates - default=0.92
+| top=None - top margin in normalised coordinates - default=0.08
+| bottom=None - bottom margin in normalised coordinates - default=0.08
+| wspace=None - width reserved for blank space between subplots - default=0.2
+| hspace=None - height reserved for white space between subplots - default=0.2
+|
+|
+|and color bar spacings in **cfp.cbar**.
+|
+| orientation - orientation 'horizontal' or 'vertical'
+| position - user specified colorbar position in normalised
+|            plot coordinates [left, bottom, width, height]
+| shrink - default=1.0 - scale colorbar along length
+| fraction - default = 0.21 - space for the colorbar in 
+|            normalised plot coordinates
+| thick - set height of colorbar - default = 0.015,
+|         in normalised plot coordinates
+| anchor - default=0.3 - anchor point of colorbar within the fraction space. 
+|                        0.0 = close to plot, 1.0 = further away
 |
 |
 
 
-User specified plot limits are set by first specifying the **user_position=True** parameter to gopen and then the plot position to
-the gpos routines.  The **xmin, xmax, ymin, ymax** paramenters for the plot display area are in plot extent normalised coordinates. These are 0.0 for bottom or left and 1.0 for top or right of the plot area. 
+When making map plots the default setting is for one degree of longitude to be the same size as 
+one degree of longitude on the plot.  This will make some plots smaller than the area allocated 
+to them as the plot size will be changed to fit within the plot area.  The aspect option to 
+**cfp.mapset** can be used to change the aspect ratio if desired.
 
-Cylidrical projection plots have an additional rider of having a degree in longitude and latitude being the same size so plots of
-this type might not fill the plot area specified as expected.
+|    aspect = 'equal' - the default, 1 degree longitude is the same size as one degree of latitude
+|    aspect = 'auto'  - map fills the plot area
+|    aspect = number  - a circle will be stretched such that the height is num times the width. 
+|                       aspect=1 is the same as aspect='equal'.
+
+
+
+User specified plot limits are set by first specifying the **user_position=True** parameter to 
+**cfp.gopen** and then the plot position to the gpos routines.  The **xmin, xmax, ymin, ymax** 
+paramenters for the plot display area are in plot extent normalised coordinates. These are 0.0 
+for bottom or left and 1.0 for top or right of the plot area. 
+
+Cylidrical projection plots have an additional rider of having a degree in longitude and latitude 
+being the same size so plots of this type might not fill the plot area specified as expected.
 
 .. image::  images/fig19a.png
    :scale: 44% 
@@ -443,14 +482,14 @@ this type might not fill the plot area specified as expected.
     f=cf.read('cfplot_data/ggap.nc')[1]
 
     cfp.gopen(user_position=True)
-    cfp.gpos(xmin=0.1, xmax=0.5, ymin=0.5, ymax=0.9)
-    cfp.con(f.subspace(Z=500), title='500mb')
+    cfp.gpos(xmin=0.1, xmax=0.5, ymin=0.55, ymax=0.95)
+    cfp.con(f.subspace(Z=500), lines=False, title='500mb')
 
-    cfp.gpos(xmin=0.55, xmax=0.95, ymin=0.5, ymax=0.9)
-    cfp.con(f.subspace(Z=100), title='100mb')
+    cfp.gpos(xmin=0.55, xmax=0.95, ymin=0.55, ymax=0.95)
+    cfp.con(f.subspace(Z=100), lines=False, title='100mb')
 
-    cfp.gpos(xmin=0.3, xmax=0.7, ymin=0.05, ymax=0.45)
-    cfp.con(f.subspace(Z=10), title='10mb')
+    cfp.gpos(xmin=0.3, xmax=0.7, ymin=0.1, ymax=0.5)
+    cfp.con(f.subspace(Z=10), lines=False, title='10mb')
 
     cfp.gclose()
 
@@ -458,8 +497,10 @@ this type might not fill the plot area specified as expected.
 
 
 
-The indication that the plot position on the page is to be set manually is made with the **user_position=True** parameter to **cfp.gopen**.
-The required plot position is set in **cfp.gpos** with the **xmin, xmax, ymin, ymax** parameters.  Two calls to the **cfp.cbar** routine then place colour bars on the plot with different colour scales and contour levels.
+The indication that the plot position on the page is to be set manually is made with the 
+**user_position=True** parameter to **cfp.gopen**. The required plot position is set in **cfp.gpos** 
+with the **xmin, xmax, ymin, ymax** parameters.  Two calls to the **cfp.cbar** routine then place 
+colour bars on the plot with different colour scales and contour levels.
 
 
 .. image::  images/fig19b.png
@@ -1262,6 +1303,46 @@ When plotting data with different time units users need to move their data to us
 This is because when making a contour or line plot the axes are defined in terms of a linear scale of numbers.  Having two 
 different linear scales breaks the connection between the data.
 
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Blockfill contour plots with a time mean
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When plotting a blockfill contour plot of data with a time mean the plot can sometimes produce unexpected results.
+For example the following data has monthly data points but bounds of ten years for each point.  
+
+
+|   **f.coord('T').dtarray**
+|   array([cftime.Datetime360Day(1983-08-16 00:00:00),
+|          cftime.Datetime360Day(1983-09-16 00:00:00),
+|          cftime.Datetime360Day(1983-10-16 00:00:00)], dtype=object)
+
+|   **f.coord('T').bounds.dtarray**
+|   array([[cftime.Datetime360Day(1979-02-01 00:00:00),
+|           cftime.Datetime360Day(1988-03-01 00:00:00)],
+|          [cftime.Datetime360Day(1979-03-01 00:00:00),
+|           cftime.Datetime360Day(1988-04-01 00:00:00)],
+|          [cftime.Datetime360Day(1979-04-01 00:00:00),
+|           cftime.Datetime360Day(1988-05-01 00:00:00)]], dtype=object)
+
+
+To reset the bounds for this data to be relevant for plotting use
+
+|   **T=f.coord('T')**
+|   **T.del_bounds()**
+|   **new_bounds=T.create_bounds()**
+|   **T.set_bounds(new_bounds)**
+
+The new time data bounds are now:
+
+|   **f.coord('T').bounds.dtarray**
+|   array([[cftime.Datetime360Day(1983-08-01 00:00:00),
+|           cftime.Datetime360Day(1983-09-01 00:00:00)],
+|          [cftime.Datetime360Day(1983-09-01 00:00:00),
+|           cftime.Datetime360Day(1983-10-01 00:00:00)],
+|          [cftime.Datetime360Day(1983-10-01 00:00:00),
+|           cftime.Datetime360Day(1983-11-01 00:00:00)]], dtype=object)
 
 
 

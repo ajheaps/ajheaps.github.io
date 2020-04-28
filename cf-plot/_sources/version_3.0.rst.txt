@@ -71,7 +71,7 @@ that are set in cfp.setvars.
 5. con - blockfill plots - bug in blockfill code
 ================================================
 
-A bug in the blockfill code meant that some data couldn't be plotted in blockfill mode.
+A bug in the blockfill code logic meant that some data couldn't be plotted in blockfill mode.
 
 
 ::
@@ -80,10 +80,234 @@ A bug in the blockfill code meant that some data couldn't be plotted in blockfil
 
 
 
+6. con - automatic levels sometimes have too many decimal places
+================================================================
+
+The automatic contour level generation in con sometimes has too many decimal places.  
+
+
+  ::
+
+    Fixed
 
 
 
+7. setup.py missing dependencies
+================================
 
+Missing dependencies for cf-python, scipy and cartopy were added to setup.py
+
+
+  ::
+
+    Fixed
+
+
+
+8. Plot viewing with the Matplotlib interface
+=============================================
+
+Matplotlib can now be configured to allow non-blocking of the command prompt when a plot is 
+active.  The cf-plot code has been changed allow the default plot viewer to be the Matplotlib 
+interface.  Users can still use the previous Imagemagick display command by typing
+
+cfp.setvars(viewer='matplotlib')
+
+or add the below line to ~/.cfplotrc
+
+viewer matplotlib
+
+
+  ::
+
+    Changed
+
+
+
+9. mapset - aspect ratio in cylindrical projection plots
+========================================================
+
+The default setting for cylindrical plots is for one degree of longitude to be the same size 
+as one degree of latitude.  This can now be changed with the aspect option to mapset:
+
+|    aspect = 'equal' - the default, 1 degree longitude is the same size as one degree of latitude
+|    aspect = 'auto'  - map fills the plot area
+|    aspect = number  - a circle will be stretched such that the height is number times the width. 
+|                       aspect = 1 is the same as aspect='equal'.
+
+
+  ::
+
+    Added
+
+
+
+10. con - Hovmuller plot with short time axis
+=============================================
+
+An issue with a short time axis on a Hovmuller plot was found and fixed.
+
+
+
+  ::
+
+    Fixed
+
+
+
+11. con - multiple plot spacing incorrect
+=========================================
+
+Fixed a variety of issues when using cfp.con and mutiple plots using the rows and columns 
+spacing options to cfp.gopen.
+
+
+  ::
+
+    Fixed
+
+
+
+12. con and vect - adding cyclic data issue
+===========================================
+
+When adding an extra cyclic point in longitude and the data the cartopy_util.add_cyclic_point
+routine sometimes fails when the data isn't quite regularly spaced.  Generally this happends 
+when the numpy value for the data has a lot of decimal points.  A numeric fix for this 
+incorrect spacing was put in place.
+
+
+  ::
+
+    Fixed
+
+
+
+13. con and lineplot - long floating point numbers
+==================================================
+
+In cfp.con and cfp.lineplot large floating point numbers sometimes occurred on the axes and in the contour
+labels.  A new internal routine called cfp.fix_floats addresses these issues.  For example a numpy arange array
+from 0 to 5 in steps of 0.1 sometimes produced an axis of
+0, 0.1, 0.2, 0.3, 0.3999999999999999, 0.5
+which produced a badly fored axis.
+ 
+
+  ::
+
+    Fixed
+
+
+
+14. con - blockfill plot with a time mean can sometimes produce unexpected results
+==================================================================================
+
+When plotting a blockfill contour plot of data with a time mean the plot can sometimes produce unexpected results.
+For example the following data has monthly data points but bounds of ten years for each point.  
+
+
+|   **f.coord('T').dtarray**
+|   array([cftime.Datetime360Day(1983-08-16 00:00:00),
+|          cftime.Datetime360Day(1983-09-16 00:00:00),
+|          cftime.Datetime360Day(1983-10-16 00:00:00)], dtype=object)
+
+|   **f.coord('T').bounds.dtarray**
+|   array([[cftime.Datetime360Day(1979-02-01 00:00:00),
+|           cftime.Datetime360Day(1988-03-01 00:00:00)],
+|          [cftime.Datetime360Day(1979-03-01 00:00:00),
+|           cftime.Datetime360Day(1988-04-01 00:00:00)],
+|          [cftime.Datetime360Day(1979-04-01 00:00:00),
+|           cftime.Datetime360Day(1988-05-01 00:00:00)]], dtype=object)
+
+
+To reset the bounds for this data to be relevant for blockfill plotting use
+
+|   **T=f.coord('T')**
+|   **T.del_bounds()**
+|   **new_bounds=T.create_bounds()**
+|   **T.set_bounds(new_bounds)**
+
+The new time data bounds are now monthly which is what is expected:
+
+|   **f.coord('T').bounds.dtarray**
+|   array([[cftime.Datetime360Day(1983-08-01 00:00:00),
+|           cftime.Datetime360Day(1983-09-01 00:00:00)],
+|          [cftime.Datetime360Day(1983-09-01 00:00:00),
+|           cftime.Datetime360Day(1983-10-01 00:00:00)],
+|          [cftime.Datetime360Day(1983-10-01 00:00:00),
+|           cftime.Datetime360Day(1983-11-01 00:00:00)]], dtype=object)
+
+
+  ::
+
+    
+
+
+15. con, vect and lineplot - input data checking
+================================================
+
+
+Basic data size and shape checking is now done for the inputs of CF data to con, vect and lineplot.
+
+
+  ::
+
+    Done
+
+
+
+16. lineplot - multiple lines on a single graph can have incorrect axis limits
+==============================================================================
+
+When making muliple lines on a single graph it can have incorrect axis limits as by
+default the axis limits and labelling were chosen from the last made line.  This was changed so
+that the the min and max of X and Y for the lines in accumulated and applied to the graph.
+
+
+  ::
+
+    Fixed
+
+
+
+17. mapset - Lambert Conformal projection - lcc now works in the southern hemisphere
+====================================================================================
+
+Selecting the Lambert Conformal 'lcc' projection now works in the southern hemisphere.
+
+
+
+**cfp.mapset(proj='lcc', lonmin=-50, lonmax=50, latmin=-80, latmax=-10)**
+
+
+
+  ::
+
+    Fixed
+
+
+
+18. setup.py changes
+====================
+
+Some minor changes to the requirements were made to the setup.py file
+
+
+  ::
+
+    Fixed
+
+
+
+19. __init__.py change
+======================
+
+Put in missing quote in __date__ string.
+
+
+  ::
+
+    Fixed
 
 
 

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>cf-plot user guide &#8212; cf-plot 3.0.5 documentation</title>
+    <title>cf-plot user guide &#8212; cf-plot 3.0.19 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -24,7 +24,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.5 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.19 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -278,56 +278,95 @@
 </div>
 <div class="section" id="multiple-plots-on-a-page-and-plot-positioning">
 <span id="multiple"></span><h3>Multiple plots on a page and plot positioning<a class="headerlink" href="#multiple-plots-on-a-page-and-plot-positioning" title="Permalink to this headline">¶</a></h3>
-<p>To make multiple plots on the page open a graphic file with the gopen command and pass the rows and columns parameters. Make each plot in turn first selecting the position with the <strong>cfp.gpos()</strong> command.  The first position is the top left plot and increases by one for one plot to the right until the final plot is made in the bottom right. When all the plots have been made close the plot with the <strong>cfp.gclose()</strong> command.  A combined colour bar is also made as all the plots have the same contour levels and colour scale helping to reduce the plot complexity.</p>
+<p>To make multiple plots on the page open a graphic file with <strong>cfp.gopen</strong> and pass the rows and columns parameters. Make each plot in turn first selecting the position with <strong>cfp.gpos()</strong>.  The first position is the top left plot and increases by one for one plot to the right until the final plot is made in the bottom right. When all the plots have been made close the plot with <strong>cfp.gclose()</strong>.  A combined colour bar is also made as all the plots have the same contour levels and colour scale helping to reduce the plot complexity.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">proj</span><span class="o">=</span><span class="s1">&#39;moll&#39;</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">proj</span><span class="o">=</span><span class="s1">&#39;npstere&#39;</span><span class="p">,</span> <span class="n">boundinglat</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">proj</span><span class="o">=</span><span class="s1">&#39;spstere&#39;</span><span class="p">,</span> <span class="n">boundinglat</span><span class="o">=-</span><span class="mi">30</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span> <span class="n">colorbar_position</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">],</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">colorbar_position</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">],</span>
         <span class="n">colorbar_orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/fig19.png"><img alt="_images/fig19.png" src="_images/fig19.png" style="width: 508.04px; height: 367.64px;" /></a>
+<p>Plot spacing options are located in <strong>cfp.gopen</strong></p>
 <div class="line-block">
+<div class="line">orientation='landscape' - orientation - also takes 'portrait'</div>
+<div class="line">figsize=[11.7, 8.3]  - figure size in inches</div>
+<div class="line">left=None - left margin in normalised coordinates - default=0.12</div>
+<div class="line">right=None - right margin in normalised coordinates - default=0.92</div>
+<div class="line">top=None - top margin in normalised coordinates - default=0.08</div>
+<div class="line">bottom=None - bottom margin in normalised coordinates - default=0.08</div>
+<div class="line">wspace=None - width reserved for blank space between subplots - default=0.2</div>
+<div class="line">hspace=None - height reserved for white space between subplots - default=0.2</div>
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
-<p>User specified plot limits are set by first specifying the <strong>user_position=True</strong> parameter to gopen and then the plot position to
-the gpos routines.  The <strong>xmin, xmax, ymin, ymax</strong> paramenters for the plot display area are in plot extent normalised coordinates. These are 0.0 for bottom or left and 1.0 for top or right of the plot area.</p>
-<p>Cylidrical projection plots have an additional rider of having a degree in longitude and latitude being the same size so plots of
-this type might not fill the plot area specified as expected.</p>
+<p><a href="#id2"><span class="problematic" id="id3">|</span></a>and color bar spacings in <strong>cfp.cbar</strong>.
+|
+| orientation - orientation 'horizontal' or 'vertical'
+| position - user specified colorbar position in normalised
+|            plot coordinates [left, bottom, width, height]
+| shrink - default=1.0 - scale colorbar along length
+| fraction - default = 0.21 - space for the colorbar in
+|            normalised plot coordinates
+| thick - set height of colorbar - default = 0.015,
+|         in normalised plot coordinates
+| anchor - default=0.3 - anchor point of colorbar within the fraction space.
+|                        0.0 = close to plot, 1.0 = further away
+|
+|</p>
+<p>When making map plots the default setting is for one degree of longitude to be the same size as
+one degree of longitude on the plot.  This will make some plots smaller than the area allocated
+to them as the plot size will be changed to fit within the plot area.  The aspect option to
+<strong>cfp.mapset</strong> can be used to change the aspect ratio if desired.</p>
+<div class="line-block">
+<div class="line">aspect = 'equal' - the default, 1 degree longitude is the same size as one degree of latitude</div>
+<div class="line">aspect = 'auto'  - map fills the plot area</div>
+<div class="line">aspect = number  - a circle will be stretched such that the height is num times the width.</div>
+<div class="line-block">
+<div class="line">aspect=1 is the same as aspect='equal'.</div>
+</div>
+</div>
+<p>User specified plot limits are set by first specifying the <strong>user_position=True</strong> parameter to
+<strong>cfp.gopen</strong> and then the plot position to the gpos routines.  The <strong>xmin, xmax, ymin, ymax</strong>
+paramenters for the plot display area are in plot extent normalised coordinates. These are 0.0
+for bottom or left and 1.0 for top or right of the plot area.</p>
+<p>Cylidrical projection plots have an additional rider of having a degree in longitude and latitude
+being the same size so plots of this type might not fill the plot area specified as expected.</p>
 <a class="reference internal image-reference" href="_images/fig19a.png"><img alt="_images/fig19a.png" src="_images/fig19a.png" style="width: 430.32px; height: 289.96px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">(</span><span class="n">user_position</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">Z</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;500mb&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">Z</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;500mb&#39;</span><span class="p">)</span>
 
-<span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">Z</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;100mb&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">Z</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;100mb&#39;</span><span class="p">)</span>
 
-<span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mf">0.45</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">Z</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;10mb&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="n">xmin</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">Z</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;10mb&#39;</span><span class="p">)</span>
 
 <span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The indication that the plot position on the page is to be set manually is made with the <strong>user_position=True</strong> parameter to <strong>cfp.gopen</strong>.
-The required plot position is set in <strong>cfp.gpos</strong> with the <strong>xmin, xmax, ymin, ymax</strong> parameters.  Two calls to the <strong>cfp.cbar</strong> routine then place colour bars on the plot with different colour scales and contour levels.</p>
+<p>The indication that the plot position on the page is to be set manually is made with the
+<strong>user_position=True</strong> parameter to <strong>cfp.gopen</strong>. The required plot position is set in <strong>cfp.gpos</strong>
+with the <strong>xmin, xmax, ymin, ymax</strong> parameters.  Two calls to the <strong>cfp.cbar</strong> routine then place
+colour bars on the plot with different colour scales and contour levels.</p>
 <a class="reference internal image-reference" href="_images/fig19b.png"><img alt="_images/fig19b.png" src="_images/fig19b.png" style="width: 399.52px; height: 286.88px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
@@ -355,7 +394,7 @@ The required plot position is set in <strong>cfp.gpos</strong> with the <strong>
 </div>
 </div>
 <div class="section" id="trajectories">
-<span id="id2"></span><h3>Trajectories<a class="headerlink" href="#trajectories" title="Permalink to this headline">¶</a></h3>
+<span id="id4"></span><h3>Trajectories<a class="headerlink" href="#trajectories" title="Permalink to this headline">¶</a></h3>
 <p>Data stored in contiguous ragged array format, such as from Kevin Hodges's TRACK program, can be plotted using cf-plot using <strong>cfp.traj</strong>.</p>
 <a class="reference internal image-reference" href="_images/fig39.png"><img alt="_images/fig39.png" src="_images/fig39.png" style="width: 514.28px; height: 258.96000000000004px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
@@ -1466,8 +1505,8 @@ In one case</p>
 </div>
 <p>When specifying the xticklabels or yticklabels the supplied values must be a string or list of strings and match the number of corresponding tick marks.</p>
 </div>
-<div class="section" id="id3">
-<h3>Blockfill plots<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>Blockfill plots<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>Blockfill plots used to use the pcolormesh method but this had the advantage of being fast but gave incorrect results with masked data or when the data range wasn't extended in both 'min' and 'max' directions.  The blockfill method now uses PolyCollection from matplotlib.collections to draw the polygons for each colour interval specified by the contour levels.  This also has the advantage that blockfill is now available in other projections such as polar stereographic.  When doing blockfill plots of larger numbers of points the new method is slower so trim down the data to the area being shown before passing to cfp.con to speed it up.</p>
 </div>
 <div class="section" id="making-postscript-or-png-pictures">
@@ -1543,6 +1582,61 @@ option and the value must be a space.</p>
 </div>
 <p>This is because when making a contour or line plot the axes are defined in terms of a linear scale of numbers.  Having two
 different linear scales breaks the connection between the data.</p>
+</div>
+<div class="section" id="blockfill-contour-plots-with-a-time-mean">
+<h3>Blockfill contour plots with a time mean<a class="headerlink" href="#blockfill-contour-plots-with-a-time-mean" title="Permalink to this headline">¶</a></h3>
+<p>When plotting a blockfill contour plot of data with a time mean the plot can sometimes produce unexpected results.
+For example the following data has monthly data points but bounds of ten years for each point.</p>
+<div class="line-block">
+<div class="line"><strong>f.coord('T').dtarray</strong></div>
+<div class="line">array([cftime.Datetime360Day(1983-08-16 00:00:00),</div>
+<div class="line-block">
+<div class="line">cftime.Datetime360Day(1983-09-16 00:00:00),</div>
+<div class="line">cftime.Datetime360Day(1983-10-16 00:00:00)], dtype=object)</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>f.coord('T').bounds.dtarray</strong></div>
+<div class="line">array([[cftime.Datetime360Day(1979-02-01 00:00:00),</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">cftime.Datetime360Day(1988-03-01 00:00:00)],</div>
+</div>
+<div class="line">[cftime.Datetime360Day(1979-03-01 00:00:00),</div>
+<div class="line-block">
+<div class="line">cftime.Datetime360Day(1988-04-01 00:00:00)],</div>
+</div>
+<div class="line">[cftime.Datetime360Day(1979-04-01 00:00:00),</div>
+<div class="line-block">
+<div class="line">cftime.Datetime360Day(1988-05-01 00:00:00)]], dtype=object)</div>
+</div>
+</div>
+</div>
+<p>To reset the bounds for this data to be relevant for plotting use</p>
+<div class="line-block">
+<div class="line"><strong>T=f.coord('T')</strong></div>
+<div class="line"><strong>T.del_bounds()</strong></div>
+<div class="line"><strong>new_bounds=T.create_bounds()</strong></div>
+<div class="line"><strong>T.set_bounds(new_bounds)</strong></div>
+</div>
+<p>The new time data bounds are now:</p>
+<div class="line-block">
+<div class="line"><strong>f.coord('T').bounds.dtarray</strong></div>
+<div class="line">array([[cftime.Datetime360Day(1983-08-01 00:00:00),</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">cftime.Datetime360Day(1983-09-01 00:00:00)],</div>
+</div>
+<div class="line">[cftime.Datetime360Day(1983-09-01 00:00:00),</div>
+<div class="line-block">
+<div class="line">cftime.Datetime360Day(1983-10-01 00:00:00)],</div>
+</div>
+<div class="line">[cftime.Datetime360Day(1983-10-01 00:00:00),</div>
+<div class="line-block">
+<div class="line">cftime.Datetime360Day(1983-11-01 00:00:00)]], dtype=object)</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1692,7 +1786,7 @@ different linear scales breaks the connection between the data.</p>
 <span id="appendixb"></span><h1>Appendix B - Passing data via arrays<a class="headerlink" href="#appendix-b-passing-data-via-arrays" title="Permalink to this headline">¶</a></h1>
 <p>cf-plot can also make contour and vector plots by passing data arrays. In this example we read in a temperature field from a netCDF file and pass it to cf-plot for plotting.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
-<span class="kn">from</span> <span class="nn">netCDF4</span> <span class="k">import</span> <span class="n">Dataset</span> <span class="k">as</span> <span class="n">ncfile</span>
+<span class="kn">from</span> <span class="nn">netCDF4</span> <span class="kn">import</span> <span class="n">Dataset</span> <span class="k">as</span> <span class="n">ncfile</span>
 <span class="n">nc</span> <span class="o">=</span> <span class="n">ncfile</span><span class="p">(</span><span class="s1">&#39;cfplot_data/tas_A1.nc&#39;</span><span class="p">)</span>
 <span class="n">lons</span><span class="o">=</span><span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">][:]</span>
 <span class="n">lats</span><span class="o">=</span><span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">][:]</span>
@@ -1974,12 +2068,12 @@ valid_min after change 0.0</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.5 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.19 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+        &#169; Copyright 2020, Andy Heaps.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
     </div>
   </body>
 </html>
