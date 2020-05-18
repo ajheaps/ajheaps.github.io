@@ -6,7 +6,7 @@ The following notes refer to the Python 3 versions of cf-python and cf-plot whic
 Is cf-plot already installed?
 =============================
 
-|    **Jasmin@CEDA**
+|    **Jasmin**
 |    export PATH=/home/users/ajh/anaconda3/bin:$PATH
 |    ln -s /home/users/ajh/cfplot_data ~
 
@@ -69,6 +69,7 @@ Using pip:
    pip install cf-python
    pip install cf-plot
 
+If you are upgrading the version of cf-python or cf-plot to the latest ones then add the --upgrade after the install above. A specific version can be installed using pip install cf-plot==3.0.20 for example.
 
 Using GitHub:
 
@@ -80,7 +81,7 @@ Using GitHub:
    python setup.py install
 
 
-You will need to download and install `cf-python <https://cfpython.bitbucket.io>`_ to use cf-plot.  Other cf-plot dependencies are: Numpy, Matplotlib, NetCDF4 and Cartopy.
+You will need to download and install `cf-python <https://cfpython.bitbucket.io>`_ to use cf-plot.  Other cf-plot dependencies are: Numpy, Scipy, Matplotlib, NetCDF4 and Cartopy.
 
 
 Sample data sets

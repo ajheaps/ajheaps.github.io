@@ -311,3 +311,56 @@ Put in missing quote in __date__ string.
 
 
 
+20. lineplot - check for axis missing
+=====================================
+
+
+In lineplot there was no check to see if the Z or T axis existed bufore trying to extract information from them.  A check is now made so that this doesn;t give an error when making a lineplot using data without these axes.
+
+
+
+  ::
+
+    Fixed
+
+
+
+21. cf-plot install notes changed
+=================================
+
+The cf-plot install notes have been changed to include information on how to use pip to upgrade an existing version of cf-plot.
+
+
+
+  ::
+
+    Fixed
+
+
+22. gvals routine rewritten - internal contour and axis label generator
+=======================================================================
+
+The gvals internal routine has been rewritten to be shorter and more logical.  This routine is used in the automatic selection of contour and axis labels.
+The new routine should produce better formatted and spaced labels.
+
+
+
+  ::
+
+    Fixed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

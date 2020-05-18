@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>version 3.0 changes &#8212; cf-plot 3.0.19 documentation</title>
+    <title>version 3.0 changes &#8212; cf-plot 3.0.20 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -24,7 +24,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.19 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.20 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -280,6 +280,34 @@ that the the min and max of X and Y for the lines in accumulated and applied to 
 </div>
 </div></blockquote>
 </div>
+<div class="section" id="lineplot-check-for-axis-missing">
+<h2>20. lineplot - check for axis missing<a class="headerlink" href="#lineplot-check-for-axis-missing" title="Permalink to this headline">¶</a></h2>
+<p>In lineplot there was no check to see if the Z or T axis existed bufore trying to extract information from them.  A check is now made so that this doesn;t give an error when making a lineplot using data without these axes.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="cf-plot-install-notes-changed">
+<h2>21. cf-plot install notes changed<a class="headerlink" href="#cf-plot-install-notes-changed" title="Permalink to this headline">¶</a></h2>
+<p>The cf-plot install notes have been changed to include information on how to use pip to upgrade an existing version of cf-plot.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="gvals-routine-rewritten-internal-contour-and-axis-label-generator">
+<h2>22. gvals routine rewritten - internal contour and axis label generator<a class="headerlink" href="#gvals-routine-rewritten-internal-contour-and-axis-label-generator" title="Permalink to this headline">¶</a></h2>
+<p>The gvals internal routine has been rewritten to be shorter and more logical.  This routine is used in the automatic selection of contour and axis labels.
+The new routine should produce better formatted and spaced labels.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
 </div>
 
 
@@ -312,7 +340,7 @@ that the the min and max of X and Y for the lines in accumulated and applied to 
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.19 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.20 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

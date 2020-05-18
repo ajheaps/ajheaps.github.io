@@ -51,7 +51,7 @@ Here we read in and contour temperature from meteorological stations around the 
    temp_new = griddata((lons, lats), temp, (lons_new, lats_new), method='linear')
 
    cfp.cscale('parula')
-   cfp.con(x=lons_new, y=lats_new, f=temp_new, ptype=1)
+   cfp.con(x=lons_new, y=lats_new, f=temp_new, colorbar_label_skip=2, ptype=1)
 
 
 
@@ -68,7 +68,7 @@ To see if this plot is correct we can add some extra code to that above to plot 
 
    import cartopy.crs as ccrs
    cfp.gopen()
-   cfp.con(x=lons_new, y=lats_new, f=temp_new, ptype=1)
+   cfp.con(x=lons_new, y=lats_new, f=temp_new, colorbar_label_skip=2, ptype=1)
    for i in np.arange(len(lines)):
       cfp.plotvars.mymap.text(float(lons[i]), float(lats[i]), str(temp[i]), \
                               horizontalalignment='center',verticalalignment='center', \

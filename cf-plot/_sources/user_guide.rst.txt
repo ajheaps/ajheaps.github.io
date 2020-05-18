@@ -32,10 +32,10 @@ Introduction
 ############
 
 
-cf-plot is a set of Python functions for making common contour, vector and line plots that climate researchers use. cf-plot generally uses `cf-python <https://cfpython.bitbucket.io>`_ to present the data and CF attributes for plotting.  It can also use numpy arrays of data as the input fields making for flexible plotting of data.  cf-plot uses the Python numpy, matplotlib and scipy libraries.
+cf-plot is a set of Python functions for making common contour, vector and line plots that climate researchers use. cf-plot generally uses `cf-python <https://cfpython.bitbucket.io>`_ to present the data and CF attributes for plotting.  It can also use numpy arrays of data as the input fields making for flexible plotting of data.  cf-plot uses the Python numpy, matplotlib and scipy libraries.  
 
 
-At the core of cf-plot are a set of functions for making and controlling plots:
+At the core of cf-plot are a set of functions for making and controlling plots. 
 
 |    **Plot making operators**
 |    `con <http://ajheaps.github.io/cf-plot/con.html>`_ - make a contour plot
@@ -56,6 +56,8 @@ At the core of cf-plot are a set of functions for making and controlling plots:
 |    `reset <http://ajheaps.github.io/cf-plot/reset.html>`_ - reset all plot parameters 
 |    `setvars <http://ajheaps.github.io/cf-plot/setvars.html>`_ - set a variety of plot parameters
 
+
+This user guide is a set of examples of plots that climate scientists generally make.  Further details and fine tuning options are available by looking at the individual function documentation above.
 
 .. _access:
 
