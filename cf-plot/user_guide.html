@@ -1965,21 +1965,33 @@ viewable latitudes and <strong>lat_0</strong> sets the centre of desired map dom
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">15</span><span class="p">))</span>
 </pre></div>
 </div>
+<div class="line-block" id="appendixd">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="section" id="appendix-d-modifying-data">
-<span id="appendixd"></span><h1>Appendix D - Modifying data<a class="headerlink" href="#appendix-d-modifying-data" title="Permalink to this headline">¶</a></h1>
-<p>For the list of <a class="reference external" href="http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#attribute-appendix">CF attributes</a> setting and changing can be done using the form:</p>
-<p>field.standard_name = 'new_name'</p>
+<h1>Appendix D - Modifying data<a class="headerlink" href="#appendix-d-modifying-data" title="Permalink to this headline">¶</a></h1>
+<p>For the list of <a class="reference external" href="http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#attribute-appendix">CF attributes</a> setting and changing can be done using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">field</span><span class="o">.</span><span class="n">standard_name</span> <span class="o">=</span> <span class="s1">&#39;new_name&#39;</span>
+</pre></div>
+</div>
 <p>This method works for adding in information to the field</p>
-<p>f.set_property('standard_name', 'new_name')</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s1">&#39;standard_name&#39;</span><span class="p">,</span> <span class="s1">&#39;new_name&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>There are also corresponding get_property and del_property methods</p>
-<p>f.get_property('project')
-f.del_property('project')</p>
-<p>Example 1 - adding a standard_name to a field that doesn't have one
-In this case we have a field with a long_name but no standard_name</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s1">&#39;project&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">del_property</span><span class="p">(</span><span class="s1">&#39;project&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Example 1 - adding a standard_name to a field that doesn't have one</p>
+<p>In this case we have a field with a long_name but no standard_name</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/data1.nc&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
-<span class="nb">print</span> <span class="n">f</span>
+<span class="n">f</span>
 </pre></div>
 </div>
 <p>&lt;CF Field: long_name=Potential vorticity(time(1), pressure(23), latitude(160), longitude(320)) K m**2 kg**-1 s**-1&gt;</p>
@@ -2001,42 +2013,42 @@ In this case we have a field with a long_name but no standard_name</p>
 </pre></div>
 </div>
 <p>&lt;CF Field: eastward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1&gt;</p>
-<blockquote>
-<div><p>data = f.array
-data = data + 20
-f.data[:] = data</p>
-</div></blockquote>
-<p>Make a plot to see the change</p>
-<p>Example 3 - changing valid_min etc</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
-<span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/data1.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;valid_min before change&#39;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">valid_min</span><span class="p">)</span>
-<span class="n">f</span><span class="o">.</span><span class="n">valid_min</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;valid_min after change&#39;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">valid_min</span><span class="p">)</span>
+<p>Next we put the numpy array of the data into a variable called data.  In this example we add 20 to all values we insert this back
+into the field.  Using this method it is easy to modify certain parts of the data to change while leaving the rest as it was.
+we could have just used the simpler notation of</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">+=</span> <span class="mi">20</span>
 </pre></div>
 </div>
-<p>valid_min before change -73.41583
-valid_min after change 0.0</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write out the data</span>
-<span class="n">cf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;modified.nc&#39;</span><span class="p">)</span>
+<p>and achieved the same effect.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">array</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span> <span class="o">+</span> <span class="mi">20</span>
+<span class="n">f</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">data</span>
 </pre></div>
 </div>
-<p>Do a comparison plot to see the change</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
-<span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/data1.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;modified.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">(</span><span class="n">rows</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">Z</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">lines</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;original&#39;</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">gpos</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">Z</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">lines</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;modified&#39;</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
+<p>We need to be aware of the valid_min and valid_max values here as we have modified the data.
+For the original data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">valid_min</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">valid_max</span>
+<span class="n">f</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">f</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Does this also work for valid_max, missing_value, _FillValue?</p>
-<p>Example 4 - masking data as per David's training session example</p>
+<p>(-73.41583, 116.50885)
+(&lt;CF Data(): -73.41583251953125 m s**-1&gt;, &lt;CF Data(): 116.50885009765625 m s**-1&gt;)</p>
+<p>After we have changed the data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">valid_min</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">valid_max</span>
+<span class="n">f</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">f</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(-73.41583, 116.50885)
+(&lt;CF Data(): -53.41583251953125 m s**-1&gt;, &lt;CF Data(): 136.50885009765625 m s**-1&gt;)</p>
+<p>Now we need to add 20 to the valid_min and valid_max:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">valid_min</span> <span class="o">+=</span> <span class="mi">20</span>
+<span class="n">f</span><span class="o">.</span><span class="n">valid_max</span> <span class="o">+=</span> <span class="mi">20</span>
+<span class="n">f</span><span class="o">.</span><span class="n">valid_min</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">valid_max</span>
+</pre></div>
+</div>
+<p>(-53.41583251953125, 136.50885009765625)</p>
+<p>Now when the data is written out it is correct.</p>
+<p>Example 3 - reading in data with incorrect valid_min / valid_max etc</p>
 </div>
 
 
