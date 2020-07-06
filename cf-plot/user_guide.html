@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>cf-plot user guide &#8212; cf-plot 3.0.20 documentation</title>
+    <title>cf-plot user guide &#8212; cf-plot 3.0.25 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -24,7 +24,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.20 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -1539,7 +1539,9 @@ In the file /home/swsheaps/ajh.sh:</p>
 </pre></div>
 </div>
 <p>In the file /home/users/swsheaps/ajh.py:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;Agg&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/tas_A1.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">setvars</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s1">&#39;/home/swsheaps/ll.png&#39;</span><span class="p">)</span>
@@ -1548,6 +1550,7 @@ In the file /home/swsheaps/ajh.sh:</p>
 </div>
 <p>run the batch job today at 16:33:</p>
 <p><strong>at -f /home/swsheaps/ajh.sh 16:33</strong></p>
+<p>The first two lines of the Python script enable cf-plot to run without requiring an X-server.</p>
 </div>
 <div class="section" id="changing-defaults-via-the-cfplot-defaults-file">
 <h3>Changing defaults via the ~/.cfplot_defaults file<a class="headerlink" href="#changing-defaults-via-the-cfplot-defaults-file" title="Permalink to this headline">¶</a></h3>
@@ -2081,7 +2084,7 @@ For the original data:</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.20 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

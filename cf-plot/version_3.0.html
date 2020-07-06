@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>version 3.0 changes &#8212; cf-plot 3.0.20 documentation</title>
+    <title>version 3.0 changes &#8212; cf-plot 3.0.25 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -24,7 +24,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.20 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -308,6 +308,31 @@ The new routine should produce better formatted and spaced labels.</p>
 </div>
 </div></blockquote>
 </div>
+<div class="section" id="cfp-con-plot-type-0-rewrite">
+<h2>23. cfp.con - plot type=0 rewrite<a class="headerlink" href="#cfp-con-plot-type-0-rewrite" title="Permalink to this headline">¶</a></h2>
+<p>The cfp.con section for plot_type=0 has been rewritten.  plot_type=0 is where only one or less
+if X, Y, Z, T are being plotted.  i.e. time vs station index.</p>
+</div>
+<div class="section" id="boolean-data">
+<h2>24. Boolean data<a class="headerlink" href="#boolean-data" title="Permalink to this headline">¶</a></h2>
+<p>CF fields that are passed for plotting are changed to 0 or 1 values.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="cfp-lineplot-default-line-colours-now-taken-from-matplotlib">
+<h2>25. cfp.lineplot - default line colours now taken from Matplotlib<a class="headerlink" href="#cfp-lineplot-default-line-colours-now-taken-from-matplotlib" title="Permalink to this headline">¶</a></h2>
+<p>The default cfp.lineplot colours are taken from Matplotlib unless specified by the user with
+the color keyword.  The previous default was for black which made lineplots more difficult to
+interpret.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
 </div>
 
 
@@ -340,7 +365,7 @@ The new routine should produce better formatted and spaced labels.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.20 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

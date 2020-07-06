@@ -351,6 +351,42 @@ The new routine should produce better formatted and spaced labels.
 
 
 
+23. cfp.con - plot type=0 rewrite
+=================================
+
+The cfp.con section for plot_type=0 has been rewritten.  plot_type=0 is where only one or less
+if X, Y, Z, T are being plotted.  i.e. time vs station index.
+
+
+
+
+24. Boolean data
+================
+
+CF fields that are passed for plotting are changed to 0 or 1 values.
+
+
+  ::
+
+    Fixed
+
+
+
+25. cfp.lineplot - default line colours now taken from Matplotlib
+=================================================================
+
+The default cfp.lineplot colours are taken from Matplotlib unless specified by the user with 
+the color keyword.  The previous default was for black which made lineplots more difficult to 
+interpret.
+
+
+  ::
+
+    Changed
+
+
+
+
 
 
 

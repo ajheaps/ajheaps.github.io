@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>con &#8212; cf-plot 3.0.20 documentation</title>
+    <title>con &#8212; cf-plot 3.0.25 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -24,7 +24,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.20 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -37,7 +37,7 @@
 <h1>con<a class="headerlink" href="#con" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="cfplot.con">
-<code class="sig-prename descclassname">cfplot.</code><code class="sig-name descname">con</code><span class="sig-paren">(</span><em class="sig-param">f=None</em>, <em class="sig-param">x=None</em>, <em class="sig-param">y=None</em>, <em class="sig-param">fill=True</em>, <em class="sig-param">lines=True</em>, <em class="sig-param">line_labels=True</em>, <em class="sig-param">title=None</em>, <em class="sig-param">colorbar_title=None</em>, <em class="sig-param">colorbar=True</em>, <em class="sig-param">colorbar_label_skip=None</em>, <em class="sig-param">ptype=0</em>, <em class="sig-param">negative_linestyle='solid'</em>, <em class="sig-param">blockfill=False</em>, <em class="sig-param">zero_thick=False</em>, <em class="sig-param">colorbar_shrink=None</em>, <em class="sig-param">colorbar_orientation=None</em>, <em class="sig-param">colorbar_position=None</em>, <em class="sig-param">xlog=False</em>, <em class="sig-param">ylog=False</em>, <em class="sig-param">axes=True</em>, <em class="sig-param">xaxis=True</em>, <em class="sig-param">yaxis=True</em>, <em class="sig-param">xticks=None</em>, <em class="sig-param">xticklabels=None</em>, <em class="sig-param">yticks=None</em>, <em class="sig-param">yticklabels=None</em>, <em class="sig-param">xlabel=None</em>, <em class="sig-param">ylabel=None</em>, <em class="sig-param">colors='k'</em>, <em class="sig-param">swap_axes=False</em>, <em class="sig-param">verbose=None</em>, <em class="sig-param">linewidths=None</em>, <em class="sig-param">alpha=1.0</em>, <em class="sig-param">colorbar_text_up_down=False</em>, <em class="sig-param">colorbar_text_down_up=False</em>, <em class="sig-param">colorbar_drawedges=True</em>, <em class="sig-param">colorbar_fraction=None</em>, <em class="sig-param">colorbar_thick=None</em>, <em class="sig-param">colorbar_anchor=None</em>, <em class="sig-param">colorbar_labels=None</em>, <em class="sig-param">linestyles=None</em>, <em class="sig-param">zorder=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot/cfplot.html#con"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.con" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cfplot.</code><code class="sig-name descname">con</code><span class="sig-paren">(</span><em class="sig-param">f=None</em>, <em class="sig-param">x=None</em>, <em class="sig-param">y=None</em>, <em class="sig-param">fill=True</em>, <em class="sig-param">lines=True</em>, <em class="sig-param">line_labels=True</em>, <em class="sig-param">title=None</em>, <em class="sig-param">colorbar_title=None</em>, <em class="sig-param">colorbar=True</em>, <em class="sig-param">colorbar_label_skip=None</em>, <em class="sig-param">ptype=0</em>, <em class="sig-param">negative_linestyle='solid'</em>, <em class="sig-param">blockfill=False</em>, <em class="sig-param">zero_thick=False</em>, <em class="sig-param">colorbar_shrink=None</em>, <em class="sig-param">colorbar_orientation=None</em>, <em class="sig-param">colorbar_position=None</em>, <em class="sig-param">xlog=False</em>, <em class="sig-param">ylog=False</em>, <em class="sig-param">axes=True</em>, <em class="sig-param">xaxis=True</em>, <em class="sig-param">yaxis=True</em>, <em class="sig-param">xticks=None</em>, <em class="sig-param">xticklabels=None</em>, <em class="sig-param">yticks=None</em>, <em class="sig-param">yticklabels=None</em>, <em class="sig-param">xlabel=None</em>, <em class="sig-param">ylabel=None</em>, <em class="sig-param">colors='k'</em>, <em class="sig-param">swap_axes=False</em>, <em class="sig-param">verbose=None</em>, <em class="sig-param">linewidths=None</em>, <em class="sig-param">alpha=1.0</em>, <em class="sig-param">colorbar_text_up_down=False</em>, <em class="sig-param">colorbar_text_down_up=False</em>, <em class="sig-param">colorbar_drawedges=True</em>, <em class="sig-param">colorbar_fraction=None</em>, <em class="sig-param">colorbar_thick=None</em>, <em class="sig-param">colorbar_anchor=None</em>, <em class="sig-param">colorbar_labels=None</em>, <em class="sig-param">linestyles=None</em>, <em class="sig-param">zorder=None</em>, <em class="sig-param">level_spacing='linear'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#con"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.con" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">con is the interface to contouring in cf-plot. The minimum use is con(f)</div>
 <div class="line">where f is a 2 dimensional array. If a cf field is passed then an</div>
@@ -147,6 +147,7 @@
 </div>
 <div class="line">colorbar_drawedges=True - draw internal delimeter lines in the colorbar</div>
 <div class="line">zorder=None - order of drawing</div>
+<div class="line">level_spacing='linear' - Default of linear level spacing.  Also takes 'log', 'loglike'</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -187,7 +188,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.20 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
