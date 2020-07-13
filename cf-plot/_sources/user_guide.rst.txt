@@ -230,11 +230,11 @@ The latitude-pressure plot below is made by using the cf subspace method to sele
 
    import cf
    import cfplot as cfp
-   f=cf.read('cfplot_data/ggap.nc')[0]
+   f=cf.read('cfplot_data/ggap.nc')[2]
    cfp.con(f.subspace(longitude=0))
 
 
-.. image::  images/guide7.png
+.. image::  images/fig6.png
    :scale: 52% 
 
 
@@ -1631,17 +1631,24 @@ Other types of plot are:
 
 
 
-import cfplot as cfp
-import numpy as np
-from netCDF4 import Dataset as ncfile
-nc = ncfile('cfplot_data/ggap.nc')
-lats=nc.variables['latitude'][:]
-pressure=nc.variables['p'][:]
-u=nc.variables['U'][:,:,:]
-u_mean=np.mean(u.squeeze(), axis=2)
-cfp.con(f=u_mean, x=lats, y=pressure, ptype=4)
+::
 
+   
+    import cfplot as cfp
+    import numpy as np
+    from netCDF4 import Dataset as ncfile
+    nc = ncfile('cfplot_data/ggap.nc')
+    lats=nc.variables['latitude'][:]
+    pressure=nc.variables['p'][:]
+    u=nc.variables['U'][:,:,:]
+    u_mean=np.mean(u.squeeze(), axis=2)
+    cfp.con(f=u_mean, x=lats, y=pressure)
 
+.. image::  images/guide7.png
+
+    cfp.con(f=u_mean, x=lats, y=pressure, ptype=4)
+
+.. image::  images/guide8.png
 
 
 

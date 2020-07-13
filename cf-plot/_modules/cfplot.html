@@ -407,8 +407,6 @@
         <span class="n">ylabel</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 
 
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ajh - shape of field is &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">field</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
-
     <span class="c1"># Set contour line styles</span>
     <span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;contour.negative_linestyle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">negative_linestyle</span>
 
@@ -764,7 +762,6 @@
                 <span class="n">cmap</span><span class="o">.</span><span class="n">set_over</span><span class="p">(</span><span class="n">plotvars</span><span class="o">.</span><span class="n">cs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 
 
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ajh2 - shape of field is &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">field</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
 
             <span class="c1"># filled colour contours</span>
             <span class="n">cfill</span> <span class="o">=</span> <span class="n">mymap</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">,</span> <span class="n">field</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span> <span class="n">clevs</span><span class="p">,</span>
@@ -3816,14 +3813,12 @@
             <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="n">vs</span> <span class="o">+</span> <span class="s1">&#39;lons -&#39;</span><span class="p">,</span> <span class="n">sn</span><span class="p">,</span> <span class="n">an</span><span class="p">)</span>
             <span class="n">lons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="n">mydim</span><span class="p">)</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ajh - shape of lons is &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">lons</span><span class="p">))</span>
 
         <span class="n">standard_name_y</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">sn</span> <span class="ow">in</span> <span class="n">standard_name_y</span> <span class="ow">or</span> <span class="n">an</span> <span class="o">==</span> <span class="s1">&#39;Y&#39;</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="n">vs</span> <span class="o">+</span> <span class="s1">&#39;lats -&#39;</span><span class="p">,</span> <span class="n">sn</span><span class="p">,</span> <span class="n">an</span><span class="p">)</span>
             <span class="n">lats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="n">mydim</span><span class="p">)</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ajh - shape of lons is &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">lats</span><span class="p">))</span>
 
         <span class="n">standard_name_z</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">,</span> <span class="s1">&#39;air_pressure&#39;</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="s1">&#39;depth&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">sn</span> <span class="ow">in</span> <span class="n">standard_name_z</span> <span class="ow">or</span> <span class="n">an</span> <span class="o">==</span> <span class="s1">&#39;Z&#39;</span><span class="p">):</span>
@@ -3943,7 +3938,6 @@
         <span class="n">ptype</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">lons</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">lats</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ajh - shape of x, y are &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
 
 
     <span class="k">if</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">lats</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">):</span>
@@ -4028,8 +4022,6 @@
                 <span class="n">ylabel</span> <span class="o">=</span> <span class="n">cf_var_name</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">mydim</span><span class="p">)</span> <span class="o">+</span> <span class="n">yunits</span>
 
         
-    <span class="c1">#print(&#39;ajh2 - shape of x, y are &#39;, np.shape(x), np.shape(y))</span>
-
 
     <span class="c1"># Extract auxiliary lons and lats if they exist</span>
     <span class="k">if</span> <span class="n">ptype</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -4051,9 +4043,6 @@
                 <span class="n">x</span> <span class="o">=</span> <span class="n">xvals</span>
                 <span class="n">y</span> <span class="o">=</span> <span class="n">yvals</span>
 
-
-
-    <span class="c1">#print(&#39;ajh3 - shape of x, y are &#39;, np.shape(x), np.shape(y))</span>
 
 
     <span class="c1"># time height plot</span>
@@ -9429,22 +9418,17 @@
                     <span class="n">clevs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.0e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
 
 
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ajh - dmin1, dmax1,  are&#39;</span><span class="p">,</span> <span class="n">dmin1</span><span class="p">,</span> <span class="n">dmax1</span><span class="p">)</span>
-
                 <span class="c1"># Strip any outliers</span>
                 <span class="n">clevs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="n">clevs</span><span class="p">)</span>
                 <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">clevs</span> <span class="o">&gt;=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dmin1</span><span class="p">),</span> <span class="n">clevs</span> <span class="o">&lt;=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dmax1</span><span class="p">)))</span>
                 <span class="n">clevs</span> <span class="o">=</span> <span class="n">clevs</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
 
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ajh1 - clevs are&#39;</span><span class="p">,</span> <span class="n">clevs</span><span class="p">)</span>
 
                 <span class="k">if</span> <span class="n">dmin</span> <span class="o">&lt;</span> <span class="mf">0.0</span> <span class="ow">and</span> <span class="n">dmax</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>
                     <span class="n">clevs</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">clevs</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
                 <span class="k">if</span> <span class="n">dmin</span> <span class="o">&lt;=</span> <span class="mf">0.0</span> <span class="ow">and</span> <span class="n">dmax</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">:</span>
                     <span class="n">clevs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">clevs</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">clevs</span><span class="p">])</span>  
-
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ajh2 - clevs are&#39;</span><span class="p">,</span> <span class="n">clevs</span><span class="p">)</span>
 
 
 

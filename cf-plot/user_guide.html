@@ -174,11 +174,11 @@
 <p>&lt;CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(1)) K&gt;</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
-<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ggap.nc&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">longitude</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/guide7.png"><img alt="_images/guide7.png" src="_images/guide7.png" style="width: 530.9200000000001px; height: 341.64px;" /></a>
+<a class="reference internal image-reference" href="_images/fig6.png"><img alt="_images/fig6.png" src="_images/fig6.png" style="width: 530.9200000000001px; height: 346.84000000000003px;" /></a>
 <p>A mean of the data along the longitude (zonal mean) is made using the cf.collapse method.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
@@ -1829,7 +1829,7 @@ For example the following data has monthly data points but bounds of ten years f
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">temp</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">lons</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">lats</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/guide5.png"><img alt="_images/guide5.png" src="_images/guide5.png" style="width: 518.44px; height: 327.08px;" /></a>
+<a class="reference internal image-reference" href="_images/guide5.png"><img alt="_images/guide5.png" src="_images/guide5.png" style="width: 507.52000000000004px; height: 389.48px;" /></a>
 <p>The contouring routine doesn't know that the data passed is a map plot as the only information passed is data arrays. i.e. there is no metadata available to help cf-plot to know what type of plot is required.  The plot type can be explicitly set in this case with the <strong>ptype</strong> flag to <strong>cfp.con</strong>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">temp</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">lons</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">lats</span><span class="p">,</span> <span class="n">ptype</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -1847,15 +1847,18 @@ For example the following data has monthly data points but bounds of ten years f
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
-<p>import cfplot as cfp
-import numpy as np
-from netCDF4 import Dataset as ncfile
-nc = ncfile('cfplot_data/ggap.nc')
-lats=nc.variables['latitude'][:]
-pressure=nc.variables['p'][:]
-u=nc.variables['U'][:,:,:]
-u_mean=np.mean(u.squeeze(), axis=2)
-cfp.con(f=u_mean, x=lats, y=pressure, ptype=4)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">netCDF4</span> <span class="kn">import</span> <span class="n">Dataset</span> <span class="k">as</span> <span class="n">ncfile</span>
+<span class="n">nc</span> <span class="o">=</span> <span class="n">ncfile</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ggap.nc&#39;</span><span class="p">)</span>
+<span class="n">lats</span><span class="o">=</span><span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">][:]</span>
+<span class="n">pressure</span><span class="o">=</span><span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">][:]</span>
+<span class="n">u</span><span class="o">=</span><span class="n">nc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">][:,:,:]</span>
+<span class="n">u_mean</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">u_mean</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">lats</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">pressure</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/guide8.png" src="_images/guide8.png" />
 </div>
 <div class="section" id="appendix-c-map-projections-and-options">
 <span id="appendixc"></span><h1>Appendix C - map projections and options<a class="headerlink" href="#appendix-c-map-projections-and-options" title="Permalink to this headline">¶</a></h1>
