@@ -1152,6 +1152,8 @@ along the axis.  In this case we manually specify out tick labels using the xtic
     import cf
     import cfplot as cfp
     import numpy as np
+    f=cf.read('cfplot_data/tas_A1.nc')[0]
+
     xticks=[]
     xticklabels=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     for mon in [1,2,3,4,5,6,7,8,9,10,11,12]:
