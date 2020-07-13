@@ -1454,39 +1454,34 @@ using cf-python to extract values for yourself.</p>
 <p>With this technique arrays of custom tick label and positions can be constructed and passed to
 the cfp.lineplot or to the cfp.con routines.</p>
 <p>Note the correct date format is <strong>'YYYY-MM-DD'</strong> or <strong>'YYYY-MM-DD HH:MM:SS'</strong> - anything else will give unexpected results.</p>
-<p>In this example we generate labels for The start of the months in 1980.  If the middle of the month was to be labelled then the day
-number would be changed to be 15.</p>
-<div class="line-block">
-<div class="line">import cf</div>
-<div class="line">import cfplot as cfp</div>
-<div class="line">import numpy as np</div>
-<div class="line">xticks=[]</div>
-<div class="line">xticklabels=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']</div>
-<div class="line">for mon in [1,2,3,4,5,6,7,8,9,10,11,12]:</div>
-<div class="line-block">
-<div class="line">month_str = str(mon)</div>
-<div class="line">if mon &lt; 10:</div>
-<div class="line-block">
-<div class="line">month_str = '0' + str(mon)</div>
+<p>In this example we generate labels for the start of the months in 1980.  If the middle of the month was to be labelled then the day
+number would be changed to be 15.  Our xtick positions are accumulated using the above method in teh aticks array as a numerical position
+along the axis.  In this case we manually specify out tick labels using the xticklabels array of strings.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
+<span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">xticks</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Jan&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb&#39;</span><span class="p">,</span> <span class="s1">&#39;Mar&#39;</span><span class="p">,</span> <span class="s1">&#39;Apr&#39;</span><span class="p">,</span> <span class="s1">&#39;May&#39;</span><span class="p">,</span> <span class="s1">&#39;Jun&#39;</span><span class="p">,</span> <span class="s1">&#39;Jul&#39;</span><span class="p">,</span> <span class="s1">&#39;Aug&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep&#39;</span><span class="p">,</span> <span class="s1">&#39;Oct&#39;</span><span class="p">,</span> <span class="s1">&#39;Nov&#39;</span><span class="p">,</span> <span class="s1">&#39;Dec&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">mon</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]:</span>
+    <span class="n">month_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">mon</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mon</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">month_str</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">mon</span><span class="p">)</span>
+    <span class="n">xtick</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">Data</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">dt</span><span class="p">(</span><span class="s1">&#39;1980-&#39;</span><span class="o">+</span> <span class="n">month_str</span> <span class="o">+</span> <span class="s1">&#39;-01 00:00:00&#39;</span><span class="p">),</span> <span class="n">units</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">Units</span><span class="p">)</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
+    <span class="n">xticks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xtick</span><span class="p">)</span>
+
+
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;X: mean&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">Y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">gset</span><span class="p">(</span><span class="s1">&#39;1980-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;1981-01-01&#39;</span><span class="p">,</span> <span class="mi">299</span><span class="p">,</span> <span class="mi">302</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="n">xticks</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">xticklabels</span><span class="p">,</span>
+             <span class="n">yticks</span><span class="o">=</span><span class="p">[</span><span class="mi">299</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">301</span><span class="p">,</span> <span class="mi">302</span><span class="p">],</span>
+             <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span>
+             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Air temperature at the equator in 1980&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="line">xtick = np.min(cf.Data(cf.dt('1980-'+ month_str + '-01 00:00:00'), units=f.construct('T').Units).array)</div>
-<div class="line">xticks.append(xtick)</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">g = f.collapse('X: mean').subspace(Y=0.0)</div>
-</div>
-<div class="line-block">
-<div class="line">cfp.gset('1980-01-01', '1981-01-01', 299, 302)</div>
-<div class="line">cfp.lineplot(g, xticks=xticks, xticklabels=xticklabels,</div>
-<div class="line-block">
-<div class="line">yticks=[299, 300, 301, 302],</div>
-<div class="line">xlabel='Time',</div>
-<div class="line">title='Air temperature at the equator in 1980')</div>
-</div>
-</div>
-<img alt="_images/time_axis_labelling.png" src="_images/time_axis_labelling.png" />
-<p>Axis labels can also be placed at an angle which in the case of time axis labels is often a way of displaying more length labels.
+<a class="reference internal image-reference" href="_images/time_axis_labelling.png"><img alt="_images/time_axis_labelling.png" src="_images/time_axis_labelling.png" style="width: 441.32px; height: 347.16px;" /></a>
+<p>Axis labels can also be placed at an angle which in the case of time axis labels is often a way of displaying more lengthy labels.
 <strong>cfp.setvars(xtick_label_rotation=30)</strong> or <strong>cfp.setvars(ytick_label_rotation=30)</strong> are examples of how to rotate axis labels.</p>
 </div>
 <div class="section" id="selecting-data-that-has-a-lot-of-decimal-places-in-the-axis-values">
