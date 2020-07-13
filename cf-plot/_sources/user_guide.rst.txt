@@ -1645,11 +1645,16 @@ Other types of plot are:
     cfp.con(f=u_mean, x=lats, y=pressure)
 
 .. image::  images/guide7.png
+   :scale: 52% 
+
+
+
+::
 
     cfp.con(f=u_mean, x=lats, y=pressure, ptype=4)
 
 .. image::  images/guide8.png
-
+   :scale: 52% 
 
 
 
