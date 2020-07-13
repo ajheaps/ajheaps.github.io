@@ -32,7 +32,7 @@ Introduction
 ############
 
 
-cf-plot is a set of Python functions for making common contour, vector and line plots that climate researchers use. cf-plot generally uses `cf-python <https://cfpython.bitbucket.io>`_ to present the data and CF attributes for plotting.  It can also use numpy arrays of data as the input fields making for flexible plotting of data.  cf-plot uses the Python numpy, matplotlib and scipy libraries.  
+cf-plot is a set of Python functions for making common contour, vector and line plots that climate researchers use. cf-plot generally uses `cf-python <https://ncas-cms.github.io/cf-python>`_ to present the data and CF attributes for plotting.  It can also use numpy arrays of data as the input fields making for flexible plotting of data.  cf-plot uses the Python numpy, matplotlib and scipy libraries.  
 
 
 At the core of cf-plot are a set of functions for making and controlling plots. 
@@ -1141,6 +1141,41 @@ With this technique arrays of custom tick label and positions can be constructed
 the cfp.lineplot or to the cfp.con routines.
 
 Note the correct date format is **'YYYY-MM-DD'** or **'YYYY-MM-DD HH:MM:SS'** - anything else will give unexpected results.
+
+
+In this example we generate labels for The start of the months in 1980.  If the middle of the month was to be labelled then the day
+number would be changed to be 15.
+
+
+| import cf
+| import cfplot as cfp
+| import numpy as np
+| xticks=[]
+| xticklabels=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+| for mon in [1,2,3,4,5,6,7,8,9,10,11,12]:
+|      month_str = str(mon)
+|      if mon < 10:
+|          month_str = '0' + str(mon)
+|      xtick = np.min(cf.Data(cf.dt('1980-'+ month_str + '-01 00:00:00'), units=f.construct('T').Units).array)
+|      xticks.append(xtick)
+
+
+
+| g = f.collapse('X: mean').subspace(Y=0.0)
+
+| cfp.gset('1980-01-01', '1981-01-01', 299, 302)
+| cfp.lineplot(g, xticks=xticks, xticklabels=xticklabels, 
+|              yticks=[299, 300, 301, 302],
+|              xlabel='Time',
+|              title='Air temperature at the equator in 1980')
+
+
+.. image:: images/time_axis_labelling.png
+
+
+
+Axis labels can also be placed at an angle which in the case of time axis labels is often a way of displaying more length labels.
+**cfp.setvars(xtick_label_rotation=30)** or **cfp.setvars(ytick_label_rotation=30)** are examples of how to rotate axis labels.
 
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

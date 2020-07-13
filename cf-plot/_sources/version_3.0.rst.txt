@@ -86,7 +86,7 @@ A bug in the blockfill code logic meant that some data couldn't be plotted in bl
 The automatic contour level generation in con sometimes has too many decimal places.  
 
 
-  ::
+::
 
     Fixed
 
@@ -98,7 +98,7 @@ The automatic contour level generation in con sometimes has too many decimal pla
 Missing dependencies for cf-python, scipy and cartopy were added to setup.py
 
 
-  ::
+::
 
     Fixed
 
@@ -118,7 +118,7 @@ or add the below line to ~/.cfplotrc
 viewer matplotlib
 
 
-  ::
+::
 
     Changed
 
@@ -136,7 +136,7 @@ as one degree of latitude.  This can now be changed with the aspect option to ma
 |                       aspect = 1 is the same as aspect='equal'.
 
 
-  ::
+::
 
     Added
 
@@ -149,7 +149,7 @@ An issue with a short time axis on a Hovmuller plot was found and fixed.
 
 
 
-  ::
+::
 
     Fixed
 
@@ -162,7 +162,7 @@ Fixed a variety of issues when using cfp.con and mutiple plots using the rows an
 spacing options to cfp.gopen.
 
 
-  ::
+::
 
     Fixed
 
@@ -177,7 +177,7 @@ when the numpy value for the data has a lot of decimal points.  A numeric fix fo
 incorrect spacing was put in place.
 
 
-  ::
+::
 
     Fixed
 
@@ -193,7 +193,7 @@ from 0 to 5 in steps of 0.1 sometimes produced an axis of
 which produced a badly fored axis.
  
 
-  ::
+::
 
     Fixed
 
@@ -238,8 +238,8 @@ The new time data bounds are now monthly which is what is expected:
 |           cftime.Datetime360Day(1983-11-01 00:00:00)]], dtype=object)
 
 
-  ::
-
+::
+    Information added to user guide
     
 
 
@@ -250,7 +250,7 @@ The new time data bounds are now monthly which is what is expected:
 Basic data size and shape checking is now done for the inputs of CF data to con, vect and lineplot.
 
 
-  ::
+::
 
     Done
 
@@ -264,7 +264,7 @@ default the axis limits and labelling were chosen from the last made line.  This
 that the the min and max of X and Y for the lines in accumulated and applied to the graph.
 
 
-  ::
+::
 
     Fixed
 
@@ -281,7 +281,7 @@ Selecting the Lambert Conformal 'lcc' projection now works in the southern hemis
 
 
 
-  ::
+::
 
     Fixed
 
@@ -293,7 +293,7 @@ Selecting the Lambert Conformal 'lcc' projection now works in the southern hemis
 Some minor changes to the requirements were made to the setup.py file
 
 
-  ::
+::
 
     Fixed
 
@@ -305,7 +305,7 @@ Some minor changes to the requirements were made to the setup.py file
 Put in missing quote in __date__ string.
 
 
-  ::
+::
 
     Fixed
 
@@ -319,7 +319,7 @@ In lineplot there was no check to see if the Z or T axis existed bufore trying t
 
 
 
-  ::
+::
 
     Fixed
 
@@ -332,7 +332,7 @@ The cf-plot install notes have been changed to include information on how to use
 
 
 
-  ::
+::
 
     Fixed
 
@@ -345,7 +345,7 @@ The new routine should produce better formatted and spaced labels.
 
 
 
-  ::
+::
 
     Fixed
 
@@ -359,6 +359,11 @@ if X, Y, Z, T are being plotted.  i.e. time vs station index.
 
 
 
+::
+
+    Changed
+
+
 
 24. Boolean data
 ================
@@ -366,7 +371,7 @@ if X, Y, Z, T are being plotted.  i.e. time vs station index.
 CF fields that are passed for plotting are changed to 0 or 1 values.
 
 
-  ::
+::
 
     Fixed
 
@@ -380,7 +385,7 @@ the color keyword.  The previous default was for black which made lineplots more
 interpret.
 
 
-  ::
+::
 
     Changed
 

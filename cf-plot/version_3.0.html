@@ -84,20 +84,16 @@ that are set in cfp.setvars.</p>
 <div class="section" id="con-automatic-levels-sometimes-have-too-many-decimal-places">
 <h2>6. con - automatic levels sometimes have too many decimal places<a class="headerlink" href="#con-automatic-levels-sometimes-have-too-many-decimal-places" title="Permalink to this headline">¶</a></h2>
 <p>The automatic contour level generation in con sometimes has too many decimal places.</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="setup-py-missing-dependencies">
 <h2>7. setup.py missing dependencies<a class="headerlink" href="#setup-py-missing-dependencies" title="Permalink to this headline">¶</a></h2>
 <p>Missing dependencies for cf-python, scipy and cartopy were added to setup.py</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="plot-viewing-with-the-matplotlib-interface">
 <h2>8. Plot viewing with the Matplotlib interface<a class="headerlink" href="#plot-viewing-with-the-matplotlib-interface" title="Permalink to this headline">¶</a></h2>
@@ -107,11 +103,9 @@ interface.  Users can still use the previous Imagemagick display command by typi
 <p>cfp.setvars(viewer='matplotlib')</p>
 <p>or add the below line to ~/.cfplotrc</p>
 <p>viewer matplotlib</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="mapset-aspect-ratio-in-cylindrical-projection-plots">
 <h2>9. mapset - aspect ratio in cylindrical projection plots<a class="headerlink" href="#mapset-aspect-ratio-in-cylindrical-projection-plots" title="Permalink to this headline">¶</a></h2>
@@ -125,30 +119,24 @@ as one degree of latitude.  This can now be changed with the aspect option to ma
 <div class="line">aspect = 1 is the same as aspect='equal'.</div>
 </div>
 </div>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Added</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Added</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="con-hovmuller-plot-with-short-time-axis">
 <h2>10. con - Hovmuller plot with short time axis<a class="headerlink" href="#con-hovmuller-plot-with-short-time-axis" title="Permalink to this headline">¶</a></h2>
 <p>An issue with a short time axis on a Hovmuller plot was found and fixed.</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="con-multiple-plot-spacing-incorrect">
 <h2>11. con - multiple plot spacing incorrect<a class="headerlink" href="#con-multiple-plot-spacing-incorrect" title="Permalink to this headline">¶</a></h2>
 <p>Fixed a variety of issues when using cfp.con and mutiple plots using the rows and columns
 spacing options to cfp.gopen.</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="con-and-vect-adding-cyclic-data-issue">
 <h2>12. con and vect - adding cyclic data issue<a class="headerlink" href="#con-and-vect-adding-cyclic-data-issue" title="Permalink to this headline">¶</a></h2>
@@ -156,11 +144,9 @@ spacing options to cfp.gopen.</p>
 routine sometimes fails when the data isn't quite regularly spaced.  Generally this happends
 when the numpy value for the data has a lot of decimal points.  A numeric fix for this
 incorrect spacing was put in place.</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="con-and-lineplot-long-floating-point-numbers">
 <h2>13. con and lineplot - long floating point numbers<a class="headerlink" href="#con-and-lineplot-long-floating-point-numbers" title="Permalink to this headline">¶</a></h2>
@@ -169,11 +155,9 @@ labels.  A new internal routine called cfp.fix_floats addresses these issues.  F
 from 0 to 5 in steps of 0.1 sometimes produced an axis of
 0, 0.1, 0.2, 0.3, 0.3999999999999999, 0.5
 which produced a badly fored axis.</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="con-blockfill-plot-with-a-time-mean-can-sometimes-produce-unexpected-results">
 <h2>14. con - blockfill plot with a time mean can sometimes produce unexpected results<a class="headerlink" href="#con-blockfill-plot-with-a-time-mean-can-sometimes-produce-unexpected-results" title="Permalink to this headline">¶</a></h2>
@@ -229,109 +213,94 @@ For example the following data has monthly data points but bounds of ten years f
 </div>
 </div>
 </div>
-<blockquote>
-<div></div></blockquote>
+<dl class="simple">
+<dt>::</dt><dd><p>Information added to user guide</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="con-vect-and-lineplot-input-data-checking">
 <h2>15. con, vect and lineplot - input data checking<a class="headerlink" href="#con-vect-and-lineplot-input-data-checking" title="Permalink to this headline">¶</a></h2>
 <p>Basic data size and shape checking is now done for the inputs of CF data to con, vect and lineplot.</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="lineplot-multiple-lines-on-a-single-graph-can-have-incorrect-axis-limits">
 <h2>16. lineplot - multiple lines on a single graph can have incorrect axis limits<a class="headerlink" href="#lineplot-multiple-lines-on-a-single-graph-can-have-incorrect-axis-limits" title="Permalink to this headline">¶</a></h2>
 <p>When making muliple lines on a single graph it can have incorrect axis limits as by
 default the axis limits and labelling were chosen from the last made line.  This was changed so
 that the the min and max of X and Y for the lines in accumulated and applied to the graph.</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="mapset-lambert-conformal-projection-lcc-now-works-in-the-southern-hemisphere">
 <h2>17. mapset - Lambert Conformal projection - lcc now works in the southern hemisphere<a class="headerlink" href="#mapset-lambert-conformal-projection-lcc-now-works-in-the-southern-hemisphere" title="Permalink to this headline">¶</a></h2>
 <p>Selecting the Lambert Conformal 'lcc' projection now works in the southern hemisphere.</p>
 <p><strong>cfp.mapset(proj='lcc', lonmin=-50, lonmax=50, latmin=-80, latmax=-10)</strong></p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="setup-py-changes">
 <h2>18. setup.py changes<a class="headerlink" href="#setup-py-changes" title="Permalink to this headline">¶</a></h2>
 <p>Some minor changes to the requirements were made to the setup.py file</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="init-py-change">
 <h2>19. __init__.py change<a class="headerlink" href="#init-py-change" title="Permalink to this headline">¶</a></h2>
 <p>Put in missing quote in __date__ string.</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="lineplot-check-for-axis-missing">
 <h2>20. lineplot - check for axis missing<a class="headerlink" href="#lineplot-check-for-axis-missing" title="Permalink to this headline">¶</a></h2>
 <p>In lineplot there was no check to see if the Z or T axis existed bufore trying to extract information from them.  A check is now made so that this doesn;t give an error when making a lineplot using data without these axes.</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="cf-plot-install-notes-changed">
 <h2>21. cf-plot install notes changed<a class="headerlink" href="#cf-plot-install-notes-changed" title="Permalink to this headline">¶</a></h2>
 <p>The cf-plot install notes have been changed to include information on how to use pip to upgrade an existing version of cf-plot.</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="gvals-routine-rewritten-internal-contour-and-axis-label-generator">
 <h2>22. gvals routine rewritten - internal contour and axis label generator<a class="headerlink" href="#gvals-routine-rewritten-internal-contour-and-axis-label-generator" title="Permalink to this headline">¶</a></h2>
 <p>The gvals internal routine has been rewritten to be shorter and more logical.  This routine is used in the automatic selection of contour and axis labels.
 The new routine should produce better formatted and spaced labels.</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="cfp-con-plot-type-0-rewrite">
 <h2>23. cfp.con - plot type=0 rewrite<a class="headerlink" href="#cfp-con-plot-type-0-rewrite" title="Permalink to this headline">¶</a></h2>
 <p>The cfp.con section for plot_type=0 has been rewritten.  plot_type=0 is where only one or less
 if X, Y, Z, T are being plotted.  i.e. time vs station index.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="boolean-data">
 <h2>24. Boolean data<a class="headerlink" href="#boolean-data" title="Permalink to this headline">¶</a></h2>
 <p>CF fields that are passed for plotting are changed to 0 or 1 values.</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="cfp-lineplot-default-line-colours-now-taken-from-matplotlib">
 <h2>25. cfp.lineplot - default line colours now taken from Matplotlib<a class="headerlink" href="#cfp-lineplot-default-line-colours-now-taken-from-matplotlib" title="Permalink to this headline">¶</a></h2>
 <p>The default cfp.lineplot colours are taken from Matplotlib unless specified by the user with
 the color keyword.  The previous default was for black which made lineplots more difficult to
 interpret.</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 </div>
 
