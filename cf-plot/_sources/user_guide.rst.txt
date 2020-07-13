@@ -1630,6 +1630,7 @@ Other types of plot are:
 |
 
 
+In the next example the atmosphere is upside down which is how the data is presented.
 
 ::
 
@@ -1648,6 +1649,7 @@ Other types of plot are:
    :scale: 52% 
 
 
+Adding **ptype=4** to the **cfp.con** allows cf-plot to recogise the data as having a pressure axis and plots the atmosphere the right way up.
 
 ::
 
