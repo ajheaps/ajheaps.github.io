@@ -1665,9 +1665,9 @@ Adding **ptype=4** to the **cfp.con** allows cf-plot to recognise the data as ha
 
 .. _appendixC:
 
-****************************************
+########################################
 Appendix C - map projections and options
-****************************************
+########################################
 
 The default map plotting projection is the cyclindrical equidistant
 projection from -180 to 180 in longitude and -90 to 90 in latitude.
@@ -1871,9 +1871,9 @@ Lambert conformal projections can now be cropped as in the following code:
 |
 |
 
-***************************
+###########################
 Appendix D - Modifying data
-***************************
+###########################
 
 
 For the list of `CF attributes <http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#attribute-appendix>`_ setting and changing can be done using:

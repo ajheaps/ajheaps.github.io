@@ -1880,9 +1880,8 @@ For example the following data has monthly data points but bounds of ten years f
 </div>
 <a class="reference internal image-reference" href="_images/guide8.png"><img alt="_images/guide8.png" src="_images/guide8.png" style="width: 518.96px; height: 389.48px;" /></a>
 </div>
-</div>
 <div class="section" id="appendix-c-map-projections-and-options">
-<span id="appendixc"></span><h1>Appendix C - map projections and options<a class="headerlink" href="#appendix-c-map-projections-and-options" title="Permalink to this headline">¶</a></h1>
+<span id="appendixc"></span><h2>Appendix C - map projections and options<a class="headerlink" href="#appendix-c-map-projections-and-options" title="Permalink to this headline">¶</a></h2>
 <p>The default map plotting projection is the cyclindrical equidistant
 projection from -180 to 180 in longitude and -90 to 90 in latitude.
 To change the map view in this projection to over the United Kingdom,
@@ -2031,7 +2030,7 @@ viewable latitudes and <strong>lat_0</strong> sets the centre of desired map dom
 </div>
 </div>
 <div class="section" id="appendix-d-modifying-data">
-<h1>Appendix D - Modifying data<a class="headerlink" href="#appendix-d-modifying-data" title="Permalink to this headline">¶</a></h1>
+<h2>Appendix D - Modifying data<a class="headerlink" href="#appendix-d-modifying-data" title="Permalink to this headline">¶</a></h2>
 <p>For the list of <a class="reference external" href="http://cfconventions.org/Data/cf-conventions/cf-conventions-1.7/cf-conventions.html#attribute-appendix">CF attributes</a> setting and changing can be done using:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">field</span><span class="o">.</span><span class="n">standard_name</span> <span class="o">=</span> <span class="s1">&#39;new_name&#39;</span>
 </pre></div>
@@ -2045,6 +2044,8 @@ viewable latitudes and <strong>lat_0</strong> sets the centre of desired map dom
 <span class="n">f</span><span class="o">.</span><span class="n">del_property</span><span class="p">(</span><span class="s1">&#39;standard_name&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="section" id="example-1-adding-a-standard-name-to-a-field-that-doesn-t-have-one">
+<h3>Example 1 - adding a standard_name to a field that doesn't have one<a class="headerlink" href="#example-1-adding-a-standard-name-to-a-field-that-doesn-t-have-one" title="Permalink to this headline">¶</a></h3>
 <p>In this case we have a field with a long_name but no standard_name</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/data1.nc&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
@@ -2062,6 +2063,9 @@ viewable latitudes and <strong>lat_0</strong> sets the centre of desired map dom
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;newdata.nc&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="example-2-change-the-field-data-to-something-else">
+<h3>Example 2 - change the field data to something else<a class="headerlink" href="#example-2-change-the-field-data-to-something-else" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/data1.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
@@ -2104,6 +2108,9 @@ For the original data:</p>
 </div>
 <p>(-53.41583251953125, 136.50885009765625)</p>
 <p>Now when the data is written out it is correct.</p>
+</div>
+<div class="section" id="example-3-data-with-an-incorrect-valid-min-valid-max">
+<h3>Example 3 - Data with an incorrect valid_min / valid_max<a class="headerlink" href="#example-3-data-with-an-incorrect-valid-min-valid-max" title="Permalink to this headline">¶</a></h3>
 <p>Sometimes data has an invalid valid_min or valid_max due to a data creation mistake or processing error.</p>
 <p>Here we make some sample data where the maximum of the data is greater than the valid_max parameter.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
@@ -2138,6 +2145,8 @@ See <a class="reference external" href="https://ncas-cms.github.io/cf-python/tut
 cfp.con(h)</p>
 <p>Now the data plots as we expect and we can change the data valid_min or valid_max as in the second example above.</p>
 <a class="reference internal image-reference" href="_images/data_incorrect2.png"><img alt="_images/data_incorrect2.png" src="_images/data_incorrect2.png" style="width: 514.28px; height: 309.92px;" /></a>
+</div>
+</div>
 </div>
 
 
