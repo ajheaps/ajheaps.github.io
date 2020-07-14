@@ -1392,11 +1392,12 @@ The new time data bounds are now:
 
 
 
+
 .. _appendixA:
 
-**************************************
+######################################
 Appendix A - Introduction to cf-python
-**************************************
+######################################
 
 cf-python is very flexible and can be used to select fields, levels, times, means for both CF and non-CF compliant data.  CF data is data that follows the NetCDF Climate and Forecast (CF) Metadata Conventions.  The conventions define metadata that provide a definitive description of what the data in each variable represents, and of the spatial and temporal properties of the data.
 
@@ -1585,9 +1586,9 @@ An area mean can be accomplished with a special area operator.  If the weights='
 
 .. _appendixB:
 
-************************************
+####################################
 Appendix B - Passing data via arrays
-************************************
+####################################
 
 cf-plot can also make contour and vector plots by passing data arrays. In this example we read in a temperature field from a netCDF file and pass it to cf-plot for plotting.
 

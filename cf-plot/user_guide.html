@@ -1674,10 +1674,11 @@ For example the following data has monthly data points but bounds of ten years f
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="appendix-a-introduction-to-cf-python">
-<span id="appendixa"></span><h1>Appendix A - Introduction to cf-python<a class="headerlink" href="#appendix-a-introduction-to-cf-python" title="Permalink to this headline">¶</a></h1>
+<span id="appendixa"></span><h2>Appendix A - Introduction to cf-python<a class="headerlink" href="#appendix-a-introduction-to-cf-python" title="Permalink to this headline">¶</a></h2>
 <p>cf-python is very flexible and can be used to select fields, levels, times, means for both CF and non-CF compliant data.  CF data is data that follows the NetCDF Climate and Forecast (CF) Metadata Conventions.  The conventions define metadata that provide a definitive description of what the data in each variable represents, and of the spatial and temporal properties of the data.</p>
+<div class="section" id="reading-in-data-and-field-selection">
+<h3>Reading in data and field selection<a class="headerlink" href="#reading-in-data-and-field-selection" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line"><strong>import cf</strong></div>
 <div class="line"><strong>fl = cf.read('cfplot_data/ggap.nc')</strong></div>
@@ -1707,6 +1708,9 @@ For example the following data has monthly data points but bounds of ten years f
 <div class="line"><strong>g</strong></div>
 </div>
 <p>&lt;CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(320)) K&gt;</p>
+</div>
+<div class="section" id="looking-at-what-the-data-is-in-a-dimension">
+<h3>Looking at what the data is in a dimension<a class="headerlink" href="#looking-at-what-the-data-is-in-a-dimension" title="Permalink to this headline">¶</a></h3>
 <p>Reading in a new field</p>
 <div class="line-block">
 <div class="line"><strong>g = cf.read('cfplot_data/tas_A1.nc')[0]</strong></div>
@@ -1764,6 +1768,9 @@ For example the following data has monthly data points but bounds of ten years f
 <div class="line">dtype=object)</div>
 </div>
 </div>
+</div>
+<div class="section" id="selecting-a-single-dimension-value">
+<h3>Selecting a single dimension value<a class="headerlink" href="#selecting-a-single-dimension-value" title="Permalink to this headline">¶</a></h3>
 <p>In the case below we select the slice of data at longitude=0.0 with the subspace method.</p>
 <div class="line-block">
 <div class="line"><strong>g.subspace(longitude=0.0)</strong></div>
@@ -1782,6 +1789,9 @@ For example the following data has monthly data points but bounds of ten years f
 <div class="line"><strong>g.subspace(time=15.0)</strong></div>
 <div class="line"><strong>g.subspace(time=cf.dt('1860-1-16'))</strong></div>
 </div>
+</div>
+<div class="section" id="selecting-a-range-of-dimension-values">
+<h3>Selecting a range of dimension values<a class="headerlink" href="#selecting-a-range-of-dimension-values" title="Permalink to this headline">¶</a></h3>
 <p>To select a range of values use the cf.wi cf.wi construct</p>
 <div class="line-block">
 <div class="line"><strong>g.subspace(longitude=cf.wi(0, 60))</strong></div>
@@ -1790,6 +1800,9 @@ For example the following data has monthly data points but bounds of ten years f
 <div class="line-block">
 <div class="line"><strong>g.subspace(T=cf.wi(cf.dt('1860-1-16'), cf.dt('1960-1-16')))</strong></div>
 </div>
+</div>
+<div class="section" id="collapsing-a-dimension">
+<h3>Collapsing a dimension<a class="headerlink" href="#collapsing-a-dimension" title="Permalink to this headline">¶</a></h3>
 <p>The collapse method allows a variety of statistical operators to be applied over a dimension - mean, min, max, standard_deviation.  The most commonly used one is mean.</p>
 <p>To do a time mean of the data</p>
 <div class="line-block">
@@ -1817,8 +1830,9 @@ For example the following data has monthly data points but bounds of ten years f
 </div>
 <p>&lt;CF Field: air_temperature(time(1680), latitude(1), longitude(1)) K&gt;</p>
 </div>
+</div>
 <div class="section" id="appendix-b-passing-data-via-arrays">
-<span id="appendixb"></span><h1>Appendix B - Passing data via arrays<a class="headerlink" href="#appendix-b-passing-data-via-arrays" title="Permalink to this headline">¶</a></h1>
+<span id="appendixb"></span><h2>Appendix B - Passing data via arrays<a class="headerlink" href="#appendix-b-passing-data-via-arrays" title="Permalink to this headline">¶</a></h2>
 <p>cf-plot can also make contour and vector plots by passing data arrays. In this example we read in a temperature field from a netCDF file and pass it to cf-plot for plotting.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="kn">from</span> <span class="nn">netCDF4</span> <span class="kn">import</span> <span class="n">Dataset</span> <span class="k">as</span> <span class="n">ncfile</span>
@@ -1865,6 +1879,7 @@ For example the following data has monthly data points but bounds of ten years f
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/guide8.png"><img alt="_images/guide8.png" src="_images/guide8.png" style="width: 518.96px; height: 389.48px;" /></a>
+</div>
 </div>
 <div class="section" id="appendix-c-map-projections-and-options">
 <span id="appendixc"></span><h1>Appendix C - map projections and options<a class="headerlink" href="#appendix-c-map-projections-and-options" title="Permalink to this headline">¶</a></h1>
