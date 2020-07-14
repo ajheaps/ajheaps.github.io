@@ -2039,7 +2039,7 @@ When writing out the data we get:
 WARNING: <CF Field: eastward_wind(time(1), pressure(1), latitude(160), longitude(320)) m s**-1> has data values written to data_incorrect.nc that are strictly greater than the valid maximum defined by the valid_max property: 116.50885009765625. Set warn_valid=False to remove warning.
 
 
-On reading in the data again by default we get no warning that the data could be compromised.  Wen we plot the data however we readily see that the jet stream have missing data and aren't plotted as we would expect.
+On reading in the data again by default we get no warning that the data could be compromised.  When we plot the data however we readily see that the jet stream has missing data and isn't plotted as we would expect.
 
 
 ::
@@ -2053,7 +2053,7 @@ On reading in the data again by default we get no warning that the data could be
    :scale: 52% 
 
 
-To turn on the warning in the cf.read command use warn_valid=True
+To turn on the warning in the **cf.read** command use **warn_valid=True**
 
 ::
 
@@ -2069,8 +2069,10 @@ See https://ncas-cms.github.io/cf-python/tutorial.html#data-mask for more detail
 
 
 
-h = cf.read('data_incorrect.nc', mask=False)[0]
-cfp.con(h)
+::
+
+    h = cf.read('data_incorrect.nc', mask=False)[0]
+    cfp.con(h)
 
 
 Now the data plots as we expect and we can change the data valid_min or valid_max as in the second example above.
@@ -2078,6 +2080,9 @@ Now the data plots as we expect and we can change the data valid_min or valid_ma
 
 .. image::  images/data_incorrect2.png
    :scale: 52% 
+
+
+
 
 
 

@@ -2128,21 +2128,23 @@ For the original data:</p>
 </pre></div>
 </div>
 <p>WARNING: &lt;CF Field: eastward_wind(time(1), pressure(1), latitude(160), longitude(320)) m s**-1&gt; has data values written to data_incorrect.nc that are strictly greater than the valid maximum defined by the valid_max property: 116.50885009765625. Set warn_valid=False to remove warning.</p>
-<p>On reading in the data again by default we get no warning that the data could be compromised.  Wen we plot the data however we readily see that the jet stream have missing data and aren't plotted as we would expect.</p>
+<p>On reading in the data again by default we get no warning that the data could be compromised.  When we plot the data however we readily see that the jet stream has missing data and isn't plotted as we would expect.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data_incorrect.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/data_incorrect1.png"><img alt="_images/data_incorrect1.png" src="_images/data_incorrect1.png" style="width: 514.28px; height: 309.92px;" /></a>
-<p>To turn on the warning in the cf.read command use warn_valid=True</p>
+<p>To turn on the warning in the <strong>cf.read</strong> command use <strong>warn_valid=True</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data_incorrect.nc&#39;</span><span class="p">,</span> <span class="n">warn_valid</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>WARNING: &lt;CF Field: eastward_wind(time(1), pressure(1), latitude(160), longitude(320)) m s**-1&gt; has  valid_max, valid_min properties. Set warn_valid=False to suppress warning.</p>
 <p>We can read in the data ignoring the masking implied by valid_min and valid_max using the mask=False parameter.
 See <a class="reference external" href="https://ncas-cms.github.io/cf-python/tutorial.html#data-mask">https://ncas-cms.github.io/cf-python/tutorial.html#data-mask</a> for more details.</p>
-<p>h = cf.read('data_incorrect.nc', mask=False)[0]
-cfp.con(h)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data_incorrect.nc&#39;</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>Now the data plots as we expect and we can change the data valid_min or valid_max as in the second example above.</p>
 <a class="reference internal image-reference" href="_images/data_incorrect2.png"><img alt="_images/data_incorrect2.png" src="_images/data_incorrect2.png" style="width: 514.28px; height: 309.92px;" /></a>
 </div>
