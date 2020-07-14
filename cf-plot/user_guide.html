@@ -1847,7 +1847,7 @@ For example the following data has monthly data points but bounds of ten years f
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
-<p>In the next example the atmosphere is upside down which is how the data is presented.</p>
+<p>In the next example the atmosphere is upside down as cf-plot will plot data axes starting with the smallest value.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">netCDF4</span> <span class="kn">import</span> <span class="n">Dataset</span> <span class="k">as</span> <span class="n">ncfile</span>
@@ -1860,7 +1860,7 @@ For example the following data has monthly data points but bounds of ten years f
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/guide7.png"><img alt="_images/guide7.png" src="_images/guide7.png" style="width: 514.28px; height: 389.48px;" /></a>
-<p>Adding <strong>ptype=4</strong> to the <strong>cfp.con</strong> allows cf-plot to recogise the data as having a pressure axis and plots the atmosphere the right way up.</p>
+<p>Adding <strong>ptype=4</strong> to the <strong>cfp.con</strong> allows cf-plot to recognise the data as having a pressure axis and plots the atmosphere the right way up.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">u_mean</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">lats</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">pressure</span><span class="p">,</span> <span class="n">ptype</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2030,7 +2030,6 @@ viewable latitudes and <strong>lat_0</strong> sets the centre of desired map dom
 <span class="n">f</span><span class="o">.</span><span class="n">del_property</span><span class="p">(</span><span class="s1">&#39;project&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Example 1 - adding a standard_name to a field that doesn't have one</p>
 <p>In this case we have a field with a long_name but no standard_name</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/data1.nc&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
@@ -2048,7 +2047,6 @@ viewable latitudes and <strong>lat_0</strong> sets the centre of desired map dom
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;newdata.nc&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Example 2 - change the field data to something else</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/data1.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
@@ -2057,17 +2055,17 @@ viewable latitudes and <strong>lat_0</strong> sets the centre of desired map dom
 </div>
 <p>&lt;CF Field: eastward_wind(time(1), pressure(23), latitude(160), longitude(320)) m s**-1&gt;</p>
 <p>Next we put the numpy array of the data into a variable called data.  In this example we add 20 to all values we insert this back
-into the field.  Using this method it is easy to modify certain parts of the data to change while leaving the rest as it was.
-we could have just used the simpler notation of</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">+=</span> <span class="mi">20</span>
-</pre></div>
-</div>
-<p>and achieved the same effect.</p>
+into the field.  Using this method it is easy to modify certain parts of the data to change while leaving the rest as it was.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">array</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">data</span> <span class="o">+</span> <span class="mi">20</span>
 <span class="n">f</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">data</span>
 </pre></div>
 </div>
+<p>We could have just used the simpler notation of</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">+=</span> <span class="mi">20</span>
+</pre></div>
+</div>
+<p>and achieved the same effect.</p>
 <p>We need to be aware of the valid_min and valid_max values here as we have modified the data.
 For the original data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">valid_min</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">valid_max</span>
@@ -2091,7 +2089,40 @@ For the original data:</p>
 </div>
 <p>(-53.41583251953125, 136.50885009765625)</p>
 <p>Now when the data is written out it is correct.</p>
-<p>Example 3 - reading in data with incorrect valid_min / valid_max etc</p>
+<p>Sometimes data has an invalid valid_min or valid_max due to a data creation mistake or processing error.</p>
+<p>Here we make some sample data where the maximum of the data is greater than the valid_max parameter.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
+<span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/data1.nc&#39;</span><span class="p">)[</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">Z</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">+=</span> <span class="mi">60</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">g</span><span class="o">.</span><span class="n">valid_max</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>160.60183715820312 m s**-1 116.50885</p>
+<p>When writing out the data we get:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s1">&#39;data_incorrect.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>WARNING: &lt;CF Field: eastward_wind(time(1), pressure(1), latitude(160), longitude(320)) m s**-1&gt; has data values written to data_incorrect.nc that are strictly greater than the valid maximum defined by the valid_max property: 116.50885009765625. Set warn_valid=False to remove warning.</p>
+<p>On reading in the data again by default we get no warning that the data could be compromised.  Wen we plot the data however we readily see that the jet stream have missing data and aren't plotted as we would expect.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data_incorrect.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/data_incorrect1.png"><img alt="_images/data_incorrect1.png" src="_images/data_incorrect1.png" style="width: 514.28px; height: 309.92px;" /></a>
+<p>To turn on the warning in the cf.read command use warn_valid=True</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data_incorrect.nc&#39;</span><span class="p">,</span> <span class="n">warn_valid</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>WARNING: &lt;CF Field: eastward_wind(time(1), pressure(1), latitude(160), longitude(320)) m s**-1&gt; has  valid_max, valid_min properties. Set warn_valid=False to suppress warning.</p>
+<p>We can read in the data ignoring the masking implied by valid_min and valid_max using the mask=False parameter.
+See <a class="reference external" href="https://ncas-cms.github.io/cf-python/tutorial.html#data-mask">https://ncas-cms.github.io/cf-python/tutorial.html#data-mask</a> for more details.</p>
+<p>h = cf.read('data_incorrect.nc', mask=False)[0]
+cfp.con(h)</p>
+<p>Now the data plots as we expect and we can change the data valid_min or valid_max as in the second example above.</p>
+<a class="reference internal image-reference" href="_images/data_incorrect2.png"><img alt="_images/data_incorrect2.png" src="_images/data_incorrect2.png" style="width: 514.28px; height: 309.92px;" /></a>
 </div>
 
 

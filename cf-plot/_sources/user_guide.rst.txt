@@ -1630,7 +1630,7 @@ Other types of plot are:
 |
 
 
-In the next example the atmosphere is upside down which is how the data is presented.
+In the next example the atmosphere is upside down as cf-plot will plot data axes starting with the smallest value.
 
 ::
 
@@ -1649,7 +1649,7 @@ In the next example the atmosphere is upside down which is how the data is prese
    :scale: 52% 
 
 
-Adding **ptype=4** to the **cfp.con** allows cf-plot to recogise the data as having a pressure axis and plots the atmosphere the right way up.
+Adding **ptype=4** to the **cfp.con** allows cf-plot to recognise the data as having a pressure axis and plots the atmosphere the right way up.
 
 ::
 
@@ -1901,7 +1901,7 @@ There are also corresponding get_property and del_property methods
 
 
 Example 1 - adding a standard_name to a field that doesn't have one
-
+-------------------------------------------------------------------
 
 
 In this case we have a field with a long_name but no standard_name
@@ -1935,6 +1935,7 @@ and write out the new data to a file
 
 
 Example 2 - change the field data to something else
+---------------------------------------------------
 
 ::
 
@@ -1947,7 +1948,15 @@ Example 2 - change the field data to something else
 
 Next we put the numpy array of the data into a variable called data.  In this example we add 20 to all values we insert this back 
 into the field.  Using this method it is easy to modify certain parts of the data to change while leaving the rest as it was.
-we could have just used the simpler notation of 
+
+::
+
+   data = f.array
+   data = data + 20
+   f.data[:] = data
+
+
+We could have just used the simpler notation of 
 
 ::
 
@@ -1955,12 +1964,6 @@ we could have just used the simpler notation of
 
 and achieved the same effect.
 
-
-::
-
-   data = f.array
-   data = data + 20
-   f.data[:] = data
 
 
 We need to be aware of the valid_min and valid_max values here as we have modified the data.
@@ -2003,8 +2006,77 @@ Now when the data is written out it is correct.
 
 
 
-Example 3 - reading in data with incorrect valid_min / valid_max etc
+Example 3 - Data with an incorrect valid_min / valid_max
+--------------------------------------------------------
 
+Sometimes data has an invalid valid_min or valid_max due to a data creation mistake or processing error. 
+
+Here we make some sample data where the maximum of the data is greater than the valid_max parameter.
+
+
+::
+
+    import cf
+    import cfplot as cfp
+    f = cf.read('cfplot_data/data1.nc')[7]
+    g = f.subspace(Z=10)
+    g += 60
+
+    print(g.max(), g.valid_max)
+
+
+160.60183715820312 m s**-1 116.50885
+
+
+When writing out the data we get:
+
+::
+
+    cf.write(g, 'data_incorrect.nc')
+
+
+WARNING: <CF Field: eastward_wind(time(1), pressure(1), latitude(160), longitude(320)) m s**-1> has data values written to data_incorrect.nc that are strictly greater than the valid maximum defined by the valid_max property: 116.50885009765625. Set warn_valid=False to remove warning.
+
+
+On reading in the data again by default we get no warning that the data could be compromised.  Wen we plot the data however we readily see that the jet stream have missing data and aren't plotted as we would expect.
+
+
+::
+
+    h = cf.read('data_incorrect.nc')[0]
+    cfp.con(h)
+
+
+
+.. image::  images/data_incorrect1.png
+   :scale: 52% 
+
+
+To turn on the warning in the cf.read command use warn_valid=True
+
+::
+
+    h = cf.read('data_incorrect.nc', warn_valid=True)[0]
+
+
+
+WARNING: <CF Field: eastward_wind(time(1), pressure(1), latitude(160), longitude(320)) m s**-1> has  valid_max, valid_min properties. Set warn_valid=False to suppress warning.
+
+
+We can read in the data ignoring the masking implied by valid_min and valid_max using the mask=False parameter.
+See https://ncas-cms.github.io/cf-python/tutorial.html#data-mask for more details.
+
+
+
+h = cf.read('data_incorrect.nc', mask=False)[0]
+cfp.con(h)
+
+
+Now the data plots as we expect and we can change the data valid_min or valid_max as in the second example above.
+
+
+.. image::  images/data_incorrect2.png
+   :scale: 52% 
 
 
 
