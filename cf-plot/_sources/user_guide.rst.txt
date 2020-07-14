@@ -1899,7 +1899,7 @@ There are also corresponding get_property and del_property methods
 
 
 
-
+-------------------------------------------------------------------
 Example 1 - adding a standard_name to a field that doesn't have one
 -------------------------------------------------------------------
 
@@ -1933,7 +1933,7 @@ and write out the new data to a file
 
 
 
-
+---------------------------------------------------
 Example 2 - change the field data to something else
 ---------------------------------------------------
 
@@ -2005,7 +2005,7 @@ Now we need to add 20 to the valid_min and valid_max:
 Now when the data is written out it is correct.  
 
 
-
+--------------------------------------------------------
 Example 3 - Data with an incorrect valid_min / valid_max
 --------------------------------------------------------
 
