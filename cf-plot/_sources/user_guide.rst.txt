@@ -1894,14 +1894,14 @@ There are also corresponding get_property and del_property methods
 
 ::
 
-   f.get_property('project')
-   f.del_property('project')
+   f.get_property('standard_name')
+   f.del_property('standard_name')
 
 
 
--------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Example 1 - adding a standard_name to a field that doesn't have one
--------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 In this case we have a field with a long_name but no standard_name
@@ -1933,9 +1933,9 @@ and write out the new data to a file
 
 
 
----------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Example 2 - change the field data to something else
----------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
@@ -2005,9 +2005,9 @@ Now we need to add 20 to the valid_min and valid_max:
 Now when the data is written out it is correct.  
 
 
---------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Example 3 - Data with an incorrect valid_min / valid_max
---------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Sometimes data has an invalid valid_min or valid_max due to a data creation mistake or processing error. 
 
