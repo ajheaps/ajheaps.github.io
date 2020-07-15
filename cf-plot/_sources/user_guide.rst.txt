@@ -1095,11 +1095,17 @@ scale44 .. image:: images/colour_scales/scale44.png
 Colour bars
 ^^^^^^^^^^^
 
-Colour bars are often associated with filled colour contour plots.  Options for the colour bar are described in the `**cfp.cbar** documentation <http://ajheaps.github.io/cf-plot/cbar.html>`_  cf-plot has used the American spelling or colorbar for compatability with the spelling and usage within the Matplotlib Python package.
+Colour bars are often associated with filled colour contour plots.  Options for the colour bar are described in the `cfp.cbar documentation <http://ajheaps.github.io/cf-plot/cbar.html>`_  cf-plot has used the American spelling for colorbar for compatability with the spelling and usage within the Matplotlib Python package.
 
 If the colour bar options are changed within the call to **cfp.con** then prepend colorbar_ to the appropriate colour bar option.
 
 An independent colour bar might be needed and an example of how to produce one is show in `example 19b <http://ajheaps.github.io/cf-plot/multiple_plots.html>`_
+
+
+Below are some examples of calls to **cfp.cbar**
+
+.. image::  images/cbar.png
+   :scale: 52% 
 
 
 ::
@@ -1112,7 +1118,7 @@ An independent colour bar might be needed and an example of how to produce one i
 
     cfp.levs(0, 500000, 50000)
 
-    cfp.cbar(position=[0.1, 0.9, 0.4, 0.01], title='text overlapping')
+    cfp.cbar(position=[0.1, 0.9, 0.4, 0.01], title='text overlapping with default fontsize')
 
     cfp.setvars(colorbar_fontsize=7)
     cfp.cbar(position=[0.1, 0.75, 0.4, 0.01], title='colorbar_fontsize=7')
@@ -1138,22 +1144,13 @@ An independent colour bar might be needed and an example of how to produce one i
     cfp.cbar(position=[0.55, 0.9, 0.4, 0.01], extend ='neither', 
              levs=levs, labels=labels, title='Normal labelling at the division boundary')
     cfp.cbar(position=[0.55, 0.75, 0.4, 0.01], extend ='neither', mid = True, 
-             levs=levs, labels=labels_mid, title='mid=True')
+             levs=levs, labels=labels_mid, title='mid=True and three colorbar labels')
 
     
     #Turn off plot axes
     cfp.plotvars.plot.axis('off')
 
     cfp.gclose()
-
-
-
-
-
-.. image::  images/cbar.png
-   :scale: 52% 
-
-
 
 
 
