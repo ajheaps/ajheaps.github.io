@@ -1091,6 +1091,75 @@ scale44 .. image:: images/colour_scales/scale44.png
 
 
 
+^^^^^^^^^^^
+Colour bars
+^^^^^^^^^^^
+
+Colour bars are often associated with filled colour contour plots.  Options for the colour bar are described in the `**cfp.cbar** documentation <http://ajheaps.github.io/cf-plot/cbar.html>`_  cf-plot has used the American spelling or colorbar for compatability with the spelling and usage within the Matplotlib Python package.
+
+If the colour bar options are changed within the call to **cfp.con** then prepend colorbar_ to the appropriate colour bar option.
+
+An independent colour bar might be needed and an example of how to produce one is show in `example 19b <http://ajheaps.github.io/cf-plot/multiple_plots.html>`_
+
+
+::
+
+    import cf
+    import cfplot as cfp
+    import numpy as np
+
+    cfp.gopen()
+
+    cfp.levs(0, 500000, 50000)
+
+    cfp.cbar(position=[0.1, 0.9, 0.4, 0.01], title='text overlapping')
+
+    cfp.setvars(colorbar_fontsize=7)
+    cfp.cbar(position=[0.1, 0.75, 0.4, 0.01], title='colorbar_fontsize=7')
+
+
+    # Reset font size
+    cfp.setvars()
+
+    cfp.cbar(position=[0.1, 0.6, 0.4, 0.01], text_down_up=True, title='text_down_up')
+
+    cfp.cbar(position=[0.1, 0.45, 0.4, 0.01], text_up_down=True, title='text_up_down')
+
+    cfp.cbar(position=[0.1, 0.30, 0.4, 0.01], text_down_up=True, drawedges=False, 
+             title='text_down_up, drawedges=False')
+
+
+
+    levs=np.array([0, 10, 20, 30])
+    labels=['a', 'b', 'c', 'd']
+    labels_mid=['a', 'b', 'c']
+
+
+    cfp.cbar(position=[0.55, 0.9, 0.4, 0.01], extend ='neither', 
+             levs=levs, labels=labels, title='Normal labelling at the division boundary')
+    cfp.cbar(position=[0.55, 0.75, 0.4, 0.01], extend ='neither', mid = True, 
+             levs=levs, labels=labels_mid, title='mid=True')
+
+    
+    #Turn off plot axes
+    cfp.plotvars.plot.axis('off')
+
+    cfp.gclose()
+
+
+
+
+
+.. image::  images/cbar.png
+   :scale: 52% 
+
+
+
+
+
+
+
+
 ^^^^^^^^^^^^^^^^^^^
 Labelling time axes
 ^^^^^^^^^^^^^^^^^^^
@@ -2064,7 +2133,7 @@ To turn on the warning in the **cf.read** command use **warn_valid=True**
 WARNING: <CF Field: eastward_wind(time(1), pressure(1), latitude(160), longitude(320)) m s**-1> has  valid_max, valid_min properties. Set warn_valid=False to suppress warning.
 
 
-We can read in the data ignoring the masking implied by valid_min and valid_max using the mask=False parameter.
+We can read in the data ignoring the masking implied by valid_min and valid_max using the **mask=False** parameter.
 See https://ncas-cms.github.io/cf-python/tutorial.html#data-mask for more details.
 
 

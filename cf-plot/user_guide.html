@@ -1403,6 +1403,56 @@ scale than one where all the blues are compressed into 3 colours.</p>
 </tbody>
 </table>
 </div>
+<div class="section" id="colour-bars">
+<h3>Colour bars<a class="headerlink" href="#colour-bars" title="Permalink to this headline">¶</a></h3>
+<p>Colour bars are often associated with filled colour contour plots.  Options for the colour bar are described in the <a class="reference external" href="http://ajheaps.github.io/cf-plot/cbar.html">**cfp.cbar** documentation</a>  cf-plot has used the American spelling or colorbar for compatability with the spelling and usage within the Matplotlib Python package.</p>
+<p>If the colour bar options are changed within the call to <strong>cfp.con</strong> then prepend <a href="#id6"><span class="problematic" id="id7">colorbar_</span></a> to the appropriate colour bar option.</p>
+<p>An independent colour bar might be needed and an example of how to produce one is show in <a class="reference external" href="http://ajheaps.github.io/cf-plot/multiple_plots.html">example 19b</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
+<span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">gopen</span><span class="p">()</span>
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">levs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500000</span><span class="p">,</span> <span class="mi">50000</span><span class="p">)</span>
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">cbar</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;text overlapping&#39;</span><span class="p">)</span>
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">setvars</span><span class="p">(</span><span class="n">colorbar_fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">cbar</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;colorbar_fontsize=7&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Reset font size</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">setvars</span><span class="p">()</span>
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">cbar</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span> <span class="n">text_down_up</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;text_down_up&#39;</span><span class="p">)</span>
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">cbar</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span> <span class="n">text_up_down</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;text_up_down&#39;</span><span class="p">)</span>
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">cbar</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span> <span class="n">text_down_up</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drawedges</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;text_down_up, drawedges=False&#39;</span><span class="p">)</span>
+
+
+
+<span class="n">levs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
+<span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">]</span>
+<span class="n">labels_mid</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">cbar</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span> <span class="n">extend</span> <span class="o">=</span><span class="s1">&#39;neither&#39;</span><span class="p">,</span>
+         <span class="n">levs</span><span class="o">=</span><span class="n">levs</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Normal labelling at the division boundary&#39;</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">cbar</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">[</span><span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span> <span class="n">extend</span> <span class="o">=</span><span class="s1">&#39;neither&#39;</span><span class="p">,</span> <span class="n">mid</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+         <span class="n">levs</span><span class="o">=</span><span class="n">levs</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels_mid</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;mid=True&#39;</span><span class="p">)</span>
+
+
+<span class="c1">#Turn off plot axes</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/cbar.png"><img alt="_images/cbar.png" src="_images/cbar.png" style="width: 520.52px; height: 288.08px;" /></a>
+</div>
 <div class="section" id="labelling-time-axes">
 <h3>Labelling time axes<a class="headerlink" href="#labelling-time-axes" title="Permalink to this headline">¶</a></h3>
 <p>The default time axis labelling in cf-plot might not be what is required and here is some information on
@@ -2139,7 +2189,7 @@ For the original data:</p>
 </pre></div>
 </div>
 <p>WARNING: &lt;CF Field: eastward_wind(time(1), pressure(1), latitude(160), longitude(320)) m s**-1&gt; has  valid_max, valid_min properties. Set warn_valid=False to suppress warning.</p>
-<p>We can read in the data ignoring the masking implied by valid_min and valid_max using the mask=False parameter.
+<p>We can read in the data ignoring the masking implied by valid_min and valid_max using the <strong>mask=False</strong> parameter.
 See <a class="reference external" href="https://ncas-cms.github.io/cf-python/tutorial.html#data-mask">https://ncas-cms.github.io/cf-python/tutorial.html#data-mask</a> for more details.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;data_incorrect.nc&#39;</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
