@@ -40,7 +40,7 @@ At the core of cf-plot are a set of functions for making and controlling plots.
 |    **Plot making operators**
 |    `con <http://ajheaps.github.io/cf-plot/con.html>`_ - make a contour plot
 |    `cbar <http://ajheaps.github.io/cf-plot/cbar.html>`_ - make a colour bar
-|    `vect <http://ajheaps.github.io/cf-plot/vect.html>`_ - plot vectors
+|    `vect <http://ajheaps.github.io/cf-plot/vect.html>`_ - vector and stream plots
 |    `traj <http://ajheaps.github.io/cf-plot/traj.html>`_ - trajectory plots
 |    `lineplot <http://ajheaps.github.io/cf-plot/lineplot.html>`_ - make a graph
 |    `stipple <http://ajheaps.github.io/cf-plot/stipple.html>`_ - make a stipple plot
