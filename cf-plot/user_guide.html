@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cf-plot user guide &#8212; cf-plot 3.0.25 documentation</title>
+    <title>cf-plot user guide &#8212; cf-plot 3.0.26 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -25,7 +25,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.26 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">cf-plot user guide</a></li> 
       </ul>
     </div>  
@@ -220,8 +220,8 @@
 </div>
 <a class="reference internal image-reference" href="_images/fig11.png"><img alt="_images/fig11.png" src="_images/fig11.png" style="width: 530.4px; height: 345.28000000000003px;" /></a>
 </div>
-<div class="section" id="vector-plots">
-<span id="vectors"></span><h3>Vector Plots<a class="headerlink" href="#vector-plots" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="vector-and-stream-plots">
+<span id="vectors"></span><h3>Vector and stream Plots<a class="headerlink" href="#vector-and-stream-plots" title="Permalink to this headline">¶</a></h3>
 <p>Vector plots are made using the <strong>cfp.vect</strong> routine.  The u and v data must have two dimensions with matching multiple values in as below.</p>
 <div class="line-block">
 <div class="line">&lt;CF Field: eastward_wind(time(1), pressure(1), latitude(160), longitude(320)) m s**-1&gt;</div>
@@ -278,7 +278,7 @@
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/fig16.png"><img alt="_images/fig16.png" src="_images/fig16.png" style="width: 456.72px; height: 352.44px;" /></a>
-<p>A streamplot is used to show fluid flow and 2D field gradients.  In this first example the data goes from 0 to 358.875 in longitude.  The cartopy / matplotlib interface seems to like having the data inside the data window so we anchor the data in cf-python using the anchor method to start at -180 in longitude.  If we didn't do this any longitudes less than zero would have no streams drawn.</p>
+<p>A streamplot is used to show fluid flow and 2D field gradients.  In this first example the data goes from 0 to 358.875 in longitude.  The cartopy / matplotlib interface seems to need the data to be inside the data window in longitude so we anchor the data in cf-python using the anchor method to start at -180 in longitude.  If we didn't do this any longitudes less than zero would have no streams drawn.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -2262,7 +2262,7 @@ See <a class="reference external" href="https://ncas-cms.github.io/cf-python/tut
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.26 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">cf-plot user guide</a></li> 
       </ul>
     </div>

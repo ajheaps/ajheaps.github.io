@@ -304,9 +304,9 @@ A Hovmuller plot is one of longitude or latitude versus time as in the following
 
 .. _vectors:
 
-^^^^^^^^^^^^
-Vector Plots
-^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
+Vector and stream Plots
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Vector plots are made using the **cfp.vect** routine.  The u and v data must have two dimensions with matching multiple values in as below.
 
@@ -392,7 +392,7 @@ Here we make a zonal mean vector plot with different vector keys and scaling fac
 
 
 
-A streamplot is used to show fluid flow and 2D field gradients.  In this first example the data goes from 0 to 358.875 in longitude.  The cartopy / matplotlib interface seems to like having the data inside the data window so we anchor the data in cf-python using the anchor method to start at -180 in longitude.  If we didn't do this any longitudes less than zero would have no streams drawn. 
+A streamplot is used to show fluid flow and 2D field gradients.  In this first example the data goes from 0 to 358.875 in longitude.  The cartopy / matplotlib interface seems to need the data to be inside the data window in longitude so we anchor the data in cf-python using the anchor method to start at -180 in longitude.  If we didn't do this any longitudes less than zero would have no streams drawn. 
 
 
 ::
