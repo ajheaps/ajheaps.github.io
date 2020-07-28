@@ -22,6 +22,7 @@ Contents:
    reset.rst
    setvars.rst
    stipple.rst
+   stream.rst
    traj.rst
    vect.rst
 
