@@ -1,19 +1,20 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>version 3.0 changes &#8212; cf-plot 3.0.25 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -24,7 +25,8 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">version 3.0 changes</a></li> 
       </ul>
     </div>  
 
@@ -302,9 +304,35 @@ interpret.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="cfp-stream-streamplots-added">
+<h2>26. cfp.stream - streamplots added<a class="headerlink" href="#cfp-stream-streamplots-added" title="Permalink to this headline">¶</a></h2>
+<p>Streamplots are now available in cf-plot.  Examples are in the user guide under vectors and also in the vector section of example plots.</p>
+<div class="line-block">
+<div class="line">stream - plot a streamplot</div>
+<div class="line"><br /></div>
+<div class="line">u=None - u wind</div>
+<div class="line">v=None - v wind</div>
+<div class="line">x=None - x locations of u and v</div>
+<div class="line">y=None - y locations of u and v</div>
+<div class="line">density=None - controls the closeness of streamlines. When density = 1,</div>
+<div class="line-block">
+<div class="line">the domain is divided into a 30x30 grid</div>
+</div>
+<div class="line">linewidth=None - the width of the stream lines. With a 2D array the line width</div>
+<div class="line-block">
+<div class="line">can be varied across the grid. The array must have the same shape as u and v</div>
+</div>
+<div class="line">color=None - the streamline color</div>
+<div class="line">arrowsize=None - scaling factor for the arrow size</div>
+<div class="line">arrowstyle=None - arrow style specification</div>
+<div class="line">minlength=None - minimum length of streamline in axes coordinates</div>
+<div class="line">maxlength=None - maximum length of streamline in axes coordinates</div>
+</div>
+</div>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -334,12 +362,13 @@ interpret.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">version 3.0 changes</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.2.
     </div>
   </body>
 </html>

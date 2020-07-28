@@ -1,19 +1,20 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>traj &#8212; cf-plot 3.0.25 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -24,7 +25,8 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">traj</a></li> 
       </ul>
     </div>  
 
@@ -35,9 +37,9 @@
             
   <div class="section" id="traj">
 <h1>traj<a class="headerlink" href="#traj" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="cfplot.traj">
-<code class="sig-prename descclassname">cfplot.</code><code class="sig-name descname">traj</code><span class="sig-paren">(</span><em class="sig-param">f=None</em>, <em class="sig-param">title=None</em>, <em class="sig-param">ptype=0</em>, <em class="sig-param">linestyle='-'</em>, <em class="sig-param">linewidth=1.0</em>, <em class="sig-param">linecolor='b'</em>, <em class="sig-param">marker='o'</em>, <em class="sig-param">markevery=1</em>, <em class="sig-param">markersize=5.0</em>, <em class="sig-param">markerfacecolor='r'</em>, <em class="sig-param">markeredgecolor='g'</em>, <em class="sig-param">markeredgewidth=1.0</em>, <em class="sig-param">latmax=None</em>, <em class="sig-param">latmin=None</em>, <em class="sig-param">axes=True</em>, <em class="sig-param">xaxis=True</em>, <em class="sig-param">yaxis=True</em>, <em class="sig-param">verbose=None</em>, <em class="sig-param">legend=False</em>, <em class="sig-param">legend_lines=False</em>, <em class="sig-param">xlabel=None</em>, <em class="sig-param">ylabel=None</em>, <em class="sig-param">xticks=None</em>, <em class="sig-param">yticks=None</em>, <em class="sig-param">xticklabels=None</em>, <em class="sig-param">yticklabels=None</em>, <em class="sig-param">colorbar=None</em>, <em class="sig-param">colorbar_position=None</em>, <em class="sig-param">colorbar_orientation='horizontal'</em>, <em class="sig-param">colorbar_title=None</em>, <em class="sig-param">colorbar_text_up_down=False</em>, <em class="sig-param">colorbar_text_down_up=False</em>, <em class="sig-param">colorbar_drawedges=True</em>, <em class="sig-param">colorbar_fraction=None</em>, <em class="sig-param">colorbar_thick=None</em>, <em class="sig-param">colorbar_anchor=None</em>, <em class="sig-param">colorbar_shrink=None</em>, <em class="sig-param">colorbar_labels=None</em>, <em class="sig-param">vector=False</em>, <em class="sig-param">head_width=0.4</em>, <em class="sig-param">head_length=1.0</em>, <em class="sig-param">fc='k'</em>, <em class="sig-param">ec='k'</em>, <em class="sig-param">zorder=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#traj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.traj" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cfplot.</code><code class="sig-name descname">traj</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ptype</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">linestyle</span><span class="o">=</span><span class="default_value">'-'</span></em>, <em class="sig-param"><span class="n">linewidth</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">linecolor</span><span class="o">=</span><span class="default_value">'b'</span></em>, <em class="sig-param"><span class="n">marker</span><span class="o">=</span><span class="default_value">'o'</span></em>, <em class="sig-param"><span class="n">markevery</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">markersize</span><span class="o">=</span><span class="default_value">5.0</span></em>, <em class="sig-param"><span class="n">markerfacecolor</span><span class="o">=</span><span class="default_value">'r'</span></em>, <em class="sig-param"><span class="n">markeredgecolor</span><span class="o">=</span><span class="default_value">'g'</span></em>, <em class="sig-param"><span class="n">markeredgewidth</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">latmax</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">latmin</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">axes</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">xaxis</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">yaxis</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">legend</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">legend_lines</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">xlabel</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ylabel</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">xticks</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">yticks</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">xticklabels</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">yticklabels</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_position</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_orientation</span><span class="o">=</span><span class="default_value">'horizontal'</span></em>, <em class="sig-param"><span class="n">colorbar_title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_text_up_down</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">colorbar_text_down_up</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">colorbar_drawedges</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">colorbar_fraction</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_thick</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_anchor</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_shrink</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_labels</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">vector</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">head_width</span><span class="o">=</span><span class="default_value">0.4</span></em>, <em class="sig-param"><span class="n">head_length</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">fc</span><span class="o">=</span><span class="default_value">'k'</span></em>, <em class="sig-param"><span class="n">ec</span><span class="o">=</span><span class="default_value">'k'</span></em>, <em class="sig-param"><span class="n">zorder</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#traj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.traj" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">traj is the interface to trajectory plotting in cf-plot.</div>
 <div class="line">The minimum use is traj(f) where f is a CF field.</div>
@@ -117,6 +119,7 @@
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -146,12 +149,13 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">traj</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.2.
     </div>
   </body>
 </html>

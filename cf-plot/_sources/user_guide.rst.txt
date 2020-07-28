@@ -341,7 +341,7 @@ The **key_length** parameter sets the length of the reference key.  The scale pa
 
 
 
-In this example vectors are overlaid on a contour plot. Usually a plot is displayed immediately after making a **cfp.con** or **cfp.vect** command.  As we want a vector plot on top of a contour plot we need to open a graphics file file **cfp.gopen()** make our contour and vector plots with **cfp.con** and **cfp.vect** and then close teh graphics file with **cfp.gclose()**.
+In this example vectors are overlaid on a contour plot. Usually a plot is displayed immediately after making a **cfp.con** or **cfp.vect** command.  As we want a vector plot on top of a contour plot we need to open a graphics file file **cfp.gopen()** make our contour and vector plots with **cfp.con** and **cfp.vect** and then close the graphics file with **cfp.gclose()**.
 
 ::
 
@@ -389,6 +389,50 @@ Here we make a zonal mean vector plot with different vector keys and scaling fac
 .. image::  images/fig16.png
    :scale: 44% 
 
+
+
+
+A streamplot is used to show fluid flow and 2D field gradients.  In this first example the data goes from 0 to 358.875 in longitude.  The cartopy / matplotlib interface seems to like having the data inside the data window so we anchor the data in cf-python using the anchor method to start at -180 in longitude.  If we didn't do this any longitudes less than zero would have no streams drawn. 
+
+
+::
+
+    import cf
+    import cfplot as cfp
+    import numpy as np
+    f=cf.read('cfplot_data/ggap.nc')
+    u = f[1].subspace(pressure=500)
+    v = f[2].subspace(pressure=500)
+
+    u = u.anchor('X', -180)
+    v = v.anchor('X', -180)
+ 
+    cfp.stream(u=u, v=v, density=2)
+
+
+.. image::  images/fig16b.png
+   :scale: 44% 
+
+
+
+In the second streamplot example a colorbar showing the intensity of the wind is drawn.
+
+
+::
+
+    magnitude = (u ** 2 + v ** 2) ** 0.5
+    mag = np.squeeze(magnitude.array)
+
+    cfp.levs(0, 60, 5, extend='max')
+    cfp.cscale('viridis', ncols=13) 
+    cfp.gopen()
+    cfp.stream(u=u, v=v, density=2, color=mag)
+    cfp.cbar(levs=cfp.plotvars.levels, position=[0.12, 0.12, 0.8, 0.02], title='Wind magnitude')
+    cfp.gclose()
+
+
+.. image::  images/fig16c.png
+   :scale: 44% 
 
 
 
@@ -1095,11 +1139,8 @@ scale44 .. image:: images/colour_scales/scale44.png
 Colour bars
 ^^^^^^^^^^^
 
-Colour bars are often associated with filled colour contour plots.  Options for the colour bar are described in the `cfp.cbar documentation <http://ajheaps.github.io/cf-plot/cbar.html>`_  cf-plot has used the American spelling for colorbar for compatability with the spelling and usage within the Matplotlib Python package.
+Colour bars are often associated with filled colour contour plots and the options for the colour bar are described in the `cfp.cbar documentation <http://ajheaps.github.io/cf-plot/cbar.html>`_.  If the colour bar options are changed within the call to **cfp.con** then prepend colorbar_ to the appropriate colour bar option.  cf-plot has used the American spelling for colorbar for compatability with the spelling and usage within the Matplotlib Python package.
 
-If the colour bar options are changed within the call to **cfp.con** then prepend colorbar_ to the appropriate colour bar option.
-
-An independent colour bar might be needed and an example of how to produce one is show in `example 19b <http://ajheaps.github.io/cf-plot/multiple_plots.html>`_
 
 
 Below are some examples of calls to **cfp.cbar**
@@ -1210,7 +1251,7 @@ Note the correct date format is **'YYYY-MM-DD'** or **'YYYY-MM-DD HH:MM:SS'** - 
 
 
 In this example we generate labels for the start of the months in 1980.  If the middle of the month was to be labelled then the day
-number would be changed to be 15.  Our xtick positions are accumulated using the above method in teh aticks array as a numerical position 
+number would be changed to be 15.  Our xtick positions are accumulated using the above method in the xticks array as a numerical position 
 along the axis.  In this case we manually specify out tick labels using the xticklabels array of strings.
 
 ::
@@ -1502,6 +1543,8 @@ The select method on the field list always returns a list.  This list may have a
 
 <CF Field: air_temperature(time(1), pressure(23), latitude(160), longitude(320)) K>
 
+If we wanted to select the geopotential height we could have used **g = fl[3]** or **g = fl[-1]**.  This normal Python notation for lists helps when selecting items from longer lists when using the index.
+
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Looking at what the data is in a dimension
@@ -1752,7 +1795,7 @@ Pacific you could use
 |   **mapset(lonmin=-270, lonmax=-60, latmin=-30, latmax=30)**
 
 Note that Cartopy forces the restriction that in the cyclindrical
-equidistant projection a degrees of longitude has teh same size as a 
+equidistant projection a degrees of longitude has the same size as a 
 degree of latitude.
 
 The **proj** parameter accepts **'npstere'** and **'spstere'** for northern 

@@ -1,19 +1,20 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lineplot &#8212; cf-plot 3.0.25 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -24,7 +25,8 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">lineplot</a></li> 
       </ul>
     </div>  
 
@@ -35,9 +37,9 @@
             
   <div class="section" id="lineplot">
 <h1>lineplot<a class="headerlink" href="#lineplot" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="cfplot.lineplot">
-<code class="sig-prename descclassname">cfplot.</code><code class="sig-name descname">lineplot</code><span class="sig-paren">(</span><em class="sig-param">f=None</em>, <em class="sig-param">x=None</em>, <em class="sig-param">y=None</em>, <em class="sig-param">fill=True</em>, <em class="sig-param">lines=True</em>, <em class="sig-param">line_labels=True</em>, <em class="sig-param">title=None</em>, <em class="sig-param">ptype=0</em>, <em class="sig-param">linestyle='-'</em>, <em class="sig-param">linewidth=1.0</em>, <em class="sig-param">color=None</em>, <em class="sig-param">xlog=False</em>, <em class="sig-param">ylog=False</em>, <em class="sig-param">verbose=None</em>, <em class="sig-param">swap_xy=False</em>, <em class="sig-param">marker=None</em>, <em class="sig-param">markersize=5.0</em>, <em class="sig-param">markeredgecolor='k'</em>, <em class="sig-param">markeredgewidth=0.5</em>, <em class="sig-param">label=None</em>, <em class="sig-param">legend_location='upper right'</em>, <em class="sig-param">xunits=None</em>, <em class="sig-param">yunits=None</em>, <em class="sig-param">xlabel=None</em>, <em class="sig-param">ylabel=None</em>, <em class="sig-param">xticks=None</em>, <em class="sig-param">yticks=None</em>, <em class="sig-param">xticklabels=None</em>, <em class="sig-param">yticklabels=None</em>, <em class="sig-param">xname=None</em>, <em class="sig-param">yname=None</em>, <em class="sig-param">axes=True</em>, <em class="sig-param">xaxis=True</em>, <em class="sig-param">yaxis=True</em>, <em class="sig-param">zorder=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#lineplot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.lineplot" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cfplot.</code><code class="sig-name descname">lineplot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">fill</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">lines</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">line_labels</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ptype</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">linestyle</span><span class="o">=</span><span class="default_value">'-'</span></em>, <em class="sig-param"><span class="n">linewidth</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">xlog</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">ylog</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">swap_xy</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">marker</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">markersize</span><span class="o">=</span><span class="default_value">5.0</span></em>, <em class="sig-param"><span class="n">markeredgecolor</span><span class="o">=</span><span class="default_value">'k'</span></em>, <em class="sig-param"><span class="n">markeredgewidth</span><span class="o">=</span><span class="default_value">0.5</span></em>, <em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">legend_location</span><span class="o">=</span><span class="default_value">'upper right'</span></em>, <em class="sig-param"><span class="n">xunits</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">yunits</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">xlabel</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ylabel</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">xticks</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">yticks</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">xticklabels</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">yticklabels</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">xname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">yname</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">axes</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">xaxis</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">yaxis</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">zorder</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#lineplot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.lineplot" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">lineplot is the interface to line plotting in cf-plot.</div>
 <div class="line">The minimum use is lineplot(f) where f is a CF field.</div>
@@ -109,6 +111,7 @@
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -138,12 +141,13 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.25 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">lineplot</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.2.
     </div>
   </body>
 </html>

@@ -392,9 +392,27 @@ interpret.
 
 
 
+26. cfp.stream - streamplots added
+==================================
+
+Streamplots are now available in cf-plot.  Examples are in the user guide under vectors and also in the vector section of example plots.
 
 
-
+| stream - plot a streamplot
+|
+| u=None - u wind
+| v=None - v wind
+| x=None - x locations of u and v
+| y=None - y locations of u and v
+| density=None - controls the closeness of streamlines. When density = 1, 
+|                the domain is divided into a 30x30 grid
+| linewidth=None - the width of the stream lines. With a 2D array the line width 
+|                  can be varied across the grid. The array must have the same shape as u and v
+| color=None - the streamline color 
+| arrowsize=None - scaling factor for the arrow size
+| arrowstyle=None - arrow style specification
+| minlength=None - minimum length of streamline in axes coordinates
+| maxlength=None - maximum length of streamline in axes coordinates
 
 
 

@@ -1,19 +1,20 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cfplot &#8212; cf-plot 3.0.25 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -25,7 +26,8 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.0.25 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">cfplot</a></li> 
       </ul>
     </div>  
 
@@ -265,6 +267,7 @@
         <span class="n">xticklabels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">yticks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">ylabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">swap_axes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">linewidths</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">colorbar_text_up_down</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">colorbar_fontsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colorbar_fontweight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">colorbar_text_down_up</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">colorbar_drawedges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">colorbar_fraction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colorbar_thick</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">colorbar_anchor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colorbar_labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -310,6 +313,8 @@
 <span class="sd">     |                          coordinates. Use when a common colorbar</span>
 <span class="sd">     |                          is required for a set of plots. A typical set</span>
 <span class="sd">     |                          of values would be [0.1, 0.05, 0.8, 0.02]</span>
+<span class="sd">     | colorbar_fontsize=None - text size for colorbar labels and title</span>
+<span class="sd">     | colorbar_fontweight=None - font weight for colorbar labels and title</span>
 <span class="sd">     | colorbar_text_up_down=False - if True horizontal colour bar labels alternate</span>
 <span class="sd">     |                             above (start) and below the colour bar</span>
 <span class="sd">     | colorbar_text_down_up=False - if True horizontal colour bar labels alternate</span>
@@ -323,6 +328,11 @@
 <span class="sd">     |                        0.0 = close to plot, 1.0 = further away</span>
 <span class="sd">     | colorbar_labels=None - labels to use for colorbar.  The default is to use the contour</span>
 <span class="sd">     |                        levels as labels</span>
+<span class="sd">     | colorbar_text_up_down=False - on a horizontal colorbar alternate the </span>
+<span class="sd">     |                               labels top and bottom starting in the up position </span>
+<span class="sd">     | colorbar_text_down_up=False - on a horizontal colorbar alternate the </span>
+<span class="sd">     |                               labels bottom and top starting in the bottom position </span>
+<span class="sd">     | colorbar_drawedges=True - draw internal delimeter lines in the colorbar</span>
 <span class="sd">     | colors=&#39;k&#39; - contour line colors - takes one or many values.</span>
 <span class="sd">     | xlog=False - logarithmic x axis</span>
 <span class="sd">     | ylog=False - logarithmic y axis</span>
@@ -342,11 +352,6 @@
 <span class="sd">     |                   lines or array of widths</span>
 <span class="sd">     | linestyles=None - takes &#39;solid&#39;, &#39;dashed&#39;, &#39;dashdot&#39; or &#39;dotted&#39;</span>
 <span class="sd">     | alpha=1.0 - transparency setting.  The default is no transparency.</span>
-<span class="sd">     | colorbar_text_up_down=False - on a horizontal colorbar alternate the </span>
-<span class="sd">     |                               labels top and bottom starting in the up position </span>
-<span class="sd">     | colorbar_text_down_up=False - on a horizontal colorbar alternate the </span>
-<span class="sd">     |                               labels bottom and top starting in the bottom position </span>
-<span class="sd">     | colorbar_drawedges=True - draw internal delimeter lines in the colorbar</span>
 <span class="sd">     | zorder=None - order of drawing</span>
 <span class="sd">     | level_spacing=&#39;linear&#39; - Default of linear level spacing.  Also takes &#39;log&#39;, &#39;loglike&#39;</span>
 <span class="sd">     :Returns:</span>
@@ -477,16 +482,16 @@
 
     <span class="c1"># Set the colour scale</span>
     <span class="c1"># Nothing defined</span>
+    <span class="n">includes_zero</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">cscale_flag</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">includes_zero</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">col_zero</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">cval</span> <span class="ow">in</span> <span class="n">clevs</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">includes_zero</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">includes_zero</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
                 <span class="n">col_zero</span> <span class="o">=</span> <span class="n">col_zero</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="k">if</span> <span class="n">cval</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">includes_zero</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">includes_zero</span> <span class="o">=</span> <span class="kc">True</span>
 
-        <span class="k">if</span> <span class="n">includes_zero</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">includes_zero</span><span class="p">:</span>
             <span class="n">cs_below</span> <span class="o">=</span> <span class="n">col_zero</span>
             <span class="n">cs_above</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">clevs</span><span class="p">)</span> <span class="o">-</span> <span class="n">col_zero</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">levels_extend</span> <span class="o">==</span> <span class="s1">&#39;max&#39;</span> <span class="ow">or</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">levels_extend</span> <span class="o">==</span> <span class="s1">&#39;neither&#39;</span><span class="p">:</span>
@@ -588,7 +593,10 @@
     <span class="c1"># Set plot variables</span>
     <span class="n">title_fontsize</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">title_fontsize</span>
     <span class="n">text_fontsize</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">text_fontsize</span>
-    <span class="n">colorbar_fontsize</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">colorbar_fontsize</span>
+    <span class="k">if</span> <span class="n">colorbar_fontsize</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">colorbar_fontsize</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">colorbar_fontsize</span>
+    <span class="k">if</span> <span class="n">colorbar_fontweight</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">colorbar_fontweight</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">colorbar_fontweight</span>
     <span class="n">axis_label_fontsize</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">axis_label_fontsize</span>
     <span class="n">continent_thickness</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">continent_thickness</span>
     <span class="n">continent_color</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">continent_color</span>
@@ -597,7 +605,6 @@
     <span class="n">ocean_color</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">ocean_color</span>
     <span class="n">lake_color</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lake_color</span>
     <span class="n">text_fontweight</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">text_fontweight</span>
-    <span class="n">colorbar_fontweight</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">colorbar_fontweight</span>
     <span class="n">title_fontweight</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">title_fontweight</span>
     <span class="n">axis_label_fontweight</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">axis_label_fontweight</span>
     <span class="k">if</span> <span class="n">continent_thickness</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -910,8 +917,8 @@
                     <span class="n">position</span><span class="o">=</span><span class="n">colorbar_position</span><span class="p">,</span>
                     <span class="n">shrink</span><span class="o">=</span><span class="n">colorbar_shrink</span><span class="p">,</span>
                     <span class="n">title</span><span class="o">=</span><span class="n">colorbar_title</span><span class="p">,</span>
-                    <span class="n">text_fontsize</span><span class="o">=</span><span class="n">text_fontsize</span><span class="p">,</span> 
-                    <span class="n">text_fontweight</span><span class="o">=</span><span class="n">text_fontweight</span><span class="p">,</span>
+                    <span class="n">fontsize</span><span class="o">=</span><span class="n">colorbar_fontsize</span><span class="p">,</span> 
+                    <span class="n">fontweight</span><span class="o">=</span><span class="n">colorbar_fontweight</span><span class="p">,</span>
                     <span class="n">text_up_down</span><span class="o">=</span><span class="n">colorbar_text_up_down</span><span class="p">,</span>
                     <span class="n">text_down_up</span><span class="o">=</span><span class="n">colorbar_text_down_up</span><span class="p">,</span>
                     <span class="n">drawedges</span><span class="o">=</span><span class="n">colorbar_drawedges</span><span class="p">,</span>
@@ -1288,8 +1295,8 @@
                     <span class="n">position</span><span class="o">=</span><span class="n">colorbar_position</span><span class="p">,</span>
                     <span class="n">shrink</span><span class="o">=</span><span class="n">colorbar_shrink</span><span class="p">,</span>
                     <span class="n">title</span><span class="o">=</span><span class="n">colorbar_title</span><span class="p">,</span>
-                    <span class="n">text_fontsize</span><span class="o">=</span><span class="n">text_fontsize</span><span class="p">,</span> 
-                    <span class="n">text_fontweight</span><span class="o">=</span><span class="n">text_fontweight</span><span class="p">,</span>
+                    <span class="n">fontsize</span><span class="o">=</span><span class="n">colorbar_fontsize</span><span class="p">,</span> 
+                    <span class="n">fontweight</span><span class="o">=</span><span class="n">colorbar_fontweight</span><span class="p">,</span>
                     <span class="n">text_up_down</span><span class="o">=</span><span class="n">colorbar_text_up_down</span><span class="p">,</span>
                     <span class="n">text_down_up</span><span class="o">=</span><span class="n">colorbar_text_down_up</span><span class="p">,</span>
                     <span class="n">drawedges</span><span class="o">=</span><span class="n">colorbar_drawedges</span><span class="p">,</span>
@@ -1578,8 +1585,8 @@
                     <span class="n">position</span><span class="o">=</span><span class="n">colorbar_position</span><span class="p">,</span>
                     <span class="n">shrink</span><span class="o">=</span><span class="n">colorbar_shrink</span><span class="p">,</span>
                     <span class="n">title</span><span class="o">=</span><span class="n">colorbar_title</span><span class="p">,</span>
-                    <span class="n">text_fontsize</span><span class="o">=</span><span class="n">text_fontsize</span><span class="p">,</span> 
-                    <span class="n">text_fontweight</span><span class="o">=</span><span class="n">text_fontweight</span><span class="p">,</span>
+                    <span class="n">fontsize</span><span class="o">=</span><span class="n">colorbar_fontsize</span><span class="p">,</span> 
+                    <span class="n">fontweight</span><span class="o">=</span><span class="n">colorbar_fontweight</span><span class="p">,</span>
                     <span class="n">text_up_down</span><span class="o">=</span><span class="n">colorbar_text_up_down</span><span class="p">,</span>
                     <span class="n">text_down_up</span><span class="o">=</span><span class="n">colorbar_text_down_up</span><span class="p">,</span>
                     <span class="n">drawedges</span><span class="o">=</span><span class="n">colorbar_drawedges</span><span class="p">,</span>
@@ -1728,8 +1735,8 @@
                  <span class="n">position</span><span class="o">=</span><span class="n">colorbar_position</span><span class="p">,</span>
                  <span class="n">shrink</span><span class="o">=</span><span class="n">colorbar_shrink</span><span class="p">,</span>
                  <span class="n">title</span><span class="o">=</span><span class="n">colorbar_title</span><span class="p">,</span>
-                 <span class="n">text_fontsize</span><span class="o">=</span><span class="n">text_fontsize</span><span class="p">,</span> 
-                 <span class="n">text_fontweight</span><span class="o">=</span><span class="n">text_fontweight</span><span class="p">,</span>
+                 <span class="n">fontsize</span><span class="o">=</span><span class="n">colorbar_fontsize</span><span class="p">,</span> 
+                 <span class="n">fontweight</span><span class="o">=</span><span class="n">colorbar_fontweight</span><span class="p">,</span>
                  <span class="n">text_up_down</span><span class="o">=</span><span class="n">colorbar_text_up_down</span><span class="p">,</span>
                  <span class="n">text_down_up</span><span class="o">=</span><span class="n">colorbar_text_down_up</span><span class="p">,</span>
                  <span class="n">drawedges</span><span class="o">=</span><span class="n">colorbar_drawedges</span><span class="p">,</span>
@@ -2050,8 +2057,8 @@
                  <span class="n">position</span><span class="o">=</span><span class="n">colorbar_position</span><span class="p">,</span>
                  <span class="n">shrink</span><span class="o">=</span><span class="n">colorbar_shrink</span><span class="p">,</span>
                  <span class="n">title</span><span class="o">=</span><span class="n">colorbar_title</span><span class="p">,</span>
-                 <span class="n">text_fontsize</span><span class="o">=</span><span class="n">text_fontsize</span><span class="p">,</span> 
-                 <span class="n">text_fontweight</span><span class="o">=</span><span class="n">text_fontweight</span><span class="p">,</span>
+                 <span class="n">fontsize</span><span class="o">=</span><span class="n">colorbar_fontsize</span><span class="p">,</span> 
+                 <span class="n">fontweight</span><span class="o">=</span><span class="n">colorbar_fontweight</span><span class="p">,</span>
                  <span class="n">text_up_down</span><span class="o">=</span><span class="n">colorbar_text_up_down</span><span class="p">,</span>
                  <span class="n">text_down_up</span><span class="o">=</span><span class="n">colorbar_text_down_up</span><span class="p">,</span>
                  <span class="n">drawedges</span><span class="o">=</span><span class="n">colorbar_drawedges</span><span class="p">,</span>
@@ -8439,8 +8446,8 @@
          <span class="n">shrink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
          <span class="n">fraction</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
          <span class="n">title</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-         <span class="n">text_fontsize</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
-         <span class="n">text_fontweight</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+         <span class="n">fontsize</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+         <span class="n">fontweight</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
          <span class="n">text_up_down</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
          <span class="n">text_down_up</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
          <span class="n">drawedges</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -8461,8 +8468,8 @@
 <span class="sd">    | fraction - default = 0.21 - space for the colorbar in </span>
 <span class="sd">    |            normalised plot coordinates</span>
 <span class="sd">    | title - title for the colorbar</span>
-<span class="sd">    | text_fontsize - font size for the colorbar text</span>
-<span class="sd">    | text_fontweight - font weight for the colorbar text </span>
+<span class="sd">    | fontsize - font size for the colorbar text</span>
+<span class="sd">    | fontweight - font weight for the colorbar text </span>
 <span class="sd">    | text_up_down - label division text up and down starting with up</span>
 <span class="sd">    | text_down_up - label division text down and up starting with down</span>
 <span class="sd">    | drawedges - Draw internal delimeter lines in colorbar</span>
@@ -8497,8 +8504,10 @@
 
 
 
-    <span class="n">fontsize</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">colorbar_fontsize</span>
-    <span class="n">fontweight</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">colorbar_fontweight</span>
+    <span class="k">if</span> <span class="n">fontsize</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fontsize</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">colorbar_fontsize</span>
+    <span class="k">if</span> <span class="n">fontweight</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fontweight</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">colorbar_fontweight</span>
     <span class="k">if</span> <span class="n">thick</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">thick</span> <span class="o">=</span> <span class="mf">0.012</span>
         <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">rows</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
@@ -8678,9 +8687,6 @@
 
     <span class="n">colorbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
                    <span class="n">fontweight</span><span class="o">=</span><span class="n">fontweight</span><span class="p">)</span>
-
-
-
 
 
     <span class="c1"># Bug in Matplotlib colorbar labelling</span>
@@ -9486,10 +9492,260 @@
 
 
 
+<span class="k">def</span> <span class="nf">stream</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+         <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">arrowsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">arrowstyle</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">minlength</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+         <span class="n">maxlength</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+         <span class="n">xaxis</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">yaxis</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">yticks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+         <span class="n">yticklabels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+         <span class="n">zorder</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     | vect - plot vectors</span>
+<span class="sd">     |</span>
+<span class="sd">     | u=None - u wind</span>
+<span class="sd">     | v=None - v wind</span>
+<span class="sd">     | x=None - x locations of u and v</span>
+<span class="sd">     | y=None - y locations of u and v</span>
+<span class="sd">     | density=None - controls the closeness of streamlines. When density = 1, </span>
+<span class="sd">     |                the domain is divided into a 30x30 grid</span>
+<span class="sd">     | linewidth=None - the width of the stream lines. With a 2D array the line width </span>
+<span class="sd">     |                  can be varied across the grid. The array must have the same shape as u and v</span>
+<span class="sd">     | color=None - the streamline color </span>
+<span class="sd">     | arrowsize=None - scaling factor for the arrow size</span>
+<span class="sd">     | arrowstyle=None - arrow style specification</span>
+<span class="sd">     | minlength=None - minimum length of streamline in axes coordinates</span>
+<span class="sd">     | maxlength=None - maximum length of streamline in axes coordinates</span>
+<span class="sd">     | axes=True - plot x and y axes</span>
+<span class="sd">     | xaxis=True - plot xaxis</span>
+<span class="sd">     | yaxis=True - plot y axis</span>
+<span class="sd">     | xticks=None - xtick positions</span>
+<span class="sd">     | xticklabels=None - xtick labels</span>
+<span class="sd">     | yticks=None - y tick positions</span>
+<span class="sd">     | yticklabels=None - ytick labels</span>
+<span class="sd">     | xlabel=None - label for x axis</span>
+<span class="sd">     | ylabel=None - label for y axis</span>
+<span class="sd">     | title=None - title for plot</span>
+<span class="sd">     | zorder=None - plotting order</span>
+<span class="sd">     |</span>
+<span class="sd">     :Returns:</span>
+<span class="sd">      None</span>
+<span class="sd">     |</span>
+<span class="sd">     |</span>
+<span class="sd">     |</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="n">colorbar_title</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">title</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+    <span class="n">text_fontsize</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">text_fontsize</span>
+    <span class="n">continent_thickness</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">continent_thickness</span>
+    <span class="n">continent_color</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">continent_color</span>
+    <span class="k">if</span> <span class="n">text_fontsize</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">text_fontsize</span> <span class="o">=</span> <span class="mi">11</span>
+    <span class="k">if</span> <span class="n">continent_thickness</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">continent_thickness</span> <span class="o">=</span> <span class="mf">1.5</span>
+    <span class="k">if</span> <span class="n">continent_color</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">continent_color</span> <span class="o">=</span> <span class="s1">&#39;k&#39;</span>
+    <span class="n">title_fontsize</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">title_fontsize</span>
+    <span class="n">title_fontweight</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">title_fontweight</span>
+    <span class="k">if</span> <span class="n">title_fontsize</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">title_fontsize</span> <span class="o">=</span> <span class="mi">15</span>
+    <span class="n">resolution_orig</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">resolution</span>
+    <span class="n">rotated_vect</span><span class="o">=</span><span class="kc">False</span>
+
+    <span class="c1"># Set potential user axis labels</span>
+    <span class="n">user_xlabel</span> <span class="o">=</span> <span class="n">xlabel</span>
+    <span class="n">user_ylabel</span> <span class="o">=</span> <span class="n">ylabel</span>
+
+    <span class="c1"># Set any additional arguments to streamplot</span>
+    <span class="n">plotargs</span><span class="o">=</span><span class="p">{}</span>
+    <span class="k">if</span> <span class="n">density</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">plotargs</span><span class="p">[</span><span class="s1">&#39;density&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">density</span>
+    <span class="k">if</span> <span class="n">linewidth</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">plotargs</span><span class="p">[</span><span class="s1">&#39;linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">linewidth</span>
+    <span class="k">if</span> <span class="n">color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">plotargs</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
+    <span class="k">if</span> <span class="n">arrowsize</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">plotargs</span><span class="p">[</span><span class="s1">&#39;arrowsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arrowsize</span>
+    <span class="k">if</span> <span class="n">arrowstyle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">plotargs</span><span class="p">[</span><span class="s1">&#39;arrowstyle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arrowstyle</span>
+    <span class="k">if</span> <span class="n">minlength</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">plotargs</span><span class="p">[</span><span class="s1">&#39;minlength&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">minlength</span>
+    <span class="k">if</span> <span class="n">maxlength</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">plotargs</span><span class="p">[</span><span class="s1">&#39;maxlength&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">maxlength</span>
+
+
+    <span class="c1"># Extract required data </span>
+    <span class="c1"># If a cf-python field</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">cf</span><span class="o">.</span><span class="n">Field</span><span class="p">):</span>
+
+        <span class="c1"># Check data is 2D</span>
+        <span class="n">ndims</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">ndim</span>
+        <span class="k">if</span> <span class="n">ndims</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">errstr</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">cfp.vect error need a 2 dimensonal u field to make vectors</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="n">errstr</span> <span class="o">+=</span> <span class="s2">&quot;received &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span> 
+            <span class="k">if</span> <span class="n">ndims</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">errstr</span> <span class="o">+=</span> <span class="s2">&quot; dimension</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">errstr</span> <span class="o">+=</span> <span class="s2">&quot; dimensions</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">errstr</span><span class="p">)</span>
+
+
+
+        <span class="n">u_data</span><span class="p">,</span> <span class="n">u_x</span><span class="p">,</span> <span class="n">u_y</span><span class="p">,</span> <span class="n">ptype</span><span class="p">,</span> <span class="n">colorbar_title</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span> <span class="n">xpole</span><span class="p">,</span> \
+            <span class="n">ypole</span> <span class="o">=</span> <span class="n">cf_data_assign</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">colorbar_title</span><span class="p">,</span> <span class="n">rotated_vect</span><span class="o">=</span><span class="n">rotated_vect</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">cf</span><span class="o">.</span><span class="n">FieldList</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t plot a field list&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># field=f #field data passed in as f</span>
+        <span class="n">check_data</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">u_data</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">u_x</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">u_y</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">xlabel</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">ylabel</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">cf</span><span class="o">.</span><span class="n">Field</span><span class="p">):</span>
+
+        <span class="c1"># Check data is 2D</span>
+        <span class="n">ndims</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">ndim</span>
+        <span class="k">if</span> <span class="n">ndims</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">errstr</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">cfp.vect error need a 2 dimensonal v field to make vectors</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="n">errstr</span> <span class="o">+=</span> <span class="s2">&quot;received &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span> 
+            <span class="k">if</span> <span class="n">ndims</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">errstr</span> <span class="o">+=</span> <span class="s2">&quot; dimension</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">errstr</span> <span class="o">+=</span> <span class="s2">&quot; dimensions</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">errstr</span><span class="p">)</span>
+
+        <span class="n">v_data</span><span class="p">,</span> <span class="n">v_x</span><span class="p">,</span> <span class="n">v_y</span><span class="p">,</span> <span class="n">ptype</span><span class="p">,</span> <span class="n">colorbar_title</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span> <span class="n">xpole</span><span class="p">,</span> \
+            <span class="n">ypole</span> <span class="o">=</span> <span class="n">cf_data_assign</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">colorbar_title</span><span class="p">,</span> <span class="n">rotated_vect</span><span class="o">=</span><span class="n">rotated_vect</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">cf</span><span class="o">.</span><span class="n">FieldList</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t plot a field list&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># field=f #field data passed in as f</span>
+        <span class="n">check_data</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">v_data</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">v_x</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">v_y</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">xlabel</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">ylabel</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+
+
+
+    <span class="c1"># Reset xlabel and ylabel values with user defined labels in specified</span>
+    <span class="k">if</span> <span class="n">user_xlabel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">xlabel</span> <span class="o">=</span> <span class="n">user_xlabel</span>
+    <span class="k">if</span> <span class="n">user_ylabel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ylabel</span> <span class="o">=</span> <span class="n">user_ylabel</span>
+
+    <span class="c1"># Retrieve any user defined axis labels</span>
+    <span class="k">if</span> <span class="n">xlabel</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="ow">and</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">xlabel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">xlabel</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">xlabel</span>
+    <span class="k">if</span> <span class="n">ylabel</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="ow">and</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">ylabel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ylabel</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">ylabel</span>
+    <span class="k">if</span> <span class="n">xticks</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">xticks</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">xticks</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">xticks</span>
+        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">xticklabels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">xticklabels</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">xticklabels</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">xticklabels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">xticks</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">yticks</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">yticks</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">yticks</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">yticks</span>
+        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">yticklabels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">yticklabels</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">yticklabels</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">yticklabels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">yticks</span><span class="p">))</span>
+
+
+
+    <span class="c1"># Open a new plot if necessary</span>
+    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_plot</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">gopen</span><span class="p">(</span><span class="n">user_plot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Set plot type if user specified</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ptype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">=</span> <span class="n">ptype</span>
+
+
+    <span class="n">lonrange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">u_x</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">u_x</span><span class="p">)</span>
+    <span class="n">latrange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">u_y</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">u_y</span><span class="p">)</span>
+
+
+    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="c1"># Set up mapping</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">lonrange</span> <span class="o">&gt;</span> <span class="mi">350</span> <span class="ow">and</span> <span class="n">latrange</span> <span class="o">&gt;</span> <span class="mi">170</span><span class="p">)</span> <span class="ow">or</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_mapset</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">set_map</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">mapset</span><span class="p">(</span><span class="n">lonmin</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">u_x</span><span class="p">),</span> <span class="n">lonmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">u_x</span><span class="p">),</span>
+                   <span class="n">latmin</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">u_y</span><span class="p">),</span> <span class="n">latmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">u_y</span><span class="p">),</span>
+                   <span class="n">user_mapset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="n">resolution_orig</span><span class="p">)</span>
+            <span class="n">set_map</span><span class="p">()</span>
+
+
+        <span class="n">mymap</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span>
+
+
+    <span class="c1"># Map streamplot</span>
+    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+
+        <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span><span class="o">.</span><span class="n">streamplot</span><span class="p">(</span><span class="n">u_x</span><span class="p">,</span> <span class="n">u_y</span><span class="p">,</span> <span class="n">u_data</span><span class="p">,</span> <span class="n">v_data</span><span class="p">,</span> 
+                                  <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
+                                  <span class="o">**</span><span class="n">plotargs</span><span class="p">)</span>
+
+        <span class="c1"># axes</span>
+        <span class="n">plot_map_axes</span><span class="p">(</span><span class="n">axes</span><span class="o">=</span><span class="n">axes</span><span class="p">,</span> <span class="n">xaxis</span><span class="o">=</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">yaxis</span><span class="o">=</span><span class="n">yaxis</span><span class="p">,</span>
+                      <span class="n">xticks</span><span class="o">=</span><span class="n">xticks</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">xticklabels</span><span class="p">,</span>
+                      <span class="n">yticks</span><span class="o">=</span><span class="n">yticks</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">yticklabels</span><span class="p">,</span>
+                      <span class="n">user_xlabel</span><span class="o">=</span><span class="n">user_xlabel</span><span class="p">,</span> <span class="n">user_ylabel</span><span class="o">=</span><span class="n">user_ylabel</span><span class="p">,</span>
+                      <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+        <span class="c1"># Coastlines</span>
+        <span class="n">continent_thickness</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">continent_thickness</span>
+        <span class="n">continent_color</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">continent_color</span>
+        <span class="n">continent_linestyle</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">continent_linestyle</span>
+        <span class="k">if</span> <span class="n">continent_thickness</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">continent_thickness</span> <span class="o">=</span> <span class="mf">1.5</span>
+        <span class="k">if</span> <span class="n">continent_color</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">continent_color</span> <span class="o">=</span> <span class="s1">&#39;k&#39;</span>
+        <span class="k">if</span> <span class="n">continent_linestyle</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">continent_linestyle</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
+
+
+        <span class="n">feature</span> <span class="o">=</span> <span class="n">cfeature</span><span class="o">.</span><span class="n">NaturalEarthFeature</span><span class="p">(</span>
+                      <span class="n">name</span><span class="o">=</span><span class="s1">&#39;land&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s1">&#39;physical&#39;</span><span class="p">,</span>
+                      <span class="n">scale</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">resolution</span><span class="p">,</span>
+                      <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">mymap</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="n">continent_color</span><span class="p">,</span>
+                      <span class="n">linewidth</span><span class="o">=</span><span class="n">continent_thickness</span><span class="p">,</span> 
+                      <span class="n">linestyle</span><span class="o">=</span><span class="n">continent_linestyle</span><span class="p">)</span>
+
+
+        <span class="c1"># Title</span>
+        <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">map_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+
+
+
+    <span class="c1">##########</span>
+    <span class="c1"># Save plot</span>
+    <span class="c1">##########</span>
+    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_plot</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">gset</span><span class="p">()</span>
+        <span class="n">cscale</span><span class="p">()</span>
+        <span class="n">gclose</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_mapset</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">mapset</span><span class="p">()</span>
+        <span class="n">mapset</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="n">resolution_orig</span><span class="p">)</span>
+
 
 
 </pre></div>
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -9520,12 +9776,13 @@
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.0.25 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">cfplot</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Andy Heaps.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.2.
     </div>
   </body>
 </html>
