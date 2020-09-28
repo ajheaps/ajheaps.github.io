@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>version 3.0 changes &#8212; cf-plot 3.0.26 documentation</title>
+    <title>version 3.0 changes &#8212; cf-plot 3.0.32 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -25,7 +25,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.26 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.32 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">version 3.0 changes</a></li> 
       </ul>
     </div>  
@@ -329,6 +329,52 @@ interpret.</p>
 <div class="line">maxlength=None - maximum length of streamline in axes coordinates</div>
 </div>
 </div>
+<div class="section" id="cfp-levs-step-option-bugfix">
+<h2>27. cfp.levs - step option bugfix<a class="headerlink" href="#cfp-levs-step-option-bugfix" title="Permalink to this headline">¶</a></h2>
+<p>cfp.levs(step=20) sets the step to 20 for contour level generation.  This was inadvertenty cleared
+inbetween plots and also generated a step of a float of 20.0 rather than the integer 20.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="code-change-to-adhere-to-pep8">
+<h2>28. Code change to adhere to PEP8<a class="headerlink" href="#code-change-to-adhere-to-pep8" title="Permalink to this headline">¶</a></h2>
+<p>The cf-plot code base was changed to adhere to PEP8 with a 100 column line length.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="changed-default-zorder-from-none-to-1">
+<h2>29. Changed default zorder from None to 1<a class="headerlink" href="#changed-default-zorder-from-none-to-1" title="Permalink to this headline">¶</a></h2>
+<p>The default zorder of None caused issues with the latest versions of Matplotlib so this was changed to 1.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="savefig-option-of-papertype-removed">
+<h2>30. savefig option of papertype removed<a class="headerlink" href="#savefig-option-of-papertype-removed" title="Permalink to this headline">¶</a></h2>
+<p>The savefig option of papertype was removed as this is being dropped from later versions of matplotlib.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="con-polar-plots-colorbar-size-changed">
+<h2>31. con - polar plots colorbar size changed<a class="headerlink" href="#con-polar-plots-colorbar-size-changed" title="Permalink to this headline">¶</a></h2>
+<p>The default size of colorbar_shrink for contour plots was changed from 1.0 to 0.8 to match the size of the plot.  Setting it to 1 made it larger than the plot.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="changing-contour-level-selection-from-linear-to-log-or-loglike">
+<h2>32. Changing contour level selection from linear to log or loglike<a class="headerlink" href="#changing-contour-level-selection-from-linear-to-log-or-loglike" title="Permalink to this headline">¶</a></h2>
+<p>A new routine called <strong>cfp.calcluate_levels</strong> has been added to the cf-plot code to allow different
+schemes for contour level selection.  The default in cf-plot is that when the user hasn't made a
+specific level selection the contour levels will be spaced linearly between the minimum and maximum
+of the input data.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="n">progress</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -362,7 +408,7 @@ interpret.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.26 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.32 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">version 3.0 changes</a></li> 
       </ul>
     </div>

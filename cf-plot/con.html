@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>con &#8212; cf-plot 3.0.26 documentation</title>
+    <title>con &#8212; cf-plot 3.0.32 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -25,7 +25,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.26 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.32 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">con</a></li> 
       </ul>
     </div>  
@@ -39,7 +39,7 @@
 <h1>con<a class="headerlink" href="#con" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="cfplot.con">
-<code class="sig-prename descclassname">cfplot.</code><code class="sig-name descname">con</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">fill</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">lines</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">line_labels</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">colorbar_label_skip</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ptype</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">negative_linestyle</span><span class="o">=</span><span class="default_value">'solid'</span></em>, <em class="sig-param"><span class="n">blockfill</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">zero_thick</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">colorbar_shrink</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_orientation</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_position</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">xlog</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">ylog</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">axes</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">xaxis</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">yaxis</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">xticks</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">xticklabels</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">yticks</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">yticklabels</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">xlabel</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ylabel</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colors</span><span class="o">=</span><span class="default_value">'k'</span></em>, <em class="sig-param"><span class="n">swap_axes</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">linewidths</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">alpha</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">colorbar_text_up_down</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">colorbar_fontsize</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_fontweight</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_text_down_up</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">colorbar_drawedges</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">colorbar_fraction</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_thick</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_anchor</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_labels</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">linestyles</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">zorder</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">level_spacing</span><span class="o">=</span><span class="default_value">'linear'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#con"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.con" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cfplot.</code><code class="sig-name descname">con</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">fill</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">lines</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">line_labels</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_title</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">colorbar_label_skip</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ptype</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">negative_linestyle</span><span class="o">=</span><span class="default_value">'solid'</span></em>, <em class="sig-param"><span class="n">blockfill</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">zero_thick</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">colorbar_shrink</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_orientation</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_position</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">xlog</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">ylog</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">axes</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">xaxis</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">yaxis</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">xticks</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">xticklabels</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">yticks</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">yticklabels</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">xlabel</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ylabel</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colors</span><span class="o">=</span><span class="default_value">'k'</span></em>, <em class="sig-param"><span class="n">swap_axes</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">linewidths</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">alpha</span><span class="o">=</span><span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">colorbar_text_up_down</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">colorbar_fontsize</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_fontweight</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_text_down_up</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">colorbar_drawedges</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">colorbar_fraction</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_thick</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_anchor</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">colorbar_labels</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">linestyles</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">zorder</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">level_spacing</span><span class="o">=</span><span class="default_value">'linear'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#con"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cfplot.con" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">con is the interface to contouring in cf-plot. The minimum use is con(f)</div>
 <div class="line">where f is a 2 dimensional array. If a cf field is passed then an</div>
@@ -72,7 +72,7 @@
 <div class="line">colorbar=True - add a colour bar if a filled contour plot</div>
 <div class="line">colorbar_label_skip=None - skip colour bar labels. Set to 2 to skip</div>
 <div class="line-block">
-<div class="line">every other label. </div>
+<div class="line">every other label.</div>
 </div>
 <div class="line">colorbar_orientation=None - options are 'horizontal' and 'vertical'</div>
 <div class="line-block">
@@ -82,7 +82,7 @@
 <div class="line">colorbar_shrink=None - value to shrink the colorbar by.  If the colorbar</div>
 <div class="line-block">
 <div class="line">exceeds the plot area then values of 1.0, 0.55</div>
-<div class="line">or 0.5m ay help it better fit the plot area.</div>
+<div class="line">or 0.5m may help it better fit the plot area.</div>
 </div>
 <div class="line">colorbar_position=None - position of colorbar</div>
 <div class="line-block">
@@ -102,15 +102,15 @@
 <div class="line">below (start) and above the colour bar</div>
 </div>
 <div class="line">colorbar_drawedges=True - draw internal divisions in the colorbar</div>
-<div class="line">colorbar_fraction=None - space for the colorbar - default = 0.21, in normalised </div>
+<div class="line">colorbar_fraction=None - space for the colorbar - default = 0.21, in normalised</div>
 <div class="line-block">
-<div class="line">coordinates </div>
+<div class="line">coordinates</div>
 </div>
-<div class="line">colorbar_thick=None - thickness of the colorbar - default = 0.015, in normalised </div>
+<div class="line">colorbar_thick=None - thickness of the colorbar - default = 0.015, in normalised</div>
 <div class="line-block">
-<div class="line">coordinates </div>
+<div class="line">coordinates</div>
 </div>
-<div class="line">colorbar_anchor=None - default=0.5 - anchor point of colorbar within the fraction space. </div>
+<div class="line">colorbar_anchor=None - default=0.5 - anchor point of colorbar within the fraction space.</div>
 <div class="line-block">
 <div class="line">0.0 = close to plot, 1.0 = further away</div>
 </div>
@@ -118,13 +118,13 @@
 <div class="line-block">
 <div class="line">levels as labels</div>
 </div>
-<div class="line">colorbar_text_up_down=False - on a horizontal colorbar alternate the </div>
+<div class="line">colorbar_text_up_down=False - on a horizontal colorbar alternate the</div>
 <div class="line-block">
-<div class="line">labels top and bottom starting in the up position </div>
+<div class="line">labels top and bottom starting in the up position</div>
 </div>
-<div class="line">colorbar_text_down_up=False - on a horizontal colorbar alternate the </div>
+<div class="line">colorbar_text_down_up=False - on a horizontal colorbar alternate the</div>
 <div class="line-block">
-<div class="line">labels bottom and top starting in the bottom position </div>
+<div class="line">labels bottom and top starting in the bottom position</div>
 </div>
 <div class="line">colorbar_drawedges=True - draw internal delimeter lines in the colorbar</div>
 <div class="line">colors='k' - contour line colors - takes one or many values.</div>
@@ -144,13 +144,13 @@
 <div class="line-block">
 <div class="line">is doing</div>
 </div>
-<div class="line">linewidths=None - contour linewidths.  Either a single number for all </div>
+<div class="line">linewidths=None - contour linewidths.  Either a single number for all</div>
 <div class="line-block">
 <div class="line">lines or array of widths</div>
 </div>
 <div class="line">linestyles=None - takes 'solid', 'dashed', 'dashdot' or 'dotted'</div>
 <div class="line">alpha=1.0 - transparency setting.  The default is no transparency.</div>
-<div class="line">zorder=None - order of drawing</div>
+<div class="line">zorder=1 - order of drawing</div>
 <div class="line">level_spacing='linear' - Default of linear level spacing.  Also takes 'log', 'loglike'</div>
 </div>
 <dl class="field-list simple">
@@ -193,7 +193,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.26 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.32 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">con</a></li> 
       </ul>
     </div>
