@@ -13,6 +13,7 @@ Is cf-plot already installed?
 
 |    **Archer**
 |    export PATH=/home/n02/n02/ajh/anaconda3/bin:$PATH
+|    export QT_XCB_NO_XI2=true
 |    ln -s /home/n02/n02/ajh/cfplot_data ~
 
 
