@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>version 3.0 changes &#8212; cf-plot 3.0.32 documentation</title>
+    <title>version 3.0 changes &#8212; cf-plot 3.0.36 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -25,7 +25,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.32 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.36 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">version 3.0 changes</a></li> 
       </ul>
     </div>  
@@ -365,13 +365,55 @@ inbetween plots and also generated a step of a float of 20.0 rather than the int
 </pre></div>
 </div>
 </div>
-<div class="section" id="changing-contour-level-selection-from-linear-to-log-or-loglike">
-<h2>32. Changing contour level selection from linear to log or loglike<a class="headerlink" href="#changing-contour-level-selection-from-linear-to-log-or-loglike" title="Permalink to this headline">¶</a></h2>
-<p>A new routine called <strong>cfp.calcluate_levels</strong> has been added to the cf-plot code to allow different
+<div class="section" id="setvars-remove-white-space-around-plots">
+<h2>32. setvars - remove white space around plots<a class="headerlink" href="#setvars-remove-white-space-around-plots" title="Permalink to this headline">¶</a></h2>
+<p>To remove white space from around plots you can use the ImageMagick convert command convert -trim fig1.png fig1_trimmed.png or use
+the setvars command:  <strong>cfp.setvars(tight=True)</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lineplot-passing-two-cf-fields-for-plotting-doesn-t-plot-the-second-line">
+<h2>33. lineplot - passing two CF fields for plotting doesn't plot the second line<a class="headerlink" href="#lineplot-passing-two-cf-fields-for-plotting-doesn-t-plot-the-second-line" title="Permalink to this headline">¶</a></h2>
+<p>Passing two CF fields for plotting to lineplot only plotted the first line.  This was intentional behaviour and now doing this causes an
+error.  The way to plot two lines is to open a graphics plot with cfp.gopen(), make two separate calls to cfp.lineplot and then close the graphics plot with cfp.gclose().  This is consistent with making multiple contour plots or a contour plot with overlaid vectors or stipples.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lineplot-change-automatic-y-axis-values-for-a-constant-value-line-plot">
+<h2>34. lineplot - change automatic y axis values for a constant value line plot<a class="headerlink" href="#lineplot-change-automatic-y-axis-values-for-a-constant-value-line-plot" title="Permalink to this headline">¶</a></h2>
+<p>When using lineplot with a constant value graph the automatic y-axis limits were set from -0.001 to +0.001 of the constant value.  This has been changed to -1.0 to 1.0 of the constant value.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="traj-spurious-data-points-plotted">
+<h2>35. traj - spurious data points plotted<a class="headerlink" href="#traj-spurious-data-points-plotted" title="Permalink to this headline">¶</a></h2>
+<p>When using masked trajectory data and the latest version of numpy spurious data points were sometimes plotted.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="con-and-setvars-changing-contour-level-selection-from-linear-to-log-loglike-or-outlier">
+<h2>36. con and setvars - changing contour level selection from linear to log, loglike or outlier<a class="headerlink" href="#con-and-setvars-changing-contour-level-selection-from-linear-to-log-loglike-or-outlier" title="Permalink to this headline">¶</a></h2>
+<p>A new routine <strong>cfp.calculate_levels</strong> has been added to the cf-plot code to allow different
 schemes for contour level selection.  The default in cf-plot is that when the user hasn't made a
 specific level selection the contour levels will be spaced linearly between the minimum and maximum
 of the input data.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="n">progress</span>
+<div class="line-block">
+<div class="line">An additional option to <strong>cfp.con</strong> is <strong>calculate_levels</strong> which takes:</div>
+<div class="line">'linear' - a linear set of levels between the minimum and maximum of the field</div>
+<div class="line">'log' - log levels - -1e6, -1e5 ,-1e4 etc</div>
+<div class="line">'loglike' - log like levels -5.e-05, -2.e-05, -1.e-05, -5.e-06, -2.e-06, -1.e-06 etc</div>
+<div class="line">'outlier' - removes outlier data before generating a linear set of levels.  The outlier must have less than</div>
+<div class="line-block">
+<div class="line">1% of the data values.</div>
+</div>
+<div class="line">'inspect' - inspect and choose the most appropriate of the above values</div>
+</div>
+<p><strong>cfp.setvars</strong> also has a new <strong>calculate_levels</strong> option which is persistent between <strong>cfp.con</strong> calls.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div>
@@ -408,7 +450,7 @@ of the input data.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.32 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.36 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">version 3.0 changes</a></li> 
       </ul>
     </div>

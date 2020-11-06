@@ -478,21 +478,75 @@ The default size of colorbar_shrink for contour plots was changed from 1.0 to 0.
 
 
 
+32. setvars - remove white space around plots
+=============================================
+
+To remove white space from around plots you can use the ImageMagick convert command convert -trim fig1.png fig1_trimmed.png or use
+the setvars command:  **cfp.setvars(tight=True)**
+
+::
+
+    Changed
 
 
-32. Changing contour level selection from linear to log or loglike
-==================================================================
 
-A new routine called **cfp.calcluate_levels** has been added to the cf-plot code to allow different 
-schemes for contour level selection.  The default in cf-plot is that when the user hasn't made a 
-specific level selection the contour levels will be spaced linearly between the minimum and maximum
-of the input data.
+33. lineplot - passing two CF fields for plotting doesn't plot the second line
+==============================================================================
 
+Passing two CF fields for plotting to lineplot only plotted the first line.  This was intentional behaviour and now doing this causes an 
+error.  The way to plot two lines is to open a graphics plot with cfp.gopen(), make two separate calls to cfp.lineplot and then close the graphics plot with cfp.gclose().  This is consistent with making multiple contour plots or a contour plot with overlaid vectors or stipples.
+
+::
+
+    Changed
+
+
+34. lineplot - change automatic y axis values for a constant value line plot
+============================================================================
+
+When using lineplot with a constant value graph the automatic y-axis limits were set from -0.001 to +0.001 of the constant value.  This has been changed to -1.0 to 1.0 of the constant value.
+
+::
+
+    Changed
+
+
+
+35. traj - spurious data points plotted
+=======================================
+
+When using masked trajectory data and the latest version of numpy spurious data points were sometimes plotted.  
 
 
 ::
 
-    In progress
+    Fixed
+
+
+
+36. con and setvars - changing contour level selection from linear to log, loglike or outlier
+=============================================================================================
+
+A new routine **cfp.calculate_levels** has been added to the cf-plot code to allow different 
+schemes for contour level selection.  The default in cf-plot is that when the user hasn't made a 
+specific level selection the contour levels will be spaced linearly between the minimum and maximum
+of the input data.
+
+| An additional option to **cfp.con** is **calculate_levels** which takes:
+| 'linear' - a linear set of levels between the minimum and maximum of the field
+| 'log' - log levels - -1e6, -1e5 ,-1e4 etc
+| 'loglike' - log like levels -5.e-05, -2.e-05, -1.e-05, -5.e-06, -2.e-06, -1.e-06 etc
+| 'outlier' - removes outlier data before generating a linear set of levels.  The outlier must have less than
+|             1% of the data values.
+| 'inspect' - inspect and choose the most appropriate of the above values
+
+**cfp.setvars** also has a new **calculate_levels** option which is persistent between **cfp.con** calls.
+
+::
+
+    Done
+
+
 
 
 

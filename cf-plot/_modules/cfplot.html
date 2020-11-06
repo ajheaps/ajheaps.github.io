@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cfplot &#8212; cf-plot 3.0.32 documentation</title>
+    <title>cfplot &#8212; cf-plot 3.0.36 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -25,7 +25,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.0.32 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.0.36 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">cfplot</a></li> 
       </ul>
@@ -229,7 +229,7 @@
                  <span class="n">grid_thickness</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span>
                  <span class="n">graph_xmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">graph_xmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">graph_ymin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">graph_ymax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">level_spacing</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+                 <span class="n">level_spacing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tight</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># Check for iPython notebook inline</span>
 <span class="c1"># and set the viewer to None if found</span>
@@ -258,7 +258,7 @@
         <span class="n">colorbar_text_down_up</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">colorbar_drawedges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">colorbar_fraction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colorbar_thick</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">colorbar_anchor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colorbar_labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">linestyles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">level_spacing</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">):</span>
+        <span class="n">linestyles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">level_spacing</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">     | con is the interface to contouring in cf-plot. The minimum use is con(f)</span>
 <span class="sd">     | where f is a 2 dimensional array. If a cf field is passed then an</span>
@@ -340,7 +340,8 @@
 <span class="sd">     | linestyles=None - takes &#39;solid&#39;, &#39;dashed&#39;, &#39;dashdot&#39; or &#39;dotted&#39;</span>
 <span class="sd">     | alpha=1.0 - transparency setting.  The default is no transparency.</span>
 <span class="sd">     | zorder=1 - order of drawing</span>
-<span class="sd">     | level_spacing=&#39;linear&#39; - Default of linear level spacing.  Also takes &#39;log&#39;, &#39;loglike&#39;</span>
+<span class="sd">     | level_spacing=None - Default of &#39;linear&#39; level spacing.  Also takes &#39;log&#39;, &#39;loglike&#39;,</span>
+<span class="sd">     |                      &#39;outlier&#39; and &#39;inspect&#39;</span>
 <span class="sd">     :Returns:</span>
 <span class="sd">      None</span>
 
@@ -454,9 +455,15 @@
         <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">=</span> <span class="n">ptype</span>
 
     <span class="c1"># Get contour levels if none are defined</span>
+    <span class="n">spacing</span> <span class="o">=</span> <span class="s1">&#39;linear&#39;</span>
+    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">level_spacing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">spacing</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">level_spacing</span>
+    <span class="k">if</span> <span class="n">level_spacing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> 
+        <span class="n">spacing</span> <span class="o">=</span> <span class="n">level_spacing</span>
+
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">levels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">clevs</span><span class="p">,</span> <span class="n">mult</span><span class="p">,</span> <span class="n">fmult</span> <span class="o">=</span> <span class="n">calculate_levels</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="n">field</span><span class="p">,</span>
-                                              <span class="n">level_spacing</span><span class="o">=</span><span class="n">level_spacing</span><span class="p">,</span>
+                                              <span class="n">level_spacing</span><span class="o">=</span><span class="n">spacing</span><span class="p">,</span>
                                               <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">clevs</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">levels</span>
@@ -2780,6 +2787,11 @@
     <span class="k">if</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">is_interactive</span><span class="p">():</span>
         <span class="n">interactive</span> <span class="o">=</span> <span class="kc">True</span>
 
+    <span class="c1"># Remove whitespace if requested</span>
+    <span class="n">saveargs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">tight</span><span class="p">:</span>
+        <span class="n">saveargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bbox_inches&#39;</span><span class="p">:</span> <span class="s1">&#39;tight&#39;</span><span class="p">}</span>
+
     <span class="n">file</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">file</span>
     <span class="k">if</span> <span class="n">file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># Save a file</span>
@@ -2795,8 +2807,7 @@
         <span class="k">if</span> <span class="nb">type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">file</span> <span class="o">=</span> <span class="n">file</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">master_plot</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
-            <span class="c1">#file, papertype=&#39;a4&#39;, orientation=plotvars.orientation, dpi=plotvars.dpi)</span>
-            <span class="n">file</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">orientation</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">dpi</span><span class="p">)</span>
+            <span class="n">file</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">orientation</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">dpi</span><span class="p">,</span> <span class="o">**</span><span class="n">saveargs</span><span class="p">)</span>
         <span class="n">plot</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">viewer</span> <span class="o">==</span> <span class="s1">&#39;display&#39;</span> <span class="ow">and</span> <span class="n">interactive</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
@@ -2805,8 +2816,7 @@
             <span class="k">if</span> <span class="n">disp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">tfile</span> <span class="o">=</span> <span class="s1">&#39;cfplot.png&#39;</span>
                 <span class="n">plotvars</span><span class="o">.</span><span class="n">master_plot</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
-                    <span class="c1">#tfile, papertype=&#39;a4&#39;, orientation=plotvars.orientation, dpi=plotvars.dpi)</span>
-                    <span class="n">tfile</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">orientation</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">dpi</span><span class="p">)</span>
+                    <span class="n">tfile</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">orientation</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">dpi</span><span class="p">,</span> <span class="o">**</span><span class="n">saveargs</span><span class="p">)</span>
                 <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">ioff</span><span class="p">()</span>
                 <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="n">disp</span><span class="p">,</span> <span class="n">tfile</span><span class="p">])</span>
             <span class="k">else</span><span class="p">:</span>
@@ -3040,7 +3050,7 @@
 
     <span class="c1"># Return some values if dmin1 = dmax1</span>
     <span class="k">if</span> <span class="n">dmin1</span> <span class="o">==</span> <span class="n">dmax1</span><span class="p">:</span>
-        <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dmin1</span> <span class="o">-</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">dmin1</span><span class="p">,</span> <span class="n">dmin1</span> <span class="o">+</span> <span class="mf">0.001</span><span class="p">])</span>
+        <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dmin1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dmin1</span><span class="p">,</span> <span class="n">dmin1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
         <span class="n">mult</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">return</span> <span class="n">vals</span><span class="p">,</span> <span class="n">mult</span>
 
@@ -5525,7 +5535,8 @@
             <span class="n">legend_frame_edge_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">legend_frame_face_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">degsym</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axis_width</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">grid_spacing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-            <span class="n">grid_colour</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grid_linestyle</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grid_thickness</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+            <span class="n">grid_colour</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grid_linestyle</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grid_thickness</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">tight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">level_spacing</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">     | setvars - set plotting variables and their defaults</span>
 <span class="sd">     |</span>
@@ -5580,6 +5591,9 @@
 <span class="sd">     | grid_colour=&#39;k&#39; - grid colour</span>
 <span class="sd">     | grid_linestyle=&#39;--&#39; - grid line style</span>
 <span class="sd">     | grid_thickness=1.0 - grid thickness</span>
+<span class="sd">     | tight=False - remove whitespace around the plot</span>
+<span class="sd">     | level_spacing=None - default contour level spacing - takes &#39;linear&#39;, &#39;log&#39;, &#39;loglike&#39;, </span>
+<span class="sd">     |                      &#39;outlier&#39; and &#39;inspect&#39;</span>
 <span class="sd">     |</span>
 <span class="sd">     | Use setvars() to reset to the defaults</span>
 <span class="sd">     |</span>
@@ -5607,7 +5621,7 @@
             <span class="n">rotated_labels</span><span class="p">,</span> <span class="n">colorbar_fontsize</span><span class="p">,</span> <span class="n">colorbar_fontweight</span><span class="p">,</span>
             <span class="n">legend_frame</span><span class="p">,</span> <span class="n">legend_frame_edge_color</span><span class="p">,</span> <span class="n">legend_frame_face_color</span><span class="p">,</span>
             <span class="n">degsym</span><span class="p">,</span> <span class="n">axis_width</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">grid_spacing</span><span class="p">,</span>
-            <span class="n">grid_colour</span><span class="p">,</span> <span class="n">grid_linestyle</span><span class="p">,</span> <span class="n">grid_thickness</span><span class="p">]</span>
+            <span class="n">grid_colour</span><span class="p">,</span> <span class="n">grid_linestyle</span><span class="p">,</span> <span class="n">grid_thickness</span><span class="p">,</span> <span class="n">tight</span><span class="p">,</span> <span class="n">level_spacing</span><span class="p">]</span>
     <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">vals</span><span class="p">):</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">title_fontsize</span> <span class="o">=</span> <span class="mi">15</span>
@@ -5659,6 +5673,8 @@
         <span class="n">plotvars</span><span class="o">.</span><span class="n">grid_linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">grid_thickness</span> <span class="o">=</span> <span class="mf">1.0</span>
         <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">ioff</span><span class="p">()</span>
+        <span class="n">plotvars</span><span class="o">.</span><span class="n">tight</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">plotvars</span><span class="o">.</span><span class="n">level_spacing</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">if</span> <span class="n">file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">file</span>
@@ -5755,8 +5771,11 @@
     <span class="k">if</span> <span class="n">grid_linestyle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">grid_linestyle</span> <span class="o">=</span> <span class="n">grid_linestyle</span>
     <span class="k">if</span> <span class="n">grid_thickness</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">plotvars</span><span class="o">.</span><span class="n">grid_thickness</span> <span class="o">=</span> <span class="n">grid_thickness</span></div>
-
+        <span class="n">plotvars</span><span class="o">.</span><span class="n">grid_thickness</span> <span class="o">=</span> <span class="n">grid_thickness</span>
+    <span class="k">if</span> <span class="n">tight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">plotvars</span><span class="o">.</span><span class="n">tight</span> <span class="o">=</span> <span class="n">tight</span>
+    <span class="k">if</span> <span class="n">level_spacing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">plotvars</span><span class="o">.</span><span class="n">level_spacing</span> <span class="o">=</span> <span class="n">level_spacing</span></div>
 
 <div class="viewcode-block" id="vloc"><a class="viewcode-back" href="../vloc.html#cfplot.vloc">[docs]</a><span class="k">def</span> <span class="nf">vloc</span><span class="p">(</span><span class="n">xvec</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">yvec</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lons</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lats</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -6118,9 +6137,19 @@
                 <span class="n">errstr</span> <span class="o">+=</span> <span class="s2">&quot;received &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; dimensions</span><span class="se">\n\n</span><span class="s2">&quot;</span>
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">errstr</span><span class="p">)</span>
 
+            <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cf</span><span class="o">.</span><span class="n">Field</span><span class="p">):</span>
+                    <span class="n">errstr</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">cfp.lineplot error - two or more cf-fields passed for plotting.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="n">errstr</span> <span class="o">+=</span> <span class="s2">&quot;To plot two cf-fields open a graphics plot with cfp.gopen(), </span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="n">errstr</span> <span class="o">+=</span> <span class="s2">&quot;plot the two fields separately with cfp.lineplot and then close</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="n">errstr</span> <span class="o">+=</span> <span class="s2">&quot;the graphics plot with cfp.gclose()</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+                    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">errstr</span><span class="p">)</span>
+
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">cf</span><span class="o">.</span><span class="n">FieldList</span><span class="p">):</span>
             <span class="n">errstr</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">cfp.lineplot - cannot plot a field list</span><span class="se">\n\n</span><span class="s2">&quot;</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">errstr</span><span class="p">)</span>
+
+
 
     <span class="n">plot_xlabel</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
     <span class="n">plot_ylabel</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
@@ -6441,6 +6470,12 @@
 
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">twiny</span><span class="p">:</span>
         <span class="n">graph</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">twiny</span><span class="p">()</span>
+
+    <span class="c1"># Reset y limits if minx = maxy</span>
+    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">xmin</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">miny</span> <span class="o">==</span> <span class="n">maxy</span><span class="p">:</span>
+            <span class="n">miny</span> <span class="o">=</span> <span class="n">miny</span> <span class="o">-</span> <span class="mf">1.0</span>
+            <span class="n">maxy</span> <span class="o">=</span> <span class="n">maxy</span> <span class="o">+</span> <span class="mf">1.0</span>
 
     <span class="n">graph</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="n">minx</span><span class="p">,</span> <span class="n">maxx</span><span class="p">,</span> <span class="n">miny</span><span class="p">,</span> <span class="n">maxy</span><span class="p">])</span>
     <span class="n">graph</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -7401,14 +7436,22 @@
             <span class="n">ypts</span> <span class="o">=</span> <span class="n">lats</span><span class="p">[</span><span class="n">track</span><span class="p">,</span> <span class="p">:]</span>
             <span class="n">data2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">track</span><span class="p">,</span> <span class="p">:]</span>
 
+
+
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">levs</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
                 <span class="n">color</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">cs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-                <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">data2</span> <span class="o">&gt;=</span> <span class="n">levs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">data2</span> <span class="o">&lt;=</span> <span class="n">levs</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+
+                <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">is_masked</span><span class="p">(</span><span class="n">data2</span><span class="p">):</span>
+                    <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">data2</span> <span class="o">&gt;=</span> <span class="n">levs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">data2</span> <span class="o">&lt;=</span> <span class="n">levs</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">data2</span> <span class="o">&gt;=</span> <span class="n">levs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">data2</span> <span class="o">&lt;=</span> <span class="n">levs</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+
                 <span class="k">if</span> <span class="n">zorder</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="n">plot_zorder</span> <span class="o">=</span> <span class="mi">101</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">plot_zorder</span> <span class="o">=</span> <span class="n">zorder</span>
                 <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
                     <span class="n">mymap</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xpts</span><span class="p">[</span><span class="n">pts</span><span class="p">],</span> <span class="n">ypts</span><span class="p">[</span><span class="n">pts</span><span class="p">],</span>
                                   <span class="n">s</span><span class="o">=</span><span class="n">markersize</span><span class="o">*</span><span class="mi">15</span><span class="p">,</span>
                                   <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
@@ -8346,7 +8389,13 @@
     <span class="n">dmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
     <span class="n">dmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
 
-    <span class="n">strip_outliers</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">tight</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">field2</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+
+
+
+
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_levs</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="c1"># User defined</span>
         <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
@@ -8361,11 +8410,36 @@
             <span class="n">fmult</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cfp.calculate_levels - generating automatic contour levels&#39;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">level_spacing</span> <span class="o">==</span> <span class="s1">&#39;outlier&#39;</span> <span class="ow">or</span> <span class="n">level_spacing</span> <span class="o">==</span> <span class="s1">&#39;inspect&#39;</span><span class="p">:</span>
+                <span class="n">hist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="mi">100</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+                <span class="n">rate</span> <span class="o">=</span> <span class="mf">0.01</span>
+                <span class="n">outlier_detected</span> <span class="o">=</span> <span class="kc">False</span>
+
+                <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">hist</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span> <span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">hist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">hist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">rate</span><span class="p">:</span>
+                        <span class="n">outlier_detected</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">field</span> <span class="o">==</span> <span class="n">dmin</span><span class="p">)</span>
+                        <span class="n">field2</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmax</span>
+                        <span class="n">dmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">field2</span><span class="p">)</span>
+                            
+                    <span class="k">if</span> <span class="n">hist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">hist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">rate</span><span class="p">:</span>
+                        <span class="n">outlier_detected</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">field</span> <span class="o">==</span> <span class="n">dmax</span><span class="p">)</span>
+                        <span class="n">field2</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmin</span>
+                        <span class="n">dmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">field2</span><span class="p">)</span>
+                            
+                <span class="n">clevs</span><span class="p">,</span> <span class="n">mult</span> <span class="o">=</span> <span class="n">gvals</span><span class="p">(</span><span class="n">dmin</span><span class="o">=</span><span class="n">dmin</span><span class="p">,</span> <span class="n">dmax</span><span class="o">=</span><span class="n">dmax</span><span class="p">)</span>
+                <span class="n">fmult</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**-</span><span class="n">mult</span>
+                <span class="n">tight</span> <span class="o">=</span> <span class="kc">False</span>
+
             <span class="k">if</span> <span class="n">level_spacing</span> <span class="o">==</span> <span class="s1">&#39;linear&#39;</span><span class="p">:</span>
                 <span class="n">clevs</span><span class="p">,</span> <span class="n">mult</span> <span class="o">=</span> <span class="n">gvals</span><span class="p">(</span><span class="n">dmin</span><span class="o">=</span><span class="n">dmin</span><span class="p">,</span> <span class="n">dmax</span><span class="o">=</span><span class="n">dmax</span><span class="p">)</span>
                 <span class="n">fmult</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**-</span><span class="n">mult</span>
-                <span class="n">strip_outliers</span> <span class="o">=</span> <span class="kc">False</span>
-            <span class="k">if</span> <span class="n">level_spacing</span> <span class="o">==</span> <span class="s1">&#39;log&#39;</span><span class="p">:</span>
+                <span class="n">tight</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="k">if</span> <span class="n">level_spacing</span> <span class="o">==</span> <span class="s1">&#39;log&#39;</span> <span class="ow">or</span> <span class="n">level_spacing</span> <span class="o">==</span> <span class="s1">&#39;loglike&#39;</span><span class="p">:</span>
 
                 <span class="k">if</span> <span class="n">dmin</span> <span class="o">&lt;</span> <span class="mf">0.0</span> <span class="ow">and</span> <span class="n">dmax</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>
                     <span class="n">dmin1</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dmax</span><span class="p">)</span>
@@ -8382,14 +8456,24 @@
                     <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">field</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">)</span>
                     <span class="n">close_above</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">field</span><span class="p">[</span><span class="n">pts</span><span class="p">])</span>
                     <span class="n">dmin1</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">close_below</span><span class="p">),</span> <span class="n">close_above</span><span class="p">)</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;close_min, close_max, dmin1 are&#39;</span><span class="p">,</span> <span class="n">close_below</span><span class="p">,</span> <span class="n">close_above</span><span class="p">,</span> <span class="n">dmin1</span><span class="p">)</span>
 
-                <span class="n">clevs</span> <span class="o">=</span> <span class="p">[]</span>
-                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">31</span><span class="p">):</span>
-                    <span class="n">val</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mf">30.</span><span class="p">)</span>
-                    <span class="n">clevs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.0e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+                <span class="c1"># Generate levels </span>
+                <span class="k">if</span> <span class="n">level_spacing</span> <span class="o">==</span> <span class="s1">&#39;log&#39;</span><span class="p">:</span>
+                    <span class="n">clevs</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">31</span><span class="p">):</span>
+                        <span class="n">val</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mf">30.</span><span class="p">)</span>
+                        <span class="n">clevs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.0e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
 
-                <span class="c1"># Strip any outliers</span>
+                <span class="k">if</span> <span class="n">level_spacing</span> <span class="o">==</span> <span class="s1">&#39;loglike&#39;</span><span class="p">:</span>
+                    <span class="n">clevs</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">61</span><span class="p">):</span>
+                        <span class="n">val</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mf">30.</span><span class="p">)</span>
+                        <span class="n">clevs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.0e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+                        <span class="n">clevs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.0e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="o">*</span><span class="mi">2</span><span class="p">))</span>
+                        <span class="n">clevs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.0e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="o">*</span><span class="mi">5</span><span class="p">))</span>
+                    <span class="n">clevs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="n">clevs</span><span class="p">)</span>
+
+                <span class="c1"># Remove out of range levels</span>
                 <span class="n">clevs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="n">clevs</span><span class="p">)</span>
                 <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">clevs</span> <span class="o">&gt;=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dmin1</span><span class="p">),</span> <span class="n">clevs</span> <span class="o">&lt;=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dmax1</span><span class="p">)))</span>
                 <span class="n">clevs</span> <span class="o">=</span> <span class="n">clevs</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
@@ -8400,19 +8484,10 @@
                 <span class="k">if</span> <span class="n">dmin</span> <span class="o">&lt;=</span> <span class="mf">0.0</span> <span class="ow">and</span> <span class="n">dmax</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">:</span>
                     <span class="n">clevs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">clevs</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">clevs</span><span class="p">])</span>
 
-            <span class="k">if</span> <span class="n">level_spacing</span> <span class="o">==</span> <span class="s1">&#39;loglike&#39;</span><span class="p">:</span>
-                <span class="n">clevs</span> <span class="o">=</span> <span class="p">[]</span>
-                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">61</span><span class="p">):</span>
-                    <span class="n">val</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mf">30.</span><span class="p">)</span>
-                    <span class="n">clevs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.0e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
-                    <span class="n">clevs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.0e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="o">*</span><span class="mi">2</span><span class="p">))</span>
-                    <span class="n">clevs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.0e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="o">*</span><span class="mi">5</span><span class="p">))</span>
-                <span class="n">clevs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="n">clevs</span><span class="p">)</span>
-
     <span class="c1"># Use step to generate the levels</span>
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">levels_step</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;calculate_levels - using specified step to generatecontour levels&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;calculate_levels - using specified step to generate contour levels&#39;</span><span class="p">)</span>
 
         <span class="n">step</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">levels_step</span>
 
@@ -8433,12 +8508,12 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
             <span class="n">clevs</span> <span class="o">=</span> <span class="n">clevs</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
-    <span class="c1"># Strip any outliers</span>
-    <span class="k">if</span> <span class="n">strip_outliers</span><span class="p">:</span>
+    <span class="c1"># Remove any out of data range values</span>
+    <span class="k">if</span> <span class="n">tight</span><span class="p">:</span>
         <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">clevs</span> <span class="o">&gt;=</span> <span class="n">dmin</span><span class="p">,</span> <span class="n">clevs</span> <span class="o">&lt;=</span> <span class="n">dmax</span><span class="p">))</span>
         <span class="n">clevs</span> <span class="o">=</span> <span class="n">clevs</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
 
-    <span class="c1"># Add an extra level if less than two levels are present</span>
+    <span class="c1"># Add an extra contour level if less than two levels are present</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">clevs</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
         <span class="n">clevs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clevs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.001</span><span class="p">)</span>
 
@@ -8710,7 +8785,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.0.32 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.0.36 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">cfplot</a></li> 
       </ul>
