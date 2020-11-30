@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>version 3.0 changes &#8212; cf-plot 3.0.36 documentation</title>
+    <title>version 3.0 changes &#8212; cf-plot 3.0.38 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -25,7 +25,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.36 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.38 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">version 3.0 changes</a></li> 
       </ul>
     </div>  
@@ -417,6 +417,20 @@ of the input data.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="fix-incorrect-version-number-in-setup-py">
+<h2>37. Fix incorrect version number in setup.py<a class="headerlink" href="#fix-incorrect-version-number-in-setup-py" title="Permalink to this headline">¶</a></h2>
+<p>An incorrect version number was set in setup.py.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="con-no-contour-levels-data-throws-an-error-in-matplotlib-line-labelling">
+<h2>38. con - No contour levels data throws an error in Matplotlib line labelling<a class="headerlink" href="#con-no-contour-levels-data-throws-an-error-in-matplotlib-line-labelling" title="Permalink to this headline">¶</a></h2>
+<p>The default behaviour of Matplotlib has changed such that if the data is all the same the contour labelling scheme in Matplotlib throws an error.  This is in Matplotlib 3.3.2 and may well have been in previous versions. cf-plot was changed so that in thie case of min(data) == max(data) the contour labels are turned off so a plot can be made.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -450,7 +464,7 @@ of the input data.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.36 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.0.38 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">version 3.0 changes</a></li> 
       </ul>
     </div>
