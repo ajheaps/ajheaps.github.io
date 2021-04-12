@@ -50,7 +50,7 @@ cf-plot gallery
 .. image::  images/fig24.png
    :scale: 14%    
    :target: http://ajheaps.github.io/cf-plot/unstructured.html
-.. image::  images/fig28.png
+.. image::  images/us01.png
    :scale: 11%    
    :target: http://ajheaps.github.io/cf-plot/graphs.html
 

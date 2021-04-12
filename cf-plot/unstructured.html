@@ -38,7 +38,7 @@
   <div class="section" id="unstructured-grids">
 <h1>Unstructured grids<a class="headerlink" href="#unstructured-grids" title="Permalink to this headline">¶</a></h1>
 <p>Unstructured grids have data points in non-regular locations, examples of these are the LFRic model grid, the ORCA ocean grid and weather station data.</p>
-<p>The <a href="#id1"><span class="problematic" id="id2">`UGRID &lt;https://ugrid-conventions.github.io/ugrid-conventions`_</span></a> data storage convention for netCDF is gaining traction within the CF communtity but isn't yet part of the CF metadata conventions.  cf-python and cf-plot will be updated once the UGRID convention becomes part of the CF conventions.  This page shows how to plot data that is both in UGRID compliant netCDF form and numpy arrays of unstructured data.</p>
+<p>The <a class="reference external" href="https://ugrid-conventions.github.io/ugrid-conventions">UGRID</a> data storage convention for netCDF is gaining traction within the CF communtity but isn't yet part of the CF metadata conventions.  cf-python and cf-plot will be updated once the UGRID convention becomes part of the CF conventions.  This page shows how to plot data that is both in UGRID compliant netCDF form and numpy arrays of unstructured data.</p>
 <a class="reference internal image-reference" href="_images/us01.png"><img alt="_images/us01.png" src="_images/us01.png" style="width: 514.28px; height: 258.44px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
@@ -94,30 +94,30 @@
 <h2>Station data<a class="headerlink" href="#station-data" title="Permalink to this headline">¶</a></h2>
 <p>Here we read in and contour temperature from meteorological stations around the British Isles.</p>
 <a class="reference internal image-reference" href="images/us05.png"><img alt="images/us05.png" src="images/us05.png" /></a>
-<dl>
-<dt>::</dt><dd><p>import cf
-import cfplot as cfp
-import numpy as np
-from scipy.interpolate import griddata</p>
-<p># Arrays for data
-lons=[]
-lats=[]
-pressure=[]
-temp=[]</p>
-<p># Read data and make the contour plot
-f = open('cfplot_data/synop_data.txt')
-lines = f.readlines()
-for line in lines:</p>
-<blockquote>
-<div><p>mysplit=line.split()
-lons=np.append(lons, float(mysplit[1]))
-lats=np.append(lats, float(mysplit[2]))
-pressure=np.append(pressure, float(mysplit[3]))
-temp=np.append(temp, float(mysplit[4]))</p>
-</div></blockquote>
-<p>cfp.con(x=lons, y=lats, f=temp, ptype=1, ugrid=True)</p>
-</dd>
-</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
+<span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">griddata</span>
+
+<span class="c1"># Arrays for data</span>
+<span class="n">lons</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">lats</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">pressure</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">temp</span><span class="o">=</span><span class="p">[]</span>
+
+<span class="c1"># Read data and make the contour plot</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;cfplot_data/synop_data.txt&#39;</span><span class="p">)</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+   <span class="n">mysplit</span><span class="o">=</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+   <span class="n">lons</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">mysplit</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+   <span class="n">lats</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lats</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">mysplit</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+   <span class="n">pressure</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pressure</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">mysplit</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
+   <span class="n">temp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">mysplit</span><span class="p">[</span><span class="mi">4</span><span class="p">]))</span>
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">lons</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">lats</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">temp</span><span class="p">,</span> <span class="n">ptype</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ugrid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
