@@ -25,6 +25,7 @@ Planned releases
 - 2.3 `Support for the UKCP grid   <http://ajheaps.github.io/cf-plot/version_2.3.html>`_
 - 2.4 `Trajectories   <http://ajheaps.github.io/cf-plot/version_2.4.html>`_
 - 3.0 `Port to Python 3 and Mac OSX   <http://ajheaps.github.io/cf-plot/version_3.0.html>`_
+- 3.1 `UGRID support   <http://ajheaps.github.io/cf-plot/version_3.1.html>`_
 
 Further functionality may be added on request - please email <andy.heaps@ncas.ac.uk> with details.
 

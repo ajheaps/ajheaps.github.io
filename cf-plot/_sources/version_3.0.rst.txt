@@ -573,6 +573,22 @@ The default behaviour of Matplotlib has changed such that if the data is all the
 
 
 
+39. con - 2D data fails to plot in polar stereographic projection
+=================================================================
+
+Data associated with 2D longitude and 2D latitude arrays fails to plot in the polar stereographic projection. 
+
+
+::
+
+    Fixed
+
+
+
+
+
+
+
 
 
 
