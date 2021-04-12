@@ -47,10 +47,10 @@ cf-plot gallery
 .. image::  images/fig21.png
    :scale: 14%    
    :target: http://ajheaps.github.io/cf-plot/rotated_pole.html
-.. image::  images/fig24.png
+.. image::  images/us01.png
    :scale: 14%    
    :target: http://ajheaps.github.io/cf-plot/unstructured.html
-.. image::  images/us01.png
+.. image::  images/ex27.png
    :scale: 11%    
    :target: http://ajheaps.github.io/cf-plot/graphs.html
 
