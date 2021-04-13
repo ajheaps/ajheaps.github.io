@@ -39,7 +39,7 @@
   <h1>Source code for cfplot</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Climate contour/vector plots using cf-python, matplotlib and cartopy.</span>
-<span class="sd">Andy Heaps NCAS-CMS Februrary 2021</span>
+<span class="sd">Andy Heaps NCAS-CMS April 2021</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">subprocess</span>
@@ -475,7 +475,7 @@
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">errstr</span><span class="p">)</span>
 
     <span class="c1"># Turn off colorbar if fill is turned off</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">fill</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">blockfill</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">fill</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">blockfill</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">blockfill_ugrid</span><span class="p">:</span>
         <span class="n">colorbar</span> <span class="o">=</span> <span class="kc">False</span>
 
     <span class="c1"># Revert to default colour scale if cscale_flag flag is set</span>

@@ -3,7 +3,7 @@ Unstructured grids
 
 Unstructured grids have data points in non-regular locations. Examples of these are the LFRic model grid, the ORCA ocean grid and weather station data.
 
-The `UGRID <https://ugrid-conventions.github.io/ugrid-conventions>`_ data storage convention for netCDF isn't yet part of the CF metadata conventions but cf-python and cf-plot will be updated once it is.  This page shows how to plot data that is both in UGRID compliant netCDF form and numpy arrays of unstructured data.
+The `UGRID <https://ugrid-conventions.github.io/ugrid-conventions>`_ data storage convention for netCDF isn't yet part of the CF metadata conventions but cf-python and cf-plot will be updated once it is.  This page shows how to plot data that is both in UGRID compliant netCDF and numpy arrays of unstructured data.
 
 
 
@@ -26,7 +26,7 @@ The `UGRID <https://ugrid-conventions.github.io/ugrid-conventions>`_ data storag
    cfp.con(f=pot, face_lons=lons, face_lats=lats, face_connectivity=faces, lines=False)
 
 
-Here we identify the fields in the data that have the longitudes and latitudes for the corner points for the field and pass them to cfp.con.  Once UGRID is in the CF metadata conventions the face plotting commands will be simplified as the face connectivity, associated longitudes and latitudes will all be described within the data field.  The data field used here is a test field of potential temperature and isn't realistic in regards to the actual values.
+Here we identify the fields in the data that have the longitudes and latitudes for the corner points for the field and pass them to cfp.con.  Once UGRID is in the CF metadata conventions the face plotting commands will be simplified as the face connectivity, associated longitudes and latitudes will all be described within the data field.  The plotted data is a test field of potential temperature and isn't realistic in regards to the actual values.
 
 
 
@@ -101,7 +101,7 @@ The ORCA2 grid is an ocean grid with missing values over the land points.  The d
 Station data
 ------------
 
-Here we read in temperature data in a text file from meteorological stations around the British Isles.
+Here we read in temperature data in a text file from meteorological stations around the British Isles and make a contour plot.
 
  
 .. image::  images/us05.png

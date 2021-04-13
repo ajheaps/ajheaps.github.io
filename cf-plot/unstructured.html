@@ -38,8 +38,8 @@
   <div class="section" id="unstructured-grids">
 <h1>Unstructured grids<a class="headerlink" href="#unstructured-grids" title="Permalink to this headline">¶</a></h1>
 <p>Unstructured grids have data points in non-regular locations. Examples of these are the LFRic model grid, the ORCA ocean grid and weather station data.</p>
-<p>The <a class="reference external" href="https://ugrid-conventions.github.io/ugrid-conventions">UGRID</a> data storage convention for netCDF isn't yet part of the CF metadata conventions but cf-python and cf-plot will be updated once it is.  This page shows how to plot data that is both in UGRID compliant netCDF form and numpy arrays of unstructured data.</p>
-<a class="reference internal image-reference" href="_images/us01.png"><img alt="_images/us01.png" src="_images/us01.png" style="width: 514.28px; height: 258.44px;" /></a>
+<p>The <a class="reference external" href="https://ugrid-conventions.github.io/ugrid-conventions">UGRID</a> data storage convention for netCDF isn't yet part of the CF metadata conventions but cf-python and cf-plot will be updated once it is.  This page shows how to plot data that is both in UGRID compliant netCDF and numpy arrays of unstructured data.</p>
+<a class="reference internal image-reference" href="_images/us01.png"><img alt="_images/us01.png" src="_images/us01.png" style="width: 514.28px; height: 308.36px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;lfric_initial.nc&#39;</span><span class="p">)</span>
@@ -54,8 +54,8 @@
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">pot</span><span class="p">,</span> <span class="n">face_lons</span><span class="o">=</span><span class="n">lons</span><span class="p">,</span> <span class="n">face_lats</span><span class="o">=</span><span class="n">lats</span><span class="p">,</span> <span class="n">face_connectivity</span><span class="o">=</span><span class="n">faces</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Here we identify the fields in the data that have the longitudes and latitudes for the corner points for the field and pass them to cfp.con.  Once UGRID is in the CF metadata conventions the face plotting commands will be simplified as the face connectivity, associated longitudes and latitudes will all be described within the data field.  The data field used here is a test field of potential temperature and isn't realistic in regards to the actual values.</p>
-<a class="reference internal image-reference" href="_images/us02.png"><img alt="_images/us02.png" src="_images/us02.png" style="width: 379.6px; height: 404.56px;" /></a>
+<p>Here we identify the fields in the data that have the longitudes and latitudes for the corner points for the field and pass them to cfp.con.  Once UGRID is in the CF metadata conventions the face plotting commands will be simplified as the face connectivity, associated longitudes and latitudes will all be described within the data field.  The plotted data is a test field of potential temperature and isn't realistic in regards to the actual values.</p>
+<a class="reference internal image-reference" href="_images/us02.png"><img alt="_images/us02.png" src="_images/us02.png" style="width: 370.24px; height: 328.64px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;lfric_initial.nc&#39;</span><span class="p">)</span>
@@ -105,7 +105,7 @@
 </div>
 <div class="section" id="station-data">
 <h2>Station data<a class="headerlink" href="#station-data" title="Permalink to this headline">¶</a></h2>
-<p>Here we read in temperature data in a text file from meteorological stations around the British Isles.</p>
+<p>Here we read in temperature data in a text file from meteorological stations around the British Isles and make a contour plot.</p>
 <a class="reference internal image-reference" href="_images/us05.png"><img alt="_images/us05.png" src="_images/us05.png" style="width: 420.16px; height: 375.96000000000004px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
