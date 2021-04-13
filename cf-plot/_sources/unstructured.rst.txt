@@ -1,9 +1,9 @@
 Unstructured grids
 ******************
 
-Unstructured grids have data points in non-regular locations, examples of these are the LFRic model grid, the ORCA ocean grid and weather station data.
+Unstructured grids have data points in non-regular locations. Examples of these are the LFRic model grid, the ORCA ocean grid and weather station data.
 
-The `UGRID <https://ugrid-conventions.github.io/ugrid-conventions>`_ data storage convention for netCDF is gaining traction within the CF communtity but isn't yet part of the CF metadata conventions.  cf-python and cf-plot will be updated once the UGRID convention becomes part of the CF conventions.  This page shows how to plot data that is both in UGRID compliant netCDF form and numpy arrays of unstructured data.
+The `UGRID <https://ugrid-conventions.github.io/ugrid-conventions>`_ data storage convention for netCDF isn't yet part of the CF metadata conventions but cf-python and cf-plot will be updated once it is.  This page shows how to plot data that is both in UGRID compliant netCDF form and numpy arrays of unstructured data.
 
 
 
@@ -26,7 +26,7 @@ The `UGRID <https://ugrid-conventions.github.io/ugrid-conventions>`_ data storag
    cfp.con(f=pot, face_lons=lons, face_lats=lats, face_connectivity=faces, lines=False)
 
 
-Once UGRID is in the CF metadata conventions the face plotting commands will be simplified as the face connectivity, associated longitudes and latitudes will all be described within the data field.  The data field used here is a test field of potential temperature and isn't realistic in regards to the actual values.
+Here we identify the fields in the data that have the longitudes and latitudes for the corner points for the field and pass them to cfp.con.  Once UGRID is in the CF metadata conventions the face plotting commands will be simplified as the face connectivity, associated longitudes and latitudes will all be described within the data field.  The data field used here is a test field of potential temperature and isn't realistic in regards to the actual values.
 
 
 
@@ -35,10 +35,21 @@ Once UGRID is in the CF metadata conventions the face plotting commands will be 
 
 ::
 
+   import cf
+   import cfplot as cfp
+   f=cf.read('lfric_initial.nc')
+
+   pot=f[33][4,:]
+   lons = f[12]
+   lats = f[13]
+   faces = f[11]
+
+   cfp.levs(240, 310, 5)
    cfp.mapset(proj='npstere')
    cfp.con(f=pot, face_lons=lons, face_lats=lats, face_connectivity=faces, lines=False)
 
 
+Here the projection is changed to show the north pole.
 
 
 .. image::  images/us03.png
@@ -53,7 +64,7 @@ Once UGRID is in the CF metadata conventions the face plotting commands will be 
 
    cfp.con(g, lines=False )
 
-
+The data in the field has auxiliary longitudes and latitudes that can be contoured as normal.  Internally in cf-plot this is made using the Matplotlib tricontourf command as the data is irregular.
 
 
 Orca2 grid
@@ -81,7 +92,7 @@ Orca2 grid
    cfp.con(x=lons, y=lats, f=temp, ptype=1, ugrid=True)
 
 
-
+The ORCA2 grid is an ocean grid with missing values over the land points.  The data in this file is from before the UGRID convention was started and has no face connectivity or corner coordinates.  In this case we can only plot a normal contour plot.
 
 
 
@@ -90,7 +101,7 @@ Orca2 grid
 Station data
 ------------
 
-Here we read in and contour temperature from meteorological stations around the British Isles.
+Here we read in temperature data in a text file from meteorological stations around the British Isles.
 
  
 .. image::  images/us05.png
@@ -119,7 +130,7 @@ Here we read in and contour temperature from meteorological stations around the 
       pressure=np.append(pressure, float(mysplit[3]))
       temp=np.append(temp, float(mysplit[4]))
 
-   cfp.con(x=lons, y=lats, f=temp, ptype=1, ugrid=True)
+   cfp.con(x=lons, y=lats, f=temp, ptype=1, colorbar_orientation='vertical', ugrid=True)
 
 | 
 | 
@@ -134,7 +145,7 @@ To see if this plot is correct we can add some extra code to that above to plot 
 
    import cartopy.crs as ccrs
    cfp.gopen()
-   cfp.con(x=lons_new, y=lats_new, f=temp_new, colorbar_label_skip=2, ptype=1)
+   cfp.con(x=lons, y=lats, f=temp, ptype=1, colorbar_orientation='vertical', ugrid=True)
    for i in np.arange(len(lines)):
       cfp.plotvars.mymap.text(float(lons[i]), float(lats[i]), str(temp[i]), \
                               horizontalalignment='center',verticalalignment='center', \
