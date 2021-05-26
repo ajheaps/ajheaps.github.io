@@ -3,7 +3,7 @@
 cf-view homepage
 ================
 
-cf-view is a graphical user interface that is used for plotting `Climate and Forecast convention <http://cfconventions.org>`_, CF  , data.
+cf-view is a graphical user interface that is used for analysing and plotting netCDF and Met Office format atmospheric data.  It uses the `Climate and Forecast conventions <https://cfconventions.org>`_ hence the CF in the name.
 
 
 .. image::  images/cfview.png

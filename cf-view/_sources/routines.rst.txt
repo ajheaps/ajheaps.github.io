@@ -7,8 +7,6 @@ Contents:
    :maxdepth: 2
    
    cfview.rst
-   guiWidgets.rst
-   plotConfigWidgets.rst
 
 
 | 
