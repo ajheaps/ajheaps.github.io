@@ -7,7 +7,7 @@ cf-view is a graphical user interface that is used for analysing and plotting ne
 
 
 .. image::  images/cfview.png
-   :scale: 60% 
+   :scale: 40% 
 
 
 
