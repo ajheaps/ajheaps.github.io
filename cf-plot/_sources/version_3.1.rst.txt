@@ -16,4 +16,26 @@ Initial support for UGRID data was added.
 
 
 
+1. Add titles option to cfp.con
+===============================
+
+A titles option was added to cfp.con.  Setting this to True prints off a set of dimension 
+titles at the top of the plot.
+
+
+::
+
+    Done
+
+
+2. Time axis - calendar is now set to standard if none is present
+=================================================================
+
+If a time axis has no calendar then this is now set to standard if none is present.
+
+::
+
+    Done
+
+
 

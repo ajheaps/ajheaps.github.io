@@ -4,17 +4,17 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Advanced Use &#8212; cf-plot 3.1.0 documentation</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -35,10 +35,10 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="advanced-use">
+  <section id="advanced-use">
 <h1>Advanced Use<a class="headerlink" href="#advanced-use" title="Permalink to this headline">¶</a></h1>
 <p>Here are some hints and tips on the advanced use of cf-plot.</p>
-<div class="section" id="adding-user-defined-lines-and-text-to-plots">
+<section id="adding-user-defined-lines-and-text-to-plots">
 <h2>Adding user defined lines and text to plots<a class="headerlink" href="#adding-user-defined-lines-and-text-to-plots" title="Permalink to this headline">¶</a></h2>
 <p>In cf-plot the plot is stored in a plot object with the name cfp.plotvars.plot.  If you are making a map plot the the map object is cfp.plotvars.mymap and this is the object you should operate on.  The page containing the plots is named cfp.plotvars.plot_master.</p>
 <p>To see all the methods for the plot object type</p>
@@ -96,8 +96,8 @@
 </pre></div>
 </div>
 <p>Adding country borders etc can be done using the normal Cartopy operations on the cfp.plotvars.mymap object.  Look on the Cartopy web page for examples of these.</p>
-</div>
-<div class="section" id="plotting-shape-files">
+</section>
+<section id="plotting-shape-files">
 <h2>Plotting shape files<a class="headerlink" href="#plotting-shape-files" title="Permalink to this headline">¶</a></h2>
 <p>In this example we make a blank map plot and plot the UK rivers from a shapefile.  The shapefile used came from DIVA-GIS at <a class="reference external" href="http://www.diva-gis.org/gdata">http://www.diva-gis.org/gdata</a>.  The pyshp Python package is needed for this program.</p>
 <a class="reference internal image-reference" href="_images/advanced_shapefile.png"><img alt="_images/advanced_shapefile.png" src="_images/advanced_shapefile.png" style="width: 487.24px; height: 379.08000000000004px;" /></a>
@@ -132,8 +132,8 @@
 <span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="making-a-transect-plot">
+</section>
+<section id="making-a-transect-plot">
 <h2>Making a transect plot<a class="headerlink" href="#making-a-transect-plot" title="Permalink to this headline">¶</a></h2>
 <p>In this example we make a contour plot and plot a transect.  We use the cfp.regrid bilinear interpolation
 routine to interpolate the data.  Interpolation points for this routine must be <strong>within</strong> the data limits
@@ -185,8 +185,8 @@ of the original data.  Care is needed to ensure that the field coordinates go fr
 <span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="manually-changing-colours-in-a-colour-scale">
+</section>
+<section id="manually-changing-colours-in-a-colour-scale">
 <h2>Manually changing colours in a colour scale<a class="headerlink" href="#manually-changing-colours-in-a-colour-scale" title="Permalink to this headline">¶</a></h2>
 <p>The simplest way to do this without writing any code is to modify the internal colour scale before plotting.  The colours most people work with are stored as red green blue intensities on a scale of 0 to 255, with 0 being no intesity and 255 full intensity.</p>
 <p>White will be represented as 255 255 255 and black as 0 0 0.</p>
@@ -204,8 +204,8 @@ hex(255)[2:]
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/advanced2.png"><img alt="_images/advanced2.png" src="_images/advanced2.png" style="width: 514.28px; height: 313.56px;" /></a>
-</div>
-<div class="section" id="colouring-land-and-lakes">
+</section>
+<section id="colouring-land-and-lakes">
 <h2>Colouring land and lakes<a class="headerlink" href="#colouring-land-and-lakes" title="Permalink to this headline">¶</a></h2>
 <p>This is done by changing the land_color, ocean_color and lake_color variables in cfp.setvars.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
@@ -216,8 +216,8 @@ hex(255)[2:]
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/advanced3.png"><img alt="_images/advanced3.png" src="_images/advanced3.png" style="width: 514.28px; height: 313.56px;" /></a>
-</div>
-<div class="section" id="plotting-missing-data">
+</section>
+<section id="plotting-missing-data">
 <h2>Plotting missing data<a class="headerlink" href="#plotting-missing-data" title="Permalink to this headline">¶</a></h2>
 <p>Masked data isn't plotted.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
@@ -258,8 +258,8 @@ hex(255)[2:]
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/advanced5.png"><img alt="_images/advanced5.png" src="_images/advanced5.png" style="width: 514.28px; height: 326.04px;" /></a>
-</div>
-<div class="section" id="blockfill-with-individual-colours">
+</section>
+<section id="blockfill-with-individual-colours">
 <h2>Blockfill with individual colours<a class="headerlink" href="#blockfill-with-individual-colours" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
 <div class="line">If a plot needs to be built up as a series of blockfill plots then this is</div>
@@ -292,8 +292,8 @@ hex(255)[2:]
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/advanced6.png"><img alt="_images/advanced6.png" src="_images/advanced6.png" style="width: 530.9200000000001px; height: 343.72px;" /></a>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -332,7 +332,7 @@ hex(255)[2:]
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Andy Heaps.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
     </div>
   </body>
 </html>
