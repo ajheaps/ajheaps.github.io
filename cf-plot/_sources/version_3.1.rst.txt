@@ -33,9 +33,18 @@ titles at the top of the plot.
 
 If a time axis has no calendar then this is now set to standard if none is present.
 
+
 ::
 
     Done
 
 
+6. Various changes to update to cf-python 3.9.0
+===============================================
 
+Various changes to setup.py and cf-plot were made to be compatible with cf-python 3.9.0. 
+
+
+::
+
+    Done
