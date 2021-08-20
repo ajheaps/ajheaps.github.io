@@ -1891,12 +1891,12 @@ For example the following data has monthly data points but bounds of ten years f
 <p>&lt;CF Field: air_temperature(time(1), latitude(73), longitude(96)) K&gt;</p>
 <p>This now has one time value placed in the middle  of the original time series.</p>
 <div class="line-block">
-<div class="line"><strong>h.item('T').dtarray</strong></div>
+<div class="line"><strong>h.coord('T').dtarray</strong></div>
 <div class="line">array([cftime.Datetime360Day(1930, 1, 1, 0, 0, 0, 0, 1, 1)], dtype=object)</div>
 </div>
 <p>The bounds on the data are the minimum and maximum of the original data bounds.</p>
 <div class="line-block">
-<div class="line"><strong>h.item('T').bounds.dtarray</strong></div>
+<div class="line"><strong>h.coord('T').bounds.dtarray</strong></div>
 <div class="line">array([[cftime.Datetime360Day(1860, 1, 1, 0, 0, 0, 0, 1, 1),</div>
 <div class="line-block">
 <div class="line">cftime.Datetime360Day(2000, 1, 1, 0, 0, 0, 0, 1, 1)]],</div>
@@ -2268,7 +2268,7 @@ See <a class="reference external" href="https://ncas-cms.github.io/cf-python/tut
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Andy Heaps.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
     </div>
   </body>
 </html>

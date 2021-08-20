@@ -110,7 +110,7 @@ The supplied grid gives a bullseye effect making the wind direction difficult to
 <span class="n">g</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">wi</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span><span class="mi">160</span><span class="p">))</span>
 <span class="n">g</span><span class="o">=</span><span class="n">g</span><span class="o">.</span><span class="n">collapse</span><span class="p">(</span><span class="s1">&#39;T: mean X: mean&#39;</span><span class="p">)</span>
 
-<span class="n">cfp</span><span class="o">.</span><span class="n">vect</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">v</span><span class="o">=-</span><span class="n">g</span><span class="p">,</span> <span class="n">key_length</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mf">0.2</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;DJF&#39;</span><span class="p">,</span> <span class="n">key_location</span><span class="o">=</span><span class="p">[</span><span class="mf">0.95</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">])</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">vect</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">v</span><span class="o">=-</span><span class="mi">1</span><span class="o">*</span><span class="n">g</span><span class="p">,</span> <span class="n">key_length</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mf">0.2</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;DJF&#39;</span><span class="p">,</span> <span class="n">key_location</span><span class="o">=</span><span class="p">[</span><span class="mf">0.95</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>Here we make a zonal mean vector plot with different vector keys and scaling factors for the X and Y directions.</p>
@@ -188,7 +188,7 @@ The supplied grid gives a bullseye effect making the wind direction difficult to
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Andy Heaps.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
     </div>
   </body>
 </html>

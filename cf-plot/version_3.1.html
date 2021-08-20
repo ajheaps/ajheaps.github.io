@@ -66,6 +66,74 @@ titles at the top of the plot.</p>
 </pre></div>
 </div>
 </section>
+<section id="cfp-lines-cfp-vect-added-titles-option">
+<h2>7. cfp.lines, cfp.vect - added titles option<a class="headerlink" href="#cfp-lines-cfp-vect-added-titles-option" title="Permalink to this headline">¶</a></h2>
+<p>The titles option to display the field dimension and cell methods selections were added to cfp.lines and cfp.vect.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</section>
+<section id="cfp-mapset-lambertcylindrical-added">
+<h2>8. cfp.mapset - LambertCylindrical added<a class="headerlink" href="#cfp-mapset-lambertcylindrical-added" title="Permalink to this headline">¶</a></h2>
+<p>The LambertCylindrical projection was added to cfp.mapset.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</section>
+<section id="mapping-change-internally">
+<h2>9. Mapping change internally<a class="headerlink" href="#mapping-change-internally" title="Permalink to this headline">¶</a></h2>
+<p>A mapping change was made internally to change from f.ref('rotated_latitude_longitude') to
+f.ref('grid_mapping_name:rotated_latitude_longitude'). This was due to a feature introduced in
+cf-python 3.8.0.  The longer form always works and so this has been adopted.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</section>
+<section id="cfp-gpos-1-causes-stray-box-lines">
+<h2>10. cfp.gpos(1) causes stray box lines<a class="headerlink" href="#cfp-gpos-1-causes-stray-box-lines" title="Permalink to this headline">¶</a></h2>
+<p>When making multiple plots on a page calling cfp.gpos(1) causes stray box lines to be added to the first plot.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</section>
+<section id="cfp-con-blockfill-bugfix">
+<h2>11. cfp.con - blockfill bugfix<a class="headerlink" href="#cfp-con-blockfill-bugfix" title="Permalink to this headline">¶</a></h2>
+<p>If a blockfill contour plot is requested and the X coordinate has bounds and the Y coordinate does not have bounds then
+an error occurs.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</section>
+<section id="cfp-bfill-default-plotting-order-changed">
+<h2>12. cfp.bfill - default plotting order changed<a class="headerlink" href="#cfp-bfill-default-plotting-order-changed" title="Permalink to this headline">¶</a></h2>
+<p>The default plotting order for cfp.bill has been changed from None to 4.  If any issues arise because of this please report
+them to me - <a class="reference external" href="mailto:andy&#46;heaps&#37;&#52;&#48;ncas&#46;ac&#46;uk">andy<span>&#46;</span>heaps<span>&#64;</span>ncas<span>&#46;</span>ac<span>&#46;</span>uk</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
+</pre></div>
+</div>
+</section>
+<section id="cfp-vect-added-transparency-setting">
+<h2>13. cfp.vect - added transparency setting<a class="headerlink" href="#cfp-vect-added-transparency-setting" title="Permalink to this headline">¶</a></h2>
+<p>An alpha transparency setting was added to cfp.vect.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</section>
+<section id="cfp-mapset-overlay-map-plots-stopped-working">
+<h2>14. cfp.mapset - overlay map plots stopped working<a class="headerlink" href="#cfp-mapset-overlay-map-plots-stopped-working" title="Permalink to this headline">¶</a></h2>
+<p>More recent versions of Cartopy stopped overlay map plots from working.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</section>
+<section id="cfp-cf-data-assign-internal-routine-updated">
+<h2>15. cfp.cf_data_assign - internal routine updated<a class="headerlink" href="#cfp-cf-data-assign-internal-routine-updated" title="Permalink to this headline">¶</a></h2>
+<p>The internal data assignment routine cfp.cf_data_assign was updated to use the cf-python
+filter_by_axis method in f.coordinate.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Updated</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 
@@ -105,7 +173,7 @@ titles at the top of the plot.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Andy Heaps.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
     </div>
   </body>
 </html>

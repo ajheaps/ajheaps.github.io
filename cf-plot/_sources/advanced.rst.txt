@@ -145,8 +145,8 @@ of the original data.  Care is needed to ensure that the field coordinates go fr
 
 
     # Extract out the lons, lats and data
-    lons=g.item('X').array
-    lats=g.item('Y').array
+    lons=g.coord('X').array
+    lats=g.coord('Y').array
     data=np.squeeze(g.array)
 
 
@@ -282,7 +282,7 @@ Masked data is plotted as blockfill in grey.
 
 
     # Call internal block filling routine 
-    cfp.bfill(f=np.squeeze(i.array), x=i.item('X').array, y=i.item('Y').array,
+    cfp.bfill(f=np.squeeze(i.array), x=i.coord('X').array, y=i.coord('Y').array,
               clevs=[990, 1000], lonlat=True, single_fill_color='#d3d3d3')
 
             
@@ -313,18 +313,20 @@ A final call to **cfp.con** is made to overlay contour lines.
 
     f=cf.read('cfplot_data/ggap.nc')[1]
     g=f.collapse('mean','longitude')
-    x=g.item('Y').array
-    y=g.item('Z').array
+    x=g.coord('Y').array
+    y=g.coord('Z').array
     data=np.squeeze(g.array)
 
 
     cfp.gopen()
     cfp.con(g, ylog=True, lines=False)
 
-    # Call internal block filling routine 
+    # Call internal block filling routine
     cfp.bfill(f=data, x=x, y=y, clevs=[-50, 0], single_fill_color='green')
     cfp.bfill(f=data, x=x, y=y, clevs=[20, 40], single_fill_color='purple')
-    cfp.con(g, ylog=True, lines=True, fill=False)
+
+    # Add contour lines over the top with zorder=5
+    cfp.con(g, ylog=True, lines=True, fill=False, zorder=5)
     cfp.gclose()
 
 

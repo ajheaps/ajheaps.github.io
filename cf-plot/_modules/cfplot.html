@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>cfplot &#8212; cf-plot 3.1.0 documentation</title>
+    <title>cfplot &#8212; cf-plot 3.1.6 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -24,7 +24,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.1.6 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">cfplot</a></li> 
       </ul>
@@ -232,7 +232,8 @@
                  <span class="n">grid_thickness</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span>
                  <span class="n">graph_xmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">graph_xmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">graph_ymin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">graph_ymax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">level_spacing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tight</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                 <span class="n">level_spacing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tight</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">gpos_called</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">titles_con_called</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># Check for iPython notebook inline</span>
 <span class="c1"># and set the viewer to None if found</span>
@@ -263,7 +264,7 @@
         <span class="n">colorbar_anchor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colorbar_labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">linestyles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">level_spacing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">ugrid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">face_lons</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">face_lats</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">face_connectivity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">titles</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">titles</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">mytest</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">     | con is the interface to contouring in cf-plot. The minimum use is con(f)</span>
 <span class="sd">     | where f is a 2 dimensional array. If a cf field is passed then an</span>
@@ -366,16 +367,6 @@
     <span class="n">user_xlabel</span> <span class="o">=</span> <span class="n">xlabel</span>
     <span class="n">user_ylabel</span> <span class="o">=</span> <span class="n">ylabel</span>
 
-    <span class="c1"># Test for UGRID blockfill</span>
-    <span class="c1">#ugrid_blockfill = False</span>
-    <span class="c1">#if face_lons and face_lats and face_connectivity:</span>
-    <span class="c1">#    print(&#39;ajh - in ugrid blockfill&#39;)</span>
-    <span class="c1">#    ugrid_blockfill = True</span>
-    <span class="c1">#    field = np.squeeze(f.array)</span>
-    <span class="c1">#    x = np.squeeze(face_lons.array)</span>
-    <span class="c1">#    y = np.squeeze(face_lats.array)</span>
-
-
     <span class="c1"># Extract data for faces if a UGRID blockplot</span>
     <span class="n">blockfill_ugrid</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="n">face_lons</span> <span class="ow">and</span> <span class="n">face_lats</span> <span class="ow">and</span> <span class="n">face_connectivity</span><span class="p">:</span>
@@ -402,7 +393,10 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">face_connectivity_array</span> <span class="o">=</span> <span class="n">face_connectivity</span>
 
-
+    <span class="c1"># Call gpos(1) if not already called</span>
+    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">rows</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">columns</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">gpos_called</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">gpos</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="c1"># Extract required data for contouring</span>
     <span class="c1"># If a cf-python field</span>
@@ -672,54 +666,10 @@
 
     <span class="c1"># Calculate a set of dimension titles if requested</span>
     <span class="k">if</span> <span class="n">titles</span><span class="p">:</span> 
-        <span class="n">title_dims</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">plotvars</span><span class="o">.</span><span class="n">titles_con_called</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">title_dims</span> <span class="o">=</span> <span class="n">generate_titles</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">colorbar</span><span class="p">:</span>
-            <span class="n">title_dims</span> <span class="o">=</span> <span class="n">colorbar_title</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-        <span class="k">if</span>  <span class="nb">isinstance</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">cf</span><span class="o">.</span><span class="n">Field</span><span class="p">):</span>
-            <span class="n">xtitle</span><span class="p">,</span> <span class="n">xunits</span> <span class="o">=</span> <span class="n">cf_var_name_titles</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">xtitle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">xvalues</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">xvalues</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-                    <span class="n">xvalue</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">xvalue</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">xvalues</span><span class="p">)</span>
-                <span class="n">title_dims</span> <span class="o">+=</span> <span class="s1">&#39;x: &#39;</span> <span class="o">+</span> <span class="n">xtitle</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">xvalue</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span>  <span class="o">+</span> <span class="n">xunits</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-            <span class="n">ytitle</span><span class="p">,</span> <span class="n">yunits</span> <span class="o">=</span> <span class="n">cf_var_name_titles</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">ytitle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">yvalues</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">yvalues</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-                    <span class="n">yvalue</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">yvalue</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">yvalues</span><span class="p">)</span>
-                <span class="n">title_dims</span> <span class="o">+=</span> <span class="s1">&#39;y: &#39;</span>  <span class="o">+</span> <span class="n">ytitle</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">yvalue</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">yunits</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-            <span class="n">ztitle</span><span class="p">,</span> <span class="n">zunits</span> <span class="o">=</span> <span class="n">cf_var_name_titles</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">ztitle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">zvalues</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">zvalues</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-                    <span class="n">zvalue</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">zvalue</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">zvalues</span><span class="p">)</span>
-                <span class="n">title_dims</span> <span class="o">+=</span>  <span class="s1">&#39;z: &#39;</span>  <span class="o">+</span> <span class="n">ztitle</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">zvalue</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">zunits</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-            <span class="n">ttitle</span><span class="p">,</span> <span class="n">tunits</span> <span class="o">=</span> <span class="n">cf_var_name_titles</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">ztitle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">tvalues</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dtarray</span>
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tvalues</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-                    <span class="n">tvalue</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">tvalue</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">Data</span><span class="p">(</span><span class="n">tvalues</span><span class="p">)</span><span class="o">.</span><span class="n">datetime_as_string</span><span class="p">)</span>
-                <span class="n">title_dims</span> <span class="o">+=</span> <span class="s1">&#39;t: &#39;</span>  <span class="o">+</span> <span class="n">ttitle</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">tvalue</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">title_dims</span> <span class="o">+=</span> <span class="s1">&#39;cell methods: &#39;</span>
-                <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-                <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">():</span>
-                    <span class="n">axis</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">()[</span><span class="n">method</span><span class="p">]</span><span class="o">.</span><span class="n">get_axes</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-                    <span class="n">dim</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">constructs</span><span class="o">.</span><span class="n">domain_axis_identity</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
-                    <span class="n">collapse</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">()[</span><span class="n">method</span><span class="p">]</span><span class="o">.</span><span class="n">method</span>
-                    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                        <span class="n">title_dims</span> <span class="o">+=</span> <span class="s1">&#39;, &#39;</span>
-                    <span class="n">title_dims</span> <span class="o">+=</span> <span class="n">dim</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">collapse</span>
-
-
+            <span class="n">title_dims</span> <span class="o">=</span> <span class="n">colorbar_title</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">title_dims</span>
 
 
 
@@ -729,6 +679,7 @@
     <span class="k">if</span> <span class="n">ptype</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;con - making a map plot&#39;</span><span class="p">)</span>
+
 
         <span class="c1"># Open a new plot if necessary</span>
         <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_plot</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -744,6 +695,7 @@
             <span class="n">plotvars</span><span class="o">.</span><span class="n">latmin</span> <span class="o">=</span> <span class="o">-</span><span class="mi">90</span>
             <span class="n">plotvars</span><span class="o">.</span><span class="n">latmax</span> <span class="o">=</span> <span class="mi">90</span>
 
+
         <span class="k">if</span> <span class="p">(</span><span class="n">lonrange</span> <span class="o">&gt;</span> <span class="mi">350</span> <span class="ow">and</span> <span class="n">latrange</span> <span class="o">&gt;</span> <span class="mi">170</span><span class="p">)</span> <span class="ow">or</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_mapset</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">set_map</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
@@ -752,33 +704,18 @@
                    <span class="n">user_mapset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="n">resolution_orig</span><span class="p">)</span>
             <span class="n">set_map</span><span class="p">()</span>
 
+
+
+
         <span class="n">mymap</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span>
         <span class="n">user_mapset</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_mapset</span>
 
         <span class="n">lonrange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
         
-        <span class="c1"># Extract data for faces if a UGRID blockplot</span>
-        <span class="c1">#blockfill_ugrid = False</span>
-        <span class="c1">#if face_lons and face_lats and face_connectivity:</span>
-        <span class="c1">#    print(&#39;ugrid blockplot&#39;)</span>
-        <span class="c1">#    blockfill_ugrid = True</span>
-        <span class="c1">#    fill = False</span>
-        <span class="c1">#    ugrid = True</span>
-        <span class="c1">#    field_orig = deepcopy(field)</span>
-        <span class="c1">#    if isinstance(face_lons, cf.Field):</span>
-        <span class="c1">#        face_lons_array = face_lons.array</span>
-        <span class="c1">#    else:</span>
-        <span class="c1">#        face_lons_array = face_lons</span>
 
-        <span class="c1">#    if isinstance(face_lats, cf.Field):</span>
-        <span class="c1">#        face_lats_array = face_lats.array</span>
-        <span class="c1">#    else:</span>
-        <span class="c1">#        face_lats_array = face_lats</span>
 
-        <span class="c1">#    if isinstance(face_connectivity, cf.Field):</span>
-        <span class="c1">#        face_connectivity_array = face_connectivity.array</span>
-        <span class="c1">#    else:</span>
-        <span class="c1">#        face_connectivity_array = face_connectivity</span>
+
+
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">blockfill_ugrid</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">ugrid</span><span class="p">:</span>
@@ -868,10 +805,6 @@
                         <span class="n">field</span> <span class="o">=</span> <span class="n">field</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">myypos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
 
 
-
-
-
-
         <span class="c1"># Set the longitudes and latitudes</span>
         <span class="n">lons</span><span class="p">,</span> <span class="n">lats</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
 
@@ -947,11 +880,11 @@
 
                 <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;grid_mapping_name:transverse_mercator&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
                     <span class="c1"># Special case for transverse mercator</span>
-                    <span class="n">bfill</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="n">clevs</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
+                    <span class="n">bfill</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="n">clevs</span><span class="p">,</span> <span class="n">lonlat</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
 
                 <span class="k">else</span><span class="p">:</span>
 
-                    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">has_bounds</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">has_bounds</span><span class="p">()</span> <span class="ow">and</span> <span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">has_bounds</span><span class="p">():</span>
                         <span class="n">xpts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">array</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
                         <span class="n">ypts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">array</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
                         <span class="c1"># Add last longitude point</span>
@@ -960,14 +893,14 @@
                         <span class="n">ypts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ypts</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 
                         <span class="n">bfill</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">field_orig</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">xpts</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">ypts</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="n">clevs</span><span class="p">,</span>
-                              <span class="n">lonlat</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
+                              <span class="n">lonlat</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
                     <span class="k">else</span><span class="p">:</span>
                         <span class="n">bfill</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">field_orig</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x_orig</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_orig</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="n">clevs</span><span class="p">,</span>
-                              <span class="n">lonlat</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
+                              <span class="n">lonlat</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
 
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">bfill</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">field_orig</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x_orig</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_orig</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="n">clevs</span><span class="p">,</span>
-                      <span class="n">lonlat</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
+                      <span class="n">lonlat</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
 
         <span class="c1"># Block fill for ugrid</span>
         <span class="k">if</span> <span class="n">blockfill_ugrid</span><span class="p">:</span>
@@ -1066,6 +999,7 @@
                  <span class="n">text_down_up</span><span class="o">=</span><span class="n">colorbar_text_down_up</span><span class="p">,</span> <span class="n">drawedges</span><span class="o">=</span><span class="n">colorbar_drawedges</span><span class="p">,</span>
                  <span class="n">fraction</span><span class="o">=</span><span class="n">colorbar_fraction</span><span class="p">,</span> <span class="n">thick</span><span class="o">=</span><span class="n">colorbar_thick</span><span class="p">,</span>
                  <span class="n">anchor</span><span class="o">=</span><span class="n">colorbar_anchor</span><span class="p">,</span> <span class="n">levs</span><span class="o">=</span><span class="n">clevs</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+
 
         <span class="c1"># Reset plot limits if not a user plot</span>
         <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_gset</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -1310,7 +1244,7 @@
                 <span class="n">hasbounds</span> <span class="o">=</span> <span class="kc">True</span>
 
                 <span class="k">if</span> <span class="n">ptype</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">has_bounds</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">has_bounds</span><span class="p">()</span> <span class="ow">and</span> <span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">has_bounds</span><span class="p">():</span>
                         <span class="n">xpts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">array</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">]</span>
                         <span class="n">xpts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xpts</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
                         <span class="n">ypts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">array</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">]</span>
@@ -1319,7 +1253,7 @@
                         <span class="n">hasbounds</span> <span class="o">=</span> <span class="kc">False</span>
 
                 <span class="k">if</span> <span class="n">ptype</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">has_bounds</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">has_bounds</span><span class="p">()</span> <span class="ow">and</span> <span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">has_bounds</span><span class="p">():</span>
                         <span class="n">xpts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">array</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">]</span>
                         <span class="n">xpts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xpts</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
                         <span class="n">ypts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">array</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">]</span>
@@ -1328,7 +1262,7 @@
                         <span class="n">hasbounds</span> <span class="o">=</span> <span class="kc">False</span>
 
                 <span class="k">if</span> <span class="n">ptype</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">has_bounds</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">has_bounds</span><span class="p">()</span> <span class="ow">and</span> <span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">has_bounds</span><span class="p">():</span>
                         <span class="n">xpts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">array</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">]</span>
                         <span class="n">xpts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xpts</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
                         <span class="n">ypts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">coord</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">array</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">]</span>
@@ -1338,14 +1272,14 @@
 
                 <span class="k">if</span> <span class="n">hasbounds</span><span class="p">:</span>
                     <span class="n">bfill</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">field_orig</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">xpts</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">ypts</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="n">clevs</span><span class="p">,</span>
-                          <span class="n">lonlat</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
+                          <span class="n">lonlat</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">bfill</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">field_orig</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x_orig</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_orig</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="n">clevs</span><span class="p">,</span>
-                          <span class="n">lonlat</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
+                          <span class="n">lonlat</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
 
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">bfill</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">field_orig</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x_orig</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_orig</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="n">clevs</span><span class="p">,</span>
-                      <span class="n">lonlat</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
+                      <span class="n">lonlat</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
 
         <span class="c1"># Contour lines and labels</span>
         <span class="k">if</span> <span class="n">lines</span><span class="p">:</span>
@@ -1591,20 +1525,20 @@
                         <span class="n">field_orig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rot90</span><span class="p">(</span><span class="n">field_orig</span><span class="p">))</span>
 
                     <span class="n">bfill</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">field_orig</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">xpts</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">ypts</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="n">clevs</span><span class="p">,</span>
-                          <span class="n">lonlat</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
+                          <span class="n">lonlat</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">swap_axes</span><span class="p">:</span>
                         <span class="n">x_orig</span><span class="p">,</span> <span class="n">y_orig</span> <span class="o">=</span> <span class="n">y_orig</span><span class="p">,</span> <span class="n">x_orig</span>
                         <span class="n">field_orig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rot90</span><span class="p">(</span><span class="n">field_orig</span><span class="p">))</span>
                     <span class="n">bfill</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">field_orig</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x_orig</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_orig</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="n">clevs</span><span class="p">,</span>
-                          <span class="n">lonlat</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
+                          <span class="n">lonlat</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
 
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">swap_axes</span><span class="p">:</span>
                     <span class="n">x_orig</span><span class="p">,</span> <span class="n">y_orig</span> <span class="o">=</span> <span class="n">y_orig</span><span class="p">,</span> <span class="n">x_orig</span>
                     <span class="n">field_orig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rot90</span><span class="p">(</span><span class="n">field_orig</span><span class="p">))</span>
                 <span class="n">bfill</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">field_orig</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x_orig</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_orig</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="n">clevs</span><span class="p">,</span>
-                      <span class="n">lonlat</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
+                      <span class="n">lonlat</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
 
         <span class="c1"># Contour lines and labels</span>
         <span class="k">if</span> <span class="n">lines</span><span class="p">:</span>
@@ -1686,7 +1620,7 @@
             <span class="n">plot</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span>
 
         <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;cyl&#39;</span><span class="p">:</span>
-            <span class="n">rotated_pole</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;rotated_latitude_longitude&#39;</span><span class="p">)</span>
+            <span class="n">rotated_pole</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;grid_mapping_name:rotated_latitude_longitude&#39;</span><span class="p">)</span>
             <span class="n">xpole</span> <span class="o">=</span> <span class="n">rotated_pole</span><span class="p">[</span><span class="s1">&#39;grid_north_pole_longitude&#39;</span><span class="p">]</span>
             <span class="n">ypole</span> <span class="o">=</span> <span class="n">rotated_pole</span><span class="p">[</span><span class="s1">&#39;grid_north_pole_latitude&#39;</span><span class="p">]</span>
 
@@ -1744,7 +1678,7 @@
                   <span class="n">x</span><span class="o">=</span><span class="n">xpts</span><span class="p">,</span>
                   <span class="n">y</span><span class="o">=</span><span class="n">ypts</span><span class="p">,</span>
                   <span class="n">clevs</span><span class="o">=</span><span class="n">clevs</span><span class="p">,</span>
-                  <span class="n">lonlat</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                  <span class="n">lonlat</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                   <span class="n">bound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                   <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span>
                   <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
@@ -1901,7 +1835,7 @@
                 <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data_axes</span><span class="p">:</span>
                     <span class="n">i</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">constructs</span><span class="o">.</span><span class="n">domain_axis_identity</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
                     <span class="k">try</span><span class="p">:</span>
-                        <span class="n">c</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">coordinate</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                        <span class="n">c</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">coordinate</span><span class="p">([</span><span class="n">i</span><span class="p">])</span>
                         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">array</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
                             <span class="n">test_for_time_axis</span> <span class="o">=</span> <span class="kc">False</span>
                             <span class="n">sn</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="s1">&#39;standard_name&#39;</span><span class="p">,</span> <span class="s1">&#39;NoName&#39;</span><span class="p">)</span>
@@ -2036,7 +1970,7 @@
         <span class="c1"># Block fill</span>
         <span class="k">if</span> <span class="n">blockfill</span><span class="p">:</span>
             <span class="n">bfill</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">field_orig</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x_orig</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_orig</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="n">clevs</span><span class="p">,</span>
-                  <span class="n">lonlat</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
+                  <span class="n">lonlat</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
 
         <span class="c1"># Contour lines and labels</span>
         <span class="k">if</span> <span class="n">lines</span><span class="p">:</span>
@@ -2945,6 +2879,7 @@
         <span class="n">plotvars</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">file</span>
     <span class="n">plotvars</span><span class="o">.</span><span class="n">orientation</span> <span class="o">=</span> <span class="n">orientation</span>
     <span class="n">plotvars</span><span class="o">.</span><span class="n">user_plot</span> <span class="o">=</span> <span class="n">user_plot</span>
+    <span class="n">plotvars</span><span class="o">.</span><span class="n">gpos_called</span> <span class="o">=</span> <span class="kc">False</span>
 
     <span class="c1"># Set user defined plot area to None</span>
     <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_xmin</span> <span class="o">=</span> <span class="kc">None</span>
@@ -2993,7 +2928,7 @@
         <span class="n">hspace</span><span class="o">=</span><span class="n">hspace</span><span class="p">)</span>
 
     <span class="c1"># Set initial subplot</span>
-    <span class="k">if</span> <span class="n">user_position</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">user_position</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="n">rows</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">columns</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">gpos</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="c1"># Change tick length for plots &gt; 2x2</span>
@@ -3092,7 +3027,10 @@
     <span class="n">plotvars</span><span class="o">.</span><span class="n">graph_xmin</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">plotvars</span><span class="o">.</span><span class="n">graph_xmax</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">plotvars</span><span class="o">.</span><span class="n">graph_ymin</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">plotvars</span><span class="o">.</span><span class="n">graph_ymax</span> <span class="o">=</span> <span class="kc">None</span></div>
+    <span class="n">plotvars</span><span class="o">.</span><span class="n">graph_ymax</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">plotvars</span><span class="o">.</span><span class="n">gpos_called</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">plotvars</span><span class="o">.</span><span class="n">titles_con_called</span> <span class="o">=</span> <span class="kc">False</span></div>
 
 
 <div class="viewcode-block" id="gpos"><a class="viewcode-back" href="../gpos.html#cfplot.gpos">[docs]</a><span class="k">def</span> <span class="nf">gpos</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -3127,6 +3065,9 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
+    <span class="c1"># Reset mymap</span>
+    <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span> <span class="o">=</span> <span class="kc">None</span>
+
     <span class="c1"># Check inputs are okay</span>
     <span class="k">if</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">pos</span> <span class="o">&gt;</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">rows</span> <span class="o">*</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
         <span class="n">errstr</span> <span class="o">=</span> <span class="s1">&#39;pos error - pos out of range:</span><span class="se">\n</span><span class="s1"> range = 1 - &#39;</span>
@@ -3134,6 +3075,7 @@
         <span class="n">errstr</span> <span class="o">=</span> <span class="n">errstr</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> input pos was &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
         <span class="n">errstr</span> <span class="o">=</span> <span class="n">errstr</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
         <span class="k">raise</span> <span class="ne">Warning</span><span class="p">(</span><span class="n">errstr</span><span class="p">)</span>
+
 
     <span class="n">user_pos</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">]):</span>
@@ -3149,15 +3091,23 @@
     <span class="n">plotvars</span><span class="o">.</span><span class="n">graph_ymin</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">plotvars</span><span class="o">.</span><span class="n">graph_ymax</span> <span class="o">=</span> <span class="kc">None</span>
 
+    <span class="c1"># Set gpos_called</span>
+    <span class="n">plotvars</span><span class="o">.</span><span class="n">gpos_called</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Reset titles_con_called</span>
+    <span class="n">plotvars</span><span class="o">.</span><span class="n">titles_con_called</span> <span class="o">=</span> <span class="kc">False</span>
+
     <span class="k">if</span> <span class="n">user_pos</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">master_plot</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span>
             <span class="n">plotvars</span><span class="o">.</span><span class="n">rows</span><span class="p">,</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">delta_x</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_xmax</span> <span class="o">-</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_xmin</span>
         <span class="n">delta_y</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_ymax</span> <span class="o">-</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_ymin</span>
+
         <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">master_plot</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="n">plotvars</span><span class="o">.</span><span class="n">plot_xmin</span><span class="p">,</span>
                                                        <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_ymin</span><span class="p">,</span>
                                                        <span class="n">delta_x</span><span class="p">,</span> <span class="n">delta_y</span><span class="p">])</span>
+
 
     <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -3417,7 +3367,7 @@
     <span class="c1"># Check input data has the correct number of dimensions</span>
     <span class="c1"># Take into account rotated pole fields having extra dimensions</span>
     <span class="n">ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">domain_axes</span><span class="p">()</span><span class="o">.</span><span class="n">filter_by_size</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">gt</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
-    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;rotated_latitude_longitude&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;grid_mapping_name:rotated_latitude_longitude&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">ndim</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">):</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">):</span>
@@ -3626,10 +3576,10 @@
         <span class="n">y</span> <span class="o">=</span> <span class="n">time</span>
 
     <span class="c1"># Rotated pole</span>
-    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;rotated_latitude_longitude&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;grid_mapping_name:rotated_latitude_longitude&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">ptype</span> <span class="o">=</span> <span class="mi">6</span>
 
-        <span class="n">rotated_pole</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;rotated_latitude_longitude&#39;</span><span class="p">)</span>
+        <span class="n">rotated_pole</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;grid_mapping_name:rotated_latitude_longitude&#39;</span><span class="p">)</span>
         <span class="n">xpole</span> <span class="o">=</span> <span class="n">rotated_pole</span><span class="p">[</span><span class="s1">&#39;grid_north_pole_longitude&#39;</span><span class="p">]</span>
         <span class="n">ypole</span> <span class="o">=</span> <span class="n">rotated_pole</span><span class="p">[</span><span class="s1">&#39;grid_north_pole_latitude&#39;</span><span class="p">]</span>
 
@@ -3693,7 +3643,7 @@
         <span class="n">field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
 
     <span class="c1"># UKCP grid</span>
-    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;transverse_mercator&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;grid_mapping_name:transverse_mercator&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">ptype</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="n">field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
 
@@ -3715,7 +3665,7 @@
             <span class="n">ypts</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
             <span class="n">field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
 
-            <span class="n">ref</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;transverse_mercator&#39;</span><span class="p">)</span>
+            <span class="n">ref</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;grid_mapping_name:transverse_mercator&#39;</span><span class="p">)</span>
             <span class="n">false_easting</span> <span class="o">=</span> <span class="n">ref</span><span class="p">[</span><span class="s1">&#39;false_easting&#39;</span><span class="p">]</span>
             <span class="n">false_northing</span> <span class="o">=</span> <span class="n">ref</span><span class="p">[</span><span class="s1">&#39;false_northing&#39;</span><span class="p">]</span>
             <span class="n">central_longitude</span> <span class="o">=</span> <span class="n">ref</span><span class="p">[</span><span class="s1">&#39;longitude_of_central_meridian&#39;</span><span class="p">]</span>
@@ -3742,9 +3692,8 @@
         <span class="n">data_axes</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">get_data_axes</span><span class="p">()</span>
         <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data_axes</span><span class="p">:</span>
-            <span class="n">i</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">constructs</span><span class="o">.</span><span class="n">domain_axis_identity</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">c</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">coordinate</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">coordinate</span><span class="p">(</span><span class="n">filter_by_axis</span>  <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="p">])</span>
                 <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">array</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
                         <span class="n">y</span> <span class="o">=</span> <span class="n">c</span>
@@ -3753,7 +3702,7 @@
                     <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
                 <span class="n">errstr</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">cf_data_assign - cannot find data to return</span><span class="se">\n\n</span><span class="s2">&quot;</span> 
-                <span class="n">errstr</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+                <span class="n">errstr</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">constructs</span><span class="o">.</span><span class="n">domain_axis_identity</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span>
                 <span class="k">raise</span> <span class="ne">Warning</span><span class="p">(</span><span class="n">errstr</span><span class="p">)</span>
 
         <span class="n">xunits</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="n">mydim</span><span class="p">),</span> <span class="s1">&#39;units&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
@@ -4076,8 +4025,8 @@
     <span class="k">return</span> <span class="p">(</span><span class="n">colmap</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="bfill"><a class="viewcode-back" href="../bfill.html#cfplot.bfill">[docs]</a><span class="k">def</span> <span class="nf">bfill</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">lonlat</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-          <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">single_fill_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">white</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="bfill"><a class="viewcode-back" href="../bfill.html#cfplot.bfill">[docs]</a><span class="k">def</span> <span class="nf">bfill</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">lonlat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+          <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">single_fill_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">white</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">     | bfill - block fill a field with colour rectangles</span>
 <span class="sd">     | This is an internal routine and is not generally used by the user.</span>
@@ -4086,14 +4035,14 @@
 <span class="sd">     | x=None - x points for field</span>
 <span class="sd">     | y=None - y points for field</span>
 <span class="sd">     | clevs=None - levels for filling</span>
-<span class="sd">     | lonlat=False - lonlat data</span>
+<span class="sd">     | lonlat=None - longitude and latitude data</span>
 <span class="sd">     | bound=False - x and y are cf data boundaries</span>
 <span class="sd">     | alpha=alpha - transparency setting 0 to 1</span>
 <span class="sd">     | white=True - colour unplotted areas white</span>
 <span class="sd">     | single_fill_color=None - colour for a blockfill between two levels</span>
 <span class="sd">     |                        - makes maplotlib named colours or</span>
 <span class="sd">     |                        - hexadecimal notation - &#39;#d3d3d3&#39; for grey</span>
-<span class="sd">     | zorder=None - plotting order</span>
+<span class="sd">     | zorder=4 - plotting order</span>
 <span class="sd">     |</span>
 <span class="sd">      :Returns:</span>
 <span class="sd">        None</span>
@@ -4102,6 +4051,11 @@
 <span class="sd">     |</span>
 <span class="sd">     |</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Set lonlat if not specified</span>
+    <span class="n">lonlat</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">lonlat</span> <span class="o">=</span> <span class="kc">True</span>
 
     <span class="c1"># If single_fill_color is defined then turn off whiting out the background.</span>
     <span class="k">if</span> <span class="n">single_fill_color</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -4114,11 +4068,11 @@
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">cf</span><span class="o">.</span><span class="n">Field</span><span class="p">):</span>
 
-        <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;transverse_mercator&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;grid_mapping_name:transverse_mercator&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
             <span class="n">lonlat</span> <span class="o">=</span> <span class="kc">True</span>
 
             <span class="c1"># Case of transverse mercator of which UKCP is an example</span>
-            <span class="n">ref</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;transverse_mercator&#39;</span><span class="p">)</span>
+            <span class="n">ref</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;grid_mapping_name:transverse_mercator&#39;</span><span class="p">)</span>
             <span class="n">false_easting</span> <span class="o">=</span> <span class="n">ref</span><span class="p">[</span><span class="s1">&#39;false_easting&#39;</span><span class="p">]</span>
             <span class="n">false_northing</span> <span class="o">=</span> <span class="n">ref</span><span class="p">[</span><span class="s1">&#39;false_northing&#39;</span><span class="p">]</span>
             <span class="n">central_longitude</span> <span class="o">=</span> <span class="n">ref</span><span class="p">[</span><span class="s1">&#39;longitude_of_central_meridian&#39;</span><span class="p">]</span>
@@ -4240,6 +4194,7 @@
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">colarr</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 
+
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">!=</span> <span class="s1">&#39;cyl&#39;</span><span class="p">:</span>
 
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
@@ -4277,6 +4232,7 @@
                 <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">coll</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+
             <span class="n">allverts</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="n">xy_stack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">colarr</span> <span class="o">==</span> <span class="n">i</span><span class="p">))</span>
             <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">xy_stack</span><span class="p">)[</span><span class="mi">0</span><span class="p">]):</span>
@@ -4300,6 +4256,9 @@
 
             <span class="n">coll</span> <span class="o">=</span> <span class="n">PolyCollection</span><span class="p">(</span><span class="n">allverts</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
                                   <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">,</span> <span class="o">**</span><span class="n">plotargs</span><span class="p">)</span>
+
+
+
 
             <span class="k">if</span> <span class="n">lonlat</span><span class="p">:</span>
                 <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">coll</span><span class="p">)</span>
@@ -4647,7 +4606,7 @@
          <span class="n">pivot</span><span class="o">=</span><span class="s1">&#39;middle&#39;</span><span class="p">,</span> <span class="n">key_location</span><span class="o">=</span><span class="p">[</span><span class="mf">0.95</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.06</span><span class="p">],</span> <span class="n">key_show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
          <span class="n">xaxis</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">yaxis</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">yticks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
          <span class="n">yticklabels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ylog</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
-         <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+         <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">titles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">     | vect - plot vectors</span>
 <span class="sd">     |</span>
@@ -4705,6 +4664,8 @@
 <span class="sd">     | ylog=False - log y axis</span>
 <span class="sd">     | color=&#39;k&#39; - colour for the vectors - default is black.</span>
 <span class="sd">     | zorder=3 - plotting order</span>
+<span class="sd">     | titles=None - generate dimension and cell_methods titles for plot</span>
+<span class="sd">     | alpha=1.0 - transparency setting.  The default is no transparency.</span>
 <span class="sd">     |</span>
 <span class="sd">     :Returns:</span>
 <span class="sd">      None</span>
@@ -4742,7 +4703,7 @@
 
     <span class="n">rotated_vect</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">cf</span><span class="o">.</span><span class="n">Field</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;rotated_latitude_longitude&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;grid_mapping_name:rotated_latitude_longitude&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
             <span class="n">rotated_vect</span> <span class="o">=</span> <span class="kc">True</span>
 
     <span class="c1"># Extract required data</span>
@@ -4836,9 +4797,22 @@
     <span class="k">if</span> <span class="n">key_length</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">key_length</span> <span class="o">=</span> <span class="n">scale</span>
 
+    <span class="c1"># Calculate a set of dimension titles if requested</span>
+    <span class="k">if</span> <span class="n">titles</span><span class="p">:</span> 
+        <span class="n">title_dims</span> <span class="o">=</span> <span class="n">generate_titles</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">title_dims</span> <span class="o">=</span> <span class="s1">&#39;u</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">title_dims</span>
+        <span class="n">title_dims2</span> <span class="o">=</span> <span class="n">generate_titles</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">title_dims2</span> <span class="o">=</span> <span class="s1">&#39;v</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">title_dims2</span>
+
+
     <span class="c1"># Open a new plot if necessary</span>
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_plot</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">gopen</span><span class="p">(</span><span class="n">user_plot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Call gpos(1) if not already called</span>
+    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">rows</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">columns</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">gpos_called</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">gpos</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="c1"># Set plot type if user specified</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">ptype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
@@ -4890,7 +4864,7 @@
                                          <span class="n">headlength</span><span class="o">=</span><span class="n">headlength</span><span class="p">,</span>
                                          <span class="n">headaxislength</span><span class="o">=</span><span class="n">headaxislength</span><span class="p">,</span>
                                          <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">proj</span><span class="p">,</span>
-                                         <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
+                                         <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;cyl&#39;</span><span class="p">:</span>
                 <span class="c1"># **cartopy 0.16 fix for longitide points in cylindrical projection</span>
@@ -4907,7 +4881,7 @@
                                          <span class="n">headaxislength</span><span class="o">=</span><span class="n">headaxislength</span><span class="p">,</span>
                                          <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
                                          <span class="n">regrid_shape</span><span class="o">=</span><span class="n">pts</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">proj</span><span class="p">,</span>
-                                         <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
+                                         <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
 
         <span class="c1"># Make key_label if none exists</span>
         <span class="k">if</span> <span class="n">key_label</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -4952,8 +4926,16 @@
         <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">map_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
 
+        <span class="c1"># Titles for dimensions</span>
+        <span class="k">if</span> <span class="n">titles</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">titles_con_called</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="n">dim_titles</span><span class="p">(</span><span class="n">title_dims</span><span class="p">,</span> <span class="n">title2</span><span class="o">=</span><span class="n">title_dims2</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dim_titles</span><span class="p">(</span><span class="n">title2</span><span class="o">=</span><span class="n">title_dims</span><span class="p">,</span> <span class="n">title3</span><span class="o">=</span><span class="n">title_dims2</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;rotated_latitude_longitude&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">u</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;grid_mapping_name:rotated_latitude_longitude&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
             <span class="n">proj</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
 
             <span class="c1"># Set up mapping</span>
@@ -4971,7 +4953,7 @@
                                          <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="n">headwidth</span><span class="p">,</span>
                                          <span class="n">headlength</span><span class="o">=</span><span class="n">headlength</span><span class="p">,</span>
                                          <span class="n">headaxislength</span><span class="o">=</span><span class="n">headaxislength</span><span class="p">,</span>
-                                         <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
+                                         <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
 
             <span class="c1"># Make key_label if none exists</span>
             <span class="k">if</span> <span class="n">key_label</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -5006,6 +4988,13 @@
             <span class="c1"># Title</span>
             <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">map_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+
+
+            <span class="c1"># Titles for dimensions</span>
+            <span class="k">if</span> <span class="n">titles</span><span class="p">:</span>
+                <span class="n">dim_titles</span><span class="p">(</span><span class="n">title_dims</span><span class="p">,</span> <span class="n">titles2</span><span class="o">=</span><span class="n">dim_titles2</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
 
     <span class="c1">######################################</span>
     <span class="c1"># Latitude or longitude vs height plot</span>
@@ -5205,7 +5194,7 @@
                                     <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="n">headwidth</span><span class="p">,</span>
                                     <span class="n">headlength</span><span class="o">=</span><span class="n">headlength</span><span class="p">,</span>
                                     <span class="n">headaxislength</span><span class="o">=</span><span class="n">headaxislength</span><span class="p">,</span>
-                                    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
+                                    <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
 
         <span class="c1"># Plot single key</span>
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -5286,6 +5275,11 @@
                                     <span class="n">fontsize</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">title_fontsize</span><span class="p">,</span>
                                     <span class="n">fontweight</span><span class="o">=</span><span class="n">title_fontweight</span><span class="p">)</span>
 
+            <span class="c1"># Titles for dimensions</span>
+            <span class="k">if</span> <span class="n">titles</span><span class="p">:</span>
+                <span class="n">dim_titles</span><span class="p">(</span><span class="n">title_dims</span><span class="p">,</span> <span class="n">titles2</span><span class="o">=</span><span class="n">dim_titles2</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
     <span class="c1">##########</span>
     <span class="c1"># Save plot</span>
     <span class="c1">##########</span>
@@ -5316,6 +5310,13 @@
 <span class="sd">     |</span>
 <span class="sd">     |</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="c1"># Return if mymap is already set</span>
+    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span>
+
+
 
     <span class="c1"># Set up mapping</span>
     <span class="n">extent</span> <span class="o">=</span> <span class="kc">True</span>
@@ -5416,6 +5417,17 @@
         <span class="n">lonmin</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lon_0</span><span class="o">-</span><span class="mf">180.0</span>
         <span class="n">lonmax</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lon_0</span><span class="o">+</span><span class="mf">180.01</span>
         <span class="n">extent</span> <span class="o">=</span> <span class="kc">False</span>
+
+
+    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;LambertCylindrical&#39;</span><span class="p">:</span>
+        <span class="n">proj</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">LambertCylindrical</span><span class="p">()</span>
+        <span class="n">lonmin</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmin</span>
+        <span class="n">lonmax</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmax</span>
+        <span class="n">latmin</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">latmin</span>
+        <span class="n">latmax</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">latmax</span>
+        <span class="n">extent</span> <span class="o">=</span> <span class="kc">True</span>
+
+
 
     <span class="c1"># Add a plot containing the projection</span>
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_xmin</span><span class="p">:</span>
@@ -6353,7 +6365,7 @@
              <span class="n">legend_location</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">xunits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">yunits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
              <span class="n">xlabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">yticks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
              <span class="n">xticklabels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">yname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-             <span class="n">axes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xaxis</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">yaxis</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+             <span class="n">axes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xaxis</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">yaxis</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">titles</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    | lineplot is the interface to line plotting in cf-plot.</span>
 <span class="sd">    | The minimum use is lineplot(f) where f is a CF field.</span>
@@ -6382,7 +6394,7 @@
 <span class="sd">    |                                    &#39;center right&#39;: 7, &#39;lower center&#39;: 8,</span>
 <span class="sd">    |                                    &#39;lower left&#39;: 3, &#39;lower right&#39;: 4, &#39;right&#39;: 5,</span>
 <span class="sd">    |                                    &#39;upper center&#39;: 9, &#39;upper left&#39;: 2, &#39;upper right&#39;: 1}</span>
-<span class="sd">    |</span>
+<span class="sd">    | titles=False - set to True to have a dimensions title</span>
 <span class="sd">    | verbose=None - change to 1 to get a verbose listing of what lineplot</span>
 <span class="sd">    |                is doing</span>
 <span class="sd">    | zorder=None - plotting order</span>
@@ -6426,6 +6438,11 @@
     <span class="c1">##################</span>
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_plot</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">gopen</span><span class="p">(</span><span class="n">user_plot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Call gpos(1) if not already called</span>
+    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">rows</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">columns</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">gpos_called</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">gpos</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="c1">##################</span>
     <span class="c1"># Extract required data</span>
@@ -6754,6 +6771,14 @@
         <span class="n">plot_xlabel</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="n">plot_ylabel</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 
+
+
+    <span class="c1"># Generate titles if requested</span>
+    <span class="k">if</span> <span class="n">titles</span><span class="p">:</span> 
+        <span class="n">title_dims</span> <span class="o">=</span> <span class="n">generate_titles</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+
+
     <span class="c1"># Make graph</span>
     <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;lineplot - making graph&#39;</span><span class="p">)</span>
@@ -6836,6 +6861,13 @@
     <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">graph</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">title_fontsize</span><span class="p">,</span>
                         <span class="n">fontweight</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">title_fontweight</span><span class="p">)</span>
+
+    <span class="c1"># Titles for dimensions</span>
+    <span class="k">if</span> <span class="n">titles</span><span class="p">:</span>
+        <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="n">graph</span>
+        <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">dim_titles</span><span class="p">(</span><span class="n">title_dims</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
 
     <span class="c1">##################</span>
     <span class="c1"># Save or view plot</span>
@@ -7588,6 +7620,11 @@
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_plot</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">gopen</span><span class="p">(</span><span class="n">user_plot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
+    <span class="c1"># Call gpos(1) if not already called</span>
+    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">rows</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">columns</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">gpos_called</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">gpos</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
     <span class="c1"># Set up mapping</span>
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_mapset</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmin</span> <span class="o">=</span> <span class="o">-</span><span class="mi">180</span>
@@ -8230,11 +8267,12 @@
 
 
 
-<span class="k">def</span> <span class="nf">dim_titles</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">dim_titles</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title3</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    | dim_titles is an internal routine to draw a set of dimension titles on a  plot</span>
 <span class="sd">    |</span>
-<span class="sd">    | title=None - title to put on map plot</span>
+<span class="sd">    | title=None - title to put on the plot</span>
+<span class="sd">    | title2=None - additional title to put to the right of the first title</span>
 <span class="sd">    | dim=False - draw a set of dimension titles</span>
 <span class="sd">    |</span>
 <span class="sd">    |</span>
@@ -8248,6 +8286,7 @@
         <span class="n">this_plot</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">this_plot</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span>
+
     <span class="n">l</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">this_plot</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">bounds</span>
 
     <span class="n">valign</span> <span class="o">=</span> <span class="s1">&#39;bottom&#39;</span>
@@ -8274,12 +8313,40 @@
         <span class="n">myx</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="n">myy</span> <span class="o">=</span> <span class="mf">1.02</span>
 
+
     <span class="n">this_plot</span><span class="o">.</span><span class="n">set_position</span><span class="p">([</span><span class="n">l</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">title3</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">this_plot</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">myx</span> <span class="o">+</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">myy</span><span class="p">,</span> <span class="n">title2</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="n">valign</span><span class="p">,</span>
+                   <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
+                   <span class="n">fontsize</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">axis_label_fontsize</span><span class="p">,</span>
+                   <span class="n">fontweight</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">axis_label_fontweight</span><span class="p">,</span>
+                   <span class="n">transform</span><span class="o">=</span><span class="n">this_plot</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+
+        <span class="n">this_plot</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">myx</span> <span class="o">+</span> <span class="mf">0.6</span><span class="p">,</span> <span class="n">myy</span><span class="p">,</span> <span class="n">title3</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="n">valign</span><span class="p">,</span>
+                   <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
+                   <span class="n">fontsize</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">axis_label_fontsize</span><span class="p">,</span>
+                   <span class="n">fontweight</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">axis_label_fontweight</span><span class="p">,</span>
+                   <span class="n">transform</span><span class="o">=</span><span class="n">this_plot</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+
+        <span class="k">return</span>
+
+
     <span class="n">this_plot</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">myx</span><span class="p">,</span> <span class="n">myy</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="n">valign</span><span class="p">,</span>
                    <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
                    <span class="n">fontsize</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">axis_label_fontsize</span><span class="p">,</span>
                    <span class="n">fontweight</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">axis_label_fontweight</span><span class="p">,</span>
                    <span class="n">transform</span><span class="o">=</span><span class="n">this_plot</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">title2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">this_plot</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">myx</span> <span class="o">+</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">myy</span><span class="p">,</span> <span class="n">title2</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="n">valign</span><span class="p">,</span>
+                   <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
+                   <span class="n">fontsize</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">axis_label_fontsize</span><span class="p">,</span>
+                   <span class="n">fontweight</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">axis_label_fontweight</span><span class="p">,</span>
+                   <span class="n">transform</span><span class="o">=</span><span class="n">this_plot</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+
+
+
 
 
 
@@ -9186,6 +9253,11 @@
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_plot</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">gopen</span><span class="p">(</span><span class="n">user_plot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
+    <span class="c1"># Call gpos(1) if not already called</span>
+    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">rows</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">columns</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">gpos_called</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">gpos</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
     <span class="c1"># Set plot type if user specified</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">ptype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">=</span> <span class="n">ptype</span>
@@ -9350,8 +9422,55 @@
 
 
 
+<span class="k">def</span> <span class="nf">generate_titles</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Generate a set of title dims to put at the top of plots&#39;&#39;&#39;</span>
 
+    <span class="n">title_dims</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">cf</span><span class="o">.</span><span class="n">Field</span><span class="p">):</span>
+        <span class="n">xtitle</span><span class="p">,</span> <span class="n">xunits</span> <span class="o">=</span> <span class="n">cf_var_name_titles</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">xtitle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">xvalues</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">xvalues</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">xvalue</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">xvalue</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">xvalues</span><span class="p">)</span>
+            <span class="n">title_dims</span> <span class="o">+=</span> <span class="s1">&#39;x: &#39;</span> <span class="o">+</span> <span class="n">xtitle</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">xvalue</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span>  <span class="o">+</span> <span class="n">xunits</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="n">ytitle</span><span class="p">,</span> <span class="n">yunits</span> <span class="o">=</span> <span class="n">cf_var_name_titles</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ytitle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">yvalues</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">yvalues</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">yvalue</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">yvalue</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">yvalues</span><span class="p">)</span>
+            <span class="n">title_dims</span> <span class="o">+=</span> <span class="s1">&#39;y: &#39;</span>  <span class="o">+</span> <span class="n">ytitle</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">yvalue</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">yunits</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="n">ztitle</span><span class="p">,</span> <span class="n">zunits</span> <span class="o">=</span> <span class="n">cf_var_name_titles</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ztitle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">zvalues</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">zvalues</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">zvalue</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">zvalue</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">zvalues</span><span class="p">)</span>
+            <span class="n">title_dims</span> <span class="o">+=</span>  <span class="s1">&#39;z: &#39;</span>  <span class="o">+</span> <span class="n">ztitle</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">zvalue</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">zunits</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="n">ttitle</span><span class="p">,</span> <span class="n">tunits</span> <span class="o">=</span> <span class="n">cf_var_name_titles</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ztitle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">tvalues</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dtarray</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tvalues</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">tvalue</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tvalue</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cf</span><span class="o">.</span><span class="n">Data</span><span class="p">(</span><span class="n">tvalues</span><span class="p">)</span><span class="o">.</span><span class="n">datetime_as_string</span><span class="p">)</span>
+            <span class="n">title_dims</span> <span class="o">+=</span> <span class="s1">&#39;t: &#39;</span>  <span class="o">+</span> <span class="n">ttitle</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">tvalue</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">title_dims</span> <span class="o">+=</span> <span class="s1">&#39;cell methods: &#39;</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">():</span>
+                <span class="n">axis</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">()[</span><span class="n">method</span><span class="p">]</span><span class="o">.</span><span class="n">get_axes</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">dim</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">constructs</span><span class="o">.</span><span class="n">domain_axis_identity</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+                <span class="n">collapse</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">()[</span><span class="n">method</span><span class="p">]</span><span class="o">.</span><span class="n">method</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">title_dims</span> <span class="o">+=</span> <span class="s1">&#39;, &#39;</span>
+                <span class="n">title_dims</span> <span class="o">+=</span> <span class="n">dim</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">collapse</span>
 
+    <span class="k">return</span> <span class="n">title_dims</span>
 
 
 
@@ -9406,14 +9525,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.1.6 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">cfplot</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Andy Heaps.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
     </div>
   </body>
 </html>

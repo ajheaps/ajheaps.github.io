@@ -14,7 +14,7 @@ The `UGRID <https://ugrid-conventions.github.io/ugrid-conventions>`_ data storag
 
    import cf
    import cfplot as cfp
-   f=cf.read('lfric_initial.nc')
+   f=cf.read('cfplot_data/lfric_initial.nc')
 
    pot=f[33][4,:]
    lons = f[12]
@@ -37,7 +37,7 @@ Here we identify the fields in the data that have the longitudes and latitudes f
 
    import cf
    import cfplot as cfp
-   f=cf.read('lfric_initial.nc')
+   f=cf.read('cfplot_data/lfric_initial.nc')
 
    pot=f[33][4,:]
    lons = f[12]
@@ -59,7 +59,7 @@ Here the projection is changed to show the north pole.
 
    import cf
    import cfplot as cfp
-   f=cf.read('lfric_initial.nc')[33]
+   f=cf.read('cfplot_data/lfric_initial.nc')[33]
    g=f[0,:]
 
    cfp.con(g, lines=False )
@@ -85,7 +85,7 @@ Orca2 grid
    lons=np.array(nc.variables['longitude'])
    lats=np.array(nc.variables['latitude'])
    temp=np.array(nc.variables['sst'])
-   lons=lons.flatten()
+   lons=lons.flatten()h
    lats=lats.flatten()
    temp=temp.flatten()
 

@@ -100,7 +100,7 @@ Example 16 - zonal vector plot
     g=g.subspace(X=cf.wi(80,160))
     g=g.collapse('T: mean X: mean')
 
-    cfp.vect(u=c, v=-g, key_length=[5, 0.05], scale=[20,0.2], title='DJF', key_location=[0.95, -0.05])
+    cfp.vect(u=c, v=-1*g, key_length=[5, 0.05], scale=[20,0.2], title='DJF', key_location=[0.95, -0.05])
 
 
 Here we make a zonal mean vector plot with different vector keys and scaling factors for the X and Y directions.

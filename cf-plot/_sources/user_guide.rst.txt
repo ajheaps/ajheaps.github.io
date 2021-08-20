@@ -1669,13 +1669,13 @@ To do a time mean of the data
 
 This now has one time value placed in the middle  of the original time series. 
 
-|    **h.item('T').dtarray**
+|    **h.coord('T').dtarray**
 |    array([cftime.Datetime360Day(1930, 1, 1, 0, 0, 0, 0, 1, 1)], dtype=object)
 
 The bounds on the data are the minimum and maximum of the original data bounds.
 
 
-|    **h.item('T').bounds.dtarray**
+|    **h.coord('T').bounds.dtarray**
 |    array([[cftime.Datetime360Day(1860, 1, 1, 0, 0, 0, 0, 1, 1),
 |            cftime.Datetime360Day(2000, 1, 1, 0, 0, 0, 0, 1, 1)]],
 |            dtype=object)
