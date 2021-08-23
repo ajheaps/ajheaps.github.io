@@ -158,10 +158,35 @@ filter_by_axis method in f.coordinate.
     Updated
 
 
+16. cfp.vect - high latitude vector code modified
+=================================================
+
+Cartopy has an issue with higher latitude vectors as described at https://github.com/SciTools/cartopy/issues/1179.
 
 
+The following code sets all the u and v components to be 10m/s so it would be expected that the vectors will be at 
+45 degrees to the longitude lines.  Prior to the modification this wasn't the case. 
+
+::
+    import cf
+    import cfplot as cfp
+
+    f=cf.read('cfplot_data/ggap.nc')
+    u=f[1].subspace(pressure=500)
+    v=f[2].subspace(pressure=500)
+
+    u.data[:] = 10
+    v.data[:] = 10
+    cfp.mapset(proj='npstere')
+
+    cfp.vect(u=u, v=v, key_length=10, scale=100, pts=30)
 
 
+This was fixed internally in cf-plot version 3.1.16 but may need a reversion to the original code if Cartopy gets a patch for this feature.
+
+
+::
+    Fixed
 
 
  

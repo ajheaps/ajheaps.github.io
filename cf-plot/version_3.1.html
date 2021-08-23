@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>version 3.1 changes &#8212; cf-plot 3.1.6 documentation</title>
+    <title>version 3.1 changes &#8212; cf-plot 3.1.16 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -25,7 +25,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.1.6 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.1.16 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">version 3.1 changes</a></li> 
       </ul>
     </div>  
@@ -134,6 +134,29 @@ filter_by_axis method in f.coordinate.</p>
 </pre></div>
 </div>
 </section>
+<section id="cfp-vect-high-latitude-vector-code-modified">
+<h2>16. cfp.vect - high latitude vector code modified<a class="headerlink" href="#cfp-vect-high-latitude-vector-code-modified" title="Permalink to this headline">¶</a></h2>
+<p>Cartopy has an issue with higher latitude vectors as described at <a class="reference external" href="https://github.com/SciTools/cartopy/issues/1179">https://github.com/SciTools/cartopy/issues/1179</a>.</p>
+<p>The following code sets all the u and v components to be 10m/s so it would be expected that the vectors will be at
+45 degrees to the longitude lines.  Prior to the modification this wasn't the case.</p>
+<dl>
+<dt>::</dt><dd><p>import cf
+import cfplot as cfp</p>
+<p>f=cf.read('cfplot_data/ggap.nc')
+u=f[1].subspace(pressure=500)
+v=f[2].subspace(pressure=500)</p>
+<p>u.data[:] = 10
+v.data[:] = 10
+cfp.mapset(proj='npstere')</p>
+<p>cfp.vect(u=u, v=v, key_length=10, scale=100, pts=30)</p>
+</dd>
+</dl>
+<p>This was fixed internally in cf-plot version 3.1.16 but may need a reversion to the original code if Cartopy gets a patch for this feature.</p>
+<dl class="simple">
+<dt>::</dt><dd><p>Fixed</p>
+</dd>
+</dl>
+</section>
 </section>
 
 
@@ -167,7 +190,7 @@ filter_by_axis method in f.coordinate.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.1.6 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.1.16 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">version 3.1 changes</a></li> 
       </ul>
     </div>

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>cfplot &#8212; cf-plot 3.1.6 documentation</title>
+    <title>cfplot &#8212; cf-plot 3.1.16 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -24,7 +24,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.1.6 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.1.16 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">cfplot</a></li> 
       </ul>
@@ -4857,6 +4857,18 @@
         <span class="n">lonmax</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmax</span>
         <span class="n">proj</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
 
+        <span class="c1"># Fix for high latitude vectors as described at https://github.com/SciTools/cartopy/issues/1179</span>
+        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">!=</span> <span class="s1">&#39;cyl&#39;</span><span class="p">:</span>
+            <span class="n">u_src_crs</span> <span class="o">=</span> <span class="n">u_data</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">u_y</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">/</span> <span class="mi">180</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+            <span class="n">v_src_crs</span> <span class="o">=</span> <span class="n">v_data</span>
+            <span class="n">magnitude</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u_data</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">v_data</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">magn_src_crs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u_src_crs</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">v_src_crs</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+            <span class="n">u_data</span> <span class="o">=</span> <span class="n">u_src_crs</span> <span class="o">*</span> <span class="n">magnitude</span> <span class="o">/</span> <span class="n">magn_src_crs</span>
+            <span class="n">v_data</span> <span class="o">=</span> <span class="n">v_src_crs</span> <span class="o">*</span> <span class="n">magnitude</span> <span class="o">/</span> <span class="n">magn_src_crs</span>
+
+
+
         <span class="k">if</span> <span class="n">pts</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">quiv</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">u_x</span><span class="p">,</span> <span class="n">u_y</span><span class="p">,</span> <span class="n">u_data</span><span class="p">,</span> <span class="n">v_data</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
                                          <span class="n">pivot</span><span class="o">=</span><span class="n">pivot</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;inches&#39;</span><span class="p">,</span>
@@ -9525,7 +9537,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.1.6 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.1.16 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">cfplot</a></li> 
       </ul>
