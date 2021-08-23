@@ -139,18 +139,20 @@ filter_by_axis method in f.coordinate.</p>
 <p>Cartopy has an issue with higher latitude vectors as described at <a class="reference external" href="https://github.com/SciTools/cartopy/issues/1179">https://github.com/SciTools/cartopy/issues/1179</a>.</p>
 <p>The following code sets all the u and v components to be 10m/s so it would be expected that the vectors will be at
 45 degrees to the longitude lines.  Prior to the modification this wasn't the case.</p>
-<dl>
-<dt>::</dt><dd><p>import cf
-import cfplot as cfp</p>
-<p>f=cf.read('cfplot_data/ggap.nc')
-u=f[1].subspace(pressure=500)
-v=f[2].subspace(pressure=500)</p>
-<p>u.data[:] = 10
-v.data[:] = 10
-cfp.mapset(proj='npstere')</p>
-<p>cfp.vect(u=u, v=v, key_length=10, scale=100, pts=30)</p>
-</dd>
-</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
+<span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
+
+<span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/ggap.nc&#39;</span><span class="p">)</span>
+<span class="n">u</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">v</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">pressure</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+
+<span class="n">u</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">v</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">mapset</span><span class="p">(</span><span class="n">proj</span><span class="o">=</span><span class="s1">&#39;npstere&#39;</span><span class="p">)</span>
+
+<span class="n">cfp</span><span class="o">.</span><span class="n">vect</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="n">v</span><span class="p">,</span> <span class="n">key_length</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">pts</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>This was fixed internally in cf-plot version 3.1.16 but may need a reversion to the original code if Cartopy gets a patch for this feature.</p>
 <dl class="simple">
 <dt>::</dt><dd><p>Fixed</p>
