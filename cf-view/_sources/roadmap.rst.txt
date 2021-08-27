@@ -7,11 +7,10 @@ The current version is |release|
 - 2.1 Improve functionality in the main interface
 - 2.2 Line plots
 - 2.3 Vector plots
-- 2.4 Bug fix release
-- 2.5 Combined contour and vector plots
-- 2.6 Trajectory plots
-- 2.7 Extend to data that is lacking CF information
-- 2.8 UGRID plots
+- 2.4 Combined contour and vector plots
+- 2.5 Trajectory plots
+- 2.6 Extend to data that is lacking CF information
+- 2.7 UGRID plots
 
 
 |
