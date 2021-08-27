@@ -7,8 +7,9 @@ The current version is |release|
 - 2.1 Improve functionality in the main interface
 - 2.2 Line plots
 - 2.3 Vector plots
-- 2.4 Trajectory plots
-- 2.5 UGRID plots
+- 2.4 Combined contour and vector plots
+- 2.5 Trajectory plots
+- 2.6 UGRID plots
 
 
 |
