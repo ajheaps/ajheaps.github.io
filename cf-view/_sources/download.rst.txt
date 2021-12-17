@@ -13,8 +13,8 @@ Download and install Miniconda Python 3.9 if this is not already installed.
 ::
 
    conda update -n base -c defaults conda
-   conda install -c conda-forge pyqt pip udunits2 cartopy==0.19.0.post1
-   pip install cf-python cf-plot==3.1.15 cf-view==2.5.0
+   conda install -c conda-forge pip udunits2 cartopy
+   pip install cf-python cf-plot cf-view
 
 
 Conda packages will be made when cfview has matured a little more.
