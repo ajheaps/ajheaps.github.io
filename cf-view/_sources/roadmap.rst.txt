@@ -10,7 +10,10 @@ The current version is |release|
 - 2.4 Combined contour and vector plots
 - 2.5 Trajectory plots
 - 2.6 Extend to data that is lacking CF information
-- 2.7 UGRID plots
+- 2.7 Testing and bug fixing against input data
+- 2.8 Rotated pole data
+- 2.9 Two dimensional x and y data
+- 3.0 UGRID data
 
 
 |

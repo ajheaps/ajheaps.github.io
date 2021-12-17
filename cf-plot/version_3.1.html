@@ -159,6 +159,22 @@ filter_by_axis method in f.coordinate.</p>
 </dd>
 </dl>
 </section>
+<section id="cfp-mapset-contour-issue-when-using-cartopy-0-20-0-and-possibly-later">
+<h2>17. cfp.mapset - contour issue when using cartopy 0.20.0 and possibly later<a class="headerlink" href="#cfp-mapset-contour-issue-when-using-cartopy-0-20-0-and-possibly-later" title="Permalink to this headline">¶</a></h2>
+<p>Cartopy version 0.20.0 and possibly later cause a contour over maps issue in cf-plot.  A version check in cf-plot is now in place to circumvent this.</p>
+<dl>
+<dt>::</dt><dd><blockquote>
+<div><p>Cartopy version check in place</p>
+</div></blockquote>
+<p>Additional code was added to cfp.con to cope with data which has one axis of longitude, latitude, pressure, time
+and another that isn't recogised as one of these.</p>
+<dl class="simple">
+<dt>::</dt><dd><p>Changed</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
 </section>
 
 
