@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Colour scales &#8212; cf-plot 3.1.16 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
@@ -35,7 +34,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="colour-scales">
+  <div class="section" id="colour-scales">
 <h1>Colour scales<a class="headerlink" href="#colour-scales" title="Permalink to this headline">¶</a></h1>
 <p>There are two default colour scales in cf-plot:</p>
 <ol class="arabic simple">
@@ -95,7 +94,7 @@
 <span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-<section id="user-defined-colour-scales">
+<div class="section" id="user-defined-colour-scales">
 <h2>User defined colour scales<a class="headerlink" href="#user-defined-colour-scales" title="Permalink to this headline">¶</a></h2>
 <p>Store these as rgb values in a file with one rgb value per line.  i.e.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">255</span> <span class="mi">0</span>   <span class="mi">0</span>
@@ -107,8 +106,8 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;/home/swsheaps/rwb.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="selecting-colours-for-graph-lines">
+</div>
+<div class="section" id="selecting-colours-for-graph-lines">
 <h2>Selecting colours for graph lines<a class="headerlink" href="#selecting-colours-for-graph-lines" title="Permalink to this headline">¶</a></h2>
 <p>This can be done in several ways:</p>
 <ol class="arabic simple">
@@ -123,12 +122,12 @@
 <li><p>Shades of grey can be selected with cmap(shade), where shade go from 0 to 1.</p></li>
 </ol>
 <p>cfp.lineplot(g.subspace(pressure=925), color=cmap(0.8))</p>
-</section>
-<section id="predefined-colour-scales">
+</div>
+<div class="section" id="predefined-colour-scales">
 <h2>Predefined colour scales<a class="headerlink" href="#predefined-colour-scales" title="Permalink to this headline">¶</a></h2>
 <p>A lot of the following colour maps were downloaded from the NCAR Command Language web site.  Users of the IDL guide colour maps can see these maps at the end of the colour scales.</p>
-</section>
-<section id="perceptually-uniform-colour-scales">
+</div>
+<div class="section" id="perceptually-uniform-colour-scales">
 <h2>Perceptually uniform colour scales<a class="headerlink" href="#perceptually-uniform-colour-scales" title="Permalink to this headline">¶</a></h2>
 <p>A selection of perceptually uniform colour scales for contouring data without a zero in. See <a class="reference external" href="http://www.climate-lab-book.ac.uk/2014/end-of-the-rainbow">The end of the rainbow</a> and <a class="reference external" href="http://bids.github.io/colormap">Matplotlib colour maps</a> for a good discussion on colour scales, colour blindness and uniform colour scales.</p>
 <table class="docutils align-default">
@@ -168,8 +167,8 @@
 </tr>
 </tbody>
 </table>
-</section>
-<section id="ncar-command-language-meteoswiss-colour-maps">
+</div>
+<div class="section" id="ncar-command-language-meteoswiss-colour-maps">
 <h2>NCAR Command Language - MeteoSwiss colour maps<a class="headerlink" href="#ncar-command-language-meteoswiss-colour-maps" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -244,8 +243,8 @@
 </tr>
 </tbody>
 </table>
-</section>
-<section id="ncar-command-language-small-color-maps-50-colours">
+</div>
+<div class="section" id="ncar-command-language-small-color-maps-50-colours">
 <h2>NCAR Command Language - small color maps (&lt;50 colours)<a class="headerlink" href="#ncar-command-language-small-color-maps-50-colours" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -448,8 +447,8 @@
 </tr>
 </tbody>
 </table>
-</section>
-<section id="ncar-command-language-large-colour-maps-50-colours">
+</div>
+<div class="section" id="ncar-command-language-large-colour-maps-50-colours">
 <h2>NCAR Command Language - large colour maps (&gt;50 colours)<a class="headerlink" href="#ncar-command-language-large-colour-maps-50-colours" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -672,8 +671,8 @@
 </tr>
 </tbody>
 </table>
-</section>
-<section id="ncar-command-language-enhanced-to-help-with-colour-blindness">
+</div>
+<div class="section" id="ncar-command-language-enhanced-to-help-with-colour-blindness">
 <h2>NCAR Command Language - Enhanced to help with colour blindness<a class="headerlink" href="#ncar-command-language-enhanced-to-help-with-colour-blindness" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -724,8 +723,8 @@
 </tr>
 </tbody>
 </table>
-</section>
-<section id="orography-bathymetry-colour-scales">
+</div>
+<div class="section" id="orography-bathymetry-colour-scales">
 <h2>Orography/bathymetry colour scales<a class="headerlink" href="#orography-bathymetry-colour-scales" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -764,8 +763,8 @@
 </tr>
 </tbody>
 </table>
-</section>
-<section id="idl-guide-scales">
+</div>
+<div class="section" id="idl-guide-scales">
 <h2>IDL guide scales<a class="headerlink" href="#idl-guide-scales" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -956,8 +955,8 @@
 </tr>
 </tbody>
 </table>
-</section>
-</section>
+</div>
+</div>
 
 
             <div class="clearer"></div>
@@ -996,7 +995,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Andy Heaps.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
     </div>
   </body>
 </html>

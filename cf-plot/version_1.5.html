@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>version 1.5 changes &#8212; cf-plot 3.1.16 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
@@ -35,10 +34,10 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="version-1-5-changes">
+  <div class="section" id="version-1-5-changes">
 <h1>version 1.5 changes<a class="headerlink" href="#version-1-5-changes" title="Permalink to this headline">¶</a></h1>
 <p>This is a rolling bug/feature fix version.</p>
-<section id="fix-colour-bar-mislabelling">
+<div class="section" id="fix-colour-bar-mislabelling">
 <h2>1. Fix colour bar mislabelling<a class="headerlink" href="#fix-colour-bar-mislabelling" title="Permalink to this headline">¶</a></h2>
 <p>The colorbar can sometimes be mislabelled when using unusual manual labels.</p>
 <p>cfp.levs(manual=[-1, 1, 10000, 20000, 30000, 40000, 50000, 60000])
@@ -50,8 +49,8 @@ be 0, 2, 10001, 20001, 30001, 40001, 50001, 60001 and a +1 will appear next to t
 </pre></div>
 </div>
 </div></blockquote>
-</section>
-<section id="incorrect-plot-limits-for-multiple-plots">
+</div>
+<div class="section" id="incorrect-plot-limits-for-multiple-plots">
 <h2>2. Incorrect plot limits for multiple plots<a class="headerlink" href="#incorrect-plot-limits-for-multiple-plots" title="Permalink to this headline">¶</a></h2>
 <p>A longitude-latitude plot followed by a latitude-pressure plot on the same page gives incorrect plot limits for the second plot.</p>
 <blockquote>
@@ -59,8 +58,8 @@ be 0, 2, 10001, 20001, 30001, 40001, 50001, 60001 and a +1 will appear next to t
 </pre></div>
 </div>
 </div></blockquote>
-</section>
-<section id="bug-in-longitude-wrapping">
+</div>
+<div class="section" id="bug-in-longitude-wrapping">
 <h2>3. Bug in longitude wrapping<a class="headerlink" href="#bug-in-longitude-wrapping" title="Permalink to this headline">¶</a></h2>
 <p>Non global data in longitude-latitude causes a crash in the longitude wrapping section</p>
 <blockquote>
@@ -68,8 +67,8 @@ be 0, 2, 10001, 20001, 30001, 40001, 50001, 60001 and a +1 will appear next to t
 </pre></div>
 </div>
 </div></blockquote>
-</section>
-<section id="non-global-longitude-latitude-data-is-plotted-on-a-global-grid">
+</div>
+<div class="section" id="non-global-longitude-latitude-data-is-plotted-on-a-global-grid">
 <h2>4. Non-global longitude/latitude data is plotted on a global grid<a class="headerlink" href="#non-global-longitude-latitude-data-is-plotted-on-a-global-grid" title="Permalink to this headline">¶</a></h2>
 <p>The default cylindirical projection limits of -180 to 180 in longitude and -90 to 90 in latitude are used for all map plots.  This needs changing to be the limits of the data in these cases.</p>
 <blockquote>
@@ -77,8 +76,8 @@ be 0, 2, 10001, 20001, 30001, 40001, 50001, 60001 and a +1 will appear next to t
 </pre></div>
 </div>
 </div></blockquote>
-</section>
-<section id="automatic-colour-scales-bug">
+</div>
+<div class="section" id="automatic-colour-scales-bug">
 <h2>5. Automatic colour scales bug<a class="headerlink" href="#automatic-colour-scales-bug" title="Permalink to this headline">¶</a></h2>
 <p>Automatic colour scales are broken.  Remove call to cscale() in gpos.</p>
 <blockquote>
@@ -86,8 +85,8 @@ be 0, 2, 10001, 20001, 30001, 40001, 50001, 60001 and a +1 will appear next to t
 </pre></div>
 </div>
 </div></blockquote>
-</section>
-<section id="colorbar-labels-overwrite-each-other">
+</div>
+<div class="section" id="colorbar-labels-overwrite-each-other">
 <h2>6. Colorbar labels overwrite each other<a class="headerlink" href="#colorbar-labels-overwrite-each-other" title="Permalink to this headline">¶</a></h2>
 <p>Colour bar labels overwite each other when large number of contour levels are used or when more plot columns are used.   Include code to take account of these based on the total number of characters in the contour labels and the number of
 columns.  If the user hasn't supplied a value for colorbar_label_skip to the con routine then the calculated value is
@@ -97,8 +96,8 @@ used.  The labels used will start at the lowest for a continuous data set and fr
 </pre></div>
 </div>
 </div></blockquote>
-</section>
-<section id="latitude-vs-log-pressure-plot-axes-cause-an-abort">
+</div>
+<div class="section" id="latitude-vs-log-pressure-plot-axes-cause-an-abort">
 <h2>7. Latitude vs log pressure plot axes cause an abort<a class="headerlink" href="#latitude-vs-log-pressure-plot-axes-cause-an-abort" title="Permalink to this headline">¶</a></h2>
 <p>Latitude vs log pressure plot axes cause an abort due to zero being used for the top of the atmosphere.  Line of code inadvertently deleted but this is now back in place.</p>
 <blockquote>
@@ -106,8 +105,8 @@ used.  The labels used will start at the lowest for a continuous data set and fr
 </pre></div>
 </div>
 </div></blockquote>
-</section>
-<section id="a-cf-field-list-with-one-field-is-rejected-by-cf-plot-before-plotting">
+</div>
+<div class="section" id="a-cf-field-list-with-one-field-is-rejected-by-cf-plot-before-plotting">
 <h2>8. A CF field list with one field is rejected by cf-plot before plotting<a class="headerlink" href="#a-cf-field-list-with-one-field-is-rejected-by-cf-plot-before-plotting" title="Permalink to this headline">¶</a></h2>
 <p>Code changed to check and pass the field for plotting.</p>
 <blockquote>
@@ -115,8 +114,8 @@ used.  The labels used will start at the lowest for a continuous data set and fr
 </pre></div>
 </div>
 </div></blockquote>
-</section>
-<section id="added-longitude-height-plots">
+</div>
+<div class="section" id="added-longitude-height-plots">
 <h2>9. Added longitude height plots<a class="headerlink" href="#added-longitude-height-plots" title="Permalink to this headline">¶</a></h2>
 <p>Longitude-height plots were missing from cf_data_assign and from the contouring routine.
 These have now been added.</p>
@@ -125,8 +124,8 @@ These have now been added.</p>
 </pre></div>
 </div>
 </div></blockquote>
-</section>
-<section id="documentation-change">
+</div>
+<div class="section" id="documentation-change">
 <h2>10. Documentation change<a class="headerlink" href="#documentation-change" title="Permalink to this headline">¶</a></h2>
 <p>The web and user guide documentation has chaged so that the examples reference data in cfplot_data.  This is so the gallery examples work as written and to prevent multiple copies of the example data being on local disks.</p>
 <blockquote>
@@ -134,8 +133,8 @@ These have now been added.</p>
 </pre></div>
 </div>
 </div></blockquote>
-</section>
-<section id="reset-command">
+</div>
+<div class="section" id="reset-command">
 <h2>11. Reset command<a class="headerlink" href="#reset-command" title="Permalink to this headline">¶</a></h2>
 <p>A reset command was added to the code to reset all the graphics options in one step.  Use cfp.reset().</p>
 <blockquote>
@@ -143,8 +142,8 @@ These have now been added.</p>
 </pre></div>
 </div>
 </div></blockquote>
-</section>
-<section id="internal-work-on-axes-command">
+</div>
+<div class="section" id="internal-work-on-axes-command">
 <h2>12: Internal work on axes command<a class="headerlink" href="#internal-work-on-axes-command" title="Permalink to this headline">¶</a></h2>
 <p>A lot of internal work was done on the axes command to make it write the passed data into the plotvars array.
 The data from here then superceeds any automatically generated axis labels.</p>
@@ -153,8 +152,8 @@ The data from here then superceeds any automatically generated axis labels.</p>
 </pre></div>
 </div>
 </div></blockquote>
-</section>
-<section id="setvars-command-added">
+</div>
+<div class="section" id="setvars-command-added">
 <h2>13. Setvars command added<a class="headerlink" href="#setvars-command-added" title="Permalink to this headline">¶</a></h2>
 <p>A new command called setvars was added to the code.  This is used to set various common plotting options.
 Options are:</p>
@@ -177,8 +176,8 @@ Options are:</p>
 </pre></div>
 </div>
 </div></blockquote>
-</section>
-<section id="reduced-longitude-grid-not-plotted-correctly">
+</div>
+<div class="section" id="reduced-longitude-grid-not-plotted-correctly">
 <h2>14. Reduced longitude grid not plotted correctly<a class="headerlink" href="#reduced-longitude-grid-not-plotted-correctly" title="Permalink to this headline">¶</a></h2>
 <p>A reduced longitude grid isn't plotted correctly due to a bug in
 the calculation of the lonrange variable.</p>
@@ -187,8 +186,8 @@ the calculation of the lonrange variable.</p>
 </pre></div>
 </div>
 </div></blockquote>
-</section>
-</section>
+</div>
+</div>
 
 
             <div class="clearer"></div>
@@ -227,7 +226,7 @@ the calculation of the lonrange variable.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Andy Heaps.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
     </div>
   </body>
 </html>
