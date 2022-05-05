@@ -200,19 +200,54 @@ Cartopy version 0.20.0 and possibly later cause a contour over maps issue in cf-
     Cartopy version check in place
  
  
- 18. cfp.con - changes to ptype=0 code
- =====================================
+18. cfp.con - changes to ptype=0 code
+=====================================
  
- Additional code was added to cfp.con to cope with data which has one axis of longitude, latitude, pressure, time 
- and another that isn't recogised as one of these.
+Additional code was added to cfp.con to cope with data which has one axis of longitude, latitude, pressure, time 
+and another that isn't recogised as one of these.
  
- ::
-    Changed
- 
- 
+::
+   Changed
  
  
+19. cfp.con - improved Z axis detection
+======================================
  
+The cf-plot find_dim_names routine was modified to use the cf-python get_data_axes method leading to more reliable Z axis detection when multiple Z axes
+are defined in the field.
+
+
+::
+   Changed
+ 
+ 
+20. cfp.con - transform_first - higher resolution map data contour plots
+========================================================================
+
+When making map contour plots > 400 points in longitude cartopy slows down markedly due to having to transform lots of patches.  The transform_first
+keyword to cfp.con transforms the points rather than patches and leads to a considerable speed improvement.  For example a 1440 longitudes map plot took
+30 minutes with the normal method and this decreased to 0.7 seconds when transform_first=True was set. If this keyword is set for lower resolution data
+then the plot limits in longitude sometimes have missing data.
+
+When there are more that 400 longitude points the option is set automatically but it can always be turned off with transform_first=False.
+
+
+::
+
+    Done
+    
+
+21. cfp.con - blockfill_fast - faster blockfill plotting
+========================================================
+
+Higher resolution data causes blockfill plotting to slow down markedly due to the number of cells plotted.  The blockfill_fast option was added to cfp.con which 
+uses the Matplotlib pcolormesh routine to produce a much faster plot.  The original blockfill plotting is more accurate though and careful comparison of plots made both methods show 
+small differences particularly at higher latitudes.  One blockfill plot went from 174 seconds to 4.3 seconds using the new option.
+
+
+::
+
+    Done
  
  
  
