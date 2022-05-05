@@ -187,6 +187,7 @@ This was fixed internally in cf-plot version 3.1.16 but may need a reversion to 
 
 
 ::
+
     Fixed
 
 
@@ -197,6 +198,7 @@ Cartopy version 0.20.0 and possibly later cause a contour over maps issue in cf-
 
 
 ::
+
     Cartopy version check in place
  
  
@@ -207,6 +209,7 @@ Additional code was added to cfp.con to cope with data which has one axis of lon
 and another that isn't recogised as one of these.
  
 ::
+
    Changed
  
  
@@ -218,6 +221,7 @@ are defined in the field.
 
 
 ::
+
    Changed
  
  

@@ -153,36 +153,32 @@ filter_by_axis method in f.coordinate.</p>
 </pre></div>
 </div>
 <p>This was fixed internally in cf-plot version 3.1.16 but may need a reversion to the original code if Cartopy gets a patch for this feature.</p>
-<dl class="simple">
-<dt>::</dt><dd><p>Fixed</p>
-</dd>
-</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="cfp-mapset-contour-issue-when-using-cartopy-0-20-0-and-possibly-later">
 <h2>17. cfp.mapset - contour issue when using cartopy 0.20.0 and possibly later<a class="headerlink" href="#cfp-mapset-contour-issue-when-using-cartopy-0-20-0-and-possibly-later" title="Permalink to this headline">¶</a></h2>
 <p>Cartopy version 0.20.0 and possibly later cause a contour over maps issue in cf-plot.  A version check in cf-plot is now in place to circumvent this.</p>
-<dl class="simple">
-<dt>::</dt><dd><p>Cartopy version check in place</p>
-</dd>
-</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cartopy</span> <span class="n">version</span> <span class="n">check</span> <span class="ow">in</span> <span class="n">place</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="cfp-con-changes-to-ptype-0-code">
 <h2>18. cfp.con - changes to ptype=0 code<a class="headerlink" href="#cfp-con-changes-to-ptype-0-code" title="Permalink to this headline">¶</a></h2>
 <p>Additional code was added to cfp.con to cope with data which has one axis of longitude, latitude, pressure, time
 and another that isn't recogised as one of these.</p>
-<dl class="simple">
-<dt>::</dt><dd><p>Changed</p>
-</dd>
-</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="cfp-con-improved-z-axis-detection">
 <h2>19. cfp.con - improved Z axis detection<a class="headerlink" href="#cfp-con-improved-z-axis-detection" title="Permalink to this headline">¶</a></h2>
 <p>The cf-plot find_dim_names routine was modified to use the cf-python get_data_axes method leading to more reliable Z axis detection when multiple Z axes
 are defined in the field.</p>
-<dl class="simple">
-<dt>::</dt><dd><p>Changed</p>
-</dd>
-</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="cfp-con-transform-first-higher-resolution-map-data-contour-plots">
 <h2>20. cfp.con - transform_first - higher resolution map data contour plots<a class="headerlink" href="#cfp-con-transform-first-higher-resolution-map-data-contour-plots" title="Permalink to this headline">¶</a></h2>
