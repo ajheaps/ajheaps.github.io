@@ -16,7 +16,7 @@ Simple install process:
    Mac:     curl -O -L http://gws-access.jasmin.ac.uk/public/ncas_climate/ajh/cfview_install/cfview_install.sh
    
    chmod 755 cfview_install.sh
-   ./cfview_install
+   ./cfview_install.sh
 
 
 
