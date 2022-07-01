@@ -8,6 +8,20 @@ cf-view is available for our supported platforms of Linux and Mac OSX.  If you a
 To install cf-view
 ==================
 
+Simple install process:
+
+::
+
+   Linux:   wget http://gws-access.jasmin.ac.uk/public/ncas_climate/ajh/cfview_install/cfview_install.sh
+   Mac:     curl -O -L http://gws-access.jasmin.ac.uk/public/ncas_climate/ajh/cfview_install/cfview_install.sh
+   
+   chmod 755 cfview_install.sh
+   ./cfview_install
+
+
+
+
+Make your own installation
 Download and install Miniconda Python 3.9 if this is not already installed. 
 
 ::
@@ -17,7 +31,7 @@ Download and install Miniconda Python 3.9 if this is not already installed.
    pip install cf-python cf-plot cf-view
 
 
-Conda packages will be made when cfview has matured a little more.
+A conda-forge package for cf-view is in preparation which will simplify the install process.
 
 
 
@@ -32,7 +46,7 @@ To run cf-view
    cfview <optional netCDF, Met Office PP or fields file(s)>
 
 
-
+When starting cfview for the first time it might take twenty or so seconds to start while the Matplotlib plotting library does some initialisation.
 
 
 

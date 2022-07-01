@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Multiple plots &#8212; cf-plot 3.1.21 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
@@ -13,6 +14,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
@@ -34,10 +36,10 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="multiple-plots">
-<h1>Multiple plots<a class="headerlink" href="#multiple-plots" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="example-19-multiple-plots">
-<h2>Example 19 - multiple plots<a class="headerlink" href="#example-19-multiple-plots" title="Permalink to this headline">¶</a></h2>
+  <section id="multiple-plots">
+<h1>Multiple plots<a class="headerlink" href="#multiple-plots" title="Permalink to this heading">¶</a></h1>
+<section id="example-19-multiple-plots">
+<h2>Example 19 - multiple plots<a class="headerlink" href="#example-19-multiple-plots" title="Permalink to this heading">¶</a></h2>
 <p>Plots are arranged over rows and columns with the first plot at the top left and the last plot is the bottom right.  Here the margin at the bottom of the plot is increased with the bottom parameter to gopen to accomodate a unified colorbar.  The colorbars are turned off for all plots apart from the last one.</p>
 <a class="reference internal image-reference" href="_images/fig19.png"><img alt="_images/fig19.png" src="_images/fig19.png" style="width: 429.88px; height: 311.08px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
@@ -59,9 +61,9 @@
 <span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="example-19a-multiple-plots-user-specified-plot-positions">
-<h2>Example 19a - multiple plots - user specified plot positions<a class="headerlink" href="#example-19a-multiple-plots-user-specified-plot-positions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="example-19a-multiple-plots-user-specified-plot-positions">
+<h2>Example 19a - multiple plots - user specified plot positions<a class="headerlink" href="#example-19a-multiple-plots-user-specified-plot-positions" title="Permalink to this heading">¶</a></h2>
 <p>User specified plot limits are set by first specifying the user_position=True parameter to gopen and then the plot position to
 the gpos routines.  The xmin, xmax, ymin, ymax paramenters for the plot display area are in normalised coordinates.</p>
 <p>Cylidrical projection plots have an additional rider of having a degree in longitude and latitude being the same size so plots of
@@ -84,9 +86,9 @@ this type might not fill the plot area specified as expected.</p>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="example-19b-user-specified-plot-position-to-accomodate-more-than-one-color-bar">
-<h2>Example 19b - user specified plot position to accomodate more than one color bar<a class="headerlink" href="#example-19b-user-specified-plot-position-to-accomodate-more-than-one-color-bar" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="example-19b-user-specified-plot-position-to-accomodate-more-than-one-color-bar">
+<h2>Example 19b - user specified plot position to accomodate more than one color bar<a class="headerlink" href="#example-19b-user-specified-plot-position-to-accomodate-more-than-one-color-bar" title="Permalink to this heading">¶</a></h2>
 <p>The plot position on the page is set manually with the user_position=True parameter to cfp.gopen
 and then passing the required plot size to cfp.gpos.  Two calls to the cfp.cbar routine
 place colour bars on the plot.</p>
@@ -115,8 +117,8 @@ place colour bars on the plot.</p>
 <span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -155,7 +157,7 @@ place colour bars on the plot.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Andy Heaps.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

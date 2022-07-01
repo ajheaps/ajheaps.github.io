@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Python, cf-python and cf-plot version 3 changes &#8212; cf-plot 3.1.21 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
@@ -13,6 +14,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
@@ -34,10 +36,10 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="python-cf-python-and-cf-plot-version-3-changes">
-<h1>Python, cf-python and cf-plot version 3 changes<a class="headerlink" href="#python-cf-python-and-cf-plot-version-3-changes" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="python-3-changes">
-<h2>Python 3 changes<a class="headerlink" href="#python-3-changes" title="Permalink to this headline">¶</a></h2>
+  <section id="python-cf-python-and-cf-plot-version-3-changes">
+<h1>Python, cf-python and cf-plot version 3 changes<a class="headerlink" href="#python-cf-python-and-cf-plot-version-3-changes" title="Permalink to this heading">¶</a></h1>
+<section id="python-3-changes">
+<h2>Python 3 changes<a class="headerlink" href="#python-3-changes" title="Permalink to this heading">¶</a></h2>
 <p>The headline change that everyone will see is with the print function now requiring brackets</p>
 <div class="line-block">
 <div class="line"><strong>print 'output is ', output</strong>    &lt;--- Python 2</div>
@@ -56,9 +58,9 @@
 </div>
 <p>Unicode has changed.</p>
 <p>See <a class="reference external" href="https://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html">The key differences between Python 2.7.x and Python 3.x with examples</a>  for more details.</p>
-</div>
-<div class="section" id="cf-python-3-changes">
-<h2>cf-python 3 changes<a class="headerlink" href="#cf-python-3-changes" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="cf-python-3-changes">
+<h2>cf-python 3 changes<a class="headerlink" href="#cf-python-3-changes" title="Permalink to this heading">¶</a></h2>
 <p>To see what is in a cf field in cf-python 3 use g.construct instead of g.item.</p>
 <p>For example, to see what levels are available in the temperature data use:</p>
 <div class="line-block">
@@ -68,17 +70,17 @@
 </div>
 <p>For more details see <a class="reference external" href="https://ncas-cms.github.io/cf-python/2_to_3_changes.html">differences between cf-python version 2 and version 3</a></p>
 <p>Mac OSX is now supported.</p>
-</div>
-<div class="section" id="cf-plot-3-changes">
-<h2>cf-plot 3 changes<a class="headerlink" href="#cf-plot-3-changes" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="cf-plot-3-changes">
+<h2>cf-plot 3 changes<a class="headerlink" href="#cf-plot-3-changes" title="Permalink to this heading">¶</a></h2>
 <p>cf-plot 3 now uses matplotlib 3 which might cause some subtle plot differences from cf-plot 2.  The colorbar is now a routine that can be called independently of a colour plot and the plot relationship to the colour bar may be subtly different because of this.</p>
 <p>Mac OSX is now supported.</p>
-</div>
-<div class="section" id="regridding-unchanged">
-<h2>Regridding unchanged<a class="headerlink" href="#regridding-unchanged" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="regridding-unchanged">
+<h2>Regridding unchanged<a class="headerlink" href="#regridding-unchanged" title="Permalink to this heading">¶</a></h2>
 <p>The regridding interface and backend use of esmpy is unchanged.</p>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -117,7 +119,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Andy Heaps.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

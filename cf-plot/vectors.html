@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Vector and stream plots &#8212; cf-plot 3.1.21 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
@@ -13,6 +14,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
@@ -34,10 +36,10 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="vector-and-stream-plots">
-<h1>Vector and stream plots<a class="headerlink" href="#vector-and-stream-plots" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="example-13-vector-plot">
-<h2>Example 13 - vector plot<a class="headerlink" href="#example-13-vector-plot" title="Permalink to this headline">¶</a></h2>
+  <section id="vector-and-stream-plots">
+<h1>Vector and stream plots<a class="headerlink" href="#vector-and-stream-plots" title="Permalink to this heading">¶</a></h1>
+<section id="example-13-vector-plot">
+<h2>Example 13 - vector plot<a class="headerlink" href="#example-13-vector-plot" title="Permalink to this heading">¶</a></h2>
 <a class="reference internal image-reference" href="_images/fig13.png"><img alt="_images/fig13.png" src="_images/fig13.png" style="width: 435.16px; height: 223.96px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
@@ -47,9 +49,9 @@
 <span class="n">cfp</span><span class="o">.</span><span class="n">vect</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="n">v</span><span class="p">,</span> <span class="n">key_length</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="example-14-vector-plot-with-colour-contour-map">
-<h2>Example 14 - vector plot with colour contour map<a class="headerlink" href="#example-14-vector-plot-with-colour-contour-map" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="example-14-vector-plot-with-colour-contour-map">
+<h2>Example 14 - vector plot with colour contour map<a class="headerlink" href="#example-14-vector-plot-with-colour-contour-map" title="Permalink to this heading">¶</a></h2>
 <a class="reference internal image-reference" href="_images/fig14.png"><img alt="_images/fig14.png" src="_images/fig14.png" style="width: 437.36px; height: 275.0px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
@@ -70,9 +72,9 @@
 <div class="line"><br /></div>
 </div>
 <p>In this plot we overlay a vector plot on a contoured temperature field.</p>
-</div>
-<div class="section" id="example-15-polar-vector-plot">
-<h2>Example 15 - polar vector plot<a class="headerlink" href="#example-15-polar-vector-plot" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="example-15-polar-vector-plot">
+<h2>Example 15 - polar vector plot<a class="headerlink" href="#example-15-polar-vector-plot" title="Permalink to this heading">¶</a></h2>
 <a class="reference internal image-reference" href="_images/fig15.png"><img alt="_images/fig15.png" src="_images/fig15.png" style="width: 428.56px; height: 220.0px;" /></a>
 <p>Here we see the difference between plotting the vectors on the data grid and on a interpolated grid.
 The supplied grid gives a bullseye effect making the wind direction difficult to see near the pole.</p>
@@ -92,9 +94,9 @@ The supplied grid gives a bullseye effect making the wind direction difficult to
 <span class="n">cfp</span><span class="o">.</span><span class="n">gclose</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="example-16-zonal-vector-plot">
-<h2>Example 16 - zonal vector plot<a class="headerlink" href="#example-16-zonal-vector-plot" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="example-16-zonal-vector-plot">
+<h2>Example 16 - zonal vector plot<a class="headerlink" href="#example-16-zonal-vector-plot" title="Permalink to this heading">¶</a></h2>
 <a class="reference internal image-reference" href="_images/fig16.png"><img alt="_images/fig16.png" src="_images/fig16.png" style="width: 456.72px; height: 352.44px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
@@ -113,9 +115,9 @@ The supplied grid gives a bullseye effect making the wind direction difficult to
 </pre></div>
 </div>
 <p>Here we make a zonal mean vector plot with different vector keys and scaling factors for the X and Y directions.</p>
-</div>
-<div class="section" id="example-16b-stream-plot-basic">
-<h2>Example 16b - stream plot - basic<a class="headerlink" href="#example-16b-stream-plot-basic" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="example-16b-stream-plot-basic">
+<h2>Example 16b - stream plot - basic<a class="headerlink" href="#example-16b-stream-plot-basic" title="Permalink to this heading">¶</a></h2>
 <p>A streamplot is used to show fluid flow and 2D field gradients.  In this first example the data goes from 0 to 358.875 in longitude.  The cartopy / matplotlib interface seems to need the data to be inside the data window in longitude so we anchor the data in cf-python using the anchor method to start at -180 in longitude.  If we didn't do this any longitudes less than zero would have no streams drawn.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
@@ -131,9 +133,9 @@ The supplied grid gives a bullseye effect making the wind direction difficult to
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/fig16b.png"><img alt="_images/fig16b.png" src="_images/fig16b.png" style="width: 435.16px; height: 218.68px;" /></a>
-</div>
-<div class="section" id="example-16c-stream-plot-enhanced">
-<h2>Example 16c - stream plot - enhanced<a class="headerlink" href="#example-16c-stream-plot-enhanced" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="example-16c-stream-plot-enhanced">
+<h2>Example 16c - stream plot - enhanced<a class="headerlink" href="#example-16c-stream-plot-enhanced" title="Permalink to this heading">¶</a></h2>
 <p>In the second streamplot example a colorbar showing the intensity of the wind is drawn.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">magnitude</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">v</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
 <span class="n">mag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">magnitude</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
@@ -147,8 +149,8 @@ The supplied grid gives a bullseye effect making the wind direction difficult to
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/fig16c.png"><img alt="_images/fig16c.png" src="_images/fig16c.png" style="width: 435.16px; height: 270.6px;" /></a>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -187,7 +189,7 @@ The supplied grid gives a bullseye effect making the wind direction difficult to
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Andy Heaps.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>
