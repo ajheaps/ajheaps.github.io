@@ -5,9 +5,6 @@ cf-view homepage
 
 cf-view is a quick look data exploration tool for netCDF and Met Office PP data.  
 
-.. image::  images/cfview.png
-   :scale: 30% 
-
 Features include:
 
 - Easy installation 
@@ -19,6 +16,9 @@ Features include:
 - View the data and colour the cells by a minimum or maximum value
 - Field properties editing, deletion and creation 
 
+.. image::  images/cfview.png
+   :scale: 40% 
+   
 Future releases will add support for:
 
 - 2D dimensions
