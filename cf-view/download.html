@@ -4,8 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Download/Install &#8212; cf-view 2.8.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
@@ -36,29 +35,34 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="download-install">
+  <div class="section" id="download-install">
 <h1>Download/Install<a class="headerlink" href="#download-install" title="Permalink to this heading">¶</a></h1>
 <p>cf-view is available for our supported platforms of Linux and Mac OSX.  If you are using Windows then installing the Microsoft Windows Subsystem for Linux will provide Linux access on that platform.</p>
-<section id="to-install-cf-view">
+<div class="section" id="cf-view-is-already-installed-on-the-following-computers">
+<h2>cf-view is already installed on the following computers<a class="headerlink" href="#cf-view-is-already-installed-on-the-following-computers" title="Permalink to this heading">¶</a></h2>
+<p>JASMIN: source /home/users/ajh/cfview_install/bin/cfview_setup.sh</p>
+<p>ARCHER2: source /home/n02/n02/ajh/cfview_install/bin/cfview_setup.sh</p>
+<p>Reading RACC: source /share/apps/NCAS/cfview_install/bin/cfview_setup.sh</p>
+</div>
+<div class="section" id="to-install-cf-view">
 <h2>To install cf-view<a class="headerlink" href="#to-install-cf-view" title="Permalink to this heading">¶</a></h2>
-<p>Simple install process:</p>
+<p>Simplified install process, download is 360MB, unpacked Python distribution is 1.2GB:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Linux</span><span class="p">:</span>   <span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">gws</span><span class="o">-</span><span class="n">access</span><span class="o">.</span><span class="n">jasmin</span><span class="o">.</span><span class="n">ac</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">ncas_climate</span><span class="o">/</span><span class="n">ajh</span><span class="o">/</span><span class="n">cfview_install</span><span class="o">/</span><span class="n">cfview_install</span><span class="o">.</span><span class="n">sh</span>
 <span class="n">Mac</span><span class="p">:</span>     <span class="n">curl</span> <span class="o">-</span><span class="n">O</span> <span class="o">-</span><span class="n">L</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">gws</span><span class="o">-</span><span class="n">access</span><span class="o">.</span><span class="n">jasmin</span><span class="o">.</span><span class="n">ac</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">ncas_climate</span><span class="o">/</span><span class="n">ajh</span><span class="o">/</span><span class="n">cfview_install</span><span class="o">/</span><span class="n">cfview_install</span><span class="o">.</span><span class="n">sh</span>
 
-<span class="n">chmod</span> <span class="mi">755</span> <span class="n">cfview_install</span><span class="o">.</span><span class="n">sh</span>
-<span class="o">./</span><span class="n">cfview_install</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">bash</span> <span class="n">cfview_install</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>Make your own installation
-Download and install Miniconda Python 3.9 if this is not already installed.</p>
+<p>Make your own installation:</p>
+<p>Download and install Miniconda Python 3.9 if this is not already installed.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">update</span> <span class="o">-</span><span class="n">n</span> <span class="n">base</span> <span class="o">-</span><span class="n">c</span> <span class="n">defaults</span> <span class="n">conda</span>
 <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">pip</span> <span class="n">udunits2</span> <span class="n">cartopy</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">cf</span><span class="o">-</span><span class="n">python</span> <span class="n">cf</span><span class="o">-</span><span class="n">plot</span> <span class="n">cf</span><span class="o">-</span><span class="n">view</span>
 </pre></div>
 </div>
 <p>A conda-forge package for cf-view is in preparation which will simplify the install process.</p>
-</section>
-<section id="to-run-cf-view">
+</div>
+<div class="section" id="to-run-cf-view">
 <h2>To run cf-view<a class="headerlink" href="#to-run-cf-view" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cfview</span> <span class="o">&lt;</span><span class="n">optional</span> <span class="n">netCDF</span><span class="p">,</span> <span class="n">Met</span> <span class="n">Office</span> <span class="n">PP</span> <span class="ow">or</span> <span class="n">fields</span> <span class="n">file</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">&gt;</span>
 </pre></div>
@@ -74,8 +78,8 @@ Download and install Miniconda Python 3.9 if this is not already installed.</p>
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
             <div class="clearer"></div>
