@@ -4,8 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Unstructured grids &#8212; cf-plot 3.1.21 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
@@ -36,7 +35,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="unstructured-grids">
+  <div class="section" id="unstructured-grids">
 <h1>Unstructured grids<a class="headerlink" href="#unstructured-grids" title="Permalink to this heading">¶</a></h1>
 <p>Unstructured grids have data points in non-regular locations. Examples of these are the LFRic model grid, the ORCA ocean grid and weather station data.</p>
 <p>The <a class="reference external" href="https://ugrid-conventions.github.io/ugrid-conventions">UGRID</a> data storage convention for netCDF isn't yet part of the CF metadata conventions but cf-python and cf-plot will be updated once it is.  This page shows how to plot data that is both in UGRID compliant netCDF and numpy arrays of unstructured data.</p>
@@ -82,7 +81,7 @@
 </pre></div>
 </div>
 <p>The data in the field has auxiliary longitudes and latitudes that can be contoured as normal.  Internally in cf-plot this is made using the Matplotlib tricontourf command as the data is irregular.</p>
-<section id="orca2-grid">
+<div class="section" id="orca2-grid">
 <h2>Orca2 grid<a class="headerlink" href="#orca2-grid" title="Permalink to this heading">¶</a></h2>
 <a class="reference internal image-reference" href="_images/us04.png"><img alt="_images/us04.png" src="_images/us04.png" style="width: 514.28px; height: 278.2px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
@@ -103,8 +102,8 @@
 </pre></div>
 </div>
 <p>The ORCA2 grid is an ocean grid with missing values over the land points.  The data in this file is from before the UGRID convention was started and has no face connectivity or corner coordinates.  In this case we can only plot a normal contour plot.</p>
-</section>
-<section id="station-data">
+</div>
+<div class="section" id="station-data">
 <h2>Station data<a class="headerlink" href="#station-data" title="Permalink to this heading">¶</a></h2>
 <p>Here we read in temperature data in a text file from meteorological stations around the British Isles and make a contour plot.</p>
 <a class="reference internal image-reference" href="_images/us05.png"><img alt="_images/us05.png" src="_images/us05.png" style="width: 420.16px; height: 375.96000000000004px;" /></a>
@@ -136,8 +135,8 @@
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
-</section>
-<section id="station-data-check-of-data-values">
+</div>
+<div class="section" id="station-data-check-of-data-values">
 <h2>Station data - check of data values<a class="headerlink" href="#station-data-check-of-data-values" title="Permalink to this heading">¶</a></h2>
 <p>To see if this plot is correct we can add some extra code to that above to plot the station locations and values at that point.  The decimal point is roughly where the data point is located.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
@@ -156,8 +155,8 @@
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
             <div class="clearer"></div>

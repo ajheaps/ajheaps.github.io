@@ -32,7 +32,7 @@ Simplified install process, download is 360MB, unpacked Python distribution is 1
 
 
 
-Make your own installation:
+Or - make your own installation:
 
 Download and install Miniconda Python 3.9 if this is not already installed. 
 
