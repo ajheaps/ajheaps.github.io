@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>version 3.1 changes &#8212; cf-plot 3.1.21 documentation</title>
+    <title>version 3.1 changes &#8212; cf-plot 3.1.23 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -25,7 +25,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.1.21 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.1.23 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">version 3.1 changes</a></li> 
       </ul>
     </div>  
@@ -201,6 +201,24 @@ small differences particularly at higher latitudes.  One blockfill plot went fro
 </pre></div>
 </div>
 </div>
+<div class="section" id="cfp-find-dim-names-bug">
+<h2>22. cfp.find_dim_names bug<a class="headerlink" href="#cfp-find-dim-names-bug" title="Permalink to this heading">¶</a></h2>
+<p>If numpy arrays are passed for plotting some recently added code in cfp.find_dim_names tried to find the dimension names in the field.  The code was modified to not do this for this class of data.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="central-data-local-added-for-cartopy">
+<h2>23. Central data local added for cartopy<a class="headerlink" href="#central-data-local-added-for-cartopy" title="Permalink to this heading">¶</a></h2>
+<p>If the user has a central location for cartopy data it can be specified with the pre_existing_data_dir environment variable.  This location is checked for the relevant map data before ~/.local/share/cartopy.  If it is in neither then an attempt will be made to download the data.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Added</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
 </div>
 
 
@@ -234,7 +252,7 @@ small differences particularly at higher latitudes.  One blockfill plot went fro
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.1.21 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.1.23 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">version 3.1 changes</a></li> 
       </ul>
     </div>

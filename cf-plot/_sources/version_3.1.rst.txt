@@ -254,6 +254,36 @@ small differences particularly at higher latitudes.  One blockfill plot went fro
     Done
  
  
+22. cfp.find_dim_names bug
+==========================
+ 
+If numpy arrays are passed for plotting some recently added code in cfp.find_dim_names tried to find the dimension names in the field.  The code was modified to not do this for this class of data.
+
+ 
+ ::
+
+    Fixed
+    
+    
+23. Central data local added for cartopy
+========================================
+
+If the user has a central location for cartopy data it can be specified with the pre_existing_data_dir environment variable.  This location is checked for the relevant map data before ~/.local/share/cartopy.  If it is in neither then an attempt will be made to download the data.
+
+
+ ::
+
+    Added
+    
+
+
+
+
+
+
+
+
+ 
  
  
  
