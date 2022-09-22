@@ -751,8 +751,15 @@
                     <span class="c1"># Add cyclic information if missing.</span>
                     <span class="k">if</span> <span class="n">lonrange</span> <span class="o">&lt;</span> <span class="mi">360</span><span class="p">:</span>
                         <span class="c1"># field, x = cartopy_util.add_cyclic_point(field, x)</span>
-                        <span class="n">field</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">add_cyclic</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-
+                        <span class="c1"># Call add_cyclic_point it spacing is regular</span>
+                        <span class="n">x_regular</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="n">xspacing</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                        <span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+                            <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">ix</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span> <span class="o">!=</span> <span class="n">xspacing</span><span class="p">:</span>
+                                <span class="n">x_regular</span> <span class="o">=</span> <span class="kc">False</span>
+                        <span class="k">if</span> <span class="n">x_regular</span><span class="p">:</span>
+                            <span class="n">field</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">add_cyclic</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+                            
                         <span class="n">lonrange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
                         <span class="c1"># cartopy line drawing fix</span>
@@ -3304,7 +3311,7 @@
     <span class="n">dmin1</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">dmin</span><span class="p">)</span>
     <span class="n">dmax1</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">dmax</span><span class="p">)</span>
 
-    <span class="c1"># Swap values if dmin1 &gt; dmax1 as this returns no values</span>
+    <span class="c1"># Swap values if dmin1 &gt; dmax1 </span>
     <span class="k">if</span> <span class="n">dmax1</span> <span class="o">&lt;</span> <span class="n">dmin1</span><span class="p">:</span>
         <span class="n">dmin1</span><span class="p">,</span> <span class="n">dmax1</span> <span class="o">=</span> <span class="n">dmax1</span><span class="p">,</span> <span class="n">dmin1</span>
 
@@ -3313,6 +3320,7 @@
 
     <span class="c1"># field multiplier</span>
     <span class="n">mult</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1"># Return some values if dmin1 = dmax1</span>
     <span class="k">if</span> <span class="n">dmin1</span> <span class="o">==</span> <span class="n">dmax1</span><span class="p">:</span>
@@ -3335,8 +3343,9 @@
             <span class="n">data_range</span> <span class="o">=</span> <span class="n">dmax1</span> <span class="o">-</span> <span class="n">dmin1</span>
             <span class="n">mult</span> <span class="o">=</span> <span class="n">mult</span> <span class="o">+</span> <span class="mi">1</span>
 
-    <span class="k">if</span> <span class="n">data_range</span> <span class="o">&gt;=</span> <span class="mf">0.001</span> <span class="ow">and</span> <span class="n">data_range</span> <span class="o">&lt;=</span> <span class="mi">2000000</span><span class="p">:</span>
 
+    <span class="k">if</span> <span class="n">data_range</span> <span class="o">&gt;=</span> <span class="mf">0.001</span> <span class="ow">and</span> <span class="n">data_range</span> <span class="o">&lt;=</span> <span class="mi">2000000</span><span class="p">:</span>
+        
         <span class="c1"># Calculate an appropriate step</span>
         <span class="n">step</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">test_steps</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0002</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.002</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>
@@ -3396,8 +3405,13 @@
         <span class="k">if</span> <span class="n">mod</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="n">vals</span> <span class="o">=</span> <span class="n">vals</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="n">mult</span>
             <span class="n">mult</span> <span class="o">=</span> <span class="mi">0</span>
+            
+    <span class="c1"># Catch if no values have been defined    </span>
+    <span class="k">if</span> <span class="n">vals</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dmin</span><span class="p">,</span> <span class="n">dmax</span><span class="p">])</span>
 
-        <span class="k">return</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">mult</span><span class="p">)</span></div>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">mult</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="cf_data_assign"><a class="viewcode-back" href="../cf_data_assign.html#cfplot.cf_data_assign">[docs]</a><span class="k">def</span> <span class="nf">cf_data_assign</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colorbar_title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rotated_vect</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -8131,11 +8145,12 @@
 
             <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;cyl&#39;</span><span class="p">:</span>
 
-                <span class="c1"># Move plot up if aspect ratio is &lt; 1.1</span>
+                <span class="c1"># Move plot up if aspect ratio is &lt; 1.5</span>
                 <span class="n">lonrange</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmax</span> <span class="o">-</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmin</span>
                 <span class="n">latrange</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">latmax</span> <span class="o">-</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">latmin</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">lonrange</span> <span class="o">/</span> <span class="n">latrange</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.1</span><span class="p">:</span>
-                    <span class="n">this_plot</span><span class="o">.</span><span class="n">set_position</span><span class="p">([</span><span class="n">l</span><span class="p">,</span> <span class="n">b</span> <span class="o">+</span> <span class="n">fraction</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">-</span> <span class="n">fraction</span><span class="p">])</span>
+                
+                <span class="k">if</span> <span class="p">(</span><span class="n">lonrange</span> <span class="o">/</span> <span class="n">latrange</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">1.5</span><span class="p">:</span>
+                    <span class="n">this_plot</span><span class="o">.</span><span class="n">set_position</span><span class="p">([</span><span class="n">l</span><span class="p">,</span> <span class="n">b</span> <span class="o">+</span> <span class="mf">0.08</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">-</span> <span class="mf">0.12</span><span class="p">])</span>
                     <span class="n">l</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">this_plot</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">bounds</span>
 
                 <span class="n">ax1</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">master_plot</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="n">l</span> <span class="o">+</span> <span class="n">w</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">shrink</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span><span class="p">,</span>
@@ -8204,6 +8219,12 @@
     <span class="c1"># With clevs=[-1, 1, 10000, 20000, 30000, 40000, 50000, 60000]</span>
     <span class="c1"># Labels are [0, 2, 10001, 20001, 30001, 40001, 50001, 60001]</span>
     <span class="c1"># With a +1 near to the colorbar label</span>
+
+
+    <span class="c1"># Check for an extraneous level compared to the levs</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">levs</span><span class="p">):</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">levs</span><span class="p">)]</span>
+
     <span class="n">colorbar</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">])</span>
     <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="s1">&#39;horizontal&#39;</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">tick</span> <span class="ow">in</span> <span class="n">colorbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_ticklines</span><span class="p">():</span>
@@ -8335,7 +8356,6 @@
         <span class="c1"># Get plot position</span>
         <span class="n">this_plot</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span>
         <span class="n">l</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">this_plot</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">bounds</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;initial l, b, w, h are &#39;</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
  
         <span class="c1"># Shift to left</span>
         <span class="c1">#if plotvars.plot_type == 1 and plotvars.proj !=cyl:</span>
@@ -8343,7 +8363,6 @@
         <span class="n">this_plot</span><span class="o">.</span><span class="n">set_position</span><span class="p">([</span><span class="n">l</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">])</span>
 
         <span class="n">l</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">this_plot</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">bounds</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;changed l, b, w, h are &#39;</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
 
 
         <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">w</span> <span class="p">,</span> <span class="n">b</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span>
@@ -8397,10 +8416,18 @@
     <span class="k">elif</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;cyl&#39;</span><span class="p">:</span>
         <span class="n">lonrange</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmax</span> <span class="o">-</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmin</span>
         <span class="n">latrange</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">latmax</span> <span class="o">-</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">latmin</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">lonrange</span> <span class="o">/</span> <span class="n">latrange</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1.1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">lonrange</span> <span class="o">/</span> <span class="n">latrange</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1.5</span><span class="p">:</span>
             <span class="n">myx</span> <span class="o">=</span> <span class="mf">0.0</span>
             <span class="n">myy</span> <span class="o">=</span> <span class="mf">1.02</span>
-        <span class="k">else</span><span class="p">:</span>
+            <span class="c1">#h = h - 0.015</span>
+            
+        <span class="k">if</span> <span class="p">(</span><span class="n">lonrange</span> <span class="o">/</span> <span class="n">latrange</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1.2</span> <span class="ow">and</span> <span class="p">(</span><span class="n">lonrange</span> <span class="o">/</span> <span class="n">latrange</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">1.5</span><span class="p">:</span>
+            <span class="n">myx</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="n">myy</span> <span class="o">=</span> <span class="mf">1.02</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">-</span> <span class="mf">0.015</span>        
+        
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">lonrange</span> <span class="o">/</span> <span class="n">latrange</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">1.2</span><span class="p">:</span>
             <span class="n">l</span> <span class="o">=</span> <span class="n">l</span> <span class="o">-</span> <span class="mf">0.1</span>
             <span class="n">myx</span> <span class="o">=</span> <span class="mf">1.1</span>
             <span class="n">myy</span> <span class="o">=</span> <span class="mf">1.0</span>
@@ -9107,7 +9134,13 @@
                    <span class="n">dmin</span> <span class="o">=</span> <span class="mf">0.0</span>
                    <span class="n">dmax</span> <span class="o">=</span> <span class="mf">0.1</span>
 
-            
+                <span class="c1">#if dmax - dmin &lt; 1e-12:</span>
+                <span class="c1">#   errstr = &#39;cf-plot calculate_levels error - field difference is &lt; 1e-12\n&#39;</span>
+                <span class="c1">#   errstr += &#39;setting levels to min-0.1 and min+0.1 to produce a plot&#39;</span>
+                <span class="c1">#   print(errstr)</span>
+                <span class="c1">#   dmin = dmin - 1</span>
+                <span class="c1">#   dmax = dmin + 1</span>
+                   
                 <span class="n">clevs</span><span class="p">,</span> <span class="n">mult</span> <span class="o">=</span> <span class="n">gvals</span><span class="p">(</span><span class="n">dmin</span><span class="o">=</span><span class="n">dmin</span><span class="p">,</span> <span class="n">dmax</span><span class="o">=</span><span class="n">dmax</span><span class="p">)</span>
                 <span class="n">fmult</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**-</span><span class="n">mult</span>
                 <span class="n">tight</span> <span class="o">=</span> <span class="kc">False</span>
@@ -9551,10 +9584,13 @@
                 <span class="n">title_dims</span> <span class="o">+=</span> <span class="n">mycoord</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">title</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">value</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span>  <span class="o">+</span> <span class="n">units</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
                 
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">well_formed</span><span class="p">:</span>
-                    <span class="n">values</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="n">mycoord</span><span class="p">)</span><span class="o">.</span><span class="n">dtarray</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">values</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="n">mycoord</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
+                <span class="c1">#if well_formed:</span>
+                <span class="c1">#    values = f.construct(mycoord).dtarray</span>
+                <span class="c1">#else:</span>
+                <span class="c1">#    values = f.construct(mycoord).array</span>
+                    
+                <span class="n">values</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="n">mycoord</span><span class="p">)</span><span class="o">.</span><span class="n">dtarray</span>    
+                    
                     
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
                     <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
@@ -9564,16 +9600,19 @@
 
   
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">title_dims</span> <span class="o">+=</span> <span class="s1">&#39;cell methods: &#39;</span>
+            <span class="n">title_dims</span> <span class="o">+=</span> <span class="s1">&#39;cell_methods: &#39;</span>
             <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">():</span>
                 <span class="n">axis</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">()[</span><span class="n">method</span><span class="p">]</span><span class="o">.</span><span class="n">get_axes</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="n">dim</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">constructs</span><span class="o">.</span><span class="n">domain_axis_identity</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
-                <span class="n">collapse</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">()[</span><span class="n">method</span><span class="p">]</span><span class="o">.</span><span class="n">method</span>
-                <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">title_dims</span> <span class="o">+=</span> <span class="s1">&#39;, &#39;</span>
-                <span class="n">title_dims</span> <span class="o">+=</span> <span class="n">dim</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">collapse</span>
-
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">dim</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">constructs</span><span class="o">.</span><span class="n">domain_axis_identity</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+                    <span class="n">collapse</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">()[</span><span class="n">method</span><span class="p">]</span><span class="o">.</span><span class="n">method</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">title_dims</span> <span class="o">+=</span> <span class="s1">&#39;, &#39;</span>
+                    <span class="n">title_dims</span> <span class="o">+=</span> <span class="n">dim</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">collapse</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;warning - no cell_method called &#39;</span> <span class="o">+</span> <span class="n">axis</span><span class="p">)</span>
+                    
     <span class="k">return</span> <span class="n">title_dims</span>
 
 

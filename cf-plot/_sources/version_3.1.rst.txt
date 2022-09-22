@@ -276,6 +276,37 @@ If the user has a central location for cartopy data it can be specified with the
     Added
     
 
+24. cfp.gvals - final catch missing for no values
+=================================================
+
+A final catch for no defined values was missing
+
+
+ ::
+
+    Added
+
+
+25. cfp.con - cartopy.add_cyclic_point - check for regular longitudes
+=====================================================================
+
+An error occurs in cartopy.add_cyclic_point if the longitudes aren't regular.  Added code to only call cartopy.add_cyclic_point if the longitudes are regular.
+
+
+ ::
+
+    Fixed
+    
+    
+26. plot titles - change cell methods to cell_methods
+=====================================================
+
+In the plot titles section cell methds was corrected to cell_methods.
+
+
+ ::
+
+    Fixed
 
 
 

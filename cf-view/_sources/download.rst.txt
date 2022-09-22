@@ -20,7 +20,7 @@ Reading RACC: source /share/apps/NCAS/cfview_install/bin/cfview_setup.sh
 To install cf-view
 ==================
 
-Simplified install process, download is 360MB, unpacked Python distribution is 1.2GB:
+Simplified install process, download is 400MB, unpacked Python distribution is 1.5GB:
 
 ::
 
