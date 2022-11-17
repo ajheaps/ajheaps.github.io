@@ -309,8 +309,34 @@ In the plot titles section cell methds was corrected to cell_methods.
     Fixed
 
 
+27. map_title - fixed bug in title for the southern polar stereographic projection
+==================================================================================
+
+A bug in the title code for the southern polar stereographic projection has been fixed.
 
 
+ ::
+
+    Fixed
+
+
+28. cfp.con - added nlevs option
+================================
+
+The nlevs option to cfp.con was added which specifies the number of levels for to use for contour and fast 
+blockfill methods.  For example cfp.con(f, nlevs=200, lines=False) will draw 200 filled contours and turn the line 
+contours off.  This is useful when looking at data which is very close together where the traditional contour 
+levels don't show the detail in the field.  The colour map for a divergent field such as zonal wind, 'scale1', 
+is not necessarily centred on zero with this option so more care with interpretation is needed.
+
+
+ ::
+
+    Added
+
+
+
+ 
 
 
 
