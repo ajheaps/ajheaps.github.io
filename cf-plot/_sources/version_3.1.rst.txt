@@ -260,7 +260,7 @@ small differences particularly at higher latitudes.  One blockfill plot went fro
 If numpy arrays are passed for plotting some recently added code in cfp.find_dim_names tried to find the dimension names in the field.  The code was modified to not do this for this class of data.
 
  
- ::
+::
 
     Fixed
     
@@ -271,7 +271,7 @@ If numpy arrays are passed for plotting some recently added code in cfp.find_dim
 If the user has a central location for cartopy data it can be specified with the pre_existing_data_dir environment variable.  This location is checked for the relevant map data before ~/.local/share/cartopy.  If it is in neither then an attempt will be made to download the data.
 
 
- ::
+::
 
     Added
     
@@ -282,7 +282,7 @@ If the user has a central location for cartopy data it can be specified with the
 A final catch for no defined values was missing
 
 
- ::
+::
 
     Added
 
@@ -293,7 +293,7 @@ A final catch for no defined values was missing
 An error occurs in cartopy.add_cyclic_point if the longitudes aren't regular.  Added code to only call cartopy.add_cyclic_point if the longitudes are regular.
 
 
- ::
+::
 
     Fixed
     
@@ -304,7 +304,7 @@ An error occurs in cartopy.add_cyclic_point if the longitudes aren't regular.  A
 In the plot titles section cell methds was corrected to cell_methods.
 
 
- ::
+::
 
     Fixed
 
@@ -315,7 +315,7 @@ In the plot titles section cell methds was corrected to cell_methods.
 A bug in the title code for the southern polar stereographic projection has been fixed.
 
 
- ::
+::
 
     Fixed
 
@@ -330,7 +330,7 @@ levels don't show the detail in the field.  The colour map for a divergent field
 is not necessarily centred on zero with this option so more care with interpretation is needed.
 
 
- ::
+::
 
     Added
 
