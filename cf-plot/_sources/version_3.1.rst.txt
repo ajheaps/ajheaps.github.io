@@ -335,12 +335,26 @@ is not necessarily centred on zero with this option so more care with interpreta
     Added
 
 
+29. cfp.con - type 0 plots bugfix
+=================================
 
+cfp.con was changed to fix some bugs with the identification and plotting of axes.
  
 
+::
 
+    Fixed
 
  
+ 30. cfp.generate_titles - update code to include cell_method qualifiers
+ =======================================================================
+ 
+ cfp.generate_titles was updated to include the text for any cell_method qualifiers.
+ 
+ 
+::
+
+    Fixed
  
  
  
