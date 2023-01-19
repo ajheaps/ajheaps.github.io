@@ -12,8 +12,10 @@ The current version is |release|
 - 2.6 Extend to data that is lacking CF information
 - 2.7 Data and properties update
 - 2.8 Testing against input data
-- 2.9 Rotated pole data
-- 2.10 Two dimensional x and y data
+- 2.9 Extend to support more than 4 dimensional data
+- 2.10 Rotated pole data
+- 2.11 Two dimensional x and y data
+- 2.12 Move from pyqt5 to pyqt6
 - 3.0 UGRID data
 
 
