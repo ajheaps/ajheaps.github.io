@@ -357,7 +357,15 @@ cfp.con was changed to fix some bugs with the identification and plotting of axe
     Fixed
  
  
+ 31. cfp.con - axis labelling issues with rotated pole coordinates
+ =================================================================
  
+ cfp.con produced extraneous axis labels for rotated pole coordinates.
+ 
+ 
+ ::
+
+    Fixed
  
  
  

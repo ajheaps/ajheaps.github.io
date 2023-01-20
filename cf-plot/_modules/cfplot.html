@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>cfplot &#8212; cf-plot 3.1.30 documentation</title>
+    <title>cfplot &#8212; cf-plot 3.1.31 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -25,7 +25,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.1.30 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.1.31 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">cfplot</a></li> 
       </ul>
@@ -1693,6 +1693,11 @@
                  <span class="n">user_gset</span><span class="o">=</span><span class="n">user_gset</span><span class="p">)</span>
             <span class="n">plot</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span>
 
+        <span class="c1"># Set plot limits</span>
+        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;UKCP&#39;</span><span class="p">:</span>
+            <span class="n">plot</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span>
+            <span class="n">plotargs</span> <span class="o">=</span> <span class="p">{}</span>
+
         <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;cyl&#39;</span><span class="p">:</span>
             <span class="n">rotated_pole</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;grid_mapping_name:rotated_latitude_longitude&#39;</span><span class="p">)</span>
             <span class="n">xpole</span> <span class="o">=</span> <span class="n">rotated_pole</span><span class="p">[</span><span class="s1">&#39;grid_north_pole_longitude&#39;</span><span class="p">]</span>
@@ -1814,8 +1819,9 @@
                        <span class="n">yticks</span><span class="o">=</span><span class="n">yticks</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">yticklabels</span><span class="p">,</span>
                        <span class="n">axes</span><span class="o">=</span><span class="n">axes</span><span class="p">,</span> <span class="n">xaxis</span><span class="o">=</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">yaxis</span><span class="o">=</span><span class="n">yaxis</span><span class="p">,</span>
                        <span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">)</span>
+                
 
-        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;rotated&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;rotated&#39;</span> <span class="ow">or</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;UKCP&#39;</span><span class="p">:</span>
             <span class="c1"># Remove Matplotlib default axis labels</span>
             <span class="n">axes_plot</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[</span><span class="mi">100000000</span><span class="p">],</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">],</span>
                       <span class="n">yticks</span><span class="o">=</span><span class="p">[</span><span class="mi">100000000</span><span class="p">],</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">],</span>
@@ -2792,7 +2798,7 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">this_plot</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span>
 
-    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">==</span> <span class="mi">6</span> <span class="ow">and</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;rotated&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">==</span> <span class="mi">6</span> <span class="ow">and</span> <span class="p">(</span><span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;rotated&#39;</span> <span class="ow">or</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;UKCP&#39;</span><span class="p">):</span>
         <span class="n">this_plot</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span>
 
     <span class="c1"># get the plot bounds</span>
@@ -8168,8 +8174,8 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">this_plot</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span>
 
-        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">==</span> <span class="mi">6</span> <span class="ow">and</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;rotated&#39;</span><span class="p">:</span>
-            <span class="n">this_plot</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span>
+        <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">==</span> <span class="mi">6</span> <span class="ow">and</span> <span class="p">(</span><span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;rotated&#39;</span> <span class="ow">or</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;UKCP&#39;</span><span class="p">):</span>
+            <span class="n">this_plot</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span>     
 
         <span class="n">l</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">this_plot</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">bounds</span>
 
@@ -8192,6 +8198,7 @@
                                                      <span class="n">w</span> <span class="o">*</span> <span class="n">shrink</span><span class="p">,</span>
                                                      <span class="n">thick</span><span class="p">])</span>
             <span class="k">else</span><span class="p">:</span>
+
 
                 <span class="n">ax1</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">master_plot</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="n">l</span> <span class="o">+</span> <span class="n">w</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">shrink</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span><span class="p">,</span>
                                                      <span class="n">b</span><span class="p">,</span>
@@ -9940,7 +9947,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.1.30 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.1.31 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">cfplot</a></li> 
       </ul>
