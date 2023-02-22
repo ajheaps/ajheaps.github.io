@@ -8766,8 +8766,9 @@
         <span class="n">mymap</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">xpts</span><span class="p">,</span> <span class="n">ypts</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 
         <span class="c1"># Turn off map outside the cicular plot area</span>
-        <span class="n">mymap</span><span class="o">.</span><span class="n">outline_patch</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-
+        <span class="c1">#mymap.outline_patch.set_visible(False)</span>
+        <span class="n">mymap</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        
         <span class="c1"># Draw a line around the bounding latitude</span>
         <span class="n">lons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">361</span><span class="p">)</span>
         <span class="n">lats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">lons</span><span class="p">))</span> <span class="o">+</span> <span class="n">boundinglat</span>
@@ -8877,7 +8878,8 @@
         <span class="n">mymap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">device_coords</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">device_coords</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">clip_on</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
         <span class="c1"># Turn off drawing of the rectangular box around the plot</span>
-        <span class="n">mymap</span><span class="o">.</span><span class="n">outline_patch</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1">#mymap.outline_patch.set_visible(False)</span>
+        <span class="n">mymap</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">lat_0</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">lons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">lonmax</span> <span class="o">-</span> <span class="n">lonmin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">lonmin</span>

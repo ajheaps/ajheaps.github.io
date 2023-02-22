@@ -257,27 +257,29 @@ is not necessarily centred on zero with this option so more care with interpreta
 <div class="section" id="cfp-con-type-0-plots-bugfix">
 <h2>29. cfp.con - type 0 plots bugfix<a class="headerlink" href="#cfp-con-type-0-plots-bugfix" title="Permalink to this heading">¶</a></h2>
 <p>cfp.con was changed to fix some bugs with the identification and plotting of axes.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">Fixed</span>
-
-
-<span class="mf">30.</span> <span class="n">cfp</span><span class="o">.</span><span class="n">generate_titles</span> <span class="o">-</span> <span class="n">update</span> <span class="n">code</span> <span class="n">to</span> <span class="n">include</span> <span class="n">cell_method</span> <span class="n">qualifiers</span>
-<span class="o">=======================================================================</span>
-
-<span class="n">cfp</span><span class="o">.</span><span class="n">generate_titles</span> <span class="n">was</span> <span class="n">updated</span> <span class="n">to</span> <span class="n">include</span> <span class="n">the</span> <span class="n">text</span> <span class="k">for</span> <span class="nb">any</span> <span class="n">cell_method</span> <span class="n">qualifiers</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">Fixed</span>
-
-
-<span class="mf">31.</span> <span class="n">cfp</span><span class="o">.</span><span class="n">con</span> <span class="o">-</span> <span class="n">axis</span> <span class="n">labelling</span> <span class="n">issues</span> <span class="k">with</span> <span class="n">rotated</span> <span class="n">pole</span> <span class="n">coordinates</span>
-<span class="o">=================================================================</span>
-
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span> <span class="n">produced</span> <span class="n">extraneous</span> <span class="n">axis</span> <span class="n">labels</span> <span class="k">for</span> <span class="n">rotated</span> <span class="n">pole</span> <span class="n">coordinates</span><span class="o">.</span>
-
-
-<span class="p">::</span>
-
-   <span class="n">Fixed</span>
+</div>
+<div class="section" id="cfp-generate-titles-update-code-to-include-cell-method-qualifiers">
+<h2>30. cfp.generate_titles - update code to include cell_method qualifiers<a class="headerlink" href="#cfp-generate-titles-update-code-to-include-cell-method-qualifiers" title="Permalink to this heading">¶</a></h2>
+<p>cfp.generate_titles was updated to include the text for any cell_method qualifiers.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cfp-con-axis-labelling-issues-with-rotated-pole-coordinates">
+<h2>31. cfp.con - axis labelling issues with rotated pole coordinates<a class="headerlink" href="#cfp-con-axis-labelling-issues-with-rotated-pole-coordinates" title="Permalink to this heading">¶</a></h2>
+<p>cfp.con produced extraneous axis labels for rotated pole coordinates.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cfp-plot-map-axes-mods-for-cartopy-0-20-0">
+<h2>32. cfp.plot_map_axes - mods for cartopy &gt; 0.20.0<a class="headerlink" href="#cfp-plot-map-axes-mods-for-cartopy-0-20-0" title="Permalink to this heading">¶</a></h2>
+<p>The use of outline_patch.set_visible(False) to remove a surrounding box for polar stereographic and lcc plots has been change to
+set_frame_on(False) as the previous method has been depreciated from cartopy 0.20.0.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
 </pre></div>
 </div>
 </div>

@@ -10,13 +10,14 @@ The current version is |release|
 - 2.4 Combined contour and vector plots
 - 2.5 Trajectory plots
 - 2.6 Extend to data that is lacking CF information
-- 2.7 Data and properties update
-- 2.8 Testing against input data
-- 2.9 Extend to support more than 4 dimensional data
-- 2.10 Rotated pole data
-- 2.11 Two dimensional x and y data
-- 2.12 Move from pyqt5 to pyqt6
-- 3.0 UGRID data
+- 2.7 Data and property panels update
+- 2.8 Testing against a variety of input data
+- 2.9 Interim release of internal rewrite
+- 3.0 Rewrite internal code to support more than 4 dimensional data
+- 3.1 Rotated pole data
+- 3.2 Two dimensional X and Y data such as ORCA
+- 3.3 Move from PyQt5 to PyQt6
+- 3.4 UGRID data
 
 
 |
