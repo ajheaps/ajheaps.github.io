@@ -2302,9 +2302,11 @@
 <span class="sd">     | extend=&#39;neither&#39;, &#39;both&#39;, &#39;min&#39;, or &#39;max&#39; - colour bar limit extensions</span>
 
 <span class="sd">     | Use the levs command when a predefined set of levels is required. The</span>
-<span class="sd">     | min, max and step parameters can be used to define a set of  levels.</span>
-<span class="sd">     | These can take integer or floating point numbers. If just the step is</span>
-<span class="sd">     | defined then cf-plot will internally try to define a reasonable set</span>
+<span class="sd">     | min, max and step parameters can be used to define a set of levels.</span>
+<span class="sd">     | These can take integer or floating point numbers. If the min and max are specified</span>
+<span class="sd">     | then a step also needs to be specified.</span>
+<span class="sd">     </span>
+<span class="sd">     | If just the step is specified then cf-plot will internally try to define a reasonable set</span>
 <span class="sd">     | of levels.</span>
 
 
@@ -2320,6 +2322,10 @@
 <span class="sd">      None</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">])</span> <span class="ow">and</span> <span class="n">step</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">cfp.levs error: when the min and max are specified a step also needs to be specified</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span>
 
     <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">val</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">manual</span><span class="p">]):</span>
         <span class="n">plotvars</span><span class="o">.</span><span class="n">levels</span> <span class="o">=</span> <span class="kc">None</span>
