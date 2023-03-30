@@ -141,7 +141,7 @@ The correct date format is 'YYYY-MM-DD' or 'YYYY-MM-DD HH:MM:SS' - anything else
     temp=f.subspace(time=cf.wi(cf.dt('1900-01-01'), cf.dt('1980-01-01')))
     temp_annual=temp.collapse('T: mean', group=cf.Y())
     temp_annual_global=temp_annual.collapse('area: mean', weights='area')
-    temp_annual_global.Units -= 273.15
+    temp_annual_global.units = 'Celsius'
     cfp.lineplot(temp_annual_global, title='Global average annual temperature', color='blue')
 
 

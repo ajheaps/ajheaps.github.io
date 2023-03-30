@@ -85,7 +85,7 @@ Orca2 grid
    lons=np.array(nc.variables['longitude'])
    lats=np.array(nc.variables['latitude'])
    temp=np.array(nc.variables['sst'])
-   lons=lons.flatten()h
+   lons=lons.flatten()
    lats=lats.flatten()
    temp=temp.flatten()
 
