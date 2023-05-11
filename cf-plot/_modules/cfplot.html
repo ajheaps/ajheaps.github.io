@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>cfplot &#8212; cf-plot 3.2.7 documentation</title>
+    <title>cfplot &#8212; cf-plot 3.2.16 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -25,7 +25,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.2.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.2.16 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">cfplot</a></li> 
       </ul>
@@ -534,6 +534,21 @@
         <span class="n">clevs</span><span class="p">,</span> <span class="n">mult</span><span class="p">,</span> <span class="n">fmult</span> <span class="o">=</span> <span class="n">calculate_levels</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="n">field</span><span class="p">,</span>
                                               <span class="n">level_spacing</span><span class="o">=</span><span class="n">spacing</span><span class="p">,</span>
                                               <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+                                              
+        <span class="c1"># If a cyclindrical map has been set then try to subspace the data and make a new set of levels</span>
+        <span class="n">myfield</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">ptype</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">user_mapset</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">cf</span><span class="o">.</span><span class="n">Field</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;cyl&#39;</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">myfield</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">wi</span><span class="p">(</span><span class="n">plotvars</span><span class="o">.</span><span class="n">lonmin</span><span class="p">,</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmax</span><span class="p">),</span>
+                                         <span class="n">Y</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">wi</span><span class="p">(</span><span class="n">plotvars</span><span class="o">.</span><span class="n">latmin</span><span class="p">,</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">latmax</span><span class="p">))</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="k">pass</span>
+
+        <span class="k">if</span> <span class="n">myfield</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">clevs</span><span class="p">,</span> <span class="n">mult</span><span class="p">,</span> <span class="n">fmult</span> <span class="o">=</span> <span class="n">calculate_levels</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="n">myfield</span><span class="p">,</span> <span class="n">level_spacing</span><span class="o">=</span><span class="n">spacing</span><span class="p">,</span>\
+                                                  <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>                
+                    
     <span class="k">else</span><span class="p">:</span>
         <span class="n">clevs</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">levels</span>
         <span class="n">mult</span> <span class="o">=</span> <span class="mi">0</span>
@@ -8201,7 +8216,6 @@
                 <span class="n">latrange</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">latmax</span> <span class="o">-</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">latmin</span>
                 
                 <span class="k">if</span> <span class="p">(</span><span class="n">lonrange</span> <span class="o">/</span> <span class="n">latrange</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">1.5</span><span class="p">:</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;moving plot up&#39;</span><span class="p">)</span>
                     <span class="n">this_plot</span><span class="o">.</span><span class="n">set_position</span><span class="p">([</span><span class="n">l</span><span class="p">,</span> <span class="n">b</span> <span class="o">+</span> <span class="mf">0.08</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">-</span> <span class="mf">0.12</span><span class="p">])</span>
                     <span class="n">l</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">this_plot</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">bounds</span>
 
@@ -9856,11 +9870,13 @@
         
    
     <span class="c1"># Strip out any auxiliary coordinates if the field is not a trajectory field</span>
-    <span class="n">remove_aux</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s1">&#39;featureType&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">featureType</span> <span class="o">==</span> <span class="s1">&#39;trajectory&#39;</span><span class="p">:</span>
-            <span class="n">remove_aux</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="c1">#remove_aux = True</span>
+    <span class="c1">#if field.get_property(&#39;featureType&#39;, False) is not False:</span>
+    <span class="c1">#    if field.featureType == &#39;trajectory&#39;:</span>
+    <span class="c1">#        remove_aux = False</span>
 
+    <span class="c1"># New test</span>
+    <span class="n">remove_aux</span> <span class="o">=</span> <span class="kc">False</span>
     
     <span class="c1"># Strip out any auxiliary coordinates if the field is not a trajectory field</span>
     <span class="k">if</span> <span class="n">remove_aux</span><span class="p">:</span>
@@ -9996,7 +10012,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.2.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.2.16 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">cfplot</a></li> 
       </ul>
