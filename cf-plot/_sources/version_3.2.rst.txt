@@ -120,12 +120,12 @@ cfp-titles - auxiliary axes sometimes caused an issue.
 9. cfp.mapset - when a cyl mapset is done the colour scale should be relevant for the area selected 
 ===================================================================================================
 
- cfp.mapset - when a cyl mapset is done the colour scale should be relevant for the area selected.
+cfp.mapset - when a cyl mapset is done the colour scale should be relevant for the area selected.
  
  
- ::
+::
 
-   Changed
+  Changed
    
    
    
@@ -135,7 +135,7 @@ cfp-titles - auxiliary axes sometimes caused an issue.
 A new check was put into cfp.levs requiring all of min, max and step to define a set of contour levels.
 
 
- ::
+::
 
    Changed
 
@@ -159,7 +159,7 @@ Robinson projection changes:
 add titles code, add stipples, colorbar fails, colorbar in incorrect place
 
 
- ::
+::
 
    Changed
 
