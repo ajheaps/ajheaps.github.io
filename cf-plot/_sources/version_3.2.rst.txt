@@ -105,18 +105,7 @@ cfp.stipple wasn't working for the Robinson projection.
    
 
 
-8. cfp.con - line labels not honoured
-=====================================
-
-Contour line labelling in cfp.con stopped being honoured due to a coding error.
-
-
-::
-
-   Fixed
-
-
-9. cfp.titles - auxiliary axes sometimes caused an issue
+8. cfp.titles - auxiliary axes sometimes caused an issue
 ========================================================
 
 cfp-titles - auxiliary axes sometimes caused an issue.
@@ -128,50 +117,8 @@ cfp-titles - auxiliary axes sometimes caused an issue.
 
 
 
-10. cfp.bfill_ugrid - Crash when code returned no points
-========================================================
-
-cfp.bfill_ugrid code didn't check for no points returned from a where statement causing a crash in certain circumstances .
-
-
-::
-
-   Fixed
-
-
-
-11. cfp.bfill_ugrid - shapely 2.0 + update
-==========================================
-
-Update shapely polygon coordinate extraction so code will work with shapely 2.0 +:
-# Original method for shapely < 2.0
-coords = geom_cyl[0].exterior.coords[:]
-
-# New method for shapely 2.0 +
-poly_mapped = sgeom.mapping(geom_cyl.geoms[0])
-coords = list(poly_mapped['coordinates'][0])
-
-
-::
-
-   Fixed
-
-
-   
-12. cfp.cbar : No colorbar when position is specified 
-=====================================================
-
-cfp.cbar : doesn't make a colorbar when position is specified due to an indent too many after a code rewrite.
-
-
-::
-
-   Fixed
-
-
-
-13. cfp.mapset - when a cyl mapset is done the colour scale should be relevant for the area selected 
-====================================================================================================
+9. cfp.mapset - when a cyl mapset is done the colour scale should be relevant for the area selected 
+===================================================================================================
 
  cfp.mapset - when a cyl mapset is done the colour scale should be relevant for the area selected.
  
@@ -182,7 +129,7 @@ cfp.cbar : doesn't make a colorbar when position is specified due to an indent t
    
    
    
-14. cfp.levs - need all of min, max and step to define a set of contour levels
+10. cfp.levs - need all of min, max and step to define a set of contour levels
 ==============================================================================
 
 A new check was put into cfp.levs requiring all of min, max and step to define a set of contour levels.
@@ -193,7 +140,7 @@ A new check was put into cfp.levs requiring all of min, max and step to define a
    Changed
 
 
-15. cfp.titles - plot labelling too far to the right for contour and vector plots
+11. cfp.titles - plot labelling too far to the right for contour and vector plots
 =================================================================================
 
 cfp.titles - plot labelling too far to the right for contour and vector plots
@@ -204,7 +151,7 @@ cfp.titles - plot labelling too far to the right for contour and vector plots
    Fixed
 
 
-16. cfp.mapset - robinson projection changes
+12. cfp.mapset - robinson projection changes
 ============================================
 
 Robinson projection changes:
