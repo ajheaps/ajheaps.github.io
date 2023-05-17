@@ -6,7 +6,6 @@ version 3.2 changes
 0. Map popup changes
 =====================
 
-Map popup changes:
 
 - clean up code for npstere and spstere sensitivity
 - rotated option doesn't make it into the plotting code
@@ -226,7 +225,7 @@ A netCDF file with no fields but doesn't produce a sensible error.
 
 ::
 
-    Done      
+    Corrected    
                         
                       
                       
@@ -234,9 +233,9 @@ A netCDF file with no fields but doesn't produce a sensible error.
 ====================================
 
 Update interpolation to use a sequence of Coordinate instances.  This changed in cf-python at version 3.14.1.
-g = f.regrids({'longitude': lons, 'latitude': lats}, method=method)
+- g = f.regrids({'longitude': lons, 'latitude': lats}, method=method)
 becomes
-g = f.regrids([lats, lons], method=method)
+- g = f.regrids([lats, lons], method=method)
                       
 
 ::

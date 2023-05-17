@@ -39,7 +39,6 @@
 <h1>version 3.2 changes<a class="headerlink" href="#version-3-2-changes" title="Permalink to this heading">¶</a></h1>
 <div class="section" id="map-popup-changes">
 <h2>0. Map popup changes<a class="headerlink" href="#map-popup-changes" title="Permalink to this heading">¶</a></h2>
-<p>Map popup changes:</p>
 <ul class="simple">
 <li><p>clean up code for npstere and spstere sensitivity</p></li>
 <li><p>rotated option doesn’t make it into the plotting code</p></li>
@@ -179,16 +178,16 @@ Use dictionaries for working out settings and code generation.</p>
 <div class="section" id="netcdf-file-with-no-fields-but-doesn-t-produce-a-sensible-error">
 <h2>18. netCDF file with no fields but doesn’t produce a sensible error<a class="headerlink" href="#netcdf-file-with-no-fields-but-doesn-t-produce-a-sensible-error" title="Permalink to this heading">¶</a></h2>
 <p>A netCDF file with no fields but doesn’t produce a sensible error.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Corrected</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="update-cfview-interpolation-code">
 <h2>19. Update cfview interpolation code<a class="headerlink" href="#update-cfview-interpolation-code" title="Permalink to this heading">¶</a></h2>
 <p>Update interpolation to use a sequence of Coordinate instances.  This changed in cf-python at version 3.14.1.
-g = f.regrids({‘longitude’: lons, ‘latitude’: lats}, method=method)
+- g = f.regrids({‘longitude’: lons, ‘latitude’: lats}, method=method)
 becomes
-g = f.regrids([lats, lons], method=method)</p>
+- g = f.regrids([lats, lons], method=method)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
