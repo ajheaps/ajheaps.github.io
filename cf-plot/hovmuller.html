@@ -44,7 +44,7 @@
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/tas_A1.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;plasma&#39;</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">longitude</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">lines</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">longitude</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -61,7 +61,7 @@
 <span class="n">cfp</span><span class="o">.</span><span class="n">gset</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;1960-1-1&#39;</span><span class="p">,</span> <span class="s1">&#39;1980-1-1&#39;</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">levs</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">280</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">305</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;plasma&#39;</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">longitude</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">lines</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">longitude</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -80,7 +80,7 @@
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/tas_A1.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;plasma&#39;</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">lines</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

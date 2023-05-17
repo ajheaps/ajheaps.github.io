@@ -92,7 +92,7 @@
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/12km_orog.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;wiki_2_0&#39;</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">below</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">above</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">levs</span><span class="p">(</span><span class="n">manual</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">*</span><span class="mi">150</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="user-defined-colour-scales">
