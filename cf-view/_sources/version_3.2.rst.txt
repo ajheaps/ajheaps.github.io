@@ -233,8 +233,9 @@ A netCDF file with no fields but doesn't produce a sensible error.
 ====================================
 
 Update interpolation to use a sequence of Coordinate instances.  This changed in cf-python at version 3.14.1.
+
 - g = f.regrids({'longitude': lons, 'latitude': lats}, method=method)
-becomes
+- becomes
 - g = f.regrids([lats, lons], method=method)
                       
 
@@ -285,8 +286,14 @@ Field search code update.  A new field gets lost internally and doesn't display 
 
 
 
+23. Stray print removal
+=======================
 
+A stray print statement was removed.
 
+::
+
+    Done   
 
 
 

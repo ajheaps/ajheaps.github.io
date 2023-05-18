@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>version 3.2 changes &#8212; cf-view 3.2.22 documentation</title>
+    <title>version 3.2 changes &#8212; cf-view 3.2.23 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -25,7 +25,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-view 3.2.22 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-view 3.2.23 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">version 3.2 changes</a></li> 
       </ul>
     </div>  
@@ -184,10 +184,12 @@ Use dictionaries for working out settings and code generation.</p>
 </div>
 <div class="section" id="update-cfview-interpolation-code">
 <h2>19. Update cfview interpolation code<a class="headerlink" href="#update-cfview-interpolation-code" title="Permalink to this heading">¶</a></h2>
-<p>Update interpolation to use a sequence of Coordinate instances.  This changed in cf-python at version 3.14.1.
-- g = f.regrids({‘longitude’: lons, ‘latitude’: lats}, method=method)
-becomes
-- g = f.regrids([lats, lons], method=method)</p>
+<p>Update interpolation to use a sequence of Coordinate instances.  This changed in cf-python at version 3.14.1.</p>
+<ul class="simple">
+<li><p>g = f.regrids({‘longitude’: lons, ‘latitude’: lats}, method=method)</p></li>
+<li><p>becomes</p></li>
+<li><p>g = f.regrids([lats, lons], method=method)</p></li>
+</ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
@@ -221,6 +223,13 @@ These are now plotvars.stored[‘f0’][‘collapses’] and plotvars.stored[‘
 </pre></div>
 </div>
 </div>
+<div class="section" id="stray-print-removal">
+<h2>23. Stray print removal<a class="headerlink" href="#stray-print-removal" title="Permalink to this heading">¶</a></h2>
+<p>A stray print statement was removed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -249,7 +258,7 @@ These are now plotvars.stored[‘f0’][‘collapses’] and plotvars.stored[‘
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-view 3.2.22 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-view 3.2.23 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">version 3.2 changes</a></li> 
       </ul>
     </div>
