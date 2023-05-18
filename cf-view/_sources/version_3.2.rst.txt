@@ -296,7 +296,14 @@ A stray print statement was removed.
     Done   
 
 
+24. Stray print removal - and again
+===================================
 
+A stray print statement was removed.
+
+::
+
+    Done   
 
 
 
