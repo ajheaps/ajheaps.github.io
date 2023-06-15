@@ -165,15 +165,27 @@ add titles code, add stipples, colorbar fails, colorbar in incorrect place
 
 
 
+13. cfp.generate_titles - error if cell_method has no associated axis
+=====================================================================
+
+An error occured if a cell_method had no associated axis.  A check was put in place to detect this.
+
+
+::
+
+   Changed
 
 
 
+14. cfp.con ugrid keyword changed to irregular
+==============================================
+
+In cfp.con the ugrid keyword was changed to irregular as this is more appropriate.
 
 
+::
 
-
-
-
+   Changed
 
 
 

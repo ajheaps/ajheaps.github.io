@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>cfplot &#8212; cf-plot 3.2.16 documentation</title>
+    <title>cfplot &#8212; cf-plot 3.2.14 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -25,7 +25,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.2.16 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.2.14 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">cfplot</a></li> 
       </ul>
@@ -39,7 +39,7 @@
   <h1>Source code for cfplot</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Climate contour/vector plots using cf-python, matplotlib and cartopy.</span>
-<span class="sd">Andy Heaps NCAS-CMS April 2021</span>
+<span class="sd">Andy Heaps NCAS-CMS May 2023</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">subprocess</span>
@@ -276,7 +276,7 @@
         <span class="n">colorbar_fraction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colorbar_thick</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">colorbar_anchor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colorbar_labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">linestyles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">level_spacing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">ugrid</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">face_lons</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">face_lats</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">face_connectivity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">irregular</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">face_lons</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">face_lats</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">face_connectivity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">titles</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">mytest</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">transform_first</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">blockfill_fast</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">nlevs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -362,7 +362,7 @@
 <span class="sd">     | zorder=1 - order of drawing</span>
 <span class="sd">     | level_spacing=None - Default of &#39;linear&#39; level spacing.  Also takes &#39;log&#39;, &#39;loglike&#39;,</span>
 <span class="sd">     |                      &#39;outlier&#39; and &#39;inspect&#39;</span>
-<span class="sd">     | ugrid=False - flag for contouring ugrid data</span>
+<span class="sd">     | irregular=False - flag for contouring irregular data</span>
 <span class="sd">     | face_lons=None - longitude points for face vertices</span>
 <span class="sd">     | face_lats=None - latitude points for face verticies</span>
 <span class="sd">     | face_connectivity=None - connectivity for face verticies</span>
@@ -393,11 +393,11 @@
         <span class="n">blockfill</span><span class="o">=</span><span class="kc">True</span>
          
     <span class="c1"># Extract data for faces if a UGRID blockplot</span>
-    <span class="n">blockfill_ugrid</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">blockfill_irregular</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="n">face_lons</span> <span class="ow">and</span> <span class="n">face_lats</span> <span class="ow">and</span> <span class="n">face_connectivity</span><span class="p">:</span>
-        <span class="n">blockfill_ugrid</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">blockfill_irregular</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">fill</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="n">ugrid</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">irregular</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">cf</span><span class="o">.</span><span class="n">Field</span><span class="p">):</span>
             <span class="n">field</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">array</span>
         <span class="k">else</span><span class="p">:</span>
@@ -429,9 +429,9 @@
 
         <span class="c1"># Check data is 2D</span>
         <span class="n">ndims</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">ndim</span>
-        <span class="n">ugrid</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">irregular</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="n">ndims</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">ugrid</span> <span class="o">=</span> <span class="kc">True</span>      
+            <span class="n">irregular</span> <span class="o">=</span> <span class="kc">True</span>      
         <span class="k">if</span> <span class="n">ndims</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
             <span class="n">errstr</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">cfp.con error need a 1 or 2 dimensional field to contour</span><span class="se">\n</span><span class="s2">&quot;</span>
             <span class="n">errstr</span> <span class="o">+=</span> <span class="s2">&quot;received &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; dimensions</span><span class="se">\n\n</span><span class="s2">&quot;</span>
@@ -442,7 +442,7 @@
         <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;con - calling cf_data_assign&#39;</span><span class="p">)</span>
 
-        <span class="c1">#if not ugrid_blockfill:</span>
+        <span class="c1">#if not irregular_blockfill:</span>
         <span class="n">field</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ptype</span><span class="p">,</span> <span class="n">colorbar_title</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span> <span class="n">xpole</span><span class="p">,</span> <span class="n">ypole</span> <span class="o">=</span>\
             <span class="n">cf_data_assign</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">colorbar_title</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
 
@@ -494,7 +494,7 @@
                 <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">errstr</span><span class="p">)</span>
 
     <span class="c1"># Turn off colorbar if fill is turned off</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">fill</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">blockfill</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">blockfill_ugrid</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">fill</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">blockfill</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">blockfill_irregular</span><span class="p">:</span>
         <span class="n">colorbar</span> <span class="o">=</span> <span class="kc">False</span>
 
     <span class="c1"># Revert to default colour scale if cscale_flag flag is set</span>
@@ -781,8 +781,8 @@
 
 
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">blockfill_ugrid</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">ugrid</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">blockfill_irregular</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">irregular</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">lonrange</span> <span class="o">&gt;</span> <span class="mi">350</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">ndim</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
                     <span class="c1"># Add cyclic information if missing.</span>
                     <span class="k">if</span> <span class="n">lonrange</span> <span class="o">&lt;</span> <span class="mi">360</span><span class="p">:</span>
@@ -813,7 +813,7 @@
                     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmin</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
                         <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">360</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="c1"># Get the ugrid data within the map coordinates</span>
+                <span class="c1"># Get the irregular data within the map coordinates</span>
                 <span class="c1"># Matplotlib tricontour cannot plot missing data so we need to split </span>
                 <span class="c1"># the missing data into a separate field to deal with this</span>
 
@@ -821,29 +821,29 @@
                 <span class="n">pts_nan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">field_modified</span><span class="p">))</span>
                 <span class="n">field_modified</span><span class="p">[</span><span class="n">pts_nan</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1e30</span>
 
-                <span class="n">field_ugrid</span><span class="p">,</span> <span class="n">lons_ugrid</span><span class="p">,</span> <span class="n">lats_ugrid</span> <span class="o">=</span> <span class="n">ugrid_window</span><span class="p">(</span><span class="n">field_modified</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-                <span class="c1">#pts_real  = np.where(np.isfinite(field_ugrid))</span>
-                <span class="n">pts_real</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">field_ugrid</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mf">1e29</span><span class="p">)</span>
-                <span class="n">pts_nan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">field_ugrid</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">1e29</span><span class="p">)</span>
+                <span class="n">field_irregular</span><span class="p">,</span> <span class="n">lons_irregular</span><span class="p">,</span> <span class="n">lats_irregular</span> <span class="o">=</span> <span class="n">irregular_window</span><span class="p">(</span><span class="n">field_modified</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+                <span class="c1">#pts_real  = np.where(np.isfinite(field_irregular))</span>
+                <span class="n">pts_real</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">field_irregular</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mf">1e29</span><span class="p">)</span>
+                <span class="n">pts_nan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">field_irregular</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">1e29</span><span class="p">)</span>
 
 
-                <span class="n">field_ugrid_nan</span> <span class="o">=</span> <span class="p">[]</span>
-                <span class="n">lons_ugrid_nan</span> <span class="o">=</span> <span class="p">[]</span>
-                <span class="n">lats_ugrid_nan</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">field_irregular_nan</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">lons_irregular_nan</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">lats_irregular_nan</span> <span class="o">=</span> <span class="p">[]</span>
                 <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">pts_nan</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">field_ugrid_nan</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">field_ugrid</span><span class="p">)</span>
-                    <span class="n">lons_ugrid_nan</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">lons_ugrid</span><span class="p">)</span>
-                    <span class="n">lats_ugrid_nan</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">lats_ugrid</span><span class="p">)</span>
-                    <span class="n">field_ugrid_nan</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span>
-                    <span class="n">field_ugrid_nan</span><span class="p">[</span><span class="n">pts_nan</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="n">field_irregular_nan</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">field_irregular</span><span class="p">)</span>
+                    <span class="n">lons_irregular_nan</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">lons_irregular</span><span class="p">)</span>
+                    <span class="n">lats_irregular_nan</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">lats_irregular</span><span class="p">)</span>
+                    <span class="n">field_irregular_nan</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="n">field_irregular_nan</span><span class="p">[</span><span class="n">pts_nan</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 
 
-                <span class="n">field_ugrid_real</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">field_ugrid</span><span class="p">[</span><span class="n">pts_real</span><span class="p">])</span>
-                <span class="n">lons_ugrid_real</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">lons_ugrid</span><span class="p">[</span><span class="n">pts_real</span><span class="p">])</span>
-                <span class="n">lats_ugrid_real</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">lats_ugrid</span><span class="p">[</span><span class="n">pts_real</span><span class="p">])</span>
+                <span class="n">field_irregular_real</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">field_irregular</span><span class="p">[</span><span class="n">pts_real</span><span class="p">])</span>
+                <span class="n">lons_irregular_real</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">lons_irregular</span><span class="p">[</span><span class="n">pts_real</span><span class="p">])</span>
+                <span class="n">lats_irregular_real</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">lats_irregular</span><span class="p">[</span><span class="n">pts_real</span><span class="p">])</span>
 
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">ugrid</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">irregular</span><span class="p">:</span>
             <span class="c1"># Flip latitudes and field if latitudes are in descending order</span>
             <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">ndim</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
@@ -854,13 +854,13 @@
         <span class="c1"># in polar plots. Subsample the latitudes to remove this problem</span>
 
         <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;npstere&#39;</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">ndim</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">blockfill_ugrid</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">ugrid</span><span class="p">:</span>
-                    <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">lats_ugrid</span> <span class="o">&gt;</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">boundinglat</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">blockfill_irregular</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">irregular</span><span class="p">:</span>
+                    <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">lats_irregular</span> <span class="o">&gt;</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">boundinglat</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)</span>
                     <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-                    <span class="n">lons_ugrid_real</span> <span class="o">=</span> <span class="n">lons_ugrid_real</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
-                    <span class="n">lats_ugrid_real</span> <span class="o">=</span> <span class="n">lats_ugrid_real</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
-                    <span class="n">field_ugrid_real</span> <span class="o">=</span> <span class="n">field_ugrid_real</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
+                    <span class="n">lons_irregular_real</span> <span class="o">=</span> <span class="n">lons_irregular_real</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
+                    <span class="n">lats_irregular_real</span> <span class="o">=</span> <span class="n">lats_irregular_real</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
+                    <span class="n">field_irregular_real</span> <span class="o">=</span> <span class="n">field_irregular_real</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">myypos</span> <span class="o">=</span> <span class="n">find_pos_in_array</span><span class="p">(</span><span class="n">vals</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">boundinglat</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">myypos</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
@@ -868,12 +868,12 @@
                         <span class="n">field</span> <span class="o">=</span> <span class="n">field</span><span class="p">[</span><span class="n">myypos</span><span class="p">:,</span> <span class="p">:]</span>
 
         <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">proj</span> <span class="o">==</span> <span class="s1">&#39;spstere&#39;</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">ndim</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">blockfill_ugrid</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">ugrid</span><span class="p">:</span>
-                    <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">lats_ugrid_real</span> <span class="o">&lt;</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">boundinglat</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span>
-                    <span class="n">lons_ugrid_real</span> <span class="o">=</span> <span class="n">lons_ugrid_real</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
-                    <span class="n">lats_ugrid_real</span> <span class="o">=</span> <span class="n">lats_ugrid_real</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
-                    <span class="n">field_ugrid_real</span> <span class="o">=</span> <span class="n">field_ugrid_real</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">blockfill_irregular</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">irregular</span><span class="p">:</span>
+                    <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">lats_irregular_real</span> <span class="o">&lt;</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">boundinglat</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span>
+                    <span class="n">lons_irregular_real</span> <span class="o">=</span> <span class="n">lons_irregular_real</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
+                    <span class="n">lats_irregular_real</span> <span class="o">=</span> <span class="n">lats_irregular_real</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
+                    <span class="n">field_irregular_real</span> <span class="o">=</span> <span class="n">field_irregular_real</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">myypos</span> <span class="o">=</span> <span class="n">find_pos_in_array</span><span class="p">(</span><span class="n">vals</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">boundinglat</span><span class="p">,</span> <span class="n">above</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">myypos</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
@@ -946,7 +946,7 @@
                     
             
             <span class="c1"># Filled colour contours</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">ugrid</span><span class="p">:</span>               
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">irregular</span><span class="p">:</span>               
                 <span class="n">plotvars</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">mymap</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">,</span> <span class="n">field</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span> <span class="n">clevs</span><span class="p">,</span>
                                <span class="n">extend</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">levels_extend</span><span class="p">,</span>
                                <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">norm</span><span class="p">,</span>
@@ -954,8 +954,8 @@
                                <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">,</span> <span class="n">transform_first</span><span class="o">=</span><span class="n">transform_first</span><span class="p">)</span>
                 
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">field_ugrid_real</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> 
-                    <span class="n">plotvars</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">mymap</span><span class="o">.</span><span class="n">tricontourf</span><span class="p">(</span><span class="n">lons_ugrid_real</span><span class="p">,</span> <span class="n">lats_ugrid_real</span><span class="p">,</span> <span class="n">field_ugrid_real</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span>
+                <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">field_irregular_real</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> 
+                    <span class="n">plotvars</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">mymap</span><span class="o">.</span><span class="n">tricontourf</span><span class="p">(</span><span class="n">lons_irregular_real</span><span class="p">,</span> <span class="n">lats_irregular_real</span><span class="p">,</span> <span class="n">field_irregular_real</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span>
                                       <span class="n">clevs</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">levels_extend</span><span class="p">,</span>
                                       <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">norm</span><span class="p">,</span>
                                       <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
@@ -991,11 +991,11 @@
                 <span class="n">bfill</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">field_orig</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x_orig</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_orig</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="n">clevs</span><span class="p">,</span>
                       <span class="n">lonlat</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">fast</span><span class="o">=</span><span class="n">blockfill_fast</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
 
-        <span class="c1"># Block fill for ugrid</span>
-        <span class="k">if</span> <span class="n">blockfill_ugrid</span><span class="p">:</span>
+        <span class="c1"># Block fill for irregular</span>
+        <span class="k">if</span> <span class="n">blockfill_irregular</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;con - adding blockfill for UGRID&#39;</span><span class="p">)</span>
-            <span class="n">bfill_ugrid</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">field_orig</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span> <span class="n">face_lons</span><span class="o">=</span><span class="n">face_lons_array</span><span class="p">,</span> 
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;con - adding blockfill for irregular&#39;</span><span class="p">)</span>
+            <span class="n">bfill_irregular</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">field_orig</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span> <span class="n">face_lons</span><span class="o">=</span><span class="n">face_lons_array</span><span class="p">,</span> 
                        <span class="n">face_lats</span><span class="o">=</span><span class="n">face_lats_array</span><span class="p">,</span> 
                        <span class="n">face_connectivity</span><span class="o">=</span><span class="n">face_connectivity_array</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="n">clevs</span><span class="p">,</span>
                        <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
@@ -1005,13 +1005,13 @@
             <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;con - adding contour lines and labels&#39;</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">ugrid</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">irregular</span><span class="p">:</span>
                 <span class="n">cs</span> <span class="o">=</span> <span class="n">mymap</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">,</span> <span class="n">field</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span> <span class="n">clevs</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span>
                                    <span class="n">linewidths</span><span class="o">=</span><span class="n">linewidths</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="n">linestyles</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span>
                                    <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
 
-                <span class="n">cs</span> <span class="o">=</span> <span class="n">mymap</span><span class="o">.</span><span class="n">tricontour</span><span class="p">(</span><span class="n">lons_ugrid_real</span><span class="p">,</span> <span class="n">lats_ugrid_real</span><span class="p">,</span> <span class="n">field_ugrid_real</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span>
+                <span class="n">cs</span> <span class="o">=</span> <span class="n">mymap</span><span class="o">.</span><span class="n">tricontour</span><span class="p">(</span><span class="n">lons_irregular_real</span><span class="p">,</span> <span class="n">lats_irregular_real</span><span class="p">,</span> <span class="n">field_irregular_real</span> <span class="o">*</span> <span class="n">fmult</span><span class="p">,</span>
                                       <span class="n">clevs</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span>
                                       <span class="n">linewidths</span><span class="o">=</span><span class="n">linewidths</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="n">linestyles</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span>
                                       <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
@@ -1036,11 +1036,11 @@
 
 
 
-        <span class="c1"># Add a ugrid mask if there is one</span>
-        <span class="k">if</span> <span class="n">ugrid</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">blockfill_ugrid</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">field_ugrid_nan</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># Add a irregular mask if there is one</span>
+        <span class="k">if</span> <span class="n">irregular</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">blockfill_irregular</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">field_irregular_nan</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">cmap_white</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
-                <span class="n">mymap</span><span class="o">.</span><span class="n">tricontourf</span><span class="p">(</span><span class="n">lons_ugrid_nan</span><span class="p">,</span> <span class="n">lats_ugrid_nan</span><span class="p">,</span> <span class="n">field_ugrid_nan</span> <span class="p">,</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">],</span>
+                <span class="n">mymap</span><span class="o">.</span><span class="n">tricontourf</span><span class="p">(</span><span class="n">lons_irregular_nan</span><span class="p">,</span> <span class="n">lats_irregular_nan</span><span class="p">,</span> <span class="n">field_irregular_nan</span> <span class="p">,</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">],</span>
                                   <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;neither&#39;</span><span class="p">,</span>
                                   <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_white</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">plotvars</span><span class="o">.</span><span class="n">norm</span><span class="p">,</span>
                                   <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>
@@ -4190,7 +4190,6 @@
     
 
 
-
     <span class="c1"># Set lonlat if not specified</span>
     <span class="n">lonlat</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -4344,17 +4343,32 @@
     <span class="k">if</span> <span class="n">fast</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">clevs</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">:</span>
             <span class="n">norm</span> <span class="o">=</span> <span class="kc">False</span>
-                      
+                 
+        <span class="n">rotated</span> <span class="o">=</span> <span class="kc">True</span>
+        
         <span class="k">if</span> <span class="n">lonlat</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">offset</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">360.0</span><span class="p">]:</span>
                 <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">clevs</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type1&#39;</span><span class="p">)</span>
                     <span class="n">plotvars</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xpts</span><span class="o">+</span><span class="n">offset</span><span class="p">,</span> <span class="n">ypts</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">plotvars</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xpts</span><span class="o">+</span><span class="n">offset</span><span class="p">,</span> <span class="n">ypts</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>                    
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type2&#39;</span><span class="p">)</span>
+                    <span class="n">plotvars</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xpts</span><span class="o">+</span><span class="n">offset</span><span class="p">,</span> <span class="n">ypts</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>     
+        <span class="k">elif</span> <span class="n">rotated</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;in rotated&#39;</span><span class="p">)</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/rgp.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">rotated_pole</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="s1">&#39;grid_mapping_name:rotated_latitude_longitude&#39;</span><span class="p">)</span>
+            <span class="n">xpole</span> <span class="o">=</span> <span class="n">rotated_pole</span><span class="p">[</span><span class="s1">&#39;grid_north_pole_longitude&#39;</span><span class="p">]</span>
+            <span class="n">ypole</span> <span class="o">=</span> <span class="n">rotated_pole</span><span class="p">[</span><span class="s1">&#39;grid_north_pole_latitude&#39;</span><span class="p">]</span>
+            <span class="n">transform</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">RotatedPole</span><span class="p">(</span><span class="n">pole_latitude</span><span class="o">=</span><span class="n">ypole</span><span class="p">,</span> <span class="n">pole_longitude</span><span class="o">=</span><span class="n">xpole</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">offset</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">360.0</span><span class="p">]:</span>
+                <span class="n">plotvars</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">mymap</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xpts</span><span class="o">+</span><span class="n">offset</span><span class="p">,</span> <span class="n">ypts</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>   
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">clevs</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type3&#39;</span><span class="p">)</span>
                 <span class="n">plotvars</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xpts</span><span class="p">,</span> <span class="n">ypts</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type4&#39;</span><span class="p">)</span>
                 <span class="n">plotvars</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xpts</span><span class="p">,</span> <span class="n">ypts</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>        
     
     <span class="k">else</span><span class="p">:</span>
@@ -9084,35 +9098,35 @@
 
 
 
-<span class="k">def</span> <span class="nf">ugrid_window</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">lons</span><span class="p">,</span><span class="n">lats</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">irregular_window</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">lons</span><span class="p">,</span><span class="n">lats</span><span class="p">):</span>
 
-    <span class="n">field_ugrid</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
-    <span class="n">lons_ugrid</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">lons</span><span class="p">)</span>
-    <span class="n">lats_ugrid</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">lats</span><span class="p">)</span>
+    <span class="n">field_irregular</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+    <span class="n">lons_irregular</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">lons</span><span class="p">)</span>
+    <span class="n">lats_irregular</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">lats</span><span class="p">)</span>
 
 
     <span class="c1"># Fix longitudes to be -180 to 180</span>
-    <span class="c1"># lons_ugrid = ((lons_ugrid + plotvars.lonmin) % 360) + plotvars.lonmin</span>
+    <span class="c1"># lons_irregular = ((lons_irregular + plotvars.lonmin) % 360) + plotvars.lonmin</span>
 
     <span class="c1"># Test data to get appropiate longitude offset to perform remapping</span>
     <span class="n">found_lon</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">for</span> <span class="n">ilon</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="mi">360</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">]:</span>
-        <span class="n">lons_test</span> <span class="o">=</span> <span class="n">lons_ugrid</span> <span class="o">+</span> <span class="n">ilon</span>
+        <span class="n">lons_test</span> <span class="o">=</span> <span class="n">lons_irregular</span> <span class="o">+</span> <span class="n">ilon</span>
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">lons_test</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmin</span><span class="p">:</span>
             <span class="n">found_lon</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="n">lons_offset</span> <span class="o">=</span> <span class="n">ilon</span>
 
     <span class="k">if</span> <span class="n">found_lon</span><span class="p">:</span>
-        <span class="n">lons_ugrid</span> <span class="o">=</span> <span class="n">lons_ugrid</span> <span class="o">+</span> <span class="n">lons_offset</span>
-        <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">lons_ugrid</span> <span class="o">&lt;</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmin</span><span class="p">)</span>
-        <span class="n">lons_ugrid</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span> <span class="o">=</span> <span class="n">lons_ugrid</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span> <span class="o">+</span> <span class="mf">360.0</span>
+        <span class="n">lons_irregular</span> <span class="o">=</span> <span class="n">lons_irregular</span> <span class="o">+</span> <span class="n">lons_offset</span>
+        <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">lons_irregular</span> <span class="o">&lt;</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmin</span><span class="p">)</span>
+        <span class="n">lons_irregular</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span> <span class="o">=</span> <span class="n">lons_irregular</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span> <span class="o">+</span> <span class="mf">360.0</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">errstr</span> <span class="o">=</span> <span class="s1">&#39;/n/n cf-plot error - cannot determine grid offset in add_cyclic_ugrid/n/n&#39;</span>
+        <span class="n">errstr</span> <span class="o">=</span> <span class="s1">&#39;/n/n cf-plot error - cannot determine grid offset in add_cyclic_irregular/n/n&#39;</span>
         <span class="k">raise</span> <span class="ne">Warning</span><span class="p">(</span><span class="n">errstr</span><span class="p">)</span>
 
-    <span class="n">field_wrap</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">field_ugrid</span><span class="p">)</span>
-    <span class="n">lons_wrap</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">lons_ugrid</span><span class="p">)</span>
-    <span class="n">lats_wrap</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">lats_ugrid</span><span class="p">)</span>
+    <span class="n">field_wrap</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">field_irregular</span><span class="p">)</span>
+    <span class="n">lons_wrap</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">lons_irregular</span><span class="p">)</span>
+    <span class="n">lats_wrap</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">lats_irregular</span><span class="p">)</span>
     <span class="n">delta</span> <span class="o">=</span> <span class="mf">120.0</span>
 
     <span class="n">pts_left</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">lons_wrap</span> <span class="o">&gt;=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmin</span> <span class="o">+</span> <span class="mi">360</span> <span class="o">-</span> <span class="n">delta</span><span class="p">)</span>
@@ -9137,17 +9151,17 @@
     <span class="n">lats_new</span> <span class="o">=</span> <span class="n">lats_new</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
 
     <span class="c1"># Add the interpolated data to the left</span>
-    <span class="n">field_ugrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">field_ugrid</span><span class="p">,</span> <span class="n">field_new</span><span class="p">])</span>
-    <span class="n">lons_ugrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">lons_ugrid</span><span class="p">,</span> <span class="n">lons_new</span><span class="p">])</span>
-    <span class="n">lats_ugrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">lats_ugrid</span><span class="p">,</span> <span class="n">lats_new</span><span class="p">])</span>
+    <span class="n">field_irregular</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">field_irregular</span><span class="p">,</span> <span class="n">field_new</span><span class="p">])</span>
+    <span class="n">lons_irregular</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">lons_irregular</span><span class="p">,</span> <span class="n">lons_new</span><span class="p">])</span>
+    <span class="n">lats_irregular</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">lats_irregular</span><span class="p">,</span> <span class="n">lats_new</span><span class="p">])</span>
 
     <span class="c1"># Add to the right if a fiull globe is being plotted</span>
     <span class="c1"># The 359.99 here is needed or Cartopy will map 360 back to 0</span>
 
     <span class="k">if</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmax</span> <span class="o">-</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmin</span> <span class="o">==</span> <span class="mi">360</span><span class="p">:</span>
-        <span class="n">field_ugrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">field_ugrid</span><span class="p">,</span> <span class="n">field_new</span><span class="p">])</span>
-        <span class="n">lons_ugrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">lons_ugrid</span><span class="p">,</span> <span class="n">lons_new</span> <span class="o">+</span> <span class="mf">359.95</span><span class="p">])</span>
-        <span class="n">lats_ugrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">lats_ugrid</span><span class="p">,</span> <span class="n">lats_new</span><span class="p">])</span>
+        <span class="n">field_irregular</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">field_irregular</span><span class="p">,</span> <span class="n">field_new</span><span class="p">])</span>
+        <span class="n">lons_irregular</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">lons_irregular</span><span class="p">,</span> <span class="n">lons_new</span> <span class="o">+</span> <span class="mf">359.95</span><span class="p">])</span>
+        <span class="n">lats_irregular</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">lats_irregular</span><span class="p">,</span> <span class="n">lats_new</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">lons_new2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">181</span><span class="p">)</span> <span class="o">+</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmax</span>
         <span class="n">lats_new2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">181</span><span class="p">)</span> <span class="o">-</span> <span class="mi">90</span>
@@ -9160,18 +9174,18 @@
         <span class="n">lats_new2</span> <span class="o">=</span> <span class="n">lats_new2</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
 
         <span class="c1"># Add the interpolated data to the right</span>
-        <span class="n">field_ugrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">field_ugrid</span><span class="p">,</span> <span class="n">field_new2</span><span class="p">])</span>
-        <span class="n">lons_ugrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">lons_ugrid</span><span class="p">,</span> <span class="n">lons_new2</span><span class="p">])</span>
-        <span class="n">lats_ugrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">lats_ugrid</span><span class="p">,</span> <span class="n">lats_new2</span><span class="p">])</span>
+        <span class="n">field_irregular</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">field_irregular</span><span class="p">,</span> <span class="n">field_new2</span><span class="p">])</span>
+        <span class="n">lons_irregular</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">lons_irregular</span><span class="p">,</span> <span class="n">lons_new2</span><span class="p">])</span>
+        <span class="n">lats_irregular</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">lats_irregular</span><span class="p">,</span> <span class="n">lats_new2</span><span class="p">])</span>
 
     <span class="c1"># Finally remove any point off to the right of plotvars.lonmax</span>
-    <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">lons_ugrid</span> <span class="o">&lt;=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmax</span><span class="p">)</span>
+    <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">lons_irregular</span> <span class="o">&lt;=</span> <span class="n">plotvars</span><span class="o">.</span><span class="n">lonmax</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">field_ugrid</span> <span class="o">=</span> <span class="n">field_ugrid</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
-        <span class="n">lons_ugrid</span> <span class="o">=</span> <span class="n">lons_ugrid</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
-        <span class="n">lats_ugrid</span> <span class="o">=</span> <span class="n">lats_ugrid</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
+        <span class="n">field_irregular</span> <span class="o">=</span> <span class="n">field_irregular</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
+        <span class="n">lons_irregular</span> <span class="o">=</span> <span class="n">lons_irregular</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
+        <span class="n">lats_irregular</span> <span class="o">=</span> <span class="n">lats_irregular</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span>
 
-    <span class="k">return</span> <span class="n">field_ugrid</span><span class="p">,</span> <span class="n">lons_ugrid</span><span class="p">,</span> <span class="n">lats_ugrid</span>
+    <span class="k">return</span> <span class="n">field_irregular</span><span class="p">,</span> <span class="n">lons_irregular</span><span class="p">,</span> <span class="n">lats_irregular</span>
 
 
 
@@ -9630,11 +9644,11 @@
         <span class="n">mapset</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="n">resolution_orig</span><span class="p">)</span></div>
 
 
-<span class="k">def</span> <span class="nf">bfill_ugrid</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">face_lons</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">face_lats</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">face_connectivity</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="k">def</span> <span class="nf">bfill_irregular</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">face_lons</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">face_lats</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">face_connectivity</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">clevs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                 <span class="n">alpha</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">     | bfill_ugrid - block fill a UGRID field with colour rectangles</span>
+<span class="sd">     | bfill_irregular - block fill a irregular field with colour rectangles</span>
 <span class="sd">     | This is an internal routine and is not generally used by the user.</span>
 <span class="sd">     |</span>
 <span class="sd">     | f=None - field</span>
@@ -9773,28 +9787,29 @@
             <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 
             <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">():</span>
-                <span class="n">axis</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">()[</span><span class="n">method</span><span class="p">]</span><span class="o">.</span><span class="n">get_axes</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="k">try</span><span class="p">:</span>
-                    <span class="c1"># Change domainaxis0 etc to an axis</span>
-                    <span class="n">myid</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">constructs</span><span class="o">.</span><span class="n">domain_axis_identity</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
-                <span class="k">except</span><span class="p">:</span>
-                    <span class="n">myid</span> <span class="o">=</span> <span class="n">axis</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">()[</span><span class="n">method</span><span class="p">]</span><span class="o">.</span><span class="n">get_axes</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">axis</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">()[</span><span class="n">method</span><span class="p">]</span><span class="o">.</span><span class="n">get_axes</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="c1"># Change domainaxis0 etc to an axis</span>
+                        <span class="n">myid</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">constructs</span><span class="o">.</span><span class="n">domain_axis_identity</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="n">myid</span> <span class="o">=</span> <span class="n">axis</span>
         
-                <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-                <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">()[</span><span class="n">method</span><span class="p">]</span><span class="o">.</span><span class="n">has_method</span><span class="p">():</span> 
-                    <span class="n">value</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">()[</span><span class="n">method</span><span class="p">]</span><span class="o">.</span><span class="n">get_method</span><span class="p">()</span>       
+                    <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+                    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">()[</span><span class="n">method</span><span class="p">]</span><span class="o">.</span><span class="n">has_method</span><span class="p">():</span> 
+                        <span class="n">value</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">()[</span><span class="n">method</span><span class="p">]</span><span class="o">.</span><span class="n">get_method</span><span class="p">()</span>       
     
-                <span class="n">qualifiers</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">()[</span><span class="n">method</span><span class="p">]</span><span class="o">.</span><span class="n">qualifiers</span><span class="p">()</span>
-                <span class="n">qualifier_text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">qualifiers</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">qualifier_text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">qualifiers</span><span class="p">)</span>   
+                    <span class="n">qualifiers</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">cell_methods</span><span class="p">()[</span><span class="n">method</span><span class="p">]</span><span class="o">.</span><span class="n">qualifiers</span><span class="p">()</span>
+                    <span class="n">qualifier_text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">qualifiers</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">qualifier_text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">qualifiers</span><span class="p">)</span>   
     
-                <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">title_dims</span> <span class="o">+=</span> <span class="s1">&#39;, &#39;</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">title_dims</span> <span class="o">+=</span> <span class="s1">&#39;, &#39;</span>
 
-                <span class="n">title_dims</span> <span class="o">+=</span> <span class="n">myid</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">value</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">qualifier_text</span>
+                    <span class="n">title_dims</span> <span class="o">+=</span> <span class="n">myid</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">value</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">qualifier_text</span>
         
-                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
                                             
     <span class="k">return</span> <span class="n">title_dims</span>
 
@@ -10012,7 +10027,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.2.16 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">cf-plot 3.2.14 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">cfplot</a></li> 
       </ul>

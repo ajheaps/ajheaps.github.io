@@ -89,7 +89,7 @@ Orca2 grid
    lats=lats.flatten()
    temp=temp.flatten()
 
-   cfp.con(x=lons, y=lats, f=temp, ptype=1, ugrid=True)
+   cfp.con(x=lons, y=lats, f=temp, ptype=1, irregular=True)
 
 
 The ORCA2 grid is an ocean grid with missing values over the land points.  The data in this file is from before the UGRID convention was started and has no face connectivity or corner coordinates.  In this case we can only plot a normal contour plot.
@@ -130,7 +130,7 @@ Here we read in temperature data in a text file from meteorological stations aro
       pressure=np.append(pressure, float(mysplit[3]))
       temp=np.append(temp, float(mysplit[4]))
 
-   cfp.con(x=lons, y=lats, f=temp, ptype=1, colorbar_orientation='vertical', ugrid=True)
+   cfp.con(x=lons, y=lats, f=temp, ptype=1, colorbar_orientation='vertical', irregular=True)
 
 | 
 | 
@@ -145,7 +145,7 @@ To see if this plot is correct we can add some extra code to that above to plot 
 
    import cartopy.crs as ccrs
    cfp.gopen()
-   cfp.con(x=lons, y=lats, f=temp, ptype=1, colorbar_orientation='vertical', ugrid=True)
+   cfp.con(x=lons, y=lats, f=temp, ptype=1, colorbar_orientation='vertical', irregular=True)
    for i in np.arange(len(lines)):
       cfp.plotvars.mymap.text(float(lons[i]), float(lats[i]), str(temp[i]), \
                               horizontalalignment='center',verticalalignment='center', \
