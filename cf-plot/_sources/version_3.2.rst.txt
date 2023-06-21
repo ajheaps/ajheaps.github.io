@@ -177,8 +177,8 @@ An error occured if a cell_method had no associated axis.  A check was put in pl
 
 
 
-14. cfp.con ugrid keyword changed to irregular
-==============================================
+14. cfp.con - ugrid keyword changed to irregular
+===============================================
 
 In cfp.con the ugrid keyword was changed to irregular as this is more appropriate.
 
@@ -188,9 +188,18 @@ In cfp.con the ugrid keyword was changed to irregular as this is more appropriat
    Changed
 
 
+15. cfp.bfill - map transform now passed through to blockfill_fast code
+=======================================================================
+
+In cfp.bfill the map transform wasn;t passed through to the blockfill_fast code and this has now been corrected.
 
 
+::
 
+   Fixed
+   
+   
+   
 
 
 
