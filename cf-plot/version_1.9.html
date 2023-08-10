@@ -1,20 +1,18 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>version 1.9 changes &#8212; cf-plot 3.2.15 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>version 1.9 changes &#8212; cf-plot 3.2.21 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=4f2a3543" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=860b6650"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -25,7 +23,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.2.15 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.2.21 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">version 1.9 changes</a></li> 
       </ul>
     </div>  
@@ -35,10 +33,10 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="version-1-9-changes">
+  <section id="version-1-9-changes">
 <h1>version 1.9 changes<a class="headerlink" href="#version-1-9-changes" title="Permalink to this heading">¶</a></h1>
 <p>Rolling update of features / bug fixes</p>
-<div class="section" id="vector-polar-plots">
+<section id="vector-polar-plots">
 <h2>1. Vector polar plots<a class="headerlink" href="#vector-polar-plots" title="Permalink to this heading">¶</a></h2>
 <p>Vector polar plots introduced.  Use the pts option to vect when doing a stereographic polar vector plot to interpolate
 the grid to be uniformly spaced when viewed.</p>
@@ -47,8 +45,8 @@ the grid to be uniformly spaced when viewed.</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="change-documentation-web-page-location">
+</section>
+<section id="change-documentation-web-page-location">
 <h2>2. Change documentation web page location<a class="headerlink" href="#change-documentation-web-page-location" title="Permalink to this heading">¶</a></h2>
 <div class="line-block">
 <div class="line">Was:</div>
@@ -61,16 +59,16 @@ the grid to be uniformly spaced when viewed.</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="add-orography-bathymetry-colour-scales">
+</section>
+<section id="add-orography-bathymetry-colour-scales">
 <h2>3. Add orography / bathymetry colour scales<a class="headerlink" href="#add-orography-bathymetry-colour-scales" title="Permalink to this heading">¶</a></h2>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="change-cfplot-to-cf-plot">
+</section>
+<section id="change-cfplot-to-cf-plot">
 <h2>4. Change cfplot to cf-plot<a class="headerlink" href="#change-cfplot-to-cf-plot" title="Permalink to this heading">¶</a></h2>
 <p>Package renamed to cf-plot to fit in with cf-python and cf-view.</p>
 <blockquote>
@@ -78,15 +76,15 @@ the grid to be uniformly spaced when viewed.</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="change-web-docs-to-github">
+</section>
+<section id="change-web-docs-to-github">
 <h2>5. Change web docs to github<a class="headerlink" href="#change-web-docs-to-github" title="Permalink to this heading">¶</a></h2>
 <p>Web documents location changed to <a class="reference external" href="http://ajheaps.github.io/cf-plot">http://ajheaps.github.io/cf-plot</a>.  setup.py etc references changed accordingly.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="add-plot-spacing-options-to-gopen">
+</section>
+<section id="add-plot-spacing-options-to-gopen">
 <h2>6. Add plot spacing options to gopen<a class="headerlink" href="#add-plot-spacing-options-to-gopen" title="Permalink to this heading">¶</a></h2>
 <p>Add hspace and wspace plot spacing options to gopen.</p>
 <blockquote>
@@ -94,15 +92,15 @@ the grid to be uniformly spaced when viewed.</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="lineplot-assing-non-cf-data">
+</section>
+<section id="lineplot-assing-non-cf-data">
 <h2>7. lineplot - -assing non-CF data<a class="headerlink" href="#lineplot-assing-non-cf-data" title="Permalink to this heading">¶</a></h2>
 <p>Add options so that passing of non-CF data to lineplot works.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="vect-turn-off-vector-key">
+</section>
+<section id="vect-turn-off-vector-key">
 <h2>8. vect - turn off vector key<a class="headerlink" href="#vect-turn-off-vector-key" title="Permalink to this heading">¶</a></h2>
 <p>Add show_key option to vect to allow turning off of vector key.</p>
 <blockquote>
@@ -110,16 +108,16 @@ the grid to be uniformly spaced when viewed.</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="cscale-colour-maps-not-referenced-correctly-when-doing-a-local-install">
+</section>
+<section id="cscale-colour-maps-not-referenced-correctly-when-doing-a-local-install">
 <h2>9. cscale - colour maps not referenced correctly when doing a local install<a class="headerlink" href="#cscale-colour-maps-not-referenced-correctly-when-doing-a-local-install" title="Permalink to this heading">¶</a></h2>
 <p>pip install --user cf-plot</p>
 <p>Doesn't allow changing of colour maps.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="lineplot-add-axis-labelling-that-overrides-any-cf-information">
+</section>
+<section id="lineplot-add-axis-labelling-that-overrides-any-cf-information">
 <h2>10. lineplot - add axis labelling that overrides any CF information<a class="headerlink" href="#lineplot-add-axis-labelling-that-overrides-any-cf-information" title="Permalink to this heading">¶</a></h2>
 <p>Add axis labelling that overrides any CF information in lineplot.</p>
 <blockquote>
@@ -127,15 +125,15 @@ the grid to be uniformly spaced when viewed.</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="gclose-plots-not-closed-properly">
+</section>
+<section id="gclose-plots-not-closed-properly">
 <h2>11. gclose - plots not closed properly<a class="headerlink" href="#gclose-plots-not-closed-properly" title="Permalink to this heading">¶</a></h2>
 <p>Add plot.close() to gclose routine to properly close each plot when it is finished.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="levs-change-in-floating-point-levels-calculation">
+</section>
+<section id="levs-change-in-floating-point-levels-calculation">
 <h2>12. levs - change in floating point levels calculation<a class="headerlink" href="#levs-change-in-floating-point-levels-calculation" title="Permalink to this heading">¶</a></h2>
 <p>Floating point levels were calculated using numpy.arange and this can sometimes give stange contour levels.
 For example,</p>
@@ -158,71 +156,71 @@ to adopt this method.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="levs-cfp-levs-fails-to-reset-colorbar-extensions">
+</section>
+<section id="levs-cfp-levs-fails-to-reset-colorbar-extensions">
 <h2>13. levs - cfp.levs() fails to reset colorbar extensions<a class="headerlink" href="#levs-cfp-levs-fails-to-reset-colorbar-extensions" title="Permalink to this heading">¶</a></h2>
 <p>cfp.levs() failed to reset colorbar extensions.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="change-of-name-for-some-colour-scales">
+</section>
+<section id="change-of-name-for-some-colour-scales">
 <h2>14. Change of name for some colour scales<a class="headerlink" href="#change-of-name-for-some-colour-scales" title="Permalink to this heading">¶</a></h2>
 <p>Colour scales with plus and minus in them cause issues in cfview. These colour scales have been renamed with the plus and minus changed to an underscore.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="con-negative-linestyle-and-zero-thick-issues">
+</section>
+<section id="con-negative-linestyle-and-zero-thick-issues">
 <h2>15. con - negative_linestyle and zero_thick issues<a class="headerlink" href="#con-negative-linestyle-and-zero-thick-issues" title="Permalink to this heading">¶</a></h2>
 <p>Recent changes in the 1.5.x version of Matplotlib causes issues with the con routine negative_linestyle and zero_thick options.  con was changed to the new Matplotlib way of doing these.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="con-xlog-log-specification">
+</section>
+<section id="con-xlog-log-specification">
 <h2>16. con - xlog / log specification<a class="headerlink" href="#con-xlog-log-specification" title="Permalink to this heading">¶</a></h2>
 <p>Amended the xlog and ylog specification so that it now accpets True as well as 1 to give a log plot.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="con-vect-added-axis-labelling-commands">
+</section>
+<section id="con-vect-added-axis-labelling-commands">
 <h2>17. con, vect  added axis labelling commands<a class="headerlink" href="#con-vect-added-axis-labelling-commands" title="Permalink to this heading">¶</a></h2>
 <p>Added xticks, xticklabels, yticks, yticklabels, xlabel, ylabel to con and vect to control axis labelling.  Also added axis, axis, yaxis to control whether axes are plotted.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="con-bug-in-color-scheme">
+</section>
+<section id="con-bug-in-color-scheme">
 <h2>18. con - bug in color scheme<a class="headerlink" href="#con-bug-in-color-scheme" title="Permalink to this heading">¶</a></h2>
 <p>When turning off a colorbar with colorbar=None in the con routine the extension colors were then out of alignment.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="vect-added-vertical-log-scale">
+</section>
+<section id="vect-added-vertical-log-scale">
 <h2>19. vect - added vertical log scale<a class="headerlink" href="#vect-added-vertical-log-scale" title="Permalink to this heading">¶</a></h2>
 <p>Added optional vertical log scale to the vect routine.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="con-added-time-vs-height-plots">
+</section>
+<section id="con-added-time-vs-height-plots">
 <h2>20. con  - added time vs height plots<a class="headerlink" href="#con-added-time-vs-height-plots" title="Permalink to this heading">¶</a></h2>
 <p>Added time vs height plots.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="colour-scales-adjust-name">
+</section>
+<section id="colour-scales-adjust-name">
 <h2>21. colour scales - adjust name<a class="headerlink" href="#colour-scales-adjust-name" title="Permalink to this heading">¶</a></h2>
 <p>One of the colour scales had an incorrect extension and this caused an issue in cf-view.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="plot-blocking-resolved">
+</section>
+<section id="plot-blocking-resolved">
 <h2>22. Plot blocking resolved<a class="headerlink" href="#plot-blocking-resolved" title="Permalink to this heading">¶</a></h2>
 <p>If the display command from ImageMagick is available this is now used in conjunction with subprocess
 in preference to build-in Matplotlib viewer. This gets around the problem of a plot blocking the command prompt
@@ -231,23 +229,23 @@ built-in matplotlib picture viewer.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="timeaxis-routine-introduced">
+</section>
+<section id="timeaxis-routine-introduced">
 <h2>23. timeaxis routine introduced<a class="headerlink" href="#timeaxis-routine-introduced" title="Permalink to this heading">¶</a></h2>
 <p>The timeaxis routine takes a time axis and returns a sensible set of tick positions and labels.  This is an internal
 routine that is used in Hovmuller and graph plots.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="multiple-hovmuller-plot-calls-produce-incorrect-pictures">
+</section>
+<section id="multiple-hovmuller-plot-calls-produce-incorrect-pictures">
 <h2>24. Multiple hovmuller plot calls produce incorrect pictures<a class="headerlink" href="#multiple-hovmuller-plot-calls-produce-incorrect-pictures" title="Permalink to this heading">¶</a></h2>
 <p>Subsequent plots after the first hovmuller plot call produce incorrect pictures.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="added-time-axis-options-to-setvars">
+</section>
+<section id="added-time-axis-options-to-setvars">
 <h2>25. Added time axis options to setvars<a class="headerlink" href="#added-time-axis-options-to-setvars" title="Permalink to this heading">¶</a></h2>
 <p>Added time axis tick marks and labelling options to setvars. Once set these plot options are used
 for all subsequent time axes.</p>
@@ -260,15 +258,15 @@ for all subsequent time axes.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="time-axes-bugfix">
+</section>
+<section id="time-axes-bugfix">
 <h2>26. Time axes bugfix<a class="headerlink" href="#time-axes-bugfix" title="Permalink to this heading">¶</a></h2>
 <p>Bugfix for an issue in time axes.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="add-axis-label-and-alignment-options-to-setvars">
+</section>
+<section id="add-axis-label-and-alignment-options-to-setvars">
 <h2>27. Add axis label and alignment options to setvars<a class="headerlink" href="#add-axis-label-and-alignment-options-to-setvars" title="Permalink to this heading">¶</a></h2>
 <p>Add axis label and alignment options to setvars:</p>
 <div class="line-block">
@@ -280,23 +278,23 @@ for all subsequent time axes.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="bugfix-in-gset">
+</section>
+<section id="bugfix-in-gset">
 <h2>28. Bugfix in gset<a class="headerlink" href="#bugfix-in-gset" title="Permalink to this heading">¶</a></h2>
 <p>Bugfix in gset for recent time axis changes.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="bug-in-lineplot">
+</section>
+<section id="bug-in-lineplot">
 <h2>29. Bug in lineplot<a class="headerlink" href="#bug-in-lineplot" title="Permalink to this heading">¶</a></h2>
 <p>Lineplot is now more logical and takes a CF-field (f) as the base use. The other use is
 not to pass f but to have x=x and y=y.  This allows x vs y plots and y vs x plots.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="con-filled-contours-and-irregular-contour-levels">
+</section>
+<section id="con-filled-contours-and-irregular-contour-levels">
 <h2>30. con - filled contours and irregular contour levels<a class="headerlink" href="#con-filled-contours-and-irregular-contour-levels" title="Permalink to this heading">¶</a></h2>
 <p>Selecting irregular contour levels with cfp.levs(manual=manual) and filled contours gives a slight
 colour scale mismatch.  This was resolved by calculating a normalization array:
@@ -304,15 +302,15 @@ plotvars.norm=matplotlib.colors.BoundaryNorm(boundaries=plotvars.levels, ncolors
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="con-blockfill-plots">
+</section>
+<section id="con-blockfill-plots">
 <h2>31. con - blockfill plots<a class="headerlink" href="#con-blockfill-plots" title="Permalink to this heading">¶</a></h2>
 <p>Slight bug in blockfill colours at the top end of the drawn colours.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fixed</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="setvars-lineplot-legend-text-size-and-weight">
+</section>
+<section id="setvars-lineplot-legend-text-size-and-weight">
 <h2>32. setvars / lineplot - legend text size and weight<a class="headerlink" href="#setvars-lineplot-legend-text-size-and-weight" title="Permalink to this heading">¶</a></h2>
 <p>Two new options were added to cfp.setvars to change the font size and weight for the legend in lineplot:</p>
 <p>legend_text_size=None - legend text size
@@ -320,8 +318,8 @@ legend_text_weight=None - legend text weight</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Added</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="levs-changed-level-generation-scheme">
+</section>
+<section id="levs-changed-level-generation-scheme">
 <h2>33. levs - changed level generation scheme<a class="headerlink" href="#levs-changed-level-generation-scheme" title="Permalink to this heading">¶</a></h2>
 <p>The level generation scheme in levs when the user passes min, max, step has been changed.  It is now using Neil
 Massey's scheme:</p>
@@ -332,8 +330,8 @@ levs = (((np.arange(min, max+step*1e-10, step, dtype=np.float64)*1e10)).astype(n
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="gvals-changed-scheme-for-step-1">
+</section>
+<section id="gvals-changed-scheme-for-step-1">
 <h2>34. gvals - changed scheme for step &gt;= 1<a class="headerlink" href="#gvals-changed-scheme-for-step-1" title="Permalink to this heading">¶</a></h2>
 <p>gvals changed to use more sensible steps when step &gt;= 1.</p>
 <p>steps are now 1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000, 2000, 2500, 5000, 10000, 20000, 25000, 50000, 100000,
@@ -342,8 +340,8 @@ levs = (((np.arange(min, max+step*1e-10, step, dtype=np.float64)*1e10)).astype(n
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changed</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -376,13 +374,13 @@ levs = (((np.arange(min, max+step*1e-10, step, dtype=np.float64)*1e10)).astype(n
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.2.15 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.2.21 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">version 1.9 changes</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Andy Heaps.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2022, Andy Heaps.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
     </div>
   </body>
 </html>

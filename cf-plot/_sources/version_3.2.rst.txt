@@ -199,15 +199,83 @@ In cfp.bfill the map transform wasn;t passed through to the blockfill_fast code 
    Fixed
    
    
+16. cfp.con - new test for spatially irregular data points    
+==========================================================
+
+A new test was introduced to cfp.con to check whether the data points are spatially irregular.  This is done with the 
+x points comparing the size of x to the size of the unique x points.  User specified values of True or False override 
+the new internal test.
+
+
+::
+
+   Changed
+
+
+17. cfp.levs - np.int depreciated change
+========================================
+
+np.int has been depreciated in newer versions of numpy and was just an alias for int.  In cfp.levs the np.int was changed to np.int64 to match the surrounding code.
+
+
+::
+
+   Changed
+
+
+18. cfp.bfill - change of level inclusion
+=========================================
+
+cfp.bfill has been changed in the blockfill=True section.  The code now matches blockfill=fast in that the fill is between matching the first level and below the second level.
+
+
+::
+
+   Changed
+
+
+19. cfp.lineplot - error in calculating user time limits for the x-axis
+=======================================================================
+
+cfp.lineplot - an error in calculating user time limits for the x-axis has been fixed.
+
+
+::
+
+   Fixed
+
+
+20. cfp.setvars - grid=True didn't work on a cylindrical map
+============================================================
+
+cfp.setvars - grid=True doesn't work on a cylindrical projection map.  The grid keyword was moved into the cfp.con code as this was more appropriate.  The grid_zorder parameter controls the plotting order of the grid and has a default value of 100.  A calling sequence to draw dashed grey lines of thickness every 10 degrees in longitude and latitude would be:
+
+::
+
+   import cf
+   import cfplot as cfp
+   f = cf.read('cfplot_data/tas_A1.nc')[0]
+   cfp.setvars(grid_x_spacing=10, grid_y_spacing=10, grid_colour='grey', grid_thickness=0.5, grid_linestyle='--' )
+   cfp.con(f.subspace(time=15), lines=False, grid=True)
+
+
+::
+
+   Fixed
    
+   
+21. cfp.setvars - feature_zorder parameter added
+================================================
+
+In cfp.setvars the feature_zorder parameter was added.  This controls the plotting order of the features and has a default value of 99.
 
 
+::
 
-
-
-
-
-
+   Changed
+   
+   
+   
 
 
 

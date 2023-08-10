@@ -712,7 +712,11 @@ To make a multiple line plot use the gopen, gclose commands to enclose the plott
 |      limits and / or labelling.  This is a feature of Matplotlib.
 |   b) The last call to **cfp.lineplot** is the one that any of axis labelling overrides should be placed in.
 |   c) All calls to **cfp.lineplot** with the **label** attribute set will appear in the legend.   
-
+|   d) When plotting time data from different models set the time units to be the same as the first line plotted to
+|      avoid different time axes being used i.e. 
+|      **cfp.lineplot(f)**
+|      **g.coord('T').units = f.coord('T').units**
+|      **cfp.lineplot(g)**
 
 
 ::

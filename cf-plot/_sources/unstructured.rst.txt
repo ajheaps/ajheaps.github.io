@@ -64,7 +64,7 @@ Here the projection is changed to show the north pole.
 
    cfp.con(g, lines=False )
 
-The data in the field has auxiliary longitudes and latitudes that can be contoured as normal.  Internally in cf-plot this is made using the Matplotlib tricontourf command as the data is irregular.
+The data in the field has auxiliary longitudes and latitudes that can be contoured as normal.  Internally in cf-plot this is made using the Matplotlib tricontourf command as the data points are spatially irregular.
 
 
 Orca2 grid
@@ -89,7 +89,7 @@ Orca2 grid
    lats=lats.flatten()
    temp=temp.flatten()
 
-   cfp.con(x=lons, y=lats, f=temp, ptype=1, irregular=True)
+   cfp.con(x=lons, y=lats, f=temp, ptype=1)
 
 
 The ORCA2 grid is an ocean grid with missing values over the land points.  The data in this file is from before the UGRID convention was started and has no face connectivity or corner coordinates.  In this case we can only plot a normal contour plot.
@@ -130,7 +130,7 @@ Here we read in temperature data in a text file from meteorological stations aro
       pressure=np.append(pressure, float(mysplit[3]))
       temp=np.append(temp, float(mysplit[4]))
 
-   cfp.con(x=lons, y=lats, f=temp, ptype=1, colorbar_orientation='vertical', irregular=True)
+   cfp.con(x=lons, y=lats, f=temp, ptype=1, colorbar_orientation='vertical')
 
 | 
 | 
@@ -145,7 +145,7 @@ To see if this plot is correct we can add some extra code to that above to plot 
 
    import cartopy.crs as ccrs
    cfp.gopen()
-   cfp.con(x=lons, y=lats, f=temp, ptype=1, colorbar_orientation='vertical', irregular=True)
+   cfp.con(x=lons, y=lats, f=temp, ptype=1, colorbar_orientation='vertical')
    for i in np.arange(len(lines)):
       cfp.plotvars.mymap.text(float(lons[i]), float(lats[i]), str(temp[i]), \
                               horizontalalignment='center',verticalalignment='center', \
