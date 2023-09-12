@@ -306,6 +306,19 @@ A stray print statement was removed.
     Done   
 
 
+25. Support for 2D lon-lat data added
+=====================================
+
+Support for 2D lon-lat data contouring and blockfill was added.
+
+
+::
+
+    Done   
+
+
+
+
 
 
 

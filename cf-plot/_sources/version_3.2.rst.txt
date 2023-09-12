@@ -275,6 +275,16 @@ In cfp.setvars the feature_zorder parameter was added.  This controls the plotti
    Changed
    
    
+22. cfp.con - blockfill and blockfill_fast for 2D data added
+============================================================
+
+cfp.con - blockfill and blockfill_fast for 2D data added.
+
+
+::
+
+   Added
+   
    
 
 
