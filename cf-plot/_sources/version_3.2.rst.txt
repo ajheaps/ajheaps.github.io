@@ -286,10 +286,19 @@ cfp.con - blockfill and blockfill_fast for 2D data added.
    Added
    
    
+23. cfp.con - code to subspace field to user defined map removed 
+================================================================
+
+cfp-con - code to subspace field to user defined map removed as this was causing issues with blank plots.
 
 
+::
 
-
+   Removed
+   
+   
+   
+   
 
 
 

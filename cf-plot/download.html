@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Download/Install &#8212; cf-plot 3.2.22 documentation</title>
+    <title>Download/Install &#8212; cf-plot 3.2.23 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=4f2a3543" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=97decc96" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b1f3ec3a"></script>
+    <script src="_static/documentation_options.js?v=6daedb57"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -23,7 +23,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.2.22 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.2.23 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Download/Install</a></li> 
       </ul>
     </div>  
@@ -34,10 +34,10 @@
           <div class="body" role="main">
             
   <section id="download-install">
-<h1>Download/Install<a class="headerlink" href="#download-install" title="Permalink to this heading">¶</a></h1>
+<h1>Download/Install<a class="headerlink" href="#download-install" title="Link to this heading">¶</a></h1>
 <p>The following notes refer to the Python 3 versions of cf-python and cf-plot which was released on 1st October 2019.</p>
 <section id="is-cf-plot-already-installed">
-<h2>Is cf-plot already installed?<a class="headerlink" href="#is-cf-plot-already-installed" title="Permalink to this heading">¶</a></h2>
+<h2>Is cf-plot already installed?<a class="headerlink" href="#is-cf-plot-already-installed" title="Link to this heading">¶</a></h2>
 <div class="line-block">
 <div class="line"><strong>Jasmin</strong></div>
 <div class="line">export PATH=/home/users/ajh/anaconda3/bin:$PATH</div>
@@ -60,9 +60,9 @@
 </div>
 </section>
 <section id="to-install-cf-plot">
-<h2>To install cf-plot<a class="headerlink" href="#to-install-cf-plot" title="Permalink to this heading">¶</a></h2>
+<h2>To install cf-plot<a class="headerlink" href="#to-install-cf-plot" title="Link to this heading">¶</a></h2>
 <section id="linux-and-mac">
-<h3>Linux and Mac<a class="headerlink" href="#linux-and-mac" title="Permalink to this heading">¶</a></h3>
+<h3>Linux and Mac<a class="headerlink" href="#linux-and-mac" title="Link to this heading">¶</a></h3>
 <p>To install cf-plot on your own Linux PC or Mac download and install miniconda. On the command line type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">ncas</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">cf</span><span class="o">-</span><span class="n">python</span> <span class="n">cf</span><span class="o">-</span><span class="n">plot</span> <span class="n">udunits2</span>
 <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">mpich</span> <span class="n">esmpy</span>
@@ -71,7 +71,7 @@
 <p>The first line installs cf-python and cf-plot.  The second installs esmpy, together with the netcdf-fortran and mpich requirements, which cf-python uses for regriding data.  Note that Matplotlib 3 was used in the development of cf-plot and it is advised to upgrade to this version if you are not using it already.  Using Matplotlib 2 can give different plot spacings and results such as missing contour plots.</p>
 </section>
 <section id="windows">
-<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">¶</a></h3>
+<h3>Windows<a class="headerlink" href="#windows" title="Link to this heading">¶</a></h3>
 <p>We have a small development team and Linux is our main working environment. Windows isn't an option for us at present given our target user base.</p>
 <p>If you have a Windows operating system there are a couple of options for running Linux:</p>
 <ol class="arabic simple">
@@ -80,7 +80,7 @@
 </ol>
 </section>
 <section id="other-install-methods-for-linux-and-mac-osx">
-<h3>Other install methods for Linux and Mac OSX<a class="headerlink" href="#other-install-methods-for-linux-and-mac-osx" title="Permalink to this heading">¶</a></h3>
+<h3>Other install methods for Linux and Mac OSX<a class="headerlink" href="#other-install-methods-for-linux-and-mac-osx" title="Link to this heading">¶</a></h3>
 <p>Using pip:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">cf</span><span class="o">-</span><span class="n">python</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">cf</span><span class="o">-</span><span class="n">plot</span>
@@ -97,7 +97,7 @@
 <p>You will need to download and install <a class="reference external" href="https://cfpython.bitbucket.io">cf-python</a> to use cf-plot.  Other cf-plot dependencies are: Numpy, Scipy, Matplotlib, NetCDF4 and Cartopy.</p>
 </section>
 <section id="sample-data-sets">
-<h3>Sample data sets<a class="headerlink" href="#sample-data-sets" title="Permalink to this heading">¶</a></h3>
+<h3>Sample data sets<a class="headerlink" href="#sample-data-sets" title="Link to this heading">¶</a></h3>
 <p>These are available in the cfplot_data directory which can be linked using:</p>
 <div class="line-block">
 <div class="line">Jasmin: <strong>ln -s /home/users/ajh/cfplot_data ~</strong></div>
@@ -149,13 +149,13 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.2.22 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.2.23 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Download/Install</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
     &#169; Copyright 2022, Andy Heaps.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.1.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>
