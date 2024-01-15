@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>add_cyclic &#8212; cf-plot 3.3.0 documentation</title>
+    <title>version 3.3 changes &#8212; cf-plot 3.3.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=97decc96" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
@@ -24,7 +24,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.3.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">add_cyclic</a></li> 
+        <li class="nav-item nav-item-this"><a href="">version 3.3 changes</a></li> 
       </ul>
     </div>  
 
@@ -33,21 +33,15 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="add-cyclic">
-<h1>add_cyclic<a class="headerlink" href="#add-cyclic" title="Link to this heading">¶</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="cfplot.add_cyclic">
-<span class="sig-prename descclassname"><span class="pre">cfplot.</span></span><span class="sig-name descname"><span class="pre">add_cyclic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lons</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cfplot.html#add_cyclic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cfplot.add_cyclic" title="Link to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line">add_cyclic is a wrapper for cartopy_util.add_cyclic_point(field, lons)</div>
-<div class="line">This is needed for the case of when the longitudes are not evenly spaced</div>
-<div class="line">due to numpy rounding which causes an error from the cartopy wrapping routine.</div>
-<div class="line">In this case the longitudes are promoted to 64 bit and then rounded</div>
-<div class="line">to an appropriate number of decimal places before passing to the cartopy</div>
-<div class="line">add_cyclic routine.</div>
+  <section id="version-3-3-changes">
+<h1>version 3.3 changes<a class="headerlink" href="#version-3-3-changes" title="Link to this heading">¶</a></h1>
+<section id="ugrid-support-added">
+<h2>0. Ugrid support added<a class="headerlink" href="#ugrid-support-added" title="Link to this heading">¶</a></h2>
+<p>Ugrid support added</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Done</span>
+</pre></div>
 </div>
-</dd></dl>
-
+</section>
 </section>
 
 
@@ -82,7 +76,7 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="nav-item nav-item-0"><a href="index.html">cf-plot 3.3.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">add_cyclic</a></li> 
+        <li class="nav-item nav-item-this"><a href="">version 3.3 changes</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
