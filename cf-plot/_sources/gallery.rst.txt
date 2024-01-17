@@ -14,7 +14,7 @@ cf-plot gallery
    :scale: 14%    
    :target: http://ajheaps.github.io/cf-plot/hovmuller.html
 
-:ref:cylindrical`cylindrical` 
+:ref:`cylindrical<cylindrical>` 
 :ref:`polar` 
 :ref:`pressure` 
 :ref:`hovmuller` 
