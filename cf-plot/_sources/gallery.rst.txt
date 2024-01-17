@@ -3,7 +3,7 @@ cf-plot gallery
 
 .. image::  images/fig1.png
    :scale: 14% 
-   :target:`cylindrical`
+   :ref: `cylindrical`
 .. image::  images/fig4.png
    :scale: 14%    
    :target: http://ajheaps.github.io/cf-plot/polar.html
@@ -32,7 +32,7 @@ cf-plot gallery
    :target: http://ajheaps.github.io/cf-plot/multiple_plots.html
 .. image::  images/cscale.png
    :scale: 20%    
-   :target: http://ajheaps.github.io/cf-plot/colour_scales.html
+   :ref:`colour_scales`
 
 `Vectors <http://ajheaps.github.io/cf-plot//vectors.html>`_
 `| Stipple (significance) <http://ajheaps.github.io/cf-plot/stipple_plots.html>`_
