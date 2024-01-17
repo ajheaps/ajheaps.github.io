@@ -1,7 +1,7 @@
 cf-plot homepage
 ================
 
-**Warning - these pages are static and will be removed at some stage in the future.  The new location will be `https://ncas-cms.github.io/cf-plot <https://ncas-cms.github.io/cf-plot>`_**
+**Warning - these pages are static and will be removed at some stage in the future.  The new location will be https://ncas-cms.github.io/cf-plot**
 
 cf-plot is a set of Python routines for making the common contour, vector and line plots that climate researchers use. The data to make a contour plot can be passed to cf-plot using cf-python as in the following example.
 
