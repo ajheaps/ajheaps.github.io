@@ -1,7 +1,7 @@
 cf-plot issues
 **************
 
-If you find a problem with cf-plot please email me Andy Heaps (andy.heaps@ncas.ac.uk) with the following:
+If you find a problem with cf-plot please email me Sadie Bartholomew (sadie.bartholomew@ncas.ac.uk) with the following:
 
 |   (i) the cf-python and cf-plot version numbers used:
 |       print('cf-python version', cf.__version__)
