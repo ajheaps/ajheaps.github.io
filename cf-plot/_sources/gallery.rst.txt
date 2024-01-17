@@ -14,9 +14,9 @@ cf-plot gallery
    :scale: 14%    
    :target: http://ajheaps.github.io/cf-plot/hovmuller.html
 
-:ref:`cylindrical<cylindrical>` 
-:ref:`polar<polar>` 
-:ref:`pressure<pressure>` 
+:ref:`cylindrical plots <cylindrical>` |
+:ref:`polar plots <polar>` |
+:ref:`pressure/height <pressure>` |
 :ref:`hovmuller<hovmuller>` 
 
 
@@ -33,6 +33,11 @@ cf-plot gallery
 .. image::  images/cscale.png
    :scale: 20%    
    :ref:`colour_scales`
+
+:ref:`vector plots <vector>`
+:ref:`stipple plots <stipple>`
+:ref:`multiple plots <multiple_plots>`
+:ref:`colour scales <colour_scales>`
 
 `Vectors <http://ajheaps.github.io/cf-plot//vectors.html>`_
 `| Stipple (significance) <http://ajheaps.github.io/cf-plot/stipple_plots.html>`_
