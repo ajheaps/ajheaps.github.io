@@ -35,7 +35,7 @@ cf-plot gallery
    :target: http://ajheaps.github.io/cf-plot/colour_scales.html
 
 :ref:`Vector plots <vector>` |
-:ref:`Stipple (stipple) <stipple>` |
+:ref:`Stipple plots <stipple>` |
 :ref:`Multiple plots on a page<multiple_plots>` |
 :ref:`Colour scales <colour_scales>`
 
@@ -58,7 +58,7 @@ cf-plot gallery
 
 :ref:`User defined axes <user_defined>` |
 :ref:`Rotated pole <rotated_pole>` |
-:ref:`Unstructured grids<unstructured_grids>` |
+:ref:`Unstructured grids<unstructured>` |
 :ref:`Graphs <graphs>`
 
 
@@ -78,7 +78,7 @@ cf-plot gallery
 
 :ref:`Projections <projections>` |
 :ref:`Trajectories <trajectories>` |
-:ref:`WRF data grids<wrf_data>` |
+:ref:`WRF data grids<wrf>` |
 
 
 
