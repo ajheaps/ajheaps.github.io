@@ -835,8 +835,7 @@ axis_label_fontweight values.
 ===================================
 
 It is now possible to do twinx or twiny plots in lineplot.  See example 30 in 
-http://ajheaps.github.io/cf-plot/graphs.html
-
+:ref:`graphs<graphs>`
 
 ::
 
@@ -847,8 +846,7 @@ http://ajheaps.github.io/cf-plot/graphs.html
 =========================================
 
 It is now possible to plot polar vectors on the original grid as in example 15 in 
-http://ajheaps.github.io/cf-plot/vectors.html
-
+:ref:`vector<vector>`
 
 ::
 
@@ -946,7 +944,7 @@ To turn off plotting for  the rotated gid for instance use
 
 The NCAS data tools training material one day course was added to the cf-plot web pages under
 http://ajheaps.github.io/cf-plot/training
-
+:ref:`training<training>`
 
 ::
 
