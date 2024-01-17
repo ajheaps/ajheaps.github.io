@@ -78,7 +78,7 @@ cf-plot gallery
 
 :ref:`Projections <projections>` |
 :ref:`Trajectories <trajectories>` |
-:ref:`WRF data grids<wrf>` |
+:ref:`WRF data grids<wrf>`
 
 
 

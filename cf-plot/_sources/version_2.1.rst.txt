@@ -683,7 +683,7 @@ alpha=alpha keywords to the cfp.con command.
 
 Independent positioning of plot figures on a page isn't possible.
 
-This is now possible and an example has been added to the http://ajheaps.github.io/cf-plot/multiple_plots.html page.
+This is now possible and an example has been added to the :ref:`Multiple plots on a page<multiple_plots>`  page.
 
 
 ::
