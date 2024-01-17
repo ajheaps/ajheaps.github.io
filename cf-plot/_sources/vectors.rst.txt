@@ -1,3 +1,4 @@
+.. _vectors:
 Vector and stream plots
 ***********************
 

@@ -1,3 +1,4 @@
+.. _polar:
 Polar stereographic projection
 ******************************
 

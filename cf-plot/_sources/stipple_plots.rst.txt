@@ -1,3 +1,4 @@
+.. _stipple:
 Stipple plots
 *************
 

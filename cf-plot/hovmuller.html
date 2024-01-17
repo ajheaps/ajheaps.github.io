@@ -34,7 +34,7 @@
           <div class="body" role="main">
             
   <section id="hovmuller-plots">
-<h1>Hovmuller plots<a class="headerlink" href="#hovmuller-plots" title="Link to this heading">¶</a></h1>
+<span id="hovmuller"></span><h1>Hovmuller plots<a class="headerlink" href="#hovmuller-plots" title="Link to this heading">¶</a></h1>
 <section id="example-10-latitude-time">
 <h2>Example 10 - latitude-time<a class="headerlink" href="#example-10-latitude-time" title="Link to this heading">¶</a></h2>
 <a class="reference internal image-reference" href="_images/fig10.png"><img alt="_images/fig10.png" src="_images/fig10.png" style="width: 530.9200000000001px; height: 344.76px;" /></a>
@@ -78,7 +78,8 @@
 <span class="kn">import</span> <span class="nn">cfplot</span> <span class="k">as</span> <span class="nn">cfp</span>
 <span class="n">f</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;cfplot_data/tas_A1.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">cfp</span><span class="o">.</span><span class="n">cscale</span><span class="p">(</span><span class="s1">&#39;plasma&#39;</span><span class="p">)</span>
-<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">cfp</span><span class="o">.</span><span class="n">con</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">subspace</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">lines</span><span class="o">=</span><span class="n">F</span>
+<span class="n">alse</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
