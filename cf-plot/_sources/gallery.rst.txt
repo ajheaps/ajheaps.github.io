@@ -14,10 +14,10 @@ cf-plot gallery
    :scale: 14%    
    :target: http://ajheaps.github.io/cf-plot/hovmuller.html
 
-:ref:`cylindrical plots <cylindrical>` |
-:ref:`polar plots <polar>` |
-:ref:`pressure/height <pressure>` |
-:ref:`hovmuller<hovmuller>` 
+:ref:`Cylindrical plots <cylindrical>` |
+:ref:`Polar plots <polar>` |
+:ref:`Pressure/height plots <pressure>` |
+:ref:`Hovmuller<hovmuller>` 
 
 
 
@@ -32,17 +32,13 @@ cf-plot gallery
    :target: http://ajheaps.github.io/cf-plot/multiple_plots.html
 .. image::  images/cscale.png
    :scale: 20%    
-   :ref:`colour_scales`
+   :target: http://ajheaps.github.io/cf-plot/colour_scales.html
 
-:ref:`vector plots <vector>`
-:ref:`stipple plots <stipple>`
-:ref:`multiple plots <multiple_plots>`
-:ref:`colour scales <colour_scales>`
+:ref:`Vector plots <vector>` |
+:ref:`Stipple (stipple) <stipple>` |
+:ref:`Multiple plots on a page<multiple_plots>` |
+:ref:`Colour scales <colour_scales>`
 
-`Vectors <http://ajheaps.github.io/cf-plot//vectors.html>`_
-`| Stipple (significance) <http://ajheaps.github.io/cf-plot/stipple_plots.html>`_
-`| Multiple plots on a page <http://ajheaps.github.io/cf-plot/multiple_plots.html>`_
-`| Colour scales <http://ajheaps.github.io/cf-plot/colour_scales.html>`_
 
 
 
@@ -59,10 +55,11 @@ cf-plot gallery
    :scale: 11%    
    :target: http://ajheaps.github.io/cf-plot/graphs.html
 
-`User defined axes <http://ajheaps.github.io/cf-plot/user_defined.html>`_
-`| Rotated pole <http://ajheaps.github.io/cf-plot/rotated_pole.html>`_
-`| Unstructured grids <http://ajheaps.github.io/cf-plot/unstructured.html>`_
-`| Graphs <http://ajheaps.github.io/cf-plot/graphs.html>`_
+
+:ref:`User defined axes <user_defined>` |
+:ref:`Rotated pole <rotated_pole>` |
+:ref:`Unstructured grids<unstructured_grids>` |
+:ref:`Graphs <graphs>`
 
 
 
@@ -79,11 +76,10 @@ cf-plot gallery
    :target: http://ajheaps.github.io/cf-plot/wrf.html
 
 
+:ref:`Projections <projections>` |
+:ref:`Trajectories <trajectories>` |
+:ref:`WRF data grids<wrf_data>` |
 
-
-`Projections <http://ajheaps.github.io/cf-plot/projections.html>`_
-`| Trajectories <http://ajheaps.github.io/cf-plot/trajectories.html>`_
-`| WRF data <http://ajheaps.github.io/cf-plot/wrf.html>`_
 
 
 
