@@ -3,7 +3,7 @@ cf-plot gallery
 
 .. image::  images/fig1.png
    :scale: 14% 
-   :ref: `cylindrical`
+   :target: `cylindrical`
 .. image::  images/fig4.png
    :scale: 14%    
    :target: http://ajheaps.github.io/cf-plot/polar.html
@@ -14,10 +14,10 @@ cf-plot gallery
    :scale: 14%    
    :target: http://ajheaps.github.io/cf-plot/hovmuller.html
 
-`Cylindrical projection     <http://ajheaps.github.io/cf-plot/cylindrical.html>`_
-`| Polar stereographic <http://ajheaps.github.io/cf-plot/polar.html>`_
-`| Latitude/longitude - height <http://ajheaps.github.io/cf-plot/pressure.html>`_
-`| Hovmuller <http://ajheaps.github.io/cf-plot/hovmuller.html>`_
+Cylindrical projection :ref: `cylindrical` 
+| Polar stereographic  :ref: `polar` 
+| Latitude/longitude - height <:ref: `pressure` 
+| Hovmuller :ref: `hovmuller` 
 
 
 
