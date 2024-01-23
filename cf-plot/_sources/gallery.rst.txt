@@ -3,7 +3,7 @@ cf-plot gallery
 
 .. image::  images/fig1.png
    :scale: 14% 
-   :target: http://ajheaps.github.io/cf-plot/cylindrical.html
+   :target: `cylindrical`
 .. image::  images/fig4.png
    :scale: 14%    
    :target: http://ajheaps.github.io/cf-plot/polar.html
