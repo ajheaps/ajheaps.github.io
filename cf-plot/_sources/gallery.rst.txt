@@ -6,13 +6,13 @@ cf-plot gallery
    :target: cylindrical.html
 .. image::  images/fig4.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/polar.html
+   :target: polar.html
 .. image::  images/fig7.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/pressure.html
+   :target: pressure.html
 .. image::  images/fig12.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/hovmuller.html
+   :target: hovmuller.html
 
 :ref:`Cylindrical plots <cylindrical>` |
 :ref:`Polar plots <polar>` |
@@ -23,16 +23,16 @@ cf-plot gallery
 
 .. image::  images/fig13.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/vectors.html
+   :target: vectors.html
 .. image::  images/fig17.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot//stipple_plots.html
+   :target: stipple_plots.html
 .. image::  images/fig19.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/multiple_plots.html
+   :target: multiple_plots.html
 .. image::  images/cscale.png
    :scale: 20%    
-   :target: http://ajheaps.github.io/cf-plot/colour_scales.html
+   :target: colour_scales.html
 
 :ref:`Vector plots <vector>` |
 :ref:`Stipple plots <stipple>` |
@@ -44,16 +44,16 @@ cf-plot gallery
 
 .. image::  images/fig20.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/user_defined.html
+   :target: user_defined.html
 .. image::  images/fig21.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/rotated_pole.html
+   :target: rotated_pole.html
 .. image::  images/us01.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/unstructured.html
+   :target: unstructured.html
 .. image::  images/fig27.png
    :scale: 11%    
-   :target: http://ajheaps.github.io/cf-plot/graphs.html
+   :target: graphs.html
 
 
 :ref:`User defined axes <user_defined>` |
@@ -65,15 +65,15 @@ cf-plot gallery
 
 .. image::  images/fig31.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/projections.html
+   :target: projections.html
 
 .. image::  images/fig40.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/trajectories.html
+   :target: trajectories.html
 
 .. image::  images/fig43.png
    :scale: 14%    
-   :target: http://ajheaps.github.io/cf-plot/wrf.html
+   :target: wrf.html
 
 
 :ref:`Projections <projections>` |
