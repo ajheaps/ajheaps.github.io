@@ -38,23 +38,23 @@ cf-plot is a set of Python functions for making common contour, vector and line 
 At the core of cf-plot are a set of functions for making and controlling plots. 
 
 |    **Plot making operators**
-|    `con <http://ajheaps.github.io/cf-plot/con.html>`_ - make a contour plot
-|    `cbar <http://ajheaps.github.io/cf-plot/cbar.html>`_ - make a colour bar
-|    `vect <http://ajheaps.github.io/cf-plot/vect.html>`_ - vector and stream plots
-|    `traj <http://ajheaps.github.io/cf-plot/traj.html>`_ - trajectory plots
-|    `lineplot <http://ajheaps.github.io/cf-plot/lineplot.html>`_ - make a graph
-|    `stipple <http://ajheaps.github.io/cf-plot/stipple.html>`_ - make a stipple plot
+|    :ref:`con<con>`  - make a contour plot
+|    :ref:`cbar<cbar>`  - make a colour bar
+|    :ref:`vect<vect>` - vector and stream plots
+|    :ref:`traj<traj>`  - trajectory plots
+|    :ref:`lineplot<lineplot>`  - make a graph
+|    :ref:`stipple<stipple>`  - make a stipple plot
 
 |    **Plot control operators**
-|    `gopen <http://ajheaps.github.io/cf-plot/gopen.html>`_ - open a plot
-|    `gclose <http://ajheaps.github.io/cf-plot/gclose.html>`_ - close a plot
-|    `gpos <http://ajheaps.github.io/cf-plot/gpos.html>`_ - plot positioning
-|    `gset <http://ajheaps.github.io/cf-plot/gset.html>`_ - set non map plotting region
-|    `levs <http://ajheaps.github.io/cf-plot/levs.html>`_ - define contour levels
-|    `cscale <http://ajheaps.github.io/cf-plot/cscale.html>`_ - select and change colour scales
-|    `mapset <http://ajheaps.github.io/cf-plot/mapset.html>`_ - set mapping parameters
-|    `reset <http://ajheaps.github.io/cf-plot/reset.html>`_ - reset all plot parameters 
-|    `setvars <http://ajheaps.github.io/cf-plot/setvars.html>`_ - set a variety of plot parameters
+|    :ref:`gopen<gopen>` - open a plot
+|    :ref:`gclose<gclose>` - close a plot
+|    :ref:`gpos<gpos>` - plot positioning
+|    :ref:`gset<gset>`  - set non map plotting region
+|    :ref:`levs<levs>`  - define contour levels
+|    :ref:`cscale<cscale>`  - select and change colour scales
+|    :ref:`mapset<mapset>`  - set mapping parameters
+|    :ref:`reset<reset>` - reset all plot parameters 
+|    :ref:`setvars<setvars>` - set a variety of plot parameters
 
 
 This user guide is a set of examples of plots that climate scientists generally make.  Further details and fine tuning options are available by looking at the individual function documentation above.
@@ -83,7 +83,7 @@ cf-python and cf-plot are pre-installed on the following platforms.
 |    ln -s /share/apps/NCAS/cfplot_data ~
 
 
-For other platforms follow the `cf-plot installation instructions <http://ajheaps.github.io/cf-plot/download.html>`_
+For other platforms follow the `cf-plot installation instructions :ref:`download<download>`
 
 .. _contours:
 
@@ -1143,7 +1143,7 @@ scale44 .. image:: images/colour_scales/scale44.png
 Colour bars
 ^^^^^^^^^^^
 
-Colour bars are often associated with filled colour contour plots and the options for the colour bar are described in the `cfp.cbar documentation <http://ajheaps.github.io/cf-plot/cbar.html>`_.  If the colour bar options are changed within the call to **cfp.con** then prepend colorbar_ to the appropriate colour bar option.  cf-plot has used the American spelling for colorbar for compatability with the spelling and usage within the Matplotlib Python package.
+Colour bars are often associated with filled colour contour plots and the options for the colour bar are described in the :ref:`cbar<cbar>` .  If the colour bar options are changed within the call to **cfp.con** then prepend colorbar_ to the appropriate colour bar option.  cf-plot has used the American spelling for colorbar for compatability with the spelling and usage within the Matplotlib Python package.
 
 
 

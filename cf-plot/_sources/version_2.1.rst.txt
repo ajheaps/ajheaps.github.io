@@ -943,7 +943,7 @@ To turn off plotting for  the rotated gid for instance use
 ===========================================
 
 The NCAS data tools training material one day course was added to the cf-plot web pages under
-http://ajheaps.github.io/cf-plot/training
+
 :ref:`training<training>`
 
 ::

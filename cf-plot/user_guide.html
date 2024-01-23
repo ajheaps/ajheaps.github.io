@@ -59,24 +59,24 @@
 <p>At the core of cf-plot are a set of functions for making and controlling plots.</p>
 <div class="line-block">
 <div class="line"><strong>Plot making operators</strong></div>
-<div class="line"><a class="reference external" href="http://ajheaps.github.io/cf-plot/con.html">con</a> - make a contour plot</div>
-<div class="line"><a class="reference external" href="http://ajheaps.github.io/cf-plot/cbar.html">cbar</a> - make a colour bar</div>
-<div class="line"><a class="reference external" href="http://ajheaps.github.io/cf-plot/vect.html">vect</a> - vector and stream plots</div>
-<div class="line"><a class="reference external" href="http://ajheaps.github.io/cf-plot/traj.html">traj</a> - trajectory plots</div>
-<div class="line"><a class="reference external" href="http://ajheaps.github.io/cf-plot/lineplot.html">lineplot</a> - make a graph</div>
-<div class="line"><a class="reference external" href="http://ajheaps.github.io/cf-plot/stipple.html">stipple</a> - make a stipple plot</div>
+<div class="line"><a class="reference internal" href="con.html#con"><span class="std std-ref">con</span></a>  - make a contour plot</div>
+<div class="line"><a class="reference internal" href="cbar.html#cbar"><span class="std std-ref">cbar</span></a>  - make a colour bar</div>
+<div class="line"><a class="reference internal" href="vect.html#vect"><span class="std std-ref">vect</span></a> - vector and stream plots</div>
+<div class="line"><a class="reference internal" href="traj.html#traj"><span class="std std-ref">traj</span></a>  - trajectory plots</div>
+<div class="line"><a class="reference internal" href="lineplot.html#lineplot"><span class="std std-ref">lineplot</span></a>  - make a graph</div>
+<div class="line"><a class="reference internal" href="stipple.html#stipple"><span class="std std-ref">stipple</span></a>  - make a stipple plot</div>
 </div>
 <div class="line-block">
 <div class="line"><strong>Plot control operators</strong></div>
-<div class="line"><a class="reference external" href="http://ajheaps.github.io/cf-plot/gopen.html">gopen</a> - open a plot</div>
-<div class="line"><a class="reference external" href="http://ajheaps.github.io/cf-plot/gclose.html">gclose</a> - close a plot</div>
-<div class="line"><a class="reference external" href="http://ajheaps.github.io/cf-plot/gpos.html">gpos</a> - plot positioning</div>
-<div class="line"><a class="reference external" href="http://ajheaps.github.io/cf-plot/gset.html">gset</a> - set non map plotting region</div>
-<div class="line"><a class="reference external" href="http://ajheaps.github.io/cf-plot/levs.html">levs</a> - define contour levels</div>
-<div class="line"><a class="reference external" href="http://ajheaps.github.io/cf-plot/cscale.html">cscale</a> - select and change colour scales</div>
-<div class="line"><a class="reference external" href="http://ajheaps.github.io/cf-plot/mapset.html">mapset</a> - set mapping parameters</div>
-<div class="line"><a class="reference external" href="http://ajheaps.github.io/cf-plot/reset.html">reset</a> - reset all plot parameters</div>
-<div class="line"><a class="reference external" href="http://ajheaps.github.io/cf-plot/setvars.html">setvars</a> - set a variety of plot parameters</div>
+<div class="line"><a class="reference internal" href="gopen.html#gopen"><span class="std std-ref">gopen</span></a> - open a plot</div>
+<div class="line"><a class="reference internal" href="gclose.html#gclose"><span class="std std-ref">gclose</span></a> - close a plot</div>
+<div class="line"><a class="reference internal" href="gpos.html#gpos"><span class="std std-ref">gpos</span></a> - plot positioning</div>
+<div class="line"><a class="reference internal" href="gset.html#gset"><span class="std std-ref">gset</span></a>  - set non map plotting region</div>
+<div class="line"><a class="reference internal" href="levs.html#levs"><span class="std std-ref">levs</span></a>  - define contour levels</div>
+<div class="line"><a class="reference internal" href="cscale.html#cscale"><span class="std std-ref">cscale</span></a>  - select and change colour scales</div>
+<div class="line"><a class="reference internal" href="mapset.html#mapset"><span class="std std-ref">mapset</span></a>  - set mapping parameters</div>
+<div class="line"><a class="reference internal" href="reset.html#reset"><span class="std std-ref">reset</span></a> - reset all plot parameters</div>
+<div class="line"><a class="reference internal" href="setvars.html#setvars"><span class="std std-ref">setvars</span></a> - set a variety of plot parameters</div>
 </div>
 <p>This user guide is a set of examples of plots that climate scientists generally make.  Further details and fine tuning options are available by looking at the individual function documentation above.</p>
 </section>
@@ -98,7 +98,7 @@
 <div class="line">module load ncas_anaconda3</div>
 <div class="line">ln -s /share/apps/NCAS/cfplot_data ~</div>
 </div>
-<p>For other platforms follow the <a class="reference external" href="http://ajheaps.github.io/cf-plot/download.html">cf-plot installation instructions</a></p>
+<p>For other platforms follow the <cite>cf-plot installation instructions :ref:`download&lt;download&gt;</cite></p>
 </section>
 <section id="contour-plots">
 <span id="contours"></span><h2>Contour plots<a class="headerlink" href="#contour-plots" title="Link to this heading">¶</a></h2>
@@ -1416,7 +1416,7 @@ scale than one where all the blues are compressed into 3 colours.</p>
 </section>
 <section id="colour-bars">
 <h3>Colour bars<a class="headerlink" href="#colour-bars" title="Link to this heading">¶</a></h3>
-<p>Colour bars are often associated with filled colour contour plots and the options for the colour bar are described in the <a class="reference external" href="http://ajheaps.github.io/cf-plot/cbar.html">cfp.cbar documentation</a>.  If the colour bar options are changed within the call to <strong>cfp.con</strong> then prepend <a href="#id6"><span class="problematic" id="id7">colorbar_</span></a> to the appropriate colour bar option.  cf-plot has used the American spelling for colorbar for compatability with the spelling and usage within the Matplotlib Python package.</p>
+<p>Colour bars are often associated with filled colour contour plots and the options for the colour bar are described in the <a class="reference internal" href="cbar.html#cbar"><span class="std std-ref">cbar</span></a> .  If the colour bar options are changed within the call to <strong>cfp.con</strong> then prepend <a href="#id6"><span class="problematic" id="id7">colorbar_</span></a> to the appropriate colour bar option.  cf-plot has used the American spelling for colorbar for compatability with the spelling and usage within the Matplotlib Python package.</p>
 <p>Below are some examples of calls to <strong>cfp.cbar</strong></p>
 <a class="reference internal image-reference" href="_images/cbar.png"><img alt="_images/cbar.png" src="_images/cbar.png" style="width: 520.52px; height: 288.08px;" /></a>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cf</span>
