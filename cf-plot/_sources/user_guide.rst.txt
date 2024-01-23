@@ -83,7 +83,7 @@ cf-python and cf-plot are pre-installed on the following platforms.
 |    ln -s /share/apps/NCAS/cfplot_data ~
 
 
-For other platforms follow the `cf-plot installation instructions :ref:`download<download>`
+For other platforms follow the :ref:`cf-plot installation instructions<download>`
 
 .. _contours:
 
