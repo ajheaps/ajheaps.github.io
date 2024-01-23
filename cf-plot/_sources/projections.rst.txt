@@ -2,7 +2,7 @@
 Projections in cf-plot
 **********************
 
-The cylindrical and polar stereographic projections are detailed separately in http://ajheaps.github.io/cf-plot/cylindrical.html and http://ajheaps.github.io/cf-plot/polar.html.
+The cylindrical and polar stereographic projections are detailed separately in `cylindrical plots <cylindrical>` and `polar plots <polar>`.
 
 
 

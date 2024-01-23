@@ -77,8 +77,8 @@ Using GitHub:
 
 ::
 
-   git clone git://github.com/ajheaps/cf-plot.git
-   (or possibly git clone https://github.com/ajheaps/cf-plot.git)
+   git clone git://github.com/NCAS-CMS/cf-plot.git
+   (or possibly git clone https://github.com/NCAS-CMS/cf-plot.git)
    cd cf-plot
    python setup.py install
 
