@@ -22,7 +22,7 @@ The current version is |release|
 
 
 
-Further functionality may be added on request - please email <andy.heaps@ncas.ac.uk> with details.
+Further functionality may be added on request - please email <sadir.bartholomew@ncas.ac.uk> with details.
 
 
 

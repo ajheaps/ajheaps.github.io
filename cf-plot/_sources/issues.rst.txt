@@ -1,7 +1,7 @@
 cf-plot issues
 **************
 
-If you find a problem with cf-plot please email me Sadie Bartholomew (sadie.bartholomew@ncas.ac.uk) with the following:
+If you find a problem with cf-plot please email Sadie Bartholomew (sadie.bartholomew@ncas.ac.uk) with the following:
 
 |   (i) the cf-python and cf-plot version numbers used:
 |       print('cf-python version', cf.__version__)
@@ -47,7 +47,6 @@ If you are using arrays of data use numpy to write out the relevant data:
 |  
 
 
-Join the cf-plot email list to find out when new functionality is added to cf-plot. http://www.lists.rdg.ac.uk/mailman/listinfo/met-cfplot
 
 
 | 

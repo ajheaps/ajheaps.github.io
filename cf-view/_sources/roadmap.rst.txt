@@ -34,7 +34,7 @@ The current version is |release|
 Requests
 ********
 
-Further functionality may be added on request - please email <andy.heaps@ncas.ac.uk> with the details.
+Further functionality may be added on request - please email <sadie.bartholomew@ncas.ac.uk> with the details.
 
 
 
